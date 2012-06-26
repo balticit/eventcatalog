@@ -110,11 +110,36 @@
 		  
               foreach ($monthdata as $item) {
               
-              
+             // echo $idate =  $item['simple_date'].' / '.date("Y-m-d H:i:s").'<br />';
+              //echo $idate =  strtotime($item['simple_date']).' / '.strtotime(date("Y-m-d H:i:s"));
+              //$cdate = date("Y-m-d", date("Y-m-d"));
+            //  var_dump(UNIX_TIMESTAMP(date("Y-m-d")));
+            // var_dump($idate.'/'.$cdate);
                   
-                  //if( $item['date'] > date('d') and $item['weekbegin'] > date('m')) { $color = "color:#000";} else { $color = "color:#ccc"; }
+                  
+                  //echo $item['gr_year'];
+                  
+                  //echo $item['gr_day'].'|'.date("d").' | '.$item['gr_month'].'|'.date("n").' | '.$item['gr_year'].'|'.date("Y");
+                 // echo $item['sdate'];
+               //   echo date('Y-m-d', strtotime($item['sdate']));
+                  
+                 /* $color = "color:#ccc";
+                  if( (int)$item['gr_year'] >= (int)date("Y")   ) {
+
+                    if( (int)$item['gr_month'] >= (int)date("n") ) {
+                    $color = "color:#000";
+                      if( (int)$item['gr_day'] >= (int)date("d") ) {
+                        
+                      }
+                    }
+                  }
+                  */
+                 // if( date('Y-m-d', strtotime($item['sdate'])) > time()  ) 
+                  
+                  if(strtotime(date('Y-m-d ', strtotime($item['sdate'])) . '23:59:59') > time() )
+                  { $color = ";color:#000";} else { $color = ";color:#ccc"; }
               
-                  echo '<tr style="height:35px;">';
+                  echo '<tr style="height:35px'.$color.';">';
                   
                   //Самое первое событие
                   if ($ind==0&&$this->prev==0) {
@@ -124,8 +149,8 @@
                   else {
                       $style=";color:#ccc";
                   }
-                  echo '<td><b><a style="color:black;'.$style.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
-                  echo '<td style="color:gray;" >'; 
+                  echo '<td><b><a style="color:black;'.$style.$color.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
+                  echo '<td style="color:gray'.$color.';" >'; 
                   if($item['date'] == $item['date_end']) {
 				  
 					echo $item['date'].' ('.$item['weekbegin'].')';
@@ -148,8 +173,8 @@
                   }
                   echo '</td>';
                   
-                  printf('<td nowrap style="'.$style.'">%s</td>',$item['type']);
-                  printf('<td style="'.$style.'">%s</td>',$item['place']);
+                  printf('<td nowrap style="'.$style.$color.'">%s</td>',$item['type']);
+                  printf('<td style="'.$style.$color.'">%s</td>',$item['place']);
                  // printf('<td nowrap style="'.$style.'"><a style="color:gray;'.$style.'" target="_blank" href="%s">подробнее</a></td>',$item['link']);
                   echo '</tr>';
                   $ind++;

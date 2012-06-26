@@ -44,31 +44,31 @@
 			$av_rwParams = array("prev");
 			CURLHandler::CheckRewriteParams($av_rwParams);  
 			
-			$this->prev = GP("prev",0);
+			$this->prev = GP("prev",strtotime(date("Y-m-d")) );
 			$prev = $this->prev;
 			$sort=" DESC";
 			if($prev==0){$sort="";}
 			$sql = 	
-				'(SELECT t.tbl_obj_id, t.date, t.title, t.type, t.link, t.place, '. 
+				'(SELECT t.tbl_obj_id, t.date, t.title, t.type, t.link, t.place, t.date as sdate, '. 
 					'YEAR(t.date) as gr_year, MONTH(t.date) as gr_month, '.
 					'UNIX_TIMESTAMP(t.date) as unixdate, a.title_url '.
 				'FROM `tbl__event_calendar` t '.
 				'LEFT JOIN `tbl__area_doc` a ON a.tbl_obj_id = t.area_id '.
 				'WHERE '.
-					(($prev == 0) ?
+					/* (($prev == 0) ? 
 						'UNIX_TIMESTAMP(t.date) >= '.strtotime(date('Y-m-d')) :
-						'UNIX_TIMESTAMP(t.date) <= '.$prev).' AND '.
+						'UNIX_TIMESTAMP(t.date) <= '.$prev).' AND '. */
 					't.active = 1) '.
 				'UNION '.
-				'(SELECT n.tbl_obj_id, n.date, n.title, n.type, CONCAT("/news/details", n.tbl_obj_id) link, n.place, '.
+				'(SELECT n.tbl_obj_id, n.date, n.title, n.type, CONCAT("/news/details", n.tbl_obj_id) link, n.place, n.date as sdate, '.
 					'YEAR(n.date) gr_year, MONTH(n.date) gr_month, '.
 					'UNIX_TIMESTAMP(n.date) as unixdate, "!!!" title_url '.
 				'FROM `tbl__news` n '.
 				'LEFT JOIN `tbl__area_doc` a ON a.tbl_obj_id = n.area_id '.
 				'WHERE '.
-					(($prev == 0) ?
+				/*	(($prev == 0) ? 
 						'UNIX_TIMESTAMP(n.date) >= '.strtotime(date('Y-m-d')) :
-						'UNIX_TIMESTAMP(n.date) <= '.$prev).' AND '.
+						'UNIX_TIMESTAMP(n.date) <= '.$prev).' AND '. */
 					'n.active = 1 AND n.in_calendar = 1) '.
 				'ORDER BY UNIX_TIMESTAMP(date)'.$sort;
 			
