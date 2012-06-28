@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="recent_php" template="templates/recent.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+	<control relativeId="newsList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/news_files/newItem.htm"/>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

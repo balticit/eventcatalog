@@ -1,0 +1,657 @@
+<script type="text/javascript" language="javascript" src="/js/datetimepicker.js"></script>
+<script type="text/javascript" language="JavaScript" src="/js/registration.js"></script>
+<script type="text/javascript" language="JavaScript">
+    max_sel_groups = 3;
+    function AreaCityChange(city) {
+        var mdistricts = $('#row_moscow_district');
+        var mway = $('#row_moscow_way');
+        var mmetro = $('#row_moscow_metro');
+        if (city.toLowerCase() == 'москва') {
+            mdistricts.show();
+            mway.hide();
+            mmetro.show();
+        }
+        else if (city.toLowerCase() == 'московская область') {
+            mdistricts.hide();
+            mway.show();
+            mmetro.show();
+        }
+        else {
+            mdistricts.hide();
+            mway.hide();
+            mmetro.hide();
+        }
+    }
+
+    function FillMWayChecks() {
+        $("#sel_mway").children('div').each(function () {
+            var t = $(this);
+            var id = t.attr('id');
+            id = id.substring(8, id.length);
+            $("#ms" + id).attr('checked', 'checked');
+        });
+        //CheckCount();
+    }
+
+    function HighwayDel(id) {
+        $("#highway_id" + id).remove();
+        CheckMWayTitle();
+    }
+
+    function MCityDel(id) {
+        $("#mcity_id" + id).remove();
+        CheckMWayTitle();
+    }
+
+    function ShowMoscowWayDlg() {
+        fm_dialog = new Boxy('<div style="width:100px; height: 100px;"><div style="margin: auto;">Загрузка...</div></div>', {
+            modal:true,
+            title:"Выберите направление",
+            closeText:"[X]",
+            fixed:false,
+            unloadOnHide:true});
+        $.ajax({
+            url:"/area/find_metro/reg/1",
+            cache:false,
+            success:function (html) {
+                fm_dialog.setContent(html);
+                fm_dialog.center('x');
+                fm_dialog.moveToY($(window).scrollTop());
+                $("#sel_mway").children('div').each(function () {
+                    id = this.id;
+                    if (id.indexOf('mcity') >= 0) {
+                        id = id.substring(8, id.length);
+                        var chb = $('#mway_city_' + id);
+                        chb.attr('checked', true);
+                        $('#mway_sel_city').append('<label id="mway_sld_city_' + id + '" title="Удалить" class="fm_selected" onclick="FMDelCity(this)"><input type="hidden" name="mcity[' + id + ']" value="' + id + '">' + chb.attr('value') + ' </label>');
+                    }
+                    else {
+                        id = id.substring(10, id.length);
+                        var chb = $('#mway_highway_' + id);
+                        chb.attr('checked', true);
+                        $('#mway_sel_highway').append('<label id="mway_sld_highway_' + id + '" title="Удалить" class="fm_selected" onclick="FMDelHighway(this)"><input type="hidden" name="mhighway[' + id + ']" value="' + id + '">' + chb.attr('value') + ' </label>');
+                    }
+                });
+            }
+        });
+    }
+    function CheckMWayTitle() {
+        if ($("#sel_mway").children('div').length)
+            $("#sel_mway_title").show();
+        else
+            $("#sel_mway_title").hide();
+    }
+
+    function CheckMWayCount() {
+        var flag = $('input.metro-station:checked').length < 3;
+        $('.metro-station').each(function () {
+            if (!this.checked)
+                if (flag)
+                    this.disabled = '';
+                else
+                    this.disabled = 'disabled';
+        });
+    }
+
+
+</script>
+
+<script src="/js/jquery.maskedinput-1.3.min.js" type="text/javascript"></script>
+<img src="/images/front/r3.gif"><br><br>
+<form method="post" enctype="multipart/form-data">
+<table border="0" cellpadding="0" cellspacing="15">
+<tr valign="top">
+    <td class="reg_title">Название компании:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
+                                     value='{title}'></td>
+    <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила написания
+        названия</a>
+
+        <div id="NameInfo" style="display: none;">
+            <ul>
+                <li>в названии не должно быть кавычек;</li>
+                <li>не разрешается использовать в названии цифру «1», если её нет в вашем логотипе;</li>
+                <li>не разрешается использовать в названии слова «ведущий», «шоу», «группа», «DJ», если этих слов нет в
+                    вашем логотипе;
+                </li>
+                <li>название должно быть написано с большой буквы, далее прописные;</li>
+                <li>не разрешается писать название всеми заглавными буквами, если это не аббревиатура;</li>
+                <li>перед названием не должен стоять пробел.</li>
+            </ul>
+            Администратор портала имеет право внести правки в название вашей компании, если нарушены вышеперечисленные
+            правила. При внесении правок, Администратор руководствуется написанием названия в соответствии с логотипом
+            вашей компании.
+        </div>
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Логотип:</td>
+    <td style="width: 300px;"><input type="file" name="properties[logo]"/></td>
+    <td class="reg_info">Параметры макета: 120х80 pxl<br>Название файла должно состоять из латинских букв или цифр.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Выбор раздела и категории:</td>
+    <td style="width: 300px;">
+        <select id="sel_group" class="reg_input_text" onchange="SelectGroup()" onkeyup="SelectGroup()">
+            <option value="-1">Выберите раздел</option>
+            {groups_list}
+        </select>
+
+        <div id="subgroups" style="display: none">{subgroups_list}</div>
+        <div id="selected_title" style="{st_visible}" class="reg_title2">Выбранные типы деятельности:</div>
+        <div id="selected_groups">{selected_groups}</div>
+
+    </td>
+    <td class="reg_info">Пожалуйста, выберите не более 3-х категорий.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Описание:</td>
+    <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
+    </td>
+    <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах компании.<br>
+        Пожалуйста, не вставляйте контактную информацию в описание.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Вместимость площадки:</td>
+    <td style="width: 300px;">
+
+        <script type="text/javascript" language="javascript">
+            var halls = new Array(
+                    {hallsJS}
+            )
+            function RenderHalls() {
+                var hallsKeeper = document.getElementById("hallsContainer");
+                if (halls.length > 0) {
+                    var tbl = "<table style='width:auto; height:auto;'>";
+                    for (i = 0; i < halls.length; i++) {
+                        tbl += "<tr><td>";
+                        tbl += "№: " + (i + 1) + " &nbsp;&nbsp; Название: <input type='text' name='properties[hall][" + i + "][title]' style='width:80px;' value='" + halls[i].title + "' onkeyup='javascript:halls[" + i + "].title=this.value;'> &nbsp;&nbsp; <a href='#' onclick='javascript:DeleteHall(" + i + ");return false;'>Удалить</a>";
+                        tbl += "<table cellspacing=\"0\" cellpadding=\"0\"><tr align=\"center\"><td>банкет</td><td>фуршет</td><td colspan=\"2\">конференция</td></tr><tr align=\"center\"><td>кол-во</td><td>кол-во</td><td>кол-во</td><td>стоимость</td></tr><tr>"
+                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_banquet]' style='width:40px;' value='" + halls[i].max_places_banquet + "' onkeyup='javascript:halls[" + i + "].max_places_banquet=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_official_buffet]' style='width:40px;' value='" + halls[i].max_places_official_buffet + "' onkeyup='javascript:halls[" + i + "].max_places_official_buffet=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px 1px 5px 5px;\"><input type='text' name='properties[hall][" + i + "][max_places_conference]' style='width:40px;' value='" + halls[i].max_places_conference + "' onkeyup='javascript:halls[" + i + "].max_places_conference=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px 5px 5px 1px;\"><input type='text' name='properties[hall][" + i + "][cost_conference]' style='width:40px;' value='" + halls[i].cost_conference + "' onkeyup='javascript:halls[" + i + "].cost_conference=this.value;'/></td>";
+                        tbl += "</tr></table>"
+                        tbl += "</td></tr>";
+                    }
+                    tbl += "</table>";
+                    hallsKeeper.innerHTML = tbl;
+                }
+                else {
+                    hallsKeeper.innerHTML = "";
+                }
+            }
+
+            function AddHall() {
+                var templateHall = new Object();
+                templateHall.title = "";
+                templateHall.max_places_banquet = 0;
+                templateHall.max_places_official_buffet = 0;
+                templateHall.max_places_conference = 0;
+                templateHall.cost_conference = 0;
+                halls.push(templateHall);
+                RenderHalls();
+            }
+
+            function DeleteHall(n) {
+                var tarr = new Array();
+                for (i = 0; i < halls.length; i++) {
+                    if (i != n) {
+                        tarr.push(halls[i]);
+                    }
+                }
+                halls = tarr;
+                RenderHalls();
+            }
+
+        </script>
+        <a style="cursor: pointer; text-decoration: underline;" href="#" onclick="javascript:AddHall(); return false;">Добавить
+            зал</a>
+
+        <div id="hallsContainer" style="width: auto; height: auto;">
+            <table>
+                <tr></tr>
+            </table>
+        </div>
+        <script type="text/javascript" language="javascript">RenderHalls();</script>
+    </td>
+    <td class="reg_info">Добавьте нужное Вам количество залов и укажите максимальное количество человек в каждом
+        зале.<br>
+        Если в зале есть возможность проведения конференции, пожалуйста, напишите, сколько стоит аренда данного зала.
+    </td>
+</tr>
+
+<tr valign="top">
+    <td class="reg_title">Стоимость проведения банкета на 1 персону:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_banquet]" size="60"
+                                     value='{cost_banquet}'></td>
+    <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1500</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Стоимость проведения фуршета на 1 персону:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_official_buffet]"
+                                     size="60" value='{cost_official_buffet}'></td>
+    <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1000</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Арендная плата:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_rent]" size="60"
+                                     value='{cost_rent}'></td>
+    <td class="reg_info">Пожалуйста, напишите, включена или нет арендная плата в указанную стоимость проведения банкета
+        или фуршета.
+        Если не включена, то напишите сколько она составляет.
+        Если включена, то напишите «включена».
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Обслуживание:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_service]" size="60"
+                                     value='{cost_service}'></td>
+    <td class="reg_info">Пожалуйста, напишите, включено или нет обслуживание в указанную стоимость проведения банкета
+        или фуршета.
+        Если не включено, то напишите сколько процентов оно составляет (к примеру, 10%).
+        Если включено, то напишите «включено».
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Кухня:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[kitchen]" size="60"
+                                     value='{kitchen}'></td>
+    <td class="reg_info">Пример: русская, европейская и т.п.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Особенности кухни:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[kitchen_features]" size="60"
+                                     value='{kitchen_features}'></td>
+    <td class="reg_info">Если на Вашей площадке имеется своё кулинарное шоу или что-то в этом роде, напишите здесь об
+        этом.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Возможность приглашения стороннего кейтеринга:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[invite_catering]" {invite_catering_on}
+            value="1"> возможно</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[invite_catering]" {invite_catering_off}
+            value="0"> невозможно</label></td>
+    <td class="reg_info">Пожалуйста, укажите, возможно или нет приглашать на Вашу площадку кейтеринговую службу. Если Вы
+        работаете с какими-то определенными кейтеринговыми службами, пожалуйста, напишите здесь об этом.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Своя парковка:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[parking]" {parking_on} value="1">
+            есть</label>
+        <label><input type="text" name="properties[parking_count]" size="5" value="{parking_count}"> машиномест</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[parking]" {parking_off} value="0">
+            нет</label></td>
+    <td class="reg_info">Имеется или нет, и если имеется, то на какое количество машин.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Технический служебный вход:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[service_entrance]" {service_entrance_on}
+            value="1"> есть</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[service_entrance]" {service_entrance_off}
+            value="0"> нет</label></td>
+    <td class="reg_info">Имеется или нет.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Гардероб:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[wardrobe]" {wardrobe_on} value="1">
+            есть</label>
+        <label><input type="text" name="properties[wardrobe_count]" size="5" value="{wardrobe_count}"> мест</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[wardrobe]" {wardrobe_off} value="0">
+            нет</label></td>
+    <td class="reg_info">Имеется или нет, и если имеется, то на какое количество мест.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Сцена:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[stage]" {stage_on} value="1"> есть</label>
+        <label><input type="text" name="properties[stage_count]" size="5" value="{stage_count}"> м2</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[stage]" {stage_off} value="0"> нет</label>
+    </td>
+    <td class="reg_info">Имеется или нет, и если имеется, то укажите, пожалуйста, метраж сцены.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Гримерные комнаты:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[makeup_rooms]" {makeup_rooms_on} value="1">
+            есть</label>
+        <label><input type="text" name="properties[makeup_rooms_count]" size=" 5" value="{makeup_rooms_count}">
+            комнат</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[makeup_rooms]" {makeup_rooms_off} value="0">
+            нет</label></td>
+    <td class="reg_info">Имеются или нет, и если имеются, пожалуйста, уточните количество.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Танцпол:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[dancing_size]" {dancing_size_on} value="1">
+            есть</label>
+        <label><input type="text" name="properties[dancing_size_count]" size="5" value="{dancing_size_count}">
+            м2</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[dancing_size]" {dancing_size_off} value="0">
+            нет</label></td>
+    <td class="reg_info">Имеется или нет, и если имеется, то укажите, пожалуйста, метраж танцпола.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Возможность установки автомобиля внутри площадки:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[car_into]" {car_into_on} value="1"> возможно</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[car_into]" {car_into_off} value="0">
+            невозможно</label></td>
+    <td class="reg_info">Возможно или нет.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Световое оборудование:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[light]" {light_on} value="1"> есть</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[light]" {light_off} value="0"> нет</label>
+    </td>
+    <td class="reg_info">Имеется или нет.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Звуковое оборудование:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[sound]" {sound_on} value="1"> есть</label>
+        <label><input type="text" name="properties[sound_count]" size="5" value="{sound_count}"> кВт</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[sound]" {sound_off} value="0"> нет</label>
+    </td>
+    <td class="reg_info">Имеется или нет.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Плазменные панели:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[panels]" {panels_on} value="1"> есть</label>
+        <label><input type="text" name="properties[panels_count]" size="5" value="{panels_count}"> панелей</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[panels]" {panels_off} value="0"> нет</label>
+    </td>
+    <td class="reg_info">Имеются или нет, и если имеются, то какое количество.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Проекционный экран / проектор:</td>
+    <td style="width: 300px;">
+        <label><input class="reg_input_radio" type="radio" name="properties[projector]" {projector_on} value="1">
+            есть</label>
+        <label><input type="text" name="properties[projector_count]" size="5" value="{projector_count}"> штук</label>
+        <label><input class="reg_input_radio" type="radio" name="properties[projector]" {projector_off} value="0">
+            нет</label></td>
+    <td class="reg_info">Имеется или нет. Если более одного, то также можете указать количество.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Другое:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[other]" size="60"
+                                     value='{other}'></td>
+    <td class="reg_info">Здесь Вы можете кратко написать что ещё из технического оборудования имеется на Вашей
+        площадке.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Фотографии:</td>
+    <td style="width: 300px;">
+        <div id="photos[1]" class="reg_photos">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[1]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[1]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[2]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[2]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[2]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[3]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[3]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[3]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[4]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[4]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[4]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[5]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[5]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[5]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[6]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[6]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[6]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[7]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[7]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[7]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[8]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[8]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[8]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <a id="btnAddPhoto" href="" onclick="javascript: RegAddPhotos(); return false;">Добавить ещё фотографию</a>
+    <td class="reg_info">Всего Вы можете добавить до 8-ми фотографий.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Видео:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[youtube_video]" size="60"
+                                     value="{youtube_video}"></td>
+    <td class="reg_info">Рекомендуем обязательно добавлять видео-презентацию Вашей площадки, т.к. это повышает
+        эффективность размещаемой информации на портале.
+        Необходимо разместить ссылку на видео с YouTube, например http://www.youtube.com/watch?v=GaNjCal26CM.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Город:</td>
+    <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
+                                     size="60" value="{other_city}" onchange="AreaCityChange(this.value)"
+                                     onkeyup="AreaCityChange(this.value)">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var searchinput = $('#input_city');
+                searchinput.autocomplete({
+                    serviceUrl:'/ajax/findcity',
+                    highlight:true,
+                    minChars:1,
+                    maxHeight:400
+                });
+            });
+        </script>
+    </td>
+    <td class="reg_info">Введите город, например <a href="" onclick="SetCity('Москва'); return false;">Москва</a>, <a
+            href="" onclick="SetCity('Московская область'); return false;">Московская область</a> или выберите из <a
+            href="" onclick="ShowCityList(); return false;">списка</a></td>
+</tr>
+<tr valign="top" id="row_moscow_district" style="{mdistricts_visible}">
+    <td class="reg_title">Округ:</td>
+    <td style="width: 300px;">{mdistricts}</td>
+    <td class="reg_info">Пожалуйста, выберите округ Москвы, в котором находится Ваша площадка.</td>
+</tr>
+<tr valign="top" id="row_moscow_way" style="{mways_visible}">
+    <td class="reg_title">Направление:</td>
+    <td style="width: 300px;">
+        <a href="" onclick="javascript: ShowMoscowWayDlg(); return false;">Выбрать</a>
+
+        <div id="sel_mway_title" style="{mw_visible}" class="reg_title2">Выбранные направления:</div>
+        <div id="sel_mway">{sel_mway}</div>
+    </td>
+    <td class="reg_info">Пожалуйста, выберите направления, которые наиболее близко находятся к Вашей площадке.</td>
+</tr>
+<tr valign="top" id="row_moscow_metro" style="{mmetro_visible}">
+    <td class="reg_title">Станция метро:</td>
+    <td style="width: 300px;">
+        <a href="" onclick="javascript: ShowMetroDlg(); return false;">Выбрать</a>
+
+        <div id="sel_metro_title" style="{mt_visible}" class="reg_title2">Выбранные станции:</div>
+        <div id="sel_metro">{sel_metro}</div>
+    </td>
+    <td class="reg_info">Пожалуйста, выберите одну или несколько станций метро, которые наиболее близко находятся к
+        Вашей площадке. Можно выбрать не более трёх станций.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Адрес:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[address]" size="60"
+                                     value="{address}"/></td>
+    <td class="reg_info">Пример формата написания: Ивановская ул., д.1.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Контактные телефоны:</td>
+    <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text" name="properties[phone]" size="60"
+                                     value="{phone}" style="margin-bottom: 5px;"><input id="phone2"
+                                                                                        class="reg_input_text"
+                                                                                        type="text"
+                                                                                        name="properties[phone2]"
+                                                                                        size="60" value="{phone2}"/>
+        <script type="text/javascript">
+            $("#phone1").mask('(999) 999-99-99');
+            $("#phone2").mask('(999) 999-99-99');
+        </script>
+    </td>
+    <td class="reg_info">Вы можете добавить один или два телефона.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Имя администратора площадки:</td>
+    <td style="width: 300px;"><input type="text" name="properties[manager_name]" size="60" class="reg_input_text"
+                                     value="{manager_name}"></td>
+    <td class="reg_info"></td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Адрес сайта:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]" size="60"
+                                     value="{site_address}" onfocus="SiteAdrFocus(this)" onblur="SiteAdrBlur(this)">
+    </td>
+    <td class="reg_info"></td>
+</tr>
+<tr valign="top">
+    <td></td>
+    <td>
+        <div style="width: 240px;">
+            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"
+                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:360px;"
+                    allowTransparency="true"></iframe>
+        </div>
+    </td>
+    <td style="color: #999999;">
+        Нажмите лайк и будьте всегда в курсе последних событий!
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Электронная почта:</td>
+    <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
+                                     value="{email}" {login_readonly}>
+    </td>
+    <td class="reg_info">Электронная почта является Вашим Логином при входе в Личный кабинет для редактирования данных о
+        компании.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Пароль:</td>
+    <td>
+        <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
+            <tr>
+                <td>Пароль:</td>
+                <td align="right"><input class="reg_pass" type="password" name="properties[password]" size="30" value=""
+                                         style="margin-bottom: 5px;"><br/></td>
+            </tr>
+            <tr>
+                <td>Подтверждение:</td>
+                <td align="right"><input class="reg_pass" type="password" name="properties[password_confirm]" size="30"
+                                         value=""></td>
+            </tr>
+        </table>
+    </td>
+    <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Введите цифры<br/>
+
+        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50"
+                                                                               src="{captcha_link}"></div>
+        <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
+    </td>
+    <td><br/><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input"></td>
+    <td style="color: #999999;"></td>
+</tr>
+<tr>
+    <td colspan="3"><input type="submit" value="{submit_text}"></td>
+</tr>
+</table>
+</form>

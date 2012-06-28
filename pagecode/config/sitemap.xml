@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sitemap encoding="windows-1251">
+	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml">
+		<sitenode id="2" node="about/"  configfile="pagecode/settings/about.xml"/>
+		<sitenode id="2_1" node="contact/"  configfile="pagecode/settings/contact.xml"/>
+		<sitenode id="3" node="agency/" configfile="pagecode/settings/agency.xml" id_translit="1">
+			<sitenode id="3_1" node="details/" configfile="pagecode/settings/agency_details.xml" hidden="1"/>
+			<sitenode id="3_2" node="rating/" configfile="pagecode/settings/agency_rating.xml"/>
+		</sitenode>
+		<sitenode id="4" node="area/"  configfile="pagecode/settings/area.xml" id_translit="1">
+			<sitenode id="4_1" node="details/" configfile="pagecode/settings/area_details.xml" hidden="1"/>
+			<sitenode id="4_2" node="rating/" configfile="pagecode/settings/area_rating.xml"/>
+			<sitenode id="4_3" node="map/" configfile="pagecode/settings/area_map.xml"/>
+			<sitenode id="4_4" node="find_metro/" configfile="pagecode/settings/area_find_metro.xml"/>
+			<sitenode id="4_5" node="find_add/" configfile="pagecode/settings/area_find_add.xml"/>
+			<sitenode id="4_6" node="ways/" configfile="pagecode/settings/area_ways.xml"/>
+		</sitenode>
+		<sitenode id="5" node="artist/" configfile="pagecode/settings/artist.xml" id_translit="1">
+			<sitenode id="5_1" node="details/" configfile="pagecode/settings/artist_details.xml" hidden="1"/>
+			<sitenode id="5_2" node="rating/" configfile="pagecode/settings/artist_rating.xml"/>
+		</sitenode>
+		<sitenode id="6" node="book/"  configfile="pagecode/settings/book.xml" id_translit="1">
+			<sitenode id="6_1" node="details/" configfile="pagecode/settings/book_details.xml" hidden="1"/>
+		</sitenode>
+		<sitenode id="8" node="resident_news/"  configfile="pagecode/settings/resident_news.xml">
+			<sitenode id="8_1" node="news/" configfile="pagecode/settings/res_news_news.xml" hidden="1"/>
+		</sitenode>
+		<sitenode id="9" node="eventoteka/"  configfile="pagecode/settings/eventoteka.xml"/>
+		<sitenode id="10" node="contractor/" configfile="pagecode/settings/contractor.xml" id_translit="1">
+			<sitenode id="10_1" node="details/" configfile="pagecode/settings/contractor_details.xml" hidden="1"/>
+			<sitenode id="10_2" node="rating/" configfile="pagecode/settings/contractor_rating.xml"/>
+		</sitenode>
+		<sitenode id="13" node="news/"  configfile="pagecode/settings/news.xml">
+			<sitenode id="13_1" node="details/" configfile="pagecode/settings/news_details.xml" hidden="1"/>
+		</sitenode>
+		<sitenode id="15" node="registration/"  configfile="pagecode/settings/registration.xml">
+			<sitenode id="15_1" node="confirm/" configfile="pagecode/settings/registration_activate.xml"/>
+			<sitenode id="15_2" node="image/" configfile="pagecode/settings/registration_image.xml"/>
+			<sitenode id="15_3" node="personal/" configfile="pagecode/settings/registration_personal.xml"/>
+			<sitenode id="15_4" node="junksale/" configfile="pagecode/settings/registration_junksale.xml"/>
+			<sitenode id="15_5" node="upload/" configfile="pagecode/settings/registration_upload.xml"/>
+			<sitenode id="15_6" node="reset/" configfile="pagecode/settings/registration_reset.xml"/>
+		</sitenode>
+		<sitenode id="18" node="authorizationrequired/"  configfile="pagecode/settings/authorization_required.xml"/>
+		<sitenode id="20" node="download/"  configfile="pagecode/settings/download.xml"/>
+		<sitenode id="22" node="search/"  configfile="pagecode/settings/search.xml" />
+			<sitenode id="22" node="search_ajax/"  configfile="pagecode/settings/search_ajax.xml" />
+		<sitenode id="23" node="ajax/"  configfile="pagecode/settings/ajax.xml">
+			<sitenode id="23_1" node="citylist/" configfile="pagecode/settings/ajax_citylist.xml" />
+			<sitenode id="23_2" node="authorize/" configfile="pagecode/settings/ajax_authorize.xml" />
+			<sitenode id="23_3" node="subscribe/" configfile="pagecode/settings/ajax_subscribe.xml" />        
+			<sitenode id="23_4" node="findcity/" configfile="pagecode/settings/ajax_findcity.xml" />
+			<sitenode id="23_5" node="citylist_reg/" configfile="pagecode/settings/ajax_citylist_reg.xml" />
+			<sitenode id="23_6" node="findcountry/" configfile="pagecode/settings/ajax_findcountry.xml" />
+			<sitenode id="23_7" node="countrylist_reg/" configfile="pagecode/settings/ajax_countrylist_reg.xml" />
+			<sitenode id="23_8" node="metro/" configfile="pagecode/settings/ajax_metro.xml" />    
+			<sitenode id="23_9" node="etv_type/" configfile="pagecode/settings/ajax_etv_type.xml" />    
+			<sitenode id="23_10" node="footer_type/" configfile="pagecode/settings/ajax_footer_type.xml" />
+			<sitenode id="23_11" node="atrist_styles/" configfile="pagecode/settings/ajax_artist_styles.xml" />
+			<sitenode id="23_12" node="residents/" configfile="pagecode/settings/ajax_residents.xml"/>
+			<sitenode id="24_14" node="etv_order/" configfile="pagecode/settings/ajax_etv_order.xml"/>
+		</sitenode>
+		<sitenode id="24" node="partners/"  configfile="pagecode/settings/partners.xml">
+			<sitenode id="24_1" node="details/" configfile="pagecode/settings/partners_details.xml" hidden="1"/>
+		</sitenode>
+		<sitenode id="26" node="added/"  configfile="pagecode/settings/added.xml" />
+		<sitenode id="27" node="forsites/"  configfile="pagecode/settings/forsites.xml" />
+		<sitenode id="28" node="pr/"  configfile="pagecode/settings/pr.xml" />
+		<sitenode id="30" node="stopsubscribe/"  configfile="pagecode/settings/stopsubscribe.xml"/>
+		<sitenode id="31" node="add_res_news/"  configfile="pagecode/settings/add_resident_news.xml"/>
+		<sitenode id="38" node="event_calendar/"  configfile="pagecode/settings/event_calendar.xml"/>
+		<sitenode id="39" node="pricelist/"  configfile="pagecode/settings/pricelist.xml"/>
+		<sitenode id="40" node="r_cabinet/"  configfile="pagecode/settings/r_cabinet.xml"/>
+		<sitenode id="41" node="order_magazine/"  configfile="pagecode/settings/order_magazine.xml"/>
+		<sitenode id="40" node="u_cabinet/"  configfile="pagecode/settings/u_cabinet.xml"/>
+		 <sitenode id="43" node="magazines/"  configfile="pagecode/settings/magazines.xml">
+					<sitenode id="43_1" node="details/" configfile="pagecode/settings/magazines_details.xml" hidden="1"/>
+					<sitenode id="43_2" node="pricelist/" configfile="pagecode/settings/magazines_price.xml"/>
+					<sitenode id="43_3" node="delivery/" configfile="pagecode/settings/magazines_delivery.xml" hidden="1"/>
+					<sitenode id="43_4" node="comment/" configfile="pagecode/settings/magazines_comment.xml" hidden="1"/>
+					<sitenode id="43_5" node="viewcomment/" configfile="pagecode/settings/magazines_viewcomment.xml" hidden="1"/>
+			<sitenode id="43_4" node="delivery_new/" configfile="pagecode/settings/magazines_delivery_new.xml"/>
+			</sitenode>
+		<sitenode id="45" node="texterror/"  configfile="pagecode/settings/texterror.xml"/>
+		<sitenode id="45" node="finderror/"  configfile="pagecode/settings/finderror.xml"/>
+		<sitenode id="50" node="comments/"  configfile="pagecode/settings/comments.xml">
+			<sitenode id="50_1" node="jsc/" configfile="pagecode/settings/comments_jsc.xml"/>
+		</sitenode>
+		<sitenode id="52" node="u_profile/"  configfile="pagecode/settings/profile.xml"/>
+		<sitenode id="53" node="scroll/"  configfile="pagecode/settings/index.xml">
+			<sitenode id="53_1" node="book/" configfile="pagecode/settings/scroll_book.xml" />
+			<sitenode id="53_2" node="msg/" configfile="pagecode/settings/scroll_msg.xml" />
+		</sitenode>
+		<sitenode id="54" node="random_resident/"  configfile="pagecode/settings/random_resident.xml"/>
+		<sitenode id="55" node="eventtv/"  configfile="pagecode/settings/eventtv.xml" id_translit="1">
+			<sitenode id="55_1" node="details/" configfile="pagecode/settings/eventtv_details.xml" hidden="1"/>
+			<sitenode id="55_2" node="invite/" configfile="pagecode/settings/eventtv_invite.xml"/>
+		</sitenode>
+		
+		<sitenode id="56" node="pro_account/"  configfile="pagecode/settings/pro.xml"/>
+
+		<!--cms node-->
+		<sitenode id="99" node="cms/" configfile="cms/settings/cms.xml" cmsfile="cms/index.php">
+			<sitenode id="99_1" node="authorize/" configfile="cms/settings/cms_authorize.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_2" node="requireauthorization/" configfile="cms/settings/cms_requireauthorization.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_3" node="users/" configfile="cms/settings/cms_users.xml" cmsfile="cms/index.php" />
+			<sitenode id="99_4" node="contractors/" configfile="cms/settings/cms_contractors.xml" cmsfile="cms/index.php" />
+			<sitenode id="99_5" node="areas/" configfile="cms/settings/cms_areas.xml" cmsfile="cms/index.php">
+				<sitenode id="99_5_2" node="halls/" configfile="cms/settings/cms_halls.xml" cmsfile="cms/index.php"/>
+				<sitenode id="99_5_3" node="stations/" configfile="cms/settings/cms_area_stations.xml" cmsfile="cms/index.php"/>
+				<sitenode id="99_5_4" node="mcity/" configfile="cms/settings/cms_area_mcity.xml" cmsfile="cms/index.php"/>
+				<sitenode id="99_5_5" node="mhighway/" configfile="cms/settings/cms_area_mhighway.xml" cmsfile="cms/index.php"/>
+			</sitenode>
+			<sitenode id="99_6" node="artists/" configfile="cms/settings/cms_artists.xml" cmsfile="cms/index.php" />
+			<sitenode id="99_7" node="agencies/" configfile="cms/settings/cms_agencies.xml" cmsfile="cms/index.php" />
+			<sitenode id="99_12" node="photos/" configfile="cms/settings/cms_photos.xml" cmsfile="cms/index.php" />
+			<sitenode id="99_13" node="export/" configfile="cms/settings/cms_export.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_14" node="banners/" configfile="cms/settings/cms_banners.xml" cmsfile="cms/index.php">
+				<sitenode id="99_14_1" node="locations/" configfile="cms/settings/cms_banners_locations.xml" cmsfile="cms/index.php"/>
+			</sitenode>
+			<sitenode id="99_15" node="uploads/" configfile="cms/settings/cms_uploads.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_16" node="news/" configfile="cms/settings/cms_news.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_17" node="recent/" configfile="cms/settings/cms_recent.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_18" node="about/" configfile="cms/settings/cms_about.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_19" node="contact/" configfile="cms/settings/cms_contact.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_20" node="book/" configfile="cms/settings/cms_book.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_21" node="mp3/" configfile="cms/settings/cms_mp3.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_22" node="refs/" configfile="cms/settings/cms_refs.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_23" node="fadmin/" configfile="cms/settings/cms_forum.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_25" node="partners/" configfile="cms/settings/cms_partners.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_27" node="partners_text/" configfile="cms/settings/cms_partners_text.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_28" node="sites/" configfile="cms/settings/cms_sites.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_28" node="pr/" configfile="cms/settings/cms_pr.xml" cmsfile="cms/index.php"/>
+					<sitenode id="99_29" node="subscribe/" configfile="cms/settings/cms_subscribe.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_29" node="weeksubscribe/" configfile="cms/settings/cms_weeksubscribe.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_30" node="resident_news/" configfile="cms/settings/cms_resident_news.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_32" node="event_industry/" configfile="cms/settings/cms_event_industry.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_34" node="event_calendar/" configfile="cms/settings/cms_event_calendar.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_35" node="search_queries/" configfile="cms/settings/cms_search_queries.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_36" node="pricelist/" configfile="cms/settings/cms_pricelist.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_37" node="stop_subscribe/" configfile="cms/settings/cms_stop_subscribe.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_38" node="usermark/" configfile="cms/settings/cms_usermarks.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_40" node="magazine/" configfile="cms/settings/cms_magazine.xml" cmsfile="cms/index.php">
+							<sitenode id="99_40_1" node="comments/" configfile="cms/settings/cms_magazinecomments.xml" cmsfile="cms/index.php"/>
+					</sitenode>
+					<sitenode id="99_40" node="ajaxsendmail/" configfile="cms/settings/cms_ajaxsendmail.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_41" node="user_subscribed/" configfile="cms/settings/cms_user_subscribed.xml" cmsfile="cms/index.php"/>
+					<sitenode id="99_44" node="events/" configfile="cms/settings/cms_events.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_45" node="messages/" configfile="cms/settings/cms_messages.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_46" node="comments/" configfile="cms/settings/cms_comments.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_47" node="ad_blocks/" configfile="cms/settings/cms_ad_blocks.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_48" node="eventtv/" configfile="cms/settings/cms_eventtv.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_49" node="eventtv_invite/" configfile="cms/settings/cms_eventtv_invite.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_50" node="u_files/" configfile="cms/settings/cms_u_files.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_51" node="eventtv_main/" configfile="cms/settings/cms_eventtv_main.xml" cmsfile="cms/index.php"/>
+		</sitenode>
+	</sitenode>
+</sitemap>

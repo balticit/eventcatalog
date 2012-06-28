@@ -1,0 +1,46 @@
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr style="vertical-align: top">
+    <td><h1 class="resident_title agency" style="margin: 0;">{title}</h1></td>
+    <td><img src="/images/front/0.gif" alt="" height="0" width="30"></td>    
+    <td width="1%">
+		<span class="reg_time area">в каталоге: {reg_date}</span>
+	</td>
+</tr></table>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr style="vertical-align: top">
+    <td width="135px">
+	<div class="logo_wrap">{pro_logo_prew}<img src="/upload/{logo_image}" class="logo120border"  alt="{title}" title="{title} {city_title}"></div></td>
+    <td>
+	<div class="nnm_doc city_name">{city_title}</div>
+	<div class="nnm_doc">{address}</div>
+	<div class="nnm_doc">{phone}</div>
+	<div class="nnm_doc">{phone2}</div>
+	<div class="nnm_doc"><a rel='nofollow' target="_blank" href="{site_address}">{site_address}</a></div>
+	</td>
+		<td style="text-align:right;">
+		<div class="residentQuickLinksWrap"> 
+		<div class="residentQuickLinks">
+			<a class="agency" href="/u_cabinet?data=my_messages&action=compose&type=agency&id={tbl_obj_id}" {ShowMsgMessage}>Написать сообщение агентству</a>
+			{fav_link}
+			<a class="agency" href="/finderror/">Сообщить об ошибке</a>
+		</div>
+		</div>
+	</td>
+</tr></table>
+<div class="tags_block" style="color:#6096CA;margin-top:10px;">{activity_title}</div>
+<br>
+{u_link}
+<div>{description}</div><br>
+{news_list}
+{photos}
+<h4 class="detailsBlockTitle"><a name="rate">Рейтинг</a></h4>
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+    <td>{btn_i_like}</td>
+    <td><img src="/images/front/0.gif" alt="" height="0" width="10"></td>
+    <td><a class="agency" href="/agency/rating">Рейтинг EVENT КАТАЛОГА</a></td>
+</tr></table>
+{voted}
+<br>
+<div><script src="http://connect.facebook.net/ru_RU/all.js#xfbml=1"></script><fb:like show_faces="false" width="450"></fb:like></div>
+<script type="text/javascript" language="javascript" src="/comments/jsc?id={tbl_obj_id}&type=agency"></script>
+{similar}

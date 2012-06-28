@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="banner_php" template="templates/banner.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="banner" class="CKeyTemplateObject" key="flash" >
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="flash" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/banner_files/flashBanner.htm"/>
+				<item type="class" key="image" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/banner_files/imageBanner.htm"/>
+			</param>
+	</control>
+	<control relativeId="banHTML" class="CTemplateObject"/>	
+   <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

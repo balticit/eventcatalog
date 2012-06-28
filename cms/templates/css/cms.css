@@ -1,0 +1,101 @@
+* {
+font-family:Arial, Helvetica, sans-serif;
+}
+.dataTable input {
+background:none;
+border:#cdcdcd 1px solid;
+}
+.alterItem1 {
+background-image:url(/images/adm/publish_x.png);
+background-repeat:no-repeat;
+width:12px;
+height:12px;}
+a {
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bold;
+color:#0d54c6;
+font-size:11px;
+text-decoration:none;}
+.dataTable
+{
+	border:#cdcdcd 1px solid;
+	font-size:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#545454;
+	width:100%;
+
+}
+
+.dataTable tr td
+{
+	text-align:left;
+	vertical-align:middle;
+	background-color:#fff;
+	border:none;
+}
+
+.dataTable tr th
+{
+	text-align:left;
+	vertical-align:middle;
+	background-color:#f0f0f0;
+	border-bottom:#d8d8d8 1px solid;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+
+}
+
+.dataTable tr .numCell
+{
+	text-align:left;
+}
+
+.dataTable tr .alterNumCell
+{
+	text-align:left;
+	background-color:#f9f9f9;
+	border-bottom:#e7f0d1 1px solid;
+	border-top:#e7f0d1 1px solid;
+}
+
+.dataTable tr .alterItem
+{
+	background-color:#f9f9f9;
+	border-bottom:#e7f0d1 1px solid;
+	border-top:#e7f0d1 1px solid;
+}
+
+.dataTable tr .itemLabel
+{
+	 font-weight:normal;
+	 text-align:left;
+	 width:20%;
+	 padding-right:10px;
+     font-size: 12px;
+     vertical-align: top;
+     border-right: #DDD 1px solid;
+}
+
+.dataTable tr .addCell,
+.dataTable tr .editCell,
+.dataTable tr .addItem,
+.dataTable tr .targetComment
+{
+	text-align:left;
+}
+.addCell input,
+.addCell select,
+.editCell input,
+.editCell select{
+  width:400px;
+}
+
+.dataTable tr .editJoinCell
+{
+	text-align:left;
+	height:100%;
+}
+.targetComment select {
+	width: 500px;
+}

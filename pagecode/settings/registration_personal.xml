@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="registration_personal_php" template="templates/registration_personal.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+	<control relativeId="errors" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/error.htm"/>
+	</control>
+	<control relativeId="personal" class="CKeyTemplateObject" key="cv">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="cv" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_personal_files/cv.htm"/>
+				<item type="class" key="vacancy" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_personal_files/vacancy.htm"/>
+				<item type="class" key="cv_success" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_personal_files/cv_success.htm"/>
+				<item type="class" key="vacancy_success" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_personal_files/vacancy_success.htm"/>
+			</param>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+		<param name="messages" type="list">
+			<item type="keyvalue" key="noright" value="Вы не авторизованы"/>
+			<item type="keyvalue" key="other" value="Вы не можете редатировать данную запись"/>
+		</param>
+	</control>
+	<control relativeId="cvValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="fio" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="ФИО"/>
+			<item type="class" datakey="birth_date" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Дата рождения"/>
+			<item type="class" datakey="description" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Текст резюме/О себе"/>
+			<item type="class" datakey="objective" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Желаемая зарплата"/>
+			<item type="class" datakey="skills" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Желаемая занятость"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Ваш телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Ваш e-mail"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="vacancyValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="text" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Требования к соискателю"/>			
+			<item type="class" datakey="compensation" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Предлагаемые условия"/>
+			<item type="class" datakey="position" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактное лицо"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактный телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Контактный e-mail"/>
+			<item type="class" datakey="website" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Сайт компании"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

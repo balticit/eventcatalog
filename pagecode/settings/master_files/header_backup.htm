@@ -1,0 +1,195 @@
+<table width="100%" cellpadding="0" cellspacing="0" style="padding-bottom: 15px;">
+	<tr>
+		<td rowspan="2" align="left" width="150"><a href="/"><img src="/images/logo_index.png" width="150" height="70" alt="" /></a></td>
+		<td align="left" nowrap="nowrap" style="color: #808080; font-size: 16px; padding-left: 20px;">ежедневный помощник<br />организатора мероприятий</td>
+		<td rowspan="2" valign="top" align="right" style="width:90px; padding-left:11px;"><a href="/search/"><img width="79" height="36" src="/images/search/eventindex0.gif"></a></td>
+		<td rowspan="2" width="240" valign="top">
+			<form action="/search/" method="get">		
+				<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+					<td valign="bottom">
+						<table cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td><img src="/images/search/leftind.gif"></td>
+							<td background="/images/search/bgind.gif" width="100%" style="vertical-align: top; padding-top: 5px;">
+								<script type="text/javascript">
+									var focused = 0;
+									function cleartext() {
+										if (focused==0) {
+											searchinput = document.getElementById('searchinput');
+											searchinput.value = '';
+											searchinput.style.color = 'black';
+											focused = 1;
+										}
+									}
+								</script>
+								<input id="searchinput" value="{searchtext}" onFocus="cleartext();" type="text" name="search" style="width: 100%; border: 0px black solid; color: gray;">
+								<script type="text/javascript">
+									$(document).ready(function(){
+										var searchinput = $('#searchinput');
+										searchinput.autocomplete({ 
+											serviceUrl: '/search_ajax/',
+											highlight:  false,
+											minChars:   2, 
+											maxHeight:  400
+										});
+									});
+								</script>
+							</td>
+							<td><img src="/images/search/rightind.gif"></td>
+						</tr>
+						</table>
+					</td>
+					<td width="44" align="right" valign="top"><input type="image" src="/images/search/butind.gif"></td>
+				</tr>
+				</table>
+			</form>			
+		</td>
+	</tr>
+	<tr>
+		<td style="color: #000; font-size: 12px; padding-left: 20px; padding-top: 9px; font-weight: bold;">{logodate}</td>
+	</tr>
+	<tr>
+		<td colspan="4" style="padding-top: 10px;">
+			<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>	
+				<td style="width: 14px;"><img src="/images/front/leftr.gif" width="14" height="40"></td>
+				<td class="auth_pan">
+				<a href="" style="color: black; text-decoration: underline;" id="selectcity">{selcity}<img src="/images/arrow/arrdown.gif" width="10" height="10"/></a>
+				<div style="display:none;">
+					<div>
+					<div id="cityselector">
+					   <div class="city-selector-item" style="font-weight:bold"><a href="">Все города</a></div>
+					</div>
+					</div>
+				</div></td>
+				<td class="auth_pan"></td>
+				
+				<td class="auth_pan"><a href="" style="color: black" id="selectreguser">Зарегистрироваться</a>
+				<div style="display:none;">
+					<div>
+					<div id="reguser">
+					   <p>Зарегистрированный пользователь имеет возможность:
+					   <ul>
+							<li>просматривать прямые контакты артистов</li>
+							<li>участвовать в составлении рейтингов</li>
+							<li>добавлять новости своей компании</li>
+						</ul>
+						Добавлять Комментарии может как зарегистрированный пользователь, так и гость портала.					
+					   </p><br />
+					   <a href="/registration/type/user/">Перейти к регистрации</a></div>
+					</div>
+					</div>
+				</div></td>
+				<td class="auth_pan"></td>
+				<td class="auth_pan"><a href="" style="color: black" id="selectregcompany">Добавить компанию</a>
+				<div style="display:none;">
+					<div>
+					<div id="regcompany">
+						<p><a href="/registration/type/contractor" style="color: rgb(255,104,0);">Добавить компанию – подрядчика</a></p>
+						<p><a href="/registration/type/area" style="color: rgb(51,153,255);">Добавить площадку</a></p>
+						<p><a href="/registration/type/artist" style="color: rgb(255,51,153);">Добавить артиста</a></p>
+						<p><a href="/registration/type/agency" style="color: rgb(153,204,0);">Добавить агентство</a></p>
+					</div>
+					</div>
+				</div></td>
+				<td class="auth_pan"></td>
+				<td class="auth_pan"><a href="" style="color: black" id="selectenter">Войти</a>
+				<div style="display:none;">
+					<div>
+					<div id="loginform">
+						<form id="loginform_form" method="post">
+							<input type="hidden" name="event" value="login" />
+							<table cellspacing="0" cellpadding="5">
+							<tr>
+								<td>Логин:</td>
+								<td><input type="text" name="login" value="{login}" size="15"></td>
+								<td><input type="checkbox" name="remeber" value="remember" /> Запомнить</td>
+							</tr>
+							<tr>
+								<td>Пароль:</td>
+								<td><input type="password" name="password" size="15"></td>
+								<td nowrap="nowrap"><a href="#" onclick="javascript:locate('/registration/reset/');" style="cursor:pointer;" href="#">Забыли пароль?</a></td>
+							</tr>
+							<tr><td colspan="3" align="right"><input type="submit" value="Вход"/><td></tr>
+							</table>
+						</form>	
+						<div id="loginmessage" style="display: none; color: red;">Неверный логин или пароль!</div>
+					</div>
+					</div>
+				</div></td>			
+				<td style="width: 14px;"><img src="/images/front/rightr.gif" width="14" height="40"></td>
+			</tr>
+			</table>
+				
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+	$(document).ready(function(){
+		$('#selectcity').click(function(){
+			new Boxy.load("/ajax/citylist/",{
+				behaviours: function(c) {
+					c.find('.city-selector-item a').click(function(){
+						var selcity = $(this);
+					    $.ajax({
+					        url:'/ajax/citylist/',
+							data: {city: selcity.attr('href')},
+					        success: function(responseText) {
+								if (responseText == 'OK') document.location = document.location;
+					        }
+					    });
+						return false;
+					});
+				},
+				title: "Выберите Ваш город",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		$('#selectreguser').click(function(){
+			new Boxy($('#reguser').parent(),{
+				title: "Регистрация пользователя",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		$('#selectregcompany').click(function(){
+			new Boxy($('#regcompany').parent(),{
+				title: "Выберите Ваш раздел",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		$('#selectenter').click(function(){
+
+			new Boxy($('#loginform').parent(),{
+				behaviours: function(c) {
+					c.find('#loginform_form').bind('submit', function(){
+						var loginmessage = c.find('#loginmessage');
+						loginmessage.hide();
+						var authForm = $(this);
+					    $.ajax({
+					        url:    '/ajax/authorize/',
+					        data:   authForm.serialize(),
+					        success: function(responseText) {
+								if (responseText == '1')
+									document.location = document.location+'';
+								else
+									loginmessage.show();
+					        }
+					    });
+						return false;
+					});
+				},
+				title: "Вход на сайт",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+	});
+</script>

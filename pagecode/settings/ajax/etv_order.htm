@@ -1,0 +1,32 @@
+<div style="width: 400px; height:350px; margin:0; padding:0 10px 0 10px;">
+<p>Оформление заявки на размещение видео.</p>
+<form id="eventtv_order" method="post" action="/ajax/etv_order">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr><td>Ссылка на видео:</td>
+<td><input type="text" name="video_link" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>Ссылка на страницу вашей компании на сайте evencatalog.ru:</td>
+<td><input type="text" name="catalog_link" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>Сайт вашей компании:</td>
+<td><input type="text" name="link" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>Контактное лицо:</td>
+<td><input type="text" name="contact" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>E-mail:</td>
+<td><input type="text" name="email" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>Телефон:</td>
+<td><input type="text" name="phone" style="width: 250px;"></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td>Введите цифры:</td><td>
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td><div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50" src="{captcha_link}"></div>
+<input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"></td>
+<td><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input"></td></tr></table></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td colspan="2"><div id="etv_err_msg" style="color: red; text-align: center; font-size: 13px;">&nbsp;</div></td></tr>
+<tr><td colspan="2"><img src="/images/front/0.gif" width="1" height="5"></td></tr>
+<tr><td colspan="2" align="center"><input type="submit" value="Отправить" onclick="SubmitEtvOrder(this); return false;"></td></tr>
+</table></form></div>

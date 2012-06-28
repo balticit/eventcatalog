@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_residents_php" template="templates/ajax.php">
+  <control relativeId="body" class="CLiteral"/>
+  <control relativeId="list" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/resident_item.htm"/>
+	</control>
+</page>

@@ -1,0 +1,12 @@
+.added_date{
+  color: #999999;	
+	overflow: hidden;
+}
+span.title_gradient{
+  background: url('/images/front/gradient.png') repeat-y; 
+	position: absolute; 
+	display: block; 
+	height: 100%; 
+	width: 20px; 
+	right:0;
+}

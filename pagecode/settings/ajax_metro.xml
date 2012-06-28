@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_metro_php" template="templates/ajax.php">
+  <control relativeId="body" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/metro.htm"/>
+	</control>  
+</page>

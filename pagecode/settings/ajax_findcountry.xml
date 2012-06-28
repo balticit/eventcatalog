@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_findcountry_php" template="templates/ajax.php">
+</page>

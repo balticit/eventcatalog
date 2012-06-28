@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="comments_php" template="templates/comments.php">
+	<control relativeId="pager" class="CPager">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+	</control>	
+</page>

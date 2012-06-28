@@ -1,0 +1,119 @@
+<form action="/calculator" method="get">
+<input type="hidden" name="event" value="count"/>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="txtAlko">
+		Количество гостей:
+	</td>
+	<td>
+		<input class="alko" type="text" name="guestsCount" value="{guestsCount}"/>
+	</td>
+</tr>
+<tr>
+	<td class="txtAlko">Банкет/Фуршет
+	</td>
+	<td>
+		{banquetBuffet}
+	</td>
+</tr>
+<tr>
+	<td class="txtAlko">Тип мероприятия:
+	</td>
+	<td>
+	{eventType}
+		<!--<select class="alko" name="common[eventType]">
+			<option value="presentation" >Презентация</option>
+			<option value="corporative" >Корпоратив</option>
+			<option value="reception" >Приём</option>
+		</select>-->
+	</td>
+</tr>
+<tr>
+	<td class="txtAlko">Время года:
+	</td>
+	<td>
+		{season}
+		<!--<select class="alko" name="specific[season]">
+			<option value="winter" >Зима</option>
+			<option value="spring" >Весна</option>
+			<option value="summer" >Лето</option>
+			<option value="autumn" >Осень</option>
+		</select>-->
+	</td>
+</tr>
+<tr>
+	<td class="txtAlko">Продолжительность:
+	</td>
+	<td>
+	{duration}
+		<!--<select class="alko" name="common[duration]">
+			<option value="2" >2</option>
+			<option value="3" >3</option>
+			<option value="4" >4</option>
+			<option value="5" >5</option>
+			<option value="6" >6</option>
+			<option value="7" >7</option>
+			<option value="8" >8</option>
+			<option value="9" >9</option>
+			<option value="10" >10</option>
+		</select>-->
+	</td>
+</tr>
+<tr>
+	<td class="txtAlko">Тип площадки:
+	</td>
+	<td>
+	{areaType}
+		<!--<select class="alko" name="common[areaType]">
+			<option value="open" >Открытая</option>
+			<option value="closed" >Закрытая</option>
+			<option value="restaraunt" >Ресторан</option>
+			<option value="club" >Клуб</option>
+		</select>-->
+	</td>
+</tr>
+<tr>
+	<td valign="top" class="txtAlko">Алкоголь:
+	</td>
+	<td style="padding-left:15px;" >
+		<table border="0" cellpadding="0" cellspacing="0" >
+			<td valign="top" style="color:#666; font-size:11px;">
+				<input class="checkbox" type="checkbox" name="alcoholDrinks[wine]" {wine} > Вино <br/>
+				<input type="checkbox" name="alcoholDrinks[vodka]" {vodka}> Водка <br/>
+				<input type="checkbox" name="alcoholDrinks[cognac]" {cognac}> Коньяк <br/>
+			</td>
+			<td valign="top" style="color:#666; font-size:11px;">
+				<input type="checkbox" name="alcoholDrinks[champagne]" {champagne}>Шампанское<br/>
+				<input type="checkbox" name="alcoholDrinks[cocktail]" {cocktail}>Коктейль<br/>
+			</td>
+		</table>
+	</td>
+</tr>
+<tr><td><img width="1px" height="20px" src="/images/front/0.gif" tppabs="/images/front/0.gif" alt=""></td></tr><!-- spacer -->
+<tr>
+	<td class="txtAlko">Напитки
+	</td>
+	<td style="padding-left:15px;">
+		<table border="0" cellpadding="0" cellspacing="0" >
+			<tr>
+				<td valign="bottom" style="color:#666; font-size:11px;">
+					<input type="checkbox" name="softDrinks[juice]" {juice}>Соки<br/>
+				</td>
+				<td valign="bottom" style="color:#666; font-size:11px;">
+					<input type="checkbox" name="softDrinks[water]" {water} >Питьевая вода<br/>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr><td><img width="1px" height="40px" src="/images/front/0.gif" tppabs="/images/front/0.gif" alt=""></td></tr><!-- spacer -->
+<tr>
+	<td>&nbsp;
+	</td>
+	<td style="padding-left:15px; text-align:center;">
+		
+		<input type="image" src="/images/count.gif" class="imageButton"/><br/>
+	</td>
+</tr>
+</table>
+</form>

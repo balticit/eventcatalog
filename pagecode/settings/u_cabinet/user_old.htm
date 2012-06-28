@@ -1,0 +1,203 @@
+<form method="post" enctype="multipart/form-data">
+    <table border="0" cellpadding="10" cellspacing="0">
+        <tr valign="top">
+            <td width="110"><b>Тип пользователя</b></td>
+            <td style="width: 300px;">
+                <table border="0" cellpadding="3" cellspacing="0">
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[1]" value="1"/></td>
+                        <td>заказчик мероприятий</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[2]" value="2"/></td>
+                        <td>организатор мероприятий</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[3]" value="3"/></td>
+                        <td>представитель подрядчика</td>
+                    </tr>
+                    <tr id="user_link_3" style="display: none;">
+                        <td></td>
+                        <td>ID: <input type="text" name="user_typeID[3]" size="20" value="{user_typeID_3}"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[4]" value="4"/></td>
+                        <td>представитель площадки</td>
+                    </tr>
+                    <tr id="user_link_4" style="display: none;">
+                        <td></td>
+                        <td>ID: <input type="text" name="user_typeID[4]" size="20" value="{user_typeID_4}"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[5]" value="5"/></td>
+                        <td>представитель артиста</td>
+                    </tr>
+                    <tr id="user_link_5" style="display: none;">
+                        <td></td>
+                        <td>ID: <input type="text" name="user_typeID[5]" size="20" value="{user_typeID_5}"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[6]" value="6"/></td>
+                        <td>представитель агентства</td>
+                    </tr>
+                    <tr id="user_link_6" style="display: none;">
+                        <td></td>
+                        <td>ID: <input type="text" name="user_typeID[6]" size="20" value="{user_typeID_6}"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user_links_chb" name="user_type[7]" value="7"/></td>
+                        <td>другое (пожалуйста, напишите, кем Вы являетесь)</td>
+                    </tr>
+                    <tr id="user_link_7" style="display: none;">
+                        <td></td>
+                        <td><input type="text" name="user_typeID[7]" style="width: 250px;" value="{ut_other}"/></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="color: #999999;">Из списка можно выбрать не более трех позиций.<br/> Номер ID можно найти на
+                персональной странице резидента.<br/>Можно задать несколько ID через запятую
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><b>Город</b></td>
+            <td>{city_list}<br/> или другой город <br/> <input type="text" name="properties[sity]" size="60"
+                                                               style="width: 300px" value="{sity}"/></td>
+            <td style="color: #999999;">Выберите из списка город, в котором Вы живете</td>
+        </tr>
+        <tr valign="top">
+            <td><b>Имя</b></td>
+            <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}"/></td>
+            <td style="color: #999999;">Пожалуйста, укажите Ваше имя полностью. К примеру, <i>Иванов Иван Иванович</i>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><b>Никнэйм</b></td>
+            <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
+            <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя</td>
+        </tr>
+        <tr valign="top">
+            <td><b>Компания</b></td>
+            <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
+            <td style="color: #999999;">Пожалуйста, указывайте название Вашей компании без кавычек и ООО. К примеру, <i>Праздник</i>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><b>Должность</b></td>
+            <td><input type="text" name="properties[position]" size="60" style="width: 300px" value="{position}"/></td>
+            <td style="color: #999999;"></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Сайт компании</b></td>
+            <td><input type="text" name="properties[site]" size="60" style="width: 300px" value="{site}"/></td>
+            <td style="color: #999999;">Например, <i>eventcatalog.ru</i></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Адрес доставки корреспонденции</b></td>
+            <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
+            <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br/>Максимальное
+                количество символов – 100.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><b>Мобильный телефон</b></td>
+            <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px"
+                       value="{contact_phone}"/></td>
+            <td style="color: #999999;">Формат: <i>+7 926 111 22 33</i></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Рабочий телефон</b></td>
+            <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px"
+                       value="{company_phone}"/></td>
+            <td style="color: #999999;">Формат: <i>+7 495 111 22 33</i></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Электронная почта:</b></td>
+            <td><input type="text" name="properties[email]" size="60" style="width: 300px" value="{email}"/></td>
+            <td style="color: #999999;"></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Логин</b></td>
+            <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}" readonly/>
+            </td>
+            <td style="color: #999999;"></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Пароль</b></td>
+            <td>
+                <table border="0" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td>новый пароль:</td>
+                        <td><input type="password" name="properties[password]" size="30" style="width: 192px" value=""/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>подтверждение:</td>
+                        <td><input type="password" name="properties[password_confirm]" size="30" style="width: 192px"
+                                   value=""/></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+        </tr>
+        <tr valign="top">
+            <td><b>Возможности пользователя</b></td>
+            <td>
+                <div style="width: 300px;"><input type="checkbox" name="properties[subscribe]" size="60" value="1"/>Я
+                    хочу получать по почте информацию о последних добавлениях на портале и о предстоящих мероприятиях
+                    event-индустрии 2 раза в неделю (ПН и ВТ)
+                </div>
+            </td>
+            <td style="color: #999999;">Подписка на рассылку позволит Вам быть постоянно в курсе всех событий индустрии
+                и отслеживать всё новое, что появилось на сайте.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td><b>Аватар</b></td>
+            <td><a href="/upload/{logo}" target="_blank">{logo}</a> <input class="property_file" type="file" name="properties[logo]"></td>
+            <td style="color: #999999;">Вы можете добавить фотографию или любую другую картинку размером не менее 120х80
+                pxl<br/>Внимание! Название файла должно состоять из латинских букв или цифр
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="submit" value="Сохранить"/></td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript" language="JavaScript">
+    function CalcCount() {
+        var cnt = 0;
+        for (i = 1; i < 8; i++) {
+            if ($('input[name|=user_type[' + i + ']]').attr('checked'))
+                cnt++;
+
+        }
+        return cnt;
+    }
+    $('.user_links_chb').click(function () {
+        if (CalcCount() > 3) {
+            alert('Из списка можно выбрать не более трех позиций');
+            $(this).removeAttr('checked');
+        }
+        var ttt = $('#user_link_' + $(this).attr('value'));
+        if ($(this).attr('checked'))
+            ttt.show()
+        else
+            ttt.hide();
+
+    });
+    if ({user_type_1}) $('input[name|=user_type[' + 1 + ']]').attr('checked', true);
+    if ({user_type_2}) $('input[name|=user_type[' + 2 + ']]').attr('checked', true);
+    if ({user_type_3}) $('input[name|=user_type[' + 3 + ']]').attr('checked', true);
+    if ({user_type_4}) $('input[name|=user_type[' + 4 + ']]').attr('checked', true);
+    if ({user_type_5}) $('input[name|=user_type[' + 5 + ']]').attr('checked', true);
+    if ({user_type_6}) $('input[name|=user_type[' + 6 + ']]').attr('checked', true);
+    if ({user_type_7}) $('input[name|=user_type[' + 7 + ']]').attr('checked', true);
+    for (i = 3; i < 8; i++) {
+        var ttt = $('#user_link_' + i);
+        if ($('input[name|=user_type[' + i + ']]').attr('checked'))
+            ttt.show()
+        else
+            ttt.hide();
+    }
+    if ({subscribe}) $('input[name|=properties[subscribe]]').attr('checked', true);
+</script>

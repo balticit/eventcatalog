@@ -1,0 +1,76 @@
+	<script>
+	$(document).ready( function() {
+		var evArr = {arr};
+		$('#calendar').datepicker({
+			closeText: '',
+			prevText: '',
+			nextText: '',
+			currentText: 'Сегодня',
+			monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+			'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+			monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+			'Июл','Авг','Сен','Окт','Ноя','Дек'],
+			dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+			dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+			dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+			weekHeader: 'Нед',
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			isRTL: false,
+			showMonthAfterYear: false,
+			yearSuffix: '',
+			beforeShowDay: function(date) {
+				var dateString = 'date-'+date.getFullYear()+'-'+((date.getMonth()+1)<10 ? '0'+(date.getMonth()+1) : date.getMonth()+1)+'-'+(date.getDate()<10 ? '0'+date.getDate() : date.getDate());  
+				for (i=0;i<evArr.length;i++) {
+					if (dateString=='date-'+evArr[i].date) {
+						dateString += ' active';
+						var cur = new Date();
+						if(date.getTime()<cur.getTime()){
+							dateString += ' datepassive'
+						}
+						break;
+					}
+				}
+				return [true, dateString, ''];
+			}
+		});
+		$('.ui-datepicker td.active').live('mouseover', function() {
+				var d = $(this).attr('class').substr($(this).attr('class').search('date-')+5,10);
+				var text = '';
+				for (i=0;i<evArr.length;i++) {
+					if (evArr[i].date==d) {
+						text += '<a href="'+evArr[i].link+'"  target="_blank" style="color: black;"><b>'+evArr[i].title+'</b></a><br /><br />';
+					}
+				}
+				var leftTt = Math.round($(this).position().left)-169;
+				if ($(this).position().left<90) {
+					leftTt = Math.round($(this).position().left)+1;
+				}
+				if(($.browser.msie && $.browser.version>7)||$.browser.mozilla) {
+					var cH = 23;
+				}
+				else {
+					var cH = 22;
+				}
+				if($(this).hasClass('datepassive')){
+					$('.cal-tooltip').css({'display':'block', 'top':Math.round($(this).position().top+cH),'left': leftTt,'background-color':'#AAAAAA'});
+				}
+				else{
+					$('.cal-tooltip').css({'display':'block', 'top':Math.round($(this).position().top+cH),'left': leftTt,'background-color':''});
+				}
+				$('.cal-tooltip').html(text);
+		});
+		$('.ui-datepicker td.active').live('mouseout', function() {
+				$('.cal-tooltip').css('display','none');
+		});
+		$('.cal-tooltip').hover( function() {
+			$('.cal-tooltip').css('display','block');
+		}, function() {
+			$('.cal-tooltip').css('display','none');
+		});
+	});
+	</script>
+<div id='calendar'>
+	<div class='cal-tooltip'></div>
+</div>
+

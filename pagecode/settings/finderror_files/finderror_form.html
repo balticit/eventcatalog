@@ -1,0 +1,54 @@
+<style type="text/css">
+    label.error {
+        color: red;
+        margin: 0 5px 8px 0;
+        text-align: right;
+    }
+    div.inputbox {
+        margin: 3px 0 8px 0;
+    }
+</style>
+<h1 style="margin-left:20px">Нашли ошибку?</h1>
+<table border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+  <td valign="top" width="420px">
+    <form id="errorForm" method="post" action="/finderror/" style="padding-left:20px">
+       <label><b>Ваше имя</b></label><br/>
+       <div class="inputbox"><input type="text" name="firstname" style="width:100%" minlength="2"/></div>
+       
+       <label><b>Ваш e-mail</b></label><br/>
+       <div class="inputbox"><input type="text" name="email" style="width:100%" class="email"/></div>
+       
+       <label><b>Адрес страницы</b> <span style="color:red">*</span></label><br/>
+       <div class="inputbox"><input type="text" name="page" value="{referer}" style="width:100%" class="required url"/></div>
+       
+       <label>Тема замечания</label><br/>
+       <div class="inputbox">
+       <select name="subject" style="width:100%">
+          <option selected="selected" value="Неточные сведения">Неточные сведения</option>
+          <option value="Компания не существует">Компания не существует</option>
+          <option value="Орфографическая ошибка">Орфографическая ошибка</option>
+          <option value="Неверная категория">Неверная категория</option>
+          <option value="Другое замечание">Другое замечание</option>
+       </select>
+       </div>
+       
+       <label>Комментарий</label><br/>         
+       <textarea name="comments" style="width:100%;height:100px;margin: 3px 0 20px"></textarea>
+       
+       <input type="submit" value="Отправить"/>
+    </form>
+  </td>
+  <td valign="top" width="350px" style="padding-left:30px;padding-top:10px">
+  Уважаемые пользователи!<br/>Редакция EVENT КАТАЛОГА всегда признательна за любые отклики, предложения, советы и замечания, касающиеся как содержания отдельных материалов, так и всего проекта в целом.<br/>Спасибо за участие!
+  </td>
+</tr>
+</table>
+
+<script type="text/javascript" src="/js/jquery-validate/jquery.validate.pack.js"></script>
+<script type="text/javascript" src="/js/jquery-validate/localization/messages_ru.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#errorForm").validate();
+  });
+</script>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="forsites_php" template="templates/forsites.php">
+	<control relativeId="body" class="CTemplateObject">
+		<param name="template" type="file" encoding="utf-8" filename="pagecode/settings/forsites/main.xml"/>
+	</control>
+   <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

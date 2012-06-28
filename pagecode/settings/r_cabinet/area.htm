@@ -1,0 +1,756 @@
+
+<script type="text/javascript" language="javascript" src="/js/datetimepicker.js"></script>
+
+<div style="padding-right: 15px;">
+    <form method="post" enctype="multipart/form-data" style="padding: 0px; margin: 0px;">
+        <input type="hidden" name="event" value="register" />
+        <input type="hidden" name="type" value="area" />
+        <input type="hidden" name="properties_type" value="" />
+        <table border="0" cellpadding="0" cellspacing="0" class="properties" style="width: 900px;">
+            <tr>
+                <td>
+                    <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Название:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+							{title}
+                               <div style="visibility: hidden; position:absolute;"> <input class="property_text" type="text" name="properties[title]" size="60" value="{title}" /></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_area_type" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr>
+                            <td id="td_area_type" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Вид:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+
+                                <script language="JavaScript" type="text/javascript" src="/js/chainedSelector.js">
+                                </script>
+
+                                {areaTypesList}
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_area_subtype" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_area_subtype" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Тип:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                {areaSubTypesList}
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_city" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td id="td_city" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Город:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+
+                                <script language="JavaScript" type="text/javascript" src="/js/chainedSelector.js">
+                                </script>
+
+                                {city_list}<br />
+                                или другой город
+                                <br />
+                                <input class="property_text" type="text" name="properties[other_city]" size="60"
+                                    value="{other_city}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_address" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_address" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Адрес:<br />
+                                    <span style="color: #999999;">(пример: м. Метро, Садовая ул., д.1)</span></div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[address]" size="60" value="{address}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_phone" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_phone" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Телефон:<br />
+                                    <span style="color: #999999;">(пример: (495) 111-22-33)</span></div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[phone]" size="60" value="{phone}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_site_address" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_site_address" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Адрес сайта:<br />
+                                    <span style="color: #999999;">(пример: http://www.eventcatalog.ru)</span></div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[site_address]" size="60"
+                                    value="{site_address}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_email" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td id="td_email" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Электронная почта:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[email]" size="60" value="{email}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_description" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_description" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Описание:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <textarea class="property_textarea" id="rr" name="properties[description]" rows="10"
+                                    cols="50">{description}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_max_count_man" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_max_count_man" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Максимальная вместимость площадки
+                                    <br />
+                                    (стоячих мест):</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[max_count_man]" style="width: 80px;"
+                                    value="{max_count_man}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_max_sitting_man" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_max_sitting_man" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Количество посадочных мест:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[max_sitting_man]" style="width: 80px;"
+                                    size="60" value="{max_sitting_man}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_halls" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_halls" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Залы:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+
+                                <script type="text/javascript" language="javascript">
+	var halls = new Array(
+		{hallsJS}
+	)
+	function RenderHalls()
+	{
+		var hallsKeeper = document.getElementById("hallsContainer");
+		if (halls.length>0)
+		{
+			var tbl = "<table style='width:auto; height:auto;'><tr><td>№</td><td>Название</td><td>банкет</td><td>фуршет</td><td>&nbsp;</td></tr>";
+			for (i=0;i<halls.length;i++)
+			{
+				k=i+1;
+				tbl+="<tr>";
+				tbl+="<td>"+k+"</td>";
+				tbl+="<td><input  type='text' name='properties[hall]["+i+"][title]' style='width:80px;' value='"+halls[i].title+"' onkeyup='javascript:halls["+i+"].title=this.value;'/></td>";
+				tbl+="<td><input  type='text' name='properties[hall]["+i+"][max_places_banquet]' style='width:40px;' value='"+halls[i].max_places_banquet+"' onkeyup='javascript:halls["+i+"].max_places_banquet=this.value;'/></td>";
+				tbl+="<td><input type='text' name='properties[hall]["+i+"][max_places_official_buffet]' style='width:40px;' value='"+halls[i].max_places_official_buffet+"' onkeyup='javascript:halls["+i+"].max_places_official_buffet=this.value;'/></td>";
+				tbl+="<td><a href='#' onclick='javascript:DeleteHall("+i+");return false;'>Удалить</a></td>";
+				tbl+="</tr>";
+			}
+			tbl+="</table>";
+			hallsKeeper.innerHTML = tbl;
+			//document.getElementById("rr").innerHTML = tbl;
+		}
+		else
+		{
+			hallsKeeper.innerHTML="";
+		}
+	}	
+		
+		 //{"title":"", "max_places_banquet":0,"max_places_official_buffet":0};
+		function AddHall()
+		{
+			var templateHall = new Object();
+			templateHall.title = "";
+			templateHall.max_places_banquet = 0;
+			templateHall.max_places_official_buffet = 0;
+			//alert(templateHall);
+			halls.push(templateHall);
+			//alert('hui');
+			RenderHalls();
+		}
+		
+		function DeleteHall(n)
+		{
+			var tarr = new Array();
+			for (i=0;i<halls.length;i++)
+			{
+				if (i!=n)
+				{
+					tarr.push(halls[i]);
+				}
+			}
+			halls = tarr;
+			RenderHalls();
+		}
+	
+                                </script>
+
+                                Добавьте нужное Вам количество залов и укажите максимальное количество человек в
+                                каждом зале
+                                <table>
+                                    <tr>
+                                        <td>&nbsp;
+                                      </td>
+                                        <td colspan="3">
+                                            <a style="cursor: pointer; text-decoration: underline;" href="#" onclick="javascript:AddHall(); return false;">
+                                                Добавить зал</a></td>
+                                        <td>&nbsp;
+                                      </td>
+                                    </tr>
+                                </table>
+                                <div id="hallsContainer" style="width: auto; height: auto;">
+                                    <table>
+                                        <tr>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <script type="text/javascript" language="javascript">
+			RenderHalls();
+                                </script>
+
+                                <b></b>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_prices" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_kitchen" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Стоимость проведения банкета на 1 персону:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[cost_banquet]" size="60" value="{cost_banquet}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_prices" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_kitchen" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Стоимость проведения фуршета на 1 персону:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[cost_official_buffet]" size="60" value="{cost_official_buffet}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_rent" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_rent" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Арендная плата:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+								<input class="property_text" type="text" name="properties[cost_rent]" size="60" value="{cost_rent}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_rent" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_rent" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Обслуживание:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+								<input class="property_text" type="text" name="properties[cost_service]" size="60" value="{cost_service}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_kitchen" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_kitchen" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Кухня:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[kitchen]" size="60" value="{kitchen}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_kitchen" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_kitchen" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Особенности кухни:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[kitchen_features]" size="60" value="{kitchen_features}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_kitchen" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_kitchen" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Возможность приглашения стороннего кейтеринга:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+							<td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[invite_catering]" {hasCat} value="1"> возможно</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[invite_catering]" {noCat} value="0"> невозможно</label>
+							</td>
+                        </tr>
+                    </table>
+                    <table id="table_parking" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_parking" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Парковка:<br />
+                                    <span style="color: #999999;">(имеется или нет, на сколько машиномест)</span></div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[parking]" value="1" {hasPark} >есть</label>
+							<label><input type="text" name="properties[parking]" size="5" value="{parking}"> машиномест</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[parking]"  value="0" {noPark}>нет</label>
+							</td>
+                        </tr>
+                    </table>
+                    <table id="table_equipment" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_equipment" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+									Технический служебный вход:
+								</div>	
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <label><input class="reg_input_radio" type="radio" name="properties[service_entrance]" value="1" {hasSE}/>&nbsp;Есть</label>
+                                <br />
+                                <label><input class="reg_input_radio" type="radio" name="properties[service_entrance]" value="0" {notSE}/>&nbsp;Нет</label>                            </td>
+                        </tr>
+                    </table>
+					<table id="table_equipment" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_equipment" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+									Гардероб:
+								</div>	
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+								<label>
+									<input class="reg_input_radio" type="radio" name="properties[wardrobe]" value="1" {hasG}/>&nbsp;Есть</label>
+									
+									<input type="text" name="properties[wardrobe]" size="5" value="{wardrobe}" /> мест
+									
+									<label><input class="reg_input_radio" type="radio" name="properties[wardrobe]" value="0" {noG}/>&nbsp;Нет</label> 
+							</td>
+                        </tr>
+                    </table>
+					<table id="table_equipment" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_equipment" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+									Сцена:
+								</div>	
+                                <div class="property_description">
+                                </div>
+                            </td>
+							<td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[stage]" value="1" {hasSc}> есть</label>
+							<label><input type="text" name="properties[stage]" size="5" value="{stage}"> м2</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[stage]" value="0" {noSc}> нет</label>
+							</td>
+                        </tr>
+                    </table>
+					<table id="table_equipment" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_equipment" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+									Гримерные комнаты:
+								</div>	
+                                <div class="property_description">
+                                </div>
+                            </td>
+							<td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[makeup_rooms]" value="1" {hasM}>есть</label>
+							<label><input type="text" name="properties[makeup_rooms]" size=" 5" value="{makeup_rooms}">
+							комнат</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[makeup_rooms]" {noM} value="0">
+							нет</label></td>
+                        </tr>
+                    </table>
+					<table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Танцпол:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[dancing_size]" {hasDance} value="1">есть</label>
+							<label><input type="text" name="properties[dancing_size]" size="5" value="{dancing_size}"> м2</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[dancing_size]" {noDance} value="0">
+							нет</label></td>
+                        </tr>
+                    </table>
+					<table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Возможность установки автомобиля<br />внутри площадки:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <label><input type="radio" name="properties[car_into]" value="1" {hasCar}/>&nbsp;Да</label>
+                                <br />
+                                <label><input type="radio" name="properties[car_into]" value="0" {noCar}/>&nbsp;Нет</label>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Световое оборудование:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <label><input type="radio" name="properties[light]" value="1" {hasL}/>&nbsp;Да</label>
+                                <br />
+                                <label><input type="radio" name="properties[light]" value="0" {noL}/>&nbsp;Нет</label>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Звуковое оборудование:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <label><input type="radio" name="properties[sound]" value="1" {hasS}/>&nbsp;Да</label>
+                                <br />
+                                <label><input type="radio" name="properties[sound]" value="0" {noS}/>&nbsp;Нет</label>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Плазменные панели:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+							<td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[panels]" value="1" {hasP}> есть</label>
+							<label><input type="text" name="properties[panels]" size="5" value="{panels}"> панелей</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[panels]" {noP} value="0"> нет</label>
+							</td>
+                        </tr>
+                    </table><table id="table_dancing" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_dancing" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Проекционный экран / проектор:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+							<td valign="middle" class="property_editor">
+							<label><input class="reg_input_radio" type="radio" name="properties[projector]" {hasPr} value="1">
+							есть</label>
+							<label><input type="text" name="properties[projector]" size="5" value="{projector}"> штук</label>
+							<label><input class="reg_input_radio" type="radio" name="properties[projector]" {noPr} value="0">
+							нет</label></td>
+                        </tr>
+                    </table>
+                    <table id="table_logo" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td id="td_logo" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Логотип 120х80
+                                    <br />
+                                    <span style="color: #999999;">(Внимание! Название файла должно
+                                        <br />
+                                        состоять из латинских букв или цифр)</span>:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                текущее значение: `<a href="/upload/{logo}" target="_blank">{logo}</a>`<br />
+                                <input class="property_file" type="file" name="properties[logo]" />
+                                <label>
+                                    <input type="checkbox" name="properties[logo_clean]" value="clean" />
+                                    - очистить атрибут</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_menu" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_menu" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Меню:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                текущее значение: `<a href="/upload/{menu}" target="_blank">{menu}</a>`<br />
+                                <input class="property_file" type="file" name="properties[menu]" />
+                                <label>
+                                    <input type="checkbox" name="menu_clean" value="clean" />
+                                    - очистить атрибут</label>
+                            </td>
+                        </tr>
+                    </table>
+					
+                    <table id="table_location_scheme" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_location_scheme" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Схема проезда:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                текущее значение: `<a href="/upload/{location_scheme}" target="_blank">{location_scheme}</a>`<br />
+                                <input class="property_file" type="file" name="properties[location_scheme]" />
+                                <label>
+                                    <input type="checkbox" name="location_scheme_clean" value="clean" />
+                                    - очистить атрибут</label>
+                            </td>
+                        </tr>
+                    </table>
+                    
+					<table id="table_location_scheme" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_location_scheme" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    &nbsp;Видео:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                текущее значение: `<a href="/upload/{video}" target="_blank">{video}</a>`<br />
+                                <input class="property_file" type="file" name="properties[video]" />
+                                <label>
+                                    <input type="checkbox" name="video_clean" value="clean" />
+                                    - очистить атрибут</label>
+                            </td>
+                        </tr>
+                    </table>
+					
+                    <table id="table_login" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Фотографии: <br />
+                                    <span style="color: #999999;">(Внимание! Разрешение фотографий должно 
+                                        <br />
+                                        быть не менее 640x480 pixels. Заполнение поля <br>"Название" обязательно!)</span></div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <a href="/registration/image/ptype/area" target="_blank" style="visibility: {images_visible};">
+                                    Добавить фото</a>
+                                <div id="photoContainer">
+                                    <table>
+                                       {imagesList}
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_login" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_login" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Логин:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[login]" {login_readonly} size="60" value="{login}"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_password" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr >
+                            <td id="td_password" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Пароль:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                просмотреть пароль невозможно, можно только его изменить
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input class="property_text" type="password" name="properties[password]" size="30"
+                                                value="" />
+                                        </td>
+                                        <td>
+                                            (новый пароль)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class="property_text" type="password" name="properties[password_confirm]"
+                                                size="30" value="" />
+                                        </td>
+                                        <td>
+                                            (подтверждение)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_forum_name" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr>
+                        <td id="td_forum_name" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                &nbsp;Дата регистрации:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            {regdate}
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+        <p>&nbsp;
+      </p>
+       <input type="submit" value="{submit_text}"/>
+	 
+    </form>
+</div>

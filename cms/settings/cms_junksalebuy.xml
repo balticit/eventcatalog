@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_junksalebuy_php" template="cms/templates/cms_junksalebuy.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="tbl__baraholka_search" pageSize="60" cssClass="dataTable" orderField="tbl_obj_id" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="tbl_obj_id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" visibleOnEdit="0" visibleOnAdd="0" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="title" label="Наименование" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CGridDataField" dbField="count" label="Необходимое количество" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Требования" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CDBLookupGridDataField" dbField="city" label="Город"  lookupTable="tbl__city" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="name" label="Контактное лицо" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+			<item type="class" class="CGridDataField" dbField="phone" label="Контактный телефон" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+			<item type="class" class="CGridDataField" dbField="email" label="Контактный e-mail" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+			<item type="class" class="CDateTimeGridDataField" dbField="date" label="Дата объявления" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CDBLookupGridDataField" dbField="owner_id" label="Создатель объявления"  lookupTable="vw__all_users" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

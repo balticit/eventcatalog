@@ -1,0 +1,56 @@
+<tr>
+		<td class="lname" valign="bottom">
+			<div class="paneActivator" id="activator_{tbl_obj_id}" onMouseOver="this.isMouseOver = true; showPane('{tbl_obj_id}'); SetDynamicImage('logotip_area_{tbl_obj_id}','{logo}');" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');">
+				<table class="pane" id="pane_{tbl_obj_id}" onMouseOver="this.isMouseOver = true;" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');" border="0">
+					<tbody><tr>
+						<td class="dynamicTable">
+							<h1 class="dynamicTable" style="width: 200px;">{title}</h1>
+							
+							<span style="font-weight: bold;">{area_subtype_name}</span>
+
+							<!-- photo -->
+							<div id="logotip_area_{tbl_obj_id}">	</div>
+							<div style="height: 15px;">&nbsp;</div>
+							<!-- end photo -->
+
+							<table>
+																<tbody><tr>
+									<td valign="top"><b>Адрес: </b>{address}</td>
+								</tr>
+								
+																	<tr>
+										<td valign="top"><b>Тел.: </b>{phone}<br></td>
+									</tr>
+									<tr>
+										<td class="padding_area" valign="top"><b>Сайт: </b><a href="{site_address}" target="_blank">{site_address}</a></td>
+									</tr>
+									<tr>
+										<td valign="top"><b>E-mail: </b><a href="mailto:{email}">{email}</a></td>
+									</tr>
+
+									<tr>
+										<td class="padding_area" valign="top"><b>Количество залов: {halls_count}</b></td><td>
+									</td></tr>
+									<tr>
+										<td class="padding_area" valign="top"><b>Максимальная вместимость площадки (человек): </b>{max_count_man}</td><td>
+									</td></tr>
+									<tr>
+										<td valign="top"><b>Количество посадочных мест: </b>{max_sitting_man}</td><td>
+									</td></tr>
+															</tbody></table>
+						</td>
+					</tr>
+				</tbody></table>
+				<a href="/area/details/id/{tbl_obj_id}" style="{selection_type}">{title}</a>
+			</div>
+		</td>
+
+		<td class="ladd_adress_area" valign="bottom">
+							{address}
+					</td>
+
+		<td class="ladd_fon_area" valign="bottom" align="right" >
+							{phone}
+					</td>
+	</tr>
+				<tr><td colspan="3" style="padding-top: 0px;"><!--<img src="/images/front/0.gif" alt="" height="15" width="1"><br>{title}<br>--><img src="/images/front/0.gif" alt="" height="5" width="1"></td></tr>

@@ -1,0 +1,134 @@
+body
+{
+	background-color: white;
+
+	padding: 0px;
+	margin: 0px;
+
+	font-family: Tahoma, Verdana, Tahoma, MS Sans;
+	font-size: 10pt;
+}
+
+td
+{
+	font-family: Tahoma, Verdana, Tahoma, MS Sans;
+	font-size: 8pt;
+}
+
+td.header
+{
+	font: bold 8pt Tahoma;
+	color: #666666;
+	background: #f7f7f7;
+	border: 1px solid white;
+}
+
+td.pager_cell
+{
+	font: 9pt Tahoma;
+	color: black;
+	background: #efefef;
+	border: 1px solid white;
+}
+
+td.data
+{
+	font: 8pt Tahoma;
+	border: 1px solid #eeeeee;
+}
+
+a img
+{
+	border: none;
+}
+
+a{color: navy; font: 8pt Tahoma;}
+
+
+div.indent
+{
+	margin-left: 5px;
+	padding-left: 5px;
+	border-left: 1px dashed #dddddd;
+}
+
+span.dsObjectHeader
+{
+	color: black;
+	font: bold 10pt Verdana;
+}
+
+table.dsObjectChildren
+{
+	width: 100%;
+	border: 1px solid #eeeeee;
+}
+
+table.statistics
+{
+	width: 100%;
+	border: 1px solid #eeeeee;
+}
+
+table.dsObjectProperties
+{
+	width: 100%;
+	border: 1px solid #eeeeee;
+}
+
+form
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+table.error
+{
+	background: white;
+}
+
+td.error
+{
+	color: red;
+	font: 8pt Tahoma;
+	border: 1px solid #eeeeee;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	font-family: Tahoma;
+	color: black;
+
+	padding: 0px;
+	margin: 0px;
+}
+
+h1{font-size: 14pt;}
+h2{font-size: 12pt;}
+h3{font-size: 10pt;}
+h4{font-size: 9pt;}
+h5{font-size: 8pt;}
+h6{font-size: 7pt;}
+
+
+select{font: 8pt Tahoma;}
+.textbox{font: 8pt Tahoma;}
+.textarea{font: 8pt Tahoma;}
+
+.popupHolder
+{
+	border-bottom: 1px	dashed blue;
+	background-color: white;
+	color: black;
+	font-weight: normal;
+}
+
+/*Max*/
+a.notConfirmed{
+color:red;
+}
+
+a.notActive{
+color:#999;
+}
+/*end Max*/

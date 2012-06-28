@@ -1,0 +1,96 @@
+{comm_begin_if_ok}
+							<b>Уважаемый представитель event-индустрии!</b><br><br>
+							
+Для скачивания прайс-листа по рекламным возможностям портала, пожалуйста, заполните эту анкету. Спасибо
+
+<br /><br /><br />
+{warning}
+							<div style="background-color: #dddddd; width:600px;">
+
+							
+<div style="padding: 10px;">
+
+
+<form action="" method="post" enctype="multipart/form-data">	
+	<table>
+		<tr>
+			<td width="200">
+				Ваше имя*
+			</td>
+			<td>
+				<input type="text" name="name" value="{name}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Компания*
+			</td>
+			<td>
+				<input type="text" name="company" value="{company}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Контактный телефон*
+			</td>
+			<td>
+				<input type="text" name="phone" value="{phone}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>		
+		<tr>
+			<td>
+				E-mail*
+			</td>
+			<td>
+				<input type="text" name="email" value="{email}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				Введите символы
+			</td>
+			<td>
+				<input type="text" name="captcha" style="width: 320px; border: 1px gray solid;"><br /><br />
+				<img src="/captcha/index.php" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="Отправить" style="height: 30px; width: 100px; border: 1px gray solid;" />
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" name="sended" value="sended" />
+</form>
+</div>
+</div>
+{comm_end_if_ok}
+
+{comm_begin_if_notok}
+
+
+<p>Большое спасибо! <br>
+Закачка прайс-листа начнётся через <span id="secs">10</span> секунд.<br />Если закачка не началась, воспользуйтесь ссылкой <a href=/pricelistfile/{filename}>прайс-лист</a>
+</p>
+<script type="text/javascript">
+	
+	var time = 10;
+	
+	function time_tick() {
+		time--;
+		if (time<0) {
+			window.location.href = "/pricelistfile/{filename}";
+		}
+		else {
+			document.getElementById('secs').innerHTML = time;
+			g_timer = window.setTimeout("time_tick()",1000);
+		}
+	}
+	
+	time_tick();		
+	
+</script>
+
+{comm_end_if_notok}

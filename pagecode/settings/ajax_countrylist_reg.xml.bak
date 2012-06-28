@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_countrylist_reg_php" template="templates/ajax.php"></page>

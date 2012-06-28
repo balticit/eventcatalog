@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_uploads_php" template="cms/templates/cms_uploads.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="ds__refs" pageSize="100" cssClass="dataTable" orderField="uai_id" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="uai_id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="uai_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" visibleOnEdit="0" visibleOnAdd="0"/>
+			<item type="class" class="CGridDataField" dbField="name" label="Название" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CFileGridDataField" dbField="value" uploadLink="/upload/" label="Изображение" alterItemClass="alterItem" labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/"/>
+			<item type="class" class="CEditGridDataField" dbField="uai_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="uai_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

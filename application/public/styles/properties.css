@@ -1,0 +1,50 @@
+table.properties
+{
+	border: 1px solid #eeeeee;
+	border-bottom: none;
+	font: 9pt Tahoma;
+	background: white;
+	width: 100%;
+}
+
+td.property_header
+{
+	font: bold 8pt Tahoma;
+	color: #666666;
+	background: #f7f7f7;
+	border: 1px solid white;
+}
+
+td.property_info
+{
+	font: 8pt Tahoma;
+	background: white;
+	border-right: 1px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
+}
+
+td.property_editor
+{
+	border-bottom: 1px solid #eeeeee;
+}
+
+.property_text, .property_textarea, .property_date,
+	.property_time, .property_datetime, .property_file
+{
+	font: 8pt Tahoma;
+}
+
+.property_title
+{
+	font: 8pt Tahoma;
+	color: black;
+}
+
+.property_description
+{
+	font: 8pt Tahoma;
+}
+
+
+
+/* #ABC7FE #BBD1FC #DDE7FF */

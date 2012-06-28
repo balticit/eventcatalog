@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="link"/>
+	<column name="title"/>
+	<column name="key"/>
+	<index name="key"/>
+	<row  title="Объявления о поиске персонала" key="vacancy"/>	
+	<row  title="Объявления о поиске работы" key="cv"/>	
+</datasource>

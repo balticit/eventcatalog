@@ -1,0 +1,41 @@
+<script language="JavaScript" type="text/javascript">
+function CheckCount()
+{
+  var flag = $('input.metro-station:checked').length < 3;
+  $('.metro-station').each(function() {
+    if (!this.checked)
+      if (flag)
+          this.disabled='';
+      else
+          this.disabled='disabled';
+  });
+}
+
+function ChangeCheck(obj, cap_text) {
+  CheckCount();
+  var sl = $("#sel_metro");
+  if (obj.checked) {
+      sl.append('<div id="metro_id'+obj.value+
+                '"><input type="hidden" name="properties[metro]['+obj.value+
+                ']" value="'+obj.value+'">'+cap_text+
+                ' <a href="" class="reg_del_group" onclick="javascript: MetroDel('+obj.value+
+                '); return false;">удалить</a></div>');
+  }
+  else {
+      $("#metro_id"+obj.value).remove();
+  }
+  CheckMetroTitle();
+}
+
+function FillChecks()
+{
+  $("#sel_metro").children('div').each(function() {
+        var t = $(this);
+        var id = t.attr('id');
+        id = id.substring(8,id.length);
+        $("#ms"+id).attr('checked','checked');
+  });
+  CheckCount();
+}
+</script>
+{list}

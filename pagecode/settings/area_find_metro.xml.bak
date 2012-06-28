@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="area_find_metro_php" template="templates/area_find_metro.php">
+	<control relativeId="content" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_metro.htm"/>
+	</control>
+  <control relativeId="areas" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_metro_area.htm"/>
+	</control>
+  <control relativeId="areas_lines" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_metro_area_line.htm"/>
+	</control>
+	<control relativeId="markers" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_metro_marker.htm"/>
+	</control>
+	<control relativeId="districts" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_moscow_district.htm"/>
+	</control>
+	<control relativeId="metro_lines" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_metro_line.htm"/>
+	</control>
+	<control relativeId="mways_maps" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_mways_maps.htm"/>
+	</control>
+	<control relativeId="mways_areas" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_mways_areas.htm"/>
+	</control>
+	<control relativeId="mways_windows" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_mways_windows.htm"/>
+	</control>
+	<control relativeId="mways_highways" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_mways_highways.htm"/>
+	</control>
+	<control relativeId="mways_cities" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/fm_mways_cities.htm"/>
+	</control>
+</page>

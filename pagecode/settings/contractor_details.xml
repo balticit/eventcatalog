@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="contractor_details_php" template="templates/contractor_details.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	
+	<control relativeId="chart" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/chart.htm"/>
+	</control>	
+	
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+    <control relativeId="footerText" class="CTemplateObject">
+        <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/footerText.htm"/>
+    </control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+    <control relativeId="yaResTop" class="CTemplateObject">
+        <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaResTop.htm"/>
+    </control>
+    <control relativeId="yaListTop" class="CTemplateObject">
+        <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaListTop.htm"/>
+    </control>
+    <control relativeId="yaListBottom" class="CTemplateObject">
+        <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaListBottom.htm"/>
+    </control>
+    <control relativeId="yaPersonal" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaPersonal.htm"/>
+	</control>
+	<control relativeId="contDetails" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_details_files/details.htm"/>
+	</control>
+	<control relativeId="actList" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+		<param name="itemTemplates" type="list" >
+            <item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/contractor_files/actListItem.htm"/>
+        </param>
+        <param name="itemHeaders" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/contractor_files/actListItemHead.htm"/>
+        </param>
+        <param name="itemFooters" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/contractor_files/actListItemFooter.htm"/>
+        </param>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="/contractor/">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_contractor.xml" driver="CXMLTableDataSource"/>
+	</control>
+    <control relativeId="contList" class="CRepeaterAD">
+        <param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_common_files/list_item.htm"/>
+        <param name="adTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaList.htm"/>
+    </control>
+    <control relativeId="cityAll" class="CClearParamTemplateObject" paramName="city">
+        <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/cityAllList.htm"/>
+    </control>
+    <control relativeId="pager" class="CPager">
+        <param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
+        <param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+    </control>
+    <control relativeId="titlefilter" class="CPageTitleControl" usetags="0" text="" />
+    <control relativeId="titlefilterLinks" class="CLiteral" />
+    <control relativeId="accountContractor" class="CKeyTemplateObject" key="login">
+        <param name="itemTemplates" type="list" >
+            <item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/contractor_files/contractorLogin.htm"/>
+            <item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/contractor_files/contractorLogout.htm"/>
+        </param>
+    </control>
+    <control relativeId="account" class="CKeyTemplateObject" key="login">
+        <param name="itemTemplates" type="list" >
+            <item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/index_files/login.htm"/>
+            <item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/index_files/logout.htm"/>
+        </param>
+    </control>
+    <control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+        <param name="messages" type="list">
+            <item type="keyvalue" key="badauth" value="Неверный логин/пароль"/>
+        </param>
+    </control>
+    <control relativeId="letterFilter" class="CAlternateRepeater" alternateKey="selected" alternateValue="1">
+        <param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/letterItem.htm"/>
+        <param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/letterAltItem.htm"/>
+    </control>
+    <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+  <control relativeId="photos" class="CPhotosObject">
+    <param name="jsTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_common_files/photosJsTemplate.html"/>
+    <param name="thumbTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_common_files/photosThumbTemplate.html"/>
+    <param name="mediumTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_common_files/photosMediumTemplate.html"/>
+  </control>
+</page>

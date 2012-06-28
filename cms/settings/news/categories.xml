@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="id"/>
+	<column name="title"/>
+	<index name="id"/>
+	<row id="4" title="Анонсы мероприятий" />	
+	<row id="3" title="Новости индустрии" />	
+	<row id="5" title="Новости редакции" />	
+</datasource>

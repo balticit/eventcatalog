@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="scroll_book_php" template="templates/scroll_book.php">
+	<control relativeId="last_book" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/scroll_files/last_book.htm"/>
+    </control>
+</page>

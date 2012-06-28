@@ -1,0 +1,93 @@
+<div style="margin-left: 5px;  background: url('/images/front/bg_3.gif') no-repeat top left;
+    margin-top: 10px;">
+    <table border="0">
+        <tr>
+            <td valign="top" style="padding-right:40px;">
+              <h1 style="margin-left: 10px;">
+                     {title}</h1>
+                <div style="margin-bottom: 20px; padding-left: 10px; ">
+					<table width="100%">
+						<tr>
+							<td><img src="/upload/{s_image}" alt="{title}" class="newsimg" /></td>
+							<td align="right" valign="bottom" ><span style="color:#999999">Дата размещения новости</span> <strong>{date}</strong></td>
+						</tr>
+					</table>
+              </div>
+                <div style="margin-left: 10px;">
+                    {text}
+                </div>
+              
+          </td>
+            <td valign="top" nowrap="nowrap" class="gray_bg" style="width:423px;">
+                <p class="p_foto" style="visibility: {foto_visible};">
+                    Фотогалерея:</p>
+
+                <script type="text/javascript">
+				<!--
+					var popupImgWindow = null;
+					var selectingImg = 1;
+
+					var miniImg = new Array();
+					var midiImg = new Array();
+					var maxiImg = new Array();
+					var imgTitle = new Array();
+					var maxiImgWidth = new Array();
+					var maxiImgHeight = new Array();
+						{js_images}
+					var allImgs = {images_count};
+				//-->
+                </script>
+
+                <table border="0" cellpadding="2" cellspacing="2" width="100%">
+                    <tr>
+                        {photo_list_1}
+                    </tr>
+					<tr>
+                        {photo_list_2}
+                    </tr>
+                </table>
+                <br />
+                {image_nav}
+                <p align="center" style="visibility: {foto_visible};">
+                    {title}</p>
+					
+					
+					
+					
+                <script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<table  border="0" >
+				<tr>
+					<td valign="top">
+					   <p><a href="#" onclick="javascript:return showAddReply('addReplyBox','addReplyFrame','/replies/add/id/{tbl_obj_id}/type/{newstype}/');">
+                    		Оставить свой отзыв</a><Br /> 
+						</p>
+													
+						<p id="repliesLabel" style=" margin-top:20px;  display: none;">
+							<a href="#" onclick="javascript:return showReplies('repliesBox');">Отзывы</a><br>
+						</p>
+										
+						<script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<span id="repliesLabel" style="margin:3px;"><a href="#" onclick="javascript:return showReplies('repliesBox');"></a><br></span>
+			<div id="repliesBox" style="overflow: auto; display:none; margin-top:10px; margin-left:3px; border-width:0px; border-style:solid; background-color:none; width:300px;"></div>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<div id="addReplyBox" style="overflow:visible; display:none; margin-top:10px; margin-left:3px; background-color:none;"></div>
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');" frameborder="0" src="" style="border:none; display:none;" ></iframe>
+			
+			<iframe style="display:none;" src="/replies/id/{tbl_obj_id}/type/{newstype}/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');"></iframe>				
+			<p style="margin:20px;">&nbsp;</p>
+			<script type="text/javascript" language="javascript">showReplies('repliesBox');</script>	
+				
+					
+
+			
+			
+					</td>
+				</tr>
+			</table>
+			
+            </td> 
+      </tr> 
+  </table>
+</div> 

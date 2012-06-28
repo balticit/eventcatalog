@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="show_technologies_details_php" template="templates/show_technologies_details.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+	<control relativeId="details" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/show_technologies/details.htm"/>
+	</control>
+	<control relativeId="photoList1" class="CAlternateRepeater" alternateKey="alt" alternateValue="1">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/thumbItem.htm"/>
+		<param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/altThumbItem.htm"/>
+	</control>
+	<control relativeId="photoList2" class="CAlternateRepeater" alternateKey="alt" alternateValue="1">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/thumbItem.htm"/>
+		<param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/altThumbItem.htm"/>
+	</control>
+	<control relativeId="jsImageList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/jsImageItem.htm"/>
+	</control>
+	<control relativeId="imageNav" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/midiImageTemplate.htm"/>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

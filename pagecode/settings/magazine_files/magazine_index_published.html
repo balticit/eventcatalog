@@ -1,0 +1,54 @@
+<td valign="top" width="200px">
+   <table cellspacing="5" cellpadding="0" border="0" width="170px">
+   <tr>
+     <td style="color:#000"><a href="/magazines/details{tbl_obj_id}"  style="color:#000">Выпуск: {publication}</a></td>
+   </tr>
+   <tr>
+     <td>
+       <a href="/magazines/details{tbl_obj_id}"><img src="/upload/{logo}" border="0"/></a>
+     </td>
+   </tr>
+   <tr>
+     <td style="padding-top:10px;">
+       <a class="podr" href="/magazines/details{tbl_obj_id}">Подробнее о каталоге {publication_year}</a> 
+     </td>
+   </tr>
+   <tr>
+     <td style="padding-top:10px;">
+       <a class="dost" href="/magazines/delivery{tbl_obj_id}">Заказать доставку</a> 
+     </td>
+   </tr>  
+    <tr>
+     <td style="padding-top:10px;">
+       <!--<div style="font-weight:bold">Отзывы счастливых обладателей:</div>-->{otziv}
+     </td>
+   </tr>  
+   <tr>
+     <td style="padding-top:10px;">
+       
+       
+		   
+           
+		  <!-- <p id="repliesLabel" style="margin-top: 20px; display: none;">
+							<a href="" onclick="javascript:return showReplies('repliesBox');">Посмотреть все отзывы</a><br>
+						</p>
+						<div id="repliesBox" style="overflow-y: scroll; overflow-x: hidden; display: none;
+							margin-top: 10px; border-width: 0px; border-style: solid; background-color: none;
+							width: 400px;">
+						</div>-->
+		   
+		   <a class="otz"  href="" onclick="return showAddReply('addReplyBox','addReplyFrame','/replies/add/id/{tbl_obj_id}/type/magazines/');">Оставить свой отзыв</a><br/>
+		   <script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<span id="repliesLabel"><a class="otz" href="" onclick="javascript:return showReplies('repliesBox');"></a><br></span>
+			<div id="repliesBox" style="overflow: auto; display:none; margin-top:10px; border-width:0px; border-style:solid; background-color:none; width:170px;"></div>
+			
+			<div id="addReplyBox" style="overflow:visible; display:none; margin-top:10px; background-color:none;"></div>
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');" frameborder="0" src="" style="border:none; display:none;" ></iframe>
+			
+			<iframe style="display:none;" src="/replies/id/{tbl_obj_id}/type/magazines/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');"></iframe>				
+			
+			<!--<script type="text/javascript" language="javascript">showReplies('repliesBox');</script>-->
+     </td>
+   </tr>    
+   </table>
+</td>

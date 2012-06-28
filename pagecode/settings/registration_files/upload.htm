@@ -1,0 +1,44 @@
+<form method="post" enctype="multipart/form-data" style="padding: 0px;margin: 0px;">
+    <table border="0" cellpadding="0" cellspacing="0" class="properties" style="width: 900px;">
+        <tr>
+            <td>
+                <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Название:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[title]" size="60" value="{title}" />
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr>
+                        <td id="td_logo" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                &nbsp;Файл (до 20МБ):</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            текущее значение: <a href="/upload/{file}" title="{title}" target="_blank" >{file}</a><br />
+                            <input class="property_file" type="file" name="properties[file]" />
+                            <label>
+                                <input type="checkbox" name="file_clean" value="clean" />
+                                - очистить атрибут</label>
+                        </td>
+                    </tr>
+                </table>
+			</td>
+		</tr>
+	</table>
+
+    <p>&nbsp;
+        </p>
+    <input type="submit" value="Сохранить" />
+</form>

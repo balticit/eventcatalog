@@ -1,0 +1,68 @@
+/*
+bright: rgb(234,242,255);
+normal: rgb(120,172,255);
+dark: rgb(0,66,174);
+*/
+
+
+.dynamic-tab-pane-control.tab-pane {
+	width: 100%;
+}
+
+.dynamic-tab-pane-control .tab-row .tab {
+	font-family: Tahoma, Verdana, Helvetica, Arial;
+	font-size: 8pt;
+	cursor: default;
+	display: inline;
+	padding: 4px 7px 4px 7px;
+	background: white;
+	border: 1px solid;
+	border-color: #dddddd;
+	margin-right: 2px;
+	margin-left: 2px;
+
+	line-height: 20pt;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.dynamic-tab-pane-control .tab-row .tab.selected {
+	border: 1px solid #aaaaaa;
+	z-index: 3;
+	background: white;
+}
+
+.dynamic-tab-pane-control .tab-row .tab a {
+	font-family: Tahoma, Verdana, Helvetica, Arial;
+	font-size: 8pt;
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.dynamic-tab-pane-control .tab-row .hover a {
+	/*color: navy;*/
+	text-decoration: underline;
+}
+
+.dynamic-tab-pane-control .tab-row .tab.selected a {
+	font-weight: bold;
+}
+
+.dynamic-tab-pane-control .tab-page {
+	clear: both;
+	border: 1px solid #dddddd;
+	background: white;
+	z-index: 2;
+	color: black;
+	font-family: Verdana, Helvetica, Arial;
+	font-size: 13px;
+	padding: 10px;
+}
+
+.dynamic-tab-pane-control .tab-row {
+	z-index: 1;
+	white-space: nowrap;
+	background: #f5f5f5;
+	width: 100%;
+}

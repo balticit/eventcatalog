@@ -1,0 +1,83 @@
+<div style="margin-left: 5px; background: url('/images/front/bg_3.gif') no-repeat top left;
+    margin-top: 10px;">
+    <table border="0" width="100%">
+        <tr>
+            <td valign="top" style="padding-right:40px;">
+                <h1 style="margin-left: 10px;">
+                     {title}</h1>
+                <div style="margin-bottom: 20px; padding-left: 10px; ">
+					<table width="100%">
+						<tr>
+							<td><img src="/upload/{s_image}" alt="{title}" class="newsimg" /></td>
+							<td align="right" valign="bottom" ><!--<span style="color:#999999">Дата размещения анонса</span> <strong>{date}</strong>--></td>
+						</tr>
+					</table>
+                    </div>
+                <div style="margin-left: 10px;">
+                    {text}
+                </div>
+             
+            </td>
+            <td valign="top" nowrap="nowrap" class="gray_bg" style="width:423px;">
+              
+			  <table  border="0" >
+				<tr>
+					<td>
+						<p id="repliesLabel" style="margin-top: 20px; display: none;">
+							<a href="#" onclick="javascript:return showReplies('repliesBox');">Отзывы</a><br>
+						</p>
+						<div id="repliesBox" style="overflow-y: scroll; overflow-x: hidden; display: none;
+							margin-top: 10px; border-width: 0px; border-style: solid; background-color: none;
+							width: 400px;">
+						</div>
+					</td>
+				</tr>
+        		<tr>
+					<td>
+					 <p>
+                <a href="#" onclick="javascript:return showAddReply('addReplyBox','addReplyFrame','/replies/add/id/{tbl_obj_id}/type/{newstype}/');">
+                    Оставить свой отзыв</a><Br /> <a href="/forum/">Обсудить на форуме</a></p>
+
+           
+		   
+		   
+		   <div id="addReplyBox" style="overflow: visible; display: none; margin-top: 10px; 
+						background-color: none;"></div>
+					</td>
+				</tr>
+        		
+			</table>
+			  
+			  
+
+             <!--   <table border="0" cellpadding="2" cellspacing="2" width="100%">
+                    <tr>
+                        {photo_list_1}
+                    </tr>
+					<tr>
+                        {photo_list_2}
+                    </tr>
+                </table>
+                <br />
+                {image_nav}
+                <p align="center" style="visibility: {foto_visible};">
+                    {title}</p>-->
+                <script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');"
+                frameborder="0" src="" style="border: none; display: none;"></iframe>
+            <iframe style="display: none;" src="/replies/id/{tbl_obj_id}/type/{newstype}/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');">
+            </iframe>
+            </td> 
+         </tr> 
+      </table>
+</div> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>

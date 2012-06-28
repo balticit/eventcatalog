@@ -1,0 +1,262 @@
+<div style="padding-right: 15px;">
+
+
+<form method="post" enctype="multipart/form-data" style="padding: 0px; margin: 0px;">
+
+<table border="0" cellpadding="0" cellspacing="0" class="properties" style="width:100%;">
+<tr>
+<td>
+
+
+<table id="table_title" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_title" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Название компании:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[title]" size="60" value="{title}"/>
+
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_logo_image" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_logo_image" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Логотип 120х80:<br/><span style="color:#999999;">(Внимание! Название файла должно <br/>состоять из латинских букв или цифр)</span>
+            </div>
+            <div class="property_description"></div>
+
+        </td>
+        <td valign="middle" class="property_editor">
+            текущее значение: `<a href="/upload/{logo_image}" target="_blank">{logo_image}</a>`<br/>
+            <input class="property_file" type="file" name="properties[logo]"/>
+            <label>
+                <input type="checkbox" name="logo_clean" value="clean"/>
+                - очистить атрибут</label>
+        </td>
+    </tr>
+
+</table>
+<table id="table_kind_of_activity" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_kind_of_activity" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Тип деятельности (нажмите, чтобы выбрать):</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+
+            <a id='tg_tgl_selecttree_toggler_kind_of_activity'
+               href='JavaScript: toggle("selecttree_toggler_kind_of_activity", "%3Cimg%20src%3D%27%2Fimages%2Ftogglers%2Fminus.gif%27%3E", "%3Cimg%20src%3D%27%2Fimages%2Ftogglers%2Fplus.gif%27%3E")'><span
+                    id='tg_ind_selecttree_toggler_kind_of_activity'><img src='/images/togglers/plus.gif'
+                                                                         border="0"></span></a>&nbsp;Тип деятельности
+            (нажмите, чтобы выбрать)
+
+            <div id='tg_cnt_selecttree_toggler_kind_of_activity' style='display: none;'>
+
+
+                <div style="padding-top: 5px;" width="100%">
+                    {actList}
+                </div>
+
+            </div>
+
+
+        </td>
+
+    </tr>
+</table>
+
+
+<table id="table_short_description" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_short_description" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Краткое описание:</div>
+            <div class="property_description"></div>
+        </td>
+
+        <td valign="middle" class="property_editor">
+            <textarea class="property_textarea" name="properties[short_description]" rows="10" cols="50">{short_description}</textarea>
+
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_description" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_description" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+
+            <div class="property_title">&nbsp;Подробное описание:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <textarea class="property_textarea" name="properties[description]" rows="10"
+                      cols="50">{description}</textarea>
+
+        </td>
+    </tr>
+
+</table>
+
+
+<table id="table_city" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_city" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Город:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+
+            <script language="JavaScript" type="text/javascript" src="/js/chainedSelector.js">
+            </script>
+
+
+            {city_list}<br/> или другой город <br/> <input class="property_text" type="text"
+                                                           name="properties[other_city]" size="60"
+                                                           value="{other_city}"/>
+
+        </td>
+
+    </tr>
+</table>
+
+
+<table id="table_address" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_address" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Адрес:</div>
+            <div class="property_description"></div>
+        </td>
+
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[address]" size="60" value="{address}"/><br/><span
+                style="font-size:12px;">например: Ивановская ул., д.1</span>
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_phone" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_phone" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Телефон:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[phone]" size="60" value="{phone}"/><br/><span
+                style="font-size:12px;">например: (495) 111-22-33</span>
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_phone2" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+
+        <td id="td_phone2" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Телефон 2:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[phone2]" size="60" value="{phone2}"/>
+        </td>
+    </tr>
+
+</table>
+
+
+<table id="table_site_address" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_site_address" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Адрес сайта:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+
+            <input class="property_text" type="text" name="properties[site_address]" size="60"
+                   value="{site_address}"/><br/><span style="font-size:12px;">например: http://www.aaa.ru</span>
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_email" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_email" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Электронная почта:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[email]" size="60" value="{email}"/>
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_login" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+
+        <td id="td_login" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Логин:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[login]" {login_readonly} size="60"
+            value="{login}"/>
+        </td>
+    </tr>
+
+</table>
+
+
+<table id="table_password" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_password" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Пароль:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+
+            просмотреть пароль невозможно, можно только его изменить
+            <table>
+                <tr>
+                    <td><input class="property_text" type="password" name="properties[password]" size="30" value=""/>
+                    </td>
+                    <td>(новый пароль)
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="property_text" type="password" name="properties[password_confirm]" size="30"
+                               value=""/>
+
+                    </td>
+                    <td>(подтверждение)
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+{junksaleBuyList}
+{junksaleSellList}
+{personalCVList}
+{personalVacancyList}
+<script type="text/javascript" language="JavaScript" src="/js/chainedLeader.js"></script>
+<script type="text/javascript" language="javascript">
+    toggle("selecttree_toggler_kind_of_activity", "<img src='/images/togglers/minus.gif'>", "<img src='/images/togglers/plus.gif'>");
+</script>
+<p>&nbsp;</p>
+<input type="submit" value="{submit_text}"/>
+</form>
+
+</div>

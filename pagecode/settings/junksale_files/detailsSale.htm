@@ -1,0 +1,76 @@
+
+<div class="left_list">
+<br><br>
+<table cellpadding="1" cellspacing="0" border="0" width="100%" style="margin:-15px 0 0 0; padding:0;">
+	<tr>
+		<td>
+			<table width=100% cellpadding=5 cellspacing=0>
+				<tr>
+					<td align=left style="color: gray; font-size: 10px">
+						НАИМЕНОВАНИЕ ВЕЩИ
+					</td>
+					<td align="right" style="color: gray; font-size: 10px">
+						ДАТА РАЗМЕЩЕНИЯ ОБЪЯВЛЕНИЯ
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+		<div style=" vertical-align:top; margin-right:5px;" align="right">
+	<!-- a href="/junksale"><img src="/images/back.jpg" alt="Вернуться назад"></a-->	</div >
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" class="gray_bg">
+			<table width=100% cellpadding=0 cellspacing=0>
+				<tr>
+					<td align=left>
+						<b><span class="p_foto1" style="margin-top:0;">{title}</span></b>
+					</td>
+					<td align=right>
+						{date}
+					</td>
+				</tr>
+			</table>
+			<br><br>
+			
+			<div><img src="/upload/{foto}" alt="" title="" /></div><br /><br />
+			<div><b>Количество:</b> {count}</div><br />
+
+			<div><b>Полное описание:</b> {long_description}</div><br />
+			<div><b>Цена:</b> {price}</div><br />
+			<div><b>Контакт:</b> {phone}<br />{name}</div><br />
+			
+
+			
+		<td valign="top" width="50%" style="padding: 5px 5px 5px 10px;">		
+							<script type="text/javascript">
+				<!--
+					var popupImgWindow = null;
+					var selectingImg = 1;
+
+					var miniImg = new Array();
+					var midiImg = new Array();
+					var maxiImg = new Array();
+					var imgTitle = new Array();
+					var maxiImgWidth = new Array();
+					var maxiImgHeight = new Array();
+
+						
+						{js_photos}
+					
+					var allImgs = {photo_count};
+				//-->
+				</script>
+				<table border="0" cellpadding="2" cellspacing="2" width="100%">
+
+																							<tr>
+												{item_photos}
+													</tr>
+														</table><br />
+				{medi_photo}<br />
+				
+				<p style="margin:10px 0 0 150px;">{title2}</p>					</td>
+	</tr>
+</table>
+</div>

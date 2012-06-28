@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="scroll_msg_php" template="templates/scroll_msg.php">
+	<control relativeId="msgs" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/scroll_files/msg.htm"/>
+	</control>
+</page>

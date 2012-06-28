@@ -1,0 +1,19 @@
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={key}" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    function load() {
+		if (document.getElementById("map")!=null)
+		  if (GBrowserIsCompatible()) {
+			var map = new GMap2(document.getElementById("map"));
+			map.setCenter(new GLatLng({coords}), 16);
+			map.setMapType(G_NORMAL_MAP);
+			map.addControl(new GMapTypeControl());
+			map.addControl(new GLargeMapControl());
+			map.openInfoWindowHtml(new GLatLng({coords}),  '<div style="border: 0px red solid; color: black;">{text}</div>');
+		  }
+    }
+
+    //]]>
+    </script>

@@ -1,0 +1,105 @@
+<div class="res_details">
+<div class="res_details_title" style="margin: 0 0 10px 0;">Новости:</div>
+<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="top">
+<td>
+<div style="font-weight: bold;">{date}</div>
+<div style="margin: 3px 0 10px 0; font-weight: bold;">{title}</div>
+<div>{text}</div>
+
+<div class="res_details_title" style="margin: 20px 0 10px 0; {show_archive}">Архив новостей:</div>
+{archive_list}
+</td>
+<td width="10"><img src="/images/front/0.gif" width="10" height="1"></td>
+<td style="{show_photos}">
+<div class="photos res_details">
+			<script type="text/javascript">
+				<!--
+					var rn_popupImgWindow = null;
+					var rn_selectingImg = 1;
+					var rn_miniImg = new Array();
+					var rn_midiImg = new Array();
+					var rn_maxiImg = new Array();
+					var rn_imgTitle = new Array();
+					var rn_maxiImgWidth = new Array();
+					var rn_maxiImgHeight = new Array();
+					{js_images}
+					var rn_allImgs = {images_count};
+					function rn_selectThumb(id, mini)
+					{
+						var img = document.getElementById(id);
+						var title = document.getElementById('rn_imgTitle');
+						var miniImg = document.getElementById('rn_img'+mini);
+						if(img != null && miniImg != null)
+						{
+							img.src = rn_midiImg[mini];
+							if (title!=null) title.innerHTML = rn_imgTitle[mini];
+							rn_selectingImg = mini;
+							document.getElementById('rn_midiImg').title = rn_imgTitle[mini];
+						}
+						return false;
+					}
+
+					function rn_listPrevImg(id)
+					{
+						rn_selectingImg--;
+						if(rn_selectingImg <= 0)
+						{
+							rn_selectingImg = rn_allImgs;
+						}
+						rn_selectThumb(id, rn_selectingImg);
+
+						if(rn_popupImgWindow != null)
+						{
+							rn_popupImgWindow.document.getElementById('maxiImg').src = rn_maxiImg[rn_selectingImg];
+						}
+					}
+
+					function rn_listNextImg(id)
+					{
+						rn_selectingImg++;
+						if(rn_selectingImg > rn_allImgs)
+						{
+							rn_selectingImg = 1;
+						}
+						rn_selectThumb(id, rn_selectingImg);
+
+						if(rn_popupImgWindow != null)
+						{
+							rn_popupImgWindow.document.getElementById('maxiImg').src = rn_maxiImg[rn_selectingImg];
+						}
+					}
+
+					function rn_openLargeImg(url, title)
+					{
+						url = window.location.host;
+						var openWindow = document.getElementById('popupImgWindow');
+						if(openWindow != null)
+						{
+							openWindow.close;
+						}
+						if (url!='')
+						while ((url.lastIndexOf('/')==(url.length-1))||(url.lastIndexOf('\\')==(url.length-1)))
+						{
+							url = url.substring(0,url.length-1);	
+						}
+						if (rn_maxiImg[rn_selectingImg]!='')
+						while ((rn_maxiImg[rn_selectingImg].substring(0,1)== '/')||(rn_maxiImg[rn_selectingImg].substring(0,1)=='\\'))
+						{
+							rn_maxiImg[rn_selectingImg] = rn_maxiImg[rn_selectingImg].substring(1,rn_maxiImg[rn_selectingImg].length);	
+						}
+						
+						if ((rn_maxiImgWidth[rn_selectingImg]=='')||(rn_maxiImgHeight[rn_selectingImg]==''))
+							WinOpen("http://"+url+"/"+rn_maxiImg[rn_selectingImg],rn_imgTitle[rn_selectingImg],640,480);
+						else
+							WinOpen("http://"+url+"/"+rn_maxiImg[rn_selectingImg],rn_imgTitle[rn_selectingImg],rn_maxiImgWidth[rn_selectingImg],rn_maxiImgHeight[rn_selectingImg]);
+
+						return false;
+					}
+				//-->
+			</script>
+	<table border="0" cellpadding="2" cellspacing="2" width="100%">
+		<tr>{photo_list_1}</tr>
+		<tr>{photo_list_2}</tr>
+	</table><br>{image_nav}</div></td>
+</tr></table>
+</div>

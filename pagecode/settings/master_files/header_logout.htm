@@ -1,0 +1,98 @@
+<table width="100%" cellpadding="0" cellspacing="0" style="padding-bottom: 0;">
+	<tr>
+		<td rowspan="2" align="left" width="150"><a href="/"><img src="/images/logo_index.png" width="150" height="70" alt="" /></a></td>
+		<td align="left" nowrap="nowrap" style="color: #808080; font-size: 16px; padding-left: 20px;">ежедневный помощник <span style="white-space: nowrap;">организатора мероприятий</span></td>
+		<td rowspan="2" valign="top" align="right" style="width:468px; padding-left:11px;">
+		<div style="width: 468px; height:60px; display: inline;">
+<!-- AdRiver code START Type: 468x60 Site: EventCat PZ: 1 BN: 0-->
+	 <script language="javascript" type="text/javascript"><!--
+		var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+		var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+		document.write(
+		'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
+		+ 'sid=112204&target=blank&bt=1&pz=1&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
+		+ '" frameborder=0 vspace=0 hspace=0 width=468 height=60 marginwidth=0'
+		+ ' marginheight=0 scrolling=no></iframe>');
+	//--></script>
+	<noscript>
+		<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bt=1&pz=1&rnd=382234454" target=_blank>
+		<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bt=1&pz=1&rnd=382234454" alt="-AdRiver-" border=0 width=468 height=60></a>
+	</noscript> 
+<!-- AdRiver code END -->
+</div></td>
+	</tr>
+	<tr>
+		<td style="color: #000; font-size: 12px; padding-left: 20px; padding-top: 9px; font-weight: bold;"><span style='float: left;display: block;line-height: 25px;margin-right: 10px'>{logodate}</span><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет на Яндексе</p></a></td>
+	</tr>
+	<tr>
+		<td colspan="3" style="padding-top: 10px;">
+			<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>	
+				<td style="width: 14px;"><img src="/images/front/leftr.gif" width="14" height="46"></td>				<td class="auth_pan">
+				<a href="" style="color: black; text-decoration: underline;" id="selectcity" onclick="javascript: return false;">{selcity}<img src="/images/arrow/arrdown.gif" width="10" height="10"/></a>
+				<div style="display:none;">
+					<div>
+					<div id="cityselector">
+					   <div class="city-selector-item" style="font-weight:bold"><a href="">Все города</a></div>
+					</div>
+					</div>
+				</div></td>
+				<td class="auth_pan"></td>
+				<td class="auth_pan">Здравствуйте, {name}!</td>
+				<td class="auth_pan"></td>
+				<td class="auth_pan"><a href="/{cabtype}_cabinet" style="color:#3399ff ">Личный кабинет</a>
+				&nbsp;<script type="text/javascript"> if ({newmess}>0) document.write('<a onclick="javascript:locate(\'/{cabtype}_cabinet/data/my_messages\');" href="#" style="color:#3399ff ">({newmess})</a> ');</script>
+				</td>
+				<td class="auth_pan"></td>
+				<td class="auth_pan"><a href="" style="color: black" id="selectexit" onclick="javascript: return false;">Выйти</a></td>
+				<td class="auth_pan" width="340">		
+				<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+				<td>
+						<div class="yandexform" onclick="return {'bg': '#ffcc00', 'language': 'ru', 'encoding': '', 'suggest': false, 'tld': 'ru', 'site_suggest': false, 'webopt': false, 'fontsize': 16, 'arrow': false, 'fg': '#000000', 'logo': 'rb', 'websearch': false, 'type': 2}"><form action="http://eventcatalog.ru/search/" method="get"><input type="hidden" name="searchid" value="1840054"/><input name="text"/><input type="submit" value="Найти"/></form></div><script type="text/javascript" src="http://site.yandex.net/load/form/1/form.js" charset="utf-8"></script>
+               		 </td>
+				</tr>
+				</table>
+				</td>
+			<td style="width: 14px;"><img src="/images/front/rightr.gif" width="14" height="46"></td>
+			</tr>
+			</table>	
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+	$(document).ready(function(){
+		$('#selectcity').click(function(){
+			new Boxy.load("/ajax/citylist/",{
+				behaviours: function(c) {
+					c.find('.city-selector-item a').click(function(){
+						var selcity = $(this);
+					    $.ajax({
+					        url:'/ajax/citylist/',
+							data: {city: selcity.attr('href')},
+					        success: function(responseText) {
+								if (responseText == 'OK') document.location = document.location;
+					        }
+					    });
+						return false;
+					});
+				},
+				title: "Выберите Ваш город",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		
+		$('#selectexit').click(function(){
+			$.ajax({
+				url:    '/ajax/authorize/',
+				data:  {event: 'logout'},
+				success: function(responseText) {
+						document.location = '/';
+				}
+			});	
+			return false;
+		});
+	});
+</script>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="link"/>
+	<column name="bgcolor"/>
+	<column name="title"/>
+	<column name="bgimg"/>
+	<index name="link"/>
+	<row link="/added/" title="Последние добавления"/>	
+	<row link="/resident_news/?resident=area" title="Новости площадок"/>	 
+	<row link="/area/rating" bgcolor="0091d5" title="Рейтинг" bgimg="area"/>	
+</datasource>

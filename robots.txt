@@ -1,0 +1,7 @@
+User-agent:*
+Crawl-delay: 10
+Disallow: /forum/
+Disallow: /captcha/
+Disallow: /js/
+Disallow: /searchtest/
+Host: www.eventcatalog.ru

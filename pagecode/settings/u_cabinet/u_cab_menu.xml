@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable">
+    <column name="link"/>
+    <column name="title"/>
+    <column name="imgname"/>
+    <index name="link"/>
+    <row link="/u_cabinet/data/personal" title="Личные данные"/>
+    <row link="/u_cabinet/data/my_messages" title="Мои сообщения"/>
+    <row link="/u_cabinet/data/my_comments" title="Мои комментарии"/>
+    <row link="/u_cabinet/data/my_favorite" title="Избранное"/>
+    <row link="/u_cabinet/data/my_marks" title="Мои оценки"/>
+</datasource>

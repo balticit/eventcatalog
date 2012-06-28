@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="random_resident_php" template="templates/random_resident.php">
+	<control relativeId="residents" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/random_resident_files/resident.htm"/>
+	</control>
+</page>

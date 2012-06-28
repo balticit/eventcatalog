@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_etv_order_php" template="templates/ajax.php">
+	<control relativeId="body" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/etv_order.htm"/>
+	</control>
+	<control relativeId="message" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/etv_order_msg.htm"/>
+	</control>
+</page>

@@ -1,0 +1,36 @@
+<script language="JavaScript" type="text/javascript">
+function CheckCount()
+{
+  var flag = $('input.metro-station:checked').length < 10;
+  $('.metro-station').each(function() {
+    if (!this.checked)
+      if (flag)
+          this.disabled='';
+      else
+          this.disabled='disabled';
+  });
+}
+
+function ChangeCheck(obj) {
+  CheckCount();
+  var sl = $("#find_params");
+  if (obj.checked) {
+      sl.append('<input type="hidden" name="metro['+obj.value+']" value="'+obj.value+'">');
+  }
+  else {
+      sl.find('input[name="metro['+obj.value+']"]').remove();
+  }
+}
+
+function FillChecks()
+{
+  $("#find_params").find('input[name^="metro"]').each(function() {
+        var t = $(this);        
+        $("#ms"+t.val()).attr('checked','checked');
+  });
+  CheckCount();
+}
+</script>
+<!--{list}-->
+
+

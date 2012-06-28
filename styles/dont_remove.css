@@ -1,0 +1,12 @@
+#pro2l_visblock {
+	border: 1px solid #aaa;
+}
+
+.activeEl td>a>img {
+	border: none;
+	border-right: 1px solid #CCCCCC;
+}
+
+.activeEl td>div {
+	border-top: none!important;  
+}

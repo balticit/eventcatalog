@@ -1,0 +1,34 @@
+<tr>
+	<td class="lname" valign="bottom">
+		<div class="paneActivator" id="activator_{tbl_obj_id}" onMouseOver="this.isMouseOver = true; showPane('{tbl_obj_id}'); SetDynamicImage('logotip_area_{tbl_obj_id}','{logo_image}');" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');">
+			<table class="pane" id="pane_{tbl_obj_id}" onMouseOver="this.isMouseOver = true;" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');" border="0">
+			<tbody><tr>
+				<td class="dynamicTable">
+					<h1 class="dynamicTable">{title}</h1>
+					<!-- photo -->
+					<div id="logotip_area_{tbl_obj_id}">
+						<!--<img src="/upload/{logo_image}" alt="Логотип" height="80" width="120">--></div>
+					<div style="height: 15px;">&nbsp;</div>
+					<!-- end photo -->
+					<table border="0">
+					<tbody><tr>
+						<td><b>Краткое описание:</b></td>
+						<td>{short_description}</td></tr>
+					<tr>
+						<td><b>Тип деятельности:</b></td>
+						<td>{activity_title}</td></tr>
+					<tr>
+						<td><b>Телефон:</b></td>
+						<td>{phone}</td></tr>
+					<tr>
+						<td><b>Сайт:</b></td>
+						<td><a target="_blank" href="{site_address}">{site_address}</a></td></tr>
+					<tr>
+						<td><b>E-mail:</b></td>
+						<td><a target="_blank" href="mailto:{email}"></a>{email}</td></tr></tbody></table></td></tr></tbody></table>
+		<a href="/contractor/details/id/{tbl_obj_id}" style="{selection_type}">{title}</a></div></td>
+	<td class="ladd_adress" valign="bottom">{address}</td>
+	<td class="ladd_fon" valign="bottom">{phone}</td>
+	<td class="ladd_fon" valign="bottom">{phone2}</td></tr>
+<tr>
+  <td colspan="3" style="padding-top: 0px;"><img src="/images/front/0.gif" height="{height}" width="1"></td></tr>

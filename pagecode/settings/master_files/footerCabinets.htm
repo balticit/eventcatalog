@@ -1,0 +1,122 @@
+<script language="javascript">
+
+function HideSublevel()
+{
+	$.ajax({
+    url:'/ajax/footer_type/',
+    data: {type: 1},
+    success: function(responseText) {
+      if (responseText == 'OK') {
+        $('.footer_sublevel').hide();
+				var a = document.getElementById("btn_footer");
+				a.onclick = function() {
+					ShowSublevel();
+					return false;
+				};
+				a.innerHTML = 'развернуть';
+      }
+    }
+  });
+}
+function ShowSublevel()
+{
+	$.ajax({
+    url:'/ajax/footer_type/',
+    data: {type: 0},
+    success: function(responseText) {
+      if (responseText == 'OK') {
+				$('.footer_sublevel').show();
+				var a = document.getElementById("btn_footer");
+				a.onclick = function() {
+					HideSublevel();
+					return false;
+				};
+				a.innerHTML = 'свернуть';
+      }
+    }
+  });
+
+}
+</script>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style='margin-bottom:10px'>
+<col width='16%' />
+<col width='16%' />
+<col width='16%' />
+<col width='16%' />
+<col width='16%' />
+<col width='16%' />
+<tr>
+    <td valign='top'>
+        <a class="footer_s2" href="/eventoteka/">Эвентотека</a><br>
+        <a class="footer_s2" href="/eventtv/">Event TV</a><br>
+        <a class="footer_s2" href="/book/">Event энциклопедия</a><br>
+        <a class="footer_s2" href="/news/">Новости индустрии</a><br>
+        <a class="footer_s2" href="/event_calendar/">Event календарь</a><br>
+        <a class="footer_s2" href="/magazines/">Печатный Event Каталог</a><br>
+	</td>
+    <td valign='top'>
+		<a class="footer_s2" href="/contractor/">Подрядчики</a><br>
+		<a class="footer_s2" href="/contractor/">Каталог подрядчиков</a><br>
+        <a class="footer_s2" href="/added/">Новые подрядчики</a><br>
+        <a class="footer_s2" href="/resident_news/">Новости подрядчиков</a><br>
+        <a class="footer_s2" href="/contractor/rating/">Рейтинг подрядчиков</a><br>
+        <a class="footer_s2 " href="/eventtv/?topic=1">Видео подрядчиков</a><br>
+	</td>
+    <td valign='top'>
+		<a class="footer_s2" href="/area/">Площадки</a><br>
+		<a class="footer_s2" href="/area/">Каталог площадок</a><br>
+        <a class="footer_s2" href="/added/">Новые площадки</a><br>
+        <a class="footer_s2" href="/resident_news/">Новости площадок</a><br>
+        <a class="footer_s2" href="/area/rating/">Рейтинг площадок</a><br>
+        <a class="footer_s2" href="/eventtv/?topic=2">Видео площадок</a><br>
+	</td>
+    <td valign='top'>
+		<a class="footer_s2" href="/artist/">Артисты</a><br>
+		<a class="footer_s2" href="/artist/">Каталог артистов</a><br>
+        <a class="footer_s2" href="/added/">Новые артисты</a><br>
+        <a class="footer_s2" href="/resident_news/">Новости артистов</a><br>
+        <a class="footer_s2" href="/artist/rating/">Рейтинг артистов</a><br>
+        <a class="footer_s2" href="/eventtv/?topic=3">Видео артистов</a><br>
+	</td>
+    <td valign='top'>
+		<a class="footer_s2" href="/agency/">Агентства</a><br>
+		<a class="footer_s2" href="/agency/">Каталог агентств</a><br>
+        <a class="footer_s2" href="/added/">Новые агентства</a><br>
+        <a class="footer_s2" href="/resident_news/">Новости агентств</a><br>
+        <a class="footer_s2" href="/agency/rating/">Рейтинг агентств</a><br>
+        <a class="footer_s2" href="/eventtv/?topic=6">Видео агентств</a><br>
+	</td>
+    <td valign='top'>
+		<a class="footer_s2" href="/about/">О проекте</a><br>
+		<a class="footer_s2" href="/pr/">Реклама</a><br>
+		<a class="footer_s2" href="/contact/">Контакты</a><br>
+		<p class="footer_s2" style='margin: 10px 0 0'><a target='_blank' href='http://www.facebook.com/EventCatalog'><img src='/images/facebook.png' /></a>  <a target='_blank' href='http://vk.com/public34359442'><img src='/images/vkontakte.png' /></a> <a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode'><img src='/images/yandex.png' /></a></p>
+	</td>
+</tr>
+<tr>
+	<td valign='middle' colspan='5'><p class='copyright'>2006 &ndash; {year} &copy; EventCatalog.ru &mdash; ежедневный помощник организатора мероприятий</p></td>
+	<td><noindex><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t52.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров и"+
+" посетителей за 24 часа' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+
+<!-- Yandex.Metrika informer -->
+<a href="http://metrika.yandex.ru/stat/?id=9990505&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/9990505/3_1_FFFFFCFF_F5F5DCFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:9990505,type:0,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+</noindex>
+</script>
+</td>
+</tr>
+</table>
+
+
+<!-- Yandex.Metrika counter --> <div style="display:none;"><script type="text/javascript"> (function(w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter9990505 = new Ya.Metrika({id:9990505, enableAll: true}); } catch(e) { } }); })(window, "yandex_metrika_callbacks"); </script></div> <script src="//mc.yandex.ru/metrika/watch_visor.js" type="text/javascript" defer="defer"></script> <noscript><div><img src="//mc.yandex.ru/watch/9990505" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter --> 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_usersrating_php" template="cms/templates/cms_usersrating.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="tbl__usermark" pageSize="60" cssClass="dataTable" orderField="tbl_obj_id" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="tbl_obj_id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" visibleOnEdit="0" visibleOnAdd="0" visibleOnList="0"/>
+			<item type="class" class="CDateTimeGridDataField" dbField="date" label="Дата добавления" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="1" />
+			<item type="class" class="CGridDataField" dbField="mark" label="Оценка" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<!--<item type="class" class="CGridDataField" dbField="from_resident_type" label="Тип резидента (от кого оценка)" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+
+			<item type="class" class="CGridDataField" dbField="from_resident_id" label="Резидент (от кого оценка)" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />-->
+
+			<item type="class" class="CJSDBLookupGridDataField" dbField="to_resident_type" label="Тип резидента (кому оценка)"  lookupTable="vw__resident_type" lookupId="type" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="text"  visibleOnList="0" visibleOnEdit="0" triggersHierarchy="1"/>
+			<item type="class" class="CJSDBLookupGridDataField" dbField="to_resident_id" label="Объект рейтинга"  lookupTable="vw__all_users" lookupId="tbl_obj_id" lookupTitle="title" lookupParent="login_type" hasParent="1" parentField="to_resident_type" parentEvent="change" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="text" visibleOnEdit="0"  visibleOnList="1"  hasEmpty="0" emptyValue="-1" emptyTitle="-- Не выбрано --"/>
+
+			<item type="class" class="CJSDBLookupGridDataField" dbField="from_resident_type" label="Тип резидента (от кого оценка)"  lookupTable="vw__resident_type" lookupId="type" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="text"  visibleOnList="0" visibleOnEdit="0" triggersHierarchy="1"/>
+			<item type="class" class="CJSDBLookupGridDataField" dbField="from_resident_id" label="Создатель рейтинга"  lookupTable="vw__all_users" lookupId="tbl_obj_id" lookupTitle="title" lookupParent="login_type" hasParent="1" parentField="from_resident_type" parentEvent="change" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="text" visibleOnEdit="0"  visibleOnList="1"  hasEmpty="0" emptyValue="-1" emptyTitle="-- Не выбрано --"/>			
+			
+			
+			
+
+			<!--<item type="class" key="area" class="CMultipleLookupDBGridDataField" dbField="tbl_obj_id" label="Площадка"  lookupTable="tbl__area_doc" lookupId="tbl_obj_id" lookupTitle="title" joinTable="tbl__area_photos" parentField="child_id" childField="parent_id" size="1" multiple="0" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="1"/>
+			<item type="class" key="artist" class="CMultipleLookupDBGridDataField" dbField="tbl_obj_id" label="Артист"  lookupTable="tbl__artist_doc" lookupId="tbl_obj_id" lookupTitle="title" joinTable="tbl__artist2photos" parentField="child_id" childField="parent_id" size="1" multiple="0" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="1"/>-->
+
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

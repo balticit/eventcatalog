@@ -1,0 +1,39 @@
+.fm_btn_type {
+  width: 150px;
+  height: 20px;
+  padding: 0 0 0 10px;
+  border: 1px solid #888888;
+  cursor: pointer;
+}  
+
+.fm_btn_type_active {
+  background: #ffffff;
+}
+.fm_btn_type_noactive {
+  background: #aaaaaa;
+}
+.fm_list_panel {
+  width: 220px;
+}
+.fm_list_title {
+  padding: 0 0 10px 0;
+	font-weight: bold;
+}
+.fm_station_marker {
+	background: #000000/*55FF00*/;
+	width: 3px;
+	height: 3px;
+	position:absolute;
+	display: none;
+	cursor: pointer;
+}
+
+.fm_selected {
+  cursor: pointer;
+}
+.fm_selected:hover {
+  color: #0000ff;
+}
+.tr_paddingtop td {
+  padding-top: 5px;
+}

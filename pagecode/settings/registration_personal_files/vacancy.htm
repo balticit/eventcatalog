@@ -1,0 +1,201 @@
+<script type="text/javascript" language="javascript" src="/js/datetimepicker.js"></script>
+
+<h2>
+    Добавить вакансию</h2>
+<div style="padding-right: 15px;">
+<p><b>Внимание!</b> При добавлении вакансии просим Вас обязательно разместить как можно более подробный текст с требованиями с соискателю и предлагаемых условиях. Просим не допускать орфографических и грамматических ошибок, и не использовать нецензурную лексику. В случае невыполнения условий, администрация портала будет вынуждена удалить Ваше объявление без предупреждения. Спасибо за понимание и участие!</p>
+
+    <form method="post" id="registrationForm_agency" enctype="multipart/form-data" style="padding: 0px;
+        margin: 0px;">
+        <input type="hidden" name="event" value="register" />
+        <input type="hidden" name="type" value="vacancy" />
+        <table border="0" cellpadding="0" cellspacing="0" class="properties" style="width: 900px;">
+            <tr>
+                <td>
+                    <table id="table_phone" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_phone" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Вакансия:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                               <script type="text/javascript" language="javascript">
+					function ShowOther()
+					{
+						document.getElementById('properties_other_personal_type').style.display = 
+						(document.getElementById('properties_personal_type').options[document.getElementById('properties_personal_type').selectedIndex].value==-1)?
+							"":"none";
+						
+					}
+				</script>
+				{personal_type_select}
+				<br/><br/> <input class="property_text" style="width:200px; display:none;" type="text" id="properties_other_personal_type" name="properties[other_personal_type]" value="{other_personal_type}"/>
+			    <script type="text/javascript" language="javascript">
+					ShowOther();
+					
+				</script>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_description" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr>
+                            <td id="td_description" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Требования к соискателю :</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <textarea class="property_textarea" name="properties[text]" rows="10" cols="50">{text}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_description" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_description" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Предлагаемые условия :</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <textarea class="property_textarea" name="properties[compensation]" rows="10" cols="50">{compensation}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Город:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                {citySelect}
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_kind_of_activity" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_kind_of_activity" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Район места работы<br />
+                                    (округ или метро):</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[location]" size="60" value="{location}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_kind_of_activity" style="width: 900px;" cellpadding="5" cellspacing="0"
+                        border="0">
+                        <tr>
+                            <td id="td_kind_of_activity" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Прямой работодатель
+                                    <br>
+                                    (Название Вашей компании):</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[company]" size="60" value="{company}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Кадровое агентство
+                                    <br>
+                                    (Название Вашего агентства):</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[fio]" size="60" value="{fio}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr>
+                            <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Контактное лицо:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[position]" size="60" value="{position}" />
+                            </td>
+                        </tr>
+                    </table>
+					<table id="table_phone" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_phone" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Контактный телефон:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[phone]" size="60" value="{phone}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table_email" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr >
+                            <td id="td_email" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Контактный e-mail:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[email]" size="60" value="{email}" />
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table id="table_email" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                        <tr style="background: #f0f0f0;">
+                            <td id="td_email" style="white-space: nowrap;" valign="top" class="property_info"
+                                width="300px">
+                                <div class="property_title">
+                                    Сайт компании:</div>
+                                <div class="property_description">
+                                </div>
+                            </td>
+                            <td valign="middle" class="property_editor">
+                                <input class="property_text" type="text" name="properties[website]" size="60" value="{website}" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <p>&nbsp;
+            
+        </p>
+        <input type="submit" value="Разместить" />
+    </form>
+</div>

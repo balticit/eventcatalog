@@ -1,0 +1,135 @@
+{comm_begin_if_ok}
+<a href=/news/details/id/1956 style="color: black;">Подробнее о Большом Ежегодном печатном EVENT КАТАЛОГЕ 2008</a><br /><br />
+<span style="color: #666666; font-weight: bold; font-size: 14px;">Оформление заказа</span>
+<br /><br /><br />
+							<div style="background-color: #dddddd; width:600px;">
+
+							
+<div style="padding: 10px;">
+
+				<script type="text/javascript">
+					var ek_count = {count};
+					function ek_count_edit() {
+						
+						ek_count_el = document.getElementById('ek_count');
+						if (new_count = parseInt(ek_count_el.value,10)) {
+							ek_count = new_count;
+							document.getElementById('ek_money').value = new_count*1500;
+							return true;
+						}
+						else {
+							alert('Количество экземпляров введено неточно!');
+							ek_count_el.value = ek_count;
+							return false;
+						}
+						
+					}
+				</script>
+
+<form action="" method="post" enctype="multipart/form-data" onsubmit="return ek_count_edit();">	
+	<table>
+		<tr>
+			<td width="200">
+				Ваше ФИО
+			</td>
+			<td>
+				<input type="text" name="name" value="{name}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Ваша должность
+			</td>
+			<td>
+				<input type="text" name="position" value="{position}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Название компании
+			</td>
+			<td>
+				<input type="text" name="company" value="{company}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Сайт компании
+			</td>
+			<td>
+				<input type="text" name="site" value="{site}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>		
+		<tr>
+			<td>
+				Адрес доставки
+			</td>
+			<td>
+				<input type="text" name="address" value="{address}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Контактный телефон
+			</td>
+			<td>
+				<input type="text" name="phone" value="{phone}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Контактный e-mail
+			</td>
+			<td>
+				<input type="text" name="email" value="{email}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Удобное время доставки
+			</td>
+			<td>
+				<input type="text" name="time" value="{time}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				Я желаю приобрести   EVENT КАТАЛОГ в количестве
+				<input type="text" name="count" id="ek_count" onchange="ek_count_edit()" value="{count}" style="width: 30px; border: 1px gray solid;">
+				шт.
+			</td>
+		</tr>
+		<tr>
+		  <td colspan="2">
+				Итого Ваш заказ на сумму:
+				<input type="text" name="money" id="ek_money" value="{money}" readonly style="width: 50px; border: 1px gray solid;">
+				рублей.  </td>
+		</tr>
+		<tr>
+			<td valign="top">
+				Введите символы
+			</td>
+			<td>
+				<input type="text" name="captcha" style="width: 320px; border: 1px gray solid;"><br /><br />
+				<img src="/captcha/index.php" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="Отправить" style="height: 30px; width: 100px; border: 1px gray solid;" />
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" name="sended" value="sended" />
+</form>
+</div>
+</div>
+{comm_end_if_ok}
+
+{comm_begin_if_notok}
+<p>Спасибо за Ваш заказ!<br />
+В ближайшее время с Вами свяжется менеджер по доставке.
+</p> 
+{comm_end_if_notok}

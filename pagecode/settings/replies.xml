@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="replies_php" template="templates/replies.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="replies" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/replies_files/replyRow.htm"/>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

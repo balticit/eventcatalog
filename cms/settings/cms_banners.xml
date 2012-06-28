@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_banners_php" template="cms/templates/cms_banners.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="tbl__bans_doc" pageSize="60" cssClass="dataTable" orderField="tbl_obj_id" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="tbl_obj_id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" visibleOnEdit="0" visibleOnAdd="0" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CGridDataField" dbField="link" label="Ссылка" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CFileGridDataField" dbField="file" uploadLink="/upload/" label="Файл" alterItemClass="alterItem" labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/" visibleOnList="0"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="type" label="Тип" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/bannerTypeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="width" label="Ширина" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="height" label="Высота" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CGridDataField" dbField="shown" label="Показы" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnEdit="0" visibleOnAdd="0"/>
+			<item type="class" class="CGridDataField" dbField="clicks" label="Нажатия" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnEdit="0" visibleOnAdd="0"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

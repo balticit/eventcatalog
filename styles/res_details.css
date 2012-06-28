@@ -1,0 +1,21 @@
+.res_menu_item {
+  background: url('/images/front/pnt_lmBlue.gif') no-repeat 0 2px;
+	padding: 0 0 6px 8px;
+	font-size: 11px;
+}
+.res_categories {
+  font-size: 11px;
+	padding: 0 0 6px 0;
+}
+.res_categories_title {
+  color: black;
+}
+.res_details {
+  font-size: 13px;
+}
+.res_details_title {
+  font-weight: bold;
+}
+.par_value {
+  font-weight: bold;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_news_php" template="cms/templates/cms_news.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+		<control relativeId="dataTable" class="CDataGridView" tableName="tbl__news" pageSize="60" cssClass="dataTable" orderField="date" orderType="desc" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="tbl_obj_id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" visibleOnEdit="0" visibleOnAdd="0"/>
+			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CDateTimeGridDataField" dbField="date" label="Дата события" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CDateTimeGridDataField" dbField="creation_date" label="Дата добавления" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CTextareaGridDataField" dbField="annotation" label="Краткое описание" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CTinyMCETextareaGridDataField" dbField="text" label="Полное описание" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>
+			<item type="class" class="CFileGridDataField" dbField="s_image" uploadLink="/upload/" label="Картинка" alterItemClass="alterItem" labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/"/>
+			<item type="class" class="CFileGridDataField" dbField="s_flash" uploadLink="/upload/" label="Flash-объект" alterItemClass="alterItem" labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/"/>
+			<item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Фотографии:" alterItemClass="alterItem" tableLink="/cms/photos/?99_12$dataTable[$autoValues][tbl__news2photo][0]={tbl_obj_id}&amp;99_12$dataTable[$hiddenFields][0]=artist&amp;99_12$dataTable[$hiddenFields][1]=sale&amp;99_12$dataTable[$hiddenFields][2]=area&amp;99_12$dataTable[$hiddenFields][3]=recent&amp;99_12$dataTable[$hiddenFields][4]=partners&amp;99_12$dataTable[$hiddenFields][5]=show_technologies&amp;99_12$dataTable[$hiddenFields][6]=resident_news&amp;99_12$dataTable[$hiddenFields][7]=contractor&amp;99_12$dataTable[$hiddenFields][8]=events&amp;99_12$dataTable[$hiddenFields][9]=interactive&amp;99_12$dataTable[$hiddenFields][10]=show_technologies" refreshText="Обновить" listText="Список" labelClass="itemLabel" addClass="addCell" editClass="editJoinCell" bagTable="tbl_photo"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="active_day" label="Новость дня" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUpDay.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CXMLLookupGridDataField" dbField="fp" label="Показывать на главной" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<!--<item type="class" class="CGridDataField" dbField="display_order" label="Приоритет" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>-->
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

@@ -1,0 +1,53 @@
+<tr class="gray_row">
+		<td class="left_cell" onClick="javascript:location.href='/agency/details/id/{tbl_obj_id}/';"><img src="/upload/{logo_image}" class="logo120" /></td>
+		<td class="text_cell" valign="top">
+			<div class="paneActivator" id="activator_{tbl_obj_id}" style="z-index:10;" onMouseOver="this.isMouseOver = true; showPane('{tbl_obj_id}');" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');">
+				<table style="display: none;" class="pane" id="pane_{tbl_obj_id}" onMouseOver="this.isMouseOver = true;" onMouseOut="this.isMouseOver = false; killPane('{tbl_obj_id}');" border="0">
+				<tbody><tr>
+					<td class="dynamicTable">
+						<h1 class="dynamicTable">{title}</h1>
+						<div style="height: 15px;">&nbsp;</div>
+						<!-- end photo -->
+
+						<table>
+												
+												<tbody><tr>
+							<td valign="top"><b>Тип деятельности:</b></td>
+							<td>{activity_title}</td>
+						</tr>
+																														
+												<tr>
+							<td valign="top"><b>Город:</b></td>
+							<td>{city_title}</td>
+						</tr>
+																														<tr>
+							<td valign="top"><b>Адрес:</b></td>
+							<td>{address}</td>
+						</tr>
+																														<tr>
+							<td valign="top"><b>Телефон:</b></td>
+							<td>{phone}</td>
+						</tr>
+																														<tr>
+							<td valign="top"><b>Сайт:</b></td>
+							<td><a href="{site_address}" target="_blank">{site_address}</a></td>
+						</tr>
+																																										</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+				<br style="font-size:5px;"/>
+				<a href="/agency/details/id/{tbl_obj_id}" style="color:#99CC00;">{title}</a><br/>
+				<div style="position:relative; width: 400px; overflow-y:hidden; height:50px; z-index:0px;">
+					<a href="/agency/details/id/{tbl_obj_id}" class="annot">{annotation}</a>
+				</div>
+			</div>
+		</td>
+		<td class="max_cell" colspan="2"></td>
+		<td class="right_cell"  align="right"><img src="/images/logo/right.gif" width="15" height="83" /></td>
+	</tr>
+	
+
+	
+	
+		<tr><td colspan="5" style="padding-top: 0px;"><img src="/images/front/0.gif" height="8" width="1"></td></tr>

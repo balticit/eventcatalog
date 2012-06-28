@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="authorize_php" template="templates/authorize.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="account" class="CKeyTemplateObject" key="login">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/authorize_files/login_lite.htm"/>
+				<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/authorize_files/logout2.htm"/>
+			</param>
+	</control>
+	<control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+		<param name="messages" type="list">
+			<item type="keyvalue" key="badauth" value="Неверный логин/пароль"/>
+		</param>
+	</control>
+
+   <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

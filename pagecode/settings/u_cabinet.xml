@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="u_cabinet_php" template="templates/u_cabinet.php" mailtitle="Регистрация на eventcatalog.ru" mailpath="pagecode/settings/registration_files/registration.htm">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="u_cab_menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/u_cabinet/u_cab_menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	
+	<control relativeId="account" class="CKeyTemplateObject" key="choose">
+			<param name="itemTemplates" type="list" >				
+				<item type="class" key="user" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/user.htm"/>
+				<item type="class" key="user_old" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/user_old.htm"/>
+			</param>
+	</control>
+	<control relativeId="errors" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/error.htm"/>
+	</control>
+	<control relativeId="userValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Имя"/>
+			<!--<item type="class" datakey="sity" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Город"/>-->
+			<item type="class" datakey="contact_phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактные телефоны"/>
+			<item type="class" datakey="company" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Компания"/>
+			<!--<item type="class" datakey="field_of_activity" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Сфера деятельности"/>-->
+			<item type="class" datakey="position" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Должность"/>
+			<!--<item type="class" datakey="address" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Адрес доставки корреспонденции"/>-->
+			<item type="class" key="site" datakey="site" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Сайт"/>
+			<!--<item type="class" datakey="email" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Электронная почта"/>-->
+			<item type="class" key="password" datakey="password" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль"/>
+			<item type="class" key="password_req" datakey="password_confirm" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль (подтверждение)"/>
+			<item type="class" key="password_confirm" datakey="password" compareKey="password_confirm" class="CValidationItem" messageId="mat" validationClass="CCompareValidator" />
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+			<item type="keyvalue" key="mat" value="пароль и подтверждение не совпадают"/>
+		</param>
+	</control>
+	<control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+		<param name="messages" type="list">
+			<item type="keyvalue" key="reg" value="зарегистрироваться"/>
+			<item type="keyvalue" key="save" value="сохранить"/>
+		</param>
+	</control>
+	<control relativeId="actList" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+			<param name="itemTemplates" type="list" >
+				<item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_files/contractor_activityItem.htm"/>
+			</param>
+			<param name="itemHeaders" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_files/contractor_activityHeader.htm"/>
+			</param>
+			<param name="itemFooters" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/registration_files/contractor_activityFooter.htm"/>
+			</param>
+	</control>
+	<control relativeId="contractorValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Название компании"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Адрес электронной почты"/>
+			<item type="class" key="login" datakey="login" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Логин"/>
+			<item type="class" key="password" datakey="password" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль"/>
+			<item type="class" key="password_req" datakey="password_confirm" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль (подтверждение)"/>
+			<item type="class" key="password_confirm" datakey="password" compareKey="password_confirm" class="CValidationItem" messageId="mat" validationClass="CCompareValidator" />
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+			<item type="keyvalue" key="mat" value="пароль и подтверждение не совпадают"/>
+		</param>
+	</control>
+	<control relativeId="areaValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Название площадки"/>
+			<item type="class" datakey="address" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Адрес"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Адрес электронной почты"/>
+			<item type="class" key="login" datakey="login" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Логин"/>
+			<item type="class" key="password" datakey="password" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль"/>
+			<item type="class" key="password_req" datakey="password_confirm" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль (подтверждение)"/>
+			<item type="class" key="password_confirm" datakey="password" compareKey="password_confirm" class="CValidationItem" messageId="mat" validationClass="CCompareValidator" />
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+			<item type="keyvalue" key="mat" value="пароль и подтверждение не совпадают"/>
+		</param>
+	</control>
+	<control relativeId="imagesList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/imageItem.htm"/>
+	</control>
+	<control relativeId="mp3List" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/mp3Item.htm"/>
+	</control>
+	<control relativeId="videoList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/videoItem.htm"/>
+	</control>
+	<control relativeId="artistValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Название / Имя"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Адрес электронной почты"/>
+			<item type="class" key="login" datakey="login" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Логин"/>
+			<item type="class" key="password" datakey="password" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль"/>
+			<item type="class" key="password_req" datakey="password_confirm" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль (подтверждение)"/>
+			<item type="class" key="password_confirm" datakey="password" compareKey="password_confirm" class="CValidationItem" messageId="mat" validationClass="CCompareValidator" />
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+			<item type="keyvalue" key="mat" value="пароль и подтверждение не совпадают"/>
+		</param>
+	</control>
+	<control relativeId="agencyValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Название Компании"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Адрес электронной почты"/>
+			<item type="class" datakey="address" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Адрес"/>
+			<item type="class" key="login" datakey="login" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Логин"/>
+			<item type="class" key="password" datakey="password" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль"/>
+			<item type="class" key="password_req" datakey="password_confirm" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Пароль (подтверждение)"/>
+			<item type="class" key="password_confirm" datakey="password" compareKey="password_confirm" class="CValidationItem" messageId="mat" validationClass="CCompareValidator" />
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+			<item type="keyvalue" key="mat" value="пароль и подтверждение не совпадают"/>
+		</param>
+	</control>
+	<control relativeId="junksaleSellList" class="CChildItemsList" addLink="/registration/junksale/type/sale" editLink="/registration/junksale/type/sale/id/{tbl_obj_id}" addTitle="Добавить объявление о продаже" title="Объявления о продаже" tableName="tbl__baraholka_sell" idField="tbl_obj_id" pidField="owner_id" titleField="title" deleteKey="tbl__baraholka_sell_delete">
+		<param name="bodyTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childList.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childItem.htm"/>
+	</control>
+	<control relativeId="junksaleBuyList" class="CChildItemsList" addLink="/registration/junksale/type/buy" editLink="/registration/junksale/type/buy/id/{tbl_obj_id}" addTitle="Добавить объявление о покупке" title="Объявления о покупке" tableName="tbl__baraholka_search" idField="tbl_obj_id" pidField="owner_id" titleField="title" deleteKey="tbl__baraholka_buy_delete" color="#f0f0f0">
+		<param name="bodyTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childList.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childItem.htm"/>
+	</control>
+	<control relativeId="personalCVList" class="CChildItemsList" addLink="/registration/personal/type/cv" editLink="/registration/personal/type/cv/id/{tbl_obj_id}" addTitle="Добавить резюме" title="Резюме" tableName="tbl__personal_organizator_cv_doc" idField="tbl_obj_id" pidField="owner_id" titleField="objective" deleteKey="tbl__personal_organizator_cv_doc_delete" color="#f0f0f0">
+		<param name="bodyTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childList.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childItem.htm"/>
+	</control>
+	<control relativeId="personalVacancyList" class="CChildItemsList" addLink="/registration/personal/type/vacancy" editLink="/registration/personal/type/vacancy/id/{tbl_obj_id}" addTitle="Добавить вакансию" title="Вакансии" tableName="tbl__personal_organizator_vacancy_doc" idField="tbl_obj_id" pidField="owner_id" titleField="position" deleteKey="tbl__personal_organizator_vacancy_doc_delete">
+		<param name="bodyTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childList.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_files/childItem.htm"/>
+	</control>
+	<control relativeId="cabinet" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/cabinet.htm"/>
+	</control>
+	
+	<control relativeId="favorite" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/favoriteItem.htm"/>
+	</control>
+	<control relativeId="marks" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/markItem.htm"/>
+	</control>
+	<control relativeId="comments" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/commentItem.htm"/>
+	</control>
+	<control relativeId="resume" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/resumeItem.htm"/>
+	</control>
+	<control relativeId="vacancies" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/vacancyItem.htm"/>
+	</control>
+	<control relativeId="sale" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/saleItem.htm"/>
+	</control>
+	<control relativeId="buy" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/buyItem.htm"/>
+	</control>
+	<control relativeId="personal" class="CKeyTemplateObject" key="cv">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="cv" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/cv.htm"/>
+				<item type="class" key="vacancy" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/vacancy.htm"/>
+			</param>
+	</control>
+	<control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+		<param name="messages" type="list">
+			<item type="keyvalue" key="noright" value="Вы не авторизованы"/>
+			<item type="keyvalue" key="other" value="Вы не можете редатировать данную запись"/>
+		</param>
+	</control>
+	<control relativeId="cvValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="fio" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="ФИО"/>
+			<item type="class" datakey="birth_date" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Дата рождения"/>
+			<item type="class" datakey="description" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Текст резюме/О себе"/>
+			<item type="class" datakey="objective" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Желаемая зарплата"/>
+			<item type="class" datakey="skills" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Желаемая занятость"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Ваш телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Ваш e-mail"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="vacancyValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="text" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Требования к соискателю"/>			
+			<item type="class" datakey="compensation" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Предлагаемые условия"/>
+			<item type="class" datakey="position" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактное лицо"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактный телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Контактный e-mail"/>
+			<item type="class" datakey="website" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Сайт компании"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="saleValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Наименование"/>
+			<item type="class" datakey="count" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Количество"/>
+			<item type="class" datakey="long_description" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Описание"/>
+			<item type="class" datakey="price" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Стоимость"/>
+			<item type="class" datakey="name" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактное лицо"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактный телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Контактный e-mail"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="buyValidator" class="CHashMapValidator">
+		<param name="validationItems" type="list">
+			<item type="class" datakey="title" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Наименование вещи"/>
+			<item type="class" datakey="count" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Необходимое количество"/>
+			<item type="class" datakey="description" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Требования"/>
+			<item type="class" datakey="name" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактное лицо"/>
+			<item type="class" datakey="phone" class="CValidationItem" messageId="req" validationClass="CRequiredValidator" alias="Контактный телефон"/>
+			<item type="class" datakey="email" class="CValidationItem" messageId="inv" validationClass="CEmailValidator" alias="Контактный e-mail"/>
+		</param>
+		<param name="messages" type="list">
+			<item type="keyvalue" key="req" value="поле &quot;{alias}&quot; не заполнено"/>
+			<item type="keyvalue" key="inv" value="недопустимое значение в поле &quot;{alias}&quot; "/>
+		</param>
+	</control>
+	<control relativeId="imagesList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/registration_junksale_files/imageItem.htm"/>
+	</control>
+	<control relativeId="junksale" class="CKeyTemplateObject" key="sale">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="sale" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/sale.htm"/>
+				<item type="class" key="buy" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/u_cabinet/buy.htm"/>
+			</param>
+	</control>
+
+	<control relativeId="pager" class="CPager">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+	</control>		
+	<control relativeId="messagesList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/message.htm"/>
+	</control>
+		<control relativeId="blackList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/black.htm"/>
+	</control>
+   <control relativeId="commentsList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/u_cabinet/comment.htm"/>
+	</control>
+   <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

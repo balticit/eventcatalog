@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="id"/>
+	<column name="title"/>
+	<index name="id"/>
+	<row id="sent" title="Отправлено"/>	
+	<row id="read" title="Прочитано"/>		
+	<row id="deleted" title="Удалено"/>		
+	<row id="replied" title="Ответ отослан"/>		
+</datasource>

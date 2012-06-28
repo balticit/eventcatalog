@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="replies_add_php" template="templates/replies_add.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="addReply" class="CKeyTemplateObject" key="unauthorized">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="unauthorized" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/replies_files/unauthorized.htm"/>
+				<item type="class" key="thank" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/replies_files/thank.htm"/>
+				<item type="class" key="post" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/replies_files/post.htm"/>
+			</param>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

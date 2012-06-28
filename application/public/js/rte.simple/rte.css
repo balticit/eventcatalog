@@ -1,0 +1,47 @@
+IFRAME.rteFrame
+{
+	border:1px solid #DDDDDD!important;
+	padding-left: 5px;
+	padding-top:  5px;
+}
+
+.rteImage {
+	border: 1px solid #FFFFFF!important;
+	background: white!important;
+	cursor: pointer;
+}
+
+.rteImageRaised, .rteImage:hover {
+	border: 1px solid #DDDDDD!important;
+	background: white!important;
+	cursor: pointer;
+}
+
+.rteImageLowered, .rteImage:active {
+	border: 1px solid #DDDDDD!important;
+	background: #EEEEEE!important;
+	cursor: pointer;
+}
+
+.rteVertSep {
+	background: white!important;
+	margin: 2px;
+}
+
+.rteBack {
+	border: none!important;
+	background: white!important;
+	letter-spacing: 0;
+	padding: 2px;
+}
+
+.rteBack tbody tr td, .rteBack tr td {
+	border: none!important;
+	background: white!important;
+	padding: 0;
+}
+
+.rteDiv {
+	display: block;
+	position: relative;
+}

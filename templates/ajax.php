@@ -1,0 +1,1 @@
+<?php CRenderer::RenderControl("body"); ?>

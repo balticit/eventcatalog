@@ -1,0 +1,109 @@
+table.pro_compare {
+  text-align: center;
+}
+table.pro_compare tr {
+  height: 25px;
+}
+table.pro_compare tr.pro_separator, table.pro_compare tr.pro_ps {
+  height: 10px;
+}
+table.pro_compare thead tr td{
+  background: url('/images/pro/list_top_gradient.png') repeat-x bottom;
+}
+table.pro_compare thead tr td:first-child {
+	border-left: 0;
+	font-size: 18px;
+	color: #666666;
+	text-align: left;
+	vertical-align: middle;
+	padding: 0 40px 0 30px;
+}
+table.pro_compare tbody tr td {
+	padding: 5px 10px;
+  border-bottom: 1px solid #ababab;
+	font-size: 18px;
+}
+table.pro_compare tbody tr td.noborder {
+  border-bottom: 0;
+}
+table.pro_compare tbody tr td.dot {
+  padding: 5px 10px 5px 0;
+}
+table.pro_compare tbody tr td:first-child {
+	padding: 5px 0 5px 0;
+}
+table.pro_compare tbody tr td.pro_title {
+    text-align: left;
+    font-size: 14px;
+    padding: 5px 10px 5px 0;
+}
+table.pro_compare tbody tr.pro_separator td {
+    text-align: left;
+    padding: 0;
+    border-bottom: 0;
+}
+table.pro_compare tbody tr.pro_month td {
+	padding: 3px;
+	font-size: 14px;
+	border-bottom: 0;
+	text-align: left;
+}
+table.pro_compare tbody tr td.pro_title_select_month {
+	text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+    padding: 5px 10px 5px 0;
+}
+table.pro_compare tbody tr td.pro_month_title {
+	text-align: right;
+}
+.small_text {
+  font-size: 11px;
+}
+span#cost{
+  font-size: 18px;
+  font-weight: 0;
+  color: #666666;
+}
+img.pro_radio{
+	cursor: pointer;
+}
+div.pro_pay{
+	width: 122px;
+	height: 42px;
+  background: url("/images/pro/btn_pay.png") repeat-y;
+	cursor: pointer;
+}
+div.pro_pay:hover{
+	background-position: 0px 42px;
+}
+span#pro_selected_text{
+	font-size: 18px;
+	font-weight: bold;
+	color: #bce247;
+}
+table.pro_compare tr.pro_ps td{
+	font-size: 14px;
+	padding: 5px 10px 5px 30px !important;
+	background: #febf01;
+	text-align: left;
+	border-bottom: 0;
+}
+table.pro_compare tr.highlight:hover td{
+	background: #eeeeee;
+}
+table.pro_compare tr.highlight:hover td.noborder{
+	background: none;
+}
+div.pro_list_caption{
+	font-size: 18px;
+  color: #666666;
+  font-weight: normal;
+	padding: 20px 0 3px 30px;
+}
+table.pro_list{
+	font-size: 18px;
+}
+table.pro_list tr td:first-child{
+	padding: 0 10px 5px 30px;
+}

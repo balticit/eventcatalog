@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Event календарь - EVENT КАТАЛОГ</title>
+	<?php CRenderer::RenderControl("metadata"); ?>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%; height:100%;">
+<tr><td><?php CRenderer::RenderControl("topLine");?></td></tr>
+<tr><!-- Заголовок-->
+	<td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;"><?php CRenderer::RenderControl("header"); ?></td>
+</tr>
+<tr><!--Меню-->
+<td><?php CRenderer::RenderControl("menu"); ?></td>
+</tr>
+<tr>
+	<td><?php CRenderer::RenderControl("submenu"); ?></td>
+</tr>
+<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; height: 100%" valign="top">
+
+	<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td valign="top" >
+			<div style="padding-left:15px;">
+				<div style=" width: 700px;">
+<br/>
+<b>Тематический календарь предстоящих событий, которые будут интересны
+профессионалам в области организации мероприятий. 
+</b><br><br>
+Если Вы знаете о важном событии, которое не попало в этот список, пожалуйста, напишите нам на <a href=mailto:development@eventcatalog.ru>development@eventcatalog.ru</a>  и мы с удовольствием разместим информацию о нём в Event Календаре. 
+<br><br>
+
+<table cellpadding="2" cellspacing="0" border="0" width="100%">
+<?php /*
+<tr>
+	<td colspan="4"><b><?php echo GP("y",date("Y")); ?></b></td>
+</tr>
+						CRenderer::RenderControl("newsList"); 
+                        
+                        */
+  $app = CApplicationContext::GetInstance();
+  $page = $app->page;
+  $id = $page->pageId.CONTROL_SEMISECTOR."newsList";
+  $ind = 0;
+  if (isset($page->controls[$id]))
+  {
+      $newsData = $page->controls[$id]->dataSource;
+      foreach ($newsData as $year=>$yeardata) {
+          echo '<tr><td style="padding:15px 0 10px" colspan=9><font style="font-size:22px; color:#808080;"><b>'.$year.'</b></font></td></tr>';
+          foreach ($yeardata as $month=>$monthdata) {
+              echo '<tr><td style="background:#cccccc;padding:3px 10px" colspan=9>'.$month.'</td></tr>';
+              foreach ($monthdata as $item) {
+                  echo '<tr style="height:35px">';
+                  
+                  //Самое первое событие
+                  if ($ind==0) {
+                      $style=";color:red";
+                  }
+                  else {
+                      $style="";
+                  }
+                  
+                  if ($item['date'] == $item['date_end']) {
+                     printf('<td style="padding:2px 0 2px 10px'.$style.'">%s</td>',$item['date']);
+                     echo '<td colspan=2>&nbsp;</td>';
+                     printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekbegin']);
+                     echo '<td colspan=2>&nbsp;</td>';
+                  }
+                  else {
+                      printf('<td style="padding:2px 2px 2px 10px'.$style.'">%s</td>',$item['date']);
+                      echo '<td style="'.$style.'">-</td>';
+                      printf('<td style="padding-right:10px'.$style.'">%s</td>',$item['date_end']);
+                      
+                      printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekbegin']);
+                      echo '<td style="'.$style.'">-</td>';
+                      printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekend']);
+                  }
+                  printf('<td style="width:100%%;padding-left:10px"><a style="color:black;'.$style.'" target="_blank" href="%s">%s</td>',$item['link'],$item['title']);
+                  printf('<td nowrap style="'.$style.'">%s</td>',$item['type']);
+                  printf('<td nowrap style="'.$style.'">%s</td>',$item['place']);
+                  echo '</tr>';
+                  $ind++;
+              }
+          }
+      }
+  }
+?>          
+</table>
+
+<br><br>
+
+<?php CRenderer::RenderControl("text"); ?>
+</div>
+		</div>	
+				
+		
+		</td>
+	</tr>
+	
+	
+	</table>
+</td></tr>
+<tr><td class="partner_ban"><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
+<tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>
+</table>
+<?php CRenderer::RenderControl("googleanalytics"); ?>
+</body>
+</html>

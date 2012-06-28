@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="area_find_add_php" template="templates/area_find.php">
+  <control relativeId="content" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/find_add.htm"/>
+	</control>
+</page>

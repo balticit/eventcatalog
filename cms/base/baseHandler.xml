@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="[handler]" template="[templateDir][templateFile]">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+</page>

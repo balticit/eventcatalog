@@ -1,0 +1,70 @@
+/*
+bright: rgb(234,242,255);
+normal: rgb(120,172,255);
+dark: rgb(0,66,174);
+*/
+
+
+.dtpc-admin-nav .tab-pane {
+	width: 100%;
+}
+
+.dtpc-admin-nav .tab-row .tab {
+	font-family: Tahoma, Verdana, Helvetica, Arial;
+	font-size: 8pt;
+	cursor: default;
+	padding: 2px 15px 2px 15px;
+	background: white;
+	border-bottom: 1px dashed;
+	border-color: #dddddd;
+
+	line-height: 20pt;
+	cursor: pointer;
+	z-index: 1;
+	text-align: left;
+
+}
+
+.dtpc-admin-nav .tab-row .tab.selected {
+	border-bottom: 1px dashed #dddddd;
+	z-index: 3;
+	background: #f7f7f7;
+	text-align: left;
+}
+
+.dtpc-admin-nav .tab-row .tab a {
+	font-family: Tahoma, Verdana, Helvetica, Arial;
+	font-size: 8pt;
+	color: navy;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.dtpc-admin-nav .tab-row .hover a {
+	/*color: navy;*/
+	/*text-decoration: underline;*/
+}
+
+.dtpc-admin-nav .tab-row .tab.selected a {
+	font-weight: bold;
+	color: black;
+
+}
+
+.dtpc-admin-nav .tab-page {
+	clear: both;
+	border: 0px solid #dddddd;
+	background: white;
+	z-index: 2;
+	color: black;
+	font-family: Verdana, Helvetica, Arial;
+	font-size: 13px;
+	padding: 3px;
+}
+
+.dtpc-admin-nav .tab-row {
+	z-index: 1;
+	white-space: nowrap;
+	background: #f5f5f5;
+	width: 100%;
+}

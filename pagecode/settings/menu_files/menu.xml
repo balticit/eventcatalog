@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="link"/>
+	<column name="title"/>
+	<column name="imgname"/>
+	<column name="target"/>
+	<index name="link"/>
+	<row link="/contractor/" title="подрядчики" imgname="contractor" target=""/>
+	<row link="/area/" title="площадки" imgname="area" target=""/>
+	<row link="/artist/" title="артисты" imgname="artist" target=""/>
+	<row link="/agency/" title="агентства" imgname="agency" target=""/>
+	<row link="/eventoteka/" title="эвентотека" imgname="black" target=""/>
+</datasource>

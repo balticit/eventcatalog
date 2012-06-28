@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="personal_details_php" template="templates/personal_details.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+    <control relativeId="personalTypeList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/personal_files/personalTypeItem.htm"/>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="typemenu" class="CAlternateRepeater" alternateKey="selected" alternateValue="1">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/personal_files/typemenuItem.htm"/>
+		<param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/personal_files/typemenuActiveItem.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/personal_files/typemenu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="typeList" class="CTreeRepeater" levels="2" childField="tbl_obj_id" parentField="parent_id" rootValue="0">
+			<param name="itemTemplates" type="list" >
+				<item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/personal_files/typeListItem.htm"/>
+			</param>
+			<param name="itemHeaders" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/personal_files/typeListHeader.htm"/>
+			</param>
+			<param name="itemFooters" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/personal_files/typeListFooter.htm"/>
+			</param>
+	</control>
+	<control relativeId="cvdetails" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/personal_details_files/cvdetails.htm"/>
+	</control>
+	<control relativeId="vacancydetails" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/personal_details_files/vacancydetails.htm"/>
+	</control>	
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

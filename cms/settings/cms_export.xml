@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_export_php" template="cms/templates/cms_export.php">
+	<control relativeId="data" class="CTemplateObject" />
+	<control relativeId="users" class="CXLSXMLTableDumper" tableName="tbl__registered_user">
+		<param name="fields" type="list">
+			<item type="keyvalue" key="title" value="Имя"/>
+			<item type="keyvalue" key="sity" value="Город"/>
+			<item type="keyvalue" key="contact_phone" value="Телефон"/>
+			<item type="keyvalue" key="email" value="E-Mail"/>
+			<item type="keyvalue" key="company" value="Компания"/>
+			<item type="keyvalue" key="field_of_activity" value="Род деятельности"/>
+			<item type="keyvalue" key="position" value="Должность"/>
+			<item type="keyvalue" key="company_phone" value="Телефон"/>
+			<item type="keyvalue" key="address" value="Адрес"/>
+		</param>
+	</control>
+	<control relativeId="contractors" class="CXLSXMLTableDumper" tableName="vw__contractor_details_list">
+		<param name="fields" type="list">
+			<item type="keyvalue" key="title" value="Название"/>
+			<item type="keyvalue" key="short_description" value="Краткое описание"/>
+			<item type="keyvalue" key="description" value="Полное описание"/>
+			<item type="keyvalue" key="city_name" value="Город"/>
+			<item type="keyvalue" key="address" value="Адрес"/>
+			<item type="keyvalue" key="phone" value="Телефон"/>
+			<item type="keyvalue" key="phone2" value="Телефон2"/>
+			<item type="keyvalue" key="email" value="E-Mail"/>
+			<item type="keyvalue" key="site_address" value="Адрес сайта"/>
+			<item type="keyvalue" key="activity_title" value="Род деятельности"/>
+		</param>
+	</control>
+	<control relativeId="areas" class="CXLSXMLTableDumper" tableName="vw__area_list">
+		<param name="fields" type="list">
+			<item type="keyvalue" key="title" value="Название"/>
+			<item type="keyvalue" key="area_cost" value="Цена"/>
+			<item type="keyvalue" key="description" value="Полное описание"/>
+			<item type="keyvalue" key="city_name" value="Город"/>
+			<item type="keyvalue" key="location_name" value="Местоположение"/>
+			<item type="keyvalue" key="address" value="Адрес"/>
+			<item type="keyvalue" key="phone" value="Телефон"/>
+			<item type="keyvalue" key="rent" value="Арендная плата"/>
+			<item type="keyvalue" key="email" value="E-Mail"/>
+			<item type="keyvalue" key="site_address" value="Адрес сайта"/>
+			<item type="keyvalue" key="max_count_man" value="Макс. человек"/>
+			<item type="keyvalue" key="max_sitting_man" value="Макс. сидячих человек"/>
+			<item type="keyvalue" key="date_open" value="Дата открытия"/>
+			<item type="keyvalue" key="kitchen" value="Кухня"/>
+			<item type="keyvalue" key="parking" value="Парковка"/>
+			<item type="keyvalue" key="equipment" value="Оборудование"/>
+			<item type="keyvalue" key="dancing" value="Танцпол"/>
+			<item type="keyvalue" key="style" value="Стиль"/>
+			<item type="keyvalue" key="plus" value="Дополнительно"/>
+			<item type="keyvalue" key="area_type_name" value="Тип площадки"/>
+			<item type="keyvalue" key="area_subtype_name" value="Вид площадки"/>
+			<item type="keyvalue" key="halls_count" value="Количество залов"/>
+		</param>
+	</control>
+	<control relativeId="artists" class="CXLSXMLTableDumper" tableName="vw__artist_list">
+		<param name="fields" type="list">
+			<item type="keyvalue" key="title" value="Название"/>
+			<item type="keyvalue" key="cost" value="Цена"/>
+			<item type="keyvalue" key="description" value="Полное описание"/>
+			<item type="keyvalue" key="region_title" value="Регион"/>
+			<item type="keyvalue" key="country_title" value="Страна"/>
+			<item type="keyvalue" key="manager_phone" value="Телефон"/>
+			<item type="keyvalue" key="manager_name" value="Контактное лицо"/>
+			<item type="keyvalue" key="email" value="E-Mail"/>
+			<item type="keyvalue" key="site_address" value="Адрес сайта"/>
+			<item type="keyvalue" key="styles" value="Стили"/>
+			<item type="keyvalue" key="group_title" value="Группа"/>
+			<item type="keyvalue" key="subgroup_title" value="Подгруппа"/>
+		</param>
+	</control> 	 	 	 	 	 	 	 	
+	<control relativeId="agencies" class="CXLSXMLTableDumper" tableName="vw__contractor_details_list">
+		<param name="fields" type="list">
+			<item type="keyvalue" key="title" value="Название"/>
+			<item type="keyvalue" key="description" value="Полное описание"/>
+			<item type="keyvalue" key="city_name" value="Город"/>
+			<item type="keyvalue" key="address" value="Адрес"/>
+			<item type="keyvalue" key="phone" value="Телефон"/>
+			<item type="keyvalue" key="phone2" value="Телефон2"/>
+			<item type="keyvalue" key="email" value="E-Mail"/>
+			<item type="keyvalue" key="site_address" value="Адрес сайта"/>
+			<item type="keyvalue" key="activity_title" value="Род деятельности"/>
+		</param>
+	</control>
+</page>

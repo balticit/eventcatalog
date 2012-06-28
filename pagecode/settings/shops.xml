@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="area_php" template="templates/shops.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
+	</control>
+	<control relativeId="areaList" class="CAlternateRepeater" alternateKey="alt" alternateValue="1">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/areaListItem.htm"/>
+		<param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/areaLetterItem.htm"/>
+	</control>
+	<control relativeId="titlefilter" class="CPageTitleControl" usetags="0" text="Some Title" />
+
+	<control relativeId="cityLabe" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="cityAll" class="CClearParamTemplateObject" paramName="city">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/cityAllList.htm"/>
+	</control>
+	<control relativeId="search" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/filterTemplate.htm"/>
+	</control>
+	<control relativeId="allAreas" class="CTemplateObject" >
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/allAreas.htm"/>
+	</control>
+	<control relativeId="openAreas" class="CTemplateObject" >
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/openAreas.htm"/>
+	</control>
+	<control relativeId="coveredAreas" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_files/coveredAreas.htm"/>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="/area/">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="submenu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="letterFilter" class="CAlternateRepeater" alternateKey="selected" alternateValue="1">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/letterItem.htm"/>
+		<param name="alternateTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/letterAltItem.htm"/>
+	</control>
+	<control relativeId="pager" class="CPager">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+	</control>
+	<control relativeId="typeList" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+			<param name="itemTemplates" type="list" >
+				<item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/area_files/areaSubTypeItem.htm"/>
+			</param>
+			<param name="itemHeaders" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/area_files/areaTypeHeader.htm"/>
+			</param>
+			<param name="itemFooters" type="list">
+				<item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="pagecode/settings/area_files/areaTypeFooter.htm"/>
+			</param>
+	</control>
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

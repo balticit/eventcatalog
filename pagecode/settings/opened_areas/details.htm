@@ -1,0 +1,91 @@
+<div style="margin-left: 5px; margin-top: 10px;">
+    <table width="100%" border="0">
+        <tr>
+            <td valign="top" style="padding-right:20px;">
+                <h1 style="margin-left: 10px;">
+                     {title}</h1>
+					 <span style="color:#999999; padding-left: 10px;">Дата размещения статьи</span> <strong>{date}</strong><Br /><br />
+                <div style="margin-bottom: 20px; padding-left: 10px; ">
+					<table width="100%">
+						<tr>
+							<td width="4%"><img src="/upload/{s_image}" alt="{title}" class="newsimg" /></td>
+							<td width="96%" align="left" valign="top" >{link_area}</td>
+						</tr>
+					</table>
+                    </div>
+                <div style="margin-left: 10px;">
+                    {text}
+                </div>
+             
+           
+             <div >
+			  <table  border="0" >
+				<tr>
+					<td>
+						<p id="repliesLabel" style="margin-top: 20px; display: none;">
+							<a href="#" onclick="javascript:return showReplies('repliesBox');">Отзывы</a><br>
+						</p>
+						<div id="repliesBox" style="overflow-y: scroll; overflow-x: hidden; display: none;
+							margin-top: 10px; border-width: 0px; border-style: solid; background-color: none;
+							width: 400px;">
+						</div>
+					</td>
+				</tr>
+        		<tr>
+					<td>  <br />
+	<script type="text/javascript" language="javascript" src="/comments/jsc?id={tbl_obj_id}&type=opened_area"></script>
+					<!-- <p>
+                <a href="#" style="color:#999999;" onclick="javascript:return showAddReply('addReplyBox','addReplyFrame','/replies/add/id/{tbl_obj_id}/type/{newstype}/');">
+                    Оставить свой отзыв</a><Br /> <a style="color:#999999;" href="/forum/">Обсудить на форуме</a></p>
+
+           
+		   
+		   
+		   <div id="addReplyBox" style="overflow: visible; display: none; margin-top: 10px; 
+						background-color: none;"></div>-->
+					</td>
+				</tr>
+        		
+			</table>
+			 </td><td valign="top"> 
+			 <!-- <script type="text/javascript">
+			  {js_images}
+			  </script>
+
+                <table border="0" cellpadding="2" cellspacing="2">
+                    <tr>
+                        {photo_list_1}
+                    </tr>
+					<tr>
+                        {photo_list_2}
+                    </tr>
+                </table>
+                <br /><div >
+                {image_nav}
+               <!-- <p align="center" style="visibility: {foto_visible};">
+                    {title}</p></div>-->
+					
+					
+<!--			<script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<span id="repliesLabel" style="margin:3px;"><a href="#" onclick="javascript:return showReplies('repliesBox');"></a><br></span>
+			<div id="repliesBox" style="overflow: auto; display:none; margin-top:10px; margin-left:3px; border-width:0px; border-style:solid; background-color:none; width:300px;"></div>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<div id="addReplyBox" style="overflow:visible; display:none; margin-top:10px; margin-left:3px; background-color:none;"></div>
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');" frameborder="0" src="" style="border:none; display:none;" ></iframe>
+			
+			<iframe style="display:none;" src="/replies/id/{tbl_obj_id}/type/{newstype}/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');"></iframe>				
+			<p style="margin:20px;">&nbsp;</p>
+			<script type="text/javascript" language="javascript">showReplies('repliesBox');</script>
+					
+					
+                <script type="text/javascript" language="javascript" src="/js/replies.js"></script>-->
+			</div> 
+           
+		 
+		   
+		    </td> 
+         </tr> 
+      </table>
+</div> 

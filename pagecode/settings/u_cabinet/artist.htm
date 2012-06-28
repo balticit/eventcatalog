@@ -1,0 +1,353 @@
+<div style="padding-right: 15px;">
+
+<form method="post" enctype="multipart/form-data" style="padding: 0px; margin: 0px;">
+<input type="hidden" name="event" value="register">
+<input type="hidden" name="type" value="artist">
+
+<table border="0" cellpadding="0" cellspacing="0" class="properties" style="width:100%;">
+<tr>
+<td>
+
+<table id="table_title" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_title" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Название / Имя:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[title]" size="60" value="{title}"/>
+
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_group" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_group" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Раздел:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <script language="JavaScript" type="text/javascript">
+                var inTemp = null;
+                function SetSubgroup() {
+                    var group = document.getElementById("properties_group");
+                    var types = new Array({groupsJS});
+                    for (i = 0; i < types.length; i++) {
+                        var sbg = document.getElementById("properties_subgroup" + types[i]);
+                        sbg.name = "";
+                        sbg.disabled = true;
+                        sbg.style.color = "#999999";
+                        sbg.style.height = "0px";
+                    }
+                    var objId = "properties_subgroup" + group.value;
+                    var sbg = document.getElementById(objId);
+                    sbg.name = "subgroup[]";
+                    sbg.disabled = false;
+                    sbg.style.color = "#000000";
+                    sbg.style.height = "auto";
+
+                }
+                function RevertSubgroup() {
+                    if (inTemp != null) {
+                        var tmp = document.getElementById("tmpSub");
+                        var sbg = document.getElementById(inTemp);
+                        sbgHT = sbg.outerHTML;
+                        tmpHT = tmp.outerHTML;
+                        tmp.outerHTML = sbgHT;
+                        sbg.outerHTML = tmpHT;
+                    }
+                }
+            </script>
+            {groupList}
+
+        </td>
+    </tr>
+</table>
+
+<table id="table_subgroup" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_subgroup" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Подгруппа:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <!--<select class="property_select" size="1" id="properties_subgroup" name="properties[subgroup]" ></select>-->
+            <div id="subgroupContainer"><span id="tmpSub" style="visibility:hidden; "></span></div>
+            <br/>
+            {subgroupsList}
+            <script type="text/javascript" language="javascript">
+                SetSubgroup();
+            </script>
+
+        </td>
+    </tr>
+</table>
+
+<table id="table_style" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_style" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Стиль:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            {stylesList}
+        </td>
+    </tr>
+</table>
+
+<table id="table_description" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_description" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Описание:</div>
+            <div class="property_description"></div>
+
+        </td>
+        <td valign="middle" class="property_editor">
+            <textarea class="property_textarea" name="properties[description]" rows="10"
+                      cols="50">{description}</textarea>
+
+        </td>
+    </tr>
+</table>
+
+<table id="table_region" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_region" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Регион:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <script language="JavaScript" type="text/javascript" src="/js/chainedSelector.js">
+            </script>
+            <select class="property_select" size="1" id="properties_region" name="properties[region]">
+                <option value="30">Россия</option>
+                <option value="31">Зарубежье</option>
+            </select>
+            <script type="text/javascript" language="javascript">
+                var region = '{region}';
+                if (region != "") {
+                    document.getElementById("properties_region").value = region;
+                }
+            </script>
+        </td>
+    </tr>
+</table>
+<table id="table_country" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_country" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Страна:</div>
+
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            {countriesList}<br/> или другая страна <br/> <input class="property_text" type="text"
+                                                                name="properties[other_country]" size="60"
+                                                                value="{other_country}"/>
+        </td>
+    </tr>
+</table>
+
+
+<table id="table_site_address" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_site_address" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Адрес официального сайта:</div>
+            <div class="property_description"></div>
+
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[site_address]" size="60" value="{site_address}"/>
+        </td>
+    </tr>
+</table>
+<table id="table_manager_name" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_manager_name" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Имя администратора:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[manager_name]" size="60" value="{manager_name}"/>
+
+        </td>
+    </tr>
+</table>
+
+<table id="table_manager_phone" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_manager_phone" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Контактный телефон администратора:</div>
+            <div class="property_description"></div>
+
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[manager_phone]" size="60"
+                   value="{manager_phone}"/>
+        </td>
+    </tr>
+</table>
+
+<table id="table_email" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_email" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+
+            <div class="property_title">Электронная почта:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" name="properties[email]" size="60" value="{email}"/>
+        </td>
+    </tr>
+</table>
+
+<table id="table_logo" style="width: 100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_logo" style="white-space: nowrap;" valign="top" class="property_info"
+            width="300px">
+            <div class="property_title">
+                &nbsp;Логотип 120х80
+                <br/>
+                                    <span style="color: #999999;">(Внимание! Название файла должно
+                                        <br/>
+                                        состоять из латинских букв или цифр)</span>:
+            </div>
+            <div class="property_description">
+            </div>
+        </td>
+        <td valign="middle" class="property_editor">
+            текущее значение: `<a href="/upload/{logo}" target="_blank">{logo}</a>`<br/>
+            <input class="property_file" type="file" name="properties[logo]"/>
+            <label>
+                <input type="checkbox" name="properties[logo_clean]" value="clean"/>
+                - очистить атрибут</label>
+        </td>
+    </tr>
+</table>
+
+<table id="table_title" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_dancing" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Фото:
+
+                <br>
+<span style="color: #999999;">(Внимание! Разрешение фотографий должно 
+                                        <br/>
+                                        быть не менее 640x480 pixels. Заполнение поля <Br>"Название" обязательно!)</span>
+
+
+            </div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <a href="/registration/image/ptype/artist" target="_blank" style="visibility:{images_visible};">Добавить
+                фото</a>
+
+            <div id="photoContainer">
+                <table>
+                    {imagesList}
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<table id="table_title" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_dancing" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Aудио (mp3):</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <a href="/registration/image/ptype/artist/type/mp3" target="_blank" style="visibility:{images_visible};">Добавить
+                файл</a>
+
+            <div id="photoContainer">
+                <table>
+                    {mp3List}
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table id="table_title" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_dancing" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">&nbsp;Видео:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <a href="/registration/upload/ptype/artist/type/video/" target="_blank"
+               style="visibility:{images_visible};">Добавить файл</a>
+
+            <div id="photoContainer">
+                <table>
+                    {videoList}
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<table id="table_login" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr>
+        <td id="td_login" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Логин:</div>
+            <div class="property_description"></div>
+        </td>
+        <td valign="middle" class="property_editor">
+            <input class="property_text" type="text" {login_readonly} name="properties[login]" size="60"
+            value="{login}"/>
+        </td>
+    </tr>
+</table>
+
+<table id="table_password" style="width:100%;" cellpadding="5" cellspacing="0" border="0">
+    <tr style="background: #f0f0f0;">
+        <td id="td_password" style="white-space:nowrap;" valign="top" class="property_info" width="300px">
+            <div class="property_title">Пароль:</div>
+            <div class="property_description"></div>
+
+        </td>
+        <td valign="middle" class="property_editor">
+            просмотреть пароль невозможно, можно только его изменить
+            <table>
+                <tr>
+                    <td><input class="property_text" type="password" name="properties[password]" size="30" value=""/>
+                    </td>
+                    <td>(новый пароль)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input class="property_text" type="password" name="properties[password_confirm]" size="30"
+                               value=""/>
+                    </td>
+                    <td>(подтверждение)
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+{junksaleBuyList}
+{junksaleSellList}
+{personalCVList}
+{personalVacancyList}
+
+<p>&nbsp;</p>
+<input type="submit" value="{submit_text}"/>
+</form>
+
+</div>

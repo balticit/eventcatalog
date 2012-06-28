@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_eventtv_main_php" template="cms/templates/cms_eventtv_main.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />	
+</page>

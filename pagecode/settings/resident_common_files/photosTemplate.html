@@ -1,0 +1,124 @@
+<div>
+  <h4 class="detailsBlockTitle"><a name="photos">Фото</a></h4>
+  <div>
+<script type="text/javascript">
+	var popupImgWindow=null;
+	var selectingImg=1;
+	var miniImg=new Array();
+	var midiImg=new Array();
+	var maxiImg=new Array();
+	var imgTitle=new Array();
+	var maxiImgWidth=new Array();
+	var maxiImgHeight=new Array();
+	var allImgs={photos_count};
+	{js}
+	var midiImage=null;
+	function afterLoadMidiImg()
+	{
+		var img = document.getElementById('midiImg');
+		img.src = midiImage.src;
+		img.removeAttribute("width");
+		img.removeAttribute("height");
+    if(midiImage.width>640||midiImage.height>264){
+      if(midiImage.width/midiImage.height>640/264)img.width=640;
+      else img.height=264;}
+	}
+	function selectThumb(num)
+	{
+		var title=document.getElementById('imgTitle');
+		var miniImg=document.getElementById('img'+num);
+		var miniSpan=document.getElementById('span'+num);
+		if(miniImg&&miniSpan){
+			for(i=1;i<=allImgs;i++)document.getElementById('span'+i).style.color='black';
+		  if(!midiImage)midiImage=new Image();
+			midiImage.onload=afterLoadMidiImg;
+			midiImage.src=midiImg[num];
+			if(title)title.innerHTML=imgTitle[num];
+			selectingImg=num;
+			miniSpan.style.color='red';
+		}
+	}
+	function listPrevImg()
+	{
+		selectingImg--;
+		if(selectingImg<=0)selectingImg = allImgs;
+		selectThumb(selectingImg);
+	}
+	function listNextImg(id)
+	{
+		selectingImg++;
+		if(selectingImg>allImgs)selectingImg = 1;
+		selectThumb(selectingImg);
+	}
+	var largeImgBoxy = null;
+	var largeImg = null;
+	function afterLoadImg()
+	{
+		var img=document.getElementById('imgContainer');
+    var spinner=document.getElementById('imgSpinner');
+		img.src = largeImg.src;
+		img.removeAttribute("width");
+		img.removeAttribute("height");
+    h=largeImg.height;
+    if(largeImg.width>720||largeImg.height>480){
+      if(largeImg.width/largeImg.height>720/480){img.width=720;h=720/largeImg.width*h;}
+      else{img.height=480;h=480;}
+    }
+    spinner.style.display="none";
+		img.style.display="inline";
+    img.style.paddingTop=(480-h)/2+"px";
+	}
+	function setSpinner()
+	{
+		document.getElementById('imgContainer').style.display="none";
+    document.getElementById('imgSpinner').style.display="inline";
+	}
+	function setCurrentImg()
+	{
+		ind=selectingImg;
+		url=maxiImg[ind];
+		if(!largeImg)largeImg=new Image();
+		largeImg.onload=afterLoadImg;
+		largeImg.src=url;
+	}
+	function li_window_keypress(event)
+	{
+		if(event.keyCode==27&&largeImgBoxy)largeImgBoxy.hide();
+	}
+	function openLargeImg()
+	{
+		largeImgBoxy = new Boxy(
+			'<div id="li_container" style="width:720px;height:510px;margin:0;padding:0;position:relative;overflow:hidden;text-align:center;"><img id="imgContainer" style="display:none;"><img id="imgSpinner" src="/images/spinner.gif" style="padding-top:232px;"><div id="leftPanel" class="leftPanel" style="width: 50%;"><img src="/images/arrow/imgLeft.png" class="arrowBtnL" style="display:none;"></div><div id="rightPanel" class="rightPanel" style="width:50%;"><img src="/images/arrow/imgRight.png" class="arrowBtnR" style="display:none;"></div><div class="closePanel" onclick="javascript:largeImgBoxy.hide();" style="height:30px;">Закрыть&nbsp;&nbsp;<img src="/images/arrow/imgClose.png" style="vertical-align:middle"></div></div>',{
+			modal: true,
+			fixed: false,
+			unloadOnHide: true,
+			afterHide: function(){
+				largeImgBoxy = null;
+				window.onkeypress = null;
+			},
+			afterShow: function(){
+				$(".closePanel").hover(
+					function(){$(this).animate({opacity:1},'fast');},
+					function(){$(this).animate({opacity:0.7},'fast');});
+				$("#leftPanel").hover(
+					function(){$(".arrowBtnL").fadeIn('fast');},
+					function(){$(".arrowBtnL").fadeOut('fast');});
+				$("#rightPanel").hover(
+					function(){$(".arrowBtnR").fadeIn('fast');},
+					function(){$(".arrowBtnR").fadeOut('fast');});
+				setCurrentImg();
+				$("#rightPanel").click(function(){
+					setSpinner();listNextImg();setCurrentImg();
+				});
+				$("#leftPanel").click(function(){
+					setSpinner();listPrevImg();setCurrentImg();
+				});
+			}
+		});
+		$(".boxy-modal-blackout").click(function(){
+			if(largeImgBoxy)largeImgBoxy.hide();
+		});
+		window.onkeypress=li_window_keypress;
+	}
+</script>
+<table cellpadding="0" cellspacing="0" border="0" width="640">{thumbsLines}</table>{medium_photo}</div></div>

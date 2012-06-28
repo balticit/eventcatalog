@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_forum_php" template="cms/templates/cms_forum.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="phpbb_users" pageSize="40" cssClass="dataTable" orderField="username" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="user_id" keyType="numeric" addText="" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="user_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
+			<item type="class" class="CGridDataField" dbField="username" label="Имя" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CGridDataField" dbField="user_email" label="Электронная почта" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CXMLLookupGridDataField" dbField="user_active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+			<item type="class" class="CActivateForumGridViewField" dbField="user_id" alterItemClass="alterItem" cellType="custom" fieldType="numeric" sourceEncoding="utf-8" filename="cms/settings/misc/activateLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" customAction="activateforum" messageHeader="Активация на форуме EventCatalog.ru" messageFile="cms/settings/misc/activation_forum.htm" messageFileDeactivate="cms/settings/misc/deactivation_forum.htm"/>
+			<item type="class" class="CEditGridDataField" dbField="user_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="user_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
+		</param>
+	</control>
+	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerActiveItem.htm"/>
+	</control>
+</page>

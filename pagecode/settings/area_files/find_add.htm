@@ -1,0 +1,149 @@
+<script language="JavaScript">
+    function faDlgMetro(page) {
+        fam_dialog = new Boxy('<div style="width:100px; height: 100px;"><div style="margin: auto;">Загрузка...</div></div>', {
+            modal:true,
+            closeText:"[X]",
+            title:"Выберите местоположение",
+            fixed:false,
+            unloadOnHide:true,
+            clickToFront:true,
+            beforeUnload:function () {
+                if (page == 1) {
+                    var sts = '';
+                    $('#fm_sel_stations').children().each(function () {
+                        sts += '<label title="Удалить" id="fa_sel_s_' + $(this).children().attr('value') + '" onclick="$(this).remove();" class="fm_selected">' + $(this).html() + '</label> ';
+                    });
+                    $('#fa_sel_stations').html(sts);
+
+                    var dst = '';
+                    $('#fm_sel_districts > div > label > input:checked').each(function () {
+                        dst += '<label id="fa_sld_district_' + $(this).attr("value") + '" title="Удалить" class="fm_selected" onclick="$(this).remove();">' +
+                                '<input type="hidden" value="' + $(this).attr("value") + '" name="mdist[' + $(this).attr("value") + ']">' + $(this).parent().text() + '</label> ';
+                    });
+                    $('#fa_sel_districts').html(dst);
+                }
+                else if (page == 2) {
+                    var hws = '';
+                    $("#mway_sel_highway").children().each(function () {
+                        hws += '<label id="fa_sld_highway_' + $(this).children().attr('value') + '" title="Удалить" class="fm_selected" onclick="$(this).remove();">' + $(this).html() + ' ш. </label> ';
+                    });
+                    $("#mway_sel_city").children().each(function () {
+                        hws += '<label id="fa_sld_city_' + $(this).children().attr('value') + '" title="Удалить" class="fm_selected" onclick="$(this).remove();">' + $(this).html() + ' </label> ';
+                    });
+
+                    $('#fa_sel_ways').html(hws);
+                }
+            }});
+        $.ajax({
+            url:"/area/find_metro/?fa=" + page,
+            cache:false,
+            success:function (html) {
+                fam_dialog.setContent(html);
+                fam_dialog.center('x');
+                fam_dialog.moveToY($(window).scrollTop());
+                if (page == 1) {
+                    $('#fa_sel_stations').children().each(function () {
+                        $('#fm_marker_' + $(this).children().attr('value')).show();
+                    });
+                    RenderFMStations();
+                    for (i in fmStationsByLine) {
+                        CheckFMLine(i);
+                    }
+                    $('#fa_sel_districts').children().each(function () {
+                        id = this.id;
+                        id = id.substring(16, id.length);
+                        $('#fm_mdist_' + id).attr('checked', true);
+                    });
+                }
+                else if (page == 2) {
+                    $('#fa_sel_ways').children().each(function () {
+                        id = this.id;
+                        if (id.indexOf('fa_sld_city') >= 0) {
+                            id = id.substring(12, id.length);
+                            var chb = $('#mway_city_' + id);
+                            chb.attr('checked', true);
+                            $('#mway_sel_city').append('<label id="mway_sld_city_' + id + '" title="Удалить" class="fm_selected" onclick="FMDelCity(this)"><input type="hidden" name="mcity[' + id + ']" value="' + id + '">' + chb.attr('value') + ' </label>');
+                        }
+                        else {
+                            id = id.substring(15, id.length);
+                            var chb = $('#mway_highway_' + id);
+                            chb.attr('checked', true);
+                            $('#mway_sel_highway').append('<label id="mway_sld_highway_' + id + '" title="Удалить" class="fm_selected" onclick="FMDelHighway(this)"><input type="hidden" name="mhighway[' + id + ']" value="' + id + '">' + chb.attr('value') + ' </label>');
+                        }
+
+                    });
+                }
+            }
+        });
+    }
+</script>
+<div style="margin:0; padding: 5px">
+    <form method="get" action="/area/">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Город:</td>
+                <td style="padding-left: 5px;"><select name="city">{city_list}</select></td>
+            </tr>
+            <tr class="tr_paddingtop">
+                <td>Категория:</td>
+                <td style="padding-left: 5px;"><select name="category">{category_list}</select></td>
+            </tr>
+
+            <tr valign="top" class="tr_paddingtop">
+                <td>Станции метро г. Москва:<br><a href="" onclick="faDlgMetro(1); return false;">Выбрать</a></td>
+                <td style="padding-left: 5px;">
+                    <div style="height: 100px; width: 250px; overflow: scroll; border: 1px solid #999999; margin: 0;"
+                         id="fa_sel_stations"></div>
+                </td>
+            </tr>
+            <tr valign="top" class="tr_paddingtop">
+                <td>Округа г. Москва:<br><a href="" onclick="faDlgMetro(1); return false;">Выбрать</a></td>
+                <td style="padding-left: 5px;">
+                    <div style="height: 100px; width: 250px; overflow: scroll; border: 1px solid #999999; margin: 0;"
+                         id="fa_sel_districts"></div>
+                </td>
+            </tr>
+            <tr valign="top" class="tr_paddingtop">
+                <td>Направления (Подмосковье):<br><a href="" onclick="faDlgMetro(2); return false;">Выбрать</a></td>
+                <td style="padding-left: 5px;">
+                    <div style="height: 100px; width: 250px; overflow: scroll; border: 1px solid #999999; margin: 0;"
+                         id="fa_sel_ways"></div>
+                </td>
+            </tr>
+            <tr valign="top" class="tr_paddingtop">
+                <td>Вместимость/ кол-во персон:</td>
+                <td style="padding-left: 5px;">{cap_list}</td>
+            </tr>
+            <tr valign="top" class="tr_paddingtop">
+                <td>Стоимость на персону:</td>
+                <td style="padding-left: 5px;">{cost_list}</td>
+            </tr>
+            <tr valign="bottom" class="tr_paddingtop">
+                <td>Собственный кейтеринг</td>
+                <td style="padding-left: 5px;"><label><input type="radio" size="30" name="my_catering" value="1"
+                                                             style="vertical-align: middle; margin: 3px 3px 3px 0;">Есть</label><label><input
+                        type="radio" size="30" name="my_catering" value="0"
+                        style="vertical-align: middle; margin: 3px 3px 3px 5px;">Нет</label></td>
+            </tr>
+            <tr valign="bottom" class="tr_paddingtop">
+                <td>Возможность приглашения<br>стороннего кейтеринга:</td>
+                <td style="padding-left: 5px;"><label><input type="radio" size="30" name="invite_catering" value="1"
+                                                             style="vertical-align: middle; margin: 3px 3px 3px 0;"
+                                                             > возможно</label><label><input
+                        type="radio" size="30" name="invite_catering" value="0"
+                        style="vertical-align: middle; margin: 3px 3px 3px 5px;"> не вожможно</label></td>
+            </tr>
+            <tr valign="bottom" class="tr_paddingtop">
+                <td>Возможность установки<br>автомобиля внутри площадки:</td>
+                <td style="padding-left: 5px;"><label><input type="radio" size="30" name="car_into" value="1"
+                                                             style="vertical-align: middle; margin: 3px 3px 3px 0;">
+                    возможно</label><label><input type="radio" size="30" name="car_into" value="0"
+                                                  style="vertical-align: middle; margin: 3px 3px 3px 5px;"> не возможно</label>
+                </td>
+            </tr>
+            <tr class="tr_paddingtop">
+                <td colspan="2" align="right"><input type="submit" value="Искать"></td>
+            </tr>
+        </table>
+    </form>
+</div>

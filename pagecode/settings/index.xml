@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="index_php" template="templates/index.php">
+	<control relativeId="metadata" class="CMetadataObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/metadata.htm"/>
+	</control>
+	<control relativeId="topLine" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
+	</control>
+	<control relativeId="topBanner" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
+	</control>
+	<control relativeId="header" class="CHeaderObject">
+		<param name="itemTemplates" type="list" >
+			<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
+			<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
+		</param>
+	</control>
+	<control relativeId="footer" class="CFooterObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
+	</control>
+	<control relativeId="menu" class="CMenu" activeItem="">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>
+		<param name="headerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuHeader.htm"/>
+		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
+		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
+	</control>
+	<control relativeId="bottomBanners" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBannersWoYa.htm"/>
+	</control>
+	<control relativeId="newAreas" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/resident_news.htm"/>
+	</control>
+	<control relativeId="newContractors" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_news/news.htm"/>
+	</control>
+	<control relativeId="newArtists" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_news/news.htm"/>
+	</control>
+	<control relativeId="newAgencies" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_news/news.htm"/>
+	</control>
+	<control relativeId="event_news1" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/event_news.htm"/>
+	</control>
+	<control relativeId="eventcalendar" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/event_calendar.htm"/>
+	</control>
+  <control relativeId="event_news2" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/event_news.htm"/>
+	</control>
+	<control relativeId="addedAreas" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/added.htm"/>
+	</control>
+	<control relativeId="addedContractors" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/added.htm"/>
+	</control>
+	<control relativeId="addedArtists" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/added.htm"/>
+	</control>
+	<control relativeId="addedAgencies" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/added.htm"/>
+	</control>
+  <control relativeId="rateAreas" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/rate.htm"/>
+	</control>
+	<control relativeId="rateContractors" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/rate.htm"/>
+	</control>
+	<control relativeId="rateArtists" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/rate.htm"/>
+	</control>
+	<control relativeId="rateAgencies" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/rate.htm"/>
+	</control>
+	<control relativeId="news" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/news.htm"/>
+	</control>
+	<control relativeId="eventcalendar" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/event_calendar.htm"/>
+	</control>
+	<control relativeId="magazine" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/magazine.htm"/>
+	</control>
+	<control relativeId="last_book" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/last_book.htm"/>
+	</control>
+	<control relativeId="chart" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/chart.htm"/>
+	</control>
+	<control relativeId="newRegistered" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+	</control>
+	<control relativeId="newRegistered2" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+	</control>
+	<control relativeId="newRegistered3" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+	</control>
+
+  <control relativeId="eventtv_rubrics1" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_rubric.htm"/>
+	</control>
+  <control relativeId="eventtv_rubrics2" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_rubric.htm"/>
+	</control>
+  <control relativeId="eventtv_rubrics_small" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_rubric_small.htm"/>
+	</control>
+  <control relativeId="eventtv_video" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_video.htm"/>
+	</control>
+  <control relativeId="eventtv_links_contr" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_links.htm"/>
+	</control>
+  <control relativeId="eventtv_links_artist" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_links.htm"/>
+	</control>
+  <control relativeId="eventtv_photo" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_photo.htm"/>
+	</control>
+
+   <control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

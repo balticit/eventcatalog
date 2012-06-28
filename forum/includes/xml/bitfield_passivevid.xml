@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bitfields product="_inferno_shout">
+	<bitfielddefs>
+		<group name="nocache">
+			<group name="passiveVid_allowedsites">
+				<bitfield name="passiveVid_sites_youtube">1</bitfield>
+				<bitfield name="passiveVid_sites_google">2</bitfield>
+				<bitfield name="passiveVid_sites_myspace">4</bitfield>
+				<bitfield name="passiveVid_sites_metacafe">8</bitfield>
+				<bitfield name="passiveVid_sites_yahoo">16</bitfield>
+				<bitfield name="passiveVid_sites_koreus">32</bitfield>
+				<bitfield name="passiveVid_sites_sapo">64</bitfield>
+				<bitfield name="passiveVid_sites_liveleak">256</bitfield>
+				<bitfield name="passiveVid_sites_gametrailers">512</bitfield>
+				<bitfield name="passiveVid_sites_streetfire">1024</bitfield>
+				<bitfield name="passiveVid_sites_veoh">2048</bitfield>
+				<bitfield name="passiveVid_sites_myvideo">4096</bitfield>
+				<bitfield name="passiveVid_sites_gamespot">8192</bitfield>
+				<bitfield name="passiveVid_sites_stage6">16384</bitfield>
+				<bitfield name="passiveVid_sites_sevenload">32768</bitfield>
+				<bitfield name="passiveVid_sites_izlesene">65536</bitfield>
+				<bitfield name="passiveVid_sites_vidiac">131072</bitfield>
+				<bitfield name="passiveVid_sites_xtube">262144</bitfield>
+				<bitfield name="passiveVid_sites_vidmax">524288</bitfield>
+				<bitfield name="passiveVid_sites_redtube">1048576</bitfield>
+				<bitfield name="passiveVid_sites_onsmash">2097152</bitfield>
+				<bitfield name="passiveVid_sites_godtube">4194304</bitfield>
+				<bitfield name="passiveVid_sites_pornotube">8388608</bitfield>
+				<bitfield name="passiveVid_sites_photobucket">16777216</bitfield>
+				<bitfield name="passiveVid_sites_brightcove">33554432</bitfield>
+				<bitfield name="passiveVid_sites_youku">67108864</bitfield>
+				<bitfield name="passiveVid_sites_livevideo">134217728</bitfield>
+				<bitfield name="passiveVid_sites_break">268435456</bitfield>
+				<bitfield name="passiveVid_sites_expertvillage">536870912</bitfield>
+			</group>
+		</group>
+	</bitfielddefs>
+</bitfields>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_authorize_php" template="cms/templates/cms_authorize.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="account" class="CKeyTemplateObject" key="login">
+			<param name="itemTemplates" type="list" >
+				<item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="cms/settings/cms_authorize_files/login.htm"/>
+				<item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251"     targetEncoding="windows-1251" filename="cms/settings/cms_authorize_files/logout.htm"/>
+			</param>/>
+	</control>
+	<control relativeId="messageMap" class="CPageMessageMap" mapKey="default">
+		<param name="messages" type="list">
+			<item type="keyvalue" key="badauth" value="Неверный логин/пароль"/>
+		</param>
+	</control>
+</page>

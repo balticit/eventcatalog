@@ -1,0 +1,420 @@
+<script type="text/javascript" language="JavaScript" src="/js/registration.js"></script>
+<script type="text/javascript" language="JavaScript">
+    max_sel_groups = 3;
+    {stylesArray}
+    artist_mus_ids = {artist_mus_ids};
+    checked_styles = {checked_styles};
+    {artist_stl_groups}
+    {artist_stl_group_ttl}
+</script>
+<script src="/js/jquery.maskedinput-1.3.min.js" type="text/javascript"></script>
+<img src="/images/front/r4.gif"><br><br>
+<form method="post" enctype="multipart/form-data">
+<table border="0" cellpadding="0" cellspacing="15">
+<tr valign="top">
+    <td class="reg_title">Название / Имя:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
+                                     value='{title}'></td>
+    <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила
+        написания названия</a>
+
+        <div id="NameInfo" style="display: none;">
+            <ul>
+                <li>в названии не должно быть кавычек;</li>
+                <li>не разрешается использовать в названии цифру «1», если её нет в вашем логотипе;</li>
+                <li>не разрешается использовать в названии слов «ведущий», «шоу», «группа», «DJ», если этих слов
+                    нет в вашем логотипе;
+                </li>
+                <li>название должно быть написано с большой буквы, далее прописные;</li>
+                <li>не разрешается писать название всеми заглавными буквами, если это не аббревиатура;</li>
+                <li>перед названием не должен стоять пробел.</li>
+            </ul>
+            Администратор портала имеет право внести правки в название вашей компании, если нарушены
+            вышеперечисленные правила. При внесении правок, Администратор руководствуется написанием названия в
+            соответствии с логотипом вашей компании.
+        </div>
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Логотип:</td>
+    <td style="width: 300px;"><input type="file" name="properties[logo]"/></td>
+    <td class="reg_info">Параметры макета: 120х80 pxl<br>Название файла должно состоять из латинских букв или
+        цифр.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Выбор раздела и категории:</td>
+    <td style="width: 300px;">
+        <select id="sel_group" class="reg_input_text" onchange="SelectGroup()" onkeyup="SelectGroup()">
+            <option value="-1">Выберите раздел</option>
+            {groups_list}
+        </select>
+
+        <div id="subgroups" style="display: none">{subgroups_list}</div>
+        <div id="selected_title" style="{st_visible}" class="reg_title2">Выбранные категории:</div>
+        <div id="selected_groups">{selected_groups}</div>
+    </td>
+    <td class="reg_info">Пожалуйста, выберите не более 3-х категорий.</td>
+</tr>
+<tr valign="top" id="artist_style_row" style="display: none;">
+    <td class="reg_title">Стиль:</td>
+    <td style="width: 300px;">
+        <div id="stylesList"></div>
+    </td>
+    <td class="reg_info">Пожалуйста, выберите из списка стиль, в котором Вы работаете.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Описание:</td>
+    <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
+    </td>
+    <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах
+        компании.<br>
+        Пожалуйста, не вставляйте контактную информацию в описание.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Фотографии:</td>
+    <td style="width: 300px;">
+        <div id="photos[1]" class="reg_photos">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[1]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[1]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[2]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[2]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[2]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[3]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[3]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[3]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[4]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[4]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[4]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[5]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[5]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[5]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[6]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[6]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[6]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[7]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[7]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[7]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="photos[8]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="photo_file[8]" type="file"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="photo_title[8]" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <a id="btnAddPhoto" href="" onclick="javascript: RegAddPhotos(); return false;">Добавить ещё
+            фотографию</a></td>
+    <td class="reg_info">Всего Вы можете добавить до 8-ми фотографий.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Видео:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[youtube_video]"
+                                     size="60" value="{youtube_video}"></td>
+    <td class="reg_info">Рекомендуем обязательно добавлять видео, т.к. это повышает эффективность размещаемой
+        Вами информации.
+        Необходимо разместить ссылку на видео с YouTube, например http://www.youtube.com/watch?v=GaNjCal26CM
+    </td>
+</tr>
+<tr valign="top" id="artist_mp3_row" style="display: none;">
+    <td class="reg_title">Аудио:</td>
+    <td style="width: 300px;">
+        <div id="mp3s[1]" class="reg_photos">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="mp3_title[1]" type="text"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="mp3_file[1]" type="file"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mp3s[2]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="mp3_title[2]" type="text"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="mp3_file[2]" type="file"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mp3s[3]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="mp3_title[3]" type="text"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="mp3_file[3]" type="file"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mp3s[4]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="mp3_title[4]" type="text"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="mp3_file[4]" type="file"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mp3s[5]" class="reg_photos" style="display: none">
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Название:</td>
+                    <td align="right"><input class="reg_photo_title" name="mp3_title[5]" type="text"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
+                <tr>
+                    <td width="30">Файл:</td>
+                    <td align="right"><input class="reg_photo_file" name="mp3_file[5]" type="file"></td>
+                </tr>
+            </table>
+        </div>
+        <br><a id="btnAddMp3" href="" onclick="javascript: RegAddMp3(); return false;">Добавить ещё файл</a>
+    </td>
+    <td class="reg_info">Всего Вы можете добавить до 5-ми файлов.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Страна:</td>
+    <td style="width: 300px;"><input id="input_country" class="reg_input_text" type="text"
+                                     name="properties[country]" size="60" value="{other_country}"/>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var searchinput = $('#input_country');
+                searchinput.autocomplete({
+                    serviceUrl:'/ajax/findcountry',
+                    highlight:true,
+                    minChars:1,
+                    maxHeight:400
+                });
+            });
+        </script>
+    </td>
+    <td class="reg_info">Выберите страну, в которой проживает Ваша группа или артист, например <a href=""
+                                                                                                  onclick="SetCountry('Россия'); return false;">Россия</a>,
+        или выберите из <a href="" onclick="ShowCountryList(); return false;">списка</a></td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Город:</td>
+    <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
+                                     size="60" value="{other_city}"/>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var searchinput = $('#input_city');
+                searchinput.autocomplete({
+                    serviceUrl:'/ajax/findcity',
+                    highlight:true,
+                    minChars:1,
+                    maxHeight:400
+                });
+            });
+        </script>
+    </td>
+    <td class="reg_info">Введите город, например <a href=""
+                                                    onclick="SetCity('Москва'); return false;">Москва</a>, или
+        выберите из <a href="" onclick="ShowCityList(); return false;">списка</a></td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Контактные телефоны:</td>
+    <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text"
+                                     name="properties[manager_phone]" size="60" value="{manager_phone}"
+                                     style="margin-bottom: 5px;"><input id="phone2" class="reg_input_text"
+                                                                        type="text" name="properties[phone2]"
+                                                                        size="60" value="{phone2}"/>
+        <script type="text/javascript">
+            $("#phone1").mask('(999) 999-99-99');
+            $("#phone2").mask('(999) 999-99-99');
+        </script>
+    </td>
+    <td class="reg_info">Вы можете добавить один или два телефона.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Имя администратора / директора:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[manager_name]"
+                                     size="60" value="{manager_name}"/></td>
+    <td class="reg_info"></td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Диапазон цен:</td>
+    <td style="width:300px;">
+        <label>
+            От:
+            <input class="hidden" name="properties[price_from]" value="{price_from}">
+        </label>
+        <br/>
+        <label>
+            До:
+            <input class="hidden" name="properties[price_to]" value="{price_to}">
+        </label>
+    </td>
+    <td style="color: #999999;">
+        Пожалуйста, введите диапазон цен за выступление или проведение мероприятия.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Адрес сайта:</td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]"
+                                     size="60" value="{site_address}" onfocus="SiteAdrFocus(this)"
+                                     onblur="SiteAdrBlur(this)"></td>
+    <td class="reg_info"></td>
+</tr>
+<tr valign="top">
+    <td></td>
+    <td>
+        <div style="width: 240px;">
+            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"
+                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:360px;"
+                    allowTransparency="true"></iframe>
+        </div>
+    </td>
+    <td style="color: #999999;">
+        Нажмите лайк и будьте всегда в курсе последних событий!
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Электронная почта:</td>
+    <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
+                                     value="{email}" {login_readonly}>
+    </td>
+    <td class="reg_info">Электронная почта является Вашим Логином при входе в Личный кабинет для редактирования
+        данных о компании.
+    </td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Пароль:</td>
+    <td>
+        <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
+            <tr>
+                <td>Пароль:</td>
+                <td align="right"><input class="reg_pass" type="password" name="properties[password]" size="30"
+                                         value="" style="margin-bottom: 5px;"><br/></td>
+            </tr>
+            <tr>
+                <td>Подтверждение:</td>
+                <td align="right"><input class="reg_pass" type="password" name="properties[password_confirm]"
+                                         size="30" value=""></td>
+            </tr>
+        </table>
+    </td>
+    <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+</tr>
+<tr valign="top">
+    <td class="reg_title">Введите цифры<br/>
+
+        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120"
+                                                                               height="50" src="{captcha_link}">
+        </div>
+        <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
+    </td>
+    <td><br/><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input">
+    </td>
+    <td style="color: #999999;"></td>
+</tr>
+<tr>
+    <td colspan="3"><input type="submit" value="{submit_text}"></td>
+</tr>
+</table>
+</form>

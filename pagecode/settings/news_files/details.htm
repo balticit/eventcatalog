@@ -1,0 +1,115 @@
+<div style="margin-left: 5px;">
+    <table width="100%" border="0">
+        <tr>
+            <td valign="top" style="padding-right:20px;">
+                <h1 style="margin: 0;">{title}</h1>					
+                <div style="margin: 10px 0;">
+					<table width="100%">
+						<tr>
+							<td width="1%"><img width="120" height="80" src="/upload/{s_image}" alt="" class="newsimg" /></td> 
+							<td align="left" valign="top" style="padding-left: 10px;" >
+								{date}
+								{city}
+								{area}
+								{type}
+								{site}
+							</td>
+						</tr>
+					</table>
+                </div>
+				
+				<h4 class="detailsBlockTitle">
+					<a name="photos">Описание</a>
+				</h4>				
+                <div style="margin-left: 10px;">
+                    {text}
+                </div>				
+				{photos} 
+			<div id="news_rotate" style="width: 100%; border-top: 1px solid #C1C1C1; margin-top: 10px;">
+				<div class="rnb_item {show_news_1}">
+					<div style="position: relative; top: 0; left: -20px; margin-bottom: 10px;">
+						<a href="/news/details{news_link_1}"  style="text-decoration: none; color: #000;"> 
+							<span style="font-size: 44px; font-family: Times New Roman; position: relative; top: 5px; left: 0;">&#8249;</span>
+							<span style="font-weight: bold;">Предыдущая статья</span>
+						</a> 
+					</div>
+					<a class="news" href="/news/details{news_link_1}">
+						<img width="120" height="80" class="newsimg" alt="" src="/upload/{news_img_1}" />
+					</a>
+					<div class="rnb_item_text">
+						<div class="newsParam"><b>{news_title_1}</b></div>
+						<div class="newsParam"><small>{news_date_1}</small></div>
+						<div class="newsParam"><p>{news_text_1}</p></div>
+						<div class="newsParam">{news_category_1}</div>
+					</div> 								
+				</div>
+				<div class="rnb_item {show_news_2}">				
+					<div style="margin-bottom: 10px;">
+						<a href="/news/details{news_link_2}" style="text-decoration: none; color: #000; "> 
+							<span style="font-weight: bold;">Следующая статья</span>
+							<span style="font-size: 44px; font-family: Times New Roman; position: relative; top: 5px; left: 0;">&#8250;</span>
+						</a>
+					</div>
+					<a class="news" href="/news/details{news_link_2}">
+						<img width="120" height="80" class="newsimg" alt="" src="/upload/{news_img_2}" />
+					</a>
+					<div class="rnb_item_text">
+						<div class="newsParam"><b>{news_title_2}</b></div>
+						<div class="newsParam"><small>{news_date_2}</small></div>
+						<div class="newsParam"><p>{news_text_2}</p></div>
+						<div class="newsParam">{news_category_2}</div>
+					</div> 				
+				</div>
+				<div style="clear: both;"></div>
+			</div>	
+			<div>
+				<h4 class="detailsBlockTitle"><a name="description">Случайные статьи</a></h4>
+				{random_news}
+			</div>
+				
+           
+             <div >
+			  <table  border="0" >
+				<tr>
+					<td>
+						<p id="repliesLabel" style="margin-top: 20px; display: none;">
+							<a href="#" onclick="javascript:return showReplies('repliesBox');">Отзывы</a><br>
+						</p>
+						<div id="repliesBox" style="overflow-y: scroll; overflow-x: hidden; display: none;
+							margin-top: 10px; border-width: 0px; border-style: solid; background-color: none;
+							width: 400px;">
+						</div>
+					</td>
+				</tr>
+        		<tr>
+					<td>
+					 
+
+           
+		   <script type="text/javascript" language="javascript" src="/comments/jsc?id={tbl_obj_id}&type={newstype}"></script>	
+		   
+		   <!--<div id="addReplyBox" style="overflow: visible; display: none; margin-top: 10px; 
+						background-color: none;"></div>-->
+					</td>
+				</tr>
+        		
+			</table>
+			 </td>				
+			<!--<td width="240" valign="top" style="padding:0 10px;"> 
+			<script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<span id="repliesLabel" style="margin:3px;"><a href="#" onclick="javascript:return showReplies('repliesBox');"></a><br></span>
+			<div id="repliesBox" style="overflow: auto; display:none; margin-top:10px; margin-left:3px; border-width:0px; border-style:solid; background-color:none; width:300px;"></div>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<p style="margin:20px;">&nbsp;</p>
+			<div id="addReplyBox" style="overflow:visible; display:none; margin-top:10px; margin-left:3px; background-color:none;"></div>
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');" frameborder="0" src="" style="border:none; display:none;" ></iframe>
+			
+			<iframe style="display:none;" src="/replies/id/{tbl_obj_id}/type/{newstype}/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');"></iframe>				
+			<p style="margin:20px;">&nbsp;</p>
+            </td> 
+			<script type="text/javascript" language="javascript">showReplies('repliesBox');</script>-->
+
+         </tr> 
+      </table>
+</div> 

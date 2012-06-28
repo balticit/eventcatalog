@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="type"/>
+	<index name="type"/>
+	<row type="rect" />	
+	<row type="poly" />	
+	<row type="circle" />	
+</datasource>

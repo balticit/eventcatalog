@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="download_php" template="F:\home\evred.ru\www\templates/download.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
+</page>

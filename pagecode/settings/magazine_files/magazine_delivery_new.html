@@ -1,0 +1,216 @@
+<table cellspacing="5" cellpadding="0" border="0">
+<tr>
+  <td valign="top">
+       <table cellspacing="5" cellpadding="0" border="0" width="170px">
+	   <tr>
+	   	<td>
+		<p>Выпуск:{publication_year}</p>
+		</td>
+	   </tr>
+       <tr>
+         <td style="padding-top:25px;">
+           <a href="/magazines/details/id/{tbl_obj_id}"><img src="/upload/{logo}" border="0"/></a> 
+         </td>
+       </tr>
+       <tr>
+         <td style="padding-top:10px;">
+          <a style="color:#000; text-decoration:underline;" href="/magazines/details/id/{tbl_obj_id}">Подробнее о каталоге {publication_year}</a> 
+         </td>
+       </tr>
+       <tr>
+         <td style="color:#ff0066; font-weight:bold; padding-top:10px;">
+           Заказать доставку
+         </td>
+       </tr>  
+	     
+       <tr>
+         <td style="padding-top:10px;">
+          
+          
+		   
+           
+		  <!-- <p id="repliesLabel" style="margin-top: 20px; display: none;">
+							<a href="" onclick="javascript:return showReplies('repliesBox');">Посмотреть все отзывы</a><br>
+						</p>
+						<div id="repliesBox" style="overflow-y: scroll; overflow-x: hidden; display: none;
+							margin-top: 10px; border-width: 0px; border-style: solid; background-color: none;
+							width: 400px;">
+						</div>-->
+		   
+		 
+		   <script type="text/javascript" language="javascript" src="/js/replies.js"></script>
+			<span id="repliesLabel"><a style="color:#808080" href="" onclick="javascript:return showReplies('repliesBox');"></a><br></span>
+			<div id="repliesBox" style="overflow: auto; display:none; margin-top:10px; margin-left:3px; border-width:0px; border-style:solid; background-color:none; width:170px;"></div>
+			
+			<div id="addReplyBox" style="overflow:visible; display:none; margin-top:10px; margin-left:3px; background-color:none;"></div>
+			<iframe id="addReplyFrame" name="addReplyFrame" scrolling="no" onload="javacript:loadAddReplies(this,'addReplyBox','frm_reply');" frameborder="0" src="" style="border:none; display:none;" ></iframe>
+			
+			<iframe style="display:none;" src="/replies/id/{tbl_obj_id}/type/magazines/" onload="javascript:loadReplies(this,'repliesLabel','repliesBox');"></iframe>				
+			
+			<!--<script type="text/javascript" language="javascript">showReplies('repliesBox');</script>-->
+         </td>
+       </tr>    
+       </table>
+  </td>
+  <td valign="top" style="padding-top:4px">
+    
+	
+	
+	
+	
+	
+	{comm_begin_if_ok}
+
+<span style="color: #666666; font-weight: bold; font-size: 14px;">Оформление заказа</span>
+<br /><br /><br />
+							<div style="background-color: #dddddd; width:600px;">
+
+							
+<div style="padding: 10px;">
+
+				<script type="text/javascript">
+					var ek_count = {count};
+					function ek_count_edit() {
+						
+						ek_count_el = document.getElementById('ek_count');
+						if (new_count = parseInt(ek_count_el.value,10)) {
+							ek_count = new_count;
+							document.getElementById('ek_money').value = new_count*{money};
+							return true;
+						}
+						else {
+							alert('Количество экземпляров введено неточно!');
+							ek_count_el.value = ek_count;
+							return false;
+						}
+						
+					}
+				</script>
+
+<form action="" method="post" enctype="multipart/form-data" onsubmit="return ek_count_edit();">	
+	<table>
+	<tr>
+			<td width="200">
+				Печатное издание (год)
+			</td>
+			<td>
+				<input type="text" name="name" value="{publication_year}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td width="200">
+				Ваше ФИО
+			</td>
+			<td>
+				<input type="text" name="name" value="{name}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Ваша должность
+			</td>
+			<td>
+				<input type="text" name="position" value="{position}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Название компании
+			</td>
+			<td>
+				<input type="text" name="company" value="{company}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Сайт компании
+			</td>
+			<td>
+				<input type="text" name="site" value="{site}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>		
+		<tr>
+			<td>
+				Адрес доставки
+			</td>
+			<td>
+				<input type="text" name="address" value="{address}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Контактный телефон
+			</td>
+			<td>
+				<input type="text" name="phone" value="{phone}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Контактный e-mail
+			</td>
+			<td>
+				<input type="text" name="email" value="{email}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Удобное время доставки
+			</td>
+			<td>
+				<input type="text" name="time" value="{time}" style="width: 320px; border: 1px gray solid;">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				Я желаю приобрести   EVENT КАТАЛОГ в количестве
+				<input type="text" name="count" id="ek_count" onchange="ek_count_edit()" value="{count}" style="width: 30px; border: 1px gray solid;">
+				шт.
+			</td>
+		</tr>
+		<tr>
+		  <td colspan="2">
+				Итого Ваш заказ на сумму:
+				<input type="text" name="money" id="ek_money" value="{money}" readonly style="width: 50px; border: 1px gray solid;">
+				рублей.  </td>
+		</tr>
+		<tr>
+			<td valign="top">
+				Введите символы
+			</td>
+			<td>
+				<input type="text" name="captcha" style="width: 320px; border: 1px gray solid;"><br /><br />
+				<img src="/captcha/index.php" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="Отправить" style="height: 30px; width: 100px; border: 1px gray solid;" />
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" name="sended" value="sended" />
+</form>
+</div>
+</div>
+{comm_end_if_ok}
+
+{comm_begin_if_notok}
+<p>Спасибо за Ваш заказ!<br />
+В ближайшее время с Вами свяжется менеджер по доставке.
+</p> 
+{comm_end_if_notok}
+
+	
+	
+	
+<!------------------->
+	
+	
+	
+	
+  </td>  
+</tr>
+</table>

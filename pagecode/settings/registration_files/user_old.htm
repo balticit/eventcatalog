@@ -1,0 +1,237 @@
+<img src="http://eventcatalog.ru/images/front/r1.gif"><br><br>
+<form method="post" enctype="multipart/form-data" style="padding: 0px;
+    margin: 0px;">
+    <table border="0" cellpadding="0" cellspacing="0" class="properties" style="width: 900px;">
+        <tr>
+            <td>
+                <table id="table_title" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_title" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Фамилия / Имя:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[title]" size="60" value='{title}' />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_logo" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr>
+                        <td id="td_logo" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                &nbsp;Аватар 120х80 <br/><span style="color:#999999;">(Внимание! Название файла должно <br/>состоять из латинских букв или цифр)</span>:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            текущее значение: `<a href="/upload/{logo}" target="_blank">{logo}</a>`<br />
+                            <input class="property_file" type="file" name="properties[logo]" />
+                            <label>
+                                <input type="checkbox" name="properties[logo_clean]" value="clean" />
+                                - очистить атрибут</label>
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_sity" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_sity" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Город:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                           {city_list}<br/> или другой город <br/> <input class="property_text" type="text" name="properties[sity]" size="60" value="{sity}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_contact_phone" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr>
+                        <td id="td_contact_phone" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Ваш контактный телефон (мобильный):</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[contact_phone]" size="60"
+                                value="{contact_phone}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_email" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_email" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Адрес электронной почты:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[email]" size="60" value="{email}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_company" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr>
+                        <td id="td_company" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Компания:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[company]" size="60" value="{company}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_field_of_activity" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_field_of_activity" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Сфера деятельности:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[field_of_activity]" size="60"
+                                value="{field_of_activity}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_position" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr>
+                        <td id="td_position" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Ваша должность:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[position]" size="60" value="{position}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_company_phone" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_company_phone" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Телефон компании:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[company_phone]" size="60"
+                                value="{company_phone}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_address" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr>
+                        <td id="td_address" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Адрес:</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" name="properties[address]" size="60" value="{address}" />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_login" style="width: 900px;" cellpadding="5" cellspacing="0" border="0">
+                    <tr style="background: #f0f0f0;">
+                        <td id="td_login" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                 Логин (латинскими буквами и цифрами <br />
+								 или ваша электронная почта):
+                            </div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <input class="property_text" type="text" {login_readonly} name="properties[login]" size="60" value='{login}' />
+                        </td>
+                    </tr>
+                </table>
+                <table id="table_password" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr>
+                        <td id="td_password" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                            <div class="property_title">
+                                Пароль (латинскими буквамии и цифрами):
+								</div>
+                            <div class="property_description">
+                            </div>
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            просмотреть пароль невозможно, можно только его изменить
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input class="property_text" type="password" name="properties[password]" size="30"
+                                            value="" />
+                                    </td>
+                                    <td>
+                                        (новый пароль)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="property_text" type="password" name="properties[password_confirm]" size="30"
+                                            value="" />
+                                    </td>
+                                    <td>
+                                        (подтверждение)
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+				<table id="table_forum_name" style="width: 900px;" cellpadding="5" cellspacing="0"
+                    border="0">
+                    <tr>
+                        <td id="td_forum_name" style="white-space: nowrap;" valign="top" class="property_info"
+                            width="300px">
+                             <!--<div class="property_title">
+                                &nbsp;Дата регистрации:</div> --> 
+                             <div class="property_description">
+                            
+                        </td>
+                        <td valign="middle" class="property_editor">
+                            <!--{regdate} -->
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+{junksaleSellList}
+{junksaleBuyList}
+{personalVacancyList}
+{personalCVList}
+    <script type="text/javascript" language="JavaScript" src="/js/chainedLeader.js"></script>
+
+    <p>&nbsp;
+        </p>
+    <input type="submit" value="{submit_text}" />
+</form>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="area_map_php" template="templates/area_map.php">
+	<control relativeId="googlemap" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/area_details_files/map.htm"/>
+	</control>
+</page>

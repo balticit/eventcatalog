@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="link"/>
+	<column name="bgcolor"/>
+	<column name="title"/>
+	<column name="bgimg"/>
+	<index name="link"/>
+	<row link="/about/" title="О портале"/>	
+	<row link="/partners/" title="Партнеры"/>	
+	<row link="/pr/" title="Реклама"/>	
+	<row link="/contact/" bgcolor="5a5e61" title="Контакты" bgimg="black"/>	
+</datasource>

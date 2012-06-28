@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_council_php" template="cms/templates/cms_council.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="content" class="CTinyMCETextarea" id="content" name="content" cols="60" rows="30">
+		
+	</control>
+</page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="ajax_artist_styles_php" template="templates/ajax.php">
+  <control relativeId="body" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/artist_styles.htm"/>
+	</control>  
+  <control relativeId="list" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/artist_style_item.htm"/>
+	</control>
+  <control relativeId="btns" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/ajax/artist_style_btn.htm"/>
+	</control>
+</page>

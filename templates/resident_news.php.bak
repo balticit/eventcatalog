@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Новости резидентов - EVENT КАТАЛОГ</title>
+    <?php CRenderer::RenderControl("metadata"); ?>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%; height:100%;">
+<tr><td><?php CRenderer::RenderControl("topLine");?></td></tr>
+<tr><!-- Заголовок-->
+	<td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;"><?php CRenderer::RenderControl("header"); ?></td>
+</tr>
+<tr><!--Меню-->
+<td><?php CRenderer::RenderControl("menu"); ?></td>
+</tr>
+<tr>
+	<td><?php CRenderer::RenderControl("submenu"); ?></td>
+</tr>
+<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; height: 100%" valign="top">
+	<div style="padding-left:15px;">
+        <table>
+        <tr>
+            <td valign="top" width=200>
+                <span style="color:#f05620;">Новости компаний</span>
+                <div style="margin-top:15px; margin-bottom:3px;"><?php CRenderer::RenderControl("newContractors"); ?></div>	
+            </td>
+            <td valign="top" width=200>
+                <span style="color:#3399ff;">Новости площадок</span>
+                <div style="margin-top:15px; margin-bottom:3px;"><?php CRenderer::RenderControl("newAreas"); ?></div>	
+            </td>
+            <td valign="top" width=200>
+                <span style="color:#ff0066;">Новости артистов</span>
+                <div style="margin-top:15px; margin-bottom:3px;"><?php CRenderer::RenderControl("newArtists"); ?></div>
+            </td>
+            <td valign="top" width=200>
+                <span style="color:#99cc00;">Новости агентств</span>
+                <div style="margin-top:15px; margin-bottom:3px;"><?php CRenderer::RenderControl("newAgencies"); ?></div>	
+            </td>
+        </tr>
+        </table>
+        <br><br><br>
+        <?php CRenderer::RenderControl("archive"); ?>
+        <br>
+        <a href="/add_res_news" style="color:#999999; font-weight: bold;">Добавить свою новость</a>
+    </div>	
+</td></tr>
+<tr><td class="partner_ban"><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
+<tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>
+</table>
+<?php CRenderer::RenderControl("googleanalytics"); ?>
+</body>
+</html>

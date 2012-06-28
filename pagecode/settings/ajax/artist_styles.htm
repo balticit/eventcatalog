@@ -1,0 +1,66 @@
+<div style="width: 450px">
+<style>
+.art_s_btn {
+  width: 150px;
+  height: 20px;
+  padding: 0 0 0 10px;
+  border: 1px solid #888888;
+  cursor: pointer;
+}  
+
+.art_s_btn_active {
+  background: #ffffff;
+}
+.art_s_btn_noactive {
+  background: #aaaaaa;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+function ChangeCheckStyle(obj) {
+  var sl = $("#form_find_artist");
+  document.title = sl.children().lentgh;
+  if (obj.checked) {      
+      sl.append('<input id="art_style'+obj.value+'" type="hidden" name="artist_doc_style['+obj.value+']" ' +
+                'value="'+obj.value+'">');
+  }
+  else {
+      $("#art_style"+obj.value).remove();
+  }
+  document.title = sl.children().lentgh;
+}
+
+function FillChecks()
+{
+  $("#form_find_artist").children('input[name^="artist_doc_style"]').each(function() {
+        var t = $(this);
+        var id = t.attr('id');
+        id = id.substring(9,id.length);
+        alert(id);
+        $("#chb_art_style"+id).attr('checked','checked');
+  });
+}
+
+function CloseStyleDlg(obj)
+{
+  var bbb = Boxy.get(obj);
+	bbb.hide();
+	bbb.unload();
+  $("#form_find_artist").submit();
+}    
+
+function ArtS_BtnClick(obj)
+{
+  var btns = $('td.art_s_btn');
+  btns.toggleClass('art_s_btn_active',false);
+  btns.toggleClass('art_s_btn_noactive',true);
+  $(obj).toggleClass('art_s_btn_active',true);
+  $(obj).toggleClass('art_s_btn_noactive',false);    
+  var id = obj.id.substring(11,obj.id.length);
+  $('#art_s_styles').children().hide();
+  $('#art_s_style_g'+id).show();
+}
+</script>
+<div id="art_s_groups"><table><tr>{btns}</tr></table></div>
+<div id="art_s_styles" style="height: 150px; padding: 10px;">{groups_list}</div>
+<p align="right"><input type="button" value="OK" onclick="CloseStyleDlg(this)"></p>
+</div>
