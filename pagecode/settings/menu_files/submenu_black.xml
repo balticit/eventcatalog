@@ -8,5 +8,5 @@
 	<row link="/about/" title="О портале"/>	
 	<row link="/partners/" title="Партнеры"/>	
 	<row link="/pr/" title="Реклама"/>	
-	<row link="/contact/" bgcolor="5a5e61" title="Контакты" bgimg="black"/>	
+	<row link="/contact/" bgcolor="5b5f62" title="Контакты" bgimg="black"/>	
 </datasource>

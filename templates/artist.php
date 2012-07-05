@@ -61,20 +61,34 @@
 										<table class="recomended"><?php CRenderer::RenderControl("NewList_1"); ?></table>
 									</td>							
 								</tr>
-                                <tr style="vertical-align: top;">
-								<td class="resident_news"><div class="recomendTitle artist h3"><a class="artist" href="/resident_news">Новости артистов</a></div>
-								<table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td class="resident_comments"><div class="commentTitle artist h3">Новые комментарии</div>
-								<iframe src="/scroll/msg?res_type=artist" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr>
-                                                    <tr><td colspan="3"><img src="/images/front/0.gif" height="10" width="1"></td></tr>
-                                                    <tr style="vertical-align: top;">
-								<td><div class="recomendTitle artist h3"><a class="artist" href="/artist/rating">Рейтинг артистов</a></div>
-								<table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td><div class="commentTitle artist h3"><a href="/random_resident/type/artist" target="rnd"><img src="/images/refresh_artist.png" style="margin: 1px 10px 0 0;"><span class="artist" style="vertical-align: top;">Случайные артисты</span></a></div>
-								<iframe src="/random_resident/type/artist" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr></table>
-								<div><div class="recomendTitle artist h3">Развлекательная часть вечера: артисты из эвент-каталога</div>
+								</table>
+								
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr style="vertical-align: top;">
+                <td rowspan="2" class="resident_news" width="50%">
+                  <div class="recomendTitle artist"><a class="artist" href="/resident_news">Новости артистов</a></div>
+                  <table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
+                </td>
+                <td rowspan="2" style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10" alt="" /></td>
+                <td class="resident_comments" width="50%">
+                  <div class="commentTitle artist">Новые комментарии</div>
+                  <iframe src="/scroll/msg?res_type=artist" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+                </td>
+              </tr>
+              <tr style="vertical-align: top;">
+                <td ><br />
+                <div class="resident_news">
+                  <div class="recomendTitle artist"><a class="artist" href="/artist/rating">Рейтинг артистов</a></div>
+                  <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
+                </div>
+                </td>
+              </tr>
+            </table>
+						<?php /*<div class="commentTitle artist"><a href="/random_resident/type/artist" target="rnd"><img src="/images/refresh_artist.png" style="margin: 1px 10px 0 0;" alt="" /><span class="artist" style="vertical-align: top;">Случайные артисты</span></a></div>
+						<iframe src="/random_resident/type/artist" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe> */ ?>
+            
+                
+                <div><h1 class="recomendTitle artist">Развлекательная часть вечера: артисты из эвент-каталога</h1>
 								<p><a href="/artist?group=41&subgroup=43"><b>Ведущий на свадьбе</b></a>, <a href="/artist?group=51"><b>ди-джей</b></a> на вечеринке, <a href="/artist?group=44"><b>музыкальная группа</b></a> на банкете, выступление на корпоративном событии – практически ни одно эвент-мероприятие не обходится без присутствия артистов. При выборе жанра выступления обязательно должен учитываться повод празднества, возраст гостей и пожелания заказчика.</p>
 								<p>Состав артистов включает в себя несколько подразделов.  В <a href="/artist?group=41"><b>каталог ведущих</b></a> записаны известные артисты телевидения и радио, которых можно пригласить на корпоративные мероприятия, свадьбы, юбилеи и тематические праздники. Контактные данные всех шоуменов доступны для просмотра зарегистрированным пользователям. В отзывах о музыканте заказчики отмечают нюансы сотрудничества, стиль работы и личные качества человека (группы). Поклонников живой музыки в эвент-каталоге ждут неожиданные открытия: у нас представлено много молодых групп и артистов с прекрасными данными. Несомненный талант, способность удержать аудиторию, добросовестность и пунктуальная точность обеспечат гостям приятный отдых в непринужденной атмосфере вашего мероприятия.</p>
 								<p>Среди прочих предложений следует особо отметить <a href="/artist?group=47"><b>артистические шоу-программы</b></a> -  развлечения, которые можно заказать для костюмированных вечеринок выбранной тематики. Ваши гости точно не обойдут вниманием феерическое огненное шоу, а замысловатые кульбиты шейкера в руках бармена определенно подогреют интерес к виртуозным творениям артистов <a href="/artist?group=47&subgroup=1158"><b>бармен-шоу</b></a>. Все эвент-программы содержат подробное описание спецэффектов и контакты агентов, которые обговаривают нюансы предстоящего выступления – от требований безопасности и размера гримерной до времени выхода на сцену и особых условий (обычно прописано в райдере). У многих артистов плотный график работы, и если вы хотите пригласить, например, ведущего на свадьбу  - необходимо заранее заручиться согласием исполнителя.</p>

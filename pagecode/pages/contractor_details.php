@@ -240,6 +240,7 @@ class contractor_details_php extends CPageCodeHandler
             $mainMenu->dataSource["kinodoktor"] =
                 array("link" => "http://www.kinodoctor.ru/",
                     "imgname" => "kinodoktor",
+                    "title"=>"",
                     "target" => 'target="_blank"');
 			// && всего резидентов
 			$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
@@ -344,8 +345,19 @@ class contractor_details_php extends CPageCodeHandler
 			}
 			$unit["u_link"] .= "</div>";
 		}
+		
+    /* Baltic IT */
+    $activityTitles = explode("|", $unit["activity_title"]);
+    $activityTitleArray = array();
+    for ($i = 0; $i < sizeof($activityTitles); $i++) {
+        array_push($activityTitleArray,$activityTitles[$i]); // balticit, массив подкатегорий
+    }
+    $activity_title_list = implode(", ",$activityTitleArray);
+    /* End Baltic It*/
+		
 		$title = $this->GetControl("title");
-		$title->text = $unit["title"];
+    $title->text = $unit["title"].' - '.$activity_title_list;
+		
 		$unit["logo_visible"] = IsNullOrEmpty( $unit["logo_image"])?"hidden":"visible";
 		if ($unit['city']==-1) $unit['city_name'] = $unit['other_city'];
 
@@ -446,25 +458,25 @@ class contractor_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
               $mark_links .= ", ";
-            $mark_links .= '<a class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt>0) {
-			$u_text = "пользовател€м";
+			$u_text = "пользовател€";
 			if ($mark_cnt == 1)
-				$u_text = "пользователю";
+				$u_text = "пользователь";
 
-			$unit["voted"] = "<div class=\"user_liked\">Ќравитс€ <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+			$unit["voted"] = "<div class=\"user_liked\">–екомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
 		}
 		if ($fav_add) {
 			$msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-			$unit["fav_link"] = '<a class="contractor" href="/contractor/'.$id_str.'?add=favorite" '.$msg.'>ƒобавить в избранное</a>';
+			$unit["fav_link"] = '<a class="contractor in_favorite" href="/contractor/'.$id_str.'?add=favorite" '.$msg.'><span>ƒобавить в избранное</span></a>';
 		}
 		else {
 			$msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-			$unit["fav_link"] = '&nbsp;&nbsp;&nbsp;<a class="contractor" href="/contractor/'.$id_str.'?delete=favorite" '.$msg.'>”брать из избранного</a>';
+			$unit["fav_link"] = '<a class="contractor out_favorite" href="/contractor/'.$id_str.'?delete=favorite" '.$msg.'><span>”брать из избранного</span></a>';
 		}
         //process activities
         $activityIds = explode("|", $unit["activity_ids"]);
@@ -559,6 +571,7 @@ class contractor_details_php extends CPageCodeHandler
         $mainMenu->dataSource["kinodoktor"] =
             array("link" => "http://www.kinodoctor.ru/",
                 "imgname" => "kinodoktor",
+                "title"=>"",
                 "target" => 'target="_blank"');    			
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm

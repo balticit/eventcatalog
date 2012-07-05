@@ -74,12 +74,12 @@
 				</div>
 				<div class='first-col'>
 					<noindex>
-					<div class='sub-title-block' style='margin-right:-18px;'><a href='http://eventpremia.ru/' target="_blank" class='sub-title'>Премия Событие</a><a href="http://eventpremia.ru/participation/member-registration" target="_blank">Отправить заявку на участие</a></div>
+					<div class='sub-title-block' style='margin-right:-18px;'><a rel="nofollow" href='http://eventpremia.ru/' target="_blank" class='sub-title'>Премия Событие</a><a rel="nofollow" href="http://eventpremia.ru/participation/member-registration" target="_blank">Отправить заявку на участие</a></div>
 					<div class='main-page-video' style="width: 96%; height: 300px; border: 1px solid #999999; overflow: hidden;"><img src="/images/eventpremia-logo.png" style="width: 100%; display: block; margin-top: -20px;"></iframe>
 					</div>
 					<div class='video-descr'>
-						<a style='color: #000' target="_blank" href='http://eventpremia.ru/laureaty'>Лауреаты премии 2011</a><br>
-						<a style='color: #000' target="_blank" href='http://eventpremia.ru/partners'>Стать партнером премии</a>
+						<a style='color: #000' rel="nofollow" target="_blank" href='http://eventpremia.ru/laureaty'>Лауреаты премии 2011</a><br>
+						<a style='color: #000' rel="nofollow" target="_blank" href='http://eventpremia.ru/partners'>Стать партнером премии</a>
 					</div>
 					</noindex>
 				</div>
@@ -186,14 +186,35 @@
 					<!--  AdRiver code END  -->
 				</div>
 				<div class='sub-title-block'><span class='sub-title widget'>Быть в курсе</span></div>
-				<div style="border: 1px solid #e4e4e4; background:#FFCD00; text-align: left; padding:10px 5px 10px 10px;">
-					<span style="font-size: 12px;">Предстоящие мероприятия, выставки и события, а также последние добавления в каталоге. Будьте в курсе последних новостей!</span><br>
-					<form method="post" onsubmit="javascript: return subscribe();">
+				
+				
+				<div class="be_aware">
+					<span style="font-size: 12px;">Предстоящие мероприятия, выставки и события, а также последние добавления в каталоге. Будьте в курсе последних новостей!</span><br />
+					<div style="padding-top:6px">
+  					<noindex>
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83172&amp;from=promocode" target="_blank">Виджет Эвентотеки на Яндексе</a><br />
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83173&from=promocode" target="_blank">Виджет Новинок на Яндексе</a><br />
+  					
+            <a rel="nofollow" href="http://www.facebook.com/EventCatalog" target="_blank">Мы в контакте</a>  <br />
+            <a rel="nofollow" href="http://vk.com/public34359442" target="_blank">Мы в facebook</a> 
+            </noindex>
+          </div>
+          
+          <form method="post" onsubmit="javascript: return subscribe();">
 						<input type="hidden" name="action" value="subscribe" />
 						<input type="text" id="subscribe_email" style="width:150px; margin-top: 10px;" name="email" value="введите е-mail" onfocus="if (this.value=='введите е-mail') this.value=''" onblur="if (this.value=='') this.value='введите е-mail'" />
-			  <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
+			      <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
 					</form>
+					
+					<div>
+					
+					</div>
 				</div>
+
+				
+				
+				
+				
             </td>
             </tr>
           </tbody></table>
@@ -299,33 +320,33 @@
 				<noindex>
 				<div class='our-friends jcarousel-skin-tango'>
 					<ul id='friends-carousel'>
-						<li><a href='http://www.raapa.ru/' target="_blank"><img src='/images/partners/rappa.jpg' /></a></li>
-						<li><a href='http://micediscount.ru/' target="_blank"><img src='/images/partners/micedisc.jpg' /></a></li>
-						<li><a href='http://eventist.ru/' target="_blank"><img src='/images/partners/eventistlogo.jpg' /></a></li>
-						<li><a href='http://www.prazdnikmedia.ru/' target="_blank"><img src='/images/partners/prazdnik_izd.jpg' /></a></li>
-						<li><a href='http://eventros.ru' target="_blank"><img src='/images/partners/naom.jpg' /></a></li>
-						<li><a href='http://event.ru/' target="_blank"><img src='/images/partners/eventru.jpg' /></a></li>
-						<li><a href='http://4banket.ru/' target="_blank"><img src='/images/partners/4banket.jpg' /></a></li>
-						<li><a href='http://art4you.ru/' target="_blank"><img src='/images/partners/art4you.jpg' /></a></li>
-						<li><a href='http://eventmarket.ru' target="_blank"><img src='/images/partners/emarket.jpg' /></a></li>
-						<li><a href='http://event-forum.ru' target="_blank"><img src='/images/partners/evforum.jpg' /></a></li>
-						<li><a href='http://vklube.ru' target="_blank"><img src='/images/partners/vklube.jpg' /></a></li>
-						<li><a href='http://www.corpmedia.ru/' target="_blank"><img src='/images/partners/akmr.jpg' /></a></li>
-						<li><a href='http://rusartgroup.ru/' target="_blank"><img src='/images/partners/rusartgroup.jpg' /></a></li>
-						<li><a href='http://mf-group.com/' target="_blank"><img src='/images/partners/mfgroup.jpg' /></a></li>
-						<li><a href='http://cateringconsulting.ru/' target="_blank"><img src='/images/partners/catcons.jpg' /></a></li>
-						<li><a href='http://tabriz.ru/' target="_blank"><img src='/images/partners/imperiamuzk.jpg' /></a></li>
-						<li><a href='/contractor/avtoprazdnik' target="_blank"><img src='/images/partners/avtoprazdnik.jpg' /></a></li>
-						<li><a href='http://teatrodelgusto.biz/' target="_blank"><img src='/images/partners/teatrodg.jpg' /></a></li>
-						<li><a href='http://www.ru.tv/' target="_blank"><img src='/images/partners/ru-tv.jpg' /></a></li>
-						<li><a href='http://et-cetera.ru/' target="_blank"><img src='/images/partners/etceteralogo.jpg' /></a></li>
-						<li><a href='http://www.idr.ru/' target="_blank"><img src='/images/partners/logo_IDR.jpg' /></a></li>
-						<li><a href='http://constellation.msk.ru/' target="_blank"><img src='/images/partners/constellation.jpg' /></a></li>
-						<li><a href='http://pstgrafika.ru/' target="_blank"><img src='/images/partners/graphika_logo.jpg' /></a></li>
-						<li><a href='http://www.marketingone.ru/conference/index.htm' target="_blank"><img src='/images/partners/marketingone_logo.jpg' /></a></li>
-						<li><a href='http://www.vedomosti.ru/events/' target="_blank"><img src='/images/partners/vedomosti.jpg' /></a></li>
-						<li><a href='http://ashar.ru/' target="_blank"><img src='/images/partners/ashar.jpg' /></a></li>
-						<li><a href='http://www.ardisprint.ru' target='_blank'><img src='/images/partners/ardis_print.jpg'/></a></li>
+						<li><a rel="nofollow" href='http://www.raapa.ru/' target="_blank"><img src='/images/partners/rappa.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://micediscount.ru/' target="_blank"><img src='/images/partners/micedisc.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://eventist.ru/' target="_blank"><img src='/images/partners/eventistlogo.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.prazdnikmedia.ru/' target="_blank"><img src='/images/partners/prazdnik_izd.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://eventros.ru' target="_blank"><img src='/images/partners/naom.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://event.ru/' target="_blank"><img src='/images/partners/eventru.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://4banket.ru/' target="_blank"><img src='/images/partners/4banket.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://art4you.ru/' target="_blank"><img src='/images/partners/art4you.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://eventmarket.ru' target="_blank"><img src='/images/partners/emarket.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://event-forum.ru' target="_blank"><img src='/images/partners/evforum.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://vklube.ru' target="_blank"><img src='/images/partners/vklube.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.corpmedia.ru/' target="_blank"><img src='/images/partners/akmr.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://rusartgroup.ru/' target="_blank"><img src='/images/partners/rusartgroup.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://mf-group.com/' target="_blank"><img src='/images/partners/mfgroup.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://cateringconsulting.ru/' target="_blank"><img src='/images/partners/catcons.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://tabriz.ru/' target="_blank"><img src='/images/partners/imperiamuzk.jpg' /></a></li>
+						<li><a rel="nofollow" href='/contractor/avtoprazdnik' target="_blank"><img src='/images/partners/avtoprazdnik.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://teatrodelgusto.biz/' target="_blank"><img src='/images/partners/teatrodg.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.ru.tv/' target="_blank"><img src='/images/partners/ru-tv.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://et-cetera.ru/' target="_blank"><img src='/images/partners/etceteralogo.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.idr.ru/' target="_blank"><img src='/images/partners/logo_IDR.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://constellation.msk.ru/' target="_blank"><img src='/images/partners/constellation.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://pstgrafika.ru/' target="_blank"><img src='/images/partners/graphika_logo.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.marketingone.ru/conference/index.htm' target="_blank"><img src='/images/partners/marketingone_logo.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.vedomosti.ru/events/' target="_blank"><img src='/images/partners/vedomosti.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://ashar.ru/' target="_blank"><img src='/images/partners/ashar.jpg' /></a></li>
+						<li><a rel="nofollow" href='http://www.ardisprint.ru' target='_blank'><img src='/images/partners/ardis_print.jpg'/></a></li>
 					
 					</ul>
 				</div>

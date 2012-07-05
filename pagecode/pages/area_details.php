@@ -582,12 +582,13 @@ class area_details_php extends CPageCodeHandler
 				$mainMenu = $this->GetControl("menu");
 				switch(rand(1,2)){
 				case 1:
-					$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","target" => 'target="_blank"');
+					$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
 					break;
 					
 				case 2:$mainMenu->dataSource["midas"] =
 					array("link" => "http://midas.ru/?id=144",
 					"imgname" => "midas",
+					"title"=>"",
 					"target" => "target='_blank'");
 					break;
 				}
@@ -783,8 +784,34 @@ group by
 				}
 				$unit["u_link"] .= "</div>";
 			}
+			
+			
+			/* Baltic IT */
+      $subtypes = SQLProvider::ExecuteQuery("select distinct title,tbl_obj_id from tbl__area_types where tbl_obj_id in (select type_id from tbl__area2type where area_id=$this->id) ");
+      $areaListArray = array();
+      foreach ($subtypes as $type) {
+          if (isset($type["title"])) {
+              $title = $type["title"];
+              array_push($areaListArray,$title); // balticit, массив категорий
+          }
+      }
+      
+      //subtypes
+      $subtypes = SQLProvider::ExecuteQuery("select distinct title,tbl_obj_id,parent_id from tbl__area_subtypes where tbl_obj_id in (select subtype_id from tbl__area2subtype where area_id=$this->id) ");
+      $areaSubListArray = array();
+      foreach ($subtypes as $type) {
+          if (isset($type["title"])) {
+              $title = $type["title"];
+              array_push($areaSubListArray,$title); // balticit, массив подкатегорий
+          }
+      }
+      $area_list = implode(", ",$areaListArray).' '.implode(", ",$areaSubListArray); // balticit, implode категорий подкатегорий
+      /* End Baltic It*/ 
+			
 			$title = $this->GetControl("title");
-			$title->text = $unit["title"];
+			$title->text = $unit["title"].' - '.$area_list;
+			
+			
 			$halls = SQLProvider::ExecuteQuery("select * from `tbl__area_halls` where area_id=$this->id");
 			for ($i=0;$i<sizeof($halls);$i++)
 			{
@@ -899,25 +926,25 @@ group by
 				$mark_cnt++;
 				if ($mark_links)
 				$mark_links .= ", ";
-				$mark_links .= '<a class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';			
+				$mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';			
 			}
 			$unit["voted"] = "";
 			if ($mark_cnt>0) {
-				$u_text = "пользовател€м";
+				$u_text = "пользовател€";
 				if ($mark_cnt == 1)
-				$u_text = "пользователю";
+				$u_text = "пользователь";
 
-				$unit["voted"] = "<div class=\"user_liked\">Ќравитс€ <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+				$unit["voted"] = "<div class=\"user_liked\">–екомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
 			}
 			if ($fav_add) {
 				$msg = "";
 				if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-				$unit["fav_link"] = '<a class="area" href="/area/'.$id_str.'?add=favorite" '.$msg.'>ƒобавить в избранное</a>';
+				$unit["fav_link"] = '<a class="area in_favorite" href="/area/'.$id_str.'?add=favorite" '.$msg.'><span>ƒобавить в избранное</span></a>';
 			}
 			else {
 				$msg = "";
 				if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-				$unit["fav_link"] = '&nbsp;&nbsp;&nbsp;<a class="area" href="/area/'.$id_str.'?delete=favorite" '.$msg.'>”брать из избранного</a>';
+				$unit["fav_link"] = '<a class="area out_favorite" href="/area/'.$id_str.'?delete=favorite" '.$msg.'><span>”брать из избранного</span></a>';
 			}
 
 			//groups

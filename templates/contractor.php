@@ -61,22 +61,38 @@
 								<table class="recomended"><?php CRenderer::RenderControl("NewList_1"); ?></table>
 							</td>							
 						</tr>
-						<tr style="vertical-align: top;">
-								<td class="resident_news"><div class="recomendTitle contractor h3"><a class="contractor" href="/resident_news">Новости подрядчиков</a></div>
-								<table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td class="resident_comments"><div class="commentTitle contractor h3">Новые комментарии</div>
-								<iframe src="/scroll/msg?res_type=contractor" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr>
-						<tr><td colspan="3"><img src="/images/front/0.gif" height="10" width="1"></td></tr>
-						<tr style="vertical-align: top;">
-								<td><div class="recomendTitle contractor"><a class="contractor h3" href="/contractor/rating">Рейтинг подрядчиков</a></div>
-								<table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td><div class="commentTitle contractor h3"><a href="/random_resident/type/contractor" target="rnd"><img src="/images/refresh_contractor.png" style="margin: 1px 10px 0 0;"><span class="contractor" style="vertical-align: top;">Случайные компании</span></a></div>
-								<iframe src="/random_resident/type/contractor" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr></table>
+						</table>
 						
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr style="vertical-align: top;">
+                <td rowspan="2" class="resident_news" width="50%">
+                  <div class="recomendTitle contractor"><a class="contractor" href="/resident_news">Новости подрядчиков</a></div>
+                  <table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
+                </td>
+                <td rowspan="2" style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10" alt="" /></td>
+                <td class="resident_comments" width="50%">
+                  <div class="commentTitle contractor">Новые комментарии</div>
+                  <iframe src="/scroll/msg?res_type=contractor" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+                </td>
+              </tr>
+              <tr style="vertical-align: top;">
+                <td><br />
+                <div class="resident_news">
+                  <div class="recomendTitle contractor"><a class="contractor" href="/contractor/rating">Рейтинг подрядчиков</a></div>
+                  <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
+                </div>
+                </td>
+              </tr>
+            </table>
+            
+						<?php /*
+            <div class="commentTitle contractor"><a href="/random_resident/type/contractor" target="rnd"><img src="/images/refresh_contractor.png" style="margin: 1px 10px 0 0;"><span class="contractor" style="vertical-align: top;">Случайные компании</span></a></div>
+						<iframe src="/random_resident/type/contractor" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+						*/ ?>
+
 						<div>
-							<div class="recomendTitle contractor h3">Важный этап – поиск подрядчика</div>
+							<h1 class="recomendTitle contractor">Важный этап – поиск подрядчика</h1>
 							<p>Каждое мероприятие, будь это банкет по случаю юбилея или научный симпозиум, становится своеобразной проверкой эвент организаторов на компетентность и способность соединить все части процесса в единое целое. Существует огромное количество вопросов, для решения которых менеджерам приходится тратить массу усилий и времени, и наиболее сложная часть в этом процессе – это поиск адекватных и надежных подрядчиков, способных выполнять свои обязательства и оказывать услуги высокого качества в организации мероприятий. Где найти хорошего осветителя, как правильно составить меню для нескольких сотен гостей, каким образом всех разместить и как спланировать вечер? Для быстроты поиска и возможности сравнения фирм, предлагающих однотипный сервис, и был создан эвент-каталог, в котором  мы предлагаем вам полную энциклопедию всего, что касается организации мероприятий. Важное место в ней занимают подрядчики: для вашего удобства и простоты поиска сформирована разбивка по профилям деятельности. У нас реализована рейтинговая систем, а это значит, что честная фирма, качественно устроившая проведение нескольких мероприятий, автоматически поднимается в рейтинге благодаря рекомендациям довольных заказчиков. Эвент-каталог также содержит комментарии и отзывы организаторов мероприятий, помогающие сформировать объективную оценку деятельности того или иного подрядчика. Поиск и выбор соответствующей компании в эвент-каталоге – это своеобразная страховка четкости организации мероприятия. Представьте, что вам срочно нужны гелиевые шары, и вы заказываете их у случайно выбранного подрядчика. Делаете подробный заказ: «Нужны зеленые шары в виде арки, а по бокам - звезды», затем оплачиваете, и получаете на утро помещение, оформленное подвесными гирляндами красного цвета. Чтобы в принципе исключить подобную ситуацию и не получить нежданный «сюрприз», в эвент-каталоге содержится много информации о каждом подрядчике, а мнения заказчиков являются хорошим подспорьем в выборе надежной компании.</p>
 							<p>Если вы ищете что-то новое и необычное – советуем вам познакомиться с интересными решениями сезона на страницах <a href="/eventoteka"><b>эвентотеки</b></a>. Довольно часто подрядчики участвуют в нестандартных мероприятиях и экспериментальных отработках. Полученный опыт они успешно применяют при организации мероприятий, в числе которых может быть и ваш проект. Например, новинка <a href="/book/details932/"><b>аудиокупол</b></a> нашла свое применение на выставках и презентациях,  а 3D голограмма используется в качестве альтернативы видео-ведущему.</p>
 						</div>

@@ -479,7 +479,7 @@ class artist_details_php extends CPageCodeHandler
 		if($pro_type == 1 || $pro_type == 2) {
 			$unit['pro_logo_prew'] = getProLogoForPreview('artist');
 		}
-        // время на сайте      
+        // время на сайте
         $unit['reg_date'] = onSiteTime($unit['reg_date']);
         $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
         $unit["u_link"] = "";
@@ -592,25 +592,25 @@ class artist_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
                 $mark_links .= ", ";
-            $mark_links .= '<a class="user_like_link" href="/u_profile/?type=' . $m_item['type'] . '&id=' . $m_item['user_id'] . '">' . $m_item['title'] . '</a>';
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type=' . $m_item['type'] . '&id=' . $m_item['user_id'] . '">' . $m_item['title'] . '</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt > 0) {
-            $u_text = "пользователям";
+            $u_text = "пользователя";
             if ($mark_cnt == 1)
-                $u_text = "пользователю";
+                $u_text = "пользователь";
 
-            $unit["voted"] = "<div class=\"user_liked\">Нравится <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+            $unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
         }
         if ($fav_add) {
             $msg = "";
             if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-            $unit["fav_link"] = '<a class="artist" href="/artist/' . $id_str . '?add=favorite" ' . $msg . '>Добавить в избранное</a>';
+            $unit["fav_link"] = '<a class="artist in_favorite" href="/artist/' . $id_str . '?add=favorite" ' . $msg . '><span>Добавить в избранное</span></a>';
         }
         else {
       $msg = "";
       if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-      $unit["fav_link"] = '&nbsp;&nbsp;&nbsp;<a class="artist" href="/artist/'.$id_str.'?delete=favorite" '.$msg.'>Убрать из избранного</a>';
+      $unit["fav_link"] = '<a class="artist out_favorite" href="/artist/'.$id_str.'?delete=favorite" '.$msg.'><span>Убрать из избранного</span></a>';
     }
 
 
@@ -658,8 +658,20 @@ class artist_details_php extends CPageCodeHandler
             if (sizeof($unit) == 0) {
                 CURLHandler::Redirect("/");
             }
+            
+            /* Baltic IT */
+            $subgrs = SQLProvider::ExecuteQuery("select * from tbl__artist_subgroup, tbl__artist2subgroup where artist_id=$this->id and subgroup_id=tbl_obj_id");
+            $subgrArray = array();
+            foreach ($subgrs as $gr) {
+                array_push($subgrArray,$gr['title']);
+            }
+            $subgr_list = implode(", ",$subgrArray);
+            /* End Baltic It*/ 
+            
             $title = $this->GetControl("title");
-            $title->text = $unit["title"];
+            $title->text = $unit["title"].' - '.$subgr_list;
+            
+            
             if ($unit["country"] <= 0) {
                 $unit["country_title"] = $unit["other_country"];
             }

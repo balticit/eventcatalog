@@ -27,7 +27,7 @@
                         <tr>
 							<!--<td class="ram4"></td>-->
 							<td class="ram5">
-								<div style="margin: 0 0 7px 0;" class="eventotekaMenu_title">
+								<div style="margin: 0;" class="eventotekaMenu_title">
 									<a href="javascript:void(9);" class="black">Темы</a>
 								</div>
 								<?php CRenderer::RenderControl("newsCategoriesList"); ?>

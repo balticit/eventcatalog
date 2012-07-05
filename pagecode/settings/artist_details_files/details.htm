@@ -1,8 +1,9 @@
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<br />
+<table cellpadding="0" cellspacing="0" border="0" >
     <tr style="vertical-align: top">
         <td><h1 class="resident_title artist" style="margin: 0;">{title}</h1></td>
         <td><img src="/images/front/0.gif" alt="" height="0" width="30"></td>
-        <td width="1%">
+        <td>
 			<span class="reg_time area">в каталоге: {reg_date}</span>
 		</td>
                 
@@ -21,20 +22,24 @@
         </td>
 		<td><img src="/images/front/0.gif" alt="" height="0" width="122"></td>
 		<td style="text-align:right;">
-		<div class="residentQuickLinksWrap"> 
-		<div class="residentQuickLinks">
-				<a class="artist" href="/u_cabinet?data=my_messages&action=compose&type=artist&id={tbl_obj_id}" {ShowMsgMessage}>Написать сообщение артисту</a>
-				{fav_link}
-				<a class="artist" href="/finderror/">Сообщить об ошибке</a></div>
-		</div>
+
 		</td>
     </tr>
 </table>
 <table border="0" cellpadding="2" cellspacing="2">
     <tr>{mp3List}</tr>
 </table>
+
+<div class="residentQuickLinksWrap"> 
+<div class="residentQuickLinks">
+		<a class="artist send_message" href="/u_cabinet?data=my_messages&action=compose&type=artist&id={tbl_obj_id}" {ShowMsgMessage}><span>Написать сообщение артисту</span></a>
+		{fav_link}
+		<a class="artist report_bug" href="/finderror/"><span>Сообщить об ошибке</span></a></div>
+</div>
+
 <div class="tags_block" style="color:#6096CA;margin-top:10px;">{group_title}</div>
-<br>
+
+<br />
 {u_link}
 <div>{description}</div>
 {news_list}
@@ -47,7 +52,7 @@
             <div id="playerIndex"
             {video_visible}><br>
             <h4 class="detailsBlockTitle"><a name="video">Видео</a></h4>
-            <br/>
+            <br />
 
             <div id="VideoPlayer" style="padding-left:4px">
                 <object width="640" height="360">
@@ -65,20 +70,18 @@
         </td>
     </tr>
 </table>
-<br>
+<br />
 <h4 class="detailsBlockTitle"><a name="rate">Рейтинг</a></h4>
+<noindex>
 <table cellpadding="0" cellspacing="0" border="0">
     <tr>
         <td>{btn_i_like}</td> 
-        <td><img src="/images/front/0.gif" alt="" height="0" width="10"></td>
+        <td><img src="/images/front/0.gif" alt="" height="0" width="10" /></td>
         <td><a class="artist" href="/artist/rating">Рейтинг EVENT КАТАЛОГА</a></td>
     </tr>
 </table>
 {voted}
-<br>
-<div>
-    <script src="http://connect.facebook.net/ru_RU/all.js#xfbml=1"></script>
-    <fb:like show_faces="false" width="450"></fb:like>
-</div>
+
+</noindex>
 <script type="text/javascript" language="javascript" src="/comments/jsc?id={tbl_obj_id}&type=artist"></script>
 {similar}

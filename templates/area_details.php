@@ -3,7 +3,7 @@
 <html>
 <head>
     <?php if(!$this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("title"); ?> - Каталог площадок - EVENT КАТАЛОГ</title>
+        <title><?php CRenderer::RenderControl("title"); ?></title>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
     <?php } ?>

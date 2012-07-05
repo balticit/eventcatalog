@@ -69,22 +69,38 @@
 							<td colspan="2" style="padding: 32px 0 0 10px; vertical-align: top;">
 								<table class="recomended"><?php CRenderer::RenderControl("NewList_1"); ?></table>
 							</td>							
-						</tr>							
-						<tr style="vertical-align: top;">
-								<td class="resident_news"><div class="recomendTitle area h3"><a class="area" href="/resident_news">Новости площадок</a></div>
-								<table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td class="resident_comments"><div class="commentTitle area h3">Новые комментарии</div>
-								<iframe src="/scroll/msg?res_type=area" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr>
-						<tr><td colspan="3"><img src="/images/front/0.gif" height="10" width="1"></td></tr>
-						<tr style="vertical-align: top;">
-								<td><div class="recomendTitle area h3"><a class="area" href="/area/rating">Рейтинг площадок</a></div>
-								<table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td><div class="commentTitle area h3"><a href="/random_resident/type/area" target="rnd"><img src="/images/refresh_area.png" style="margin: 1px 10px 0 0;"><span class="area" style="vertical-align: top;">Случайные площадки</span></a></div>
-								<iframe src="/random_resident/type/area" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr></table>
+						</tr>
+            </table>
+            
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr style="vertical-align: top;">
+                <td rowspan="2" class="resident_news" width="50%">
+                  <div class="recomendTitle area"><a class="area" href="/resident_news">Новости площадок</a></div>
+                  <table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
+                </td>
+                <td rowspan="2" style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10" alt="" /></td>
+                <td class="resident_comments" width="50%">
+                  <div class="commentTitle area">Новые комментарии</div>
+                  <iframe src="/scroll/msg?res_type=area" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+                </td>
+              </tr>
+              <tr style="vertical-align: top;">
+                <td><br />
+                <div class="resident_news">
+                  <div class="recomendTitle area"><a class="area" href="/area/rating">Рейтинг площадок</a></div>
+                  <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
+                </div>
+                </td>
+              </tr>
+            </table>
+            					
+                <?php /*
+                <div class="commentTitle area"><a href="/random_resident/type/area" target="rnd"><img src="/images/refresh_area.png" style="margin: 1px 10px 0 0;"><span class="area" style="vertical-align: top;">Случайные площадки</span></a></div>
+								<iframe src="/random_resident/type/area" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+                */ ?>			
+           
 								<div>
-									<div class="recomendTitle area h3">Место для праздника – аренда площадки</div>
+									<h1 class="recomendTitle area">Место для праздника – аренда площадки</h1>
 									<p>Залог успеха отлично проведенного мероприятия – это удачное сочетание работы ответственного эвент-агентства, надежных подрядчиков, и хорошо подобранного места. Для того чтобы выбрать и арендовать  площадку, соответствующую характеру предстоящего события, необходимо определиться с рядом факторов. Обычно учитывают цель эвент-события, бюджет на аренду, количество присутствующих, прогноз погоды (если площадка находится не в помещении) и пожелания заказчика. В нашем каталоге эвент площадок находится наиболее полный перечень мест, предлагаемых предпринимателями для аренды. Можно подобрать открытые площади или закрытые особняки,  загородные парки или ночные клубы, банкетные залы или детские центры – каждая площадка сопровождается подробным описанием размеров, оформления и местоположения. Особо указывается наличие крытой территории, охраны и стоянки для автомобилей. Например, к банкетным площадкам предъявляются самые высокие требования, и степень комфорта и сервиса должна быть оптимальной для посетителей. Пригородные зоны для эвент-отдыха, напротив, должны соответствовать критериям чистоты и эстетичности природы, а удобство присутствующих на арендуемой площадке обеспечивается временными средствами, предоставляемыми организаторами. В картинг-центрах важное значение имеет обеспечение безопасности, в выставочных залах – вместительность, в ночных клубах – стилистика помещения и так далее, список можно продолжать практически бесконечно, а вывод следует один – каждое мероприятие имеет свою специфику выбора места его проведения.</p>
 									<p>Заказчики, которые арендовали ту или иную эвент-площадку часто оценивают степень удобства расположения места и впечатление, оставшееся у гостей после посещения мероприятия. Это напрямую отражается на рейтинге, и облегчает поиск следующим организаторам. Кроме обычных отзывов и комментариев эвент-каталог публикует также последние <a href="/resident_news"><b>новости о площадках</b></a> и проводимых на них мероприятиях, а в разделе <a href="/eventoteka"><b>эвентотека</b></a> появляются обзоры новых мест для аренды.</p>
 								</div>

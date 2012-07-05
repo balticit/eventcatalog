@@ -138,6 +138,7 @@
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
                     "imgname"=>"redevent",
+                    "title"=>"",
                     "target"=>'target="_blank"');
 					
 					

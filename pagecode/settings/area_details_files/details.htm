@@ -1,8 +1,9 @@
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<br />
+<table cellpadding="0" cellspacing="0" border="0" >
 <tr style="vertical-align: top">
     <td><h1 class="resident_title area" style="margin: 0;">{title}</h1></td>  
     <td><img src="/images/front/0.gif" alt="" height="0" width="30"></td>	
-    <td width="1%">
+    <td>
 		<span class="reg_time area">в каталоге: {reg_date}</span>
 	</td>
 </tr></table>
@@ -28,7 +29,7 @@
 			</script>
 			<a href="#" onclick="wopen('/upload/{location_scheme}','Схема проезда',400,300);"
                 style="visibility: {location_scheme_visible};">Схема проезда</a>
-			<br>
+			<br />
 			<span class="area_left_link1" style="visibility: {menu_visible};">
         <a href="/application/public/upload/{menu}" target="_blank" >Меню</a></span></td>
 	
@@ -36,19 +37,22 @@
 	</td>
 	<td><img src="/images/front/0.gif" alt="" height="0" width="122"></td>
 	<td style="text-align:right;">
-		<div class="residentQuickLinksWrap"> 
-		<div class="residentQuickLinks">
-			<a class="area" href="/u_cabinet?data=my_messages&action=compose&type=area&id={tbl_obj_id}" {ShowMsgMessage}>Написать сообщение площадке</a>
-			{fav_link}
-			<a class="area" href="/finderror/">Сообщить об ошибке</a>
-		</div>
-		</div>
+
 	</td>
 </tr></table>
+
+		<div class="residentQuickLinksWrap"> 
+		<div class="residentQuickLinks">
+			<a class="area send_message" href="/u_cabinet?data=my_messages&action=compose&type=area&id={tbl_obj_id}" {ShowMsgMessage}><span>Написать сообщение площадке</span></a>
+			{fav_link}
+			<a class="area report_bug" href="/finderror/"><span>Сообщить об ошибке</span></a>
+		</div>
+		</div>
+
 <div class="tags_block" style="color:#6096CA;margin-top:10px;">{area_subtype_name}</div>
-<br>
+<br />
 {u_link}
-<div>{description}</div><br>
+<div>{description}</div><br />
 {news_list}
 <h4 class="detailsBlockTitle"><a name="capacity">Вместимость и стоимость</a></h4>
 <table cellpadding="0" cellspacing="1">
@@ -69,7 +73,7 @@
 	</td>	    
   </tr>
   <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
+	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td>	
   </tr>
   <tr>
     <td height="20px;" style="font-size:11px"><div class="blue_button">Стоимость проведения фуршета на 1 персону:</div>
@@ -93,7 +97,7 @@
 	</td>	    
   </tr>
 </table>
-<br>
+<br />
 <h4 class="detailsBlockTitle"><a name="org_info">Оснащение:</a></h4>
 <table cellpadding="0" border="0" cellspacing="0" class="nnm_doc">
   <tr>
@@ -102,7 +106,7 @@
 	</td>	    
   </tr>
   <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
+	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td>	
   </tr>
   <tr>
 	<td height="20px;"  style="font-size:11px">
@@ -176,7 +180,7 @@
 	</td>    
   </tr>
 </table>
-<br>
+<br />
 <h4 class="detailsBlockTitle"><a name="org_info">Кухня и кейтеринг:</a></h4>
 <table cellpadding="0" border="0" cellspacing="0" class="nnm_doc">
   <tr>
@@ -198,20 +202,20 @@
 	<span style="position:relative;top:3px;padding-left:5px">{invite_catering}</span></td>    
   </tr>  
 </table>
-<br/>
-{photos}<br>
+<br />
+{photos}<br />
 {video_block}
 {map}
-<br>
+<br />
 <h4 class="detailsBlockTitle"><a name="rate">Рейтинг</a></h4>
+<noindex>
 <table cellpadding="0" cellspacing="0" border="0"><tr>
     <td>{btn_i_like}</td>
     <td><img src="/images/front/0.gif" alt="" height="0" width="10"></td>
     <td><a class="area" href="/area/rating">Рейтинг EVENT КАТАЛОГА</a></td>
 </tr></table>
 {voted}
-<br>
-<div><script src="http://connect.facebook.net/ru_RU/all.js#xfbml=1"></script><fb:like show_faces="false" width="450"></fb:like></div>
+</noindex>
 <script type="text/javascript" language="javascript" src="/comments/jsc?id={tbl_obj_id}&type=area"></script>
 {similar}
 

@@ -249,6 +249,7 @@ class agency_details_php extends CPageCodeHandler
             $mainMenu->dataSource["polymedia"] =
                 array("link" => "http://www.polymedia.ru/",
                     "imgname" => "polymedia",
+                    "title"=>"",
                     "target" => 'target="_blank"');
 			$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'
@@ -406,26 +407,26 @@ class agency_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
               $mark_links .= ", ";
-            $mark_links .= '<a class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt>0) {
-			$u_text = "пользователям";
+			$u_text = "пользователя";
 			if ($mark_cnt == 1)
-				$u_text = "пользователю";
+				$u_text = "пользователь";
 
-			$unit["voted"] = "<div class=\"user_liked\">Нравится <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+			$unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
 		}
 
     if ($fav_add) {
         $msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-		$unit["fav_link"] = '<a class="agency" href="/agency/'.$id_str.'?add=favorite" '.$msg.'>Добавить в избранное</a>';
+		$unit["fav_link"] = '<a class="agency in_favorite" href="/agency/'.$id_str.'?add=favorite" '.$msg.'><span>Добавить в избранное</span></a>';
 	}
       else {
         $msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-		$unit["fav_link"] = '&nbsp;&nbsp;&nbsp;<a class="agency" href="/agency/'.$id_str.'?delete=favorite" '.$msg.'>Убрать из избранного</a>';
+		$unit["fav_link"] = '<a class="agency out_favorite" href="/agency/'.$id_str.'?delete=favorite" '.$msg.'><span>Убрать из избранного</span></a>';
 	}
 
 
@@ -499,9 +500,19 @@ class agency_details_php extends CPageCodeHandler
 		$agenDetails->dataSource = $unit;
 
 
-
+    /* Baltic IT */
+    $agencyLists = SQLProvider::ExecuteQuery("SELECT t.* FROM tbl__agency_type t, tbl__agency2activity a WHERE a.kind_of_activity = t.tbl_obj_id and a.tbl_obj_id=$this->id");
+    $agencyArrayTitle = array();
+    foreach ($agencyLists as $aType) {
+        array_push($agencyArrayTitle,$aType['title']);
+    }
+    $agency_list = implode(", ",$agencyArrayTitle);
+    /* End Baltic It*/
+    
     $title = $this->GetControl("title");
-		$title->text = $unit["title"];
+		$title->text = $unit["title"]." - ".$agency_list; /* Add in Title Type List */
+		
+		
 		$unit["logo_visible"] = IsNullOrEmpty( $unit["logo_image"])?"hidden":"visible";
 		//cities
         $city = $unit["city"];
@@ -519,6 +530,7 @@ class agency_details_php extends CPageCodeHandler
     $mainMenu->dataSource["polymedia"] =
       array("link"=>"http://www.polymedia.ru/",
             "imgname"=>"polymedia",
+            "title"=>"",
             "target"=>'target="_blank"');
 			
 	// && всего резидентов

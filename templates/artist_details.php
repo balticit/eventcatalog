@@ -3,7 +3,7 @@
 <html>
 <head>
     <?php if(!$this->is_group){?>
-    <title><?php CRenderer::RenderControl("title"); ?> - Каталог артистов - EVENT КАТАЛОГ</title>
+    <title><?php CRenderer::RenderControl("title"); ?></title>
 	<script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
     <?php }?>
     <?php if($this->is_group){ ?>

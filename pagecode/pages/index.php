@@ -181,12 +181,21 @@ class index_php extends CPageCodeHandler
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
 			$res_news[$key]["res_title"] = $res[0]['title'];
-			if (isset($res[0]['logo'])) {
-				$res_news[$key]["logo"] = $res[0]['logo'];
-			}
+			
+
+			if(!empty($res_news[$key]["logo_image"])) {
+        $res_news[$key]["logo"] = $res_news[$key]["logo_image"];
+      }
 			else {
-				$res_news[$key]["logo"] = $res[0]['logo_image'];
+  			if (isset($res[0]['logo'])) {
+  				$res_news[$key]["logo"] = $res[0]['logo'];
+  			}
+  			else {
+  				$res_news[$key]["logo"] = $res[0]['logo_image'];
+  			}
 			}
+			
+			
 			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
 			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 150));
 			switch($val['resident_type']) {
@@ -410,45 +419,51 @@ class index_php extends CPageCodeHandler
     $mainMenu->dataSource["museum"] =
       array("link"=>"http://15kop.ru/",
             "imgname"=>"museum",
+            "title"=>"",
             "target"=>'target="_blank"');
 	break;
 	case 2:
 	$mainMenu->dataSource["polymedia"] =
       array("link"=>"http://www.polymedia.ru/",
             "imgname"=>"polymedia",
+            "title"=>"",
             "target"=>'target="_blank"');
 	break;
 	case 3:
     $mainMenu->dataSource["kinodoktor"] =
       array("link"=>"http://www.kinodoctor.ru/",
             "imgname"=>"kinodoktor",
+            "title"=>"",
             "target"=>'target="_blank"');
 	break;
 	case 4:
 	$mainMenu->dataSource["axiom"] = 
 	   array("link"=>"http://www.aksioma.me/",
 	   "imgname"=>"axiom",
+	   "title"=>"",
 	   "target"=>"target='_blank'");
 	break;
 	case 5:
 	$mainMenu->dataSource["energy"] = 
 	   array("link"=>"http://energy-pro.org/",
 	   "imgname"=>"energy",
+	   "title"=>"",
 	   "target"=>"target='_blank'");
 	break;
 	case 6:
 	$mainMenu->dataSource["spin"] = 
 	   array("link"=>"http://www.spinmusic.ru/",
 	   "imgname"=>"spin",
+	   "title"=>"",
 	   "target"=>"target='_blank'");
 	break;
 	case 7:
 	$mainMenu->dataSource["great"] = 
-	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","target"=>"target='_blank'");
+	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","target"=>"target='_blank'");
 	break;
 	case 8:
 	$mainMenu->dataSource["midas"] = 
-	   array("link"=>"http://midas.ru/?id=144","imgname"=>"midas","target"=>"target='_blank'");
+	   array("link"=>"http://midas.ru/?id=144","imgname"=>"midas","title"=>"","target"=>"target='_blank'");
 	break;
 	}
     //EVENT TV

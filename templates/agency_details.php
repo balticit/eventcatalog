@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title><?php CRenderer::RenderControl("title"); ?> - Каталог агентств - EVENT КАТАЛОГ</title>
+    <title><?php CRenderer::RenderControl("title"); ?></title>
     <?php CRenderer::RenderControl("metadata"); ?>
 </head>
 <body>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <?php if($this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("titlefilter"); ?>Каталог подрядчиков - EVENT КАТАЛОГ</title>
+        <title><?php CRenderer::RenderControl("titlefilter"); ?></title>
 		<link href="/styles/dont_remove.css" rel="stylesheet" type="text/css"></link>
     <?php }?>
     <?php if(!$this->is_type){ ?>

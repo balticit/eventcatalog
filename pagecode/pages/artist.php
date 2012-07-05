@@ -288,14 +288,15 @@ class artist_php extends CPageCodeHandler
             $newList_1 = $this->GetControl("NewList_1");
             $newList_1->dataSource = $this->PrepareArtistsMain($new_conts_1); 
 			
-			$newList_2 = $this->GetControl("NewList_2");
+			      $newList_2 = $this->GetControl("NewList_2");
             $newList_2->dataSource = $this->PrepareArtistsMain($new_conts_2);
 
-			// $newList = $this->GetControl("NewList");
+			      // $newList = $this->GetControl("NewList");
             // $newList->dataSource = $this->PrepareArtistsMain($new);
             /*end new list*/
 
             /*news list*/
+            /*
             $news = SQLProvider::ExecuteQuery("select rn.tbl_obj_id, rn.title, DATE_FORMAT(rn.date,'%d.%m.%y') as `strdate`, rn.resident_type, rn.resident_id,
                                                 res.title_url
 																						 from `tbl__resident_news` rn
@@ -304,6 +305,42 @@ class artist_php extends CPageCodeHandler
 																						 order by rn.`date` DESC limit $this->newsLimit");
             $newsList = $this->GetControl("NewsList");
             $newsList->dataSource = $news;
+            */
+            
+        		$res_news = SQLProvider::ExecuteQuery(
+                    "select rn.*, DATE_FORMAT(date,'%d.%m.%y') as `strdate`
+        						 from `tbl__resident_news` rn
+        												where rn.`active`=1 and rn.`resident_type`='artist'
+        												order by rn.`date` DESC limit $this->newsLimit
+        												");
+        		foreach($res_news as $key => $val) {
+        			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
+        			$res_news[$key]["title_url"] = $res[0]['title_url'];
+        			$res_news[$key]["res_title"] = $res[0]['title'];
+        			
+        			if(!empty($res_news[$key]["logo_image"])) {
+                $res_news[$key]["logo"] = $res_news[$key]["logo_image"];
+              }
+        			else {
+          			if (isset($res[0]['logo'])) {
+          				$res_news[$key]["logo"] = $res[0]['logo'];
+          			}
+          			else {
+          				$res_news[$key]["logo"] = $res[0]['logo_image'];
+          			}
+        			}
+        			
+        			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
+        			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 150));
+        			switch($val['resident_type']) {
+        			case 'area': $res_news[$key]['sub'] = 'Новость площадки'; break;
+        			case 'artist': $res_news[$key]['sub'] = 'Артист'; break;
+        			case 'contractor': $res_news[$key]['sub'] = 'Новость подрядчика'; break;
+        			case 'agency': $res_news[$key]['sub'] = 'Агентство'; break;
+        			}
+        		}
+        		$this->GetControl("NewsList")->dataSource = $res_news;
+            
             /*end news list*/
 
             /*rate list*/

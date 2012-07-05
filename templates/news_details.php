@@ -24,7 +24,7 @@
 								<table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">
 									<tr>
 										<td class="ram5">
-											<div style="margin: 0 0 7px 0;" class="eventotekaMenu_title">
+											<div style="margin:0;" class="eventotekaMenu_title">
 												<a href="javascript:void(9);" class="black">Темы</a>
 											</div>
 											<?php CRenderer::RenderControl("newsCategoriesList"); ?>

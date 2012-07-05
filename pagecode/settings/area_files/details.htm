@@ -23,18 +23,21 @@
         </td>
 		<td><img src="/images/front/0.gif" alt="" height="0" width="122"></td>
 		<td style="text-align:right;">
-		<div class="residentQuickLinksWrap"> 
-		<div class="residentQuickLinks">
-				<a class="artist" href="/u_cabinet?data=my_messages&action=compose&type=artist&id={tbl_obj_id}" {ShowMsgMessage}>Написать сообщение артисту</a>
-				{fav_link}
-				<a class="artist" href="/finderror/">Сообщить об ошибке</a></div>
-		</div>
+
 		</td>
     </tr>
 </table>
 <table border="0" cellpadding="2" cellspacing="2">
     <tr>{mp3List}</tr>
 </table>
+
+		<div class="residentQuickLinksWrap"> 
+		<div class="residentQuickLinks">
+				<a class="area send_message" href="/u_cabinet?data=my_messages&action=compose&type=artist&id={tbl_obj_id}" {ShowMsgMessage}><span>Написать сообщение артисту</span></a>
+				{fav_link}
+				<a class="area report_bug" href="/finderror/"><span>Сообщить об ошибке</span></a></div>
+		</div>
+
 <div class="tags_block" style="color:#6096CA;margin-top:10px;">{group_title}</div>
 <br>
 {u_link}

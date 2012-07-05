@@ -59,20 +59,36 @@
 								<table class="recomended"><?php CRenderer::RenderControl("NewList_1"); ?></table>
 							</td>							
 						</tr>
-						<tr style="vertical-align: top;">
-								<td class="resident_news"><div class="recomendTitle agency h3"><a class="agency" href="/resident_news">Новости агентств</a></div>
-								<table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td class="resident_comments"><div class="commentTitle agency h3">Новые комментарии</div>
-								<iframe src="/scroll/msg?res_type=agency" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr>
-						<tr><td colspan="3"><img src="/images/front/0.gif" height="10" width="1"></td></tr>
-						<tr style="vertical-align: top;">
-								<td><div class="recomendTitle agency h3"><a class="agency" href="/agency/rating">Рейтинг агентств</a></div>
-								<table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table></td>
-								<td style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10"></td>
-								<td><div class="commentTitle agency"><a href="/random_resident/type/agency" target="rnd"><img src="/images/refresh_agency.png" style="margin: 1px 10px 0 0;"><span class="agency h3" style="vertical-align: top;">Случайные агентства</span></a></div>
-								<iframe src="/random_resident/type/agency" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe></td></tr></table>
-
+						</table>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr style="vertical-align: top;">
+                <td rowspan="2" class="resident_news" width="50%">
+                  <div class="recomendTitle agency"><a class="agency" href="/resident_news">Новости агентств</a></div>
+                  <table class="news"><?php CRenderer::RenderControl("NewsList"); ?></table></td>
+                </td>
+                <td rowspan="2" style="width: 10px;"><img src="/images/front/0.gif" height="1" width="10" alt="" /></td>
+                <td class="resident_comments" width="50%">
+                  <div class="commentTitle agency">Новые комментарии</div>
+                  <iframe src="/scroll/msg?res_type=agency" class="comment" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+                </td>
+              </tr>
+              <tr style="vertical-align: top;">
+                <td><br />
+                <div class="resident_news">
+                  <div class="recomendTitle agency"><a class="agency" href="/agency/rating">Рейтинг агентств</a></div>
+                  <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
+                </div>
+                </td>
+              </tr>
+            </table>
+						
+						<?php /*
+						<div class="commentTitle agency"><a href="/random_resident/type/agency" target="rnd"><img src="/images/refresh_agency.png" style="margin: 1px 10px 0 0;"><span class="agency" style="vertical-align: top;">Случайные агентства</span></a></div>
+					  <iframe src="/random_resident/type/agency" class="random" name="rnd" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+					  */ ?>
+					  
+					  
 						<div><?php CRenderer::RenderControl("footerText"); ?></div>
 						<?php } else { ?>
 								<?php CRenderer::RenderControl("yaListTop"); ?>
