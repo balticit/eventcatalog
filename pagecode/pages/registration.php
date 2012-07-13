@@ -322,9 +322,9 @@ class registration_php extends CPageCodeHandler
                         if (sizeof($errorsData) > 0)
                             $errors->dataSource = array("message" => $errorsData[0]);
                         else {
-                            $login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
-                            $r = mysql_query("select * from vw__all_users where login='".mysql_real_escape_string($login)."'");
-                            if (mysql_num_rows($r) != 0) {
+								$login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
+								$r = SQLProvider::ExecuteQuery("select * from vw__all_users where login='".mysql_real_escape_string($props["login"])."'");
+                            if (sizeof($r)!=0) {
                                 $errors->dataSource = array("message" => "такой логин уже существует");
                             }
                             elseif (is_null($login))
@@ -483,8 +483,8 @@ class registration_php extends CPageCodeHandler
                             $userData->other_city = $props['other_city'];
 
                             $login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
-                            $r = mysql_query("select * from vw__all_users where login='".mysql_real_escape_string($login)."'");
-                            if (mysql_num_rows($r) != 0) {
+                            $r = SQLProvider::ExecuteQuery("select * from vw__all_users where login='".mysql_real_escape_string($props["login"])."'");
+                            if (sizeof($r)!=0) {
                                 $errors->dataSource = array("message" => "такой логин уже существует");
                             }
                             elseif (is_null($login)) {
@@ -709,8 +709,8 @@ class registration_php extends CPageCodeHandler
                             $errors->dataSource = array("message" => $errorsData[0]);
                         else {
                             $login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
-                            $r = mysql_query("select * from vw__all_users where login='".mysql_real_escape_string($login)."'");
-                            if (mysql_num_rows($r) != 0) {
+                            $r = SQLProvider::ExecuteQuery("select * from vw__all_users where login='".mysql_real_escape_string($props["login"])."'");
+                            if (sizeof($r)!=0) {
                                 $errors->dataSource = array("message" => "такой логин уже существует");
                             }
                             elseif (is_null($login)) {
@@ -1129,8 +1129,8 @@ class registration_php extends CPageCodeHandler
                             $userData->other_country = $props['other_country'];
 
                             $login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
-                            $r = mysql_query("select * from vw__all_users where login='".mysql_real_escape_string($login)."'");
-                            if (mysql_num_rows($r) != 0) {
+                            $r = SQLProvider::ExecuteQuery("select * from vw__all_users where login='".mysql_real_escape_string($props["login"])."'");
+                            if (sizeof($r)!=0) {
                                 $errors->dataSource = array("message" => "такой логин уже существует");
                             }
                             elseif (is_null($login)) {
@@ -1397,8 +1397,8 @@ class registration_php extends CPageCodeHandler
                             $userData->other_city = $props['other_city'];
 
                             $login = $table->SelectUnique(new CEqFilter(&$table->fields["login"], $props["login"]), false);
-                            $r = mysql_query("select * from vw__all_users where login='".mysql_real_escape_string($login)."'");
-                            if (mysql_num_rows($r) != 0) {
+                            $r = SQLProvider::ExecuteQuery("select * from vw__all_users where login='".mysql_real_escape_string($props["login"])."'");
+                            if (sizeof($r)!=0) {
                                 $errors->dataSource = array("message" => "такой логин уже существует");
                             }
                             elseif (is_null($login)) {

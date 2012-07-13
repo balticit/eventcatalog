@@ -166,6 +166,122 @@ class contractor_details_php extends CPageCodeHandler
 					}
                 }
                 $catList = $this->GetControl("contList");
+                
+                if((!isset($page)||$page==1)&&$activity==1141){                    
+                    $mf = SQLProvider::ExecuteQuery("select * from `vw__contractor_list_pro` where tbl_obj_id=7826");                    
+                    $mf=$mf[0];
+                    $mf["logo"] = $mf["logo_image"];
+                    $mf["city_item"] = (!empty($mf["city_name"])) ? '<span style="color: #000;">('.$mf["city_name"].')</span>' : '';
+                    $mf["class"] = "contractor_table_hover";
+                    if ($mf["title"][0] != $letter) {
+                        $mf["space_height"] = 15;
+                        $letter = $mf["title"][0];
+                    }
+                    else
+                        $mf["space_height"] = 5;
+
+                    switch ($mf["selection"]) {
+                        case 1:
+                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            break;
+                        case 2:
+                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            break;
+                        case 3:
+                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            break;
+                        default:
+                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            break;
+                    }
+                    $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
+                    $mf['category'] = "";
+                    foreach ($gr as $gkey => $value) {
+                        if ($mf['category'] != "")
+                            $mf['category'] .= " / ";
+                        $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                    }
+
+                    $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
+                    //Pro
+                    $mf['links'] = "";
+                    $mf['resident_type'] = 'mf';
+                    $mf['background']       = '0';
+                    $mf['pro_logo']         = '';
+                    $mf['pro_logo_prew']    = '';
+                    if($mf['pro_type'] == 1 || $mf['pro_type'] == 2){
+                        $mf['activeEl'] = 'activeEl';
+                        $mf['border']           = 'border:2px solid '.getProBackgroud('contractor').';';
+                        $mf['pro_logo_prew']    = getProLogoForPreview('contractor');
+                        $mf['pro_logo']         = getProLogo();
+                    }
+                    $change = $contractors[2];
+                    foreach ($contractors as $key => $value) {
+                        if($value['tbl_obj_id']==7826){
+                            $contractors[$key] = $change;
+                        }                                        
+                                    }                
+                    $contractors[2] = $mf;
+
+                }
+
+                if((!isset($page)||$page==1)&&($activity==139||$activity==140)){
+                    $mf = SQLProvider::ExecuteQuery("select * from `vw__contractor_list_pro` where tbl_obj_id=7825");                    
+                    $mf=$mf[0];
+                    $mf["logo"] = $mf["logo_image"];
+                    $mf["city_item"] = (!empty($mf["city_name"])) ? '<span style="color: #000;">('.$mf["city_name"].')</span>' : '';
+                    $mf["class"] = "contractor_table_hover";
+                    if ($mf["title"][0] != $letter) {
+                        $mf["space_height"] = 15;
+                        $letter = $mf["title"][0];
+                    }
+                    else
+                        $mf["space_height"] = 5;
+
+                    switch ($mf["selection"]) {
+                        case 1:
+                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            break;
+                        case 2:
+                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            break;
+                        case 3:
+                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            break;
+                        default:
+                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            break;
+                    }
+                    $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
+                    $mf['category'] = "";
+                    foreach ($gr as $gkey => $value) {
+                        if ($mf['category'] != "")
+                            $mf['category'] .= " / ";
+                        $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                    }
+
+                    $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
+                    //Pro
+                    $mf['links'] = "";
+                    $mf['resident_type'] = 'mf';
+                    $mf['background']       = '0';
+                    $mf['pro_logo']         = '';
+                    $mf['pro_logo_prew']    = '';
+                    if($mf['pro_type'] == 1 || $mf['pro_type'] == 2){
+                        $mf['activeEl'] = 'activeEl';
+                        $mf['border']           = 'border:2px solid '.getProBackgroud('contractor').';';
+                        $mf['pro_logo_prew']    = getProLogoForPreview('contractor');
+                        $mf['pro_logo']         = getProLogo();
+                    }
+                    $change = $contractors[2];
+                    foreach ($contractors as $key => $value) {
+                        if($value['tbl_obj_id']==7825){
+                            $contractors[$key] = $change;
+                        }                                        
+                                    }                
+                    $contractors[2] = $mf;
+                }
+
                 $catList->dataSource = $contractors;
             }
 

@@ -43,6 +43,19 @@
 <img src="/images/front/r1.gif"><br><br>
 <form method="post" enctype="multipart/form-data">
 <table border="0" cellpadding="10" cellspacing="0">
+
+<tr valign="top">
+    <td><b>Показывать</b></td>
+    <td>
+    <select style="width:300px;" name="properties[display_type]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
+    <td style="color: #999999;"></td>
+</tr>
+
 <tr valign="top">
     <td width="110"><b>Тип пользователя:</b></td>
     <td style="width: 300px;">
@@ -136,6 +149,41 @@
     <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
     <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя.</td>
 </tr>
+
+<tr valign="top">
+    <td><b>Скайп</b></td>
+    <td><input type="text" name="properties[skype]" size="60" style="width: 300px" value="{skype}"/></td>
+    <td style="color: #999999;"></td>
+</tr>
+<tr valign="top">
+    <td><b>ICQ</b></td>
+    <td><input type="text" name="properties[icq]" size="60" style="width: 300px" value="{icq}"/></td>
+    <td style="color: #999999;"></td>
+</tr>
+<tr valign="top">
+    <td><b>Дата рождения</b></td>
+    <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 300px" value="{birthday}"/></td>
+    <td style="color: #999999;"></td>
+</tr>
+
+<script>
+$(function() {
+	$( "#birthday" ).datepicker();
+});
+</script>
+
+<tr valign="top">
+    <td><b>Пол</b></td>
+    <td>
+    <select style="width:300px;" name="properties[sex]">
+      <option value="0">Мужской</option>
+      <option value="1">Женский</option>
+    </select>
+    </td>
+    <td style="color: #999999;"></td>
+</tr>
+
+
 <tr valign="top">
     <td><b>Компания:</b></td>
     <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
@@ -156,7 +204,7 @@
 <tr valign="top">
     <td><b>Адрес доставки корреспонденции:</b></td>
     <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
-    <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br/>Максимальное
+    <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br />Максимальное
         количество символов – 100.
     </td>
 </tr>
@@ -177,7 +225,7 @@
     <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}"
         {login_readonly} />
     </td>
-    <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br/>Пример: <i>name@mail.ru</i>.
+    <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br />Пример: <i>name@mail.ru</i>.
     </td>
 </tr>
 <tr valign="top">
@@ -196,7 +244,7 @@
             </tr>
         </table>
     </td>
-    <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+    <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
 </tr>
 <tr valign="top">
     <td><b>Возможности пользователя:</b></td>
@@ -230,11 +278,11 @@
         <input class="property_file" type="file" name="properties[logo_file]"/>
     </td>
     <td style="color: #999999;">Вы можете добавить фотографию или любую другую картинку размером не менее 120х80
-        pxl.<br/>Внимание! Название файла должно состоять из латинских букв или цифр.
+        pxl.<br />Внимание! Название файла должно состоять из латинских букв или цифр.
     </td>
 </tr>
 <tr valign="top">
-    <td><b>Введите цифры:</b><br/>
+    <td><b>Введите цифры:</b><br />
 
         <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120"
                                                                                height="50"

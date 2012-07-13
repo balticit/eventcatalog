@@ -1,5 +1,60 @@
+<script language="JavaScript">
+    function ResidentsList() {
+        $.post("/ajax/residents/", $("#form_residents").serialize(),
+                function (data) {
+                    $("#list_residents").html(data);
+                });
+    }
+
+    function FillStrIDs(res_type) {
+        str = "";
+        $("#sel_list_" + res_type).children().each(function () {
+            if (str.length)
+                str += ",";
+            id = this.id;
+            id = id.substring(3, id.length);
+            str += id;
+        });
+        $("#sel_str_" + res_type).val(str);
+    }
+
+    function DeleteSelected(obj, res_type) {
+        $(obj).parent().remove();
+        FillStrIDs(res_type);
+    }
+
+    function SaveSelected(obj, res_type) {
+        id = $("#list_residents :selected").val();
+        title = $("#list_residents :selected").text();
+        $("#sel_list_" + res_type).append('<div id="sl_' + id + '"><a href="" class="' + res_type + '" title="Удалить" onclick="DeleteSelected(this,\'' + res_type + '\'); return false;">' + title + '</a></div>');
+        Boxy.get(obj).hide();
+        FillStrIDs(res_type);
+    }
+
+    function SelectResident(res_type) {
+        new Boxy('<div style="width:200px; height: 300px;"><form id="form_residents" onsubmit="ResidentsList(); return false;"><input type="hidden" name="type" value="' + res_type + '"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><input type="text" name="search" style="width: 150px"></td><td><input type="submit" value="OK"></td></tr></table></form><select id="list_residents" size="14" style="width:100%; height:240px; margin: 3px 0 3px 0;"></select><br><center><button onclick="SaveSelected(this,\'' + res_type + '\');">Выбрать</button></center></div>', {
+            modal:true,
+            closeText:"[X]",
+            title:"Поиск резидента",
+            fixed:false,
+            unloadOnHide:true});
+    }
+</script>
 <form method="post" enctype="multipart/form-data">
     <table border="0" cellpadding="10" cellspacing="0">
+    
+        <tr valign="top">
+            <td><b>Показывать</b></td>
+            <td>
+            <select style="width:300px;" name="properties[display_type]">
+              <option value="0">Всем</option>
+              <option value="1">Зарегистрированным</option>
+              <option value="2">Никому</option>
+            </select>
+            </td>
+            <td style="color: #999999;"></td>
+        </tr>
+    
         <tr valign="top">
             <td width="110"><b>Тип пользователя</b></td>
             <td style="width: 300px;">
@@ -18,7 +73,12 @@
                     </tr>
                     <tr id="user_link_3" style="display: none;">
                         <td></td>
-                        <td>ID: <input type="text" name="user_typeID[3]" size="20" value="{user_typeID_3}"/></td>
+                        <td><input type="hidden" id="sel_str_contractor" name="user_typeID[3]" size="20"
+                                   value="{user_typeID_3}">
+        
+                            <div id="sel_list_contractor">{user_type_3_list}</div>
+                            <a href="" onclick="SelectResident('contractor'); return false;">Выбрать подрядчика</a>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" class="user_links_chb" name="user_type[4]" value="4"/></td>
@@ -26,7 +86,12 @@
                     </tr>
                     <tr id="user_link_4" style="display: none;">
                         <td></td>
-                        <td>ID: <input type="text" name="user_typeID[4]" size="20" value="{user_typeID_4}"/></td>
+                        <td><input type="hidden" id="sel_str_area" name="user_typeID[4]" size="20"
+                                   value="{user_typeID_4}"/>
+        
+                            <div id="sel_list_area">{user_type_4_list}</div>
+                            <a href="" onclick="SelectResident('area'); return false;">Выбрать площадку</a>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" class="user_links_chb" name="user_type[5]" value="5"/></td>
@@ -34,7 +99,12 @@
                     </tr>
                     <tr id="user_link_5" style="display: none;">
                         <td></td>
-                        <td>ID: <input type="text" name="user_typeID[5]" size="20" value="{user_typeID_5}"/></td>
+                        <td><input type="hidden" id="sel_str_artist" name="user_typeID[5]" size="20"
+                                   value="{user_typeID_5}"/>
+        
+                            <div id="sel_list_artist">{user_type_5_list}</div>
+                            <a href="" onclick="SelectResident('artist'); return false;">Выбрать артиста</a>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" class="user_links_chb" name="user_type[6]" value="6"/></td>
@@ -42,7 +112,12 @@
                     </tr>
                     <tr id="user_link_6" style="display: none;">
                         <td></td>
-                        <td>ID: <input type="text" name="user_typeID[6]" size="20" value="{user_typeID_6}"/></td>
+                        <td><input type="hidden" id="sel_str_agency" name="user_typeID[6]" size="20"
+                                   value="{user_typeID_6}"/>
+        
+                            <div id="sel_list_agency">{user_type_6_list}</div>
+                            <a href="" onclick="SelectResident('agency'); return false;">Выбрать агентство</a>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" class="user_links_chb" name="user_type[7]" value="7"/></td>
@@ -54,19 +129,18 @@
                     </tr>
                 </table>
             </td>
-            <td style="color: #999999;">Из списка можно выбрать не более трех позиций.<br/> Номер ID можно найти на
-                персональной странице резидента.<br/>Можно задать несколько ID через запятую
+            <td style="color: #999999;">Из списка можно выбрать не более трех позиций.
             </td>
         </tr>
         <tr valign="top">
             <td><b>Город</b></td>
-            <td>{city_list}<br/> или другой город <br/> <input type="text" name="properties[sity]" size="60"
+            <td>{city_list}<br /> или другой город <br /> <input type="text" name="properties[sity]" size="60"
                                                                style="width: 300px" value="{sity}"/></td>
             <td style="color: #999999;">Выберите из списка город, в котором Вы живете</td>
         </tr>
         <tr valign="top">
             <td><b>Имя</b></td>
-            <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}"/></td>
+            <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}" readonly/></td>
             <td style="color: #999999;">Пожалуйста, укажите Ваше имя полностью. К примеру, <i>Иванов Иван Иванович</i>
             </td>
         </tr>
@@ -75,6 +149,42 @@
             <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
             <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя</td>
         </tr>
+
+        <tr valign="top">
+            <td><b>Скайп</b></td>
+            <td><input type="text" name="properties[skype]" size="60" style="width: 300px" value="{skype}"/></td>
+            <td style="color: #999999;"></td>
+        </tr>
+        <tr valign="top">
+            <td><b>ICQ</b></td>
+            <td><input type="text" name="properties[icq]" size="60" style="width: 300px" value="{icq}"/></td>
+            <td style="color: #999999;"></td>
+        </tr>
+        <tr valign="top">
+            <td><b>Дата рождения</b></td>
+            <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 300px" value="{birthday}"/></td>
+            <td style="color: #999999;"></td>
+        </tr>
+        
+        <script>
+      	$(function() {
+      		$( "#birthday" ).datepicker();
+      	});
+      	</script>
+        
+        <tr valign="top">
+            <td><b>Пол</b></td>
+            <td>
+            <select style="width:300px;" name="properties[sex]">
+              <option value="0">Мужской</option>
+              <option value="1">Женский</option>
+            </select>
+            </td>
+            <td style="color: #999999;"></td>
+        </tr>
+        
+        
+        
         <tr valign="top">
             <td><b>Компания</b></td>
             <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
@@ -94,27 +204,25 @@
         <tr valign="top">
             <td><b>Адрес доставки корреспонденции</b></td>
             <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
-            <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br/>Максимальное
+            <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br />Максимальное
                 количество символов – 100.
             </td>
         </tr>
         <tr valign="top">
             <td><b>Мобильный телефон</b></td>
-            <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px"
-                       value="{contact_phone}"/></td>
+            <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px" value="{contact_phone}"/></td>
             <td style="color: #999999;">Формат: <i>+7 926 111 22 33</i></td>
         </tr>
         <tr valign="top">
             <td><b>Рабочий телефон</b></td>
-            <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px"
-                       value="{company_phone}"/></td>
+            <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px" value="{company_phone}"/></td>
             <td style="color: #999999;">Формат: <i>+7 495 111 22 33</i></td>
         </tr>
         <tr valign="top">
             <td><b>Электронная почта / Логин:</b></td>
             <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}" readonly/>
             </td>
-            <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br/>Пример: <i>name@mail.ru</i>
+            <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br />Пример: <i>name@mail.ru</i>
             </td>
         </tr>
         <tr valign="top">
@@ -133,7 +241,7 @@
                     </tr>
                 </table>
             </td>
-            <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+            <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
         </tr>
         <tr valign="top">
             <td><b>Возможности пользователя</b></td>
@@ -151,7 +259,7 @@
             <td><b>Аватар</b></td>
             <td><a href="/upload/{logo}" target="_blank">{logo}</a> <input class="property_file" type="file" name="properties[logo]"></td>
             <td style="color: #999999;">Вы можете добавить фотографию или любую другую картинку размером не менее 120х80
-                pxl<br/>Внимание! Название файла должно состоять из латинских букв или цифр
+                px<br />Внимание! Название файла должно состоять из латинских букв или цифр
             </td>
         </tr>
         <tr>

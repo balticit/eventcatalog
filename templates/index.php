@@ -205,10 +205,7 @@
 						<input type="text" id="subscribe_email" style="width:150px; margin-top: 10px;" name="email" value="введите е-mail" onfocus="if (this.value=='введите е-mail') this.value=''" onblur="if (this.value=='') this.value='введите е-mail'" />
 			      <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
 					</form>
-					
-					<div>
-					
-					</div>
+
 				</div>
 
 				

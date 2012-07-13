@@ -41,4 +41,47 @@ function onSiteTime($regdate = ''){
     return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' месяц', ' месяца', ' месяцев'):'').' '.($days>0?declension($days,' день',' дня',' дней'):'1 день');
 }
 
+function UserAge($birthday = ''){
+
+// Указываем дату и время Вашего рождения(для примера
+// возьмем 21 мая 1982 года 19 часов 12 минут и 10 секунд :) )
+$sec = 0;
+$min = 0;
+$hour = 0;
+
+$birthday = explode('-',$birthday);
+
+$day = $birthday[0];
+$month = $birthday[1];
+$year = $birthday[2];
+
+//Теперь вычислим метку Unix для указанной даты
+$birthdate_unix = mktime($hour, $min, $sec, $month, $day, $year);
+
+//Вычислим метку unix для текущего момента
+$current_unix = time();
+
+//Просчитаем разность меток
+$period_unix=$current_unix - $birthdate_unix;
+
+// Получаем искомый возраст
+
+// Возраст измеряемый годами
+$age_in_years = floor($period_unix / (365*24*60*60));
+
+// Возраст измеряемый днями
+$age_in_days = floor($period_unix / (24*60*60));
+
+// Возраст измеряемый часами
+$age_in_hours = floor($period_unix / (60*60));
+
+// Возраст измеряемый минутами
+$age_in_minutes = floor($period_unix / 60);
+
+// Возраст измеряемый секундами
+$age_in_seconds = $period_unix;
+
+return $age_in_years.($age_in_years>0?declension($age_in_years, ' год', ' года', ' лет', false).' ':'');
+
+}
 ?>

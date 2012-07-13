@@ -1334,6 +1334,11 @@ class r_cabinet_php extends CPageCodeHandler
 			case "my_favorite" :
 				$f_type = GP("type","all");
 				$left_menu = array(
+				  "my_favorite/type/all" => array(
+						"type" => "link",
+						"text" => "Все",
+						"color" => "#ccc",
+						"selected" => false),
 					"my_favorite/type/contractor" => array(
 						"type" => "link",
 						"text" => "Подрядчики",
@@ -1444,8 +1449,9 @@ class r_cabinet_php extends CPageCodeHandler
 				$cab["main_area"] = "<form id='fav_del_form' action=\"\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
 				                     <tr style=\"color: #999999; font-weight: bold;\">
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата добавления в избранное</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">[<a href=\"\" id=\"btn_fav_del\">Удалить все</a>]</td></tr>
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата добавления</td>
+									 "/*<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">[<a href=\"\" id=\"btn_fav_del\">Удалить все</a>]</td></tr>*/."
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td></tr>
 									 ".$favorite_block->renderHTML()."
 									 <tr><td></td><td></td>
 									 <td>
@@ -1471,16 +1477,22 @@ class r_cabinet_php extends CPageCodeHandler
 
 			case "my_marks" :
 				$m_type = GP("type","all");
-                $delete_like = GP("delete_like",array());
+        $delete_like = GP("delete_like",array());
 				foreach ($delete_like as $value)
 				{
-                    SQLProvider::ExecuteNonReturnQuery(
-                        "delete from tbl__userlike
-                        where from_resident_type='user' and from_resident_id=".$user->id."
-                        and CONCAT(to_resident_type,to_resident_id) = '$value'");
-                }
+            SQLProvider::ExecuteNonReturnQuery(
+                "delete from tbl__userlike
+                where from_resident_type='user' and from_resident_id=".$user->id."
+                and CONCAT(to_resident_type,to_resident_id) = '$value'");
+        }
+
 
 				$left_menu = array(
+				  "my_marks/type/all" => array(
+						"type" => "link",
+						"text" => "Все",
+						"color" => "#ccc",
+						"selected" => false),
 					"my_marks/type/contractor" => array(
 						"type" => "link",
 						"text" => "Подрядчики",
@@ -1654,15 +1666,35 @@ class r_cabinet_php extends CPageCodeHandler
 			$marks_block = $this->GetControl("marks");
 			$marks_block->dataSource = $marks;
 
-			$cab["main_area"] = "<form method=\"post\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
+			$cab["main_area"] = "<form id=\"fav_del_form\" method=\"post\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
 				                     <tr style=\"color: #999999; font-weight: bold;\">
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата оценки</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Больше не нравится</td>
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
 									 </tr>
 									 ".$marks_block->renderHTML()."
-                                     <tr><td style=\"border-bottom: 1px solid #DCDCDC;\" colspan=\"2\">&nbsp;</td>
-                                         <td style=\"border-bottom: 1px solid #DCDCDC; text-align: center;\" ><input type=\"submit\" value=\"Удалить\"></td></tr></table></form>";
+                   <tr><td colspan=\"2\">&nbsp;</td>
+                       <td><input type=\"hidden\" value=\"Удалить\"></td>
+                  </tr>
+                  </table></form>
+                  
+                  <script type=\"text/javascript\">
+										var del_selected = false;
+										\$('#btn_fav_del').click(function(){
+											if(confirm('Вы уверены что хотите удалить все из оценок?')) {
+												\$('.fav_del').attr('checked','checked');
+												\$('#fav_del_form').submit();
+											}
+										return false;});
+										\$('.fav_del_cross').click( function() {
+											if(confirm('Вы уверены что хотите удалить '+\$(this).parents('tr').find('a').html()+' из оценок?')) {
+												\$(this).next().attr('checked','checked');
+												\$('#fav_del_form').submit();
+											}
+										});
+									</script>
+                  
+                  ";
 
 			break;
 //================================================================================================================================================================
@@ -1697,12 +1729,12 @@ class r_cabinet_php extends CPageCodeHandler
 					"type" => "link",
 					"text" => "Отправленные",
 					"color" => "#000",
-					"selected" => false),
-				"my_messages/action/blacklist" => array(
+					"selected" => false)
+			/*	"my_messages/action/blacklist" => array(
 					"type" => "link",
 					"text" => "Черный список",
 					"color" => "#000",
-					"selected" => false)
+					"selected" => false) */
 				);
 			$new_count = SQLProvider::ExecuteScalar("select count(*) as quan from tbl__messages m
 																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id) and bl.user_id='$uid'
@@ -1756,6 +1788,19 @@ class r_cabinet_php extends CPageCodeHandler
 				{
 					$reply_id = GPT("rid");
 					$r_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where tbl_obj_id=$reply_id");
+					
+					/*BALTIC IT*/
+					$h_sender = $r_mess[0]["sender_id"];
+					$h_reciever = $r_mess[0]["reciever_id"];
+
+					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' AND tbl_obj_id<'$reply_id' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' AND tbl_obj_id<'$reply_id' ORDER BY time DESC LIMIT 10 ");
+					/*
+          echo '<pre>';
+					var_dump($h_mess);
+					echo '</pre>';
+					*/
+					/*END BALTIC IT*/
+					
 					if (sizeof($r_mess)==0)
 					{
 						CURLHandler::Redirect("/r_cabinet/data/my_messages/");
@@ -1905,6 +1950,9 @@ class r_cabinet_php extends CPageCodeHandler
 								';
 						}
 						$cab["main_area"].='</div>';
+						
+						
+            
 					}
 					else
 					{
@@ -1915,10 +1963,12 @@ class r_cabinet_php extends CPageCodeHandler
 												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/upload/'.($reciever_data["logo"]==''?"images/nologo.png":$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
 													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
-													'.($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/r_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>
+													'/*($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/r_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>
 													<br/>
 													<span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
-
+                          */.'
+                          '.($m_action=="compose"?"":'<br/><span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
+                          
 												</td>
 											</tr>
 											<tr><td>&nbsp;</td></tr>
@@ -1939,6 +1989,17 @@ class r_cabinet_php extends CPageCodeHandler
 										<textarea name="message_text" style="width:100%; height:100px; border:1px solid #999999; font-size:12px; -moz-border-radius: 6px 6px 6px 6px;"></textarea><br/><br/>
 										<input type="submit" value="Отправить"/><br/><br/><br/>
 										</form>';
+										
+										
+							$cab["main_area"].='<div class="message_history">';
+							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
+  						foreach($h_mess as $mess) {
+  						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
+                  $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
+              }
+              $cab["main_area"].='</div>';
+										
+										
 						}
 						elseif ($m_action=="view")
 						{
@@ -1947,6 +2008,10 @@ class r_cabinet_php extends CPageCodeHandler
 										</form>';
 						}
 						$cab["main_area"].='</div>';
+						
+						
+						
+						
 					}
 				}
 			}
@@ -2025,21 +2090,41 @@ class r_cabinet_php extends CPageCodeHandler
 
 
 
-						$cab["main_area"] .='<form method="post"><table cellspacing=0 cellpadding=0 class="message_list">
+						$cab["main_area"] .='<form id="fav_del_form" method="post"><table cellspacing=0 cellpadding=0 class="message_list">
 										<tr>
-										   <th>&nbsp;</th>
+									    <th>&nbsp;</th>
+									    <th>&nbsp;</th>
 											<th>'.($m_action=="inbox"?"От":"Кому").'</th>
-											<th>Тема</th>
+											<th>Сообщение</th>
 											<th>Дата</th>'.($m_action=="outbox"?"<th>Прочитано</th>":"").'
-											<th align="center">'.($m_action=="blacklist"?"&nbsp;": '[ <a id="selall" href="#" style="color:#0063AF;" onClick="javascript:return SelectMultiple('.implode(",",$mids).');">Выбрать все</a> ]').'</th>
+											'/*<th align="center">'.($m_action=="blacklist"?"&nbsp;": '[ <a id="selall" href="#" style="color:#0063AF;" onClick="javascript:return SelectMultiple('.implode(",",$mids).');">Выбрать все</a> ]').'</th>*/.'
+											<th align="center">'.($m_action=="blacklist"?"&nbsp;": 'Удалить').'</th>
 										</tr>
 										'.$messagesList->renderHTML().'
 										'.($m_action=="blacklist"?"":
 										'<tr>
 											<td colspan="'.($m_action=="inbox"?"4":"5").'">&nbsp;</td>
-											<td align="center"><input type="hidden" name="delete_multiple" value="1"><input type="submit" value="Удалить"/></td>
+											<td align="center"><input type="hidden" name="delete_multiple" value="1"><input type="hidden" value="Удалить"/></td>
 										</tr>').'
-										</table></form>';
+										</table></form>
+                    
+                    <script type="text/javascript">
+										var del_selected = false;
+										$("#btn_fav_del").click(function(){
+											if(confirm("Вы уверены что хотите удалить сообщение?")) {
+												$(".fav_del").attr("checked","checked");
+												$("#fav_del_form").submit();
+											}
+										return false;});
+										$(".fav_del_cross").click( function() {
+											if(confirm("Вы уверены что хотите удалить сообщение от "+$(this).parents("tr").find("a").html()+" ?")) {
+												$(this).next().attr("checked","checked");
+												$("#fav_del_form").submit();
+											}
+										});
+									  </script>
+                    
+                    ';
 
 					}
 					else
@@ -2212,15 +2297,34 @@ class r_cabinet_php extends CPageCodeHandler
 
 		$cab["main_area"] = "
 			<a href='/add_res_news' style='color: black;'>Добавить новость</a><br><br>
-            <form method='post'>
+      <form method='post' id='fav_del_form'>
 			<table cellspacing='0' cellpadding='10' width='900'>
 			<tr style=\"color: #999999; font-weight: bold;\">
 				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Заголовок</td>
-				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата отправки запроса на размещение</td>
-				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Статус размещения</td>
+				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата отправки запроса</td>
+				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Статус</td>
 				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
-			</tr>".$newsblock->renderHTML()."<tr><td style=\"border-bottom: 1px solid #DCDCDC;\" colspan=\"3\">&nbsp;</td>
-            <td style=\"border-bottom: 1px solid #DCDCDC; text-align: center;\" ><input type=\"submit\" value=\"Удалить\"></td></tr></table></form>";
+			</tr>".$newsblock->renderHTML()."
+      <tr><td colspan=\"3\">&nbsp;</td>
+          <td><input type=\"hidden\" value=\"Удалить\"></td></tr>
+      </table>
+      </form>
+      <script type=\"text/javascript\">
+					var del_selected = false;
+					\$('#btn_fav_del').click(function(){
+						if(confirm('Вы уверены что хотите удалить все из новостей?')) {
+							\$('.fav_del').attr('checked','checked');
+							\$('#fav_del_form').submit();
+						}
+					return false;});
+					\$('.fav_del_cross').click( function() {
+						if(confirm('Вы уверены что хотите удалить '+\$(this).parents('tr').find('a').html()+' из новостей?')) {
+							\$(this).next().attr('checked','checked');
+							\$('#fav_del_form').submit();
+						}
+					});
+				</script>
+            ";
 		break;
 //=======================================================
 // PRO account

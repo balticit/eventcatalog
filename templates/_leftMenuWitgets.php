@@ -156,14 +156,28 @@
                             </div>
                             <div class="leftPanelWitget_container">
                                 <h3 class="h3">Быть в курсе</h3>
-                                <div style="border: 1px solid #e4e4e4; background:#FFCD00; text-align: left; padding:10px 5px 10px 10px; margin-bottom: 30px;">
-					<span style="font-size: 12px;">Предстоящие мероприятия, выставки и события, а также последние добавления в каталоге. Будьте в курсе последних новостей!</span><br>
-					<form method="post" onsubmit="javascript: return subscribe();">
+                                
+        <div class="be_aware">
+					<span style="font-size: 12px;">Предстоящие мероприятия, выставки и события, а также последние добавления в каталоге. Будьте в курсе последних новостей!</span><br />
+					<div style="padding-top:6px">
+  					<noindex>
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83172&amp;from=promocode" target="_blank">Виджет Эвентотеки на Яндексе</a><br />
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83173&from=promocode" target="_blank">Виджет Новинок на Яндексе</a><br />
+  					
+            <a rel="nofollow" href="http://www.facebook.com/EventCatalog" target="_blank">Мы в контакте</a>  <br />
+            <a rel="nofollow" href="http://vk.com/public34359442" target="_blank">Мы в facebook</a> 
+            </noindex>
+          </div>
+          
+          <form method="post" onsubmit="javascript: return subscribe();">
 						<input type="hidden" name="action" value="subscribe" />
 						<input type="text" id="subscribe_email" style="width:150px; margin-top: 10px;" name="email" value="введите е-mail" onfocus="if (this.value=='введите е-mail') this.value=''" onblur="if (this.value=='') this.value='введите е-mail'" />
-                                                <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
+			      <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
 					</form>
-				</div>
+
+				</div>                
+                                
+
                             </div>
                         </div>
 </td>

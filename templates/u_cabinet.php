@@ -17,7 +17,7 @@
 <tr>
 	<td><?php CRenderer::RenderControl("submenu"); ?></td>
 </tr>
-<tr><td>
+<tr><td class="u_cab_menu">
 <?php CRenderer::RenderControl("u_cab_menu"); ?>
 </td></tr>
 <tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; padding-bottom: 30px; height:100%;" valign="top">

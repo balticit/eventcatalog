@@ -1,7 +1,11 @@
 <tr id="mess_{tbl_obj_id}" class="message_{status}">
-			   <td><div style="width:16px; height:16px; background:url(/images/messages/{status}.gif) no-repeat center center;"></td>
-				<td><a href="/u_profile/type/{type}/id/{user_id}" style="color:#0063AF;">{title}</a></td>
-				<td><a href="/u_cabinet/data/my_messages/action/{action}/rid/{tbl_obj_id}/" style="color:#0063AF;">{text}</a></td>
-				<td>{date}</td>{date_read}	
-				<td align="center"><input type="checkbox" name="delete_mess[{tbl_obj_id}]" id="delete_mess_{tbl_obj_id}" value="{tbl_obj_id}"/></td>	
-			</tr>
+  <td><div style="width:16px; height:16px; background:url(/images/messages/{status}.gif) no-repeat center center;"></td>
+  <td><img src="/upload/{logo}" width="60" height="40" style="background:#000" alt="" /></td>
+	<td><a href="/u_profile/type/{type}/id/{user_id}" style="color:#0063AF;">{title}</a></td>
+	<td><a href="/u_cabinet/data/my_messages/action/{action}/rid/{tbl_obj_id}/" style="color:#0063AF;">{text}</a></td>
+	<td>{date}</td>{date_read}	
+	<td align="center">
+	<div class='fav_del_cross'></div>
+  <input type="checkbox" class="fav_del" name="delete_mess[{tbl_obj_id}]" id="delete_mess_{tbl_obj_id}" value="{tbl_obj_id}"/>
+  </td>	
+</tr>

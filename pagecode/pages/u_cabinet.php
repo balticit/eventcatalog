@@ -91,6 +91,11 @@ class u_cabinet_php extends CPageCodeHandler
         $regData = $userData->registration_date;
 
         $user_types = SQLProvider::ExecuteQuery("select * from tbl__registered_user_types where user_id = ".$user->id);
+        $utdata["user_type_3_list"] = "";
+        $utdata["user_type_4_list"] = "";
+        $utdata["user_type_5_list"] = "";
+        $utdata["user_type_6_list"] = "";
+        
         foreach($user_types as $key => $ut)
         {
           switch($ut["user_type"])
@@ -105,21 +110,73 @@ class u_cabinet_php extends CPageCodeHandler
               $utdata["user_type_3"] = true;
               $r_id = SQLProvider::ExecuteQuery("select GROUP_CONCAT(resident_id SEPARATOR ', ') rids from tbl__registered_user_link_resident where user_id = ".$user->id." and resident_type = 'contractor'");
               $utdata["user_typeID_3"] = $r_id[0]["rids"];
+
+                  $ids = preg_split("/[\s,]+/", $utdata["user_typeID_3"]);
+                  foreach ($ids as $num => $rid) {
+                      if (!IsNullOrEmpty($rid) && !is_numeric($rid))
+                          $err_ut = "не верно задан ID";
+                      else {
+                          $tbl = "contractor";
+                          
+                          $title = SQLProvider::ExecuteScalar("select title from tbl__" . $tbl . "_doc where tbl_obj_id = $rid");
+                          $utdata["user_type_3_list"] .= '<div id="sl_' . $rid . '"><a href="" class="' . $tbl . '" title="Удалить" onclick="DeleteSelected(this,\'' . $tbl . '\'); return false;">' . $title . '</a></div>';
+                      }
+                  }
+              
             break;
             case "представитель площадки" :
               $utdata["user_type_4"] = true;
               $r_id = SQLProvider::ExecuteQuery("select GROUP_CONCAT(resident_id SEPARATOR ', ') rids from tbl__registered_user_link_resident where user_id = ".$user->id." and resident_type = 'area'");
               $utdata["user_typeID_4"] = $r_id[0]["rids"];
+
+                  $ids = preg_split("/[\s,]+/", $utdata["user_typeID_4"]);
+                  foreach ($ids as $num => $rid) {
+                      if (!IsNullOrEmpty($rid) && !is_numeric($rid))
+                          $err_ut = "не верно задан ID";
+                      else {
+                          $tbl = "area";
+                          
+                          $title = SQLProvider::ExecuteScalar("select title from tbl__" . $tbl . "_doc where tbl_obj_id = $rid");
+                          $utdata["user_type_4_list"] .= '<div id="sl_' . $rid . '"><a href="" class="' . $tbl . '" title="Удалить" onclick="DeleteSelected(this,\'' . $tbl . '\'); return false;">' . $title . '</a></div>';
+                      }
+                  }
+              
             break;
             case "представитель артиста" :
               $utdata["user_type_5"] = true;
               $r_id = SQLProvider::ExecuteQuery("select GROUP_CONCAT(resident_id SEPARATOR ', ') rids from tbl__registered_user_link_resident where user_id = ".$user->id." and resident_type = 'artist'");
               $utdata["user_typeID_5"] = $r_id[0]["rids"];
+          
+                  $ids = preg_split("/[\s,]+/", $utdata["user_typeID_5"]);
+                  foreach ($ids as $num => $rid) {
+                      if (!IsNullOrEmpty($rid) && !is_numeric($rid))
+                          $err_ut = "не верно задан ID";
+                      else {
+                          $tbl = "artist";
+                          
+                          $title = SQLProvider::ExecuteScalar("select title from tbl__" . $tbl . "_doc where tbl_obj_id = $rid");
+                          $utdata["user_type_5_list"] .= '<div id="sl_' . $rid . '"><a href="" class="' . $tbl . '" title="Удалить" onclick="DeleteSelected(this,\'' . $tbl . '\'); return false;">' . $title . '</a></div>';
+                      }
+                  }
+              
             break;
             case "представитель агентства" :
               $utdata["user_type_6"] = true;
               $r_id = SQLProvider::ExecuteQuery("select GROUP_CONCAT(resident_id SEPARATOR ', ') rids from tbl__registered_user_link_resident where user_id = ".$user->id." and resident_type = 'agency'");
               $utdata["user_typeID_6"] = $r_id[0]["rids"];
+
+                  $ids = preg_split("/[\s,]+/", $utdata["user_typeID_6"]);
+                  foreach ($ids as $num => $rid) {
+                      if (!IsNullOrEmpty($rid) && !is_numeric($rid))
+                          $err_ut = "не верно задан ID";
+                      else {
+                          $tbl = "agency";
+                          
+                          $title = SQLProvider::ExecuteScalar("select title from tbl__" . $tbl . "_doc where tbl_obj_id = $rid");
+                          $utdata["user_type_6_list"] .= '<div id="sl_' . $rid . '"><a href="" class="' . $tbl . '" title="Удалить" onclick="DeleteSelected(this,\'' . $tbl . '\'); return false;">' . $title . '</a></div>';
+                      }
+                  }
+              
             break;
             default :
               $utdata["user_type_7"] = true;
@@ -164,6 +221,8 @@ class u_cabinet_php extends CPageCodeHandler
 
 						$user_types = GP("user_type");
 						$user_typesIDs = GP("user_typeID");
+						
+						
 						foreach($user_types as $key=>$val)
 						{
 							$err_ut = "";
@@ -171,6 +230,11 @@ class u_cabinet_php extends CPageCodeHandler
 							if ($key > 2 && $key < 7)
 							{
 								$utdata["user_typeID_".$key] = $user_typesIDs[$key];
+								
+								
+								
+								
+								
 							}
 							if ($key == 7)
 							{
@@ -209,6 +273,11 @@ class u_cabinet_php extends CPageCodeHandler
 							if (!IsNullOrEmpty($err_ut))
 								array_push($errorsData,$err_ut);
 						}
+						
+
+						
+						
+						
 						$userData->FromHashMap($props);
 						if (IsNullOrEmpty($userData->nikname)) $userData->nikname=null;
 						$userData->forum_name = IsNullOrEmpty($userData->nikname)?$userData->login:$userData->nikname;
@@ -399,26 +468,42 @@ class u_cabinet_php extends CPageCodeHandler
 			}
 			else
 			{
-				$cab["main_area"] = "<span style=\"font-size:13px; color:#000;\">";
-				$cab["main_area"] .= "<br />";
-				$cab["main_area"] .= $user_info["position"]."<br />";
-				if (!IsNullOrEmpty($user_info["company"])) {
-					$cab["main_area"] .= $user_info["company"]."<br />";
+ 
+			  if ($user_info["sity"] != '') $cab["main_area"] = "<b>Город:</b> ".$user_info["sity"]."<br />";
+				if ($user_info["contact_phone"] != '') $cab["main_area"] .= "<b>Мобильный телефон:</b> ".$user_info["contact_phone"]."<br />";
+				
+				if ($user_info["skype"] != '') $cab["main_area"] .= "<b>Skype:</b> ".$user_info["skype"]."<br />";
+				if ($user_info["icq"] != '') $cab["main_area"] .= "<b>ICQ:</b> ".$user_info["icq"]."<br />";
+				
+				
+				if ($user_info["company_phone"] != '') $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
+				if ($user_info["email"] != '') $cab["main_area"] .= "<b>Электронная почта:</b> ".$user_info["email"]."<br />";
+				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> ".$user_info["site"]."<br /><br />";
+
+
+        $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
+        if ($user_info["birthday"] != '') $cab["main_area"] .= "<b>Возраст:</b> ".UserAge($user_info["birthday"])."<br />";
+        
+     
+        if ($user_info["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
+        if ($user_info["sex"] != '') $cab["main_area"] .= "<b>Пол:</b> ".$sex."<br />";
+        
+		    if (!IsNullOrEmpty($user_info["company"])) {
+					$cab["main_area"] .= "<b>Компания:</b> ".$user_info["company"]."<br />";
 				}
-				$cab["main_area"] .= $user_info["sity"]."<br />";
-				//$cab["main_area"] .= "<br />";
-				//$cab["main_area"] .= $user_info["site"]."<br />";
-				//$cab["main_area"] .= $user_info["address"]."<br />";
-				//$cab["main_area"] .= $user_info["contact_phone"];
-				//if ($user_info["company_phone"] != '') $cab["main_area"] .= ", ".$user_info["company_phone"];
-				//$cab["main_area"] .="<br />";
-				//$cab["main_area"] .= $user_info["email"]."<br />";
-				$cab["main_area"] .= "</span>";
+				if ($user_info["position"] != '') $cab["main_area"] .= "<b>Должность:</b> ".$user_info["position"]."<br />";
+				if ($user_info["address"] != '') $cab["main_area"] .= "<b>Адрес:</b> ".$user_info["address"]."<br />";
+
 			}
 			break;
 			case "my_favorite" :
 				$f_type = GP("type","all");
 				$left_menu = array(
+				  "my_favorite/type/all" => array(
+						"type" => "link",
+						"text" => "Все",
+						"color" => "#ccc",
+						"selected" => false),
 					"my_favorite/type/contractor" => array(
 						"type" => "link",
 						"text" => "Подрядчики",
@@ -529,8 +614,9 @@ class u_cabinet_php extends CPageCodeHandler
 				$cab["main_area"] = "<form id='fav_del_form' action=\"\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
 				                     <tr style=\"color: #999999; font-weight: bold;\">
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата добавления в избранное</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">[<a href=\"\" id=\"btn_fav_del\">Удалить все</a>]</td></tr>
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата добавления</td>
+									 "/*<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">[<a href=\"\" id=\"btn_fav_del\">Удалить все</a>]</td></tr>*/."
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td></tr>
 									 ".$favorite_block->renderHTML()."
 									 <tr><td></td><td></td>
 									 <td>
@@ -566,6 +652,11 @@ class u_cabinet_php extends CPageCodeHandler
                 }
 
 				$left_menu = array(
+				  "my_marks/type/all" => array(
+						"type" => "link",
+						"text" => "Все",
+						"color" => "#ссс",
+						"selected" => false),
 					"my_marks/type/contractor" => array(
 						"type" => "link",
 						"text" => "Подрядчики",
@@ -739,15 +830,32 @@ class u_cabinet_php extends CPageCodeHandler
 			$marks_block = $this->GetControl("marks");
 			$marks_block->dataSource = $marks;
 
-			$cab["main_area"] = "<form method=\"post\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
+			$cab["main_area"] = "<form id=\"fav_del_form\" method=\"post\"><table cellspacing=\"0\" cellpadding=\"10\" width=\"600\">
 				                     <tr style=\"color: #999999; font-weight: bold;\">
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата оценки</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Больше не нравится</td>
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата</td>
+									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
 									 </tr>
 									 ".$marks_block->renderHTML()."
-                                     <tr><td style=\"border-bottom: 1px solid #DCDCDC;\" colspan=\"2\">&nbsp;</td>
-                                         <td style=\"border-bottom: 1px solid #DCDCDC; text-align: center;\" ><input type=\"submit\" value=\"Удалить\"></td></tr></table></form>";
+                   <tr>
+                   <td colspan=\"2\">&nbsp;</td>
+                   <td><input type=\"hidden\" value=\"Удалить\"></td></tr></table></form>
+                   <script type=\"text/javascript\">
+										var del_selected = false;
+										\$('#btn_fav_del').click(function(){
+											if(confirm('Вы уверены что хотите удалить все из рекомендаций?')) {
+												\$('.fav_del').attr('checked','checked');
+												\$('#fav_del_form').submit();
+											}
+										return false;});
+										\$('.fav_del_cross').click( function() {
+											if(confirm('Вы уверены что хотите удалить '+\$(this).parents('tr').find('a').html()+' из рекомендаций?')) {
+												\$(this).next().attr('checked','checked');
+												\$('#fav_del_form').submit();
+											}
+										});
+									</script>
+                   ";
 
 			break;
 //===================================================================================================================================================
@@ -782,12 +890,12 @@ class u_cabinet_php extends CPageCodeHandler
 					"type" => "link",
 					"text" => "Отправленные",
 					"color" => "#000",
-					"selected" => false),
-				"my_messages/action/blacklist" => array(
+					"selected" => false)
+			/*	"my_messages/action/blacklist" => array(
 					"type" => "link",
 					"text" => "Черный список",
 					"color" => "#000",
-					"selected" => false)
+					"selected" => false) */
 				);
 			$new_count = SQLProvider::ExecuteScalar("select count(*) as quan from tbl__messages m
 																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id) and bl.user_id='$uid'
@@ -841,6 +949,19 @@ class u_cabinet_php extends CPageCodeHandler
 				{
 					$reply_id = GPT("rid");
 					$r_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where tbl_obj_id=$reply_id");
+					
+					/*BALTIC IT*/
+					$h_sender = $r_mess[0]["sender_id"];
+					$h_reciever = $r_mess[0]["reciever_id"];
+
+					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' AND tbl_obj_id<'$reply_id' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' AND tbl_obj_id<'$reply_id' ORDER BY time DESC LIMIT 10 ");
+					/* 
+          echo '<pre>';
+					var_dump($h_mess);
+					echo '</pre>';
+					*/
+					/*END BALTIC IT*/
+					
 					if (sizeof($r_mess)==0)
 					{
 						CURLHandler::Redirect("/u_cabinet/data/my_messages/");
@@ -989,6 +1110,9 @@ class u_cabinet_php extends CPageCodeHandler
 								';
 						}
 						$cab["main_area"].='</div>';
+						
+						
+						
 					}
 					else
 					{
@@ -999,10 +1123,12 @@ class u_cabinet_php extends CPageCodeHandler
 												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/'.($reciever_data["logo"]==''?"images/nologo.png":$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
 													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
-													'.($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/u_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>
+													' /* ($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/u_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>  
 													<br/>
 													<span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
-
+                          */.'
+                          '.($m_action=="compose"?"":'<br/><span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
+                          
 												</td>
 											</tr>
 											<tr><td>&nbsp;</td></tr>
@@ -1011,6 +1137,9 @@ class u_cabinet_php extends CPageCodeHandler
 						if ($m_action=="reply"||$m_action=="view")
 						{
 							$cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
+							
+							
+							
 							if ($m_action=="reply")
 							{
 								$cab["main_area"].='<p>Ваш ответ:</p>';
@@ -1023,6 +1152,15 @@ class u_cabinet_php extends CPageCodeHandler
 										<textarea name="message_text" style="width:100%; height:100px; border:1px solid #999999; font-size:12px; -moz-border-radius: 6px 6px 6px 6px;"></textarea><br/><br/>
 										<input type="submit" value="Отправить"/><br/><br/><br/>
 										</form>';
+										
+							$cab["main_area"].='<div class="message_history">';
+							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
+  						foreach($h_mess as $mess) {
+  						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
+                  $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
+              }
+              $cab["main_area"].='</div>';
+										
 						}
 						elseif ($m_action=="view")
 						{
@@ -1031,6 +1169,9 @@ class u_cabinet_php extends CPageCodeHandler
 										</form>';
 						}
 						$cab["main_area"].='</div>';
+						
+						
+						
 					}
 				}
 			}
@@ -1109,21 +1250,41 @@ class u_cabinet_php extends CPageCodeHandler
 
 
 
-						$cab["main_area"] .='<form method="post"><table cellspacing=0 cellpadding=0 class="message_list">
+						$cab["main_area"] .='<form id="fav_del_form" method="post"><table cellspacing=0 cellpadding=0 class="message_list">
 										<tr>
-										   <th>&nbsp;</th>
+										  <th>&nbsp;</th>
+										  <th>&nbsp;</th>
 											<th>'.($m_action=="inbox"?"От":"Кому").'</th>
-											<th>Тема</th>
+											<th>Сообщение</th>
 											<th>Дата</th>'.($m_action=="outbox"?"<th>Прочитано</th>":"").'
-											<th align="center">'.($m_action=="blacklist"?"&nbsp;": '[ <a id="selall" href="#" style="color:#0063AF;" onClick="javascript:return SelectMultiple('.implode(",",$mids).');">Выбрать все</a> ]').'</th>
-										</tr>
+											'/* <th width="120" align="center">'.($m_action=="blacklist"?"&nbsp;": ' <a id="selall" href="#" style="color:#0063AF;" onClick="javascript:return SelectMultiple('.implode(",",$mids).');">Удалить</a> ').'</th> ' */.'
+										  <th width="120" align="center">Удалить</th>
+                    </tr>
 										'.$messagesList->renderHTML().'
 										'.($m_action=="blacklist"?"":
 										'<tr>
 											<td colspan="'.($m_action=="inbox"?"4":"5").'">&nbsp;</td>
-											<td align="center"><input type="hidden" name="delete_multiple" value="1"><input type="submit" value="Удалить"/></td>
+											<td align="center"><input type="hidden" name="delete_multiple" value="1"><input type="hidden" value="Удалить"/></td>
 										</tr>').'
-										</table></form>';
+										</table></form>
+                    
+                    <script type="text/javascript">
+										var del_selected = false;
+										$("#btn_fav_del").click(function(){
+											if(confirm("Вы уверены что хотите удалить сообщение?")) {
+												$(".fav_del").attr("checked","checked");
+												$("#fav_del_form").submit();
+											}
+										return false;});
+										$(".fav_del_cross").click( function() {
+											if(confirm("Вы уверены что хотите удалить сообщение от "+$(this).parents("tr").find("a").html()+" ?")) {
+												$(this).next().attr("checked","checked");
+												$("#fav_del_form").submit();
+											}
+										});
+									</script>
+                    
+                    ';
 
 					}
 					else
