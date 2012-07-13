@@ -55,152 +55,44 @@
 <div>{description}</div><br />
 {news_list}
 <h4 class="detailsBlockTitle"><a name="capacity">Вместимость и стоимость</a></h4>
+
 <table cellpadding="0" cellspacing="1">
-  <tr>
-    <td style="width: 100px; padding-right: 9px;float:none;" class="blue_button">Название зала</td>
-    <td style="width: 50px;float:none;" class="blue_button">Банкет</td>
-    <td style="float:none;" class="blue_button">Фуршет</td>
-	<td style="float:none;" class="blue_button">Конференция</td>
-	<td style="float:none;" class="blue_button">Стоимость проведения конференции</td>
-  </tr>
-  {halls_list}
-  <td><img src="/images/front/0.gif" colspan="5" alt="" height="20px"></td>
+  {halls}
 </table>
-<table cellpadding="0" border="0" cellspacing="0" class="nnm_doc">
-  <tr>
-    <td height="20px;" style="font-size:11px"><div class="blue_button">Стоимость проведения банкета на 1 персону:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{cost_banquet}</span>
-	</td>	    
-  </tr>
-  <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td>	
-  </tr>
-  <tr>
-    <td height="20px;" style="font-size:11px"><div class="blue_button">Стоимость проведения фуршета на 1 персону:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{cost_official_buffet}</span>
-	</td>	    
-  </tr>
-  <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td height="20px;" style="font-size:11px"><div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{cost_rent}</span>
-	</td>	    
-  </tr>
-  <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td height="20px;" style="font-size:11px"><div class="blue_button">Обслуживание:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{cost_service}</span>
-	</td>	    
-  </tr>
+<img src="/images/front/0.gif" colspan="5" alt="" height="20px">
+
+<table cellpadding="0" border="0" cellspacing="0" class="area_detail_page">
+  {cost_banquet}
+  {cost_official_buffet}
+  {cost_rent}
+  {cost_service}
 </table>
+
 <br />
 <h4 class="detailsBlockTitle"><a name="org_info">Оснащение:</a></h4>
-<table cellpadding="0" border="0" cellspacing="0" class="nnm_doc">
-  <tr>
-    <td height="20px;" style="font-size:11px"><div class="blue_button">Парковка:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{parking}</span>
-	</td>	    
-  </tr>
-  <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td>	
-  </tr>
-  <tr>
-	<td height="20px;"  style="font-size:11px">
-		<div class="blue_button">Техничекий служебный вход:</div>
-		<span style="position:relative;top:3px;padding-left:5px">{service_entrance}</span>
-	</td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-	<td  height="20px;" style="font-size:11px"><div class="blue_button">Гардероб:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{wardrobe}</span></td>	
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-	<td  height="20px;" style="font-size:11px"><div class="blue_button">Сцена:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{stage}</span></td>	
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Танцпол:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{dancing}</span></td>
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Гримерки:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{makeup_rooms}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Звук:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{sound}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="2" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Свет:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{light}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Плазменые панели:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{panels}</span></td>   
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Проэкционный экран/Проектор:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{projector}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px">
-		<div class="blue_button">Возможность установки автомобиля внутри площадки:</div>
-		<span style="position:relative;top:3px;padding-left:5px">{car_into}</span>
-	</td>    
-  </tr>
+
+<table cellpadding="0" border="0" cellspacing="0" class="area_detail_page">
+  {parking}
+  {service_entrance}
+  {wardrobe}
+  {stage}
+  {dancing}
+  {makeup_rooms}
+  {sound}
+  {light}
+  {panels}
+  {projector}
+  
+  {car_into}
+  
 </table>
 <br />
 <h4 class="detailsBlockTitle"><a name="org_info">Кухня и кейтеринг:</a></h4>
-<table cellpadding="0" border="0" cellspacing="0" class="nnm_doc">
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Кухня:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{kitchen}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-  <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Особенности кухни:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{kitchen_features}</span></td>    
-  </tr>
-    <tr>
-	<td><img src="/images/front/0.gif" colspan="1" alt="" height="20px"></td>	
-  </tr>
-    <tr>
-    <td  height="20px;" style="font-size:11px"><div class="blue_button">Возможность приглашения стороннего кейтеринга:</div>
-	<span style="position:relative;top:3px;padding-left:5px">{invite_catering}</span></td>    
-  </tr>  
+
+<table cellpadding="0" border="0" cellspacing="0" class="area_detail_page">
+  {kitchen}
+  {kitchen_features}
+  {invite_catering} 
 </table>
 <br />
 {photos}<br />

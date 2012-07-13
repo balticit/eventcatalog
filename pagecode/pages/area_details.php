@@ -751,26 +751,233 @@ group by
 			if($pro_type == 1 || $pro_type == 2){
 				$unit['pro_logo_prew'] = getProLogoForPreview('area');
 			}
-			if($unit["light"]!=0){
-				$unit["light"]="Есть";
+			
+			// cost_banquet
+			if($unit["cost_banquet"]!='' && $unit["cost_banquet"]!='0'){
+				$unit["cost_banquet"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Стоимость проведения банкета на 1 персону:</div>
+        	<span>'.$unit["cost_banquet"].' р.</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
 			}else{
-				$unit["light"]="Нет";
+				$unit["cost_banquet"]="";
 			}
-			if($unit["service_entrance"]!=0){
-				$unit["service_entrance"]="Есть";
+			
+			//cost_official_buffet
+			if($unit["cost_official_buffet"]!='' && $unit["cost_official_buffet"]!='0'){
+				$unit["cost_official_buffet"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Стоимость проведения фуршета на 1 персону:</div>
+        	<span>'.$unit["cost_official_buffet"].' р.</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
 			}else{
-				$unit["service_entrance"]="Нет";
+				$unit["cost_official_buffet"]="";
 			}
-			if($unit["car_into"]!=0){
-				$unit["car_into"]="Есть";
+			
+			// cost_rent
+			if($unit["cost_rent"]!='' && $unit["cost_rent"]!='0'){
+				$unit["cost_rent"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div>
+        	<span>'.$unit["cost_rent"].' р.</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
 			}else{
-				$unit["car_into"]="Нет";
+				$unit["cost_rent"]="";
 			}
-			if($unit["invite_catering"]!=0){
-				$unit["invite_catering"]="Есть";
+			
+			
+			//cost_service
+			if($unit["cost_service"]!=0){
+				$unit["cost_service"]=	
+				'<tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>
+        <tr><td class="table_row">
+          <div class="blue_button">Обслуживание:</div>
+        	<span>Оплачивается дополнительно</span>
+      	</td></tr>';
+				
 			}else{
-				$unit["invite_catering"]="Нет";
+				$unit["cost_service"]="";
 			}
+			
+      //parking
+      if($unit["parking"]!='' && $unit["parking"]!='0'){
+				$unit["parking"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Парковка:</div>
+        	<span>'.$unit["parking"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
+			}else{
+				$unit["parking"]="";
+			}
+			
+			//service_entrance
+      if($unit["service_entrance"]!='' && $unit["service_entrance"]!='0'){
+				$unit["service_entrance"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Техничекий служебный вход:</div>
+        	<span>Есть</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
+			}else{
+				$unit["service_entrance"]="";
+			}
+			
+			//service_entrance
+      if($unit["wardrobe"]!='' && $unit["wardrobe"]!='0'){
+				$unit["wardrobe"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Гардероб:</div>
+        	<span>'.$unit["wardrobe"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
+			}else{
+				$unit["wardrobe"]="";
+			}
+			
+			//stage
+      if($unit["stage"]!='' && $unit["stage"]!='0'){
+				$unit["stage"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Сцена:</div>
+        	<span>'.$unit["stage"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+				
+			}else{
+				$unit["stage"]="";
+			}
+			
+			//dancing
+      if($unit["dancing"]!='' && $unit["dancing"]!='0'){
+				$unit["dancing"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Танцпол:</div>
+        	<span>'.$unit["dancing"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["dancing"]="";
+			}
+			
+			//makeup_rooms
+      if($unit["makeup_rooms"]!='' && $unit["makeup_rooms"]!='0'){
+				$unit["makeup_rooms"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Гримерки:</div>
+        	<span>'.$unit["makeup_rooms"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["makeup_rooms"]="";
+			}
+			
+			//sound
+      if($unit["sound"]!='' && $unit["sound"]!='0'){
+				$unit["sound"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Звук:</div>
+        	<span>'.$unit["sound"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["sound"]="";
+			}
+			
+			//light
+      if($unit["light"]!='0'){
+				$unit["light"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Свет:</div>
+        	<span>Есть</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["light"]="";
+			}
+			
+			
+			//panels
+      if($unit["panels"]!='' && $unit["panels"]!='0'){
+				$unit["panels"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Плазменые панели:</div>
+        	<span>'.$unit["panels"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["panels"]="";
+			}
+			
+			//projector
+      if($unit["projector"]!='' && $unit["projector"]!='0'){
+				$unit["projector"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Проэкционный экран/Проектор:</div>
+        	<span>'.$unit["projector"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["projector"]="";
+			}
+			
+			
+			//car_into
+      if($unit["car_into"]!='0'){
+				$unit["car_into"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Возможность установки автомобиля внутри площадки:</div>
+        	<span>Есть</span>
+      	</td></tr>';
+			}else{
+				$unit["car_into"]="";
+			}
+			
+			//invite_catering
+      if($unit["invite_catering"]!='0'){
+				$unit["invite_catering"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Возможность приглашения стороннего кейтеринга:</div>
+        	<span>Есть</span>
+      	</td></tr>';
+			}else{
+				$unit["invite_catering"]="";
+			}
+			
+			//kitchen
+      if($unit["kitchen"]!='' && $unit["kitchen"]!='0'){
+				$unit["kitchen"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Кухня:</div>
+        	<span>'.$unit["kitchen"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["kitchen"]="";
+			}
+			
+			//kitchen_features
+      if($unit["kitchen_features"]!='' && $unit["kitchen_features"]!='0'){
+				$unit["kitchen_features"]=	
+				'<tr><td class="table_row">
+          <div class="blue_button">Особенности кухни:</div>
+        	<span>'.$unit["kitchen_features"].'</span>
+      	</td></tr>
+        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+			}else{
+				$unit["kitchen_features"]="";
+			}
+			
+			
+
 
 			$unit["u_link"] = "";
 			$u_links = SQLProvider::ExecuteQuery("select ru.tbl_obj_id, IF(ru.nikname is NULL or ru.nikname = '',ru.title,ru.nikname) title from tbl__registered_user_link_resident rl left join tbl__registered_user ru on ru.tbl_obj_id = rl.user_id
@@ -817,9 +1024,62 @@ group by
 			{
 				$halls[$i]["number"] = $i+1;
 			}
-			$hallList = $this->GetControl("hallList");
-			$hallList->dataSource = $halls;
-			$unit["halls_list"] = $hallList->Render();
+			
+	//		$hallList = $this->GetControl("hallList");
+	//		$hallList->dataSource = $halls;
+	//		$unit["halls_list"] = $hallList->Render();
+			
+
+			
+			// Костыль вывод залов
+			$col_1 = false;
+			$col_2 = false;
+			$col_3 = false;
+			$col_4 = false;
+			
+			for ($i=0;$i<sizeof($halls);$i++){
+        if(!empty($halls[$i]["max_places_banquet"])) { $col_1 = true;};
+        if(!empty($halls[$i]["max_places_official_buffet"])) { $col_2 = true;};
+        if(!empty($halls[$i]["max_places_conference"])) { $col_3 = true;};
+        if(!empty($halls[$i]["cost_conference"])) { $col_4 = true;};
+      }
+			
+			$unit["halls"] ='<tr>';
+			$unit["halls"] .= '<td style="width: 100px; padding-right: 9px;float:none;" class="blue_button">Название зала</td>';
+			if($col_1) {
+      $unit["halls"] .='<td style="width: 50px;float:none;" class="blue_button">Банкет</td>';
+      }
+      if($col_2) {
+      $unit["halls"] .='<td style="float:none;" class="blue_button">Фуршет</td>';
+      }
+      if($col_3) {
+      $unit["halls"] .='<td style="float:none;" class="blue_button">Конференция</td>';
+      }
+      if($col_4) {
+      $unit["halls"] .='<td style="float:none;" class="blue_button">Стоимость проведения конференции</td>';
+      }
+      $unit["halls"] .='<tr>';
+			
+			for ($i=0;$i<sizeof($halls);$i++)
+			{
+			 $unit["halls"] .='<tr>';
+			  $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["title"].'</td>';
+  			if($col_1) {
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;" height="25">'.$halls[$i]["max_places_banquet"].'</td>';
+        }
+        if($col_2) {
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["max_places_official_buffet"].'</td>';
+        }
+        if($col_3) {
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["max_places_conference"].'</td>';
+        }
+        if($col_4) {
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["cost_conference"].'</td>';
+        }
+       $unit["halls"] .='</tr>';
+			}
+			
+			
 
 			$user = new CSessionUser("user");
 			CAuthorizer::AuthentificateUserFromCookie(&$user);
@@ -909,7 +1169,7 @@ group by
 			$unit["photos"] = $photos->Render();
 			if ($unit["date_open"]!="")
 			$unit["date_open"] =  '<div class="nnm_doc"><b>Дата открытия/последней реконструкции: </b>'.date("d.m.Y", strtotime($unit["date_open"])).'</div>';
-			$unit["dancing"] = ($unit["dancing"]==1)?"да":"нет";
+
 			$unit["ifrent"] = ($unit["rent"]==1)?"да":"нет";
 
 
