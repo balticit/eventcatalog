@@ -185,7 +185,7 @@
 
 					<!--  AdRiver code END  -->
 				</div>
-				<div class='sub-title-block'><span class='sub-title widget'>Быть в курсе</span></div>
+				<div class="sub-title-block"><span class="sub-title widget">Быть в курсе</span></div>
 				
 				
 				<div class="be_aware">
@@ -195,8 +195,8 @@
   					<a rel="nofollow" href="http://www.yandex.ru/?add=83172&amp;from=promocode" target="_blank">Виджет Эвентотеки на Яндексе</a><br />
   					<a rel="nofollow" href="http://www.yandex.ru/?add=83173&from=promocode" target="_blank">Виджет Новинок на Яндексе</a><br />
   					
-            <a rel="nofollow" href="http://www.facebook.com/EventCatalog" target="_blank">Мы в контакте</a>  <br />
-            <a rel="nofollow" href="http://vk.com/public34359442" target="_blank">Мы в facebook</a> 
+            <a rel="nofollow" href="http://vk.com/public34359442" target="_blank">Мы в контакте</a>  <br />
+            <a rel="nofollow" href="http://www.facebook.com/EventCatalog" target="_blank">Мы в facebook</a> 
             </noindex>
           </div>
           

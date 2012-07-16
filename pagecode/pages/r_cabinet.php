@@ -1338,7 +1338,7 @@ class r_cabinet_php extends CPageCodeHandler
 				  "my_favorite/type/all" => array(
 						"type" => "link",
 						"text" => "Все",
-						"color" => "#ccc",
+						"color" => "#cccccc",
 						"selected" => false),
 					"my_favorite/type/contractor" => array(
 						"type" => "link",

@@ -806,10 +806,12 @@ group by
 			
       //parking
       if($unit["parking"]!='' && $unit["parking"]!='0'){
+      
+        if(is_numeric($unit["parking"])) { $val = ' мест'; } else { $val = ''; }
 				$unit["parking"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Парковка:</div>
-        	<span>'.$unit["parking"].'</span>
+        	<span>'.$unit["parking"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -855,10 +857,11 @@ group by
 			
 			//dancing
       if($unit["dancing"]!='' && $unit["dancing"]!='0'){
+        if(is_numeric($unit["dancing"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["dancing"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Танцпол:</div>
-        	<span>'.$unit["dancing"].'</span>
+        	<span>'.$unit["dancing"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -867,10 +870,11 @@ group by
 			
 			//makeup_rooms
       if($unit["makeup_rooms"]!='' && $unit["makeup_rooms"]!='0'){
+        if(is_numeric($unit["makeup_rooms"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["makeup_rooms"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Гримерки:</div>
-        	<span>'.$unit["makeup_rooms"].'</span>
+        	<span>'.$unit["makeup_rooms"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -879,10 +883,11 @@ group by
 			
 			//sound
       if($unit["sound"]!='' && $unit["sound"]!='0'){
+        if(is_numeric($unit["sound"])) { $val = ' кВт.'; } else { $val = ''; }
 				$unit["sound"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Звук:</div>
-        	<span>'.$unit["sound"].'</span>
+        	<span>'.$unit["sound"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -891,6 +896,7 @@ group by
 			
 			//light
       if($unit["light"]!='0'){
+        
 				$unit["light"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Свет:</div>

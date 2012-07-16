@@ -526,6 +526,8 @@ class u_cabinet_php extends CPageCodeHandler
 						"text" => "Агентства",
 						"color" => "#9ecd1f",
 						"selected" => false));
+						
+				
 				if ($f_type != "all")
 					$left_menu["my_favorite/type/$f_type"]["selected"] = true;
 
@@ -657,7 +659,7 @@ class u_cabinet_php extends CPageCodeHandler
 				  "my_marks/type/all" => array(
 						"type" => "link",
 						"text" => "Все",
-						"color" => "#ссс",
+						"color" => "#cccccc",
 						"selected" => false),
 					"my_marks/type/contractor" => array(
 						"type" => "link",
@@ -680,6 +682,9 @@ class u_cabinet_php extends CPageCodeHandler
 						"color" => "#9ecd1f",
 						"selected" => false));
 				$left_menu["my_marks/type/$m_type"]["selected"] = true;
+				
+
+				
 				$marks = array();
 				switch($m_type)
 				{
