@@ -106,7 +106,8 @@ class profile_php extends CPageCodeHandler
 			
 			if ( $user->authorized && $user_data["display_type"]== '1' or $user_data["display_type"]== '0') {
 			
-  			if ($user_data["sity"] != '') $this->user_info = "<b>Город:</b> ".$user_data["sity"]."<br />";
+			  $this->user_info = '<div class="u_info_block">';
+  			if ($user_data["sity"] != '') $this->user_info .= "<b>Город:</b> ".$user_data["sity"]."<br />";
   			if ($user_data["contact_phone"] != '') $this->user_info .= "<b>Мобильный телефон:</b> ".$user_data["contact_phone"]."<br />";
   			
   			if ($user_data["skype"] != '') $this->user_info .= "<b>Skype:</b> ".$user_data["skype"]."<br />";
@@ -130,6 +131,8 @@ class profile_php extends CPageCodeHandler
   			}
   			if ($user_data["position"] != '') $this->user_info .= "<b>Должность:</b> ".$user_data["position"]."<br />";
   			if ($user_data["address"] != '') $this->user_info .= "<b>Адрес:</b> ".$user_data["address"]."<br />";
+  			
+  			$this->user_info .= '</div>';
 			
 			}
 			

@@ -8,12 +8,12 @@
 	define("DEFAULT_XML_ENCODING","utf-8");
 	define("DEFAULT_HTML_ENCODING","utf-8");
 //SQL	
-	define("MYSQL_HOST","mysql.baze.eventcatalog.ru.postman.ru");
+	define("MYSQL_HOST","192.168.2.101");
 	define("MYSQL_USER","root");
 	define("MYSQL_DATABASE","eventcatalog_ru");
-	define("MYSQL_PASSWORD","2ygMPCBrm8");
+	define("MYSQL_PASSWORD","password");
 	define("MYSQL_CHARSET","cp1251");
-	define("MYSQL_PORT","63627");
+	define("MYSQL_PORT","3306");
 //SMTP	
 	define("DEFAULT_REPLY_ADDRESS","catalog@eventcatalog.ru");
 //Security

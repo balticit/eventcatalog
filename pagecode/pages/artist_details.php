@@ -596,11 +596,11 @@ class artist_details_php extends CPageCodeHandler
         }
         $unit["voted"] = "";
         if ($mark_cnt > 0) {
-            $u_text = "пользователя";
+            $u_text = " ";
             if ($mark_cnt == 1)
-                $u_text = "пользователь";
+                $u_text = " ";
 
-            $unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+            $unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text: <span class=\"user_like_link\">$mark_links</span></div>";
         }
         if ($fav_add) {
             $msg = "";
@@ -637,6 +637,13 @@ class artist_details_php extends CPageCodeHandler
             if ($unit['site_address'] != "") {
                 $unit['site_address'] = '<a rel="nofollow" target="_blank" href="' . $unit['site_address'] . '">' . $unit['site_address'] . '</a>';
             }
+            
+            if ($unit['price_from'] != "" && $unit['price_to'] != "") {
+      				$unit['price'] = "Гонорар: от " . $unit['price_from'] . " рублей до " . $unit['price_to'] . " рублей";
+      			}
+      			else {
+      				$unit['price'] = "";
+      			}
 
         }
         else {
@@ -644,12 +651,15 @@ class artist_details_php extends CPageCodeHandler
             $unit['email'] = "";
             $unit['manager_phone'] = "";
 
-                $unit['site_address'] = "
-    <br>
-    <div style=\" padding: 0px;\">
-        <div>Контактные данные  доступны только зарегистрированным пользователям.<br>
-    Для просмотра контактов <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">введите</a> Ваш логин и пароль или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br><br></div>
-    </div>";
+            $unit['site_address'] = "
+            <br />
+            <div style=\" padding: 0px;\">
+                Контактные данные  доступны только зарегистрированным пользователям.<br /><br />
+                Для просмотра контактов <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br /><br />
+            </div>";
+            
+            $unit['price'] = "";
+            
             }
 
 
@@ -752,12 +762,7 @@ class artist_details_php extends CPageCodeHandler
                 ;
             }
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
-			if ($unit['price_from'] != "" && $unit['price_to'] != "") {
-				$unit['price'] = "Стоимость выступления: от " . $unit['price_from'] . " рублей до " . $unit['price_to'] . " рублей";
-			}
-			else {
-				$unit['price'] = "";
-			}
+			
 			$details = $this->GetControl("details");
 			$details->dataSource = $unit;
             //Remove direct

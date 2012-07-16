@@ -1273,8 +1273,8 @@ class r_cabinet_php extends CPageCodeHandler
 		$cab["edit_link_href"] = "/r_cabinet/data/personal/action/edit";
 		$cab["edit_link_title"] = "редактировать";
 
-		$en_month = array("Jan","Feb","Mar","Apr","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-		$ru_month = array("января","февраля","марта","апреля","июня","июля","августа","сентября","октября","ноября","декабря");
+		$en_month = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+		$ru_month = array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
 		$cab["show_info"] = "none";
 		$left_menu = array();
     $cab["user_class"] = $user->type;
@@ -1314,6 +1314,7 @@ class r_cabinet_php extends CPageCodeHandler
 		$left_menu = array();
 		switch ($type) {
 			case "personal" :
+			$cab["show_info"] = "table-row";
 			$p_action = GP("action","");
 			if ($p_action == "edit")
 			{
@@ -1324,8 +1325,8 @@ class r_cabinet_php extends CPageCodeHandler
 			else
 			{
 				$cab["main_area"] = "<span style=\"font-size:13px; color:#000;\">";
-				$cab["main_area"] .= "<br>";
-				$cab["main_area"] .= "<span class=\"city_name\">".$user_info["city"]."</span><br>";
+			//	$cab["main_area"] .= "<br>";
+			//	$cab["main_area"] .= "<span class=\"city_name\">".$user_info["city"]."</span><br>";
         $cab["main_area"] .= $u_link;
 				$cab["main_area"] .= "<a class=\"black\" href=\"/".$user->type."/details/id/".$user->id."\">$link_page</a>";
 				$cab["main_area"] .= "</span>";
@@ -1441,7 +1442,7 @@ class r_cabinet_php extends CPageCodeHandler
 				{
 					$favorites[$i]["del_link"] = "/r_cabinet/data/my_favorite/type/$f_type/del/".$favorites[$i]["tbl_obj_id"];
 					if ($favorites[$i]["date_add"] != '')
-						$favorites[$i]["date_add"] = str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($favorites[$i]["date_add"])));
+						$favorites[$i]["date_add"] = str_ireplace($en_month,$ru_month,date("d M Y",strtotime($favorites[$i]["date_add"])));
 				}
 				$favorite_block = $this->GetControl("favorite");
 				$favorite_block->dataSource = $favorites;
@@ -1451,7 +1452,7 @@ class r_cabinet_php extends CPageCodeHandler
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата добавления</td>
 									 "/*<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">[<a href=\"\" id=\"btn_fav_del\">Удалить все</a>]</td></tr>*/."
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td></tr>
+									 <td style=\"border-bottom: 1px solid #DCDCDC; text-align:center\" nowrap=\"nowrap\" width=\"70\">Удалить</td></tr>
 									 ".$favorite_block->renderHTML()."
 									 <tr><td></td><td></td>
 									 <td>
@@ -1660,7 +1661,7 @@ class r_cabinet_php extends CPageCodeHandler
 			foreach ($marks as $key=>$mark)
 			{
 				if ($marks[$key]["date"] != '')
-						$marks[$key]["date"] = str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($marks[$key]["date"])));
+						$marks[$key]["date"] = str_ireplace($en_month,$ru_month,date("d M Y",strtotime($marks[$key]["date"])));
 			}
 
 			$marks_block = $this->GetControl("marks");
@@ -1670,7 +1671,7 @@ class r_cabinet_php extends CPageCodeHandler
 				                     <tr style=\"color: #999999; font-weight: bold;\">
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Название резидента</td>
 									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата оценки</td>
-									 <td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
+									 <td style=\"border-bottom: 1px solid #DCDCDC; text-align:center\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
 									 </tr>
 									 ".$marks_block->renderHTML()."
                    <tr><td colspan=\"2\">&nbsp;</td>
@@ -2096,15 +2097,15 @@ class r_cabinet_php extends CPageCodeHandler
 									    <th>&nbsp;</th>
 											<th>'.($m_action=="inbox"?"От":"Кому").'</th>
 											<th>Сообщение</th>
-											<th>Дата</th>'.($m_action=="outbox"?"<th>Прочитано</th>":"").'
+											<th width="130">Дата</th>'.($m_action=="outbox"?"<th width='130'>Прочитано</th>":"").'
 											'/*<th align="center">'.($m_action=="blacklist"?"&nbsp;": '[ <a id="selall" href="#" style="color:#0063AF;" onClick="javascript:return SelectMultiple('.implode(",",$mids).');">Выбрать все</a> ]').'</th>*/.'
-											<th align="center">'.($m_action=="blacklist"?"&nbsp;": 'Удалить').'</th>
+											<th width="70" style="text-align:center" align="center">'.($m_action=="blacklist"?"&nbsp;": 'Удалить').'</th>
 										</tr>
 										'.$messagesList->renderHTML().'
 										'.($m_action=="blacklist"?"":
 										'<tr>
-											<td colspan="'.($m_action=="inbox"?"4":"5").'">&nbsp;</td>
-											<td align="center"><input type="hidden" name="delete_multiple" value="1"><input type="hidden" value="Удалить"/></td>
+											<td style="border:none" colspan="'.($m_action=="inbox"?"4":"5").'">&nbsp;</td>
+											<td style="text-align:center; border:none" align="center"><input type="hidden" name="delete_multiple" value="1"><input type="hidden" value="Удалить"/></td>
 										</tr>').'
 										</table></form>
                     
@@ -2117,7 +2118,7 @@ class r_cabinet_php extends CPageCodeHandler
 											}
 										return false;});
 										$(".fav_del_cross").click( function() {
-											if(confirm("Вы уверены что хотите удалить сообщение от "+$(this).parents("tr").find("a").html()+" ?")) {
+											if(confirm("Вы уверены что хотите удалить сообщение от "+$(this).parents("tr").find("a").html()+"?")) {
 												$(this).next().attr("checked","checked");
 												$("#fav_del_form").submit();
 											}
@@ -2303,7 +2304,7 @@ class r_cabinet_php extends CPageCodeHandler
 				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\">Заголовок</td>
 				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Дата отправки запроса</td>
 				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"150\">Статус</td>
-				<td style=\"border-bottom: 1px solid #DCDCDC;\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
+				<td style=\"border-bottom: 1px solid #DCDCDC; text-align:center\" nowrap=\"nowrap\" width=\"70\">Удалить</td>
 			</tr>".$newsblock->renderHTML()."
       <tr><td colspan=\"3\">&nbsp;</td>
           <td><input type=\"hidden\" value=\"Удалить\"></td></tr>

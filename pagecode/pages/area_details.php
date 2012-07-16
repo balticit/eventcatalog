@@ -754,38 +754,39 @@ group by
 			
 			// cost_banquet
 			if($unit["cost_banquet"]!='' && $unit["cost_banquet"]!='0'){
+			  if(is_numeric($unit["cost_banquet"])) { $val = ' р.'; } else { $val = ''; }
 				$unit["cost_banquet"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Стоимость проведения банкета на 1 персону:</div>
-        	<span>'.$unit["cost_banquet"].' р.</span>
+        	<span>'.$unit["cost_banquet"].$val.'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
-				
+        ';
 			}else{
 				$unit["cost_banquet"]="";
 			}
 			
 			//cost_official_buffet
 			if($unit["cost_official_buffet"]!='' && $unit["cost_official_buffet"]!='0'){
+			  if(is_numeric($unit["cost_official_buffet"])) { $val = ' р.'; } else { $val = ''; }
 				$unit["cost_official_buffet"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Стоимость проведения фуршета на 1 персону:</div>
-        	<span>'.$unit["cost_official_buffet"].' р.</span>
+        	<span>'.$unit["cost_official_buffet"].$val.'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
-				
+        ';
 			}else{
 				$unit["cost_official_buffet"]="";
 			}
 			
 			// cost_rent
 			if($unit["cost_rent"]!='' && $unit["cost_rent"]!='0'){
+			  if(is_numeric($unit["cost_rent"])) { $val = ' р.'; } else { $val = ''; }
 				$unit["cost_rent"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div>
-        	<span>'.$unit["cost_rent"].' р.</span>
+        	<span>'.$unit["cost_rent"].$val.'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["cost_rent"]="";
 			}
@@ -799,7 +800,6 @@ group by
           <div class="blue_button">Обслуживание:</div>
         	<span>Оплачивается дополнительно</span>
       	</td></tr>';
-				
 			}else{
 				$unit["cost_service"]="";
 			}
@@ -811,8 +811,7 @@ group by
           <div class="blue_button">Парковка:</div>
         	<span>'.$unit["parking"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
-				
+        ';
 			}else{
 				$unit["parking"]="";
 			}
@@ -824,8 +823,7 @@ group by
           <div class="blue_button">Техничекий служебный вход:</div>
         	<span>Есть</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
-				
+        ';
 			}else{
 				$unit["service_entrance"]="";
 			}
@@ -837,8 +835,7 @@ group by
           <div class="blue_button">Гардероб:</div>
         	<span>'.$unit["wardrobe"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
-				
+        ';	
 			}else{
 				$unit["wardrobe"]="";
 			}
@@ -850,7 +847,7 @@ group by
           <div class="blue_button">Сцена:</div>
         	<span>'.$unit["stage"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 				
 			}else{
 				$unit["stage"]="";
@@ -863,7 +860,7 @@ group by
           <div class="blue_button">Танцпол:</div>
         	<span>'.$unit["dancing"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["dancing"]="";
 			}
@@ -875,7 +872,7 @@ group by
           <div class="blue_button">Гримерки:</div>
         	<span>'.$unit["makeup_rooms"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["makeup_rooms"]="";
 			}
@@ -887,7 +884,7 @@ group by
           <div class="blue_button">Звук:</div>
         	<span>'.$unit["sound"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["sound"]="";
 			}
@@ -899,7 +896,7 @@ group by
           <div class="blue_button">Свет:</div>
         	<span>Есть</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["light"]="";
 			}
@@ -912,7 +909,7 @@ group by
           <div class="blue_button">Плазменые панели:</div>
         	<span>'.$unit["panels"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["panels"]="";
 			}
@@ -924,7 +921,7 @@ group by
           <div class="blue_button">Проэкционный экран/Проектор:</div>
         	<span>'.$unit["projector"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["projector"]="";
 			}
@@ -959,7 +956,7 @@ group by
           <div class="blue_button">Кухня:</div>
         	<span>'.$unit["kitchen"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["kitchen"]="";
 			}
@@ -971,7 +968,7 @@ group by
           <div class="blue_button">Особенности кухни:</div>
         	<span>'.$unit["kitchen_features"].'</span>
       	</td></tr>
-        <tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>';
+        ';
 			}else{
 				$unit["kitchen_features"]="";
 			}
@@ -1190,11 +1187,11 @@ group by
 			}
 			$unit["voted"] = "";
 			if ($mark_cnt>0) {
-				$u_text = "пользователя";
+				$u_text = " ";
 				if ($mark_cnt == 1)
-				$u_text = "пользователь";
+				$u_text = " ";
 
-				$unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+				$unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text: <span class=\"user_like_link\">$mark_links</span></div>";
 			}
 			if ($fav_add) {
 				$msg = "";

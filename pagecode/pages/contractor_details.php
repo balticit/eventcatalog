@@ -578,11 +578,11 @@ class contractor_details_php extends CPageCodeHandler
         }
         $unit["voted"] = "";
         if ($mark_cnt>0) {
-			$u_text = "пользователя";
+			$u_text = " ";
 			if ($mark_cnt == 1)
-				$u_text = "пользователь";
+				$u_text = " ";
 
-			$unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text:<br><span class=\"user_like_link\">$mark_links</span></div>";
+			$unit["voted"] = "<div class=\"user_liked\">Рекомендуют <span class=\"user_liked_num\">$mark_cnt</span> $u_text: <span class=\"user_like_link\">$mark_links</span></div>";
 		}
 		if ($fav_add) {
 			$msg = "";
