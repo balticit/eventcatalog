@@ -478,8 +478,8 @@ class u_cabinet_php extends CPageCodeHandler
 				
 				
 				if ($user_info["company_phone"] != '') $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
-				if ($user_info["email"] != '') $cab["main_area"] .= "<b>Электронная почта:</b> ".$user_info["email"]."<br />";
-				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> ".$user_info["site"]."<br /><br />";
+				if ($user_info["email"] != '') $cab["main_area"] .= "<b>Электронная почта:</b> <a href='mailto:".$user_info["email"]."'>".$user_info["email"]."</a><br />";
+				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a href='".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
 
 
         $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
@@ -961,7 +961,7 @@ class u_cabinet_php extends CPageCodeHandler
 					$h_sender = $r_mess[0]["sender_id"];
 					$h_reciever = $r_mess[0]["reciever_id"];
 
-					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' AND tbl_obj_id<'$reply_id' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' AND tbl_obj_id<'$reply_id' ORDER BY time DESC LIMIT 10 ");
+					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' AND tbl_obj_id<'$reply_id' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' AND tbl_obj_id<='$reply_id' ORDER BY time DESC LIMIT 10 ");
 					/* 
           echo '<pre>';
 					var_dump($h_mess);
@@ -1143,7 +1143,7 @@ class u_cabinet_php extends CPageCodeHandler
 
 						if ($m_action=="reply"||$m_action=="view")
 						{
-							$cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
+							//$cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
 							
 							
 							
@@ -1162,6 +1162,9 @@ class u_cabinet_php extends CPageCodeHandler
 										
 							$cab["main_area"].='<div class="message_history">';
 							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
+							
+							$cab["main_area"].='<div class="grey_message message">'.ProcessMessage($reply_mess["text"])."</div>";
+							
   						foreach($h_mess as $mess) {
   						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
                   $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
@@ -1171,6 +1174,8 @@ class u_cabinet_php extends CPageCodeHandler
 						}
 						elseif ($m_action=="view")
 						{
+						  $cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
+						
 							$cab["main_area"].='<form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
 										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
 										</form>';
@@ -1441,7 +1446,7 @@ class u_cabinet_php extends CPageCodeHandler
 				else {
 					$menu_render .= "<a href=/u_cabinet/data/".$key." style=\"color: ".$menu["color"].";\">";
 					if ($menu["selected"])
-						$menu_render .= "<span style=\"font-weight: bold; text-decoration: underline;\">".$menu["text"]."</span>";
+						$menu_render .= "<span style=\" text-decoration: underline;\">".$menu["text"]."</span>";
 					else
 						$menu_render .= $menu["text"];
 					$menu_render .= "</a><br>";

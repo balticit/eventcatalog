@@ -639,7 +639,7 @@ class artist_details_php extends CPageCodeHandler
             }
             
             if ($unit['price_from'] != "" && $unit['price_to'] != "") {
-      				$unit['price'] = "√онорар: от " . $unit['price_from'] . " рублей до " . $unit['price_to'] . " рублей";
+      				$unit['price'] = "<br /><b>√онорар</b>: от " . $unit['price_from'] . " рублей до " . $unit['price_to'] . " рублей";
       			}
       			else {
       				$unit['price'] = "";
@@ -651,11 +651,17 @@ class artist_details_php extends CPageCodeHandler
             $unit['email'] = "";
             $unit['manager_phone'] = "";
 
+            if ($unit['price_from'] != "" && $unit['price_to'] != "") {
+              $gonorar = " и гонорар";
+              $gonorars = " и гонорара";
+            }
+            else { $gonorar = ''; $gonorars = ''; }
+
             $unit['site_address'] = "
             <br />
             <div style=\" padding: 0px;\">
-                 онтактные данные  доступны только зарегистрированным пользовател€м.<br /><br />
-                ƒл€ просмотра контактов <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br /><br />
+                 онтактные данные".$gonorar." доступны только зарегистрированным пользовател€м.<br /><br />
+                ƒл€ просмотра контактов".$gonorars." <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br /><br />
             </div>";
             
             $unit['price'] = "";

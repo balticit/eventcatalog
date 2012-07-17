@@ -115,8 +115,8 @@ class profile_php extends CPageCodeHandler
   			
   			
   			if ($user_data["company_phone"] != '') $this->user_info .= "<b>Рабочий телефон:</b> ".$user_data["company_phone"]."<br />";
-  			if ($user_data["email"] != '') $this->user_info .= "<b>Электронная почта:</b> ".$user_data["email"]."<br />";
-  			if ($user_data["site"] != '') $this->user_info .= "<b>Сайт компании:</b> ".$user_data["site"]."<br /><br />";
+  			if ($user_data["email"] != '') $this->user_info .= "<b>Электронная почта:</b> <a href='mailto:".$user_data["email"]."'>".$user_data["email"]."</a><br />";
+  			if ($user_data["site"] != '') $this->user_info .= "<b>Сайт компании:</b> <a href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
   
   
         $this->user_info .= "<b>На сайте:</b> ".onSiteTime($user_data["registration_date"])."<br />";

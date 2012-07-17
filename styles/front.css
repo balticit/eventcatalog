@@ -3161,7 +3161,7 @@ tr.agency_table_hover div.text_highlight {background-color: #9fce20;}
 tr.agency_table_hover div.text_highlight a, tr.agency_table_hover div.text_highlight span {color:#fff!important;}
 
 /* reg_time */
-.reg_time{white-space:nowrap; border-radius: 5px; padding:4px 10px 4px 4px; color:#ccc; display: block; text-align:center; /*background:#c1c1c1*/}
+.reg_time{white-space:nowrap; border-radius: 5px; padding:3px 10px 4px 4px; color:#ccc; display: block; text-align:center; /*background:#c1c1c1*/}
 /*.reg_time.artist{background-color:#B61F4A}
 .reg_time.agency{background-color:#9C0}
 .reg_time.area{background-color:#39F}

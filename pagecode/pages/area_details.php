@@ -754,11 +754,14 @@ group by
 			
 			// cost_banquet
 			if($unit["cost_banquet"]!='' && $unit["cost_banquet"]!='0'){
-			  if(is_numeric($unit["cost_banquet"])) { $val = ' р.'; } else { $val = ''; }
+			  if(is_numeric($unit["cost_banquet"])) { 
+          $val = ' р.'; $cost = number_format($unit["cost_banquet"], 0, ' ', ' '); 
+        } 
+        else { $val = ''; $cost = $unit["cost_banquet"]; }
 				$unit["cost_banquet"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Стоимость проведения банкета на 1 персону:</div>
-        	<span>'.$unit["cost_banquet"].$val.'</span>
+        	<span>'.$cost.$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -767,11 +770,14 @@ group by
 			
 			//cost_official_buffet
 			if($unit["cost_official_buffet"]!='' && $unit["cost_official_buffet"]!='0'){
-			  if(is_numeric($unit["cost_official_buffet"])) { $val = ' р.'; } else { $val = ''; }
+			  if(is_numeric($unit["cost_official_buffet"])) { 
+          $val = ' р.'; $cost = number_format($unit["cost_official_buffet"], 0, ' ', ' '); 
+        } 
+        else { $val = ''; $cost = $unit["cost_official_buffet"]; }
 				$unit["cost_official_buffet"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Стоимость проведения фуршета на 1 персону:</div>
-        	<span>'.$unit["cost_official_buffet"].$val.'</span>
+        	<span>'.$cost.$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -780,11 +786,14 @@ group by
 			
 			// cost_rent
 			if($unit["cost_rent"]!='' && $unit["cost_rent"]!='0'){
-			  if(is_numeric($unit["cost_rent"])) { $val = ' р.'; } else { $val = ''; }
+			  if(is_numeric($unit["cost_rent"])) { 
+          $val = ' р.'; $cost = number_format($unit["cost_rent"], 0, ' ', ' '); 
+        } 
+        else { $val = ''; $cost = $unit["cost_rent"]; }
 				$unit["cost_rent"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div>
-        	<span>'.$unit["cost_rent"].$val.'</span>
+        	<span>'.$cost.$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -795,8 +804,7 @@ group by
 			//cost_service
 			if($unit["cost_service"]!=0){
 				$unit["cost_service"]=	
-				'<tr><td><img src="/images/front/0.gif" colspan="1" alt="" height="20px" /></td></tr>
-        <tr><td class="table_row">
+				'<tr><td class="table_row">
           <div class="blue_button">Обслуживание:</div>
         	<span>Оплачивается дополнительно</span>
       	</td></tr>';
@@ -1048,25 +1056,25 @@ group by
       }
 			
 			$unit["halls"] ='<tr>';
-			$unit["halls"] .= '<td style="width: 100px; padding-right: 9px;float:none;" class="blue_button">Название зала</td>';
+			if($col_1 or $col_2 or $col_3 or $col_4) { $unit["halls"] .= '<td style="width: 140px; text-align:center;" ><b>Название зала</b></td>'; }
 			if($col_1) {
-      $unit["halls"] .='<td style="width: 50px;float:none;" class="blue_button">Банкет</td>';
+      $unit["halls"] .='<td style="width: 70px; text-align:center;" ><b>Банкет</b></td>';
       }
       if($col_2) {
-      $unit["halls"] .='<td style="float:none;" class="blue_button">Фуршет</td>';
+      $unit["halls"] .='<td style="text-align:center;" ><b>Фуршет</b></td>';
       }
       if($col_3) {
-      $unit["halls"] .='<td style="float:none;" class="blue_button">Конференция</td>';
+      $unit["halls"] .='<td style="text-align:center;" ><b>Конференция</b></td>';
       }
       if($col_4) {
-      $unit["halls"] .='<td style="float:none;" class="blue_button">Стоимость проведения конференции</td>';
+      $unit["halls"] .='<td style="text-align:center;" ><b>Стоимость проведения конференции</b></td>';
       }
       $unit["halls"] .='<tr>';
 			
 			for ($i=0;$i<sizeof($halls);$i++)
 			{
 			 $unit["halls"] .='<tr>';
-			  $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["title"].'</td>';
+			  $unit["halls"] .='<td style="text-align:left;border-bottom:1px black solid;">'.$halls[$i]["title"].'</td>';
   			if($col_1) {
         $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;" height="25">'.$halls[$i]["max_places_banquet"].'</td>';
         }
@@ -1160,7 +1168,7 @@ group by
 			<img class="btn_ilike" src="/images/rating/btn_ilike.png" onmouseover="javascript: this.src=\'/images/rating/btn_area.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_ilike.png\';" onclick="javascript: '.$btn_action.'"></form>';
 			}
 			else {
-				$unit["btn_i_like"]='<img class="btn_ilike" src="/images/rating/hand_area.png">&nbsp;&nbsp;</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;">Больше не нравится</a></form>';
+				$unit["btn_i_like"]='</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img src="/images/rating/unlike_area.png" alt="Больше не нравится" /></a></form>';
 			}
 			$details=$this->GetControl("details");
 			$photos = $this->GetControl("photos");
