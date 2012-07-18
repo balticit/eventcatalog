@@ -1700,7 +1700,10 @@ class r_cabinet_php extends CPageCodeHandler
 
 			break;
 //================================================================================================================================================================
-			case "my_messages":
+			case "proaccount":
+			 $cab["main_area"] ='Этот раздел скоро станет доступным.';
+			break;
+      case "my_messages":
 			$thread = GPT("thread");
 
 			$pageSize = 20;

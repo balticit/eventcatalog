@@ -173,12 +173,14 @@ class profile_php extends CPageCodeHandler
           }
         }
         
-        if ($user->authorized && $show[5]== '1' or $show[5]== '0') {
-    			if ($user_data["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
-          if ($user_data["sex"] != '') $this->user_info .= "<b>Пол:</b> ".$sex."<br />";
-        }
-        if (!$user->authorized && $show[5]== '1') {
-            $this->user_info .= '<b>Пол:</b> *******<br />';
+        if ($user_data["sex"] != '') {
+          if ($user->authorized && $show[5]== '1' or $show[5]== '0') {
+      			if ($user_data["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
+            if ($user_data["sex"] != '') $this->user_info .= "<b>Пол:</b> ".$sex."<br />";
+          }
+          if (!$user->authorized && $show[5]== '1') {
+              $this->user_info .= '<b>Пол:</b> *******<br />';
+          }
         }
 
         if (!IsNullOrEmpty($user_data["company"])) {
