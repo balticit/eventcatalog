@@ -1056,7 +1056,7 @@ group by
       }
 			
 			$unit["halls"] ='<tr>';
-			if($col_1 or $col_2 or $col_3 or $col_4) { $unit["halls"] .= '<td style="width: 140px; text-align:center;" ><b>Название зала</b></td>'; }
+			if($col_1 or $col_2 or $col_3 or $col_4) { $unit["halls"] .= '<td style="width: 140px; text-align:left;" ><b>Название зала</b></td>'; }
 			if($col_1) {
       $unit["halls"] .='<td style="width: 70px; text-align:center;" ><b>Банкет</b></td>';
       }

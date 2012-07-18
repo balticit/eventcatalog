@@ -343,6 +343,33 @@ class registration_php extends CPageCodeHandler
                                 $userData->password = md5($userData->password);
 
                                 $userData->edit_date = time();
+                                
+                                if($props["display_type"][0] == '') {$props["display_type"][0] = '0';}
+                                if($props["display_type"][1] == '') {$props["display_type"][1] = '0';}
+                                if($props["display_type"][2] == '') {$props["display_type"][2] = '0';}
+                                if($props["display_type"][3] == '') {$props["display_type"][3] = '0';}
+                                if($props["display_type"][4] == '') {$props["display_type"][4] = '0';}
+                                if($props["display_type"][5] == '') {$props["display_type"][5] = '0';}
+                                if($props["display_type"][6] == '') {$props["display_type"][6] = '0';}
+                                if($props["display_type"][7] == '') {$props["display_type"][7] = '0';}
+                                if($props["display_type"][8] == '') {$props["display_type"][8] = '0';}
+                                if($props["display_type"][9] == '') {$props["display_type"][9] = '0';}
+                                if($props["display_type"][10] == '') {$props["display_type"][10] = '0';}
+                                if($props["display_type"][11] == '') {$props["display_type"][11] = '0';}
+                                
+                                $userData->display_type = $props["display_type"][0].
+                                '|'.$props["display_type"][1].
+                                '|'.$props["display_type"][2].
+                                '|'.$props["display_type"][3].
+                                '|'.$props["display_type"][4].
+                                '|'.$props["display_type"][5].
+                                '|'.$props["display_type"][6].
+                                '|'.$props["display_type"][7].
+                                '|'.$props["display_type"][8].
+                                '|'.$props["display_type"][9].
+                                '|'.$props["display_type"][10].
+                                '|'.$props["display_type"][11];
+                                
                                 $table->InsertObject(&$userData);
                                 $user->id = $userData->tbl_obj_id;
 

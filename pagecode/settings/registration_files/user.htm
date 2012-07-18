@@ -44,19 +44,10 @@
 <form method="post" enctype="multipart/form-data">
 <table border="0" cellpadding="10" cellspacing="0">
 
-<tr valign="top">
-    <td><b>Показывать:</b></td>
-    <td>
-    <select style="width:300px;" name="properties[display_type]">
-      <option value="0">Всем</option>
-      <option value="1">Зарегистрированным</option>
-      <option value="2">Никому</option>
-    </select>
-    </td>
-    <td style="color: #999999;"></td>
-</tr>
+
 
 <tr valign="top">
+    <td><b>Показывать:</b></td>
     <td width="110"><b>Тип пользователя:</b></td>
     <td style="width: 300px;">
         <table border="0" cellpadding="3" cellspacing="0">
@@ -133,34 +124,70 @@
     <td style="color: #999999;">Из списка можно выбрать не более трех позиций.</td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Город:</b></td>
-    <td>{city_list}<br/> или другой город <br/> <input type="text" name="properties[sity]" size="60"
+    <td>{city_list}<br /> или другой город <br /> <input type="text" name="properties[sity]" size="60"
                                                        style="width: 300px" value="{sity}"/></td>
     <td style="color: #999999;">Выберите из списка город, в котором Вы живете.</td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][0]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Имя:</b></td>
     <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}"/></td>
     <td style="color: #999999;">Пожалуйста, укажите Ваше имя полностью. К примеру, <i>Иванов Иван Иванович</i>.
     </td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][1]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Никнэйм:</b></td>
     <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
     <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя.</td>
 </tr>
 
 <tr valign="top">
-    <td><b>Скайп:</b></td>
+    <td>
+    <select style="width:60px;" name="properties[display_type][2]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
+    <td><b>Skype:</b></td>
     <td><input type="text" name="properties[skype]" size="60" style="width: 300px" value="{skype}"/></td>
     <td style="color: #999999;"></td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][3]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>ICQ:</b></td>
     <td><input type="text" name="properties[icq]" size="60" style="width: 300px" value="{icq}"/></td>
     <td style="color: #999999;"></td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][4]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Дата рождения:</b></td>
     <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 300px" value="{birthday}"/></td>
     <td style="color: #999999;"></td>
@@ -173,6 +200,13 @@ $(function() {
 </script>
 
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][5]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Пол:</b></td>
     <td>
     <select style="width:300px;" name="properties[sex]">
@@ -185,6 +219,13 @@ $(function() {
 
 
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][6]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Компания:</b></td>
     <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
     <td style="color: #999999;">Пожалуйста, указывайте название Вашей компании без кавычек и ООО. К примеру,
@@ -192,35 +233,71 @@ $(function() {
     </td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][7]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Должность:</b></td>
     <td><input type="text" name="properties[position]" size="60" style="width: 300px" value="{position}"/></td>
     <td style="color: #999999;"></td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][8]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Сайт компании:</b></td>
     <td><input type="text" name="properties[site]" size="60" style="width: 300px" value="{site}"/></td>
     <td style="color: #999999;">Например, <i>eventcatalog.ru</i>.</td>
 </tr>
 <tr valign="top">
-    <td><b>Адрес доставки корреспонденции:</b></td>
+    <td>
+    <select style="width:60px;" name="properties[display_type][9]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
+    <td><b>Адрес:</b></td>
     <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
     <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br />Максимальное
         количество символов – 100.
     </td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][10]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Мобильный телефон:</b></td>
     <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px"
                value="{contact_phone}"/></td>
     <td style="color: #999999;">Формат: <i>+7 926 111 22 33</i>.</td>
 </tr>
 <tr valign="top">
+    <td>
+    <select style="width:60px;" name="properties[display_type][11]">
+      <option value="0">Всем</option>
+      <option value="1">Зарегистрированным</option>
+      <option value="2">Никому</option>
+    </select>
+    </td>
     <td><b>Рабочий телефон:</b></td>
     <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px"
                value="{company_phone}"/></td>
     <td style="color: #999999;">Формат: <i>+7 495 111 22 33</i>.</td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Электронная почта:</b></td>
     <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}"
         {login_readonly} />
@@ -229,6 +306,7 @@ $(function() {
     </td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Пароль:</b></td>
     <td>
         <table border="0" cellpadding="5" cellspacing="0">
@@ -247,6 +325,7 @@ $(function() {
     <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Возможности пользователя:</b></td>
     <td>
         <div style="width: 300px;"><input type="checkbox" name="properties[subscribe]" size="60" value="1"/>Я
@@ -260,6 +339,7 @@ $(function() {
 </tr>
 <tr valign="top">
     <td></td>
+    <td></td>
     <td>
         <div style="width: 240px;">
             <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"
@@ -272,6 +352,7 @@ $(function() {
     </td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Аватар:</b></td>
     <td>
         <input type="hidden" name="properties[logo]" value="{logo}"/>
@@ -282,6 +363,7 @@ $(function() {
     </td>
 </tr>
 <tr valign="top">
+    <td></td>
     <td><b>Введите цифры:</b><br />
 
         <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120"
@@ -295,6 +377,7 @@ $(function() {
     <td style="color: #999999;"></td>
 </tr>
 <tr>
+    <td></td>
     <td colspan="3"><input type="submit" value="Сохранить"/></td>
 </tr>
 </table>

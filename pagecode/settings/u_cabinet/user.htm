@@ -43,21 +43,12 @@
 <form method="post" enctype="multipart/form-data">
     <table border="0" cellpadding="10" cellspacing="0">
     
-        <tr valign="top">
-            <td><b>Показывать:</b></td>
-            <td>
-            <select style="width:300px;" name="properties[display_type]">
-              <option value="0">Всем</option>
-              <option value="1">Зарегистрированным</option>
-              <option value="2">Никому</option>
-            </select>
-            </td>
-            <td style="color: #999999;"></td>
-        </tr>
+
     
         <tr valign="top">
+            <td><b>Показывать:</b></td>
             <td width="110"><b>Тип пользователя:</b></td>
-            <td style="width: 300px;">
+            <td style="width: 280px;">
                 <table border="0" cellpadding="3" cellspacing="0">
                     <tr>
                         <td><input type="checkbox" class="user_links_chb" name="user_type[1]" value="1"/></td>
@@ -133,36 +124,73 @@
             </td>
         </tr>
         <tr valign="top">
+            <td></td>
             <td><b>Город:</b></td>
             <td>{city_list}<br /> или другой город <br /> <input type="text" name="properties[sity]" size="60"
-                                                               style="width: 300px" value="{sity}"/></td>
+                                                               style="width: 280px" value="{sity}"/></td>
             <td style="color: #999999;">Выберите из списка город, в котором Вы живете</td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][0]">
+              <option {show_title_0} value="0">Всем</option>
+              <option {show_title_1} value="1">Зарегистрированным</option>
+              <option {show_title_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Имя:</b></td>
-            <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}" readonly/></td>
+            <td><input type="text" name="properties[title]" size="60" style="width: 280px; cursor:default; color:#ccc" value="{title}" readonly/></td>
             <td style="color: #999999;">Пожалуйста, укажите Ваше имя полностью. К примеру, <i>Иванов Иван Иванович</i>
             </td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][1]">
+              <option {show_nikname_0} value="0">Всем</option>
+              <option {show_nikname_1} value="1">Зарегистрированным</option>
+              <option {show_nikname_2} value="2">Никому</option>
+            </select>
+            </td>
+        
             <td><b>Никнэйм:</b></td>
-            <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
+            <td><input type="text" name="properties[nikname]" size="60" style="width: 280px" value="{nikname}"/></td>
             <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя</td>
         </tr>
 
         <tr valign="top">
-            <td><b>Скайп:</b></td>
-            <td><input type="text" name="properties[skype]" size="60" style="width: 300px" value="{skype}"/></td>
+            <td>
+            <select style="width:60px;" name="properties[display_type][2]">
+              <option {show_skype_0} value="0">Всем</option>
+              <option {show_skype_1} value="1">Зарегистрированным</option>
+              <option {show_skype_2} value="2">Никому</option>
+            </select>
+            </td>
+            <td><b>Skype:</b></td>
+            <td><input type="text" name="properties[skype]" size="60" style="width: 280px" value="{skype}"/></td>
             <td style="color: #999999;"></td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][3]">
+              <option {show_icq_0} value="0">Всем</option>
+              <option {show_icq_1} value="1">Зарегистрированным</option>
+              <option {show_icq_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>ICQ:</b></td>
-            <td><input type="text" name="properties[icq]" size="60" style="width: 300px" value="{icq}"/></td>
+            <td><input type="text" name="properties[icq]" size="60" style="width: 280px" value="{icq}"/></td>
             <td style="color: #999999;"></td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][4]">
+              <option {show_birthday_0} value="0">Всем</option>
+              <option {show_birthday_1} value="1">Зарегистрированным</option>
+              <option {show_birthday_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Дата рождения:</b></td>
-            <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 300px" value="{birthday}"/></td>
+            <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 280px" value="{birthday}"/></td>
             <td style="color: #999999;"></td>
         </tr>
         
@@ -173,9 +201,16 @@
       	</script>
         
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][5]">
+              <option {show_sex_0} value="0">Всем</option>
+              <option {show_sex_1} value="1">Зарегистрированным</option>
+              <option {show_sex_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Пол:</b></td>
             <td>
-            <select style="width:300px;" name="properties[sex]">
+            <select style="width:280px;" name="properties[sex]">
               <option value="0">Мужской</option>
               <option value="1">Женский</option>
             </select>
@@ -186,57 +221,101 @@
         
         
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][6]">
+              <option {show_company_0} value="0">Всем</option>
+              <option {show_company_1} value="1">Зарегистрированным</option>
+              <option {show_company_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Компания:</b></td>
-            <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
+            <td><input type="text" name="properties[company]" size="60" style="width: 280px" value="{company}"/></td>
             <td style="color: #999999;">Пожалуйста, указывайте название Вашей компании без кавычек и ООО. К примеру, <i>Праздник</i>
             </td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][7]">
+              <option {show_position_0} value="0">Всем</option>
+              <option {show_position_1} value="1">Зарегистрированным</option>
+              <option {show_position_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Должность:</b></td>
-            <td><input type="text" name="properties[position]" size="60" style="width: 300px" value="{position}"/></td>
+            <td><input type="text" name="properties[position]" size="60" style="width: 280px" value="{position}"/></td>
             <td style="color: #999999;"></td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][8]">
+              <option {show_site_0} value="0">Всем</option>
+              <option {show_site_1} value="1">Зарегистрированным</option>
+              <option {show_site_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Сайт компании:</b></td>
-            <td><input type="text" name="properties[site]" size="60" style="width: 300px" value="{site}"/></td>
+            <td><input type="text" name="properties[site]" size="60" style="width: 280px" value="{site}"/></td>
             <td style="color: #999999;">Например, <i>eventcatalog.ru</i></td>
         </tr>
         <tr valign="top">
-            <td><b>Адрес доставки корреспонденции:</b></td>
-            <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
+            <td>
+            <select style="width:60px;" name="properties[display_type][9]">
+              <option {show_address_0} value="0">Всем</option>
+              <option {show_address_1} value="1">Зарегистрированным</option>
+              <option {show_address_2} value="2">Никому</option>
+            </select>
+            </td>
+            <td><b>Адрес:</b></td>
+            <td><input type="text" name="properties[address]" size="60" style="width: 280px" value="{address}"/></td>
             <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br />Максимальное
                 количество символов – 100.
             </td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][10]">
+              <option {show_contact_phone_0} value="0">Всем</option>
+              <option {show_contact_phone_1} value="1">Зарегистрированным</option>
+              <option {show_contact_phone_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Мобильный телефон:</b></td>
-            <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px" value="{contact_phone}"/></td>
+            <td><input type="text" name="properties[contact_phone]" size="60" style="width: 280px" value="{contact_phone}"/></td>
             <td style="color: #999999;">Формат: <i>+7 926 111 22 33</i></td>
         </tr>
         <tr valign="top">
+            <td>
+            <select style="width:60px;" name="properties[display_type][11]">
+              <option {show_company_phone_0} value="0">Всем</option>
+              <option {show_company_phone_1} value="1">Зарегистрированным</option>
+              <option {show_company_phone_2} value="2">Никому</option>
+            </select>
+            </td>
             <td><b>Рабочий телефон:</b></td>
-            <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px" value="{company_phone}"/></td>
+            <td><input type="text" name="properties[company_phone]" size="60" style="width: 280px" value="{company_phone}"/></td>
             <td style="color: #999999;">Формат: <i>+7 495 111 22 33</i></td>
         </tr>
         <tr valign="top">
+            <td></td>
             <td><b>Электронная почта / Логин:</b></td>
-            <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}" readonly/>
+            <td><input type="text" name="properties[login]" size="60" style="width: 280px; cursor:default; color:#ccc" value="{login}" readonly/>
             </td>
             <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br />Пример: <i>name@mail.ru</i>
             </td>
         </tr>
         <tr valign="top">
+            <td></td>
             <td><b>Пароль:</b></td>
             <td>
                 <table border="0" cellpadding="5" cellspacing="0">
                     <tr>
                         <td>новый пароль:</td>
-                        <td><input type="password" name="properties[password]" size="30" style="width: 192px" value=""/><br/>
+                        <td><input type="password" name="properties[password]" size="30" style="width: 170px" value=""/><br />
                         </td>
                     </tr>
                     <tr>
                         <td>подтверждение:</td>
-                        <td><input type="password" name="properties[password_confirm]" size="30" style="width: 192px"
+                        <td><input type="password" name="properties[password_confirm]" size="30" style="width: 170px"
                                    value=""/></td>
                     </tr>
                 </table>
@@ -244,6 +323,7 @@
             <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
         </tr>
         <tr valign="top">
+            <td></td>
             <td><b>Возможности пользователя:</b></td>
             <td>
                 <div style="width: 300px;"><input type="checkbox" name="properties[subscribe]" size="60" value="1"/>Я
@@ -256,6 +336,7 @@
             </td>
         </tr>
         <tr valign="top">
+            <td></td>
             <td><b>Аватар:</b></td>
             <td><a href="/upload/{logo}" target="_blank">{logo}</a> <input class="property_file" type="file" name="properties[logo]"></td>
             <td style="color: #999999;">Вы можете добавить фотографию или любую другую картинку размером не менее 120х80
@@ -263,6 +344,7 @@
             </td>
         </tr>
         <tr>
+            <td></td>
             <td colspan="3"><input type="submit" value="Сохранить"/></td>
         </tr>
     </table>

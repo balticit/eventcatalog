@@ -4,7 +4,7 @@ class artist_php extends CPageCodeHandler
     public $pagesize = 25;
     public $recommendedLimit = 20;
     public $newLimit = 6;
-    public $newsLimit = 9;
+    public $newsLimit = 7;
     public $ratedLimit = 15;
     public $is_main = true;
     public $descriptionSize = 256;
@@ -331,7 +331,7 @@ class artist_php extends CPageCodeHandler
         			}
         			
         			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
-        			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 150));
+        			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 100));
         			switch($val['resident_type']) {
         			case 'area': $res_news[$key]['sub'] = 'Новость площадки'; break;
         			case 'artist': $res_news[$key]['sub'] = 'Артист'; break;

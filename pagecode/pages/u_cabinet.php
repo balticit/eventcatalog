@@ -68,7 +68,7 @@ class u_cabinet_php extends CPageCodeHandler
 				$citySelect->titleName="title";
 				$citySelect->valueName="tbl_obj_id";
 				$citySelect->name="properties[city]";
-				$citySelect->style=array("width"=>"300px");
+				$citySelect->style=array("width"=>"280px");
 				$regData = "Регистрация не подтверждена";
 				$utdata = array(
 				"user_type_1"=>"false",
@@ -89,6 +89,94 @@ class u_cabinet_php extends CPageCodeHandler
         new CEqFilter($table->fields["registration_confirmed"],1)));
         $userData = $table->SelectUnique($filter,false);
         $regData = $userData->registration_date;
+        
+        /* BALTIC IT */
+        $show = explode('|',$userData->display_type);
+        $utdata["show_title_0"] = '';
+        $utdata["show_title_1"] = '';
+        $utdata["show_title_2"] = '';
+        if($show[0] == '0') { $utdata["show_title_0"] = "selected";}
+        if($show[0] == '1') { $utdata["show_title_1"] = "selected";}
+        if($show[0] == '2') { $utdata["show_title_2"] = "selected";}
+        
+        $utdata["show_nikname_0"] = '';
+        $utdata["show_nikname_1"] = '';
+        $utdata["show_nikname_2"] = '';
+        if($show[1] == '0') { $utdata["show_nikname_0"] = "selected";}
+        if($show[1] == '1') { $utdata["show_nikname_1"] = "selected";}
+        if($show[1] == '2') { $utdata["show_nikname_2"] = "selected";}
+        
+        $utdata["show_skype_0"] = '';
+        $utdata["show_skype_1"] = '';
+        $utdata["show_skype_2"] = '';
+        if($show[2] == '0') { $utdata["show_skype_0"] = "selected";}
+        if($show[2] == '1') { $utdata["show_skype_1"] = "selected";}
+        if($show[2] == '2') { $utdata["show_skype_2"] = "selected";}
+        
+        $utdata["show_icq_0"] = '';
+        $utdata["show_icq_1"] = '';
+        $utdata["show_icq_2"] = '';
+        if($show[3] == '0') { $utdata["show_icq_0"] = "selected";}
+        if($show[3] == '1') { $utdata["show_icq_1"] = "selected";}
+        if($show[3] == '2') { $utdata["show_icq_2"] = "selected";}
+        
+        $utdata["show_birthday_0"] = '';
+        $utdata["show_birthday_1"] = '';
+        $utdata["show_birthday_2"] = '';
+        if($show[4] == '0') { $utdata["show_birthday_0"] = "selected";}
+        if($show[4] == '1') { $utdata["show_birthday_1"] = "selected";}
+        if($show[4] == '2') { $utdata["show_birthday_2"] = "selected";}
+        
+        $utdata["show_sex_0"] = '';
+        $utdata["show_sex_1"] = '';
+        $utdata["show_sex_2"] = '';
+        if($show[5] == '0') { $utdata["show_sex_0"] = "selected";}
+        if($show[5] == '1') { $utdata["show_sex_1"] = "selected";}
+        if($show[5] == '2') { $utdata["show_sex_2"] = "selected";}
+        
+        $utdata["show_company_0"] = '';
+        $utdata["show_company_1"] = '';
+        $utdata["show_company_2"] = '';
+        if($show[6] == '0') { $utdata["show_company_0"] = "selected";}
+        if($show[6] == '1') { $utdata["show_company_1"] = "selected";}
+        if($show[6] == '2') { $utdata["show_company_2"] = "selected";}
+        
+        $utdata["show_position_0"] = '';
+        $utdata["show_position_1"] = '';
+        $utdata["show_position_2"] = '';
+        if($show[7] == '0') { $utdata["show_position_0"] = "selected";}
+        if($show[7] == '1') { $utdata["show_position_1"] = "selected";}
+        if($show[7] == '2') { $utdata["show_position_2"] = "selected";}
+        
+        $utdata["show_site_0"] = '';
+        $utdata["show_site_1"] = '';
+        $utdata["show_site_2"] = '';
+        if($show[8] == '0') { $utdata["show_site_0"] = "selected";}
+        if($show[8] == '1') { $utdata["show_site_1"] = "selected";}
+        if($show[8] == '2') { $utdata["show_site_2"] = "selected";}
+        
+        $utdata["show_address_0"] = '';
+        $utdata["show_address_1"] = '';
+        $utdata["show_address_2"] = '';
+        if($show[9] == '0') { $utdata["show_address_0"] = "selected";}
+        if($show[9] == '1') { $utdata["show_address_1"] = "selected";}
+        if($show[9] == '2') { $utdata["show_address_2"] = "selected";}
+        
+        $utdata["show_contact_phone_0"] = '';
+        $utdata["show_contact_phone_1"] = '';
+        $utdata["show_contact_phone_2"] = '';
+        if($show[10] == '0') { $utdata["show_contact_phone_0"] = "selected";}
+        if($show[10] == '1') { $utdata["show_contact_phone_1"] = "selected";}
+        if($show[10] == '2') { $utdata["show_contact_phone_2"] = "selected";}
+        
+        $utdata["show_company_phone_0"] = '';
+        $utdata["show_company_phone_1"] = '';
+        $utdata["show_company_phone_2"] = '';
+        if($show[11] == '0') { $utdata["show_company_phone_0"] = "selected";}
+        if($show[11] == '1') { $utdata["show_company_phone_1"] = "selected";}
+        if($show[11] == '2') { $utdata["show_company_phone_2"] = "selected";}
+        
+        /* END BALTIC IT */
 
         $user_types = SQLProvider::ExecuteQuery("select * from tbl__registered_user_types where user_id = ".$user->id);
         $utdata["user_type_3_list"] = "";
@@ -309,6 +397,24 @@ class u_cabinet_php extends CPageCodeHandler
                 $userData->logo = "";
               }
               $userData->edit_date = time();
+              
+               
+              $userData->display_type = $props["display_type"][0].
+              '|'.$props["display_type"][1].
+              '|'.$props["display_type"][2].
+              '|'.$props["display_type"][3].
+              '|'.$props["display_type"][4].
+              '|'.$props["display_type"][5].
+              '|'.$props["display_type"][6].
+              '|'.$props["display_type"][7].
+              '|'.$props["display_type"][8].
+              '|'.$props["display_type"][9].
+              '|'.$props["display_type"][10].
+              '|'.$props["display_type"][11];
+              
+              //echo $userData->display_type;
+              //die();
+              
               $table->UpdateObject(&$userData);
               $user->name = $userData->title;
               $user->Save();
@@ -479,7 +585,7 @@ class u_cabinet_php extends CPageCodeHandler
 				
 				if ($user_info["company_phone"] != '') $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
 				if ($user_info["email"] != '') $cab["main_area"] .= "<b>Электронная почта:</b> <a href='mailto:".$user_info["email"]."'>".$user_info["email"]."</a><br />";
-				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a href='".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
+				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
 
 
         $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";

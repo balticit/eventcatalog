@@ -102,39 +102,121 @@ class profile_php extends CPageCodeHandler
 			*/
 			
 			// IF not reg 
-			if (!$user->authorized && $user_data["display_type"]== '1') { $this->user_info = '<a onclick="javascript: return false;" id="selectenter" style="color: black" href="">Войдите</a> или <a href="/registration/?type=user">зарегистрируйтесь</a>.'; }
 			
-			if ( $user->authorized && $user_data["display_type"]== '1' or $user_data["display_type"]== '0') {
+			$show = explode('|',$user_data["display_type"]);
 			
-			  $this->user_info = '<div class="u_info_block">';
+			
+			
+		//	echo $show[0];
+			
+			$this->user_info = '<div class="u_info_block">';
   			if ($user_data["sity"] != '') $this->user_info .= "<b>Город:</b> ".$user_data["sity"]."<br />";
-  			if ($user_data["contact_phone"] != '') $this->user_info .= "<b>Мобильный телефон:</b> ".$user_data["contact_phone"]."<br />";
-  			
-  			if ($user_data["skype"] != '') $this->user_info .= "<b>Skype:</b> ".$user_data["skype"]."<br />";
-  			if ($user_data["icq"] != '') $this->user_info .= "<b>ICQ:</b> ".$user_data["icq"]."<br />";
-  			
-  			
-  			if ($user_data["company_phone"] != '') $this->user_info .= "<b>Рабочий телефон:</b> ".$user_data["company_phone"]."<br />";
-  			if ($user_data["email"] != '') $this->user_info .= "<b>Электронная почта:</b> <a href='mailto:".$user_data["email"]."'>".$user_data["email"]."</a><br />";
-  			if ($user_data["site"] != '') $this->user_info .= "<b>Сайт компании:</b> <a href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
-  
-  
-        $this->user_info .= "<b>На сайте:</b> ".onSiteTime($user_data["registration_date"])."<br />";
-        if ($user_data["birthday"] != '') $this->user_info .= "<b>Возраст:</b> ".UserAge($user_data["birthday"])."<br />";
-        
-     
-        if ($user_data["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
-        if ($user_data["sex"] != '') $this->user_info .= "<b>Пол:</b> ".$sex."<br />";
-        
-  	    if (!IsNullOrEmpty($user_data["company"])) {
-  				$this->user_info .= "<b>Компания:</b> ".$user_data["company"]."<br />";
-  			}
-  			if ($user_data["position"] != '') $this->user_info .= "<b>Должность:</b> ".$user_data["position"]."<br />";
-  			if ($user_data["address"] != '') $this->user_info .= "<b>Адрес:</b> ".$user_data["address"]."<br />";
-  			
-  			$this->user_info .= '</div>';
 			
-			}
+			//if ( $user->authorized && $user_data["display_type"]== '1' or $user_data["display_type"]== '0') {
+			
+			  
+			  if ($user_data["contact_phone"] != '') {
+  			 if ($user->authorized && $show[10]== '1' or $show[10]== '0') {
+            $this->user_info .= "<b>Мобильный телефон:</b> ".$user_data["contact_phone"]."<br />";
+          }
+          if (!$user->authorized && $show[10]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Мобильный телефон:</b><br />';
+          }
+        }
+        
+        if ($user_data["skype"] != '') {
+          if ($user->authorized && $show[2]== '1' or $show[2]== '0') {
+            $this->user_info .= "<b>Skype:</b> ".$user_data["skype"]."<br />";
+          }
+          if (!$user->authorized && $show[2]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Skype:</b><br />';
+          }
+        }
+        
+        if ($user_data["icq"] != '') {
+          if ($user->authorized && $show[3]== '1' or $show[3]== '0') {
+            $this->user_info .= "<b>ICQ:</b> ".$user_data["icq"]."<br />";
+          }
+          if (!$user->authorized && $show[3]== '1') {
+            $this->user_info .= '<b style="color:#ccc">ICQ:</b><br />';
+          }
+        }
+        
+        if ($user_data["company_phone"] != '') {
+          if ($user->authorized && $show[11]== '1' or $show[11]== '0') {
+            $this->user_info .= "<b>Рабочий телефон:</b> ".$user_data["company_phone"]."<br />";
+          }
+          if (!$user->authorized && $show[11]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Рабочий телефон:</b><br />';
+          }
+        }
+        
+        if ($user_data["email"] != '') $this->user_info .= "<b>Электронная почта:</b> <a href='mailto:".$user_data["email"]."'>".$user_data["email"]."</a><br />";
+        
+        if ($user_data["site"] != '') {
+          if ($user->authorized && $show[8]== '1' or $show[8]== '0') {
+            $this->user_info .= "<b>Сайт компании:</b> <a href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
+          }
+          if (!$user->authorized && $show[8]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Сайт компании:</b><br /><br />';
+          }
+        }
+        
+
+
+        $this->user_info .= "<b>На сайте:</b> ".onSiteTime($user_data["registration_date"])."<br />";
+        
+        if ($user_data["birthday"] != '') {
+          if ($user->authorized && $show[4]== '1' or $show[4]== '0') {
+            $this->user_info .= "<b>Возраст:</b> ".UserAge($user_data["birthday"])."<br />";
+          }
+          if (!$user->authorized && $show[4]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Возраст:</b><br />';
+          }
+        }
+        
+        if ($user->authorized && $show[5]== '1' or $show[5]== '0') {
+    			if ($user_data["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
+          if ($user_data["sex"] != '') $this->user_info .= "<b>Пол:</b> ".$sex."<br />";
+        }
+        if (!$user->authorized && $show[5]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Пол:</b><br />';
+        }
+
+        if (!IsNullOrEmpty($user_data["company"])) {
+          if ($user->authorized && $show[6]== '1' or $show[6]== '0') {
+    				$this->user_info .= "<b>Компания:</b> ".$user_data["company"]."<br />";
+    			}
+    			if (!$user->authorized && $show[6]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Компания:</b><br />';
+          }
+        }
+        
+        if ($user_data["position"] != '') {
+          if ($user->authorized && $show[7]== '1' or $show[7]== '0') {
+            $this->user_info .= "<b>Должность:</b> ".$user_data["position"]."<br />";
+          }
+          if (!$user->authorized && $show[7]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Должность:</b><br />';
+          }
+        }
+        
+        if ($user_data["address"] != '') {
+          if ($user->authorized && $show[9]== '1' or $show[9]== '0') {
+            $this->user_info .= "<b>Адрес:</b> ".$user_data["address"]."<br />";
+          }
+          if (!$user->authorized && $show[9]== '1') {
+            $this->user_info .= '<b style="color:#ccc">Адрес:</b><br />';
+          }
+        }
+
+
+  			
+			
+		//	}
+			if (!$user->authorized && in_array('1', $show)) { $this->user_info .= '<br />Для того, чтобы увидеть содержимое полей <a href="" onclick="javascript: ShowLogonDialog(); return false;">войдите</a> или <a href="" onclick="javascript: ShowRegUser(); return false;">зарегистрируйтесь</a>.'; }
+			
+			$this->user_info .= '</div>';
 			
 		}
     else {

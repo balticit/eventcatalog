@@ -9,6 +9,12 @@
       <item type="class" class="CGridDataField" dbField="sity" label="Другой город" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
       <item type="class" class="CGridDataField" dbField="title" label="Имя" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
       <item type="class" class="CGridDataField" dbField="nikname" label="Никнэйм" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      
+      <item type="class" class="CGridDataField" dbField="skype" label="Skype" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CGridDataField" dbField="icq" label="ICQ" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CGridDataField" dbField="birthday" label="Дата рождения" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CGridDataField" dbField="sex" label="Пол" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      
       <item type="class" class="CGridDataField" dbField="company" label="Компания" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
       <item type="class" class="CGridDataField" dbField="position" label="Должность" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
       <item type="class" class="CGridDataField" dbField="site" label="Сайт компании" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
