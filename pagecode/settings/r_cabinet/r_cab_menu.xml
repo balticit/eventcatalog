@@ -8,7 +8,7 @@
 	<row link="/r_cabinet/data/my_messages" title="Мои сообщения" imgname="btn_u_cab.png"/>
 	<row link="/r_cabinet/data/my_comments" title="Мои комментарии" imgname="btn_u_cab.png"/>
 	<row link="/r_cabinet/data/my_favorite" title="Избранное" imgname="btn_u_cab.png"/>
-	<row link="/r_cabinet/data/my_marks" title="Мои оценки" imgname="btn_u_cab.png"/>
+	<row link="/r_cabinet/data/my_marks" title="Мои рекомендации" imgname="btn_u_cab.png"/>
 	<row link="/r_cabinet/data/my_news" title="Мои новости" imgname="btn_u_cab.png"/>
 	<row link="" title="PRO" imgname="btn_pro.png"/>
 </datasource>

@@ -120,25 +120,25 @@ class profile_php extends CPageCodeHandler
             $this->user_info .= "<b>Мобильный телефон:</b> ".$user_data["contact_phone"]."<br />";
           }
           if (!$user->authorized && $show[10]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Мобильный телефон:</b><br />';
+            $this->user_info .= '<b>Мобильный телефон:</b> *******<br />';
           }
         }
         
-        if ($user_data["skype"] != '') {
+        if ($user_data["skype"] != '' && $user_data["skype"] != '0') {
           if ($user->authorized && $show[2]== '1' or $show[2]== '0') {
             $this->user_info .= "<b>Skype:</b> ".$user_data["skype"]."<br />";
           }
           if (!$user->authorized && $show[2]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Skype:</b><br />';
+            $this->user_info .= '<b>Skype:</b> *******<br />';
           }
         }
         
-        if ($user_data["icq"] != '') {
+        if ($user_data["icq"] != '' && $user_data["icq"] != '0') {
           if ($user->authorized && $show[3]== '1' or $show[3]== '0') {
             $this->user_info .= "<b>ICQ:</b> ".$user_data["icq"]."<br />";
           }
           if (!$user->authorized && $show[3]== '1') {
-            $this->user_info .= '<b style="color:#ccc">ICQ:</b><br />';
+            $this->user_info .= '<b>ICQ:</b> *******<br />';
           }
         }
         
@@ -147,18 +147,16 @@ class profile_php extends CPageCodeHandler
             $this->user_info .= "<b>Рабочий телефон:</b> ".$user_data["company_phone"]."<br />";
           }
           if (!$user->authorized && $show[11]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Рабочий телефон:</b><br />';
+            $this->user_info .= '<b>Рабочий телефон:</b> *******<br />';
           }
         }
-        
-        if ($user_data["email"] != '') $this->user_info .= "<b>Электронная почта:</b> <a href='mailto:".$user_data["email"]."'>".$user_data["email"]."</a><br />";
-        
+
         if ($user_data["site"] != '') {
           if ($user->authorized && $show[8]== '1' or $show[8]== '0') {
             $this->user_info .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
           }
           if (!$user->authorized && $show[8]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Сайт компании:</b><br /><br />';
+            $this->user_info .= '<b>Сайт компании:</b> *******<br /><br />';
           }
         }
         
@@ -166,12 +164,12 @@ class profile_php extends CPageCodeHandler
 
         $this->user_info .= "<b>На сайте:</b> ".onSiteTime($user_data["registration_date"])."<br />";
         
-        if ($user_data["birthday"] != '') {
+        if ($user_data["birthday"] != '' && $user_data["birthday"] != '0000-00-00') {
           if ($user->authorized && $show[4]== '1' or $show[4]== '0') {
             $this->user_info .= "<b>Возраст:</b> ".UserAge($user_data["birthday"])."<br />";
           }
           if (!$user->authorized && $show[4]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Возраст:</b><br />';
+            $this->user_info .= '<b>Возраст:</b> *******<br />';
           }
         }
         
@@ -180,7 +178,7 @@ class profile_php extends CPageCodeHandler
           if ($user_data["sex"] != '') $this->user_info .= "<b>Пол:</b> ".$sex."<br />";
         }
         if (!$user->authorized && $show[5]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Пол:</b><br />';
+            $this->user_info .= '<b>Пол:</b> *******<br />';
         }
 
         if (!IsNullOrEmpty($user_data["company"])) {
@@ -188,7 +186,7 @@ class profile_php extends CPageCodeHandler
     				$this->user_info .= "<b>Компания:</b> ".$user_data["company"]."<br />";
     			}
     			if (!$user->authorized && $show[6]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Компания:</b><br />';
+            $this->user_info .= '<b>Компания:</b> *******<br />';
           }
         }
         
@@ -197,7 +195,7 @@ class profile_php extends CPageCodeHandler
             $this->user_info .= "<b>Должность:</b> ".$user_data["position"]."<br />";
           }
           if (!$user->authorized && $show[7]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Должность:</b><br />';
+            $this->user_info .= '<b>Должность:</b> *******<br />';
           }
         }
         
@@ -206,7 +204,7 @@ class profile_php extends CPageCodeHandler
             $this->user_info .= "<b>Адрес:</b> ".$user_data["address"]."<br />";
           }
           if (!$user->authorized && $show[9]== '1') {
-            $this->user_info .= '<b style="color:#ccc">Адрес:</b><br />';
+            $this->user_info .= '<b>Адрес:</b> *******<br />';
           }
         }
 
@@ -214,7 +212,7 @@ class profile_php extends CPageCodeHandler
   			
 			
 		//	}
-			if (!$user->authorized && in_array('1', $show)) { $this->user_info .= '<br />Для того, чтобы увидеть содержимое полей <a href="" onclick="javascript: ShowLogonDialog(); return false;">войдите</a> или <a href="" onclick="javascript: ShowRegUser(); return false;">зарегистрируйтесь</a>.'; }
+			if (!$user->authorized && in_array('1', $show)) { $this->user_info .= '<br />Для того, чтобы увидеть содержимое всех полей <a href="" onclick="javascript: ShowLogonDialog(); return false;">войдите</a> или <a href="" onclick="javascript: ShowRegUser(); return false;">зарегистрируйтесь</a>.'; }
 			
 			$this->user_info .= '</div>';
 			

@@ -1360,7 +1360,8 @@ class r_cabinet_php extends CPageCodeHandler
 						"text" => "Агентства",
 						"color" => "#9ecd1f",
 						"selected" => false));
-				if ($f_type != "all")
+
+					
 					$left_menu["my_favorite/type/$f_type"]["selected"] = true;
 
 				if (GP("fav_del_sel",0) == 1)
