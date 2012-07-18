@@ -86,7 +86,7 @@
               </tr>
               <tr style="vertical-align: top;">
                 <td><br />
-                <div class="resident_news">
+                <div class="resident_news" style="height:395px;">
                   <div class="recomendTitle area"><a class="area" href="/area/rating">Рейтинг площадок</a></div>
                   <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
                 </div>

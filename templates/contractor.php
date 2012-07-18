@@ -78,7 +78,7 @@
               </tr>
               <tr style="vertical-align: top;">
                 <td><br />
-                <div class="resident_news">
+                <div class="resident_news" style="height:395px;">
                   <div class="recomendTitle contractor"><a class="contractor" href="/contractor/rating">Рейтинг подрядчиков</a></div>
                   <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
                 </div>

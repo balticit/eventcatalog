@@ -585,7 +585,7 @@ class u_cabinet_php extends CPageCodeHandler
 				
 				if ($user_info["company_phone"] != '') $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
 				if ($user_info["email"] != '') $cab["main_area"] .= "<b>Электронная почта:</b> <a href='mailto:".$user_info["email"]."'>".$user_info["email"]."</a><br />";
-				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
+				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
 
 
         $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";

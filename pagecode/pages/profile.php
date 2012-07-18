@@ -155,7 +155,7 @@ class profile_php extends CPageCodeHandler
         
         if ($user_data["site"] != '') {
           if ($user->authorized && $show[8]== '1' or $show[8]== '0') {
-            $this->user_info .= "<b>Сайт компании:</b> <a href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
+            $this->user_info .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_data["site"]."'>".$user_data["site"]."</a><br /><br />";
           }
           if (!$user->authorized && $show[8]== '1') {
             $this->user_info .= '<b style="color:#ccc">Сайт компании:</b><br /><br />';

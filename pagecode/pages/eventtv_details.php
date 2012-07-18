@@ -82,7 +82,7 @@ class eventtv_details_php extends CPageCodeHandler
 			$btn_i_like='<form method="post" style="margin: 0; padding:0;"><input type="hidden" name="action" value="ilike"><img class="btn_ilike" src="/images/rating/btn_ilike.png" onmouseover="javascript: this.src=\'/images/rating/btn_white.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_ilike.png\';" onclick="javascript: '.$btn_action.'"></form>';
 		}
 		else {
-			$btn_i_like='</td><td><form method="post" style="margin: 0; padding:0;"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img src="/images/rating/unlike_white.png" alt="Больше не нравится" /></a></form>';
+			$btn_i_like='</td><td><form method="post" style="margin: 0; padding:0;"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_white.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
 		}
 
 		$mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
