@@ -515,7 +515,7 @@ class area_php extends CPageCodeHandler
         			}
         			
         			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
-        			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 100));
+        			$res_news[$key]["text"] = strip_tags(CutString($res_news[$key]["text"], 90));
         			switch($val['resident_type']) {
         			case 'area': $res_news[$key]['sub'] = 'Площадка'; break;
         			case 'artist': $res_news[$key]['sub'] = 'Новость артиста'; break;

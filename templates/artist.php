@@ -77,7 +77,7 @@
               </tr>
               <tr style="vertical-align: top;">
                 <td ><br />
-                <div class="resident_news" style="height:395px;">
+                <div class="resident_news" style="height:375px;">
                   <div class="recomendTitle artist"><a class="artist" href="/artist/rating">Рейтинг артистов</a></div>
                   <table class="rate"><?php CRenderer::RenderControl("RatingList"); ?></table>
                 </div>

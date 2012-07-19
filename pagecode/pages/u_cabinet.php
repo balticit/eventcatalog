@@ -633,9 +633,10 @@ class u_cabinet_php extends CPageCodeHandler
 						"color" => "#9ecd1f",
 						"selected" => false));
 						
+						$left_menu["my_favorite/type/$f_type"]["selected"] = true;
 				
-				if ($f_type != "all")
-					$left_menu["my_favorite/type/$f_type"]["selected"] = true;
+			//	if ($f_type != "all")
+			//		$left_menu["my_favorite/type/$f_type"]["selected"] = true;
 
 				if (GP("fav_del_sel",0) == 1)
 				{
