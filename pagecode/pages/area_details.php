@@ -865,7 +865,7 @@ group by
 			
 			//dancing
       if($unit["dancing"]!='' && $unit["dancing"]!='0'){
-        if(is_numeric($unit["dancing"])) { $val = ' шт.'; } else { $val = ''; }
+        if(is_numeric($unit["dancing"])) { $val = ' м2'; } else { $val = ''; }
 				$unit["dancing"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Танцпол:</div>

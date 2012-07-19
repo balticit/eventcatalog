@@ -105,12 +105,15 @@ class profile_php extends CPageCodeHandler
 			
 			$show = explode('|',$user_data["display_type"]);
 			
-			
-			
-		//	echo $show[0];
+
 			
 			$this->user_info = '<div class="u_info_block">';
-  			if ($user_data["sity"] != '') $this->user_info .= "<b>Город:</b> ".$user_data["sity"]."<br />";
+			
+			if (IsNullOrEmpty($user_data["sity"])) { $user_data["sity"] = SQLProvider::ExecuteScalar("select title from tbl__city where tbl_obj_id = ".$user_data["city"]);
+			 $this->user_info .= "<b>Город:</b> ".$user_data["sity"]."<br />";
+      } 
+			
+  			 
 			
 			//if ( $user->authorized && $user_data["display_type"]== '1' or $user_data["display_type"]== '0') {
 			
