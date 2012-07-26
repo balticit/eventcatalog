@@ -19,7 +19,7 @@
 </tr>
 <tr>
     <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top"> 
-        <table >
+        <table width="100%">
             <tr>
                 <td style="vertical-align:top; padding-left:5px;  width:230px">
                         <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">
