@@ -20,6 +20,9 @@ RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !.html$
 RewriteRule (.+) $1/ [R=301,L]
 
+RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
+RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
+
 RewriteRule ^index.php$	- [L]
 RewriteRule ^/?watermark/imagemarker.php$	- [L]
 RewriteRule ^/?widgets/ya_widget_articles.php$	- [L]
