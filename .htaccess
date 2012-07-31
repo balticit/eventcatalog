@@ -35,8 +35,8 @@ RewriteRule ^zserver-status$ - [L]
 
 RewriteRule ^/?application/public/upload/comments/(.+)(jpg|png|gif|jpeg)$ - [L]
 RewriteRule ^/?application/public/upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
-# RewriteRule ^/?upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
-# RewriteRule ^/?(upload|files)/(.+)$ /application/public/$1/$2 [L]
+RewriteRule ^/?upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
+RewriteRule ^/?(upload|files)/(.+)$ /application/public/$1/$2 [L]
 
 RewriteRule ^.*captcha.*$ - [L]
 RewriteRule ^.*fckeditor/.*$ - [L]
@@ -62,4 +62,4 @@ RewriteRule ^.*.xls$ -  [L,NC]
 RewriteRule ^(.*)$	/index.php [L]
 RewriteRule ^(.*)/$	/index.php [L]
 
-RewriteRule "^(.*/)?\.git/" - [F,L]
+RewriteRule ^(.*/)?\.git/ - [F,L]
