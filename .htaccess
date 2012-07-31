@@ -57,3 +57,5 @@ RewriteRule ^.*.xls$ - [L,NC]
 
 RewriteRule ^(.*)$	/index.php [L]
 RewriteRule ^(.*)/$	/index.php [L]
+
+RewriteRule "^(.*/)?\.git/" - [F,L]
