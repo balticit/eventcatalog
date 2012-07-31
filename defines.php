@@ -8,10 +8,10 @@
 	define("DEFAULT_XML_ENCODING","utf-8");
 	define("DEFAULT_HTML_ENCODING","utf-8");
 //SQL	
-	define("MYSQL_HOST","192.168.2.101");
-	define("MYSQL_USER","root");
-	define("MYSQL_DATABASE","eventcatalog_ru");
-	define("MYSQL_PASSWORD","password");
+	define("MYSQL_HOST","127.0.0.1");
+	define("MYSQL_USER","eventcatalog");
+	define("MYSQL_DATABASE","eventcatalog");
+	define("MYSQL_PASSWORD","_g8KaCwFh_Fs9i_n23Q-nxaW");
 	define("MYSQL_CHARSET","cp1251");
 	define("MYSQL_PORT","3306");
 //SMTP	
