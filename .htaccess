@@ -20,9 +20,6 @@ RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !.html$
 RewriteRule (.+) $1/ [R=301,L]
 
-#RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
-#RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
-
 RewriteRule ^index.php$	- [L]
 RewriteRule ^/?watermark/imagemarker.php$	- [L]
 RewriteRule ^/?widgets/ya_widget_articles.php$	- [L]
@@ -33,9 +30,7 @@ RewriteRule ^robots.txt$	- [L]
 
 RewriteRule ^zserver-status$ - [L]
 
-# Ñïåöèàëüíàÿ îáðàáîòêà äëÿ ïàïîê /upload/*, /images/*, è ò.ä.
 RewriteRule ^/?application/public/upload/comments/(.+)(jpg|png|gif|jpeg)$ - [L]
-#RewriteRule ^/?application/public/upload/comments/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2&comments=1 [L,NC]
 RewriteRule ^/?application/public/upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
 RewriteRule ^/?upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
 RewriteRule ^/?(upload|files)/(.+)$ /application/public/$1/$2 [L]
