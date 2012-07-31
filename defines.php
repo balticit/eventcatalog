@@ -8,7 +8,7 @@
 	define("DEFAULT_XML_ENCODING","utf-8");
 	define("DEFAULT_HTML_ENCODING","utf-8");
 //SQL	
-	define("MYSQL_HOST","127.0.0.1");
+	define("MYSQL_HOST","localhost");
 	define("MYSQL_USER","eventcatalog");
 	define("MYSQL_DATABASE","eventcatalog");
 	define("MYSQL_PASSWORD","_g8KaCwFh_Fs9i_n23Q-nxaW");
