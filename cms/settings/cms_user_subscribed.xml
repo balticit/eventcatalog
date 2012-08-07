@@ -4,7 +4,8 @@
 	<control relativeId="dataTable" class="CDataGridView" tableName="tbl__subscribed" pageSize="40" cssClass="dataTable" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="email" keyType="char" addText="Добавить" addClass="addItem">
 		<param name="fields" type="list">		
 			<item type="class" class="CGridDataField" dbField="email" label="Электронная почта" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
-			<item type="class" class="CDeleteGridDataField" dbField="email" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="char" labelClass="itemLabel" customAction="delete" />			
+			<item type="class" class="CGridDataField" dbField="date" label="Дата" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+      <item type="class" class="CDeleteGridDataField" dbField="email" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="char" labelClass="itemLabel" customAction="delete" />			
 		</param>
 	</control>
 	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">

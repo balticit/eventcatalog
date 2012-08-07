@@ -409,6 +409,8 @@ class contractor_details_php extends CPageCodeHandler
 				`c`.`logo_image` AS `logo_image`,
 				`c`.`phone2` AS `phone2`,
 				`c`.`city` AS `city`,
+				`c`.`priority` AS `priority`,
+	      `c`.`direct` AS `direct`,
 				`c`.`other_city` AS `other_city`,
 				`ct`.`title` AS `city_name`,
                                 `c`.`registration_date`,
@@ -675,14 +677,25 @@ class contractor_details_php extends CPageCodeHandler
             || $this->id == 7562
             || $this->id == 7689
             || $this->id == 7647
+            || $unit['direct'] == 1
         ) {
             //turnoff yandex.direct
             $this->GetControl("yaPersonal")->template = "";
 
             $file = RealFile("/pagecode/settings/banner_files/bottomBannersWoYa.htm");
-            if (is_file($file))
-                $this->GetControl("bottomBanners")->template = file_get_contents($file);
+            if (is_file($file)) $this->GetControl("bottomBanners")->template = file_get_contents($file);
         }
+        
+        if( is_numeric($unit['priority'] )) {
+    		 if($unit['priority'] != 0) { $this->GetControl('yaPersonal')->template = ""; }
+        }
+        else {
+    			if (!IsNullOrEmpty($unit['priority'])) {
+            $this->GetControl('yaPersonal')->template = "";
+          }
+        }
+        
+        
         $mainMenu = $this->GetControl("menu");
         $mainMenu->dataSource["kinodoktor"] =
             array("link" => "http://www.kinodoctor.ru/",

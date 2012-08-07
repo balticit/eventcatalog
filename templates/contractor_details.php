@@ -40,7 +40,7 @@
                 <td style="vertical-align:top">
                     <?php CRenderer::RenderControl("titlefilterLinks"); ?>
 					<div style="padding-left:0px;"> 
-						<?php CRenderer::RenderControl("yaListTop"); ?>                       
+						<?php CRenderer::RenderControl("yaListTop"); ?>                      
                         <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("contList"); ?></table>
                         <div><?php CRenderer::RenderControl("footerText"); ?></div>
                     </div>
@@ -67,7 +67,7 @@
 			</tr>
 			
 			</table>
-			<img src="/images/front/0.gif" width="220" height="10">                      
+			<img src="/images/front/0.gif" width="220" height="10" alt="" />                      
 			<a class="addConstractor" href="/registration/?type=contractor">Добавить Подрядчика</a>
 		</td>
 		<td style="vertical-align:top; padding-left: 5px;">

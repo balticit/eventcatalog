@@ -1,0 +1,57 @@
+<table width="100%" cellpadding="0" cellspacing="0" style="padding-bottom: 0">
+	<tr>
+		<td rowspan="2" align="left" width="150"><a href="/"><img src="/images/logo_index.png" width="150" height="70" alt="" /></a></td>
+		<td align="left" style="color: #808080; font-size: 16px; padding-left: 20px;">ежедневный помощник <span style="white-space: nowrap;">организатора мероприятий</span></td>
+		<td rowspan="2" valign="top" align="right" style="width:468px; padding-left:11px;"></td>
+		
+	</tr>
+	<tr>
+		<td style="color: #000; font-size: 12px; padding-left: 20px; padding-top: 9px; font-weight: bold;"><span style='float: left;display: block;line-height: 25px;margin-right: 10px'>{logodate}</span></td>
+	</tr>
+	<tr>
+		<td colspan="3" style="padding-top: 10px;">
+	
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+	$(document).ready(function(){
+		$('#selectcity').click(function(){
+			new Boxy.load("/ajax/citylist/",{
+				behaviours: function(c) {
+					c.find('.city-selector-item a').click(function(){
+						var selcity = $(this);
+					    $.ajax({
+					        url:'/ajax/citylist/',
+							data: {city: selcity.attr('href')},
+					        success: function(responseText) {
+								if (responseText == 'OK') document.location = document.location;
+					        }
+					    });
+						return false;
+					});
+				},
+				title: "Выберите Ваш город",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		$('#selectreguser').click(function(){
+			ShowRegUser();
+			return false;
+		});
+		$('#selectregcompany').click(function(){
+			new Boxy($('#regcompany').parent(),{
+				title: "Выберите Ваш раздел",
+				closeText: "[X]",
+				modal: true,
+				clickToFront: true});
+			return false;
+		});
+		$('#selectenter').click(function(){
+			ShowLogonDialog();
+			return false;
+		});
+	});
+</script>

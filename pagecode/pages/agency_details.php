@@ -151,7 +151,7 @@ class agency_details_php extends CPageCodeHandler
                 }
                 $agencies = SQLProvider::ExecuteQuery(
                 "select *,10 height from  `vw__agency_list_pro` $filter
-					order by if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
+					order by priority desc, if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
                 $agencyList = $this->GetControl("agencyList");
 
                 foreach ($agencies as &$agency)
@@ -498,6 +498,21 @@ class agency_details_php extends CPageCodeHandler
     $unit["photos"] = $photos->Render();
     
 		$agenDetails->dataSource = $unit;
+		
+		
+		if ( $unit['direct'] == 1) {
+        $this->GetControl('yaPersonal')->template = "";
+    }			
+    
+
+		if( is_numeric($unit['priority'] )) {
+		 if($unit['priority'] != 0) { $this->GetControl('yaPersonal')->template = ""; }
+    }
+    else {
+			if (!IsNullOrEmpty($unit['priority'])){
+        $this->GetControl('yaPersonal')->template = "";
+      }
+    }
 
 
     /* Baltic IT */

@@ -83,7 +83,12 @@
 		</td>
 		<td style="vertical-align:top; padding-left: 5px;">
 			<?php CRenderer::RenderControl("yaPersonal"); ?>
+			
 			<?php CRenderer::RenderControl("details"); ?>
+			
+			
+			
+			
 		</td>
                 <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>

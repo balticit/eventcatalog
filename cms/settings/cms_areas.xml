@@ -26,6 +26,7 @@
                   tableLink="/cms/areas/halls/?99_5_2$dataTable[$autoValues][area_id]={tbl_obj_id}"
                   refreshText="Обновить" listText="Список" labelClass="itemLabel" addClass="addCell"
                   editClass="editJoinCell"/>
+           
             <item type="class" class="CGridDataField" dbField="cost_banquet" label="Стоимость проведения банкета:"
                   alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"
                   visibleOnList="0"/>
@@ -66,6 +67,9 @@
                   visibleOnList="0"/>
             <item type="class" class="CGridDataField" dbField="dancing_size" label="Танцпол:" alterItemClass="alterItem"
                   labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+                  
+            
+                  
             <item type="class" class="CXMLLookupGridDataField" dbField="car_into"
                   label="Возможность установки автомобиля:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/maybeLookUp.xml" driver="CXMLTableDataSource" lookupId="id"
@@ -161,6 +165,16 @@
                   alterItemClass="alterItem" sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml"
                   driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel"
                   addClass="addCell" editClass="editCell"/>
+                  
+            <item type="class" class="CXMLLookupGridDataField" dbField="priority"
+                  label="Приоритет в поиске:" alterItemClass="alterItem" sourceEncoding="utf-8"
+                  filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
+                  lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+            <item type="class" class="CXMLLookupGridDataField" dbField="direct"
+                  label="Убрать директ со страницы:" alterItemClass="alterItem" sourceEncoding="utf-8"
+                  filename="cms/settings/misc/isRider.xml" driver="CXMLTableDataSource" lookupId="id"
+                  lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+                  
             <item type="class" class="CRecommendedGridDataField" dbField="recommended" label="EVENTКАТАЛОГ рекомендует"
                   alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
             <item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Мне нравится"

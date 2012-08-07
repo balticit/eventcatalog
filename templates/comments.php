@@ -21,7 +21,7 @@
 			<div style="float:left; width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/<?php echo $comment["logo"]==''?"images/nologo.png":"upload/".$comment["logo"]; ?>"></div>
 			</td><td>
 			<div style="padding:6px;">
-			<div style="float:left; position:relative; margin-right:8px;"><b><?php echo $comment["sender_id"]!=''?'<a style="text-decoration:underline;" href="/u_profile/?type='.$comment["type"].'&id='.$comment["user_id"].'">'.$comment["title"].'</a>':'<span style="color:#BEBEBE;">'.$comment["sender_name"].'</span>'; ?></b></div>
+			<div style="float:left; position:relative; margin-right:8px;"><b><?php echo $comment["sender_id"]!=''?'<a target="_blank" style="text-decoration:underline;" href="/u_profile/?type='.$comment["type"].'&id='.$comment["user_id"].'">'.$comment["title"].'</a>':'<span style="color:#BEBEBE;">'.$comment["sender_name"].'</span>'; ?></b></div>
 			<?php if (isset($comment["r500"]) && $comment["r500"]>0){ ?><div style="float:left; position:relative; background-image:url('/images/award-500.gif'); margin-right:20px; height:27px; width:<?php echo $comment["r500"]*23; ?>px;"></div><?php }?>
 			<?php if (isset($comment["r100"]) && $comment["r100"]>0){ ?><div style="float:left; position:relative; background-image:url('/images/award-100.gif'); margin-right:20px; height:27px; width:<?php echo $comment["r100"]*26; ?>px;"></div><?php }?>
 			<div style="float:left; position:relative; color:#999999;"><?php echo $comment["time_mess"]?></div>
@@ -30,7 +30,7 @@
 			<div style="padding:6px;"><div style="display:none;" id="comment_hidden_text_<?php echo $comment["tbl_obj_id"] ?>"><?php echo $comment["u_text"] ?></div>
 			<?php
 			if ($comment["active"]!=1)
-				echo "Сообщение заблокировано администратором";
+				echo "Ожидает модерации";
 			else
 				echo $comment["text"];
 			?><br><br><br><br>
@@ -45,7 +45,7 @@
 				<?php }?>
 				<a href="#" style="text-decoration:underline;" onClick="javascript:return AddComment(<?php echo $comment["tbl_obj_id"]; ?>);">Ответить</a>
 				<?php if (($comment["sender_id"]!='')&&(!isset($comment["is_owner"]) || !$comment["is_owner"])){?>
-				| <a style="text-decoration:underline;margin-left:20px;" href="/u_cabinet/?data=my_messages&action=compose&type=<?php echo $comment["type"]; ?>&id=<?php echo $comment["user_id"]; ?>" target="_blank">Написать личное сообщение</a>
+				<?php /* | <a target="_blank" style="text-decoration:underline;margin-left:20px;" href="/u_cabinet/?data=my_messages&action=compose&type=<?php echo $comment["type"]; ?>&id=<?php echo $comment["user_id"]; ?>" target="_blank">Написать личное сообщение</a>*/ ?>
 				<?php }?>
 				<?php if (isset($comment["is_owner"]) && $comment["is_owner"] && ($comment["is_deleted"]==0)){ ?>| <a href="#" style="text-decoration:underline;margin-left:20px;" onClick="javascript:return AddComment(<?php echo $comment["tbl_obj_id"]; ?>,true);">Редактировать</a> | <a style="text-decoration:underline;margin-left:20px;" href="#" onClick="javascript:return DeleteComment(<?php echo $comment["tbl_obj_id"]?>);">Удалить</a> <?php }?>
 			</div></td></tr>
@@ -60,10 +60,13 @@
 	</table>
 	<?php } ?>
 
+
 	<?php if ($this->is_cabinet){ ?>
 	<?php CRenderer::RenderControl("pager"); ?>
 	<?php }else{ ?>
-	<a href="#" id="comment_new_link" onClick="javascript:return AddComment(null);"><span style="color:#000000; text-decoration:underline; margin: 14px 0; font-size: 18px; font-weight: 700;">Написать комментарий</span></a>
+	<a href="#" id="comment_new_link" onClick="javascript:return AddComment(null);">
+    <span class="link_add_comment">Написать комментарий</span>
+  </a>
 	<?php }?>
 	<div id="comment_post_container" style="<?php if (!$this->c_error&&($this->auth_error==null)) {?>display:none;<?php }?> background-color:#F6F6F6; width:100%;">
 		<div style="margin: 5px; padding-top:15px;">
