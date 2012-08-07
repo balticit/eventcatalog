@@ -1,7 +1,10 @@
+deny from 212.158.160.238
+deny from 212.158.160.239
+
 php_flag allow_call_time_pass_reference on
 php_flag magic_quotes_gpc off
 php_flag short_open_tag off
-php_value session.save_path /var/www/eventcatalog/www/tmp
+php_value session.save_path /bhome/part3/03/eventcatalog/tmp
 php_value session.gc_maxlifetime 11800
 php_value session.use_trans_sid 0
 php_value max_execution_time 600
@@ -12,7 +15,8 @@ php_value max_execution_time 60000000
 
 RewriteEngine on
 
-RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
 RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
@@ -24,43 +28,45 @@ RewriteRule ^/?widgets/ya_widget_recent_events.php$	- [L]
 RewriteRule ^/?widgets/yandexwidget.xhtml$	- [L]
 RewriteRule ^/?widgets/yandexwidget2.xhtml$	- [L]
 RewriteRule ^robots.txt$	- [L]
+RewriteRule ^google4121ae304c1e9885.html$        - [L]
 
 RewriteRule ^zserver-status$ - [L]
 
+# Ñïåöèàëüíàÿ îáðàáîòêà äëÿ ïàïîê /upload/*, /images/*, è ò.ä.
 RewriteRule ^/?application/public/upload/comments/(.+)(jpg|png|gif|jpeg)$ - [L]
+#RewriteRule ^/?application/public/upload/comments/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2&comments=1 [L,NC]
 RewriteRule ^/?application/public/upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
 RewriteRule ^/?upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
 RewriteRule ^/?(upload|files)/(.+)$ /application/public/$1/$2 [L]
-
 RewriteRule ^.*captcha.*$ - [L]
 RewriteRule ^.*fckeditor/.*$ - [L]
 RewriteRule ^.*userfiles/.*$ - [L]
 RewriteRule ^.*pricelistfile/.*$ - [L]
 RewriteRule ^.*js/.*$ - [L]
-RewriteRule ^.*.css$ -  [L,NC]
-RewriteRule ^.*.swf$ -  [L,NC]
-RewriteRule ^.*.htc$ -  [L,NC]
+RewriteRule ^.*.css$ - [L,NC]
+RewriteRule ^.*.swf$ - [L,NC]
+RewriteRule ^.*.htc$ - [L,NC]
 RewriteRule ^.*.jpeg$ - [L,NC]
-RewriteRule ^.*.jpg$ -  [L,NC]
-RewriteRule ^.*.gif$ -  [L,NC]
-RewriteRule ^.*.js$  -  [L,NC]
-RewriteRule ^.*.png$ -  [L,NC]
-RewriteRule ^.*.ico$ -  [L,NC]
-RewriteRule ^.*.mp3$ -  [L,NC]
-RewriteRule ^.*.wav$ -  [L,NC]
-RewriteRule ^.*.htc$ -  [L,NC]
-RewriteRule ^.*.doc$ -  [L,NC]
-RewriteRule ^.*.wmv$ -  [L,NC]
-RewriteRule ^.*.xls$ -  [L,NC]
+RewriteRule ^.*.jpg$ - [L,NC]
+RewriteRule ^.*.gif$ - [L,NC]
+RewriteRule ^.*.js$ - [L,NC]
+RewriteRule ^.*.png$ - [L,NC]
+RewriteRule ^.*.ico$ - [L,NC]
+RewriteRule ^.*.mp3$ - [L,NC]
+RewriteRule ^.*.wav$ - [L,NC]
+RewriteRule ^.*.htc$ - [L,NC]
+RewriteRule ^.*.doc$ - [L,NC]
+RewriteRule ^.*.wmv$ - [L,NC]
+RewriteRule ^.*.xls$ - [L,NC]
 
-RewriteRule ^(.*)$	/index.php [L]
-RewriteRule ^(.*)/$	/index.php [L]
 
-RewriteRule ^(.*/)?\.git/ - [F,L]
-
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !-f
 RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !.html$
 RewriteRule (.+) $1/ [R=301,L]
+
+RewriteRule ^(.*)$	/index.php [L]
+RewriteRule ^(.*)/$	/index.php [L]
