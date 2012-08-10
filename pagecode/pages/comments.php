@@ -205,13 +205,15 @@ class comments_php extends CPageCodeHandler
 				if ($this->anonymous)
 				{
 					$newComment->sender_name = GP("comment_author");
+					$newComment->active =0;
 				}
 				else
 				{
 					$newComment->sender_id = $user->type.$user->id;
+					$newComment->active =1;
 				}
 				$newComment->time = date("Y-m-d H:i:s");
-				$newComment->active =1;
+				//$newComment->active =1;
 				$table->InsertObject(&$newComment);
 				$this->ProcessImage(&$newComment,$table);
 				//Отправка сообщения о комментарии

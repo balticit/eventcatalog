@@ -26,12 +26,13 @@
             $topicList = $this->GetControl("tvTopicList");
             $topicList->dataSource = $topics;
 
-            $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title from tbl__public_topics order by order_num");
+            $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, title_url from tbl__public_topics order by order_num");
             foreach ($topics as &$item) {
                 if ($item['tbl_obj_id'] == 0)
                     $item['link'] = "/book";
                 else
                     $item['link'] = "/book/?topic=".$item['tbl_obj_id'];
+                    //$item['link'] = "/book/".$item['title_url'];
                 $item['gray'] = "gray";
                 $item['selected'] =  "";
             }

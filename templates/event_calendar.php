@@ -24,13 +24,15 @@
 	<tr>
 		<td valign="top" width="100%">
 			<div style="padding-left:15px;">
+			<?php  /*
 				<div class='calendar-block'>
 					<?php CRenderer::RenderControl("eventcalendar"); ?>
 				</div>
-				<div style=" width: 700px; margin-left: 254px;">  
-					<div class="recomendTitle eventoteka h3">EVENT КАЛЕНДАРЬ <?php CRenderer::RenderControl("text"); ?></div>
+			*/ ?>
+				<div>  
+					<div class="recomendTitle eventoteka h3">EVENT КАЛЕНДАРЬ <?php /* CRenderer::RenderControl("text"); */ ?></div>
 					
-<br/>
+<br />
 <b>Тематический календарь предстоящих событий, которые будут интересны
 профессионалам в области организации мероприятий. 
 </b><br><br>
@@ -87,6 +89,16 @@
   $ind = 0;
   if (isset($page->controls[$id]))
   {
+  
+  echo '
+  <tr>
+  <td width="120">Дата</td>
+  <td>Мероприятие</td>
+  <td>Вид мероприятия</td>
+  <td>Место</td>
+
+  </tr>';
+  
       $newsData = $page->controls[$id]->dataSource;
       foreach ($newsData as $year=>$yeardata) {
           foreach ($yeardata as $month=>$monthdata) {
@@ -96,7 +108,12 @@
 				 '</td></tr>';
 		  
               foreach ($monthdata as $item) {
-                  echo '<tr style="height:35px">';
+              
+              
+                  
+                  if( $item['date'] > date('d') and $item['weekbegin'] > date('m')) { $color = "color:#000";} else { $color = "color:#ccc"; }
+              
+                  echo '<tr style="height:35px;'.$color.'">';
                   
                   //Самое первое событие
                   if ($ind==0&&$this->prev==0) {
@@ -107,13 +124,13 @@
                       $style="";
                   }
                   
-                  echo '<td style="color:gray;" width="1%"><nobr>';
+                  echo '<td style="color:gray;" >'; 
                   if($item['date'] == $item['date_end']) {
 				  
 					echo $item['date'].' ('.$item['weekbegin'].')';
 					
 					// printf('<td style="padding:2px 0 2px 10px'.$style.'">%s</td>', $item['date']);
-					// echo '<td colspan=2>&nbsp;</td>';
+					// echo '<td colspan="2">&nbsp;</td>';
 					// printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekbegin']);
 					// echo '<td colspan=2>&nbsp;</td>';
                   } else {
@@ -128,11 +145,11 @@
 					// echo '<td style="'.$style.'">-</td>';
 					// printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekend']);
                   }
-                  echo '</nobr></td>';
-                  echo '<td style="width:100%;padding-left:10px"><b><a style="color:black;'.$style.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
+                  echo '</td>';
+                  echo '<td><b><a style="color:black;'.$color.$style.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
                   printf('<td nowrap style="'.$style.'">%s</td>',$item['type']);
                   printf('<td style="'.$style.'">%s</td>',$item['place']);
-                  printf('<td nowrap style="'.$style.'"><a style="color:gray;'.$style.'" target="_blank" href="%s">подробнее</a></td>',$item['link']);
+                 // printf('<td nowrap style="'.$style.'"><a style="color:gray;'.$style.'" target="_blank" href="%s">подробнее</a></td>',$item['link']);
                   echo '</tr>';
                   $ind++;
               }
@@ -151,6 +168,74 @@
 				
 		
 		</td>
+
+<td width="240" style="padding-left:12px;padding-right:3px" valign="top"> 						
+                        <div class="leftPanelWitgets">
+                            <div class="leftPanelWitget_container"><iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:240px; height:360px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"></iframe></div>
+                            <div class="leftPanelWitget_container">
+                                <h3 class="h3">Печатное приложение</h3>
+                                <!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 1 -->
+						<script language="javascript" type="text/javascript"><!--
+						var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+						var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+						document.write(
+						'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
+						+ 'sid=112204&bn=1&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
+						+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
+						+ ' marginheight=0 scrolling=no></iframe>');
+						//--></script>
+						<noscript>
+						<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" target=_blank>
+						<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" alt="-AdRiver-" border=0 width=240></a>
+						</noscript>
+						<!--  AdRiver code END  -->
+                            </div>
+
+                            <div class="leftPanelWitget_container">
+                                <div style='width: 240px;margin-bottom: 10px;'>
+					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->
+					<script language="javascript" type="text/javascript"><!--
+					var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+					var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+					document.write(
+					'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
+					+ 'sid=112204&bn=2&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
+					+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
+					+ ' marginheight=0 scrolling=no></iframe>');
+					//--></script>
+					<noscript>
+					<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" target=_blank>
+					<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" alt="-AdRiver-" border=0 width=240></a>
+					</noscript>
+
+					<!--  AdRiver code END  -->
+				</div>
+      </div>
+      
+      <div class="leftPanelWitget_container">
+        <h3 class="h3">Быть в курсе</h3>
+        <div class="be_aware">
+					<span style="font-size: 12px;">Предстоящие мероприятия, выставки и события, а также последние добавления в каталоге. Будьте в курсе последних новостей!</span><br />
+					<div style="padding-top:6px">
+  					<noindex>
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83172&amp;from=promocode" target="_blank">Виджет Эвентотеки на Яндексе</a><br />
+  					<a rel="nofollow" href="http://www.yandex.ru/?add=83173&from=promocode" target="_blank">Виджет Новинок на Яндексе</a><br />
+            <a rel="nofollow" href="http://vk.com/public34359442" target="_blank">Мы в контакте</a><br />
+            <a rel="nofollow" href="http://www.facebook.com/EventCatalog" target="_blank">Мы в facebook</a> 
+            </noindex>
+          </div>
+          
+          <form method="post" onsubmit="javascript: return subscribe();">
+						<input type="hidden" name="action" value="subscribe" />
+						<input type="text" id="subscribe_email" style="width:150px; margin-top: 10px;" name="email" value="введите е-mail" onfocus="if (this.value=='введите е-mail') this.value=''" onblur="if (this.value=='') this.value='введите е-mail'" />
+			      <input type="submit" style="margin: 6px 0 0 -1px;" value="подписаться" />
+					</form>
+				</div>                                      
+      </div>
+      
+  </div>
+</td>
+
 	</tr>
 	
 	

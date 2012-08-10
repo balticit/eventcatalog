@@ -49,7 +49,8 @@ class CPhotosObject extends CHTMLObject
 		$thumbsLinesCount = ceil($photos_count/$this->thumbsPerLine);
 		$thumbsLines = "";
 		$thumbs = new CRepeater();
-		$thumbs->separatorTemplate = '<td><!-- --></td>';
+		//$thumbs->separatorTemplate = '<td><!-- --></td>';
+		$thumbs->separatorTemplate = '';
 		for ($i = 0; $i < $thumbsLinesCount; $i++){
 			$lineData = array_slice($data, $this->thumbsPerLine*$i, $this->thumbsPerLine);
       while (sizeof($lineData)<$this->thumbsPerLine)
@@ -58,7 +59,8 @@ class CPhotosObject extends CHTMLObject
                                     $this->thumbFileFieldName => "/images/front/nofotogal.png"));
 			$thumbs->itemTemplate = $this->thumbTemplate;
 			$thumbs->dataSource = $lineData;
-      $thumbsLines .= "<tr>".$thumbs->RenderHTML()."</tr>";
+      //$thumbsLines .= "<tr>".$thumbs->RenderHTML()."</tr>";
+      $thumbsLines .= "".$thumbs->RenderHTML()."";
 		}
     $m_image=RealFile(IMAGES_UPLOAD_DIR.$data[0]["m_image"]);
 		$data[0]["m_size"]="";

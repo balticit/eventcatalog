@@ -612,6 +612,31 @@ class index_php extends CPageCodeHandler
 				return iconv("windows-1251","UTF-8", $n);
 			}
 			$calendar['arr'] = json_encode(array_map('ToUTF', $cal_arr));
+			
+			
+			// LIST 5 last news
+			$sql2  = '(SELECT t.title, t.date, t.date_end, t.link '.
+				'FROM `tbl__event_calendar` t WHERE t.active = 1) '.
+			' UNION '.
+			'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
+				'CONCAT("/news/details", n.tbl_obj_id) link '.
+				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1) '.
+			'ORDER BY date DESC LIMIT 5';
+			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
+			
+			
+			$calendar['last_list'] = '<div class="calendar-list">';
+			
+      foreach($cal_arr2 as $i => $c) {
+      $calendar['last_list'] .= '<div class="last_calendar">';
+      $calendar['last_list'] .= '<div class="date">'.Date_Ru($c['date']).'</div>';
+      $calendar['last_list'] .= '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
+      $calendar['last_list'] .= '</div>';
+      }       
+      
+      $calendar['last_list'] .= '</div>';
+			
+			
 			$this->GetControl("eventcalendar")->dataSource = $calendar;	
 	
 		

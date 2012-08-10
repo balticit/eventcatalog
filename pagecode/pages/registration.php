@@ -370,6 +370,17 @@ class registration_php extends CPageCodeHandler
                                 '|'.$props["display_type"][10].
                                 '|'.$props["display_type"][11];
                                 
+                                
+                                if(empty($props["skype"])) {$props["skype"] = '0';}
+                                if(empty($props["icq"])) {$props["icq"] = '0';}
+                                
+                                $userData->skype = $props["skype"];
+                                $userData->icq = $props["icq"];
+                                
+                                
+                                if($props["birthday"] == '') { $userData->birthday = strftime('%Y-%m-%d %H:%M:%S', time());}
+                                
+                                
                                 $table->InsertObject(&$userData);
                                 $user->id = $userData->tbl_obj_id;
 

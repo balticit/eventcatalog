@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="id"/>
+	<column name="title"/>
+	<index name="id"/>
+	<row id="1" title="Да"/>	
+	<row id="0" title="Нет"/>			
+</datasource>

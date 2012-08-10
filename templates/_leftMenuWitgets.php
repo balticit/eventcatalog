@@ -29,6 +29,18 @@
 			}
 			$calendar['arr'] = json_encode(array_map('ToUTF', $cal_arr));
 			// die('!');
+			
+			
+			// LIST 5 last news
+			$sql2  = '(SELECT t.title, t.date, t.date_end, t.link '.
+				'FROM `tbl__event_calendar` t WHERE t.active = 1) '.
+			' UNION '.
+			'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
+				'CONCAT("/news/details", n.tbl_obj_id) link '.
+				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1) '.
+			'ORDER BY date DESC LIMIT 5';
+			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
+			
 	
 ?>
 <td width="240" style="padding-left:12px;padding-right:3px" valign="top"> 						
@@ -53,7 +65,41 @@
 						<!--  AdRiver code END  -->
                             </div>
                             <div class="leftPanelWitget_container">
-                                <h3 class="h3"><a href="/event_calendar/" class="sub-title widget" style="color:#000">EVENT Календарь</a></h3>
+                                <h3 class="h3">
+                                  <div class="calendar_tab">
+                                  <span class="calendar_ico active" id="calendar_table"></span>
+                                  <span class="calendar_ico" id="calendar_list"></span>
+                                  </div>
+                                  <a href="/event_calendar/" class="sub-title widget" style="color:#000">EVENT Календарь</a>
+                                </h3>
+                                <script language="javascript" type="text/javascript">
+                                $("#calendar_table").click(function(){
+                                  $(this).addClass("active");
+                                  $("#calendar_list").removeClass("active");
+                                  $(".calendar-list").hide();
+                                  $(".calendar-block").show();
+                                });
+                                $("#calendar_list").click(function(){
+                                  $(this).addClass("active");
+                                  $("#calendar_table").removeClass("active");
+                                  $(".calendar-list").show();
+                                  $(".calendar-block").hide();
+                                });
+                                </script>
+                                
+                                <div class="calendar-list">
+                                <?php
+                                
+                                foreach($cal_arr2 as $i => $c) {
+                                echo '<div class="last_calendar">';
+                                echo '<div class="date">'.Date_Ru($c['date']).'</div>';
+                                echo '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
+                                echo '</div>';
+                                }
+                                
+                                ?>
+                                </div>
+                                
                                 <div class='calendar-block'>									
 									<script>
 									$(document).ready( function() {

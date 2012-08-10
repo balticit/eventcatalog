@@ -395,7 +395,7 @@ class area_details_php extends CPageCodeHandler
 				$rp = ($page - 1) * $this->pageSize;
 				$areas = SQLProvider::ExecuteQuery(
 				"select * from `vw__area_list_pro` $filter
-				order by if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit " . (($page - 1) * $this->pageSize) . "," . $this->pageSize);
+				order by  priority desc, if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit " . (($page - 1) * $this->pageSize) . "," . $this->pageSize);
 				$areaList = $this->GetControl("areaList");
 				foreach ($areas as &$area)
 				{
@@ -726,6 +726,8 @@ class area_details_php extends CPageCodeHandler
 	`a`.`plus` AS `plus`,
 	`a`.`active` AS `active`,
 	`a`.`logo` AS `logo`,
+	`a`.`priority` AS `priority`,
+	`a`.`direct` AS `direct`,
 	`a`.`location_scheme`,
 	`a`.`registration_date`,
 	`a`.`coords`,
@@ -1056,36 +1058,36 @@ group by
       }
 			
 			$unit["halls"] ='<tr>';
-			if($col_1 or $col_2 or $col_3 or $col_4) { $unit["halls"] .= '<td style="width: 140px; text-align:left;" ><b>Название зала</b></td>'; }
+			if($col_1 or $col_2 or $col_3 or $col_4) { $unit["halls"] .= '<td style="width: 140px; text-align:left; border-bottom:1px #ccc solid;" >&nbsp;<b>Название зала</b>&nbsp;</td>'; }
 			if($col_1) {
-      $unit["halls"] .='<td style="width: 70px; text-align:center;" ><b>Банкет</b></td>';
+      $unit["halls"] .='<td style="width: 70px; height:25px; text-align:center; border-bottom:1px #ccc solid;" >&nbsp;<b>Банкет</b>&nbsp;</td>';
       }
       if($col_2) {
-      $unit["halls"] .='<td style="text-align:center;" ><b>Фуршет</b></td>';
+      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Фуршет</b>&nbsp;</td>';
       }
       if($col_3) {
-      $unit["halls"] .='<td style="text-align:center;" ><b>Конференция</b></td>';
+      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Конференция</b>&nbsp;</td>';
       }
       if($col_4) {
-      $unit["halls"] .='<td style="text-align:center;" ><b>Стоимость проведения конференции</b></td>';
+      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Стоимость аренды зала</b>&nbsp;</td>';
       }
       $unit["halls"] .='<tr>';
 			
 			for ($i=0;$i<sizeof($halls);$i++)
 			{
 			 $unit["halls"] .='<tr>';
-			  $unit["halls"] .='<td style="text-align:left;border-bottom:1px black solid;">'.$halls[$i]["title"].'</td>';
+			  $unit["halls"] .='<td style="text-align:left;border-bottom:1px #ccc solid;">'.$halls[$i]["title"].'</td>';
   			if($col_1) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;" height="25">'.$halls[$i]["max_places_banquet"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["max_places_banquet"].'</td>';
         }
         if($col_2) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["max_places_official_buffet"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["max_places_official_buffet"].'</td>';
         }
         if($col_3) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["max_places_conference"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["max_places_conference"].'</td>';
         }
         if($col_4) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px black solid;">'.$halls[$i]["cost_conference"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["cost_conference"].'</td>';
         }
        $unit["halls"] .='</tr>';
 			}
@@ -1367,9 +1369,19 @@ group by
 			$details->dataSource = $unit;
 
 			$details->dataSource = $unit;
-			if ($unit['tbl_obj_id'] == 3621) {
+			if ($unit['tbl_obj_id'] == 3621 or $unit['direct'] == 1  ) {
 				$this->GetControl('yaPersonal')->template = "";
 			}
+			
+			
+			if( is_numeric($unit['priority'] )) {
+			 if($unit['priority'] != 0) { $this->GetControl('yaPersonal')->template = ""; }
+      }
+      else {
+  			if (!IsNullOrEmpty($unit['priority'])){
+          $this->GetControl('yaPersonal')->template = "";
+        }
+      }
 
 			/*setting filter*/
 			$search = $this->GetControl("search");

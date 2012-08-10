@@ -36,7 +36,7 @@
 			<img src="/images/front/0.gif" width="220" height="10">
 		</td>
 		<td valign="top">
-                        <div class="recomendTitle eventoteka h3">Эвентотека / Event энциклопедия <a target="_blank" class="yaWitgetLink" id="eventotekaYaWitget" href="http://www.yandex.ru/?add=83172&from=promocode">Виджет Эвентотеки на Яндексе</a></div>
+                        
 			<div class="bookListDir"><table cellpadding="0" cellspacing="0" border="0"><?php CRenderer::RenderControl("publicList"); ?></table></div>
 			<div style="padding-top:15px;"><?php CRenderer::RenderControl("details"); ?></div>
 		</td>

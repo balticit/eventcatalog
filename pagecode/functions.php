@@ -26,6 +26,34 @@ function getNewsItem($item){
 	return $strItem;
 }
 
+
+function Date_Ru($date)
+{
+	$date = explode(" ",$date);
+	$date_array = explode("-",$date[0]);
+	
+	$day = $date_array[2];
+	$month = $date_array[1];
+	$year = $date_array[0];
+	
+	if ($month == "01") { $m = "янв"; }
+	if ($month == "02") { $m = "‘ев"; }
+	if ($month == "03") { $m = "ћар"; }
+	if ($month == "04") { $m = "јпр"; }
+	if ($month == "05") { $m = "ћай"; }
+	if ($month == "06") { $m = "»юн"; }
+	if ($month == "07") { $m = "»юл"; }
+	if ($month == "08") { $m = "јвг"; }
+	if ($month == "09") { $m = "—ен"; }
+	if ($month == "10") { $m = "ќкт"; }
+	if ($month == "11") { $m = "Ќо€"; }
+	if ($month == "12") { $m = "ƒек"; }
+	 
+	$date = $day.'<br />'.$m;
+	
+	return $date;
+}
+
 // врем€ на сайте
 function onSiteTime($regdate = ''){
     $regdate = (is_int($regdate)?$regdate:strtotime($regdate));
@@ -38,7 +66,7 @@ function onSiteTime($regdate = ''){
     // дни 24*3600 = 86400
     $days = (int)(($sitetime - $years*31536000 - $months*2592000)/86400);
     
-    return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($days>0?declension($days,' день',' дн€',' дней'):'1 день');
+    return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день'));
 }
 
 function UserAge($birthday = ''){

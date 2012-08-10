@@ -178,7 +178,7 @@ class artist_details_php extends CPageCodeHandler
 
 				$artists = SQLProvider::ExecuteQuery(
 					"select * from  vw__artist_list_pro ad $filter
-					order by if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
+					order by priority desc, if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
 				$artistList = $this->GetControl("artistList");
 				$letter = "";
                 foreach ($artists as &$artist) {
@@ -454,6 +454,9 @@ class artist_details_php extends CPageCodeHandler
         `cn`.`title` AS `country_title`,
         `ar`.`city`,
         `ar`.`other_city`,
+        `ar`.`priority` AS `priority`,
+        `ar`.`currency` AS `currency`,
+	      `ar`.`direct` AS `direct`,
         `ar`.`registration_date` AS `reg_date`,
         if (`ar`.`city` > 0, `ct`.`title`, `ar`.`other_city`) AS `city_title`,
         group_concat(`st`.`title` separator ', ') AS `styles`,
@@ -639,7 +642,26 @@ class artist_details_php extends CPageCodeHandler
             }
             
             if ($unit['price_from'] != "" && $unit['price_to'] != "") {
-      				$unit['price'] = "<br /><b>√онорар</b>: от " . $unit['price_from'] . " рублей до " . $unit['price_to'] . " рублей";
+            
+              if($unit['rider'] == "1") { $rider = "(c райдером)";} else { $rider = "(без райдера)"; }
+              
+              $currency_en = '';
+              $currency = '';
+              switch ($unit['currency']) {
+                case 1:
+                  $currency_en = "$";
+                  break;
+                case 2:
+                  $currency_en = "И";
+                  break;
+                default:
+                  $currency = "р.";
+                  break;
+              }
+              
+
+      				$unit['price'] = "<br /><b>√онорар</b>: от ". $currency_en . $unit['price_from'] . $currency . " до ". $currency_en . $unit['price_to'] . $currency . " ".$rider;
+      				
       			}
       			else {
       				$unit['price'] = "";
@@ -651,20 +673,21 @@ class artist_details_php extends CPageCodeHandler
             $unit['email'] = "";
             $unit['manager_phone'] = "";
 
+            /*
             if ($unit['price_from'] != "" && $unit['price_to'] != "") {
               $gonorar = " и гонорар";
               $gonorars = " и гонорара";
             }
             else { $gonorar = ''; $gonorars = ''; }
-
+            */
             $unit['site_address'] = "
             <br />
             <div style=\" padding: 0px;\">
-                 онтактные данные".$gonorar." доступны только зарегистрированным пользовател€м.<br /><br />
-                ƒл€ просмотра контактов".$gonorars." <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br /><br />
+                 онтактные данные"./*$gonorar.*/" доступны только зарегистрированным пользовател€м.<br /><br />
+                ƒл€ просмотра контактов"./*$gonorars.*/" <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>.<br /><br />
             </div>";
             
-            $unit['price'] = "";
+            $unit['price'] = "<b>√онорар</b>: <a href=\"\" onclick=\"javascript: ShowLogonDialog(); return false;\">войдите</a> или <a href=\"\" onclick=\"javascript: ShowRegUser(); return false;\">зарегистрируйтесь</a>";
             
             }
 
@@ -772,9 +795,21 @@ class artist_details_php extends CPageCodeHandler
 			$details = $this->GetControl("details");
 			$details->dataSource = $unit;
             //Remove direct
-            if ($unit['tbl_obj_id'] == 6288 || $unit['tbl_obj_id'] == 4865) {
+            if ($unit['tbl_obj_id'] == 6288 || $unit['tbl_obj_id'] == 4865 || $unit['direct'] == 1) {
                 $this->GetControl('yaPersonal')->template = "";
             }			
+            
+			
+        		if( is_numeric($unit['priority'] )) {
+        		 if($unit['priority'] != 0) { $this->GetControl('yaPersonal')->template = ""; }
+            }
+            else {
+        			if (!IsNullOrEmpty($unit['priority'])){
+                $this->GetControl('yaPersonal')->template = "";
+              }
+            }
+            
+            
             //groups
             $groups = SQLProvider::ExecuteQuery("select
             sg.`tbl_obj_id` AS `child_id`,

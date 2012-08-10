@@ -2,6 +2,7 @@
   <h4 class="detailsBlockTitle"><a name="photos">Фото</a></h4>
   <div>
 <script type="text/javascript">
+/*
 	var popupImgWindow=null;
 	var selectingImg=1;
 	var miniImg=new Array();
@@ -120,5 +121,28 @@
 		});
 		window.onkeypress=li_window_keypress;
 	}
+<table cellpadding="0" cellspacing="0" border="0" width="640">{thumbsLines}</table>{medium_photo}
+	*/
 </script>
-<table cellpadding="0" cellspacing="0" border="0" width="640">{thumbsLines}</table>{medium_photo}</div></div>
+
+
+</div></div>
+
+
+
+<script type="text/javascript" src="/styles/galleria/galleria-1.2.6.min.js"></script>
+<div id="galleria" style="margin-left:4px">
+  {thumbsLines}
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  <!--
+  // Load the classic theme
+  Galleria.loadTheme('http://new_event/styles/galleria/galleria.classic.min.js');
+  // Initialize Galleria
+  $('#galleria').galleria({ height: 520, width: 640, showCounter: true, showInfo: true, thumbCrop: true});
+  // -->
+});
+</script>
+

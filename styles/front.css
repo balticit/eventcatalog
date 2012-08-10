@@ -131,6 +131,8 @@ td.foot {
     border-top: 1px solid #ccc;
 }
 
+td.foot li { list-style-type:none; padding:4px 0}
+
 .footer_l1 {
     padding: 0 0 10px 0;
 }
@@ -2677,7 +2679,7 @@ div.artist_search_id {
 
 .resident_title {
     font-family: Arial;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -3216,10 +3218,23 @@ tr.agency_table_hover div.text_highlight a, tr.agency_table_hover div.text_highl
 .residentQuickLinks .send_message span { background: url(../images/resident_links_mail.png) no-repeat 4px 4px;}
 .residentQuickLinks .report_bug span { background: url(../images/resident_links_slash.png) no-repeat 4px 4px;}
 
+
+.calendar_tab { float:right}
+.calendar_tab .calendar_ico { display:block; float:left; width:27px; height:23px; background: url(../images/calendar_tab_icon.jpg) no-repeat 0px 0px; cursor:pointer}
+
+.calendar_tab #calendar_table { background-position:0px 0px}
+.calendar_tab #calendar_list { background-position:-27px 0px}
+
+.calendar_tab #calendar_table.active { background-position:0px -23px}
+.calendar_tab #calendar_list.active { background-position:-27px -23px}
+
+
 .addConstractor {
 	/*background: transparent url('../images/addConstractor.png') no-repeat 0 0;*/
 	background:#edb489;
-	width: 218px;
+	border:1px solid #f47e00;
+	width: 216px;
+	-moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;
 	text-transform: lowercase;
 	margin-bottom: 20px;
 	display: block;
@@ -3238,7 +3253,9 @@ tr.agency_table_hover div.text_highlight a, tr.agency_table_hover div.text_highl
 .addArea {
 	/*background: transparent url('../images/addArea.png') no-repeat 0 0;*/
 	background:#7abcdb;
-	width: 218px;
+	border:1px solid #108ebe;
+	-moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;
+	width: 216px;
 	text-transform: lowercase;
 	margin-bottom: 20px;
 	display: block;
@@ -3257,7 +3274,9 @@ tr.agency_table_hover div.text_highlight a, tr.agency_table_hover div.text_highl
 .addAgency {
 	/*background: transparent url('../images/addAgency.png') no-repeat 0 0;*/
 	background:#c5d893;
-	width: 218px;
+	border:1px solid #93b51d;
+	-moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;
+	width: 216px;
 	text-transform: lowercase;
 	margin-bottom: 20px;
 	display: block;
@@ -3276,7 +3295,9 @@ tr.agency_table_hover div.text_highlight a, tr.agency_table_hover div.text_highl
 .addArtist {
 	/*background: transparent url('../images/addArtist.png') no-repeat 0 0;*/
 	background:#e375ba;
-	width: 218px;
+	border:1px solid #c11176;
+	-moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;
+	width: 216px;
 	text-transform: lowercase;
 	margin-bottom: 20px;
 	display: block;
@@ -3335,6 +3356,7 @@ float:left;
 border-radius: 3px; /* CSS3 */
 }
 
+.area_detail_page { widht:100%}
 .area_detail_page td { font-size:12px;}
 .area_detail_page .blue_button { background:none; border:none; color:#000; font-weight:bold;}
 
@@ -3353,3 +3375,23 @@ border-radius: 3px; /* CSS3 */
 .area_detail_page .table_row span { position:relative;top:3px;padding-left:5px}
 
 .u_info_block { line-height:18px}
+
+
+.link_add_comment { color:#000000; text-decoration:underline; margin: 14px 0; font-size: 18px; font-weight: 700; background:url(../images/link_add_comment.png) no-repeat 0 3px; padding-left:20px}
+
+
+.calendar-list { display:none; text-align:left}
+.calendar-list .date { float:left; width:50px; text-align:center; color:#000}
+.calendar-list .name { margin-left:60px;}
+.calendar-list .last_calendar { border-bottom:1px dotted #ccc; padding:4px 0; min-height:32px;}
+
+.dialog-confirm  #dialog-confirm { padding:10px}
+.dialog-confirm .ui-widget-header { border:none; padding:0}
+.dialog-confirm .ui-widget-content { background:#fff; border:none; padding:0}
+.dialog-confirm .ui-dialog-buttonset { padding:5px 0px}
+.dialog-confirm .ui-dialog-buttonset button { width:100px; margin:0px 50px}
+
+.dialog-confirm .ui-widget-header {  border:none; padding:10px}
+.dialog-confirm .ui-dialog-titlebar-close { float:right; display:block}
+.dialog-confirm .ui-dialog-titlebar-close.ui-state-hover { margin-top:-1px; margin-right:-1px}
+

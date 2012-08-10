@@ -23,7 +23,7 @@
 			<item type="keyvalue" key="vacancy" value="Для размещения вакансии необходима авторизация"/>
 			<item type="keyvalue" key="sale" value="Для размещения обьявления о продаже необходима авторизация"/>
 			<item type="keyvalue" key="buy" value="Для размещения обьявления о покупке необходима авторизация"/>
-			<item type="keyvalue" key="default" value="Для данного действия необходима авторизация"/>
+			<item type="keyvalue" key="default" value="Авторизуйтесь, пожалуйста:"/>
 		</param>
 	</control>
 	<control relativeId="menu" class="CMenu" activeItem="">

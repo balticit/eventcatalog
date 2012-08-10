@@ -18,7 +18,9 @@
 				print '1';
 			}
 			else {
-				SQLProvider::ExecuteNonReturnQuery("insert into tbl__subscribed(email) values('$email')");
+			  $date = date('Y-m-d');
+
+				SQLProvider::ExecuteNonReturnQuery("insert into tbl__subscribed(email,date) values('$email','$date')");
 				print '0';
 			}
 		}

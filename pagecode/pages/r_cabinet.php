@@ -1460,7 +1460,48 @@ class r_cabinet_php extends CPageCodeHandler
 										<input type=\"hidden\" name=\"fav_del_sel\" value=\"1\">
 										<input type=\"hidden\" name=\"data\" value=\"my_favorite\">
 									</td>
-									 </tr></table></form><script type=\"text/javascript\">
+									 </tr></table></form>
+                   
+<div id=\"dialog-confirm\" title=\"Удалить?\">
+  <p></p>
+</div>
+									 
+<script type=\"text/javascript\">
+$(function() {
+
+	\$('.fav_del_cross').click( function() {
+	   
+	   var itemText = 'Вы уверены что хотите удалить '+\$(this).parents('tr').find('a').html()+' из избранного?';
+	   var checkItem = \$(this).next();
+	   
+		\$( '#dialog-confirm' ).dialog({
+			resizable: false,
+			height:160,
+			width:400,
+			dialogClass: 'dialog-confirm',
+			modal: true,
+			open: function(event, ui) { 
+          \$(this).find('p').html(itemText);
+       },
+			buttons: {
+				'Да': function() {
+				  checkItem.attr('checked','checked');
+					\$('#fav_del_form').submit();
+					\$( this ).dialog( 'close' );
+				},
+				'Нет': function() {
+					\$( this ).dialog( 'close' );
+				}
+			}
+		});
+		
+	});
+		
+});
+</script>
+
+                   <script type=\"text/javascript\">
+                   /*
 										var del_selected = false;
 										\$('#btn_fav_del').click(function(){
 											if(confirm('Вы уверены что хотите удалить все из избранного?')) {
@@ -1474,6 +1515,7 @@ class r_cabinet_php extends CPageCodeHandler
 												\$('#fav_del_form').submit();
 											}
 										});
+										*/
 									</script>";
 			break;
 
@@ -1680,7 +1722,48 @@ class r_cabinet_php extends CPageCodeHandler
                   </tr>
                   </table></form>
                   
+                  
+<div id=\"dialog-confirm\" title=\"Удалить?\">
+  <p></p>
+</div>
+             
+<script type=\"text/javascript\">
+$(function() {
+
+	\$('.fav_del_cross').click( function() {
+	   
+	   var itemText = 'Вы уверены что хотите удалить '+\$(this).parents('tr').find('a').html()+' из рекомендаций?';
+	   var checkItem = \$(this).next();
+	   
+		\$( '#dialog-confirm' ).dialog({
+			resizable: false,
+			height:160,
+			width:400,
+			dialogClass: 'dialog-confirm',
+			modal: true,
+			open: function(event, ui) { 
+          \$(this).find('p').html(itemText);
+       },
+			buttons: {
+				'Да': function() {
+				  checkItem.attr('checked','checked');
+					\$('#fav_del_form').submit();
+					\$( this ).dialog( 'close' );
+				},
+				'Нет': function() {
+					\$( this ).dialog( 'close' );
+				}
+			}
+		});
+		
+	});
+		
+});
+</script>  
+                  
+                  
                   <script type=\"text/javascript\">
+                  /*
 										var del_selected = false;
 										\$('#btn_fav_del').click(function(){
 											if(confirm('Вы уверены что хотите удалить все из оценок?')) {
@@ -1694,6 +1777,7 @@ class r_cabinet_php extends CPageCodeHandler
 												\$('#fav_del_form').submit();
 											}
 										});
+										*/
 									</script>
                   
                   ";
@@ -2119,7 +2203,46 @@ class r_cabinet_php extends CPageCodeHandler
 										</tr>').'
 										</table></form>
                     
+<div id="dialog-confirm" title="Удалить?">
+  <p></p>
+</div>
+									 
+<script type="text/javascript">
+$(function() {
+
+	$(".fav_del_cross").click( function() {
+	   
+	   var itemText = "Вы уверены что хотите удалить сообщение от "+$(this).parents("tr").find("a").html()+"?";
+	   var checkItem = $(this).next();
+	   
+		$( "#dialog-confirm" ).dialog({
+			resizable: false,
+			height:160,
+			width:400,
+			dialogClass: "dialog-confirm",
+			modal: true,
+			open: function(event, ui) { 
+          $(this).find("p").html(itemText);
+       },
+			buttons: {
+				"Да": function() {
+				  checkItem.attr("checked","checked");
+					$("#fav_del_form").submit();
+					$( this ).dialog( "close" );
+				},
+				"Нет": function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+		
+	});
+		
+});
+</script>
+                    
                     <script type="text/javascript">
+                    /*
 										var del_selected = false;
 										$("#btn_fav_del").click(function(){
 											if(confirm("Вы уверены что хотите удалить сообщение?")) {
@@ -2133,6 +2256,7 @@ class r_cabinet_php extends CPageCodeHandler
 												$("#fav_del_form").submit();
 											}
 										});
+										*/
 									  </script>
                     
                     ';
