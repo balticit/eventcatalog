@@ -4,7 +4,6 @@ deny from 212.158.160.239
 php_flag allow_call_time_pass_reference on
 php_flag magic_quotes_gpc off
 php_flag short_open_tag off
-# php_value session.save_path /bhome/part3/03/eventcatalog/tmp
 php_value session.gc_maxlifetime 11800
 php_value session.use_trans_sid 0
 php_value max_execution_time 600
