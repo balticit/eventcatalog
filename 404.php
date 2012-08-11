@@ -14,7 +14,7 @@ $login->key="login";
 $login->source="file";
 $login->sourceEncoding="windows-1251";
 $login->targetEncoding="windows-1251";
-$login->filename=ROOTDIR."pagecode/settings/master_files/header.htm";
+$login->filename=ROOTDIR."pagecode/settings/master_files/header_404.htm";
 $logout = new CTemplateData();
 $logout->key="logout";
 $logout->source="file";
@@ -27,13 +27,15 @@ print $header->RenderHTML();
 <tr valign="middle"><td style="height: 100%" align="center">
   <div>
 	  <img src="/images/error404.jpg" width="527" height="492" style="display: block" alt="Ошибка 404" title="Ошибка 404. Извините, страница не доступна">
-	  <div style="margin: 20px 0 0 0;">Но вы можете поискать в разделах:<br><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a><br>или вернуться на <a href="/" class="black">главную</a></div>
+	  <div style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" class="black">главную</a></div>
 	</div>
 </td></tr>
+<?php /*
 <tr><td class="foot"><?php
 $footer = new CFooterObject();
 $footer->template = file_get_contents(ROOTDIR."pagecode/settings/master_files/footerCabinets.htm");
 print $footer->RenderHTML();?></td></tr>
+*/?>
 </table>
 </body>
 </html>
