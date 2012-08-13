@@ -36,7 +36,7 @@ function inputFocus(obj)
 
 <body>
 <div style="padding-bottom:7px;">
-  <form action="/cms/users" method="get" onsubmit="findChange(); return true;">
+  <form action="/cms/users" method="get" accept-charset="cp1251" onsubmit="findChange(); return true;">
   <table cellpadding="0" cellspacing="0" width="100%">
   <tr>
     <td nowrap style="font-size: 10pt; padding: 0 5px 0 0;">Поиск</td>
