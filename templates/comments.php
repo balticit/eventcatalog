@@ -1,7 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
- "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<body>
+
 <form id="comments_form" enctype="multipart/form-data" method="post">
 	<input type="hidden" name="comments_action" id="comments_action" value="load">
 	<input type="hidden" name="comment_reply_id" id="comment_reply_id">
@@ -17,7 +14,10 @@
 	<tr>
 			<td><a name="comment<?php echo $comment["tbl_obj_id"] ?>" id="comment<?php echo $comment["tbl_obj_id"] ?>" href="#"></a>
 			<table width="100%" id="comment_table_<?php echo $comment["tbl_obj_id"] ?>" style="border-top: 1px solid #f2f2f2; padding-left:<?php echo $comment["level"]*20 ?>px; margin-bottom:10px;">
-			<tr valign="top"><td width="60">
+			
+      <?php if ($comment["active"] == 1) { ?>
+      
+      <tr valign="top"><td width="60">
 			<div style="float:left; width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/<?php echo $comment["logo"]==''?"images/nologo.png":"upload/".$comment["logo"]; ?>"></div>
 			</td><td>
 			<div style="padding:6px;">
@@ -28,12 +28,12 @@
 			<br>
 			</div>
 			<div style="padding:6px;"><div style="display:none;" id="comment_hidden_text_<?php echo $comment["tbl_obj_id"] ?>"><?php echo $comment["u_text"] ?></div>
-			<?php
-			if ($comment["active"]!=1)
-				echo "Ожидает модерации";
-			else
+			
+      <div class="url_replace">
+      <?php
 				echo $comment["text"];
-			?><br><br><br><br>
+			?>
+			</div>
 				<?php if ( ($comment["image"]!='')&&($comment["active"]==1)&&($comment["is_deleted"]==0)){?>
 				<div id="comment_image_container_<?php echo $comment["tbl_obj_id"] ?>">
 					<a href="/<?php echo $comment["image_large"];?>" style="text-decoration:none;" title="Нажмите чтобы увеличить" target="_blank">
@@ -49,6 +49,10 @@
 				<?php }?>
 				<?php if (isset($comment["is_owner"]) && $comment["is_owner"] && ($comment["is_deleted"]==0)){ ?>| <a href="#" style="text-decoration:underline;margin-left:20px;" onClick="javascript:return AddComment(<?php echo $comment["tbl_obj_id"]; ?>,true);">Редактировать</a> | <a style="text-decoration:underline;margin-left:20px;" href="#" onClick="javascript:return DeleteComment(<?php echo $comment["tbl_obj_id"]?>);">Удалить</a> <?php }?>
 			</div></td></tr>
+			
+			<?php } ?>
+			
+			
 			<tr>
 				<td colspan="2">
 					<div id="comment_post_container_<?php echo $comment["tbl_obj_id"];?>" style="display:none; background-color:#f6f6f6;">
@@ -60,6 +64,13 @@
 	</table>
 	<?php } ?>
 
+<script>
+  var elements = document.getElementsByClassName('url_replace')
+  for (var i=0; i<elements.length; i++)
+  {
+    elements[i].innerHTML = elements[i].innerHTML.replace(/(?:https?:\/\/)?(?:www\.)?([a-z0-9-]+\.[a-z0-9-\.\/_]+)/g, '<noindex><a target="_blank" href="http://$1">$1</a></noindex>')
+  }
+</script>
 
 	<?php if ($this->is_cabinet){ ?>
 	<?php CRenderer::RenderControl("pager"); ?>
@@ -155,5 +166,3 @@
 		</div>
 	</div>
 </form>
-</body>
-</html>

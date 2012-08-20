@@ -30,16 +30,17 @@
 			$calendar['arr'] = json_encode(array_map('ToUTF', $cal_arr));
 			// die('!');
 			
-			
+
 			// LIST 5 last news
 			$sql2  = '(SELECT t.title, t.date, t.date_end, t.link '.
 				'FROM `tbl__event_calendar` t WHERE t.active = 1) '.
 			' UNION '.
 			'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
 				'CONCAT("/news/details", n.tbl_obj_id) link '.
-				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1) '.
+				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1  ) '.
 			'ORDER BY date DESC LIMIT 5';
 			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
+			
 			
 	
 ?>
@@ -68,7 +69,14 @@
                                 <h3 class="h3">
                                   <div class="calendar_tab">
                                   <span class="calendar_ico active" id="calendar_table"></span>
-                                  <span class="calendar_ico" id="calendar_list"></span>
+                                  <?php
+                                  $act_list = 'noact';
+                                  foreach($cal_arr2 as $i => $c) {
+                                    if($c['date'] > Date('Y-m-d')) { $act_list = ''; break; }
+                                  }
+                                  ?>
+                                  
+                                  <span class="calendar_ico <?php  echo $act_list; ?>" id="calendar_list"></span>
                                   </div>
                                   <a href="/event_calendar/" class="sub-title widget" style="color:#000">EVENT Календарь</a>
                                 </h3>
@@ -80,6 +88,7 @@
                                   $(".calendar-block").show();
                                 });
                                 $("#calendar_list").click(function(){
+                                  if($(this).hasClass("noact")) { return false; }
                                   $(this).addClass("active");
                                   $("#calendar_table").removeClass("active");
                                   $(".calendar-list").show();
@@ -91,10 +100,12 @@
                                 <?php
                                 
                                 foreach($cal_arr2 as $i => $c) {
-                                echo '<div class="last_calendar">';
-                                echo '<div class="date">'.Date_Ru($c['date']).'</div>';
-                                echo '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
-                                echo '</div>';
+                                  if($c['date'] > Date('Y-m-d')) {
+                                    echo '<div class="last_calendar">';
+                                    echo '<div class="date">'.Date_Ru($c['date']).'</div>';
+                                    echo '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
+                                    echo '</div>';
+                                  }
                                 }
                                 
                                 ?>

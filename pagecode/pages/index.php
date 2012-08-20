@@ -625,13 +625,29 @@ class index_php extends CPageCodeHandler
 			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
 			
 			
-			$calendar['last_list'] = '<div class="calendar-list">';
+			$act_list = 'noact';
+      foreach($cal_arr2 as $i => $c) {
+        if($c['date'] > Date('Y-m-d')) { $act_list = ''; break; }
+      }
+			
+				$calendar['last_list'] = '<div class="sub-title-block">
+				  <div class="calendar_tab">
+          <span class="calendar_ico active" id="calendar_table"></span>
+          <span class="calendar_ico '.$act_list.'" id="calendar_list"></span>
+          </div>
+          <a href="/event_calendar/"" class="sub-title widget">EVENT Календарь</a> 
+
+        </div>';
+			
+			$calendar['last_list'] .= '<div class="calendar-list">';
 			
       foreach($cal_arr2 as $i => $c) {
-      $calendar['last_list'] .= '<div class="last_calendar">';
-      $calendar['last_list'] .= '<div class="date">'.Date_Ru($c['date']).'</div>';
-      $calendar['last_list'] .= '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
-      $calendar['last_list'] .= '</div>';
+        if($c['date'] > Date('Y-m-d')) {
+          $calendar['last_list'] .= '<div class="last_calendar">';
+          $calendar['last_list'] .= '<div class="date">'.Date_Ru($c['date']).'</div>';
+          $calendar['last_list'] .= '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
+          $calendar['last_list'] .= '</div>';
+        }
       }       
       
       $calendar['last_list'] .= '</div>';

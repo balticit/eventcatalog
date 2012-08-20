@@ -1063,31 +1063,31 @@ group by
       $unit["halls"] .='<td style="width: 70px; height:25px; text-align:center; border-bottom:1px #ccc solid;" >&nbsp;<b>Банкет</b>&nbsp;</td>';
       }
       if($col_2) {
-      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Фуршет</b>&nbsp;</td>';
+      $unit["halls"] .='<td style="height:25px;text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Фуршет</b>&nbsp;</td>';
       }
       if($col_3) {
-      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Конференция</b>&nbsp;</td>';
+      $unit["halls"] .='<td style="height:25px;text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Конференция</b>&nbsp;</td>';
       }
       if($col_4) {
-      $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Стоимость аренды зала</b>&nbsp;</td>';
+      $unit["halls"] .='<td style="height:25px;text-align:center;border-bottom:1px #ccc solid;" >&nbsp;<b>Стоимость аренды зала</b>&nbsp;</td>';
       }
-      $unit["halls"] .='<tr>';
+      $unit["halls"] .='</tr>';
 			
 			for ($i=0;$i<sizeof($halls);$i++)
 			{
 			 $unit["halls"] .='<tr>';
-			  $unit["halls"] .='<td style="text-align:left;border-bottom:1px #ccc solid;">'.$halls[$i]["title"].'</td>';
+			  $unit["halls"] .='<td style="text-align:left;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["title"].'</td>';
   			if($col_1) {
         $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["max_places_banquet"].'</td>';
         }
         if($col_2) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["max_places_official_buffet"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["max_places_official_buffet"].'</td>';
         }
         if($col_3) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["max_places_conference"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["max_places_conference"].'</td>';
         }
         if($col_4) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;">'.$halls[$i]["cost_conference"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["cost_conference"].'</td>';
         }
        $unit["halls"] .='</tr>';
 			}

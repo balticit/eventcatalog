@@ -37,7 +37,7 @@
 		  </tr>
 		</table>
 	</form>
-	<div style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" class="black">главную</a></div>
+	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" class="black">главную</a></div>
 				<?php //CRenderer::RenderControl("account"); ?>	
 </td></tr>
 <?php /*

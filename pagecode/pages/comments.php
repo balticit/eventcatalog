@@ -384,25 +384,35 @@ class comments_php extends CPageCodeHandler
 			$tmin = date("i");
 			$thour = date("H");
 			$tHmin = $thour*60+$tmin;
-			$this->regex_url = "/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%\\$#_]*)?/m";
+			//$this->regex_url = "/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%\\$#_]*)?/m";
+			
+			$this->regex_url = "/(?:https?:\/\/)?(?:www\.)?([a-z0-9-]+\.[a-z0-9-\.\/_]+)/m";
 			for ($i=0;$i<sizeof($this->comments);$i++)
 			{
-
+/*
 				$urls = array();
 				$this->comments[$i]["u_text"] = $this->comments[$i]["text"];
 				preg_match_all($this->regex_url,$this->comments[$i]["text"],&$urls);
-				$urls = $urls[0];
+				
+				
+        //$urls = $urls[1];
 
-				if (sizeof($urls)>0)
+        
+
+				if (sizeof($urls[1])>0)
 				{
 					$url_repls = array();
-					for ($j=0;$j<sizeof($urls);$j++)
+					for ($j=0;$j<sizeof($urls[1]);$j++)
 					{
-						$sublen = floor(strlen($urls[$j])*3/4);
-						$url_repls[] = '<a href="'.$urls[$j].'">'.substr( $urls[$j],0,$sublen)."...</a>";
+						$sublen = floor(strlen($urls[1][$j])*3/4);
+						$url_repls[] = htmlspecialchars('<a target="_blank" href="http://'.$urls[1][$j].'">'.$urls[1][$j]."</a>");
 					}
-					$this->comments[$i]["text"] = str_replace($urls,$url_repls,$this->comments[$i]["text"]);
+					
+					
+					$this->comments[$i]["text"] = str_replace($urls[0],$url_repls,$this->comments[$i]["text"]);
+					
 				}
+				*/
 
 
 				if (!$this->anonymous)

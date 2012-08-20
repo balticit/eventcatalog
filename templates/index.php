@@ -163,13 +163,12 @@
 				</div>
 			</td>
             <td width='240' align="right" rowspan="3">
-				<div class='sub-title-block'>
-				  <div class="calendar_tab">
-          <span class="calendar_ico active" id="calendar_table"></span>
-          <span class="calendar_ico" id="calendar_list"></span>
-          </div>
-          <a href='/event_calendar/' class='sub-title widget'>EVENT Календарь</a> 
-          <script language="javascript" type="text/javascript">
+            
+          
+
+				
+					<?php CRenderer::RenderControl("eventcalendar"); ?> 
+					<script language="javascript" type="text/javascript">
           $("#calendar_table").click(function(){
             $(this).addClass("active");
             $("#calendar_list").removeClass("active");
@@ -177,15 +176,13 @@
             $(".calendar-block").show();
           });
           $("#calendar_list").click(function(){
+            if($(this).hasClass("noact")) { return false; }
             $(this).addClass("active");
             $("#calendar_table").removeClass("active");
             $(".calendar-list").show();
             $(".calendar-block").hide();
           });
           </script>
-        </div>
-				
-					<?php CRenderer::RenderControl("eventcalendar"); ?> 
 				
 				<div style='height:580px;width: 240px;margin-bottom: 10px;'>
 					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->

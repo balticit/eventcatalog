@@ -30,7 +30,7 @@
 				</div>
 			*/ ?>
 				<div>  
-					<div class="recomendTitle eventoteka h3">EVENT КАЛЕНДАРЬ <?php /* CRenderer::RenderControl("text"); */ ?></div>
+					<div class="recomendTitle eventoteka h3">EVENT КАЛЕНДАРЬ <?php  CRenderer::RenderControl("text");  ?></div>
 					
 <br />
 <b>Тематический календарь предстоящих событий, которые будут интересны
@@ -92,8 +92,9 @@
   
   echo '
   <tr>
-  <td width="120">Дата</td>
+  
   <td>Мероприятие</td>
+  <td width="120">Дата</td>
   <td>Вид мероприятия</td>
   <td>Место</td>
 
@@ -111,19 +112,19 @@
               
               
                   
-                  if( $item['date'] > date('d') and $item['weekbegin'] > date('m')) { $color = "color:#000";} else { $color = "color:#ccc"; }
+                  //if( $item['date'] > date('d') and $item['weekbegin'] > date('m')) { $color = "color:#000";} else { $color = "color:#ccc"; }
               
-                  echo '<tr style="height:35px;'.$color.'">';
+                  echo '<tr style="height:35px;">';
                   
                   //Самое первое событие
                   if ($ind==0&&$this->prev==0) {
 		
-                      $style=";color:red";
+                      $style=";color:#000";
                   }
                   else {
-                      $style="";
+                      $style=";color:#ccc";
                   }
-                  
+                  echo '<td><b><a style="color:black;'.$style.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
                   echo '<td style="color:gray;" >'; 
                   if($item['date'] == $item['date_end']) {
 				  
@@ -146,7 +147,7 @@
 					// printf('<td style="text-transform:uppercase;'.$style.'">%s</td>',$item['weekend']);
                   }
                   echo '</td>';
-                  echo '<td><b><a style="color:black;'.$color.$style.'" target="_blank" href="'.$item['link'].'">'.$item['title'].'</a></b></td>';
+                  
                   printf('<td nowrap style="'.$style.'">%s</td>',$item['type']);
                   printf('<td style="'.$style.'">%s</td>',$item['place']);
                  // printf('<td nowrap style="'.$style.'"><a style="color:gray;'.$style.'" target="_blank" href="%s">подробнее</a></td>',$item['link']);
