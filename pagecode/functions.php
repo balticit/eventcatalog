@@ -2,7 +2,7 @@
 function declension($c, $str1, $str2, $str5, $show_num = true)
 {
   $c = abs($c) % 100;
-  if ($c > 10 && $c < 20)
+  if ($c >= 10 && $c < 20)
     return ($show_num?$c:'').$str5;
   $c %= 10;
   if ($c > 1 && $c < 5)

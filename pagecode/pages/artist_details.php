@@ -655,12 +655,12 @@ class artist_details_php extends CPageCodeHandler
                   $currency_en = "€";
                   break;
                 default:
-                  $currency = "р.";
+                  $currency = " р.";
                   break;
               }
-              
+              number_format($unit["cost_rent"], 0, ' ', ' '); 
 
-      				$unit['price'] = "<br /><b>Гонорар</b>: от ". $currency_en . $unit['price_from'] . $currency . " до ". $currency_en . $unit['price_to'] . $currency . " ".$rider;
+      				$unit['price'] = "<br /><b>Гонорар</b>: от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency . " до ". $currency_en . number_format($unit['price_to'], 0, ' ', ' ') . $currency . " ".$rider;
       				
       			}
       			else {
