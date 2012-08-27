@@ -167,6 +167,7 @@ function prepareBody() {
     $dbLink = mysql_connect(MYSQL_HOST . ":" . MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD) or die("Could not connect: " . mysql_error());
     $filter = " AND DATEDIFF(NOW(),registration_date)<4";
     mysql_select_db(MYSQL_DATABASE, $dbLink) or die('Can\'t use db : ' . mysql_error());
+    mysql_query("SET NAMES CP1251");
     //aaply params
     ExecuteNonReturnQuery("SET CHARACTER SET " . MYSQL_CHARSET, $dbLink);
     ExecuteNonReturnQuery("SET NAMES " . MYSQL_CHARSET, $dbLink);
@@ -302,10 +303,10 @@ function executeQuery($query, $dbLink) {
 
 //DB connection and base url
 
-define("MYSQL_HOST", "mysql.baze.eventcatalog.ru.postman.ru");
-define("MYSQL_USER", "root");
-define("MYSQL_DATABASE", "eventcatalog_ru");
-define("MYSQL_PASSWORD", "2ygMPCBrm8");
+define("MYSQL_HOST", "localhost");
+define("MYSQL_USER", "eventcatalog");
+define("MYSQL_DATABASE", "eventcatalog");
+define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
 define("MYSQL_CHARSET", "cp1251");
 define("MYSQL_PORT", "63627");
 define("BASEURL", "http://eventcatalog.ru");
@@ -315,6 +316,7 @@ $html = prepareBody();
 //get all users with subscription
 $dbLink = mysql_connect(MYSQL_HOST . ":" . MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD) or die("Could not connect: " . mysql_error());
 mysql_select_db(MYSQL_DATABASE, $dbLink) or die('Can\'t use db : ' . mysql_error());
+mysql_query("SET NAMES CP1251");
 $users = ExecuteQuery("select title,email from tbl__registered_user where subscribe=1",$dbLink);
 foreach($users as $doc){    
     $current_message =  $bodyStart . generateHeader($doc['title']) . $html;

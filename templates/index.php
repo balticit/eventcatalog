@@ -111,9 +111,9 @@
           <td width="50%"><?php CRenderer::RenderControl("event_news2"); ?></td>
           </tr></table>
 				</td>
-				<td width='240' align="right" rowspan="3">
-					<div class='sub-title-block'><span class='sub-title widget'>Печатные издания</span></div>
-					<div style='height:400px;width: 240px;margin-bottom: 10px;'>
+				<td width='240' align="right" rowspan="3" style="vertical-align:middle">
+					
+					<div style='height:400px;width: 240px; display:inline-block'>
 					<noindex>
 						<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 1 -->
 						<script language="javascript" type="text/javascript"><!--
