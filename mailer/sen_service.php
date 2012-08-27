@@ -321,10 +321,9 @@ $users = ExecuteQuery("select title,email from tbl__registered_user where subscr
 foreach($users as $doc){    
     $current_message =  $bodyStart . generateHeader($doc['title']) . $html;
     //send_mail
-    mail($doc['email'], "Свежие новости от портала eventcatalog.ru", $current_message, "Content-type: text/html; charset=windows-1251 \r\n"
+    mail('sergey@balticit.ru', "Свежие новости от портала eventcatalog.ru", $current_message, "Content-type: text/html; charset=windows-1251 \r\n"
         . "From: EVENT NEWS <noreply@eventcatalog.ru> \r\n"
         . "X-Mailer: PHP/" . phpversion());
-    sleep(1);
 }
 mysql_close($dbLink);
 ?>

@@ -318,8 +318,6 @@ $html = prepareBody();
     mail('vol.alexy@gmail.com', "Свежие новости от портала eventcatalog.ru", $current_message, "Content-type: text/html; charset=windows-1251 \r\n"
         . "From: EVENT NEWS <noreply@eventcatalog.ru> \r\n"
         . "X-Mailer: PHP/" . phpversion());
-    sleep(1);
-
 mysql_close($dbLink);
 ?>
 
