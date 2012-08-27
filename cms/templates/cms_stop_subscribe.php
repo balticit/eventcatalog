@@ -23,6 +23,9 @@
 			<th>
 				<a href="">Логин</a>
 			</th>
+			<th>
+				<a href="">Дата</a>
+			</th>
 		</tr>
 		<?php
 			$users = SQLProvider::ExecuteQuery("
@@ -46,6 +49,7 @@
 				echo "<td  class=\"alterItem\">".$user["type"]."</td>";
 				echo "<td  class=\"alterItem\">".$user["title"]."</td>";
 				echo "<td  class=\"alterItem\">".$user["login"]."</td>";
+				echo "<td  class=\"alterItem\"></td>";
 				echo "</tr>";
 			}
 		?>

@@ -99,5 +99,39 @@
 </table>
 <?php CRenderer::RenderControl("googleanalytics"); ?>
 <?php } ?>
-</body>
-</html>
+
+<script type="text/javascript">
+$(function() {
+
+	$('#comment_submit').live('click', function() {
+	  
+	  if($('#comment_text').val()!='' && $('#comment_captcha_input').val()!='' && $('#comment_author').val()!='' ) {
+      var itemText = 'Анонимные комментарии проверяются модераторами перед публикацией.<br /> '+
+      'Через несколько часов ваш комментарий будет проверен.<br />'+
+      'Спасибо!';
+  	  var checkItem = $(this).next();
+  	   
+  		$( '#dialog-confirm' ).dialog({
+  			resizable: false,
+  			height:200,
+  			width:400,
+  			dialogClass: 'dialog-confirm',
+  			modal: true,
+  			open: function(event, ui) { 
+            $(this).find('p').html(itemText);
+         },
+  			buttons: {
+  				'Да': function() {
+  					$('#comment_submit').submit();
+  					$( this ).dialog( 'close' );
+  				}
+  				
+  			}
+  		});
+		
+		}
+	});
+	
+		
+});
+</script>

@@ -68,6 +68,9 @@
 		<td style="vertical-align:top;  padding-left: 5px;">
 			<?php CRenderer::RenderControl("yaPersonal"); ?>
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td valign="top"><?php CRenderer::RenderControl("agenDetails"); ?></td></tr></table>
+			
+
+			
 		</td>
                 <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>
@@ -78,5 +81,44 @@
 </table>
 <?php CRenderer::RenderControl("googleanalytics"); ?>
 <?php }?>
+
+<script type="text/javascript">
+$(function() {
+
+	$('#comment_submit').live('click', function() {
+	  
+	  if($('#comment_text').val()!='' && $('#comment_captcha_input').val()!='' && $('#comment_author').val()!='' ) {
+      var itemText = 'Анонимные комментарии проверяются модераторами перед публикацией.<br /> '+
+      'Через несколько часов ваш комментарий будет проверен.<br />'+
+      'Спасибо!';
+  	  var checkItem = $(this).next();
+  	   
+  		$( '#dialog-confirm' ).dialog({
+  			resizable: false,
+  			height:200,
+  			width:400,
+  			dialogClass: 'dialog-confirm',
+  			modal: true,
+  			open: function(event, ui) { 
+            $(this).find('p').html(itemText);
+         },
+  			buttons: {
+  				'Да': function() {
+  					$('#comment_submit').submit();
+  					$( this ).dialog( 'close' );
+  				}
+  				
+  			}
+  		});
+		
+		}
+	});
+	
+		
+});
+</script>
+
+
+
 </body>
 </html>

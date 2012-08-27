@@ -20,7 +20,7 @@
 */ ?>
 <tr style="height:100%;" valign="top"><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;  padding-bottom: 30px;" align="center">
 	<h1 style="color:#000"><?php echo $this->reqMessage; ?></h1><br />
-	<form method="post">
+	<form method="post" id="loginform_form">
 		<input type="hidden" name="event" value="login" />
 		<table border="0" cellpadding="4" cellspacing="0" >
 		<tr>
@@ -35,9 +35,38 @@
 			<td align="left">
 			<input type="submit" value="Войти"/></td>
 		  </tr>
+		  <tr>
+		  <td></td>
+			<td align="left">
+			<div id="loginmessage" style="display: none; color: red;">Неверный логин или пароль!</div>
+		  </tr>
 		</table>
+		
 	</form>
-	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" class="black">главную</a></div>
+
+<script type="text/javascript">
+$(function() {	
+	
+	$('#loginform_form').bind('submit', function(){
+						var loginmessage = $('#loginmessage');
+						loginmessage.hide();
+						var authForm = $(this);
+					    $.ajax({
+					        url:    '/ajax/authorize/',
+					        data:   authForm.serialize(),
+					        success: function(responseText) {
+								if (responseText == '1')
+									document.location = document.location+'';
+								else
+									loginmessage.show();
+					        }
+					    });
+						return false;
+					});
+});
+</script>
+	
+	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
 				<?php //CRenderer::RenderControl("account"); ?>	
 </td></tr>
 <?php /*

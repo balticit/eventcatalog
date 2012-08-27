@@ -1,4 +1,3 @@
-
 <form id="comments_form" enctype="multipart/form-data" method="post">
 	<input type="hidden" name="comments_action" id="comments_action" value="load">
 	<input type="hidden" name="comment_reply_id" id="comment_reply_id">
@@ -145,6 +144,7 @@
 				<div style="display:block; padding:10px; background-color:#FFFFFF; width:98%; height:20px;">
 					<input style="float:left;" type="button" value="Предпросмотр" onClick="javascript:return PreviewComment();">
 					<input style="float:right;" id="comment_submit" type="submit" value="Написать" onClick="javascript:return SubmitComment();">
+
 				</div>
 				<br>
 			</div>
@@ -166,3 +166,9 @@
 		</div>
 	</div>
 </form>
+
+<div id="dialog-confirm" title="Спасибо за комментарий">
+  <p></p>
+</div>
+
+

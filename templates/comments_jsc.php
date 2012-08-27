@@ -123,7 +123,7 @@ function DeleteComment(reply_id)
 
 function ValidateComment(preview)
 {
-        var unauth = document.getElementById("comment_unauthorozed");
+  var unauth = document.getElementById("comment_unauthorozed");
 	if ((unauth!=null)&&unauth.checked)
 	{
 		if (document.getElementById('comment_author').value=="")
