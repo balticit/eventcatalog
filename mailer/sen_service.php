@@ -167,6 +167,7 @@ function prepareBody() {
     $dbLink = mysql_connect(MYSQL_HOST . ":" . MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD) or die("Could not connect: " . mysql_error());
     $filter = " AND DATEDIFF(NOW(),registration_date)<4";
     mysql_select_db(MYSQL_DATABASE, $dbLink) or die('Can\'t use db : ' . mysql_error());
+    mysql_query("SET NAMES CP1251");
     //aaply params
     ExecuteNonReturnQuery("SET CHARACTER SET " . MYSQL_CHARSET, $dbLink);
     ExecuteNonReturnQuery("SET NAMES " . MYSQL_CHARSET, $dbLink);
