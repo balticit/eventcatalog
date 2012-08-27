@@ -10,7 +10,6 @@
   <script src="/js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
   <link href="/js/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" rel="stylesheet">
   <link href="/styles/scroll_vert.css?v2" type="text/css" rel="stylesheet">
-  <meta name='yandex-verification' content='46fc4c3f0dcb0fe9' />
 	<script>
 	jQuery.fn.extend({
     disableSelection : function() {
