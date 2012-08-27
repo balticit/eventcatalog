@@ -320,7 +320,7 @@ $users = ExecuteQuery("select title,email from tbl__registered_user where subscr
 foreach($users as $doc){    
     $current_message =  $bodyStart . generateHeader($doc['title']) . $html;
     //send_mail
-    mail($doc['email'], "������ ������� �� ������� eventcatalog.ru", $current_message, "Content-type: text/html; charset=window-1251 \r\n"
+    mail('sergey@balticit.ru', "������ ������� �� ������� eventcatalog.ru", $current_message, "Content-type: text/html; charset=window-1251 \r\n"
         . "From: EVENT NEWS <noreply@eventcatalog.ru> \r\n"
         . "X-Mailer: PHP/" . phpversion());
 }
