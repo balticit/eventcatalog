@@ -315,12 +315,12 @@ $html = prepareBody();
 //get all users with subscription
 $dbLink = mysql_connect(MYSQL_HOST . ":" . MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD) or die("Could not connect: " . mysql_error());
 mysql_select_db(MYSQL_DATABASE, $dbLink) or die('Can\'t use db : ' . mysql_error());
-mysql_query("SET NAMES UTF8");
+mysql_query("SET NAMES CP1251");
 $users = ExecuteQuery("select title,email from tbl__registered_user where subscribe=1",$dbLink);
 foreach($users as $doc){    
     $current_message =  $bodyStart . generateHeader($doc['title']) . $html;
     //send_mail
-    mail('sergey@balticit.ru', "Свежие новости от портала eventcatalog.ru", $current_message, "Content-type: text/html; charset=utf-8 \r\n"
+    mail($doc['email'], "Свежие новости от портала eventcatalog.ru", $current_message, "Content-type: text/html; charset=window-1251 \r\n"
         . "From: EVENT NEWS <noreply@eventcatalog.ru> \r\n"
         . "X-Mailer: PHP/" . phpversion());
 }
