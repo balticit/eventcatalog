@@ -129,7 +129,7 @@
 .galleria-image-nav {
     position: absolute;
     top: 50%;
-    margin-top: -62px;
+    margin-top: -36px;
     width: 100%;
     height: 62px;
     left: 0;
@@ -218,3 +218,14 @@
     background-image: url(classic-map.png);
     background-repeat: no-repeat;
 }
+
+
+
+.galleria-image-nav-right {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -84px -0px; width:56px; height:56px; }
+.galleria-image-nav-left {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -7px -0px; width:56px; height:56px;}
+
+.galleria-thumb-nav-right { background-image: url(gRightScrollBot.png); background-repeat: no-repeat; background-position: center center; }
+.galleria-thumb-nav-left { background-image: url(gLeftScrollBot.png); background-repeat: no-repeat; background-position: center center; }
+
+.galleria-thumb-nav-right:hover { background-color: #fff !important; background-image: url(gRightScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
+.galleria-thumb-nav-left:hover { background-color: #fff !important; background-image: url(gLeftScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
