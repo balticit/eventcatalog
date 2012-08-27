@@ -302,10 +302,10 @@ function executeQuery($query, $dbLink) {
 
 //DB connection and base url
 
-define("MYSQL_HOST", "mysql.baze.eventcatalog.ru.postman.ru");
-define("MYSQL_USER", "root");
-define("MYSQL_DATABASE", "eventcatalog_ru");
-define("MYSQL_PASSWORD", "2ygMPCBrm8");
+define("MYSQL_HOST", "localhost");
+define("MYSQL_USER", "eventcatalog");
+define("MYSQL_DATABASE", "eventcatalog");
+define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
 define("MYSQL_CHARSET", "cp1251");
 define("MYSQL_PORT", "63627");
 define("BASEURL", "http://eventcatalog.ru");
