@@ -163,16 +163,7 @@ function renderResidentNews($doc, $linkText) {
             </tr>";
 }
 
-function prepareBody() {
-define("MYSQL_HOST", "mysql.baze.eventcatalog.ru.postman.ru");
-define("MYSQL_USER", "root");
-define("MYSQL_DATABASE", "eventcatalog_ru");
-define("MYSQL_PASSWORD", "2ygMPCBrm8");
-define("MYSQL_CHARSET", "cp1251");
-define("MYSQL_PORT", "63627");
-define("BASEURL", "http://eventcatalog.ru");	
-	
-	
+function prepareBody() {	
     $dbLink = mysql_connect(MYSQL_HOST . ":" . MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD) or die("Could not connect: " . mysql_error());
     $filter = " AND DATEDIFF(NOW(),registration_date)<4";
     mysql_select_db(MYSQL_DATABASE, $dbLink) or die('Can\'t use db : ' . mysql_error());
