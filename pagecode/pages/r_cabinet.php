@@ -768,6 +768,10 @@ class r_cabinet_php extends CPageCodeHandler
             }
 
 						$userData->FromHashMap($props);
+						
+						
+						
+						
             $styles= $props['style'];
 
 						if (sizeof($errorsData)>0)
@@ -1030,6 +1034,21 @@ class r_cabinet_php extends CPageCodeHandler
         "checked_styles" => "[$s_selstyles]",
         "stylesArray"=>$stylesArray);
         $userData->logo =GetFilename($userData->logo);
+        
+          $udata["rider_0"]  = '';
+          $udata["rider_1"]  = '';
+            if($userData->rider == '0') { $udata["rider_0"] = "selected";}
+            if($userData->rider == '1') { $udata["rider_1"] = "selected";}
+        
+          $udata["currency_0"]  = '';
+          $udata["currency_1"]  = '';
+          $udata["currency_2"]  = '';
+            if($userData->currency == '0') { $udata["currency_0"] = "selected";}
+            if($userData->currency == '1') { $udata["currency_1"] = "selected";}
+            if($userData->currency == '2') { $udata["currency_2"] = "selected";}
+            
+          
+        
         $account->dataSource = array_merge($udata, $userData->GetData());
 			}
 			break;

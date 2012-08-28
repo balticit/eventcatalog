@@ -36,14 +36,15 @@
     margin-right: 30px;
 }
 .galleria-thumbnails .galleria-image {
-    height: 60px;
+    height: 60px !important;
     width: 82px;
     /*background: #000;*/
     margin: 0 5px 0 5px;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     float: left;
     cursor: pointer;
 }
+.galleria-thumbnails .galleria-image img {height: 60px !important}
 .galleria-counter {
     position: absolute;
     bottom: 10px;
