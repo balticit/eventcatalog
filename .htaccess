@@ -65,7 +65,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !-f
 RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !.html$
-RewriteRule (.+) $1/ [R=301,L]
+RewriteRule (.+) $1/ [R=301,L,NE]
 
 RewriteRule ^(.*)$	/index.php [L]
 RewriteRule ^(.*)/$	/index.php [L]
