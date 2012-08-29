@@ -3399,6 +3399,9 @@ border-radius: 3px; /* CSS3 */
 .dialog-confirm .ui-dialog-titlebar-close { float:right; display:block}
 .dialog-confirm .ui-dialog-titlebar-close.ui-state-hover { margin-top:-1px; margin-right:-1px}
 
+.dialog-confirm { position:fixed !important;}
+.dialog-confirm.onebutton  .ui-dialog-buttonset button { width:100px; margin:0 150px !important}
+
 .style_404 { margin-top:-20px}
 .style_404 a { text-decoration:underline}
 .style_404 a:hover { text-decoration:none}
