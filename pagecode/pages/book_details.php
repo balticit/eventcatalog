@@ -12,7 +12,7 @@ class book_details_php extends CPageCodeHandler
         CURLHandler::CheckRewriteParams($av_rwParams);
         $id_str = GP("id");
         /*Для обработки старых ссылок, со временем можно будет убрать*/
-        /*
+        
         if (preg_match('/^details\d+$/i', $id_str)) {
           $tmp_id = str_replace('details', '', $id_str);
           if (is_numeric($tmp_id)){
@@ -20,7 +20,7 @@ class book_details_php extends CPageCodeHandler
             CURLHandler::Redirect301('/book/'.$id_str);
           }
         }
-        */
+        
         if (!is_null($id_str)){
             $id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__public_doc where title_url = '".mysql_real_escape_string($id_str)."'");
         }

@@ -416,11 +416,12 @@ class index_php extends CPageCodeHandler
 	$mainMenu = $this->GetControl("menu");
 	switch(rand(1,8)) {
 	case 1:
-    $mainMenu->dataSource["museum"] =
+    /*$mainMenu->dataSource["museum"] =
       array("link"=>"http://15kop.ru/",
             "imgname"=>"museum",
             "title"=>"",
             "target"=>'target="_blank"');
+            */
 	break;
 	case 2:
 	$mainMenu->dataSource["polymedia"] =
