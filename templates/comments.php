@@ -169,7 +169,7 @@
 </form>
 
 <?php if ($this->c_error) {?>
-<div id="dialog-confirm" title="Спасибо за комментарий">
+<div id="dialog-confirm" title="Спасибо за комментарий!">
   <p></p>
 </div>
 <?php } ?>

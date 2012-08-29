@@ -110,7 +110,7 @@ $(function() {
             $(this).find('p').html(itemText);
          },
   			buttons: {
-  				'Да': function() {
+  				'Ok': function() {
   					$('#comment_submit').submit();
   					$( this ).dialog( 'close' );
   				}
