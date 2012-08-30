@@ -753,7 +753,7 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: 'dialog-confirm',
-			modal: true,
+			modal: false,
   		position: 'center',
 			open: function(event, ui) { 
           \$(this).find('p').html(itemText);
@@ -1019,7 +1019,7 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: 'dialog-confirm',
-			modal: true,
+			modal: false,
   		position: 'center',
 			open: function(event, ui) { 
           \$(this).find('p').html(itemText);
@@ -1493,7 +1493,7 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: "dialog-confirm",
-			modal: true,
+			modal: false,
   		position: "center",
 			open: function(event, ui) { 
           $(this).find("p").html(itemText);

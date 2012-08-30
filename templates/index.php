@@ -73,12 +73,19 @@
     });
     $("div.category-item").height(max_height);
 	
-    $(".parent-item").mouseenter(function(){
-      $(".level2:first").hide();
-      $(this).find(".level2:first").show();
-    }).mouseleave(function(){
-      $(this).find(".level2:first").hide();
+    $(".parent-item a.parents").mouseenter(function(){
+      $(".parent-item").removeClass("active");
+      $(this).parents("div:first").addClass("active");
+      var left = $(this).width()+20;
+      $(".level2").hide();
+      $(this).next(".level2:first").show().css("left",left+"px");
     });
+    
+    $(".parent-item.active").live('mouseleave', function(){
+      $(".parent-item").removeClass("active");
+      $(".level2").hide();
+    });
+    
 	});
 </script>
 

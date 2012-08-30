@@ -104,7 +104,7 @@ $(function() {
   			height:200,
   			width:400,
   			dialogClass: 'dialog-confirm onebutton',
-  			modal: true,
+  			modal: false,
   			position: 'center',
   			open: function(event, ui) { 
             $(this).find('p').html(itemText);

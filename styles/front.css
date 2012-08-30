@@ -3416,6 +3416,12 @@ border-radius: 3px; /* CSS3 */
 .menu-all-category .category-artist { border-left:4px solid #df3491 }
 .menu-all-category .category-agency { border-left:4px solid #a2cc36; width:18%;  }
 
+.menu-all-category .category-contractor .active:hover { background:#f4a735; }
+.menu-all-category .category-area .active:hover { background:#36a4e0 }
+.menu-all-category .category-artist .active:hover { background:#df3491 }
+.menu-all-category .category-agency .child-item:hover {background:#a2cc36;  }
+
+
 .menu-all-category .parent-item, .category-agency .child-item { padding:4px 0px 4px 10px}
 
 .menu-all-category div.level2 { margin:0; display:none; position:absolute; left:55%; top:0; height:100%; width:120%; background:#fff; padding-right:10px; z-index:2 }
