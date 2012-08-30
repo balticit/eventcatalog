@@ -44,11 +44,18 @@ foreach($mailer as $item){
                     ",$dbLink);
  
       foreach($sql as $f) {
+         $i++;
          if ($f["email"] != '') {
 
             mail('sergey@balticit.ru',$subject,$body,$add_header);
             sleep(1);
          }
+         if($i > 50) {
+          break;
+          die();
+          stop();
+         }
+         
       }
     
     }
