@@ -72,13 +72,26 @@
        if ($(this).height() > max_height) { max_height = $(this).height(); }
     });
     $("div.category-item").height(max_height);
+    
+    $(".category-item").each(function(){
+      var left = 0;
+      
+      $(this).find('.parents').each(function(){
+        if( $(this).width() > left) { left = $(this).width(); }
+        console.log(left);
+      });
+      
+      $(this).find(".level2").css("left",left+20+"px");
+      
+    });
+    
 	
     $(".parent-item a.parents").mouseenter(function(){
       $(".parent-item").removeClass("active");
       $(this).parents("div:first").addClass("active");
-      var left = $(this).width()+20;
+      //var left = $(this).width()+20;
       $(".level2").hide();
-      $(this).next(".level2:first").show().css("left",left+"px");
+      $(this).next(".level2:first").show();
     });
     
     $(".parent-item.active").live('mouseleave', function(){
