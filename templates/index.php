@@ -78,7 +78,6 @@
       
       $(this).find('.parents').each(function(){
         if( $(this).width() > left) { left = $(this).width(); }
-        console.log(left);
       });
       
       $(this).find(".level2").css("left",left+20+"px");

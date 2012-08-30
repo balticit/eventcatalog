@@ -90,7 +90,7 @@
 			
 			
 		</td>
-                <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
+    <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>
 	</table>
 </td></tr>

@@ -31,6 +31,8 @@ foreach($mailer as $item){
     
       $update = ExecuteQuery("update tbl_advertising_mailer_config set status='1' where id = 1",$dbLink);
  
+      $endmail = '<br />Если Вы не желаете получать рассылку от <a href="http://www.eventcatalog.ru/">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href="http://eventcatalog.ru/stopsubscribe2">этой ссылке</a>';
+ 
       $filter = $item['filter'];
       $add_header = str_replace("\\n","\r\n",$item['header'])."\r\n";
       $subject = $item['subject'];
