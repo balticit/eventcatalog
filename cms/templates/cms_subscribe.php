@@ -256,7 +256,7 @@ Content-Deposition: attachment
           $filter = "";
           if (isset($_POST["user"])) {
       			foreach ($_POST["user"] as $key=>$value) {
-      				$filter .= " or login_type=".$value;
+      				$filter .= " or login_type=\'".$value."\'";
       			}
       		}
           
