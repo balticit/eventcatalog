@@ -27,7 +27,7 @@ mysql_query("SET NAMES CP1251");
 $mailer = ExecuteQuery("select * from tbl_advertising_mailer_config where id=1 AND status=0 ",$dbLink);
 foreach($mailer as $item){ 
 
-    if($item['date'] < date('Y-m-d H:i:s') {
+    if($item['date'] < date('Y-m-d H:i:s') ) {
     
       $update = ExecuteQuery("update tbl_advertising_mailer_config set status='1' where id = 1",$dbLink);
  
