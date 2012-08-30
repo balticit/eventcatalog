@@ -228,7 +228,7 @@ Content-Deposition: attachment
         $r = SQLProvider::ExecuteQuery("select count(tbl_obj_id) as kolvo from vw__all_users where subscribe=1 and (0=1 $sendfilter)");
         
         $totalcount = 0;
-		if ($r) {
+		    if ($r) {
             $r = $r[0];
 		    $totalcount = $r['kolvo'];
         }
@@ -260,7 +260,7 @@ Content-Deposition: attachment
       			}
       		}
           
-          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', status=0 WHERE id = '1' ");
+          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', u_subscribed='$user_subscribed' status=0 WHERE id = '1' ");
           echo "Рассылка пройдет в " .$_POST["date"];
         }
 		    else {

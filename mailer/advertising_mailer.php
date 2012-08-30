@@ -35,8 +35,7 @@ foreach($mailer as $item){
       $add_header = str_replace("\\n","\r\n",$item['header'])."\r\n";
       $subject = $item['subject'];
       $body = $item['body'];
-      
-      $user_subscribed = 0;
+      $user_subscribed = $item['u_subscribed'];
       
       $sql = ExecuteQuery("select tbl_obj_id,email,login_type from vw__all_users where subscribe=1 and (0=1 $filter)
                        union all
