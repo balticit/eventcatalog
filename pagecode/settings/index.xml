@@ -25,6 +25,51 @@
 		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuFooter.htm"/>
 		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/menu.xml" driver="CXMLTableDataSource"/>
 	</control>
+	
+	
+	<control relativeId="typeList2" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+        <param name="itemTemplates" type="list" >
+            <item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categorySubTypeItem.htm"/>
+        </param>
+        <param name="itemHeaders" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeHeader.htm"/>
+        </param>
+        <param name="itemFooters" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeFooter.htm"/>
+        </param>
+	</control>
+	
+	<control relativeId="typeList1" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+        <param name="itemTemplates" type="list" >
+            <item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categorySubTypeItem.htm"/>
+        </param>
+        <param name="itemHeaders" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeHeader.htm"/>
+        </param>
+        <param name="itemFooters" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeFooter.htm"/>
+        </param>
+	</control>
+	
+	<control relativeId="typeList3" class="CTreeRepeater" levels="2" childField="child_id" parentField="parent_id" rootValue="0">
+        <param name="itemTemplates" type="list" >
+            <item type="class" datavar="" class="CTreeItemTemplate" level="1" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categorySubTypeItem.htm"/>
+        </param>
+        <param name="itemHeaders" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeHeader.htm"/>
+        </param>
+        <param name="itemFooters" type="list">
+            <item type="class" datavar="" class="CTreeItemTemplate" level="0" source="file" sourceEncoding="windows-1251"  targetEncoding="windows-1251" filename="pagecode/settings/index_files/categoryTypeFooter.htm"/>
+        </param>
+	</control>
+	
+
+	
+	<control relativeId="typeList4" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/categorySubTypeItem.htm"/>
+	</control>
+	
+	
 	<control relativeId="bottomBanners" class="CTemplateObject">
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBannersWoYa.htm"/>
 	</control>

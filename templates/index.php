@@ -54,6 +54,37 @@
 <tr><!--Μενώ-->
 <td style='padding-bottom:15px'><?php CRenderer::RenderControl("menu"); ?></td>
 </tr>
+
+<tr>
+<td>
+<div class="menu-all-category">
+  <div class="category-contractor category-item"><?php CRenderer::RenderControl("typeList1"); ?></div>
+  <div class="category-area category-item"><?php CRenderer::RenderControl("typeList2"); ?></div>
+  <div class="category-artist category-item"><?php CRenderer::RenderControl("typeList3"); ?></div>
+  <div class="category-agency category-item"><?php CRenderer::RenderControl("typeList4"); ?></div>
+  <div class="clear"></div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+	$(document).ready(function(){
+	  var max_height = 0;
+    $("div.category-item").each(function(){
+       if ($(this).height() > max_height) { max_height = $(this).height(); }
+    });
+    $("div.category-item").height(max_height);
+	
+    $(".parent-item").mouseenter(function(){
+      $(".level2:first").hide();
+      $(this).find(".level2:first").show();
+    }).mouseleave(function(){
+      $(this).find(".level2:first").hide();
+    });
+	});
+</script>
+
+</td>
+</tr>
+
 <tr><!-- Eventtv-->
 	<td>
     <table border="0" cellpadding="0" cellspacing="0" width="100%" >

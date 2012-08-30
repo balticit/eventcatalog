@@ -656,6 +656,109 @@ class index_php extends CPageCodeHandler
 			
 			$this->GetControl("eventcalendar")->dataSource = $calendar;	
 	
+	
+	
+	    /* BALTICIT MENU IN MAIN */
+	     //AREA
+        $groups = SQLProvider::ExecuteQuery("select
+					  sg.`tbl_obj_id` AS `child_id`,
+					  sg.`parent_id`,
+					  sg.`title`,
+					  sg.`title_url`,
+					  sg.`priority`
+					from
+					  `tbl__area_subtypes` sg
+					union
+					select
+					  g.`tbl_obj_id` AS `child_id`,
+					  0 AS `parent_id`,
+					  g.`title` AS `title`,
+					  g.`title_url`,
+					  g.`priority`
+					from
+					  `tbl__area_types` g
+					ORDER by priority desc");
+        foreach ($groups as $key => $value) {
+            $cpars = array();
+
+            $groups[$key]["link"] = "/area/".$value['title_url'] . CURLHandler::BuildQueryParams($cpars);
+
+        }
+        $groupList = $this->GetControl("typeList2");
+        $groupList->dataSource = $groups;
+        
+        //CONTRACTOR
+        $activities = SQLProvider::ExecuteQueryIndexed("select *, tbl_obj_id as child_id from `tbl__activity_type` order by priority desc", "child_id");
+        $titlefilter = array();
+        $titlefilterLinks = array();
+        foreach ($activities as &$value) {
+            $cpars = array();
+
+            $value["link"] = "/contractor/" .$value['title_url'].CURLHandler::BuildQueryParams($cpars);
+            $value["selected"] = "";
+            $value["orange"] = "orange";
+        }
+        if (isset($activity)) {
+            if (isset($activities[$activity])) {
+                $value = &$activities[$activity];
+                $value["selected"] = 'id="selectOrange"';
+                $value["orange"] = '';
+                array_push($titlefilter, CStringFormatter::buildCategoryLinks($value['title'], null));
+                array_push($titlefilterLinks, CStringFormatter::buildCategoryLinks($value['title'], $value['link'], "contractor"));
+                if ($value["parent_id"]) {
+                    $activities[$value["parent_id"]]["selected"] = 'id="selectOrange"';
+                    $activities[$value["parent_id"]]["orange"] = '';
+                    array_unshift($titlefilter, CStringFormatter::buildCategoryLinks($activities[$value["parent_id"]]['title'], null));
+                    array_unshift($titlefilterLinks, CStringFormatter::buildCategoryLinks($activities[$value["parent_id"]]['title'], $activities[$value["parent_id"]]['link'], "contractor"));
+                }
+            }
+            else
+                CURLHandler::ErrorPage();
+        }
+        $actList = $this->GetControl("typeList1");
+        $actList->dataSource = $activities;
+        
+        
+        
+        //ARTIST
+        $groups = SQLProvider::ExecuteQuery("select
+					  sg.`tbl_obj_id` AS `child_id`,
+					  sg.`parent_id`,
+					  sg.`title`,
+					  sg.`title_url`,
+					  sg.`order_id`,
+					  sg.`priority`
+					from
+					  `tbl__artist_subgroup` sg
+					union
+					select
+					  g.`tbl_obj_id` AS `child_id`,
+					  0 AS `parent_id`,
+					  g.`title` AS `title`,
+					  g.`title_url`,
+					  g.`order_id`,
+					  g.`priority`
+					from
+					  `tbl__artist_group` g
+					ORDER by priority desc");
+        foreach ($groups as $key => $value) {
+            $cpars = array();
+            $groups[$key]["link"] = "/artist/".$value['title_url']. CURLHandler::BuildQueryParams($cpars);
+        }
+        $groupList = $this->GetControl("typeList3");
+        $groupList->dataSource = $groups;
+        
+        
+        //AGENCY
+        @$groups = SQLProvider::ExecuteQuery("select * from `tbl__agency_type` ORDER by priority desc");
+        foreach ($groups as $key => $value) {
+            $cpars = array();
+            $groups[$key]["link"] = '/agency/'.$value['title_url'] . CURLHandler::BuildQueryParams($cpars);
+        }
+        @$groupList = $this->GetControl("typeList4");
+        @$groupList->dataSource = $groups;
+        
+        /* END BALTICIT MENU IN MAIN */
 		
 	
 	}
