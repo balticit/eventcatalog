@@ -46,7 +46,7 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail('sergey@balticit.ru',$subject,$body,$add_header);
+            mail('dima@regush.ru',$subject,$body,$add_header);
             sleep(1);
          }
          if($i > 50) {
