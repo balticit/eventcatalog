@@ -62,6 +62,17 @@
 		</tr>
 		
 		<tr>
+			<td valign="top"  class="itemLabel">
+				Дата и время рассылки
+			</td>
+			<td class="editCell">
+			  <script language="javascript" type="text/javascript" src="/js/datetimepicker.js"></script>
+				<input type="text" name="date" id="send_date" />
+				<a target="_self" href="javascript:NewCal('send_date','yyyymmdd',true,24);"><img border="0" style="" title="" alt="" class="class" src="/images/cal.gif"></a>
+			</td>
+		</tr>
+		
+		<tr>
 			<td valign="top" align="right"  class="itemLabel">
 				<input type="checkbox" name="user[]" value="user" checked="checked" />
 			</td>
@@ -235,23 +246,47 @@ Content-Deposition: attachment
         unlink(TMP_DIR.'sendmail_new.txt');
         file_put_contents(TMP_DIR.'sendmail_new.txt',$body1.$body2);        
 		
-		if ($_POST["to"]!="") {
-			mail($_POST["to"],$subject,$body1.$body2,$add_header);
-            ?>Сообщение разослано<?php
-		}
-        else {
-            $linedelimeter = "";
-            if (strpos($add_header,"\r\n") == false) {
-                $linedelimeter = "\n";
-            }
-            else {
-                $linedelimeter = "\r\n";
-            }
-            
-            $add_header = trim(str_replace($linedelimeter,"\\n",$add_header));
-            
-            include 'cms_subscribe_ajax.php';
+
+		
+		    if($_POST["date"]!="") {
+
+		      $date = $_POST["date"];
+		    
+
+          $filter = "";
+          if (isset($_POST["user"])) {
+      			foreach ($_POST["user"] as $key=>$value) {
+      				$filter .= " or login_type=".$value;
+      			}
+      		}
+          
+          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', status=0 WHERE id = '1' ");
+          echo "Рассылка пройдет в " .$_POST["date"];
         }
+		    else {
+		    
+      		if ($_POST["to"]!="") {
+      			mail($_POST["to"],$subject,$body1.$body2,$add_header);
+                  ?>Сообщение разослано<?php
+      		}
+          else {
+              $linedelimeter = "";
+              if (strpos($add_header,"\r\n") == false) {
+                  $linedelimeter = "\n";
+              }
+              else {
+                  $linedelimeter = "\r\n";
+              }
+              
+              $add_header = trim(str_replace($linedelimeter,"\\n",$add_header));
+              
+              include 'cms_subscribe_ajax.php';
+          }
+          
+        }
+        
+        
+        
 
 	}
 
