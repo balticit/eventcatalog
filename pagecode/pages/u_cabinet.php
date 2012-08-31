@@ -91,6 +91,10 @@ class u_cabinet_php extends CPageCodeHandler
         $regData = $userData->registration_date;
         
         /* BALTIC IT */
+        $utdata["subs2"] = '';
+        if($userData->subscribe2 == '1') {$utdata["subs2"] = 'checked';}
+        
+        
         $show = explode('|',$userData->display_type);
         $utdata["show_title_0"] = '';
         $utdata["show_title_1"] = '';
