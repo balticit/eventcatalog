@@ -39,7 +39,7 @@ foreach($mailer as $item){
       $body = $item['body'];
       $user_subscribed = $item['u_subscribed'];
       
-      $sql = ExecuteQuery("select tbl_obj_id,email,login_type from vw__all_users where subscribe=1 and (0=1 $filter)
+      $sql = ExecuteQuery("select tbl_obj_id,email,login_type from vw__all_users where subscribe2=1 and (0=1 $filter)
                        union all
                        select null,email,null from tbl__subscribed where 1 = $user_subscribed
                     ",$dbLink);
@@ -48,7 +48,7 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail('dima@regush.ru',$subject,$body,$add_header);
+            mail('leon-pro@mail.ru',$subject,$body.$endmail,$add_header);
             sleep(1);
          }
          if($i > 50) {

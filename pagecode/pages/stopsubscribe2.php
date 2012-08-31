@@ -16,21 +16,23 @@ class stopsubscribe_php extends CPageCodeHandler
 		$logintype = $dmas[0];
 		$id = $dmas[1];
 		
+		echo var_dump($dmas);
+		
 		switch ($logintype) {
 			case "user" : 
-				SQLProvider::ExecuteQuery("update tbl__registered_user set subscribe=0 where tbl_obj_id=$id");
+				SQLProvider::ExecuteQuery("update tbl__registered_user set subscribe2=0 where tbl_obj_id=$id");
 			break;
 			case "agency" : 
-				SQLProvider::ExecuteQuery("update tbl__agency_doc set subscribe=0 where tbl_obj_id=$id");
+				SQLProvider::ExecuteQuery("update tbl__agency_doc set subscribe2=0 where tbl_obj_id=$id");
 			break;
 			case "area" : 
-				SQLProvider::ExecuteQuery("update tbl__area_doc set subscribe=0 where tbl_obj_id=$id");
+				SQLProvider::ExecuteQuery("update tbl__area_doc set subscribe2=0 where tbl_obj_id=$id");
 			break;
 			case "conctractor" : 
-				SQLProvider::ExecuteQuery("update tbl__contractor_doc set subscribe=0 where tbl_obj_id=$id");
+				SQLProvider::ExecuteQuery("update tbl__contractor_doc set subscribe2=0 where tbl_obj_id=$id");
 			break;
 			case "artist" : 
-				SQLProvider::ExecuteQuery("update tbl__artist_doc set subscribe=0 where tbl_obj_id=$id");
+				SQLProvider::ExecuteQuery("update tbl__artist_doc set subscribe2=0 where tbl_obj_id=$id");
 			break;
 
 		}
