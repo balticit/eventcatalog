@@ -442,7 +442,7 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $title = iconv($this->encoding, "utf-8", $this->mailtitle);
+                                $title = iconv($this->encoding, "utf-8", 'EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;
                                 $mbody = CStringFormatter::Format(file_get_contents(RealFile($this->mailpath)), $completeData);
                                 SendHTMLMail($userData->email, $mbody, $title);
@@ -566,7 +566,7 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $title = iconv($this->encoding, "utf-8", $this->mailtitle);
+                                $title = iconv($this->encoding, "utf-8", 'EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;
                                 $mbody = CStringFormatter::Format(file_get_contents(RealFile($this->mailpath)), $completeData);
                                 SendHTMLMail($userData->email, $mbody, $title);
@@ -848,7 +848,7 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $title = iconv($this->encoding, "utf-8", $this->mailtitle);
+                                $title = iconv($this->encoding, "utf-8", 'EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;
                                 $mbody = CStringFormatter::Format(file_get_contents(RealFile($this->mailpath)), $completeData);
                                 SendHTMLMail($userData->email, $mbody, $title);
@@ -1241,7 +1241,7 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $title = iconv($this->encoding, "utf-8", $this->mailtitle);
+                                $title = iconv($this->encoding, "utf-8", 'EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;
                                 $mbody = CStringFormatter::Format(file_get_contents(RealFile($this->mailpath)), $completeData);
                                 SendHTMLMail($userData->email, $mbody, $title);
@@ -1481,7 +1481,7 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $title = iconv($this->encoding, "utf-8", $this->mailtitle);
+                                $title = iconv($this->encoding, "utf-8", 'EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;
                                 $mbody = CStringFormatter::Format(file_get_contents(RealFile($this->mailpath)), $completeData);
                                 SendHTMLMail($userData->email, $mbody, $title);
