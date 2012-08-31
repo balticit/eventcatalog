@@ -195,8 +195,13 @@
 
         <script>
       	$(function() {
+      	   
+      	  var d = new Date();
+          var y = d.getFullYear()-11;
+          
       		$( "#birthday" ).datepicker({
-			      changeYear: true
+			      changeYear: true,
+			      yearRange: ""+y+":1900"
           });
       	});
       	</script>
@@ -395,7 +400,7 @@
 </tr>
 <tr>
     <td></td>
-    <td colspan="3"><input type="submit" value="Сохранить"/></td>
+    <td colspan="3"><input type="submit" value="Зарегистрироваться!" /></td>
 </tr>
 </table>
 </form>

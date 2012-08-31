@@ -30,7 +30,8 @@ foreach($mailer as $item){
     if($item['date'] < date('Y-m-d H:i:s') ) {
     
       $update = ExecuteQuery("update tbl_advertising_mailer_config set status='1' where id = 1",$dbLink);
-
+ 
+      
  
       $filter = $item['filter'];
       $add_header = str_replace("\\n","\r\n",$item['header'])."\r\n";
@@ -47,10 +48,10 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail('leon-pro@mail.ru',$subject,$body.$endmail,$add_header);
+            mail('dima@regush.ru',$subject,$body,$add_header);
             sleep(1);
          }
-         if($i > 50) {
+         if($i > 30) {
           break;
           die();
           stop();
