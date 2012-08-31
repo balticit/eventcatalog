@@ -41,7 +41,7 @@
 				От кого
 			</td>
 			<td class="editCell">
-				<input type="text" name="from" value="automail@eventcatalog.ru"/>
+				<input type="text" name="from" value="promo@eventcatalog.ru"/>
 			</td>
 		</tr>
 		<tr>
@@ -57,7 +57,7 @@
 				Заголовок письма
 			</td>
 			<td class="editCell">
-				<input type="text" name="subject" value="Последние добавления в EVENTКАТАЛОГЕ"/>
+				<input type="text" name="subject" value="Event Promo Mail"/>
 			</td>
 		</tr>
 		

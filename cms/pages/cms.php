@@ -106,7 +106,7 @@ case "1" :
 </li>
 <li><span>Рассылка</span>
   <ul>
-  <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/subscribe/');\">Ежедневная рассылка </a></li>
+  <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/subscribe/');\">Рекламная рассылка</a></li>
   <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/weeksubscribe/');\">Еженедельная рассылка </a></li>
       <li><a href=\"\" onclick=\"return SetTable('/cms/stop_subscribe');\">Отписавшиеся пользователи</a></li>
       <li><a href=\"\" onclick=\"return SetTable('/cms/stop_subscribe2');\">Отписавшиеся от рекламной рассылки</a></li>

@@ -198,11 +198,11 @@
       	$(function() {
       	   
       	  var d = new Date();
-          var y = d.getFullYear()-11;
-          
+      	  var y = d.getFullYear()-11;
+
       		$( "#birthday" ).datepicker({
 			      changeYear: true,
-			      yearRange: ""+y+":1900"
+			      yearRange: "1900:"+y+""
           });
       	});
       	</script>

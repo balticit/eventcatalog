@@ -42,7 +42,7 @@
 				login,
 				edit_date
 			from vw__all_users
-			where subscribe2=0
+			where subscribe2=0 order by edit_date desc
 			");
 			foreach ($users as $key=>$user) {
 			 if(!empty($user["edit_date"])) { $date = date('Y-m-d', $user["edit_date"]); }
