@@ -41,7 +41,7 @@
 				От кого
 			</td>
 			<td class="editCell">
-				<input type="text" name="from" value="automail@eventcatalog.ru"/>
+				<input type="text" name="from" value="promo@eventcatalog.ru"/>
 			</td>
 		</tr>
 		<tr>
@@ -57,7 +57,18 @@
 				Заголовок письма
 			</td>
 			<td class="editCell">
-				<input type="text" name="subject" value="Последние добавления в EVENTКАТАЛОГЕ"/>
+				<input type="text" name="subject" value="Event Promo Mail"/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td valign="top"  class="itemLabel">
+				Дата и время рассылки
+			</td>
+			<td class="editCell">
+			  <script language="javascript" type="text/javascript" src="/js/datetimepicker.js"></script>
+				<input type="text" name="date" id="send_date" />
+				<a target="_self" href="javascript:NewCal('send_date','yyyymmdd',true,24);"><img border="0" style="" title="" alt="" class="class" src="/images/cal.gif"></a>
 			</td>
 		</tr>
 		
@@ -217,7 +228,7 @@ Content-Deposition: attachment
         $r = SQLProvider::ExecuteQuery("select count(tbl_obj_id) as kolvo from vw__all_users where subscribe=1 and (0=1 $sendfilter)");
         
         $totalcount = 0;
-		if ($r) {
+		    if ($r) {
             $r = $r[0];
 		    $totalcount = $r['kolvo'];
         }
@@ -235,23 +246,61 @@ Content-Deposition: attachment
         unlink(TMP_DIR.'sendmail_new.txt');
         file_put_contents(TMP_DIR.'sendmail_new.txt',$body1.$body2);        
 		
-		if ($_POST["to"]!="") {
-			mail($_POST["to"],$subject,$body1.$body2,$add_header);
-            ?>Сообщение разослано<?php
-		}
-        else {
-            $linedelimeter = "";
-            if (strpos($add_header,"\r\n") == false) {
-                $linedelimeter = "\n";
-            }
-            else {
-                $linedelimeter = "\r\n";
-            }
-            
-            $add_header = trim(str_replace($linedelimeter,"\\n",$add_header));
-            
-            include 'cms_subscribe_ajax.php';
+
+		
+		    if($_POST["date"]!="") {
+
+		      $date = $_POST["date"];
+		    
+
+          $filter = "";
+          if (isset($_POST["user"])) {
+      			foreach ($_POST["user"] as $key=>$value) {
+      				$filter .= " or login_type=\'".$value."\'";
+      			}
+      		}
+      		
+      		
+      		$body1 = "--$boundary
+Content-Type: text/html; charset=\"windows-1251\"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">
+<div style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">$_POST[message]</div>
+<br />Если Вы не желаете получать рассылку от <a href=\"http://www.eventcatalog.ru/\">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href=\"http://eventcatalog.ru/u_cabinet\">этой ссылке</a>
+</body>
+</html>
+
+";
+          
+          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', u_subscribed='$user_subscribed', status=0 WHERE id = '1' ");
+          echo "Рассылка пройдет в " .$_POST["date"];
         }
+		    else {
+		    
+      		if ($_POST["to"]!="") {
+      			mail($_POST["to"],$subject,$body1.$body2,$add_header);
+                  ?>Сообщение разослано<?php
+      		}
+          else {
+              $linedelimeter = "";
+              if (strpos($add_header,"\r\n") == false) {
+                  $linedelimeter = "\n";
+              }
+              else {
+                  $linedelimeter = "\r\n";
+              }
+              
+              $add_header = trim(str_replace($linedelimeter,"\\n",$add_header));
+              
+              include 'cms_subscribe_ajax.php';
+          }
+          
+        }
+        
+        
+        
 
 	}
 

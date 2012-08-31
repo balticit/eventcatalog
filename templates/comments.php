@@ -33,6 +33,7 @@
 				echo $comment["text"];
 			?>
 			</div>
+			<br />
 				<?php if ( ($comment["image"]!='')&&($comment["active"]==1)&&($comment["is_deleted"]==0)){?>
 				<div id="comment_image_container_<?php echo $comment["tbl_obj_id"] ?>">
 					<a href="/<?php echo $comment["image_large"];?>" style="text-decoration:none;" title="Нажмите чтобы увеличить" target="_blank">
@@ -167,8 +168,10 @@
 	</div>
 </form>
 
-<div id="dialog-confirm" title="Спасибо за комментарий">
+
+<div id="dialog-confirm" title="Спасибо за комментарий!">
   <p></p>
 </div>
+
 
 

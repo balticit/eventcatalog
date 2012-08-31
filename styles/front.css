@@ -3399,6 +3399,38 @@ border-radius: 3px; /* CSS3 */
 .dialog-confirm .ui-dialog-titlebar-close { float:right; display:block}
 .dialog-confirm .ui-dialog-titlebar-close.ui-state-hover { margin-top:-1px; margin-right:-1px}
 
+.dialog-confirm { position:fixed !important;}
+.dialog-confirm.onebutton  .ui-dialog-buttonset button { width:100px; margin:0 150px !important}
+
 .style_404 { margin-top:-20px}
 .style_404 a { text-decoration:underline}
 .style_404 a:hover { text-decoration:none}
+
+
+.menu-all-category { border-bottom:1px solid #ccc; margin-bottom:5px; padding-bottom:14px; padding-left:30px; height:100%}
+.menu-all-category a { color:#020202; text-decoration:none}
+.menu-all-category a:hover { color:#000}
+.menu-all-category .category-item { float:left; width:26%; position:relative; height:220px }
+.menu-all-category .category-contractor { border-left:4px solid #f4a735; }
+.menu-all-category .category-area { border-left:4px solid #36a4e0 }
+.menu-all-category .category-artist { border-left:4px solid #df3491 }
+.menu-all-category .category-agency { border-left:4px solid #a2cc36; width:18%;  }
+
+.menu-all-category .category-contractor .active:hover { background:#f4a735; }
+.menu-all-category .category-area .active:hover { background:#36a4e0 }
+.menu-all-category .category-artist .active:hover { background:#df3491 }
+.menu-all-category .category-agency .child-item:hover {background:#a2cc36;  }
+
+.menu-all-category .parent-item .children:hover { text-decoration: underline}
+
+.menu-all-category .parent-item, .category-agency .child-item { padding:4px 0px 4px 10px}
+
+.menu-all-category div.level2 { margin:0; display:none; position:absolute; left:55%; top:0; height:100%; width:120%; background:#fff; padding-right:10px; z-index:2 }
+
+
+.menu-all-category .category-contractor div.level2 { border-left:2px solid #f4a735 }
+.menu-all-category .category-area div.level2 { border-left:2px solid #36a4e0 }
+.menu-all-category .category-artist div.level2 { border-left:2px solid #df3491 }
+
+.menu-all-category .category-item div.level2 .child-item { float:left; width:47%; padding:4px 0px 4px 10px}
+

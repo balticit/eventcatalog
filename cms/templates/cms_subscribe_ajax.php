@@ -2,7 +2,7 @@
             <div>Идет рассылка...</div>
             <div>Пожалуйста, не закрывайте это окно и не отключайтесь от интернета, пока рассылка не завершится</div>
             <div>Отослано <span id="mailSended">0</span> писем из <?php echo $totalcount ?></div>
-            <br/>
+            <br />
             <div style="border:1px solid silver;width:300px;padding:10px" align="left">
                <div id="progressProcent" style="padding-bottom:10px" align="center">1 %</div>
                <div align="left">

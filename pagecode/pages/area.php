@@ -686,7 +686,7 @@ class area_php extends CPageCodeHandler
         $mainMenu = $this->GetControl("menu");
 		switch(rand(1,2)){
 		   case 1:
-		   $mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
+		   /*$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');*/
 		   break;
 		   
 		   case 2:$mainMenu->dataSource["midas"] =

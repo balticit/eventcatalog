@@ -54,6 +54,62 @@
 <tr><!--Μενώ-->
 <td style='padding-bottom:15px'><?php CRenderer::RenderControl("menu"); ?></td>
 </tr>
+
+<tr>
+<td>
+<div class="menu-all-category">
+  <div class="category-contractor category-item"><?php CRenderer::RenderControl("typeList1"); ?></div>
+  <div class="category-area category-item"><?php CRenderer::RenderControl("typeList2"); ?></div>
+  <div class="category-artist category-item"><?php CRenderer::RenderControl("typeList3"); ?></div>
+  <div class="category-agency category-item"><?php CRenderer::RenderControl("typeList4"); ?></div>
+  <div class="clear"></div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+	$(document).ready(function(){
+	  var max_height = 0;
+    $("div.category-item").each(function(){
+       if ($(this).height() > max_height) { max_height = $(this).height(); }
+    });
+    $("div.category-item").height(max_height);
+    
+    $(".category-item").each(function(){
+      var left = 0;
+      
+      $(this).find('.parent-item').each(function(){
+        var countChild = $(this).find('.child-item').length
+        if(countChild < 10) { $(this).find('.child-item').css("width", "70%" ); }
+      });
+      
+      
+      $(this).find('.parents').each(function(){
+        if( $(this).width() > left) { left = $(this).width(); }
+      });
+      
+      $(this).find(".level2").css("left",left+20+"px");
+      
+    });
+    
+	
+    $(".parent-item a.parents").mouseenter(function(){
+      $(".parent-item").removeClass("active");
+      $(this).parents("div:first").addClass("active");
+      //var left = $(this).width()+20;
+      $(".level2").hide();
+      $(this).next(".level2:first").show();
+    });
+    
+    $(".parent-item.active").live('mouseleave', function(){
+      $(".parent-item").removeClass("active");
+      $(".level2").hide();
+    });
+    
+	});
+</script>
+
+</td>
+</tr>
+
 <tr><!-- Eventtv-->
 	<td>
     <table border="0" cellpadding="0" cellspacing="0" width="100%" >

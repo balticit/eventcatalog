@@ -91,6 +91,10 @@ class u_cabinet_php extends CPageCodeHandler
         $regData = $userData->registration_date;
         
         /* BALTIC IT */
+        $utdata["subs2"] = '';
+        if($userData->subscribe2 == '1') {$utdata["subs2"] = 'checked';}
+        
+        
         $show = explode('|',$userData->display_type);
         $utdata["show_title_0"] = '';
         $utdata["show_title_1"] = '';
@@ -291,7 +295,8 @@ class u_cabinet_php extends CPageCodeHandler
 					$props = GP("properties");
 					if (is_array($props))
 					{
-						if (IsNullOrEmpty($props["subscribe"])) $props["subscribe"] = 0;
+						if (IsNullOrEmpty(@$props["subscribe"])) {$props["subscribe"] = 0;}
+						if (IsNullOrEmpty(@$props["subscribe2"])) {$props["subscribe2"] = 0;}
 						$userValidator = $this->GetControl("userValidator");
             unset($props["login"]);
             unset($userValidator->validationItems["login"]);
@@ -318,10 +323,6 @@ class u_cabinet_php extends CPageCodeHandler
 							if ($key > 2 && $key < 7)
 							{
 								$utdata["user_typeID_".$key] = $user_typesIDs[$key];
-								
-								
-								
-								
 								
 							}
 							if ($key == 7)
@@ -398,6 +399,10 @@ class u_cabinet_php extends CPageCodeHandler
               }
               $userData->edit_date = time();
               
+
+						
+						  $userData->subscribe = $props["subscribe"];
+						  $userData->subscribe2 = $props["subscribe2"];
                
               $userData->display_type = $props["display_type"][0].
               '|'.$props["display_type"][1].
@@ -753,7 +758,8 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: 'dialog-confirm',
-			modal: true,
+			modal: false,
+  		position: 'center',
 			open: function(event, ui) { 
           \$(this).find('p').html(itemText);
        },
@@ -1018,7 +1024,8 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: 'dialog-confirm',
-			modal: true,
+			modal: false,
+  		position: 'center',
 			open: function(event, ui) { 
           \$(this).find('p').html(itemText);
        },
@@ -1491,7 +1498,8 @@ $(function() {
 			height:160,
 			width:400,
 			dialogClass: "dialog-confirm",
-			modal: true,
+			modal: false,
+  		position: "center",
 			open: function(event, ui) { 
           $(this).find("p").html(itemText);
        },

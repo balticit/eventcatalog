@@ -26,7 +26,10 @@
 			<item type="class" class="CUnixTimeField" dbField="edit_date" label="Время последнего редактирования" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="1" />
 			<item type="class" class="CXMLLookupGridDataField" dbField="registration_confirmed" label="Регистрация подтверждена" alterItemClass="alterItem" sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
 			<item type="class" class="CXMLLookupGridDataField" dbField="active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
-			<item type="class" class="CXMLLookupGridDataField" dbField="priority"
+			
+			<item type="class" class="CXMLLookupGridDataField" dbField="registration_confirmed" label="РП" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+      
+      <item type="class" class="CXMLLookupGridDataField" dbField="priority"
                   label="Приоритет в поиске:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>

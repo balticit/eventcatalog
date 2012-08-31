@@ -4,9 +4,9 @@
 	<column name="title"/>
 	<index name="id"/>
 	<row id="0" title="Не назначен"/>	
-	<row id="1" title="1"/>	
-	<row id="2" title="2"/>		
+	<row id="1" title="5"/>	
+	<row id="2" title="4"/>		
 	<row id="3" title="3"/>		
-	<row id="4" title="4"/>		
-	<row id="5" title="5"/>		
+	<row id="4" title="2"/>		
+	<row id="5" title="1"/>		
 </datasource>

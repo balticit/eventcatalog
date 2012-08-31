@@ -151,6 +151,49 @@
                                              size="60" value="{manager_name}"/></td>
             <td class="reg_info"></td>
         </tr>
+        
+        <tr valign="top">
+            <td class="reg_title">Диапазон цен:</td>
+            <td style="width:300px;">
+                <label>
+                    От:
+                    <input class="hidden" name="properties[price_from]" value="{price_from}">
+                </label>
+                <br/>
+                <label>
+                    До:
+                    <input class="hidden" name="properties[price_to]" value="{price_to}">
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    С райдером:
+        
+                    <select name="properties[rider]">
+                      <option {rider_0} value="0">Нет</option>
+                      <option {rider_1} value="1">Да</option>
+                    </select>
+                    
+                    
+                </label>
+            </td>
+            <td style="color: #999999;">
+                Пожалуйста, введите диапазон цен за выступление или проведение мероприятия.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td class="reg_title">Валюта:</td>
+            <td style="width: 300px;">
+              <select name="properties[currency]" size="1" >
+                <option {currency_0} value="0">Рубли</option>
+                <option {currency_1} value="1">Доллары</option>
+                <option {currency_2} value="2">Евро</option>
+              </select>
+            </td>
+        </tr>
+      
+        
         <tr valign="top">
             <td class="reg_title">Адрес сайта:</td>
             <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]"
@@ -172,7 +215,7 @@
                     <tr>
                         <td>Пароль:</td>
                         <td align="right"><input class="reg_pass" type="password" name="properties[password]" size="30"
-                                                 value="" style="margin-bottom: 5px;"><br/></td>
+                                                 value="" style="margin-bottom: 5px;"><br /></td>
                     </tr>
                     <tr>
                         <td>Подтверждение:</td>
@@ -181,7 +224,7 @@
                     </tr>
                 </table>
             </td>
-            <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+            <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
         </tr>
         <tr>
             <td colspan="3"><input type="submit" value="{submit_text}"></td>

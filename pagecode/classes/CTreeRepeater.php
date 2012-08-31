@@ -78,7 +78,7 @@
 		{
 			$res = array();
 			foreach ($this->dataSource as $key=>$value) {
-				if ($value[$this->parentField]==$pid)
+				if (@$value[$this->parentField]==$pid)
 				{
 					array_push($res,$key);
 				}

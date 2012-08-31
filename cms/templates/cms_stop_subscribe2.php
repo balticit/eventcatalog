@@ -42,10 +42,10 @@
 				login,
 				edit_date
 			from vw__all_users
-			where subscribe=0 order by edit_date desc
+			where subscribe2=0 order by edit_date desc
 			");
 			foreach ($users as $key=>$user) {
-			if(!empty($user["edit_date"])) { $date = date('Y-m-d', $user["edit_date"]); }
+			 if(!empty($user["edit_date"])) { $date = date('Y-m-d', $user["edit_date"]); }
 				echo "<tr>";
 				echo "<td  class=\"alterItem\">".$user["tbl_obj_id"]."</td>";
 				echo "<td  class=\"alterItem\">".$user["type"]."</td>";

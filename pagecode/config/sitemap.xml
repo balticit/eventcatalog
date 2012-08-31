@@ -67,6 +67,7 @@
 		<sitenode id="27" node="forsites/"  configfile="pagecode/settings/forsites.xml" />
 		<sitenode id="28" node="pr/"  configfile="pagecode/settings/pr.xml" />
 		<sitenode id="30" node="stopsubscribe/"  configfile="pagecode/settings/stopsubscribe.xml"/>
+		<sitenode id="30_1" node="stopsubscribe2/"  configfile="pagecode/settings/stopsubscribe2.xml"/>
 		<sitenode id="31" node="add_res_news/"  configfile="pagecode/settings/add_resident_news.xml"/>
 		<sitenode id="38" node="event_calendar/"  configfile="pagecode/settings/event_calendar.xml"/>
 		<sitenode id="39" node="pricelist/"  configfile="pagecode/settings/pricelist.xml"/>
@@ -139,6 +140,7 @@
 			<sitenode id="99_35" node="search_queries/" configfile="cms/settings/cms_search_queries.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_36" node="pricelist/" configfile="cms/settings/cms_pricelist.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_37" node="stop_subscribe/" configfile="cms/settings/cms_stop_subscribe.xml" cmsfile="cms/index.php"/>
+			<sitenode id="99_52" node="stop_subscribe2/" configfile="cms/settings/cms_stop_subscribe2.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_38" node="usermark/" configfile="cms/settings/cms_usermarks.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_40" node="magazine/" configfile="cms/settings/cms_magazine.xml" cmsfile="cms/index.php">
 							<sitenode id="99_40_1" node="comments/" configfile="cms/settings/cms_magazinecomments.xml" cmsfile="cms/index.php"/>

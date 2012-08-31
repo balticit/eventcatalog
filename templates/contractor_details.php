@@ -100,13 +100,14 @@ $(function() {
   			resizable: false,
   			height:200,
   			width:400,
-  			dialogClass: 'dialog-confirm',
-  			modal: true,
+  			dialogClass: 'dialog-confirm onebutton',
+  			modal: false,
+  			position: 'center',
   			open: function(event, ui) { 
             $(this).find('p').html(itemText);
          },
   			buttons: {
-  				'Да': function() {
+  				'Ok': function() {
   					$('#comment_submit').submit();
   					$( this ).dialog( 'close' );
   				}
