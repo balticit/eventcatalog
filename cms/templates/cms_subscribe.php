@@ -259,6 +259,20 @@ Content-Deposition: attachment
       				$filter .= " or login_type=\'".$value."\'";
       			}
       		}
+      		
+      		
+      		$body1 = "--$boundary
+Content-Type: text/html; charset=\"windows-1251\"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<body style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">
+<div style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">$_POST[message]</div>
+<br />Если Вы не желаете получать рассылку от <a href=\"http://www.eventcatalog.ru/\">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href=\"http://eventcatalog.ru/u_cabinet\">этой ссылке</a>
+</body>
+</html>
+
+";
           
           SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', u_subscribed='$user_subscribed', status=0 WHERE id = '1' ");
           echo "Рассылка пройдет в " .$_POST["date"];

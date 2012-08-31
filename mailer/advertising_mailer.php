@@ -30,8 +30,7 @@ foreach($mailer as $item){
     if($item['date'] < date('Y-m-d H:i:s') ) {
     
       $update = ExecuteQuery("update tbl_advertising_mailer_config set status='1' where id = 1",$dbLink);
- 
-      $endmail = '<br />Если Вы не желаете получать рассылку от <a href="http://www.eventcatalog.ru/">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href="http://eventcatalog.ru/u_cabinet">этой ссылке</a>';
+
  
       $filter = $item['filter'];
       $add_header = str_replace("\\n","\r\n",$item['header'])."\r\n";
