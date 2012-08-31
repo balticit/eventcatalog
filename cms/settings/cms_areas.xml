@@ -166,6 +166,11 @@
                   driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel"
                   addClass="addCell" editClass="editCell"/>
                   
+            <item type="class" class="CXMLLookupGridDataField" dbField="registration_confirmed" label="РП"
+                  alterItemClass="alterItem" sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml"
+                  driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel"
+                  addClass="addCell" editClass="editCell"/>
+                  
             <item type="class" class="CXMLLookupGridDataField" dbField="priority"
                   label="Приоритет в поиске:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
