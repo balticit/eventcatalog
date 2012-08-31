@@ -15,7 +15,7 @@
 	define("MYSQL_CHARSET","cp1251");
 	define("MYSQL_PORT","3306");
 //SMTP	
-	define("DEFAULT_REPLY_ADDRESS","catalog@eventcatalog.ru");
+	define("DEFAULT_REPLY_ADDRESS","noreply@eventcatalog.ru");
 //Security
 	define("SESSION_USER_STORAGE","SESSION_USER_STORAGE");
 //User Images uploads
