@@ -76,6 +76,12 @@
     $(".category-item").each(function(){
       var left = 0;
       
+      $(this).find('.parent-item').each(function(){
+        var countChild = $(this).find('.child-item').length
+        if(countChild < 10) { $(this).find('.child-item').css("width", "70%" ); }
+      });
+      
+      
       $(this).find('.parents').each(function(){
         if( $(this).width() > left) { left = $(this).width(); }
       });
