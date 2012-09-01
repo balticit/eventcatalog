@@ -284,7 +284,7 @@ function SendHTMLMail($reciever,$message,$title="",$encoding="utf-8",$sender = D
   $headers = "MIME-Version: 1.0" . "\r\n";
   $headers .= "Content-type: text/html; charset=$encoding" . "\r\n";
   //$headers .= "To: $reciever". "\r\n";
-  $headers .= "From: $sender" . "\r\n";
+  $headers .= "From: EventCatalog.ru < $sender >" . "\r\n";
   $headers .= "Reply-to: $reply" . "\r\n";
   //$headers .= "X-Mailer: PHP/" . phpversion();
 
