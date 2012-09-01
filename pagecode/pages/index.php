@@ -422,6 +422,12 @@ class index_php extends CPageCodeHandler
             "title"=>"",
             "target"=>'target="_blank"');
             */
+    $mainMenu->dataSource["museum"] =
+      array("link"=>"http://www.valet-parking.ru/",
+            "imgname"=>"valet",
+            "title"=>"",
+            "target"=>'target="_blank"');
+            
 	break;
 	case 2:
 	$mainMenu->dataSource["polymedia"] =

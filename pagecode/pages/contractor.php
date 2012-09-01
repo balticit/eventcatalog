@@ -350,12 +350,24 @@ class contractor_php extends CPageCodeHandler
         $letterFilter->dataSource = $letters;
 
         $mainMenu = $this->GetControl("menu");
-        $mainMenu->dataSource["kinodoktor"] =
-            array("link" => "http://www.kinodoctor.ru/",
-                "imgname" => "kinodoktor",
-                "title"=>"",
-                "target" => 'target="_blank"');
-				
+				switch(rand(1,2)) {
+      	case 1:
+           $mainMenu->dataSource["kinodoktor"] =
+                  array("link" => "http://www.kinodoctor.ru/",
+                      "imgname" => "kinodoktor",
+                      "title"=>"",
+                      "target" => 'target="_blank"');
+      	break;
+      	case 2:
+          $mainMenu->dataSource["museum"] =
+            array("link"=>"http://www.valet-parking.ru/",
+                  "imgname"=>"valet",
+                  "title"=>"",
+                  "target"=>'target="_blank"');
+                  
+      	break;
+      	}
+        				
 		
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
