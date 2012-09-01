@@ -57,7 +57,7 @@
 				Заголовок письма
 			</td>
 			<td class="editCell">
-				<input type="text" name="subject" value="Event Promo Mail"/>
+				<input type="text" name="subject" value="Event рассылка от EventCatalog.ru"/>
 			</td>
 		</tr>
 		
