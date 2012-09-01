@@ -57,7 +57,7 @@
 				«аголовок письма
 			</td>
 			<td class="editCell">
-				<input type="text" name="subject" value="Event рассылка от EventCatalog.ru"/>
+				<input type="text" name="subject" value="Event Promo Mail"/>
 			</td>
 		</tr>
 		
@@ -177,7 +177,7 @@
         
         $subject = "=?windows-1251?b?" . base64_encode($_POST["subject"]) . "?=";
 	
-		$add_header = "From: $_POST[from]
+		$add_header = "From: Event рассылка от EventCatalog.ru <$_POST[from]>
 Reply-To: $_POST[from]
 MIME-Version: 1.0
 Content-Type: multipart/mixed; charset=\"windows-1251\"; boundary=\"$boundary\";
