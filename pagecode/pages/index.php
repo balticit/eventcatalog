@@ -628,7 +628,7 @@ class index_php extends CPageCodeHandler
 			'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
 				'CONCAT("/news/details", n.tbl_obj_id) link '.
 				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1) '.
-			'ORDER BY date DESC LIMIT 5';
+			'ORDER BY date ASC LIMIT 5';
 			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
 			
 			
