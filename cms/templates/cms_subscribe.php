@@ -177,7 +177,7 @@
         
         $subject = "=?windows-1251?b?" . base64_encode($_POST["subject"]) . "?=";
 	
-		$add_header = "From: Event рассылка от EventCatalog.ru <$_POST[from]>
+		$add_header = "From: EVENT INFO <$_POST[from]>
 Reply-To: $_POST[from]
 MIME-Version: 1.0
 Content-Type: multipart/mixed; charset=\"windows-1251\"; boundary=\"$boundary\";
