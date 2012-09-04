@@ -55,7 +55,7 @@ function generateHeader($username = "user") {
 		<td style='background-color:gray;padding-left:10px;vertical-align:middle;padding-top:10px;padding-bottom:10px;' colspan='2'>
 			<img style='float:left;' width='70px' src='http://eventcatalog.ru/images/mail_logo.jpg'>
 			<div style='margin-top:21px;margin-left:80px;color:white;font-size:18pt;vertical-align:middle;'>
-				EVENT INFO
+				EVENT NEWS
 				<span style='font-size:18pt;display:block;margin-right:10px;float:right;'>$day_end $strmonthend $year</span>
 			</div>
 		</tr>
@@ -67,7 +67,7 @@ function generateHeader($username = "user") {
 }
 
 function generateFooter() {
-    return "<tr><td style='padding-top:5px;color:gray;text-decoration:none;padding-left:10px' colspan='2'>Удачной Вам event-недели и до встречи на страницах сайта!<br/><br/>
+    return "<tr><td style='padding-top:5px;color:black;text-decoration:none;padding-left:10px' colspan='2'>Удачной Вам event-недели и до встречи на страницах сайта!<br/><br/>
     С уважением,<br/>
     Ваш ежедневный помощник<br/>
     <a href='http://www.eventcatalog.ru'>Eventcatalog.ru</a><br/>
@@ -83,7 +83,7 @@ function generateFooter() {
         <img src='http://eventcatalog.ru/images/yandex.png'>
     </a></p>
     <p style='color:gray;font-size:8pt;'>
-        Если Вы не желаете получать рассылку от портала для организаторов мероприятий, перейдите по <a style='color:gray;' href='http://eventcatalog.ru/u_cabinet'>этой ссылке.</a>
+        Если Вы не желаете получать рассылку от портала для организаторов мероприятий, перейдите по <a style='color:gray;' href='http://eventcatalog.ru/u_cabinet'>этой ссылке</a>.
     </p
     </td>
     </tr>";
