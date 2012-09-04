@@ -650,7 +650,7 @@ class index_php extends CPageCodeHandler
 			
       foreach($cal_arr2 as $i => $c) {
         if($c['date'] > Date('Y-m-d')) {
-          $calendar['last_list'] .= '<div class="last_calendar">';
+          $calendar['last_list'] .= '<div class="last_calendar">troll';
           $calendar['last_list'] .= '<div class="date">'.Date_Ru($c['date']).'</div>';
           $calendar['last_list'] .= '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
           $calendar['last_list'] .= '</div>';
