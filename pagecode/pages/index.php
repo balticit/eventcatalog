@@ -624,11 +624,12 @@ class index_php extends CPageCodeHandler
 			// LIST 5 last news
 			$sql2  = '(SELECT t.title, t.date, t.date_end, t.link '.
 				'FROM `tbl__event_calendar` t WHERE t.active = 1) '.
-			' UNION '.
-			'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
+				' UNION '.
+				'(SELECT n.title, DATE_FORMAT(n.date, "%Y-%m-%d") date, DATE_FORMAT(n.date, "%Y-%m-%d") date_end, '.
 				'CONCAT("/news/details", n.tbl_obj_id) link '.
 				'FROM `tbl__news` n WHERE n.active = 1 AND n.in_calendar = 1) '.
-			'ORDER BY date ASC LIMIT 5';
+				'WHERE date > NOW()'.
+				'ORDER BY date ASC LIMIT 5';
 			$cal_arr2 = SQLProvider::ExecuteQuery($sql2);
 			
 			
@@ -650,7 +651,7 @@ class index_php extends CPageCodeHandler
 			
       foreach($cal_arr2 as $i => $c) {
         if($c['date'] > Date('Y-m-d')) {
-          $calendar['last_list'] .= '<div class="last_calendar">troll';
+          $calendar['last_list'] .= '<div class="last_calendar">';
           $calendar['last_list'] .= '<div class="date">'.Date_Ru($c['date']).'</div>';
           $calendar['last_list'] .= '<div class="name"><a href="'.$c['link'].'">'.$c['title'].'</a></div>';
           $calendar['last_list'] .= '</div>';
