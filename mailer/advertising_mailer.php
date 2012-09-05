@@ -48,17 +48,17 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail($f["email"],$subject,$body,$add_header);
-            //mail("dima@regush.ru",$subject,$body,$add_header);
+            //mail($f["email"],$subject,$body,$add_header);
+            mail("dima@regush.ru",$subject,$body,$add_header);
             sleep(1);
          }
-         /*
+         
          if($i > 30) {
           break;
           die();
           stop();
          }
-         */
+         
       }
     
     }
