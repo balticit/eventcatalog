@@ -47,9 +47,9 @@ foreach($mailer as $item){
       foreach($sql as $f) {
          $i++;
          if ($f["email"] != '') {
-
-            //mail($f["email"],$subject,$body,$add_header);
-            mail("dima@regush.ru",$subject,$body,$add_header);
+            $email = mysqli::escape_string($f["email"])
+            mail($email,$subject,$body,$add_header);
+            //mail("dima@regush.ru",$subject,$body,$add_header);
             sleep(1);
          }
          
