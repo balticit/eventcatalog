@@ -52,13 +52,13 @@ foreach($mailer as $item){
             //mail("dima@regush.ru",$subject,$body,$add_header);
             sleep(1);
          }
-         
+         /*
          if($i > 30) {
           break;
           die();
           stop();
          }
-         
+         */
       }
     
     }
