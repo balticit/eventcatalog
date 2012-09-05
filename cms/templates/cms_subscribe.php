@@ -268,9 +268,6 @@ Content-Transfer-Encoding: 8bit
 <html>
 <body style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">
 <div style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">$_POST[message]</div>
-<p style='color:gray;font-size:8pt;'>
-Если Вы не желаете получать рассылку от <a href=\"http://www.eventcatalog.ru/\">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href=\"http://eventcatalog.ru/u_cabinet\">этой ссылке</a>
-</p>
 </body>
 </html>
 
