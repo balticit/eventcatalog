@@ -17,8 +17,8 @@ RewriteEngine on
 # Redirects from another hosts
 RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?party-info.ru$  [OR]
 RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?eventevent.ru$  [OR]
-RewriteCond %{HTTP_HOST}    ^http(s)?://eventcatalog.ru$  [OR]
-RewriteRule (.*)            http://www.eventcatalog.ru/$1   [R=301,L]
+# RewriteRule (.*)            http://www.eventcatalog.ru/$1   [R=301,L]
+RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
 
 # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 # RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
