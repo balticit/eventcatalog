@@ -15,16 +15,16 @@ php_value max_execution_time 60000000
 RewriteEngine on
 
 # Redirects from another hosts
-RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?party-info.ru$  [OR]
-RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?eventevent.ru$  [OR]
+# RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?party-info.ru$  [OR]
+# RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?eventevent.ru$  [OR]
 # RewriteRule (.*)            http://www.eventcatalog.ru/$1   [R=301,L]
-RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
+# RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
 
 # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 # RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
-# RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
-# RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
+RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
 
 
 RewriteRule ^index.php$ - [L]
