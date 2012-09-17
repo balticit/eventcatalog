@@ -177,7 +177,7 @@
         
         $subject = "=?windows-1251?b?" . base64_encode($_POST["subject"]) . "?=";
 	
-		$add_header = "From: Event рассылка от EventCatalog.ru <$_POST[from]>
+		$add_header = "From: EVENT INFO <$_POST[from]>
 Reply-To: $_POST[from]
 MIME-Version: 1.0
 Content-Type: multipart/mixed; charset=\"windows-1251\"; boundary=\"$boundary\";
@@ -268,7 +268,6 @@ Content-Transfer-Encoding: 8bit
 <html>
 <body style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">
 <div style=\"font-family:Arial;font-size:10pt;line-height:11pt;\">$_POST[message]</div>
-<br />Если Вы не желаете получать рассылку от <a href=\"http://www.eventcatalog.ru/\">www.eventcatalog.ru</a>, пожалуйста, перейдите по <a href=\"http://eventcatalog.ru/u_cabinet\">этой ссылке</a>
 </body>
 </html>
 

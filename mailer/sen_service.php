@@ -83,8 +83,8 @@ function generateFooter() {
         <img src='http://eventcatalog.ru/images/yandex.png'>
     </a></p>
     <p style='color:gray;font-size:8pt;'>
-        Если Вы не желаете получать рассылку от портала для организаторов мероприятий, перейдите по <a style='color:gray;' href='http://eventcatalog.ru/u_cabinet'>этой ссылке</a>.
-    </p
+        Если Вы не желаете получать рассылку от портала для организаторов мероприятий, перейдите по <a style='color:gray;' href='http://eventcatalog.ru/u_cabinet'>этой ссылке</a>
+    </p>
     </td>
     </tr>";
 }
