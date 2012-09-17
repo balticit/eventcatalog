@@ -13,7 +13,7 @@ function executeQuery($query, $dbLink) {
 
 define("MYSQL_HOST", "localhost");
 define("MYSQL_USER", "eventcatalog");
-define("MYSQL_DATABASE", "eventcatalog");
+define("MYSQL_DATABASE", "eventcatalog_staging");
 define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
 define("MYSQL_CHARSET", "cp1251");
 define("MYSQL_PORT", "63627");
@@ -48,14 +48,10 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail('dima@regush.ru',$subject,$body,$add_header);
+            mail($f["email"],$subject,$body,$add_header);
             sleep(1);
          }
-         if($i > 30) {
-          break;
-          die();
-          stop();
-         }
+
          
       }
     
