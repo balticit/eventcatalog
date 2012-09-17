@@ -14,19 +14,25 @@ php_value max_execution_time 60000000
 
 RewriteEngine on
 
+# Redirects from another hosts
+RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?party-info.ru$  [OR]
+RewriteCond %{HTTP_HOST}    ^http(s)?://(www.)?eventevent.ru$  [OR]
+RewriteRule (.*)            http://www.eventcatalog.ru/$1   [R=301,L]
+
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
 RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
 
-RewriteRule ^index.php$	- [L]
-RewriteRule ^/?watermark/imagemarker.php$	- [L]
-RewriteRule ^/?widgets/ya_widget_articles.php$	- [L]
-RewriteRule ^/?widgets/ya_widget_recent_events.php$	- [L]
-RewriteRule ^/?widgets/yandexwidget.xhtml$	- [L]
-RewriteRule ^/?widgets/yandexwidget2.xhtml$	- [L]
-RewriteRule ^robots.txt$	- [L]
+
+RewriteRule ^index.php$ - [L]
+RewriteRule ^/?watermark/imagemarker.php$       - [L]
+RewriteRule ^/?widgets/ya_widget_articles.php$  - [L]
+RewriteRule ^/?widgets/ya_widget_recent_events.php$     - [L]
+RewriteRule ^/?widgets/yandexwidget.xhtml$      - [L]
+RewriteRule ^/?widgets/yandexwidget2.xhtml$     - [L]
+RewriteRule ^robots.txt$        - [L]
 RewriteRule ^google4121ae304c1e9885.html$        - [L]
 
 RewriteRule ^zserver-status$ - [L]
@@ -67,5 +73,5 @@ RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !.html$
 RewriteRule (.+) $1/ [R=301,L,NE]
 
-RewriteRule ^(.*)$	/index.php [L]
-RewriteRule ^(.*)/$	/index.php [L]
+RewriteRule ^(.*)$      /index.php [L]
+RewriteRule ^(.*)/$     /index.php [L]
