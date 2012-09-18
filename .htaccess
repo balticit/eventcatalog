@@ -17,6 +17,9 @@ RewriteEngine on
 # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 # RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
+RewriteCond %{HTTP_HOST} !^.*eventcatalog\.ru$ [NC]
+RewriteRule ^(.*)$ http://www.eventcatalog.ru/$1 [L,R=301]
+
 RewriteRule ^index.php$ - [L]
 RewriteRule ^/?watermark/imagemarker.php$       - [L]
 RewriteRule ^/?widgets/ya_widget_articles.php$  - [L]
