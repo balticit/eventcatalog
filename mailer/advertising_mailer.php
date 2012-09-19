@@ -51,7 +51,7 @@ foreach($mailer as $item){
             mail('leon-pro@mail.ru',$subject.$f["email"],$body,$add_header);
             sleep(1);
          }
-
+         if($i=='30') {die(); stop(); break;}
          
       }
     
