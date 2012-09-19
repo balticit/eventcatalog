@@ -48,10 +48,10 @@ foreach($mailer as $item){
          $i++;
          if ($f["email"] != '') {
 
-            mail('leon-pro@mail.ru',$subject.$f["email"],$body,$add_header);
+            mail($f["email"],$subject,$body,$add_header);
             sleep(1);
          }
-         if($i=='30') {die(); stop(); break;}
+
          
       }
     
