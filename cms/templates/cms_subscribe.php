@@ -273,7 +273,8 @@ Content-Transfer-Encoding: 8bit
 
 ";
           
-          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$body1.$body2',filter='$filter', header='$add_header', subject='$subject', date='$date', u_subscribed='$user_subscribed', status=0 WHERE id = '1' ");
+          $fullbody = $body1.$body2;
+          SQLProvider::ExecuteNonReturnQuery("update tbl_advertising_mailer_config set body='$fullbody',filter='$filter', header='$add_header', subject='$subject', date='$date', u_subscribed='$user_subscribed', status=0 WHERE id = '1' ");
           echo "Рассылка пройдет в " .$_POST["date"];
         }
 		    else {
