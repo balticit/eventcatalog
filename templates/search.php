@@ -39,8 +39,8 @@
 	<td> </td>
 	<td>
 		<div style="padding: 60px 60px; text-align: center; <?php if ($this->hide_msg) echo 'display:none;'; ?>"><?php CRenderer::RenderControl("message"); ?></div>
-		<table cellpadding="5"   style="vertical-align:top;">
-            <div id="yandex-results-outer" onclick="return {'tld': 'ru', 'language': 'ru', 'encoding': ''}"></div><script type="text/javascript" src="http://site.yandex.net/load/site.js" charset="utf-8"></script>
+		<table cellpadding="5" style="vertical-align:top;">
+            <div id="yandex-results-outer" onclick="return {'tld': 'ru', 'language': 'ru', 'encoding': ''}"></div><script type="text/javascript" src="http://site.yandex.net/load/site.js" charset="windows-1251"></script>
 		</table>
 		<div style="padding-left: 30px;"><p class="text"><?php CRenderer::RenderControl("pager"); ?></p></div>
 	</td>
