@@ -1,5 +1,4 @@
 <?php
-include 'db_connect.php';
 header('Content-Type: text/html; charset=utf-8');
 $limit = 28;
 
@@ -53,7 +52,7 @@ $(document).ready(function() {
 <?php
 $data = array();
 $new_data = array();
-
+$link = mysql_connect("localhost","widget","widget_password",true);
 $sql = mysql_query('SELECT `title_url`, `logo_image`, `title`, UNIX_TIMESTAMP(`registration_date`) as `registration_date` FROM `tbl__agency_doc` WHERE `active` = 1 ORDER BY `registration_date` DESC LIMIT '.$limit.'');
 if (mysql_error()) die(mysql_error());
 WHILE ($r = mysql_fetch_assoc($sql)) {
