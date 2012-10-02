@@ -640,32 +640,40 @@ class artist_details_php extends CPageCodeHandler
             if ($unit['site_address'] != "") {
                 $unit['site_address'] = '<a rel="nofollow" target="_blank" href="' . $unit['site_address'] . '">' . $unit['site_address'] . '</a>';
             }
+           
+            if($unit['rider'] == "1") { $rider = "(c райдером)";} else { $rider = "(без райдера)"; }
+
+            $currency_en = '';
+            $currency = '';
+            switch ($unit['currency']) {
+              case 1:
+                $currency_en = "$";
+                break;
+              case 2:
+                $currency_en = "€";
+                break;
+              default:
+                $currency = " р.";
+                break;
+            }
+            number_format($unit["cost_rent"], 0, ' ', ' ');             
             
             if ($unit['price_from'] != "" && $unit['price_to'] != "") {
             
-              if($unit['rider'] == "1") { $rider = "(c райдером)";} else { $rider = "(без райдера)"; }
-              
-              $currency_en = '';
-              $currency = '';
-              switch ($unit['currency']) {
-                case 1:
-                  $currency_en = "$";
-                  break;
-                case 2:
-                  $currency_en = "€";
-                  break;
-                default:
-                  $currency = " р.";
-                  break;
-              }
-              number_format($unit["cost_rent"], 0, ' ', ' '); 
-
-      				$unit['price'] = "<br /><b>Гонорар</b>: от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency . " до ". $currency_en . number_format($unit['price_to'], 0, ' ', ' ') . $currency . " ".$rider;
+              $unit['price'] = "<br /><b>Гонорар</b>: от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency . " до ". $currency_en . number_format($unit['price_to'], 0, ' ', ' ') . $currency . " ".$rider;
       				
-      			}
-      			else {
-      				$unit['price'] = "";
-      			}
+            }
+            elseif ($unit["price_from"]!="")
+            {
+                $unit['price'] = "<br /><b>Гонорар</b> от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency;
+            }
+            elseif ($unit["price_to"]!="")
+            {
+                $unit['price'] = "<br /><b>Гонорар</b> до ". $currency_en . number_format($unit['price_to'], 0, ' ', ' ') . $currency . " ".$rider;
+            }            
+            else {
+                    $unit['price'] = "";
+            }
 
         }
         else {
