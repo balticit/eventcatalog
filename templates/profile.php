@@ -22,12 +22,18 @@
 	<tr>
 		<td width="130" valign="top"><?php echo $this->logo_a_start; ?><img src="<?php echo $this->logo_link; ?>" class="logo120border"/><?php echo $this->logo_a_end; ?></td>
 		<td valign="top"><span style="font-size:24px; color:#666666; font-weight:bold;"><?php echo $this->user_name; ?></span>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 11px; "><a href="<?php echo $this->msg_link; ?>" <?php echo $this->msg_auth; ?> style="color:#999999;">Написать личное сообщение</a></span><br />
 		<span style="font-size:12px; color:#666666;"><?php echo $this->user_types; ?></span></td>
 	</tr>
 	<tr><td></td>
 	<td valign="top"><?php echo $this->user_info; ?></td>
 	</tr>
+  <tr>
+  <td colspan="2">    
+    <div class="residentQuickLinks" style="margin-top:10px">
+    <a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a>
+    </div>
+  </td>
+</tr>  
 	</table>
 </td></tr>
 <tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>
