@@ -722,6 +722,7 @@ class area_details_php extends CPageCodeHandler
 	`a`.`parking` AS `parking`,
 	`a`.`equipment` AS `equipment`,
 	`a`.`dancing` AS `dancing`,
+  `a`.`dancing_size` AS `dancing_size`,
 	`a`.`style` AS `style`,
 	`a`.`plus` AS `plus`,
 	`a`.`active` AS `active`,
@@ -864,14 +865,13 @@ group by
 			}else{
 				$unit["stage"]="";
 			}
-			
 			//dancing
-      if($unit["dancing"]!='' && $unit["dancing"]!='0'){
-        if(is_numeric($unit["dancing"])) { $val = ' м2'; } else { $val = ''; }
+      if($unit["dancing"]!='' && $unit["dancing"]!='0' && $unit["dancing_size"]>0){
+        if(is_numeric($unit["dancing_size"])) { $val = ' м2'; } else { $val = ''; }
 				$unit["dancing"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Танцпол:</div>
-        	<span>'.$unit["dancing"].$val.'</span>
+        	<span>'.$unit["dancing_size"].$val.'</span>
       	</td></tr>
         ';
 			}else{

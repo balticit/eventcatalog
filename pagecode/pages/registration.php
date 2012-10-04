@@ -684,6 +684,7 @@ class registration_php extends CPageCodeHandler
 
                         if (isset($props["dancing_size"]) && $props["dancing_size"])
                             $props["dancing_size"] = $props["dancing_size_count"];
+                            $props["dancing"] = 1;
                         unset($props["dancing_size_count"]);
 
                         if (isset($props["sound"]) && $props["sound"])
@@ -770,7 +771,7 @@ class registration_php extends CPageCodeHandler
                                 }
                                 $userData->edit_date = time();
                                 $userData->rent = 0;
-                                $userData->dancing = 0;
+                                //$userData->dancing = 0;
                                 $userData->date_open = '';
                                 $table->InsertObject(&$userData);
 
