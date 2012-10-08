@@ -764,6 +764,12 @@ class index_php extends CPageCodeHandler
         @$groupList = $this->GetControl("typeList4");
         @$groupList->dataSource = $groups;
         
+        //Карусель на главной
+        $carouselList = $this->GetControl("carousel");
+        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel ORDER BY sort DESC");
+        $carouselList->dataSource = $carousel;
+        
+        
         /* END BALTICIT MENU IN MAIN */
 		
 	

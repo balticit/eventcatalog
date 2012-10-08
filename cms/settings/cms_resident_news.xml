@@ -20,7 +20,10 @@
 			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField_ResidentNews" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel" customAction="delete"/>
 			<item type="class" class="CActivateResidentNewsGridViewField" dbField="tbl_obj_id" alterItemClass="alterItem" cellType="custom" fieldType="numeric" sourceEncoding="utf-8" filename="cms/settings/misc/activateLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" customAction="activate" messageHeader="Активация на портале EventCatalog.ru" messageFile="cms/settings/misc/activation.htm" messageFileDeactivate="cms/settings/misc/deactivation.htm"/>
+            
+			<item type="class" class="CXMLLookupGridDataField" dbField="show_at_index" label="Показывать на главной странице в каруселе" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/yesNoLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>            
 		</param>
+        
 	</control>
 	<control relativeId="pager" class="CPager" useQuery="1" shiftIndex="0">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="cms/settings/pager/pagerItem.htm"/>

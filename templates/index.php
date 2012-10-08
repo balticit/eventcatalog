@@ -112,8 +112,8 @@
 
 <tr><!-- Eventtv-->
 	<td>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" >
-      <tr>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" >  
+    <tr>
         <td style="padding: 0 30px 10px 30px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr valign="top">
