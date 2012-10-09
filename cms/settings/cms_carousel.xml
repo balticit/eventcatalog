@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page codehandler="cms_resident_news_php" template="cms/templates/cms_carousel.php">
+	<control relativeId="title" class="CPageTitleControl" usetags="0" text="Some Title" />
+	<control relativeId="dataTable" class="CDataGridView" tableName="tbl__carousel" pageSize="60" cssClass="dataTable" orderField="id" orderType="desc" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="id" keyType="numeric" addText="Добавить" addClass="addItem">
+		<param name="fields" type="list">
+			<item type="class" class="CGridDataField" dbField="id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnEdit="0" visibleOnAdd="0"/>
+
+			<item type="class" class="CGridDataField" dbField="name" label="Название ссылки" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+            
+            <item type="class" class="CTinyMCETextareaGridDataField" dbField="description" label="Описание ссылки" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+            
+            <item type="class" class="CGridDataField" dbField="link" label="Ссылка" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+            
+            <item type="class" class="CGridDataField" dbField="sort" label="Сортировка" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+                       
+            
+            <item type="class" class="CFileGridDataField" dbField="image"  uploadLink="/upload/" label="Картинка 450х300:" alterItemClass="alterItem"  labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/" /> 
+            
+			<item type="class" class="CXMLLookupGridDataField" dbField="active" label="Активен" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/activeLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
+            <item type="class" class="CEditGridDataField" dbField="id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CDeleteGridDataField" dbField="id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>            
+        </param>
+	</control>
+</page>
