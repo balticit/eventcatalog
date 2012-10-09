@@ -86,7 +86,7 @@ WHILE ($r = mysql_fetch_assoc($sql)) {
 	$r['url'] =  '/contractor/'.$r['title_url'];
 	$data[] = $r;
 }
-
+//blob sort is cool! 
 foreach ($data as $val) {
 	$n = 0;
 	foreach ($data as $val2) {
@@ -98,7 +98,10 @@ foreach ($data as $val) {
 if ($limit > sizeof($data)) $limit = sizeof($data);
 
 for ($i = 0; $i < $limit; $i++) {
+    if (isset($new_data[$i]))
+    {
 	echo '<div class="list"><a href="http://eventcatalog.ru'.$new_data[$i]['url'].'" target="_blank" class="'.$new_data[$i]['color'].'"><img src="http://eventcatalog.ru/upload/'.$new_data[$i]['image'].'" align="absmiddle" class="photo">'.$new_data[$i]['title'].'</a><span class="time">, '.formatDate($new_data[$i]['registration_date']).'</span></div>';
+    }
 }
 ?>
 <div class="list">&nbsp;</div>
