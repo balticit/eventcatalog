@@ -21,7 +21,13 @@
 	<table width="100%" cellpadding = "0" cellspacing = "0" border="0">
 	<tr>
 		<td width="130" valign="top"><?php echo $this->logo_a_start; ?><img src="<?php echo $this->logo_link; ?>" class="logo120border"/><?php echo $this->logo_a_end; ?></td>
-		<td valign="top"><span style="font-size:24px; color:#666666; font-weight:bold;"><?php echo $this->user_name; ?></span>
+		<td valign="top">
+            <div style="float:left">
+            <span style="font-size:24px; color:#666666; font-weight:bold;"><?php echo $this->user_name; ?></span>
+            </div>
+            <div class="residentQuickLinks" style="margin-bottom: 10px">
+                &nbsp;&nbsp;&nbsp;<a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a>
+    </div>
 		<span style="font-size:12px; color:#666666;"><?php echo $this->user_types; ?></span></td>
 	</tr>
 	<tr><td></td>
@@ -29,9 +35,6 @@
 	</tr>
   <tr>
   <td colspan="2">    
-    <div class="residentQuickLinks" style="margin-top:10px">
-    <a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a>
-    </div>
   </td>
 </tr>  
 	</table>
