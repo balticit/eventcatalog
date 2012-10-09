@@ -28,12 +28,12 @@
 		</tr><tr>
 			<td>Пароль:</td><td><input type="password" name="password" size="20"></td>
 		</tr><tr>	
-			<td></td><td><input style="margin:0" type="checkbox" name="remeber" value="remember" /> Запомнить &nbsp;&nbsp;&nbsp;&nbsp;<a onclick="javascript:locate('/registration/reset/');" style="cursor:pointer;" href="#"><span class="style2">Забыли пароль?</span></a>
+			<td></td><td><span style="margin-left: 2px"><input style="margin:0" type="checkbox" name="remeber" value="remember" /> Запомнить &nbsp;&nbsp;&nbsp;&nbsp;<a onclick="javascript:locate('/registration/reset/');" style="cursor:pointer;" href="#"></span><span class="style2">Забыли пароль?</span></a>
 			</td>
 		</tr><tr>
 		  <td></td>
 			<td align="left">
-			<input type="submit" value="Войти"/></td>
+			<input style="margin-left:-1px" type="submit" value="Войти"/></td>
 		  </tr>
 		  <tr>
 		  <td></td>
