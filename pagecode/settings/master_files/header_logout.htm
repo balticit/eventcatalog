@@ -89,7 +89,8 @@
 				url:    '/ajax/authorize/',
 				data:  {event: 'logout'},
 				success: function(responseText) {
-						document.location = '/';
+						//document.location = '/';
+                        window.location.reload();
 				}
 			});	
 			return false;
