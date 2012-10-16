@@ -159,10 +159,10 @@
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_links.htm"/>
 	</control>
 
-  <control relativeId="carousel" class="CRepeater">
-      <param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/carousel.html"/>
-  </control>    
-
+  <control relativeId="carousel" class="CTemplateObject">
+		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/carousel.html"/>
+  </control>
+    
   <control relativeId="eventtv_links_artist" class="CRepeater">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/etv_links.htm"/>
 	</control>
