@@ -50,11 +50,11 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;background: url(/images/arrow-left-red.png);background-repeat:no-repeat'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
             }
             else
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;background: url(/images/arrow-left-red.png);background-repeat:no-repeat'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
             }
         }
     },
