@@ -42,13 +42,20 @@ var engine = {
     img_dir:'/application/public/upload/',
     setMainArticle: function(id)
     {
-        $("#main_article").html('<a id="carousel_main_link" href="'+this.posts[id].link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+this.posts[id].image+'" ></a><div style="width:452px;position:absolute;top:80%;background:#5ECBF7;" id="carousel_main_text_bg"><div id="carousel_main_text" style="padding:5px"><font color="white" size=2>'+this.posts[id].description+"</font></div></div>");
+        $("#main_article").html('<a id="carousel_main_link;" href="'+this.posts[id].link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+this.posts[id].image+'" ></a><div style="width:442px;position:absolute;top:60%;background:black;opacity:0.75;padding:5px" id="carousel_main_text"><h2 style="color:white;font-size:14px">'+this.posts[id].name+'</h2><p style="color:white">'+this.posts[id].description+"</p></div></div>");
     },
-    setArticleList:function()
+    setArticleList:function(id)
     {
         for(p in this.posts)
         {
-            $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;background: url(/images/arrow-left-red.png);background-repeat:no-repeat'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+            if (this.posts[p].id==id)
+            {
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;background: url(/images/arrow-left-red.png);background-repeat:no-repeat'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+            }
+            else
+            {
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;background: url(/images/arrow-left-red.png);background-repeat:no-repeat'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+            }
         }
     },
     setEvents:function()
@@ -56,19 +63,22 @@ var engine = {
         var that = this;
         $(".carousel").hover(
             function(){
+                $(".carousel a").css("color","black");
+                $(".carousel a").css("text-decoration","none");                
+                
                 $("a",this).css("color","red");
                 $("a",this).css("text-decoration","underline");
                 $("a",this).css("color","red");
                 var id = str_replace("post_", "", this.id);
-                console.log(id);
                 $("#carousel_main_link").attr("href",that.posts[id].link);
                 $("#carousel_main_img").attr("src",that.img_dir+that.posts[id].image);
-                $("#carousel_main_text font").html(that.posts[id].description);
+                $("#carousel_main_text p").html(that.posts[id].description);
+                $("#carousel_main_text h2").html(that.posts[id].name);
             },
             function()
             {
-                $("a",this).css("color","black");
-                $("a",this).css("text-decoration","none");
+                $(".carousel a").css("color","black");
+                $(".carousel a").css("text-decoration","none");
             }
         );
     },
@@ -78,8 +88,9 @@ var engine = {
         {
             this.posts[posts[p].id] = posts[p];
         }
-        this.setMainArticle(posts.pop().id);
-        this.setArticleList();
+        var id = posts.pop().id;
+        this.setMainArticle(id);
+        this.setArticleList(id);
         this.setEvents();
     }
 };
@@ -96,7 +107,7 @@ $(document).ready(function() {
 <link type="text/css" rel="stylesheet" href="/css/jquery.capty.css"/>
 
 <script type="text/javascript" src="/js/jquery.capty.min.js"></script>
-<div style="float:left;width:460px;margin-left: 20px;position: relative;" id="main_article">
+<div style="float:left;width:460px;margin-left: 30px;position: relative;" id="main_article">
 </div>
 <div style="vertical-align: central;margin-top: 60px">
     <ul id="post_list" >

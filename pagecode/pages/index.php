@@ -767,8 +767,12 @@ class index_php extends CPageCodeHandler
         //Карусель на главной
         $carouselList = $this->GetControl("carousel");
         $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel ORDER BY sort DESC");
-        $carouselList->dataSource = $carousel;
-        
+        foreach($carousel as $k=>$c)
+        {
+            $carousel[$k]['name'] = iconv("cp1251","utf-8",$carousel[$k]['name']);
+            $carousel[$k]['description'] = iconv("cp1251","utf-8",  strip_tags($carousel[$k]['description']));
+        }
+        $carouselList->dataSource["articles"] = json_encode($carousel);
         
         /* END BALTICIT MENU IN MAIN */
 		
