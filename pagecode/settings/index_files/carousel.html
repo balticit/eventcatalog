@@ -43,7 +43,6 @@ var engine = {
     setMainArticle: function(id)
     {
         var post = this.getPostById(id);
-        console.log(id);
         $("#main_article").html('<a id="carousel_main_link;" href="'+post.link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+post.image+'" ></a><div style="width:442px;position:absolute;top:80%;background:black;opacity:0.82;padding:5px" id="carousel_main_text"><h2 style="color:white;font-size:14px">'+post.name+'</h2></div></div>');
     },
     setArticleList:function(id)
@@ -74,7 +73,6 @@ var engine = {
                 $(".post_desc",this).show();
                 var id = str_replace("post_", "", this.id);
                 var post = that.getPostById(id);
-                console.log(post);
                 $("#carousel_main_link").attr("href",post.link);
                 $("#carousel_main_img").attr("src",that.img_dir+post.image);
                 $("#carousel_main_text p").html(post.description);
@@ -91,7 +89,6 @@ var engine = {
     //crutch
     getPostById:function(id)
     {
-        console.log(this.posts);
         for(p in this.posts)
         {
             if (this.posts[p].id==id)

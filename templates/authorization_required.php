@@ -18,7 +18,8 @@
 <td><?php CRenderer::RenderControl("submenu"); ?></td>
 </tr>
 */ ?>
-<tr style="height:100%;" valign="top"><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;  padding-bottom: 30px;" align="center">
+<tr style="height:100%;" valign="middle"><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;  padding-bottom: 30px;" align="center">
+    <div style="margin-top: -115px">
 	<h1 style="color:#000"><?php echo $this->reqMessage; ?></h1><br />
 	<form method="post" id="loginform_form">
 		<input type="hidden" name="event" value="login" />
@@ -67,6 +68,7 @@ $(function() {
 </script>
 	
 	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
+    </div>
 				<?php //CRenderer::RenderControl("account"); ?>	
 </td></tr>
 <?php /*
