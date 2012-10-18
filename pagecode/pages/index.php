@@ -766,7 +766,7 @@ class index_php extends CPageCodeHandler
         
         //Карусель на главной
         $carouselList = $this->GetControl("carousel");
-        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel ORDER BY sort DESC");
+        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel WHERE active=1 ORDER BY sort ASC,id DESC limit 0,5");
         foreach($carousel as $k=>$c)
         {
             $carousel[$k]['name'] = iconv("cp1251","utf-8",$carousel[$k]['name']);

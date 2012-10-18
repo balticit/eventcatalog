@@ -42,7 +42,9 @@ var engine = {
     img_dir:'/application/public/upload/',
     setMainArticle: function(id)
     {
-        $("#main_article").html('<a id="carousel_main_link;" href="'+this.posts[id].link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+this.posts[id].image+'" ></a><div style="width:442px;position:absolute;top:60%;background:black;opacity:0.75;padding:5px" id="carousel_main_text"><h2 style="color:white;font-size:14px">'+this.posts[id].name+'</h2><p style="color:white">'+this.posts[id].description+"</p></div></div>");
+        var post = this.getPostById(id);
+        console.log(id);
+        $("#main_article").html('<a id="carousel_main_link;" href="'+post.link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+post.image+'" ></a><div style="width:442px;position:absolute;top:80%;background:black;opacity:0.82;padding:5px" id="carousel_main_text"><h2 style="color:white;font-size:14px">'+post.name+'</h2></div></div>');
     },
     setArticleList:function(id)
     {
@@ -50,11 +52,11 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;' class='post_desc'>"+this.posts[p].description+"</div></li>");
             }
             else
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;display:none;'  class='post_desc'>"+this.posts[p].description+"</div></li>");
             }
         }
     },
@@ -65,30 +67,44 @@ var engine = {
             function(){
                 $(".carousel a").css("color","black");
                 $(".carousel a").css("text-decoration","none");                
+                $(".post_desc").hide();
                 
                 $("a",this).css("color","red");
                 $("a",this).css("text-decoration","underline");
-                $("a",this).css("color","red");
+                $(".post_desc",this).show();
                 var id = str_replace("post_", "", this.id);
-                $("#carousel_main_link").attr("href",that.posts[id].link);
-                $("#carousel_main_img").attr("src",that.img_dir+that.posts[id].image);
-                $("#carousel_main_text p").html(that.posts[id].description);
-                $("#carousel_main_text h2").html(that.posts[id].name);
+                var post = that.getPostById(id);
+                console.log(post);
+                $("#carousel_main_link").attr("href",post.link);
+                $("#carousel_main_img").attr("src",that.img_dir+post.image);
+                $("#carousel_main_text p").html(post.description);
+                $("#carousel_main_text h2").html(post.name);
             },
             function()
             {
                 $(".carousel a").css("color","black");
                 $(".carousel a").css("text-decoration","none");
+                $(".post_desc").hide();
             }
         );
     },
+    //crutch
+    getPostById:function(id)
+    {
+        console.log(this.posts);
+        for(p in this.posts)
+        {
+            if (this.posts[p].id==id)
+            {
+                return this.posts[p];
+            }
+        }
+        return false;
+    },
     init:function(posts)
     {
-        for(p in posts)
-        {
-            this.posts[posts[p].id] = posts[p];
-        }
-        var id = posts.pop().id;
+        this.posts = posts.slice(0);
+        var id = posts[0].id;
         this.setMainArticle(id);
         this.setArticleList(id);
         this.setEvents();

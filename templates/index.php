@@ -121,46 +121,6 @@
         </table>
     </td>
 </tr>
-<tr><!-- Eventtv-->
-	<td>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" >  
-    <tr>
-        <td style="padding: 0 30px 10px 30px;">
-          <table border="0" cellpadding="0" cellspacing="0" width="100%">
-            <tr valign="top">
-            <td width="" rowspan="10">
-				<div class='first-col'>
-					<div class='sub-title-block'><a href='/eventtv/' class='sub-title'>EVENT TV</a><a onclick="OpenEventTVForm(); return false;" class="common" href="">Разместить видео на EVENT TV</a></div>
-					<div class='main-page-video' style="width: 96%; height: 300px;"><?php CRenderer::RenderControl("eventtv_video"); ?>
-					</div>
-					<div class='video-descr'>
-						Продакшн: <?php CRenderer::RenderControl("eventtv_links_contr"); ?>
-						<br>
-						Ведущие: <?php CRenderer::RenderControl("eventtv_links_artist"); ?>
-					</div>
-				</div>
-				<div class='first-col'>
-					<noindex>
-					<div class='sub-title-block' style='margin-right:-18px;'><a rel="nofollow" href='http://eventpremia.ru/' target="_blank" class='sub-title'>Премия Событие</a><a rel="nofollow" href="http://eventpremia.ru/participation/member-registration" target="_blank">Отправить заявку на участие</a></div>
-					<div class='main-page-video' style="width: 96%; height: 300px; border: 1px solid #999999; overflow: hidden;"><img src="/images/eventpremia-logo.png" style="width: 100%; display: block; margin-top: -20px;"></iframe>
-					</div>
-					<div class='video-descr'>
-						<a style='color: #000' rel="nofollow" target="_blank" href='http://eventpremia.ru/laureaty'>Лауреаты премии 2011</a><br>
-						<a style='color: #000' rel="nofollow" target="_blank" href='http://eventpremia.ru/partners'>Стать партнером премии</a>
-					</div>
-					</noindex>
-				</div>
-			</td>
-              <td width='240' align="right" rowspan="3" style='vertical-align: middle'>
-                <iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:240px; height:360px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"></iframe>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-          </table>
-        </td>
-</tr>
 <tr>
 	<td height='10px' class='separate-line'></td>
 </tr>
