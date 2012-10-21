@@ -31,6 +31,7 @@ class CAuthorizer extends CObject
 		$su->name = $user["title"];
 		$su->authorized = true;
 		$su->id = $user["tbl_obj_id"];
+		$su->edit_date = time();
 		$su->Save();
 		$sessionUser = $su;
 		return true;
@@ -64,6 +65,7 @@ class CAuthorizer extends CObject
 		$su->name = $user["title"];
 		$su->authorized = true;
 		$su->id = $user["tbl_obj_id"];
+		$su->edit_date = time();
 		$su->Save();
 		$sessionUser = $su;
 		return true;
