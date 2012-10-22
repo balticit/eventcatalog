@@ -3439,3 +3439,4 @@ border-radius: 3px; /* CSS3 */
 /* MENU AND SUBMENU */
 .submenu_controll {display:none; height:25px; padding-left: 37px; padding-top:5px;}
 .submenu_controll.active { display:block}
+.lastVisitSite { background:url(../images/flag_in_site.png) no-repeat 0 2px; padding-left:16px}
