@@ -18,6 +18,9 @@ $(document).ready(function(){
     var curMenu = $(this).attr("id");
     $('.submenu_controll').removeClass('active');
     $('div.'+curMenu+'_show').addClass('active');
+  }).mouseleave(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active');
   });
 });	
 </script>

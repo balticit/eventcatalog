@@ -563,7 +563,7 @@ class u_cabinet_php extends CPageCodeHandler
 		$cab["edit_link_title"] = "редактировать профиль";
 		
 		
-		$cab["see_my_profile"] = "Как видят мой профиль";
+		$cab["see_my_profile"] = "Как мой профиль видят другие";
 		$cab["see_all_users"] = "все пользователи";
 		$cab["see_authorized_users"] = "авторизованные";
 		

@@ -45,6 +45,9 @@ class profile_php extends CPageCodeHandler
     if (!$user->authorized) {
       $this->msg_auth = "onclick=\"javascript: ShowMsgMessage();return false;\"";
     }
+    
+    $this->last_visit_date = '';
+    
 		if ($user_type == "user") {
 			$user_types = SQLProvider::ExecuteQuery( "select * from `tbl__registered_user_types` where user_id = ".$user_id);
 			foreach ($user_types as $key=>$user_type)
@@ -104,7 +107,7 @@ class profile_php extends CPageCodeHandler
 			// IF not reg 
 			
 			if ($user_data["last_visit_date"] != '') {
-        $this->last_visit_date .= "<span>Áûכ םא סאיעו:</span> ".lastVisitSite($user_data["last_visit_date"])."<br />";
+        $this->last_visit_date .= lastVisitSite($user_data["last_visit_date"]);
       }
 			
 			

@@ -25,9 +25,11 @@
             <div style="float:left">
             <span style="font-size:24px; color:#666666; font-weight:bold;"><?php echo $this->user_name; ?></span>
             </div>
-            <div class="residentQuickLinks" style="margin-bottom: 10px">
-                &nbsp;&nbsp;&nbsp;<a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a> <span style="font-size:12px; color:#666666;"><?php echo $this->last_visit_date ; ?></span>
-    </div>
+            <div class="residentQuickLinks" style="margin-bottom: 10px; float:left">
+                &nbsp;&nbsp;&nbsp;<a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a> 
+            </div>
+            <div style="float:left; padding-top:13px"><?php echo $this->last_visit_date ; ?></div>
+            <div class="clear"></div>
 		<span style="font-size:12px; color:#666666;"><?php echo $this->user_types; ?></span>
     
     </td>
