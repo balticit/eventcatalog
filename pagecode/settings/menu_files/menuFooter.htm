@@ -10,6 +10,7 @@
 	$('.menu_btn').hover(function(){
 	  $('.menu_btn').css('background-position','0 0');
     $(this).css('background-position','0 -34px');
+  //  $(this).parents("a:first").addClass('active');
   });
 	
 $(document).ready(function(){
@@ -18,9 +19,16 @@ $(document).ready(function(){
     var curMenu = $(this).attr("id");
     $('.submenu_controll').removeClass('active');
     $('div.'+curMenu+'_show').addClass('active');
-  }).mouseleave(function(){
+    
+    
+    
+  });
+  
+  $("#menu_controll_wrapper").mouseleave(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active');
+    
   });
+  
 });	
 </script>
