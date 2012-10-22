@@ -27,6 +27,29 @@ class contractor_details_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+    
+        // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
         /*Провека адреса*/
         $id_str = GP("id");
         if (!is_null($id_str)) {
@@ -404,6 +427,7 @@ class contractor_details_php extends CPageCodeHandler
 				`c`.`address` AS `address`,
 				`c`.`phone` AS `phone`,
 				`c`.`site_address` AS `site_address`,
+				`c`.`last_visit_date` AS `last_visit_date`,
 				`c`.`email` AS `email`,
 				`c`.`selection` AS `selection`,
 				`c`.`logo_image` AS `logo_image`,
@@ -431,6 +455,7 @@ class contractor_details_php extends CPageCodeHandler
 					`ct`.`title`,
 					`c`.`kind_of_activity`,
 					`c`.`short_description`,
+					`c`.`last_visit_date`,
 					`c`.`address`,
 					`c`.`phone`,
 					`c`.`site_address`,
@@ -444,6 +469,7 @@ class contractor_details_php extends CPageCodeHandler
 	  else
 		  CURLHandler::ErrorPage();
                 $unit['reg_date'] = onSiteTime($unit['registration_date']);
+                $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date']);
                 $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
 		$pro_type = getProType('contractor',$this->id);
 		$unit['pro_logo_prew'] = '';
@@ -589,12 +615,12 @@ class contractor_details_php extends CPageCodeHandler
 		if ($fav_add) {
 			$msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-			$unit["fav_link"] = '<a class="contractor in_favorite" href="/contractor/'.$id_str.'?add=favorite" '.$msg.'><span>Добавить в избранное</span></a>';
+			$unit["fav_link"] = '<noindex><a class="contractor in_favorite" rel="nofollow" href="/contractor/'.$id_str.'?add=favorite" '.$msg.'><span>Добавить в избранное</span></a></noindex>';
 		}
 		else {
 			$msg = "";
 			if (!$user->authorized) $msg = 'onclick="javascript: ShowFavMessage(); return false;"';
-			$unit["fav_link"] = '<a class="contractor out_favorite" href="/contractor/'.$id_str.'?delete=favorite" '.$msg.'><span>Убрать из избранного</span></a>';
+			$unit["fav_link"] = '<noindex><a class="contractor out_favorite" rel="nofollow" href="/contractor/'.$id_str.'?delete=favorite" '.$msg.'><span>Убрать из избранного</span></a></noindex>';
 		}
         //process activities
         $activityIds = explode("|", $unit["activity_ids"]);

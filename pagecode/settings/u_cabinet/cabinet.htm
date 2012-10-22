@@ -3,7 +3,11 @@
         <td width="130" valign="top"><img border="0" height="80" width="120" src="{logo}" style="border: 1px #999999 solid;"/></td>
         <td valign="top">
           <span style="font-size:24px; color:#666666; font-weight:bold;">{user_name}</span>&nbsp;&nbsp;&nbsp;
-          <span style="font-size: 11px; "><a href="{edit_link_href}" style="color:#999999;">{edit_link_title}</a></span>
+          <a href="{edit_link_href}" style="text-decoration:underline; font-size:14px;">{edit_link_title}</a>&nbsp;&nbsp;&nbsp;
+          <span style="font-size:14px; ">{see_my_profile}:
+          <a href="/u_cabinet?see=all" style="text-decoration:underline; font-size:14px;">{see_all_users}</a>&nbsp;|&nbsp;
+          <a href="/u_cabinet?see=auth" style="text-decoration:underline; font-size:14px;">{see_authorized_users}</a>
+          </span>
           <br />
           <span style="font-size:12px; color:#666666;">{user_types}</span>
           <div></div>

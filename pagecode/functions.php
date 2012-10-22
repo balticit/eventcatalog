@@ -69,6 +69,25 @@ function onSiteTime($regdate = ''){
     return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день'));
 }
 
+function lastVisitSite($visit_date = ''){
+    $visit_date = (is_int($visit_date)?$visit_date:strtotime($visit_date));
+    if(empty($visit_date)) return false;
+    $sitetime = time() - $visit_date;
+    // годы 365*24*3600 = 31536000;
+    $years = (int)($sitetime/31536000);
+    // мес€цы 30*24*3600 = 2592000
+    $months = (int)(($sitetime - $years*31536000)/2592000);
+    // дни 24*3600 = 86400
+    $days = (int)(($sitetime - $years*31536000 - $months*2592000)/86400);
+    // часы 60*60 = 3600
+    $hour = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400)/3600);
+    // минуты 60 = 60
+    $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
+    
+    
+    return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день')).' '.($months>0||$years>0?'':($hour>0?declension($hour,' час',' часа',' часов'):'1 час')).' '.($months>0||$years>0?'':($minut>0?declension($minut,' минуту',' минуты',' минут'):'1 минуту')). ' назад';
+}
+
 function UserAge($birthday = ''){
 
 // ”казываем дату и врем€ ¬ашего рождени€(дл€ примера

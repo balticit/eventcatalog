@@ -48,6 +48,29 @@ class agency_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+        // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
+    
         $metadata = $this->GetControl("metadata");
         $metadata->keywords = "эвент-агентство, программа мероприятий";
         $metadata->description = "Эвент-агентства – категории, контакты и услуги. Проведение мероприятий «под ключ»: подбор программы мероприятия, площадки, оформления и представления. Рейтинг и отзывы эвент-агентств.";

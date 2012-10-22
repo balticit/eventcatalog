@@ -103,6 +103,12 @@ class profile_php extends CPageCodeHandler
 			
 			// IF not reg 
 			
+			if ($user_data["last_visit_date"] != '') {
+        $this->last_visit_date .= "<span>Был на сайте:</span> ".lastVisitSite($user_data["last_visit_date"])."<br />";
+      }
+			
+			
+			
 			$show = explode('|',$user_data["display_type"]);
 			
 
@@ -164,8 +170,9 @@ class profile_php extends CPageCodeHandler
         }
         
 
-
+        if ($user_data["registration_date"] != '') {
         $this->user_info .= "<b>На сайте:</b> ".onSiteTime($user_data["registration_date"])."<br />";
+        }
         
         if ($user_data["birthday"] != '' && $user_data["birthday"] != '0000-00-00') {
           if ($user->authorized && $show[4]== '1' or $show[4]== '0') {

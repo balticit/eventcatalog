@@ -50,6 +50,28 @@ class artist_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+            // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
         $metadata = $this->GetControl("metadata");
         $metadata->keywords = "артисты, эвент-каталог, ведущий на свадьбу";
         $metadata->description = "Ёвент-каталог содержит контактные данные артистов и музыкальных групп, выступающих на банкетах, вечеринках и корпоративных меропри€ти€х: ведущие на свадьбу, юбилей и семейное торжество.";
@@ -494,7 +516,7 @@ class artist_php extends CPageCodeHandler
 				
 				$submenu = $this->GetControl("submenu");
 				$submenu->headerTemplate =
-					'<div style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
+					'<div class="artist_btn_show submenu_controll" style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
 					<form method="get" id="form_find_artist" action="/artist/">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
 				$submenu->footerTemplate =
