@@ -51,13 +51,14 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;' class='post_desc'>"+this.posts[p].description+"</div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><gg></gg><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;' class='post_desc'>"+this.posts[p].description+"</div><div class='border'></div></li>");
             }
             else
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;display:none;'  class='post_desc'>"+this.posts[p].description+"</div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><gg></gg><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;'  class='post_desc'>"+this.posts[p].description+"</div><div class='border'></div></li>");
             }
         }
+        $(".carousel .border:not(:last)").css({'border-top': "1px dashed gray",'opacity':"0.5",'height': "18px",'margin-right':"10px",'margin-top':"4px"});
     },
     setEvents:function()
     {
@@ -65,8 +66,13 @@ var engine = {
         $(".carousel").hover(
             function(){
                 $(".carousel a").css("color","black");
-                $(".carousel a").css("text-decoration","none");                
-                $(".post_desc").hide();
+                $(".carousel a").css("text-decoration","none");   
+                $(".carousel gg").hide(); 
+                
+                $("gg",this).html("&gt;");
+                $(".carousel gg").show();
+                $("gg",this).css("color","red");
+                $("gg",this).css("font-weight","bold");
                 
                 $("a",this).css("color","red");
                 $("a",this).css("text-decoration","underline");
@@ -80,9 +86,10 @@ var engine = {
             },
             function()
             {
+                $(".carousel gg").hide();
+                $("gg",this).html("");
                 $(".carousel a").css("color","black");
                 $(".carousel a").css("text-decoration","none");
-                $(".post_desc").hide();
             }
         );
     },
@@ -119,7 +126,7 @@ $(document).ready(function() {
 </script>
 <div style="float:left;width:460px;margin-left: 30px;position: relative;" id="main_article">
 </div>
-<div style="vertical-align: central;margin-top: 60px">
+<div style="vertical-align: central;">
     <ul id="post_list" >
         
     </ul>
