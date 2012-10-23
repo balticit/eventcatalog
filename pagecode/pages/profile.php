@@ -107,7 +107,7 @@ class profile_php extends CPageCodeHandler
 			// IF not reg 
 			
 			if ($user_data["last_visit_date"] != '') {
-        $this->last_visit_date .= lastVisitSite($user_data["last_visit_date"]);
+        $this->last_visit_date .= lastVisitSite($user_data["last_visit_date"],$user_data["registration_date"]);
       }
 			
 			

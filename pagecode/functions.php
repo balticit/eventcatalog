@@ -69,7 +69,8 @@ function onSiteTime($regdate = ''){
     return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день'));
 }
 
-function lastVisitSite($visit_date = ''){
+function lastVisitSite($visit_date,$reg_date){
+    if($visit_date == '0000-00-00 00:00:00') {$visit_date = $reg_date;}
     $visit_date = (is_int($visit_date)?$visit_date:strtotime($visit_date));
     if(empty($visit_date)) return false;
     $sitetime = time() - $visit_date;
@@ -84,8 +85,8 @@ function lastVisitSite($visit_date = ''){
     // минуты 60 = 60
     $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
 
-if($years > 0) { return "<span class=\"lastVisitSite\" >Ѕыл на сайте:</span> больше года назад"; }
-if($months > 0) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> больше мес€ца назад";}
+//if($years > 0) { return "<span class=\"lastVisitSite\" >Ѕыл на сайте:</span> больше года назад"; }
+if($months > 0 || $years > 0) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> больше мес€ца назад";}
 if($days > 7) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> больше недели назад";}
 if($days > 1) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> ".declension($days,' день',' дн€',' дней')." назад";}   
 if($hour > 1) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> ".declension($hour,' час',' часа',' часов')." назад";}

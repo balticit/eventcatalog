@@ -28,7 +28,7 @@
             <div class="residentQuickLinks" style="margin-bottom: 10px; float:left">
                 &nbsp;&nbsp;&nbsp;<a class="send_message" href="<?php echo $this->msg_link; ?>"><span <?php echo $this->msg_auth; ?>>Написать личное сообщение</span></a> 
             </div>
-            <div style="float:left; padding-top:13px"><?php echo $this->last_visit_date ; ?></div>
+            <div style="float:left; padding-top:10px"><?php echo $this->last_visit_date ; ?></div>
             <div class="clear"></div>
 		<span style="font-size:12px; color:#666666;"><?php echo $this->user_types; ?></span>
     

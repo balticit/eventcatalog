@@ -1,4 +1,4 @@
-<td width="70%">
+<td width="70%" class="submenu_controll_leave">
 	<a href="/pr/" class="ad-btn">Реклама в ЕК</a>
 </td>
 </tr>
@@ -19,15 +19,17 @@ $(document).ready(function(){
     var curMenu = $(this).attr("id");
     $('.submenu_controll').removeClass('active');
     $('div.'+curMenu+'_show').addClass('active');
-    
-    
-    
+ 
   });
   
   $("#menu_controll_wrapper").mouseleave(function(){
     $('.submenu_controll').removeClass('active');
-    $('.submenu_controll:first').addClass('active');
-    
+    $('.submenu_controll:first').addClass('active');    
+  });
+  
+  $(".submenu_controll_leave").mouseenter(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active'); 
   });
   
 });	

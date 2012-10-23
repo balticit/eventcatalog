@@ -771,7 +771,7 @@ group by
 			else
 			CURLHandler::ErrorPage();
 			$unit['reg_date'] = onSiteTime($unit['registration_date']);
-			$unit['last_visit_date'] = lastVisitSite($unit['last_visit_date']);
+			$unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['registration_date']);
 			$unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
 			
 			$pro_type = getProType('area',$this->id);

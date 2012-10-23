@@ -509,7 +509,7 @@ class artist_details_php extends CPageCodeHandler
 		}
         // время на сайте
         $unit['reg_date'] = onSiteTime($unit['reg_date']);
-        $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date']);
+        $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['reg_date']);
         $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
         $unit["u_link"] = "";
         $u_links = SQLProvider::ExecuteQuery("select ru.tbl_obj_id, IF(ru.nikname is NULL or ru.nikname = '',ru.title,ru.nikname) title from tbl__registered_user_link_resident rl left join tbl__registered_user ru on ru.tbl_obj_id = rl.user_id

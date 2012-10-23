@@ -563,9 +563,14 @@ class u_cabinet_php extends CPageCodeHandler
 		$cab["edit_link_title"] = "редактировать профиль";
 		
 		
-		$cab["see_my_profile"] = "Как мой профиль видят другие";
-		$cab["see_all_users"] = "все пользователи";
-		$cab["see_authorized_users"] = "авторизованные";
+
+		$cab["see_my_profile"] = '';
+		if(!isset($_GET['see'])) {
+		$cab["see_my_profile"] = '<span>Как мой профиль видят другие:
+      <a href="/u_cabinet?see=all" target="_blank" style="text-decoration:underline;">все пользователи</a>&nbsp;|&nbsp;
+      <a href="/u_cabinet?see=auth" target="_blank" style="text-decoration:underline;">авторизованные</a>
+      </span>';
+		}
 		
 
 		$en_month = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
