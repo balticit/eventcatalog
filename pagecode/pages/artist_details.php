@@ -691,7 +691,7 @@ class artist_details_php extends CPageCodeHandler
             }
             elseif ($unit["price_from"]!="")
             {
-                $unit['price'] = "<br /><b>Гонорар</b> от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency;
+                $unit['price'] = "<br /><b>Гонорар</b> от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency. " ".$rider;
             }
             elseif ($unit["price_to"]!="")
             {
