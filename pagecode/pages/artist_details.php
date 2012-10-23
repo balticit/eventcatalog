@@ -395,6 +395,8 @@ class artist_details_php extends CPageCodeHandler
                 $letterFilter = $this->GetControl("letterFilter");
                 $letterFilter->dataSource = $letters;
 
+
+
                 $submenu = $this->GetControl("submenu");
                 $submenu->headerTemplate =
                     '<div class="artist_btn_show submenu_controll" style="background: #{bgcolor} url(/images/menu1/bg_artist.png) repeat-x; height:30px; padding: 0 15px 0 37px; position: relative;">
@@ -477,7 +479,7 @@ class artist_details_php extends CPageCodeHandler
         `rg`.`title` AS `region_title`,
         `cn`.`title` AS `country_title`,
         `ar`.`city`,
-        `ar`.`last_visit_date`,
+        `ar`.`last_visit_date` AS `last_visit_date`,
         `ar`.`other_city`,
         `ar`.`priority` AS `priority`,
         `ar`.`currency` AS `currency`,
@@ -508,8 +510,9 @@ class artist_details_php extends CPageCodeHandler
 			$unit['pro_logo_prew'] = getProLogoForPreview('artist');
 		}
         // время на сайте
+        $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'], $unit['reg_date']);
         $unit['reg_date'] = onSiteTime($unit['reg_date']);
-        $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['reg_date']);
+        
         $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
         $unit["u_link"] = "";
         $u_links = SQLProvider::ExecuteQuery("select ru.tbl_obj_id, IF(ru.nikname is NULL or ru.nikname = '',ru.title,ru.nikname) title from tbl__registered_user_link_resident rl left join tbl__registered_user ru on ru.tbl_obj_id = rl.user_id

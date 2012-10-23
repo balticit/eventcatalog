@@ -15,7 +15,7 @@
 	
 $(document).ready(function(){
 	$('.submenu_controll:first').addClass('active');
-	$("#menu_controll a.rule_button:not(:last) div").mouseenter(function(){
+	$("a.rule_button #area_btn, a.rule_button #artist_btn, a.rule_button #contractor_btn, a.rule_button #agency_btn, a.rule_button #black_btn").mouseenter(function(){
     var curMenu = $(this).attr("id");
     $('.submenu_controll').removeClass('active');
     $('div.'+curMenu+'_show').addClass('active');
@@ -26,6 +26,14 @@ $(document).ready(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active');    
   });
+  
+$("#menu_controll a.rule_button:last div").mouseenter(function(){
+  var curMenu = $(this).attr("id");
+  if(curMenu != 'black_btn') {
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active');
+  }
+}); 
   
   $(".submenu_controll_leave").mouseenter(function(){
     $('.submenu_controll').removeClass('active');
