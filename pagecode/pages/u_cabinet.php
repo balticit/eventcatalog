@@ -559,13 +559,18 @@ class u_cabinet_php extends CPageCodeHandler
 		  $cab["logo"] = "/images/nologo.png";
 		else
 		  $cab["logo"] = "/upload/".GetFileName($user_info["logo"]);
+		
+		
+		
+    $cab["edit_link_href"] = "";
+		$cab["edit_link_title"] = "";
+    
+		$cab["see_my_profile"] = '';
+		if(!isset($_GET['see'])) {
+		
 		$cab["edit_link_href"] = "/u_cabinet/data/personal/action/edit";
 		$cab["edit_link_title"] = "редактировать профиль";
 		
-		
-
-		$cab["see_my_profile"] = '';
-		if(!isset($_GET['see'])) {
 		$cab["see_my_profile"] = '<span>Как мой профиль видят другие:
       <a href="/u_cabinet?see=all" target="_blank" style="text-decoration:underline;">все пользователи</a>&nbsp;|&nbsp;
       <a href="/u_cabinet?see=auth" target="_blank" style="text-decoration:underline;">авторизованные</a>
