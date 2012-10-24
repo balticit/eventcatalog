@@ -69,6 +69,32 @@ function onSiteTime($regdate = ''){
     return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день'));
 }
 
+function lastVisitSite($visit_date,$reg_date){
+    if($visit_date == '0000-00-00 00:00:00') {$visit_date = $reg_date;}
+    $visit_date = (is_int($visit_date)?$visit_date:strtotime($visit_date));
+    if(empty($visit_date)) return false;
+    $sitetime = time() - $visit_date;
+    // годы 365*24*3600 = 31536000;
+    $years = (int)($sitetime/31536000);
+    // мес€цы 30*24*3600 = 2592000
+    $months = (int)(($sitetime - $years*31536000)/2592000);
+    // дни 24*3600 = 86400
+    $days = (int)(($sitetime - $years*31536000 - $months*2592000)/86400);
+    // часы 60*60 = 3600
+    $hour = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400)/3600);
+    // минуты 60 = 60
+    $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
+
+//if($years > 0) { return "<span class=\"lastVisitSite\" >Ѕыл на сайте:</span> больше года назад"; }
+if($months > 0 || $years > 0) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> больше мес€ца назад";}
+if($days > 7) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> больше недели назад";}
+if($days > 1) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> ".declension($days,' день',' дн€',' дней')." назад";}   
+if($hour > 1) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> ".declension($hour,' час',' часа',' часов')." назад";}
+if($minut > 1) { return "<span class=\"lastVisitSite\">Ѕыл на сайте:</span> ".declension($minut,' минуту',' минуты',' минут')." назад";}
+    
+   // return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день')).' '.($months>0||$years>0?'':($hour>0?declension($hour,' час',' часа',' часов'):'1 час')).' '.($months>0||$years>0?'':($minut>0?declension($minut,' минуту',' минуты',' минут'):'1 минуту')). ' назад';
+}
+
 function UserAge($birthday = ''){
 
 // ”казываем дату и врем€ ¬ашего рождени€(дл€ примера
@@ -108,6 +134,8 @@ $age_in_minutes = floor($period_unix / 60);
 
 // ¬озраст измер€емый секундами
 $age_in_seconds = $period_unix;
+
+
 
 return $age_in_years.($age_in_years>0?declension($age_in_years, ' год', ' года', ' лет', false).' ':'');
 

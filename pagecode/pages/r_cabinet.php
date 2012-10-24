@@ -2452,8 +2452,15 @@ $(function() {
         $newsblock = $this->GetControl("news");
 		$newsblock->dataSource = $news;
 
+$left_menu = array(
+				"/add_res_news" => array(
+					"type" => "link",
+					"text" => "Добавить новость",
+					"color" => "black",
+					"selected" => false));
+
 		$cab["main_area"] = "
-			<a href='/add_res_news' style='color: black;'>Добавить новость</a><br><br>
+
       <form method='post' id='fav_del_form'>
 			<table cellspacing='0' cellpadding='10' width='900'>
 			<tr style=\"color: #999999; font-weight: bold;\">
@@ -2572,7 +2579,10 @@ $(function() {
 				if ($menu["type"] == "label")
 				$menu_render .= $menu["text"]."<br>";
 				else {
+				  if($key = '/add_res_news') { $menu_render .= "<a href=".$key." style=\"color: ".$menu["color"].";\">";}
+				  else {
 					$menu_render .= "<a href=/r_cabinet/data/".$key." style=\"color: ".$menu["color"].";\">";
+					}
 					if ($menu["selected"])
 						$menu_render .= "<span style=\" text-decoration: underline;\">".$menu["text"]."</span>";
 					else

@@ -559,8 +559,24 @@ class u_cabinet_php extends CPageCodeHandler
 		  $cab["logo"] = "/images/nologo.png";
 		else
 		  $cab["logo"] = "/upload/".GetFileName($user_info["logo"]);
+		
+		
+		
+    $cab["edit_link_href"] = "";
+		$cab["edit_link_title"] = "";
+    
+		$cab["see_my_profile"] = '';
+		if(!isset($_GET['see'])) {
+		
 		$cab["edit_link_href"] = "/u_cabinet/data/personal/action/edit";
 		$cab["edit_link_title"] = "редактировать профиль";
+		
+		$cab["see_my_profile"] = '<span>Как мой профиль видят другие:
+      <a href="/u_cabinet?see=all" target="_blank" style="text-decoration:underline;">все пользователи</a>&nbsp;|&nbsp;
+      <a href="/u_cabinet?see=auth" target="_blank" style="text-decoration:underline;">авторизованные</a>
+      </span>';
+		}
+		
 
 		$en_month = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
 		$ru_month = array("января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
@@ -579,13 +595,211 @@ class u_cabinet_php extends CPageCodeHandler
 			}
 			else
 			{
+			
+			
+			$cab["main_area"] = '<div class="u_info_block">';
+			if ($user_info["sity"] != '') $cab["main_area"] .= "<b>Город:</b> ".$user_info["sity"]."<br />";
+			
+			 if(isset($_GET['see'])) {
+			 
+          $show = explode('|',$user_info["display_type"]);
+            
+
+            
+          if($_GET['see'] == 'all') {
+          
+
+            if ($show[10]== '0') {
+              $cab["main_area"] .= "<b>Мобильный телефон:</b> ".$user_info["contact_phone"]."<br />";
+            }
+            if ($show[10]== '1') {
+              $cab["main_area"] .= '<b>Мобильный телефон:</b> *******<br />';
+            }
+          
+            
+            if ($user_info["skype"] != '' && $user_info["skype"] != '0') {
+              if ($show[2]== '0') {
+                $cab["main_area"] .= "<b>Skype:</b> ".$user_info["skype"]."<br />";
+              }
+              if ($show[2]== '1') {
+                $cab["main_area"] .= '<b>Skype:</b> *******<br />';
+              }
+            }
+            
+            if ($user_info["icq"] != '' && $user_info["icq"] != '0') {
+              if ($show[3]== '0') {
+                $cab["main_area"] .= "<b>ICQ:</b> ".$user_info["icq"]."<br />";
+              }
+              if ($show[3]== '1') {
+                $cab["main_area"] .= '<b>ICQ:</b> *******<br />';
+              }
+            }
+            
+            if ($user_info["company_phone"] != '') {
+              if ($show[11]== '0') {
+                $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
+              }
+              if ($show[11]== '1') {
+                $cab["main_area"] .= '<b>Рабочий телефон:</b> *******<br />';
+              }
+            }
+
+            if ($user_info["site"] != '') {
+              if ($show[8]== '0') {
+                $cab["main_area"] .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
+              }
+              if ($show[8]== '1') {
+                $cab["main_area"] .='<b>Сайт компании:</b> *******<br /><br />';
+              }
+            }
+    
+            if ($user_info["registration_date"] != '') {
+            $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
+            }
+            
+            if ($user_info["birthday"] != '' && $user_info["birthday"] != '0000-00-00') {
+              if ( $show[4]== '0') {
+                $cab["main_area"] .= "<b>Возраст:</b> ".UserAge($user_info["birthday"])."<br />";
+              }
+              if ($show[4]== '1') {
+                $cab["main_area"] .= '<b>Возраст:</b> *******<br />';
+              }
+            }
+            
+            if ($user_info["sex"] != '') {
+              if ($show[5]== '0') {
+          			if ($user_info["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
+                if ($user_info["sex"] != '') $cab["main_area"] .= "<b>Пол:</b> ".$sex."<br />";
+              }
+              if ($show[5]== '1') {
+                  $cab["main_area"] .= '<b>Пол:</b> *******<br />';
+              }
+            }
+    
+            if (!IsNullOrEmpty($user_info["company"])) {
+              if ($show[6]== '0') {
+        				$cab["main_area"] .= "<b>Компания:</b> ".$user_info["company"]."<br />";
+        			}
+        			if ($show[6]== '1') {
+                $cab["main_area"] .= '<b>Компания:</b> *******<br />';
+              }
+            }
+            
+            if ($user_info["position"] != '') {
+              if ($show[7]== '0') {
+                $cab["main_area"] .= "<b>Должность:</b> ".$user_info["position"]."<br />";
+              }
+              if ($show[7]== '1') {
+                $cab["main_area"] .= '<b>Должность:</b> *******<br />';
+              }
+            }
+            
+            if ($user_info["address"] != '') {
+              if ($show[9]== '0') {
+                $cab["main_area"] .= "<b>Адрес:</b> ".$user_info["address"]."<br />";
+              }
+              if ($show[9]== '1') {
+                $cab["main_area"] .= '<b>Адрес:</b> *******<br />';
+              }
+            }
+            
+            
+            
+            
+          
+          }
+          if($_GET['see'] =='auth') {
+          
+          
+          
+            if ($show[10]== '0' or $show[10]== '1') {
+              $cab["main_area"] .= "<b>Мобильный телефон:</b> ".$user_info["contact_phone"]."<br />";
+            }
+
+          
+            
+            if ($user_info["skype"] != '' && $user_info["skype"] != '0') {
+              if ($show[2]== '0' or $show[2]== '1') {
+                $cab["main_area"] .= "<b>Skype:</b> ".$user_info["skype"]."<br />";
+              }
+
+            }
+            
+            if ($user_info["icq"] != '' && $user_info["icq"] != '0') {
+              if ($show[3]== '0' or $show[3]== '1') {
+                $cab["main_area"] .= "<b>ICQ:</b> ".$user_info["icq"]."<br />";
+              }
+
+            }
+            
+            if ($user_info["company_phone"] != '') {
+              if ($show[11]== '0' or $show[11]== '1') {
+                $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
+              }
+
+            }
+
+            if ($user_info["site"] != '') {
+              if ($show[8]== '0' or $show[8]== '1') {
+                $cab["main_area"] .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
+              }
+
+            }
+    
+            if ($user_info["registration_date"] != '') {
+            $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
+            }
+            
+            if ($user_info["birthday"] != '' && $user_info["birthday"] != '0000-00-00') {
+              if ( $show[4]== '0' or $show[4]== '1') {
+                $cab["main_area"] .= "<b>Возраст:</b> ".UserAge($user_info["birthday"])."<br />";
+              }
+
+            }
+            
+            if ($user_info["sex"] != '') {
+              if ($show[5]== '0' or $show[5]== '1') {
+          			if ($user_info["sex"] != '0') { $sex = "Женский"; } else { $sex = "Мужской";}
+                if ($user_info["sex"] != '') $cab["main_area"] .= "<b>Пол:</b> ".$sex."<br />";
+              }
+
+            }
+    
+            if (!IsNullOrEmpty($user_info["company"])) {
+              if ($show[6]== '0' or $show[6]== '1') {
+        				$cab["main_area"] .= "<b>Компания:</b> ".$user_info["company"]."<br />";
+        			}
+
+            }
+            
+            if ($user_info["position"] != '') {
+              if ($show[7]== '0' or $show[7]== '1') {
+                $cab["main_area"] .= "<b>Должность:</b> ".$user_info["position"]."<br />";
+              }
+
+            }
+            
+            if ($user_info["address"] != '') {
+              if ($show[9]== '0' or $show[9]== '1') {
+                $cab["main_area"] .= "<b>Адрес:</b> ".$user_info["address"]."<br />";
+              }
+
+            }
+          
+          
+          
+          
+          }
+       }
+			
+			
         
-        $cab["main_area"] = '<div class="u_info_block">';
-			  if ($user_info["sity"] != '') $cab["main_area"] .= "<b>Город:</b> ".$user_info["sity"]."<br />";
+        else {
+			  
 				if ($user_info["contact_phone"] != '') $cab["main_area"] .= "<b>Мобильный телефон:</b> ".$user_info["contact_phone"]."<br />";
 				
 				if ($user_info["skype"] != '') $cab["main_area"] .= "<b>Skype:</b> ".$user_info["skype"]."<br />";
-				if ($user_info["icq"] != '') $cab["main_area"] .= "<b>ICQ:</b> ".$user_info["icq"]."<br />";
+				if ($user_info["icq"] != '' && $user_info["icq"] != '0') $cab["main_area"] .= "<b>ICQ:</b> ".$user_info["icq"]."<br />";
 				
 				
 				if ($user_info["company_phone"] != '') $cab["main_area"] .= "<b>Рабочий телефон:</b> ".$user_info["company_phone"]."<br />";
@@ -593,7 +807,7 @@ class u_cabinet_php extends CPageCodeHandler
 				if ($user_info["site"] != '') $cab["main_area"] .= "<b>Сайт компании:</b> <a target='_blank' href='http://".$user_info["site"]."'>".$user_info["site"]."</a><br /><br />";
 
 
-        $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
+        if ($user_info["registration_date"] != '') $cab["main_area"] .= "<b>На сайте:</b> ".onSiteTime($user_info["registration_date"])."<br />";
         if ($user_info["birthday"] != '') $cab["main_area"] .= "<b>Возраст:</b> ".UserAge($user_info["birthday"])."<br />";
         
      
@@ -605,6 +819,7 @@ class u_cabinet_php extends CPageCodeHandler
 				}
 				if ($user_info["position"] != '') $cab["main_area"] .= "<b>Должность:</b> ".$user_info["position"]."<br />";
 				if ($user_info["address"] != '') $cab["main_area"] .= "<b>Адрес:</b> ".$user_info["address"]."<br />";
+				}
 				
         $cab["main_area"] .= '</div>';
 			}

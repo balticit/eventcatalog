@@ -14,9 +14,6 @@
 <tr><!--Μενώ-->
 <td><?php CRenderer::RenderControl("menu"); ?></td>
 </tr>
-<tr>
-	<td><?php CRenderer::RenderControl("submenu"); ?></td>
-</tr>
 <tr><td class="u_cab_menu">
 <?php CRenderer::RenderControl("u_cab_menu"); ?>
 </td></tr>

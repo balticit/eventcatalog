@@ -18,6 +18,29 @@ class index_php extends CPageCodeHandler
 
 	public function PreRender()
 	{
+	
+	            
+    // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+	             
+	             
 		/*Провека адреса*/
 		$av_rwParams = array();
 		CURLHandler::CheckRewriteParams($av_rwParams);
@@ -468,10 +491,11 @@ class index_php extends CPageCodeHandler
 	$mainMenu->dataSource["great"] = 
 	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","target"=>"target='_blank'");
 	break;
-	case 8:
+/*	case 8:
 	$mainMenu->dataSource["midas"] = 
 	   array("link"=>"http://midas.ru/?id=144","imgname"=>"midas","title"=>"","target"=>"target='_blank'");
 	break;
+*/
 	}
     //EVENT TV
     $etv_res = SQLProvider::ExecuteQuery("select video_id,doc_id from tbl__eventtv_main");

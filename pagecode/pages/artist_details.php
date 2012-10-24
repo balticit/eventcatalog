@@ -50,6 +50,30 @@ class artist_details_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+    
+        // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
+    
         /*Провека адреса*/
         $searchDS = array();
         $id_str = GP("id");
@@ -371,9 +395,11 @@ class artist_details_php extends CPageCodeHandler
                 $letterFilter = $this->GetControl("letterFilter");
                 $letterFilter->dataSource = $letters;
 
+
+
                 $submenu = $this->GetControl("submenu");
                 $submenu->headerTemplate =
-                    '<div style="background: #{bgcolor} url(/images/menu1/bg_artist.png) repeat-x; height:30px; padding: 0 15px 0 37px; position: relative;">
+                    '<div class="artist_btn_show submenu_controll" style="background: #{bgcolor} url(/images/menu1/bg_artist.png) repeat-x; height:30px; padding: 0 15px 0 37px; position: relative;">
 					<form method="get" id="form_find_artist" action="/artist/">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
                 $submenu->footerTemplate =
@@ -453,6 +479,7 @@ class artist_details_php extends CPageCodeHandler
         `rg`.`title` AS `region_title`,
         `cn`.`title` AS `country_title`,
         `ar`.`city`,
+        `ar`.`last_visit_date` AS `last_visit_date`,
         `ar`.`other_city`,
         `ar`.`priority` AS `priority`,
         `ar`.`currency` AS `currency`,
@@ -483,7 +510,9 @@ class artist_details_php extends CPageCodeHandler
 			$unit['pro_logo_prew'] = getProLogoForPreview('artist');
 		}
         // время на сайте
+        $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'], $unit['reg_date']);
         $unit['reg_date'] = onSiteTime($unit['reg_date']);
+        
         $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
         $unit["u_link"] = "";
         $u_links = SQLProvider::ExecuteQuery("select ru.tbl_obj_id, IF(ru.nikname is NULL or ru.nikname = '',ru.title,ru.nikname) title from tbl__registered_user_link_resident rl left join tbl__registered_user ru on ru.tbl_obj_id = rl.user_id
@@ -665,7 +694,7 @@ class artist_details_php extends CPageCodeHandler
             }
             elseif ($unit["price_from"]!="")
             {
-                $unit['price'] = "<br /><b>Гонорар</b> от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency;
+                $unit['price'] = "<br /><b>Гонорар</b> от ". $currency_en . number_format($unit['price_from'], 0, ' ', ' ') . $currency. " ".$rider;
             }
             elseif ($unit["price_to"]!="")
             {
@@ -873,7 +902,7 @@ class artist_details_php extends CPageCodeHandler
 		
 		$submenu = $this->GetControl("submenu");
 		$submenu->headerTemplate =
-			'<div style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
+			'<div class="artist_btn_show submenu_controll" style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
 			<form method="get" id="form_find_artist" action="/artist/">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
 				$submenu->footerTemplate =

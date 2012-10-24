@@ -24,6 +24,30 @@ class contractor_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+    
+        // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
+    
         $metadata = $this->GetControl("metadata");
         $metadata->keywords = "подр€дчики, организаци€ меропри€тий, организаци€";
         $metadata->description = "ѕолный список надежных подр€дчиков, предоставл€ющих свет, звук, оформление помещений и открытых площадок дл€ организации меропри€ти€.  онтакты и подробные отзывы о каждом организаторе.";
@@ -353,10 +377,10 @@ class contractor_php extends CPageCodeHandler
 				switch(rand(1,2)) {
       	case 1:
            $mainMenu->dataSource["kinodoktor"] =
-                  array("link" => "http://www.kinodoctor.ru/",
-                      "imgname" => "kinodoktor",
-                      "title"=>"",
-                      "target" => 'target="_blank"');
+            array("link" => "http://www.kinodoctor.ru/",
+                "imgname" => "kinodoktor",
+                "title"=>"",
+                "target" => 'target="_blank"');
       	break;
       	case 2:
           $mainMenu->dataSource["museum"] =
