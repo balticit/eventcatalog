@@ -395,7 +395,16 @@ class artist_details_php extends CPageCodeHandler
                 $letterFilter = $this->GetControl("letterFilter");
                 $letterFilter->dataSource = $letters;
 
-
+                
+                $mainMenu = $this->GetControl("menu");
+  
+                    $mainMenu->dataSource["shelk"] =
+          					array("link" => "http://forevent.ru/",
+          					"imgname" => "forevent",
+          					"title"=>"",
+          					"target" => "target='_blank'");
+        
+                
 
                 $submenu = $this->GetControl("submenu");
                 $submenu->headerTemplate =

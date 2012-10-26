@@ -93,38 +93,9 @@
 
 <script type="text/javascript">
 $(function() {
-
-	$('#comment_submit').live('click', function() {
-	  
-	  if($('#comment_text').val()!='' && $('#comment_captcha_input').val()!='' && $('#comment_author').val()!='' ) {
-      var itemText = 'јнонимные комментарии провер€ютс€ модераторами перед публикацией.<br /> '+
-      '„ерез несколько часов ваш комментарий будет проверен.<br />'+
-      '—пасибо!';
-  	  var checkItem = $(this).next();
-  	   
-  		$( '#dialog-confirm' ).dialog({
-  			resizable: false,
-  			height:200,
-  			width:400,
-  			dialogClass: 'dialog-confirm onebutton',
-  			modal: false,
-  			position: 'center',
-  			open: function(event, ui) { 
-            $(this).find('p').html(itemText);
-         },
-  			buttons: {
-  				'Ok': function() {
-  					$('#comment_submit').submit();
-  					$( this ).dialog( 'close' );
-  				}
-  				
-  			}
-  		});
-		
-		}
-	});
-	
-		
+  $(".ui-dialog-titlebar-close, .ui-dialog-buttonset button").live('click',function(){
+    $('.dialog-confirm').hide();
+  });
 });
 </script>
 

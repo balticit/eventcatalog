@@ -607,6 +607,14 @@ class area_details_php extends CPageCodeHandler
 					$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
 					break;
 					
+					case 2:
+            $mainMenu->dataSource["shelk"] =
+  					array("link" => "http://shelkevent.ru/",
+  					"imgname" => "shelk",
+  					"title"=>"",
+  					"target" => "target='_blank'");
+					break;
+					
 				/*case 2:$mainMenu->dataSource["midas"] =
 					array("link" => "http://midas.ru/?id=144",
 					"imgname" => "midas",

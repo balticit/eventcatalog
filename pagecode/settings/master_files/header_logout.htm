@@ -44,7 +44,8 @@
 				&nbsp;<script type="text/javascript"> if ({newmess}>0) document.write('<a onclick="javascript:locate(\'/{cabtype}_cabinet/data/my_messages\');" href="#" style="color:#3399ff ">({newmess})</a> ');</script>
 				</td>
 				<td class="auth_pan"></td>
-				<td class="auth_pan"><a href="" style="color: black" id="selectexit" onclick="javascript: return false;">Выйти</a></td>
+				
+				<td class="auth_pan"><noindex><a rel="nofollow" href="" style="color: black" id="selectexit" onclick="javascript: return false;">Выйти</a></noindex></td>
 				<td class="auth_pan" width="340">		
 				<table cellpadding="0" cellspacing="0" width="100%">
 				<tr>
@@ -59,7 +60,7 @@
 			</table>	
 		</td>
 	</tr>
-</table>
+</table>{title_url}
 <script language="JavaScript" type="text/javascript">
 	$(document).ready(function(){
 		$('#selectcity').click(function(){
@@ -87,10 +88,27 @@
 		$('#selectexit').click(function(){
 			$.ajax({
 				url:    '/ajax/authorize/',
-				data:  {event: 'logout'},
+				data:  {event: 'logout', uid:'{user_id}',cabtype:'{cabtype}'},
 				success: function(responseText) {
-						//document.location = '/';
-                        window.location.reload();
+				
+  				var link = location.href;
+  				var arr = link.split('/');
+  				
+  			  switch (arr[3]) {
+            case "u_cabinet": {
+              document.location = '/u_profile/?type={type}&id={user_id}';
+              break;
+            }
+            case "r_cabinet": {
+              document.location = '/{type}/details/id/{user_id}';
+
+              break;
+            }
+            default: {
+              window.location.reload();
+            }
+          }
+
 				}
 			});	
 			return false;

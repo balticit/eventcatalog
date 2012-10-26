@@ -89,6 +89,12 @@
 
 				$headerdata["name"] = $user->name;
 				$headerdata["type"] = $user->type;
+				
+				$headerdata["user_id"] = $user->id;
+				
+
+  				
+				
 				switch ($user->type) {
 					case "user" : 
 						$headerdata["typecolor"] = "black";
