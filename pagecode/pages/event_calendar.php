@@ -71,7 +71,6 @@
 						'UNIX_TIMESTAMP(n.date) <= '.$prev).' AND '. */
 					'n.active = 1 AND n.in_calendar = 1) '.
 				'ORDER BY UNIX_TIMESTAMP(date)'.$sort;
-			
 			$news = SQLProvider::ExecuteQuery($sql);
             
             $result = array();
