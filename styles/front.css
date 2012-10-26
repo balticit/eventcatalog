@@ -3440,3 +3440,11 @@ border-radius: 3px; /* CSS3 */
 .submenu_controll {display:none; height:25px; padding-left: 37px; padding-top:5px;}
 .submenu_controll.active { display:block}
 .lastVisitSite { background:url(../images/flag_in_site.png) no-repeat 0 2px; padding-left:16px}
+
+
+#main_article { float:left; width:450px; margin-left:30px}
+#post_list { display:block; list-style-type:none; margin-left:500px}
+#post_list li { padding:14px 10px 14px 0; position:relative}
+#post_list .post_desc { display:none;}
+#post_list .carousel a { font-size: 24px;  color: #282828; }
+#post_list gg { position:absolute; left: -14px; top:22px}

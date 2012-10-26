@@ -43,7 +43,7 @@ var engine = {
     setMainArticle: function(id)
     {
         var post = this.getPostById(id);
-        $("#main_article").html('<a id="carousel_main_link;" href="'+post.link+'"><img width="450px" id="carousel_main_img" style="border: 1px solid rgb(153, 153, 153);" src="'+this.img_dir+post.image+'" ></a><div style="width:442px;position:absolute;top:80%;background:black;opacity:0.82;padding:5px" id="carousel_main_text"><h2 style="color:white;font-size:14px">'+post.name+'</h2></div></div>');
+        $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><img width="450px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a><div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div></div>');
     },
     setArticleList:function(id)
     {
@@ -51,46 +51,46 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><gg></gg><b><a style='color:red;text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;' class='post_desc'>"+this.posts[p].description+"</div><div class='border'></div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><gg></gg><a style='color:#FA2800; text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'>"+this.posts[p].description+"</div></li>");
             }
             else
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' style='font-size:18pt;padding-left:450px;list-style-type:none;'><gg></gg><b><a style='color:black' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a></b><div style='font-size:12px;color:gray;'  class='post_desc'>"+this.posts[p].description+"</div><div class='border'></div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><gg></gg><a style='color:#282828' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'>"+this.posts[p].description+"</div></li>");
             }
         }
-        $(".carousel .border:not(:last)").css({'border-top': "1px dashed gray",'opacity':"0.5",'height': "18px",'margin-right':"10px",'margin-top':"4px"});
+        //$(".carousel .border:not(:last)").css({'border-top': "1px dashed gray",'opacity':"0.5",'height': "18px",'margin-right':"10px",'margin-top':"4px"});
     },
     setEvents:function()
     {
         var that = this;
-        $(".carousel").hover(
+        $(".carousel").mouseenter(
             function(){
+                
+                $(".carousel gg").hide();
+                $("gg").html("");
+                $(".carousel a").css("color","#282828");
+                $(".carousel a").css("text-decoration","none");
+            
                 $(".carousel a").css("color","black");
                 $(".carousel a").css("text-decoration","none");   
                 $(".carousel gg").hide(); 
                 
-                $("gg",this).html("&gt;");
+                $("gg",this).html("<");
                 $(".carousel gg").show();
                 $("gg",this).css("color","red");
                 $("gg",this).css("font-weight","bold");
                 
                 $("a",this).css("color","red");
                 $("a",this).css("text-decoration","underline");
-                $(".post_desc",this).show();
+                //$(".post_desc",this).show();
                 var id = str_replace("post_", "", this.id);
                 var post = that.getPostById(id);
                 $("#carousel_main_link").attr("href",post.link);
                 $("#carousel_main_img").attr("src",that.img_dir+post.image);
                 $("#carousel_main_text p").html(post.description);
                 $("#carousel_main_text h2").html(post.name);
-            },
-            function()
-            {
-                $(".carousel gg").hide();
-                $("gg",this).html("");
-                $(".carousel a").css("color","black");
-                $(".carousel a").css("text-decoration","none");
             }
+            
         );
     },
     //crutch
@@ -124,10 +124,9 @@ $(document).ready(function() {
 });
 
 </script>
-<div style="float:left;width:460px;margin-left: 30px;position: relative;" id="main_article">
+<div id="main_article">
 </div>
-<div style="vertical-align: central;">
-    <ul id="post_list" >
-        
-    </ul>
-</div>
+
+<ul id="post_list" >
+  
+</ul>

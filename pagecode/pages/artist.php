@@ -517,7 +517,7 @@ class artist_php extends CPageCodeHandler
 				$mainMenu = $this->GetControl("menu");
 	
             $mainMenu->dataSource["shelk"] =
-  					array("link" => "http://forevent.ru/",
+  					array("link" => "http://forevent.pro/",
   					"imgname" => "forevent",
   					"title"=>"",
   					"target" => "target='_blank'");
