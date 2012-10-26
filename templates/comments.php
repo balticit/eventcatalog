@@ -14,7 +14,7 @@ $(function() {
 
 </script>
 
-<div style="display: block; z-index: 1002; outline: 0px none; height: auto; width: 400px; margin-top:-100px; top: 50%;  margin-left:-200px; left: 50%;" class="ui-dialog ui-widget ui-widget-content ui-corner-all dialog-confirm onebutton ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog-confirm">
+<div  class="ui-dialog ui-widget ui-widget-content ui-corner-all dialog-confirm onebutton ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog-confirm" style=" background:#fff; display: block; z-index: 1002; outline: 0px none; height: auto; width: 400px; margin-top:-100px; top: 50%;  margin-left:-200px; left: 50%;">
 <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
 <span class="ui-dialog-title" id="ui-dialog-title-dialog-confirm">—пасибо за комментарий!</span>
 <a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button">
@@ -22,8 +22,8 @@ $(function() {
 </div>
 <div id="dialog-confirm" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; height: 110px;">
   <p>јнонимные комментарии провер€ютс€ модераторами перед публикацией.<br> „ерез несколько часов ваш комментарий будет проверен.<br>—пасибо!</p>
-</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-<div class="ui-dialog-buttonset">
+</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" style="margin-bottom:2px">
+<div class="ui-dialog-buttonset" >
 <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
 <span class="ui-button-text">Ok</span>
 </button>
