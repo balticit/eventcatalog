@@ -59,6 +59,8 @@
             <div class="recomendTitle eventoteka h3">Эвентотека / Event энциклопедия</div>
             <?php CRenderer::RenderControl("sortTypes"); ?>
             <?php CRenderer::RenderControl("publicList"); ?>
+            
+            <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
 		</td>
                 <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>

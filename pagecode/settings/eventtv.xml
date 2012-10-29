@@ -39,10 +39,20 @@
 		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
 		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_event.xml" driver="CXMLTableDataSource"/>
 	</control>
+	
+	
+	
 	<control relativeId="publicList" class="CLiteral" />
         <control relativeId="bookTopicList" class="CRepeater">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/eventtv_files/topicItem.htm"/>
 	</control>
+	
+	
+	<control relativeId="pager" class="CPager">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+	</control>
+	
 	<control relativeId="sortTypes" class="CLiteral" />
 	<control relativeId="bookItem" class="CTemplateObject">
 	    <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/_event_news.htm"/>

@@ -2,6 +2,7 @@
     class eventoteka_php extends CPageCodeHandler
     {
         public $sort = 0;
+        public $pageSize = 25;
 
 				public function eventoteka_php()
         {
@@ -13,7 +14,13 @@
 						$metadata = $this->GetControl("metadata");
 						$metadata->keywords = "ивент, мероприятие, эвентотека";
 						$metadata->description = "Статьи и видео с различных мероприятий. Эвентотека включает в себя интересные ивент-события, новости и проекты для отдыха.";
-
+            
+            
+        $rewriteParams = $_GET;
+        $page = GP("page", 1);
+        $pages = 0;
+        $rp = ($page - 1) * $this->pageSize;
+            
             $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, color from tbl__eventtv_topics order by group_num, order_num");
             foreach ($topics as &$item) {
                 if ($item['tbl_obj_id'] == 0)
@@ -64,7 +71,28 @@
 										order by pt.order_num) topics
 										from tbl__public_doc where active = 1
 										) t
-									order by is_new desc, registration_date desc");
+									order by is_new desc, registration_date desc limit $rp,$this->pageSize");
+									
+									
+									$count = SQLProvider::ExecuteQuery("
+									select
+										tbl_obj_id, title,title_url, annotation, text, registration_date,
+                    case when DATEDIFF(NOW(),registration_date)<10 then 1 else 0 end is_new,
+                    logo_image, link,
+										DATE_FORMAT(registration_date,'%d.%m.%Y') formatted_date, topics
+									from (
+										select tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, 'book' link 
+										(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+										from tbl__eventtv2topic p2t 
+										join tbl__eventtv_topics pt on p2t.parent_id = pt.tbl_obj_id
+										where p2t.child_id = pd.tbl_obj_id
+										order by pt.order_num) topics
+										from tbl__public_doc where active = 1
+										) t
+									order by is_new desc, registration_date desc ");
+                  $count = count($count);
+                  $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
+									
 							}
 							else if ($filter == "eventtv") {								
 							  $this->sort = 2;
@@ -83,8 +111,30 @@
 										order by pt.order_num) topics
 										from tbl__eventtv_doc where active = 1
 										) t
-									order by is_new desc, registration_date desc"
+									order by is_new desc, registration_date desc limit $rp,$this->pageSize"
 								);
+								
+								$count = SQLProvider::ExecuteQuery("
+									select
+										tbl_obj_id, title,title_url, annotation, text, registration_date,
+                    case when DATEDIFF(NOW(),registration_date)<10 then 1 else 0 end is_new,
+                    logo_image, link,
+										DATE_FORMAT(registration_date,'%d.%m.%Y') formatted_date, topics
+									from (
+										select tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, 'evettv' link 
+										(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+										from tbl__eventtv2topic p2t 
+										join tbl__eventtv_topics pt on p2t.parent_id = pt.tbl_obj_id
+										where p2t.child_id = pd.tbl_obj_id
+										order by pt.order_num) topics
+										from tbl__eventtv_doc where active = 1
+										) t
+									order by is_new desc, registration_date desc "
+								);
+								
+								$count = count($count);
+								$pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
+								
 							}
 							else {
 							  CURLHandler::ErrorPage();
@@ -114,8 +164,40 @@
 									order by pt.order_num) topics 
 					from tbl__public_doc pd where active = 1
 					) t
-				order by is_new desc, registration_date desc"
+				order by is_new desc, registration_date desc limit $rp,$this->pageSize"
 							);
+							
+							
+							$count = SQLProvider::ExecuteQuery("
+								select 
+					tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, link,					
+					DATE_FORMAT(registration_date,'%d.%m.%y') formatted_date, topics
+				from (
+					select 
+						tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, 'eventtv' link,
+						(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+									from tbl__eventtv2topic p2t 
+									join tbl__eventtv_topics pt on p2t.parent_id = pt.tbl_obj_id
+									where p2t.child_id = pd.tbl_obj_id
+									order by pt.order_num) topics
+					from tbl__eventtv_doc pd where active = 1 
+					union all
+					select 
+						tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, 'book' link,
+						(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+									from tbl__public2topic p2t 
+									join tbl__public_topics pt on p2t.parent_id = pt.tbl_obj_id
+									where p2t.child_id = pd.tbl_obj_id
+									order by pt.order_num) topics 
+					from tbl__public_doc pd where active = 1
+					) t
+				order by is_new desc, registration_date desc "
+							);
+							
+							$count = count($count);
+							$pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
+
+							
             }
 						$html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">'; 
 						foreach ($publics as $doc) { 
@@ -129,7 +211,13 @@
 						}
 						$html .= "</table>";
 
-
+            
+            //setting pager
+        $pager = $this->GetControl("pager");
+        $pager->currentPage = $page;
+        $pager->totalPages = $pages;
+        $pager->rewriteParams = $rewriteParams;
+            
             $publicList = $this->GetControl("publicList");
             $publicList->html = $html;
 

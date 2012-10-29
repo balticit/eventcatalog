@@ -1,6 +1,8 @@
 <?php
 class eventtv_php extends CPageCodeHandler
 {
+  public $pageSize = 25;
+
   public function eventtv_php()
   {
     $this->CPageCodeHandler();
@@ -8,8 +10,15 @@ class eventtv_php extends CPageCodeHandler
 
   public function PreRender()
   {
-    $av_rwParams = array("bycategory","topic");
+    $av_rwParams = array("bycategory","topic","page");
     CURLHandler::CheckRewriteParams($av_rwParams);
+    
+    
+    $rewriteParams = $_GET;
+    $page = GP("page", 1);
+    $pages = 0;
+    $rp = ($page - 1) * $this->pageSize;
+    
     $bycategory = GP("bycategory");
     $topic = GP("topic",0);
     $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, color from tbl__eventtv_topics order by group_num, order_num");
@@ -27,6 +36,11 @@ class eventtv_php extends CPageCodeHandler
 
     $html = "";
     $itemTemplate = $this->getControl("bookItem");
+    
+    
+    
+        
+    
     
     /* book menu */
     $topics1 = SQLProvider::ExecuteQuery("select tbl_obj_id, title from tbl__public_topics order by order_num");
@@ -73,8 +87,22 @@ class eventtv_php extends CPageCodeHandler
 									where p2t.child_id = tbl_obj_id
 									order by pt.order_num) topics,
 			registration_date, case when DATEDIFF(NOW(),registration_date)<10 then 1 else 0 end is_new
-			from vw__eventtv_doc $filter order by is_new desc, registration_date desc
+			from vw__eventtv_doc $filter order by is_new desc, registration_date desc limit $rp,$this->pageSize
 	 ");
+	 
+	 $count = SQLProvider::ExecuteQuery("
+			select tbl_obj_id, title,title_url, logo_image, annotation, dir_id, 
+			(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+									from tbl__eventtv2topic p2t 
+									join tbl__eventtv_topics pt on p2t.parent_id = pt.tbl_obj_id
+									where p2t.child_id = tbl_obj_id
+									order by pt.order_num) topics,
+			registration_date, case when DATEDIFF(NOW(),registration_date)<10 then 1 else 0 end is_new
+			from vw__eventtv_doc $filter order by is_new desc, registration_date desc 
+	 ");
+	 
+	 $count = count($count);
+	 $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
 
       foreach ($topics as $topic) {
         $docs = array();
@@ -126,9 +154,30 @@ class eventtv_php extends CPageCodeHandler
 									order by pt.order_num) topics
 					from tbl__eventtv_doc pd where active = 1 					
 					) t
+				order by is_new desc, registration_date desc limit $rp,$this->pageSize
+		
+		");
+		
+		$count = SQLProvider::ExecuteQuery("
+			select 
+					tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, link,					
+					DATE_FORMAT(registration_date,'%d.%m.%y') formatted_date, topics
+				from (
+					select 
+						tbl_obj_id, title,title_url, annotation, text, registration_date, is_new, logo_image, 'eventtv' link,
+						(select GROUP_CONCAT(pt.title SEPARATOR ', ')
+									from tbl__eventtv2topic p2t 
+									join tbl__eventtv_topics pt on p2t.parent_id = pt.tbl_obj_id
+									where p2t.child_id = tbl_obj_id
+									order by pt.order_num) topics
+					from tbl__eventtv_doc pd where active = 1 					
+					) t
 				order by is_new desc, registration_date desc
 		
 		");
+		
+		$count = count($count);
+		$pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
      
 
 	 $html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">';
@@ -149,6 +198,14 @@ class eventtv_php extends CPageCodeHandler
 
     $publicList = $this->GetControl("publicList");
     $publicList->html = $html;
+    
+    
+    //setting pager
+    $pager = $this->GetControl("pager");
+    $pager->currentPage = $page;
+    $pager->totalPages = $pages;
+    $pager->rewriteParams = $rewriteParams;
+    
 
     $topic = GP("topic");
     $sortTypes = $this->GetControl("sortTypes");
