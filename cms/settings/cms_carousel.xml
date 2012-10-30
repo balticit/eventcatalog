@@ -6,6 +6,8 @@
 			<item type="class" class="CGridDataField" dbField="id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnEdit="0" visibleOnAdd="0"/>
 
 			<item type="class" class="CGridDataField" dbField="name" label="Название ссылки" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+         
+         <item type="class" class="CGridDataField" dbField="category" label="Раздел" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
             
             <item type="class" class="CTinyMCETextareaGridDataField" dbField="description" label="Описание ссылки" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
             

@@ -790,10 +790,13 @@ class index_php extends CPageCodeHandler
         
         //Карусель на главной
         $carouselList = $this->GetControl("carousel");
-        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel WHERE active=1 ORDER BY sort ASC,id DESC limit 0,5");
+        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel WHERE active=1 ORDER BY sort ASC,id DESC limit 0,3");
         foreach($carousel as $k=>$c)
         {
             $carousel[$k]['name'] = iconv("cp1251","utf-8",$carousel[$k]['name']);
+            $carousel[$k]['category'] = iconv("cp1251","utf-8",$carousel[$k]['category']);
+            
+            $carousel[$k]['date'] = iconv("cp1251","utf-8",caruoselDate($carousel[$k]['date']));
             $carousel[$k]['description'] = iconv("cp1251","utf-8",  strip_tags($carousel[$k]['description']));
         }
         $carouselList->dataSource["articles"] = json_encode($carousel);

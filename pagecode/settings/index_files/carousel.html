@@ -43,7 +43,7 @@ var engine = {
     setMainArticle: function(id)
     {
         var post = this.getPostById(id);
-        $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><img width="450px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a><div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div></div>');
+        $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><div id="carousel_main_time">'+post.date+'</div><img width="450px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a></div>'); //<div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div>
     },
     setArticleList:function(id)
     {
@@ -51,14 +51,14 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><gg></gg><a style='color:#FA2800; text-decoration:underline' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'>"+this.posts[p].description+"</div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"q</div><gg style='display:block;'></gg><a style='color:#cc4238; text-decoration: none; border-bottom:1px solid #e29993' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span>"+this.posts[p].description+"</span></div></li>");
             }
             else
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><gg></gg><a style='color:#282828' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'>"+this.posts[p].description+"</div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"q</div><gg></gg><a style='color:#000; text-decoration: none' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span>"+this.posts[p].description+"</span></div></li>");
             }
         }
-        //$(".carousel .border:not(:last)").css({'border-top': "1px dashed gray",'opacity':"0.5",'height': "18px",'margin-right':"10px",'margin-top':"4px"});
+        $(".carousel:last").css({'border-bottom': "none"});
     },
     setEvents:function()
     {
@@ -67,27 +67,25 @@ var engine = {
             function(){
                 
                 $(".carousel gg").hide();
-                $("gg").html("");
-                $(".carousel a").css("color","#282828");
-                $(".carousel a").css("text-decoration","none");
+
             
-                $(".carousel a").css("color","black");
-                $(".carousel a").css("text-decoration","none");   
+                $(".carousel a").css("color","#000000").css("border-bottom","none");
+                $(".post_desc span").css("color","#6e6e6e").css("border-bottom","none");
                 $(".carousel gg").hide(); 
                 
-                $("gg",this).html("<");
-                $(".carousel gg").show();
-                $("gg",this).css("color","red");
-                $("gg",this).css("font-weight","bold");
+                //$("gg",this).html("<");
+                $("gg",this).show();
+
                 
-                $("a",this).css("color","red");
-                $("a",this).css("text-decoration","underline");
-                //$(".post_desc",this).show();
+                $("a",this).css("color","#cc4238").css("border-bottom","1px solid #e29993");
+                $(".post_desc span",this).css("color","#ca4137").css("border-bottom","1px solid #e29993");
+
                 var id = str_replace("post_", "", this.id);
                 var post = that.getPostById(id);
                 $("#carousel_main_link").attr("href",post.link);
                 $("#carousel_main_img").attr("src",that.img_dir+post.image);
                 $("#carousel_main_text p").html(post.description);
+                $("#carousel_main_time").html(post.date);
                 $("#carousel_main_text h2").html(post.name);
             }
             
