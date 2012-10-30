@@ -43,7 +43,7 @@ class registration_activate_php extends CPageCodeHandler
 		{
 			return ;
 		}
-        $date = date("Y-m-d");
+        $date = date("Y-m-d H:i:s");
 		SQLProvider::ExecuteNonReturnQuery("update $table set registration_confirmed=1, registration_date='$date' where registration_confirm_code='$code'");
 		$affRows = SQLProvider::GetLastAffectedRows();
 		if ($affRows==0)
