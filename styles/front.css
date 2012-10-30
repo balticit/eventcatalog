@@ -3447,7 +3447,7 @@ border-radius: 3px; /* CSS3 */
 #post_list li { padding:14px 10px 14px 0; position:relative; border-bottom:1px solid #f4f4f4}
 #post_list .post_desc { max-height:44px; color:#6e6e6e; overflow:hidden; padding-top:4px}
 #post_list .cat { color:#bbbbbb; font-size:12px;}
-#carousel_main_time { color:#bbbbbb; font-size:12px; padding-bottom:4px }
+#carousel_main_time { color:#bbbbbb; font-size:12px; padding-bottom:6px }
 #post_list .carousel a { font-size: 24px; text-decoration: none !important; font-weight:bold }
 #post_list .carousel a:hover { font-size: 24px; text-decoration: none !important }
 #post_list gg { position:absolute; left: -18px; top:34px; width:11px; height:18px; display:none; background:url(../images/carusel_arrow.png) no-repeat}
