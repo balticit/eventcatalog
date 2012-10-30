@@ -43,7 +43,7 @@ var engine = {
     setMainArticle: function(id)
     {
         var post = this.getPostById(id);
-        $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><div id="carousel_main_time">'+post.date+'</div><img width="450px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a></div>'); //<div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div>
+        $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><div id="carousel_main_time">'+post.date+'</div><img height="300px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a></div>'); //<div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div>
     },
     setArticleList:function(id)
     {

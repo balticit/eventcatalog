@@ -71,7 +71,7 @@
 			 
 		   <?php CRenderer::RenderControl("publicList"); ?>
 		   
-            <div><?php CRenderer::RenderControl("footerText"); ?></div>
+            <div><?php // CRenderer::RenderControl("footerText"); ?></div>
             
             <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
 	  </td>
