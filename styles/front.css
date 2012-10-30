@@ -3444,7 +3444,7 @@ border-radius: 3px; /* CSS3 */
 
 #main_article { float:left; width:450px; margin-left:30px; padding-top:26px; text-decoration: none}
 #main_article a:hover, #carousel_main_link {  text-decoration: none !important }
-#post_list { display:block; list-style-type:none; margin-left:500px; max-width:600px; padding-right:10px}
+#post_list { display:block; list-style-type:none; margin-left:480px; max-width:600px; padding-right:10px}
 #post_list li { padding:14px 10px 14px 0; position:relative; border-bottom:1px solid #f4f4f4}
 #post_list .post_desc { max-height:44px; color:#6e6e6e; overflow:hidden; padding-top:4px}
 #post_list .cat { color:#bbbbbb; font-size:12px;}

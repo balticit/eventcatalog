@@ -89,7 +89,7 @@ class res_news_news_php extends CPageCodeHandler
 			case "area" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__area_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo'];
+				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];			
         $newsdetails[0]["type"] = "<span style=\"color: #3399ff;\">Новость площадки: <a style=\"color: #3399ff;\" href='/area/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";	
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
