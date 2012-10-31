@@ -113,7 +113,7 @@
     <td>
         <table border="0" cellpadding="0" cellspacing="0" width="100%" >
         <tr> 
-            <td width="" rowspan="10"><?php CRenderer::RenderControl("carousel")?></td>
+            <td width="" rowspan="10" style="vertical-align: top;"><?php CRenderer::RenderControl("carousel")?></td>
             <td width='240' align="right" rowspan="3" style="padding-right:30px; vertical-align:middle; height:385px">
             <div style='height:360px; display:inline-block'>
               <iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:240px; height:360px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"></iframe>

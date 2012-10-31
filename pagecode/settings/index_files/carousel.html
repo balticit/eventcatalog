@@ -42,20 +42,18 @@ var engine = {
     img_dir:'/application/public/upload/',
     setMainArticle: function(id)
     {
-        //var post = this.getPostById(id);
-       // $("#main_article").html('<a id="carousel_main_link" href="'+post.link+'"><div id="carousel_main_time">'+post.date+'</div><img height="300px" id="carousel_main_img" src="'+this.img_dir+post.image+'" ></a></div>'); //<div id="carousel_main_text"><h2>'+post.name+'</h2><p>'+post.description+'</p></div>
-        
+
         for(p in this.posts)
         {
          
           if (this.posts[p].id==id)
            {
-              $("#main_article").append('<a style="opacity:1" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><div id="carousel_main_time">'+this.posts[p].date+'</div><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ></a></div>');
+              $("#main_article").append('<a style="opacity:1" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ><div id="carousel_main_time">'+this.posts[p].date+'</div></a></div>');
            
            }
            else
            {
-              $("#main_article").append('<a style="opacity:0" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><div id="carousel_main_time">'+this.posts[p].date+'</div><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ></a></div>');
+              $("#main_article").append('<a style="opacity:0" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ><div id="carousel_main_time">'+this.posts[p].date+'</div></a></div>');
            }
         }
         
@@ -75,6 +73,7 @@ var engine = {
             }
         }
         $(".carousel:last").css({'border-bottom': "none"});
+        $(".carousel:first").css({'padding-top': "0"}).addClass('first');
     },
     setEvents:function()
     {
@@ -93,8 +92,8 @@ var engine = {
                 $("gg",this).show();
 
                 
-                $("a",this).css("color","#cc4238").css("border-bottom","1px solid #e29993");
-                $(".post_desc span",this).css("color","#ca4137").css("border-bottom","1px solid #e29993");
+                $("a",this).css("border-bottom","1px solid #000000");
+                $(".post_desc span",this).css("border-bottom","1px solid #6e6e6e");
 
                 //var id = str_replace("post_", "", this.id);
                 //var post = that.getPostById(id);
