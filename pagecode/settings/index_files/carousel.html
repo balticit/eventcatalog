@@ -65,7 +65,7 @@ var engine = {
         {
             if (this.posts[p].id==id)
             {
-                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"</div><gg style='display:block;'></gg><a style='color:#cc4238; text-decoration: none; border-bottom:1px solid #e29993' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span>"+this.posts[p].description+"</span></div></li>");
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"</div><gg style='display:block;'></gg><a style='color:#000; text-decoration: none; border-bottom:1px solid #000' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span style='border-bottom:1px solid #6e6e6e; color:#6e6e6e'>"+this.posts[p].description+"</span></div></li>");
             }
             else
             {
