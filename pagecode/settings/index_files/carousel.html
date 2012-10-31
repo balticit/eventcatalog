@@ -84,14 +84,15 @@ var engine = {
                 var post = that.getPostById(id);
                 $("#carousel_main_link").fadeOut('fast',function(){ 
                 
+                  
                   $(this).attr("href",post.link); 
                   
                   $("#carousel_main_img").attr("src",that.img_dir+post.image);
-                $("#carousel_main_text p").html(post.description);
-                $("#carousel_main_time").html(post.date);
-                $("#carousel_main_text h2").html(post.name);
+                  $("#carousel_main_text p").html(post.description);
+                  $("#carousel_main_time").html(post.date);
+                  $("#carousel_main_text h2").html(post.name);
                   
-                  $("#carousel_main_link").fadeIn('fast');  
+                  $(this).delay("100").("#carousel_main_link").fadeIn('fast');  
                 
                 });
                 
