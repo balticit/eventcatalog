@@ -1,0 +1,147 @@
+<script>
+function str_replace ( search, replace, subject ) {	// Replace all occurrences of the search string with the replacement string
+	// 
+	// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+	// +   improved by: Gabriel Paderni
+
+	if(!(replace instanceof Array)){
+		replace=new Array(replace);
+		if(search instanceof Array){//If search	is an array and replace	is a string, then this replacement string is used for every value of search
+			while(search.length>replace.length){
+				replace[replace.length]=replace[0];
+			}
+		}
+	}
+
+	if(!(search instanceof Array))search=new Array(search);
+	while(search.length>replace.length){//If replace	has fewer values than search , then an empty string is used for the rest of replacement values
+		replace[replace.length]='';
+	}
+
+	if(subject instanceof Array){//If subject is an array, then the search and replace is performed with every entry of subject , and the return value is an array as well.
+		for(k in subject){
+			subject[k]=str_replace(search,replace,subject[k]);
+		}
+		return subject;
+	}
+
+	for(var k=0; k<search.length; k++){
+		var i = subject.indexOf(search[k]);
+		while(i>-1){
+			subject = subject.replace(search[k], replace[k]);
+			i = subject.indexOf(search[k],i);
+		}
+	}
+
+	return subject;
+
+}    
+    
+var engine = {
+    posts: [],
+    img_dir:'/application/public/upload/',
+    setMainArticle: function(id)
+    {
+
+        for(p in this.posts)
+        {
+         
+          if (this.posts[p].id==id)
+           {
+              $("#main_article").append('<a style="opacity:1" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ><div id="carousel_main_time">'+this.posts[p].date+'</div></a></div>');
+           
+           }
+           else
+           {
+              $("#main_article").append('<a style="opacity:0" id="show_post_'+this.posts[p].id+'" href="'+this.posts[p].link+'"><img height="300px" id="carousel_main_img" src="'+this.img_dir+this.posts[p].image+'" ><div id="carousel_main_time">'+this.posts[p].date+'</div></a></div>');
+           }
+        }
+        
+        
+    },
+    setArticleList:function(id)
+    {
+        for(p in this.posts)
+        {
+            if (this.posts[p].id==id)
+            {
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"</div><gg style='display:block;'></gg><a style='color:#000; text-decoration: none; border-bottom:1px solid #000' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span style='border-bottom:1px solid #6e6e6e; color:#6e6e6e'>"+this.posts[p].description+"<br />&nbsp;</span></div></li>");
+            }
+            else
+            {
+                $("#post_list").append("<li class='carousel' id='post_"+this.posts[p].id+"' ><div class='cat'>"+this.posts[p].category+"</div><gg></gg><a style='color:#000; text-decoration: none' href='"+this.posts[p].link+"'>"+this.posts[p].name+"</a><div class='post_desc'><span>"+this.posts[p].description+"<br />&nbsp;</span></div></li>");
+            }
+        }
+        $(".carousel:last").css({'border-bottom': "none"});
+        $(".carousel:first").css({'padding-top': "0"}).addClass('first');
+    },
+    setEvents:function()
+    {
+        var that = this;
+        $(".carousel").mouseenter(
+            function(){
+                
+                $(".carousel gg").hide();
+
+            
+                $(".carousel a").css("color","#000000").css("border-bottom","none");
+                $(".post_desc span").css("color","#6e6e6e").css("border-bottom","none");
+                $(".carousel gg").hide(); 
+                
+                //$("gg",this).html("<");
+                $("gg",this).show();
+
+                
+                $("a",this).css("border-bottom","1px solid #000000");
+                $(".post_desc span",this).css("border-bottom","1px solid #6e6e6e");
+
+                //var id = str_replace("post_", "", this.id);
+                //var post = that.getPostById(id);
+                
+                var curItem = $(this).attr("id"); 
+                
+                $("#main_article a").stop().animate({opacity: 0});
+                $("#show_"+curItem).stop().animate({opacity: 1});
+
+                
+            }
+            
+        );
+    },
+    //crutch
+    getPostById:function(id)
+    {
+        for(p in this.posts)
+        {
+            if (this.posts[p].id==id)
+            {
+                return this.posts[p];
+            }
+        }
+        return false;
+    },
+    init:function(posts)
+    {
+        this.posts = posts.slice(0);
+        var id = posts[0].id;
+        this.setMainArticle(id);
+        this.setArticleList(id);
+        this.setEvents();
+    }
+};
+
+
+
+
+$(document).ready(function() {
+    var articles = $.parseJSON('{articles}');
+    engine.init(articles);
+});
+
+</script>
+<div id="main_article">
+</div>
+
+<ul id="post_list" >
+  
+</ul>

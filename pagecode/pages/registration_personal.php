@@ -148,7 +148,7 @@ class registration_personal_php extends CPageCodeHandler
 					{
 						$table->InsertObject(&$persRow);
 					}
-					$persRow->registration_date = date("Y-m-d");
+					$persRow->registration_date = date("Y-m-d H:i:s");
 					if (GP("logo_clean")=="clean")
 					{
 						$this->CleanImage($persRow->logo);

@@ -18,7 +18,8 @@
 <td><?php CRenderer::RenderControl("submenu"); ?></td>
 </tr>
 */ ?>
-<tr style="height:100%;" valign="top"><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;  padding-bottom: 30px;" align="center">
+<tr style="height:100%;" valign="middle"><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;  padding-bottom: 30px;" align="center">
+    <div style="margin-top: -115px">
 	<h1 style="color:#000"><?php echo $this->reqMessage; ?></h1><br />
 	<form method="post" id="loginform_form">
 		<input type="hidden" name="event" value="login" />
@@ -28,12 +29,12 @@
 		</tr><tr>
 			<td>Пароль:</td><td><input type="password" name="password" size="20"></td>
 		</tr><tr>	
-			<td></td><td><input style="margin:0" type="checkbox" name="remeber" value="remember" /> Запомнить &nbsp;&nbsp;&nbsp;&nbsp;<a onclick="javascript:locate('/registration/reset/');" style="cursor:pointer;" href="#"><span class="style2">Забыли пароль?</span></a>
+			<td></td><td><span style="margin-left: 2px"><input style="margin:0" type="checkbox" name="remeber" value="remember" /> Запомнить &nbsp;&nbsp;&nbsp;&nbsp;<a onclick="javascript:locate('/registration/reset/');" style="cursor:pointer;" href="#"></span><span class="style2">Забыли пароль?</span></a>
 			</td>
 		</tr><tr>
 		  <td></td>
 			<td align="left">
-			<input type="submit" value="Войти"/></td>
+			<input style="margin-left:-1px" type="submit" value="Войти"/></td>
 		  </tr>
 		  <tr>
 		  <td></td>
@@ -63,10 +64,12 @@ $(function() {
 					    });
 						return false;
 					});
+
 });
 </script>
 	
 	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
+    </div>
 				<?php //CRenderer::RenderControl("account"); ?>	
 </td></tr>
 <?php /*

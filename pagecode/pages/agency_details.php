@@ -51,6 +51,29 @@ class agency_details_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+          // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
+    
         /*Провека адреса*/
         $id_str = GP("id");
         //Costyl!!!!
@@ -282,6 +305,7 @@ class agency_details_php extends CPageCodeHandler
         CURLHandler::CheckRewriteParams($av_rwParams);
 		if (!is_null($id_str)){
 			$this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__agency_doc where title_url = '".mysql_real_escape_string($id_str)."'");
+			$this->last_visit_date = SQLProvider::ExecuteScalar("select last_visit_date from tbl__agency_doc where title_url = '".mysql_real_escape_string($id_str)."'");
 		}
 		if (is_numeric($this->id))
 			SQLProvider::ExecuteNonReturnQuery("update tbl__agency_doc set visited = ifnull(visited,0)+1 where tbl_obj_id=$this->id");
@@ -295,6 +319,7 @@ class agency_details_php extends CPageCodeHandler
 		  CURLHandler::ErrorPage();
           /* доп блоки */
                 $unit['reg_date'] = onSiteTime($unit['registration_date']);
+                $unit['last_visit_date'] = lastVisitSite($this->last_visit_date,$unit['registration_date']);
                 $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
           /**/
 		$pro_type = getProType('agency', $this->id);

@@ -12,10 +12,13 @@
 	<td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;"><?php CRenderer::RenderControl("header"); ?></td>
 </tr>
 <tr><!--Μενώ-->
-<td><?php CRenderer::RenderControl("menu"); ?></td>
-</tr>
-<tr>
-	<td><?php CRenderer::RenderControl("submenu"); ?></td>
+<td><?php CRenderer::RenderControl("menu"); ?>
+<?php CRenderer::RenderControl("submenu"); ?>
+<?php CRenderer::RenderControl("submenu1"); ?>
+<?php CRenderer::RenderControl("submenu2"); ?>
+<?php CRenderer::RenderControl("submenu3"); ?>
+<?php CRenderer::RenderControl("submenu4"); ?>
+</td>
 </tr>
 <tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
 <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
@@ -68,7 +71,9 @@
 			 
 		   <?php CRenderer::RenderControl("publicList"); ?>
 		   
-            <div><?php CRenderer::RenderControl("footerText"); ?></div>
+            <div><?php // CRenderer::RenderControl("footerText"); ?></div>
+            
+            <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
 	  </td>
           <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>

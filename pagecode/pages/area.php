@@ -47,6 +47,29 @@ class area_php extends CPageCodeHandler
 
     public function PreRender()
     {
+    
+        // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+    
+    
+    
         $metadata = $this->GetControl("metadata");
         $metadata->keywords = "эвент, площадки, аренда площадки";
         $metadata->description = "Условия аренды площадок и их рейтинг по количеству отзывов. Описание площадки, включающее размеры, расположение и удобства для клиентов.";
@@ -684,22 +707,30 @@ class area_php extends CPageCodeHandler
 		
 
         $mainMenu = $this->GetControl("menu");
-		switch(rand(1,2)){
-		   case 1:
-		   /*$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');*/
-		   break;
-		   
-		   case 2:$mainMenu->dataSource["midas"] =
-            array("link" => "http://midas.ru/?id=144",
-                "imgname" => "midas",
-                "title"=>"",
-                "target" => "target='_blank'");
-		   break;
-		}
+    		switch(rand(1,2)){
+    		   case 1:
+    		   /*$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');*/
+    		   break;
+    		   
+    		   case 2:
+              $mainMenu->dataSource["shelk"] =
+    					array("link" => "http://shelkevent.ru/",
+    					"imgname" => "shelk",
+    					"title"=>"",
+    					"target" => "target='_blank'");
+    				break;
+    		  /* case 2:$mainMenu->dataSource["midas"] =
+                array("link" => "http://midas.ru/?id=144",
+                    "imgname" => "midas",
+                    "title"=>"",
+                    "target" => "target='_blank'");
+    		   break;
+    		   */
+    		}
 
         $submenu = $this->GetControl("submenu");
         $submenu->headerTemplate =
-          '<div style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
+          '<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
         $submenu->footerTemplate =
          '</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">

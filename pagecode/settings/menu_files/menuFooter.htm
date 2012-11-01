@@ -1,5 +1,5 @@
-<td width="70%">
-	<a href='/pr/' class='ad-btn'>Реклама в ЕК</a>
+<td width="70%" class="submenu_controll_leave">
+	<a href="/pr/" class="ad-btn">Реклама в ЕК</a>
 </td>
 </tr>
 </table>
@@ -7,5 +7,39 @@
 <script type="text/javascript">
 	//var regrf = document.getElementById('regfr');
 	//regfr.location.href = '/authorize?type=area&width=733px&regtype='+regtype;
-	$('.menu_btn').hover(function(){$(this).css('background-position','0 -68px');},function(){ $(this).css('background-position','0 0');});
+	$('.menu_btn').hover(function(){
+	  $('.menu_btn').css('background-position','0 0');
+    $(this).css('background-position','0 -34px');
+  //  $(this).parents("a:first").addClass('active');
+  });
+	
+$(document).ready(function(){
+	$('.submenu_controll:first').addClass('active');
+	$("a.rule_button #area_btn, a.rule_button #artist_btn, a.rule_button #contractor_btn, a.rule_button #agency_btn, a.rule_button #black_btn").mouseenter(function(){
+    var curMenu = $(this).attr("id");
+    $('.submenu_controll').removeClass('active');
+    $('div.'+curMenu+'_show').addClass('active');
+ 
+  });
+  
+  $("#menu_controll_wrapper").mouseleave(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active'); 
+    $('.menu_btn').css('background-position','0 0');   
+  });
+  
+$("#menu_controll a.rule_button:last div").mouseenter(function(){
+  var curMenu = $(this).attr("id");
+  if(curMenu != 'black_btn') {
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active');
+  }
+}); 
+  
+  $(".submenu_controll_leave").mouseenter(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active'); 
+  });
+  
+});	
 </script>

@@ -69,6 +69,28 @@ class area_details_php extends CPageCodeHandler
 
 	public function PreRender()
 	{
+	
+	    // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+	
+	
 		$id_str = GP("id");
 		if (!is_null($id_str)) {
 			//can be type or subtype
@@ -585,16 +607,25 @@ class area_details_php extends CPageCodeHandler
 					$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
 					break;
 					
-				case 2:$mainMenu->dataSource["midas"] =
+					case 2:
+            $mainMenu->dataSource["shelk"] =
+  					array("link" => "http://shelkevent.ru/",
+  					"imgname" => "shelk",
+  					"title"=>"",
+  					"target" => "target='_blank'");
+					break;
+					
+				/*case 2:$mainMenu->dataSource["midas"] =
 					array("link" => "http://midas.ru/?id=144",
 					"imgname" => "midas",
 					"title"=>"",
 					"target" => "target='_blank'");
 					break;
+					*/
 				}
 				$submenu = $this->GetControl("submenu");
 				$submenu->headerTemplate =
-				'<div style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
+				'<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
 		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
 				$submenu->footerTemplate =
 				'</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">
@@ -731,6 +762,7 @@ class area_details_php extends CPageCodeHandler
 	`a`.`direct` AS `direct`,
 	`a`.`location_scheme`,
 	`a`.`registration_date`,
+	`a`.`last_visit_date`,
 	`a`.`coords`,
 	`a`.`youtube_video`,
 	IF(`a`.`city`>0,`c`.`title`,`a`.other_city) AS `city_name`,
@@ -747,6 +779,7 @@ group by
 			else
 			CURLHandler::ErrorPage();
 			$unit['reg_date'] = onSiteTime($unit['registration_date']);
+			$unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['registration_date']);
 			$unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
 			
 			$pro_type = getProType('area',$this->id);
@@ -1427,7 +1460,7 @@ group by
 			//Extended search
 			$submenu = $this->GetControl("submenu");
 			$submenu->headerTemplate =
-			'<div style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
+			'<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
 		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
 			$submenu->footerTemplate =
 			'</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">

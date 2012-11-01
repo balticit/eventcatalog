@@ -55,6 +55,12 @@ class authorize_php extends CPageCodeHandler
 			$account->key="logout";
 			$account->dataSource = $user->ToHashMap();
 			$account->dataSource["width"] = (int)GP("width","auto")+13;
+			
+			$account->dataSource["user_id"] = $user->id;
+			$account->dataSource["type"] = $user->type;
+			
+
+			
 			switch ($user->type) {
 				case "user" : 
 					$account->dataSource["typecolor"] = "black";

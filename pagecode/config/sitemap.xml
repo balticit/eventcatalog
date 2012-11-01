@@ -155,6 +155,7 @@
 			<sitenode id="99_49" node="eventtv_invite/" configfile="cms/settings/cms_eventtv_invite.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_50" node="u_files/" configfile="cms/settings/cms_u_files.xml" cmsfile="cms/index.php"/>
 			<sitenode id="99_51" node="eventtv_main/" configfile="cms/settings/cms_eventtv_main.xml" cmsfile="cms/index.php"/>
+            <sitenode id="99_52" node="carousel/" configfile="cms/settings/cms_carousel.xml" cmsfile="cms/index.php"/>
 		</sitenode>
 	</sitenode>
 </sitemap>

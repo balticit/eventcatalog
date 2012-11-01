@@ -190,6 +190,10 @@ function SubmitComment()
 	}
 	var action = document.getElementById('comments_action');
 	action.value = document.getElementById('comment_submit')["comment_action"];
+	
+	
+
+	
 	return true;
 }
 

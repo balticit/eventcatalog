@@ -18,6 +18,29 @@ class index_php extends CPageCodeHandler
 
 	public function PreRender()
 	{
+	
+	            
+    // TIME IN SITE UPDATE      
+    $user = new CSessionUser("user");
+		CAuthorizer::RestoreUserFromSession(&$user);
+    if ($user->authorized)
+    {
+
+    $user = new CSessionUser($user->type);
+    CAuthorizer::AuthentificateUserFromCookie(&$user);
+    CAuthorizer::RestoreUserFromSession(&$user);
+    
+    if ($user->type =="user")
+    {
+      $tbl =  "tbl__registered_user";
+    }
+    else { $tbl = "tbl__".$user->type."_doc"; }
+
+    SQLProvider::ExecuteNonReturnQuery("update $tbl set last_visit_date=NOW() WHERE tbl_obj_id = $user->id AND last_visit_date<DATE_SUB(NOW(), INTERVAL 1 MINUTE) ");
+
+    }
+	             
+	             
 		/*Провека адреса*/
 		$av_rwParams = array();
 		CURLHandler::CheckRewriteParams($av_rwParams);
@@ -468,10 +491,11 @@ class index_php extends CPageCodeHandler
 	$mainMenu->dataSource["great"] = 
 	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","target"=>"target='_blank'");
 	break;
-	case 8:
+/*	case 8:
 	$mainMenu->dataSource["midas"] = 
 	   array("link"=>"http://midas.ru/?id=144","imgname"=>"midas","title"=>"","target"=>"target='_blank'");
 	break;
+*/
 	}
     //EVENT TV
     $etv_res = SQLProvider::ExecuteQuery("select video_id,doc_id from tbl__eventtv_main");
@@ -763,6 +787,19 @@ class index_php extends CPageCodeHandler
         }
         @$groupList = $this->GetControl("typeList4");
         @$groupList->dataSource = $groups;
+        
+        //Карусель на главной
+        $carouselList = $this->GetControl("carousel");
+        $carousel = SQLProvider::ExecuteQuery("SELECT * FROM tbl__carousel WHERE active=1 ORDER BY sort ASC,id DESC limit 0,3");
+        foreach($carousel as $k=>$c)
+        {
+            $carousel[$k]['name'] = iconv("cp1251","utf-8",$carousel[$k]['name']);
+            $carousel[$k]['category'] = iconv("cp1251","utf-8",$carousel[$k]['category']);
+            
+            $carousel[$k]['date'] = iconv("cp1251","utf-8",caruoselDate($carousel[$k]['date']));
+            $carousel[$k]['description'] = iconv("cp1251","utf-8",  strip_tags($carousel[$k]['description']));
+        }
+        $carouselList->dataSource["articles"] = json_encode($carousel);
         
         /* END BALTICIT MENU IN MAIN */
 		
