@@ -113,6 +113,11 @@ case "1" :
       <li><a href=\"\" onclick=\"return SetTable('/cms/user_subscribed');\">Незарегестрированные пользователи</a></li>
   </ul>
 </li>
+<li><span>Карусель</span>
+  <ul>
+  <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/carousel/');\">Администрарование карусели</a></li>
+  </ul>
+</li>
 </ul>
 </div>
 
@@ -392,6 +397,14 @@ case "13":
             <li><a href=\"\" onclick=\"return SetTable('/cms/news/');\">Новости индустрии</a></li>
          </ul>
 	";
+    
+case "14":
+    $admtype['firsttable'] = "/cms/carousel/";
+	$admtype['admtype'] = "	
+<ul id=\"navadm\">
+			<li><a href=\"\" onclick=\"return SetTable('/cms/carousel/');\">Карусель</a></li>
+         </ul>
+	";    
       }
 
     }
