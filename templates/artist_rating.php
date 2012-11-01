@@ -18,7 +18,7 @@
 <?php CRenderer::RenderControl("submenu2"); ?>
 <?php CRenderer::RenderControl("submenu3"); ?>
 <?php CRenderer::RenderControl("submenu4"); ?>
-  </td>
+</td>
 </tr>
 <tr><!--содержание-->
 <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px;" valign="top">
