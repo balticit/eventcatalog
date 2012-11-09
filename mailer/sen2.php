@@ -223,11 +223,11 @@ function prepareBody() {
             $res = ExecuteQuery("SELECT * FROM tbl__" . $res_news[$key]["resident_type"] . "_doc WHERE tbl_obj_id=" . $res_news[$key]["resident_id"], $dbLink);
             $res_news[$key]["title_url"] = $res[0]['title_url'];
             $res_news[$key]["res_title"] = $res[0]['title'];
-            if (isset($res[0]['logo'])) {
-                $res_news[$key]["logo"] = $res[0]['logo'];
-            } else {
+            //if (isset($res[0]['logo'])) {
+            //    $res_news[$key]["logo"] = $res[0]['logo'];
+            //} else {
                 $res_news[$key]["logo"] = $res[0]['logo_image'];
-            }
+            //}
             $res_news[$key]["title"] = $res_news[$key]["title"];
             $res_news[$key]["text"] = strip_tags(substr($res_news[$key]["text"], 0, 100) . "...");
             switch ($val['resident_type']) {
