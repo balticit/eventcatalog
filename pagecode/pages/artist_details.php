@@ -202,7 +202,7 @@ class artist_details_php extends CPageCodeHandler
 
 				$artists = SQLProvider::ExecuteQuery(
 					"select * from  vw__artist_list_pro $filter
-					order by priority desc, title asc if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
+					order by priority desc if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
 				$artistList = $this->GetControl("artistList");
 				$letter = "";
                 foreach ($artists as &$artist) {
