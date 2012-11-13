@@ -292,7 +292,7 @@ class artist_details_php extends CPageCodeHandler
 					  g.`priority`
 					from
 					  `tbl__artist_group` g
-					ORDER by priority desc");
+					ORDER by priority desc, title ASC ");
                 foreach ($groups as $key => $value) {
                     $cpars = $rewriteParams;
                     unset($cpars["subgroup"]);
