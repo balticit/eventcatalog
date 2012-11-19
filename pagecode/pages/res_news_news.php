@@ -99,7 +99,7 @@ class res_news_news_php extends CPageCodeHandler
 			case "artist" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__artist_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo'];
+				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
         
         $newsdetails[0]["type"] = "<span style=\"color: #ff0066;\">Новость артиста: <a style=\"color: #ff0066;\" href='/artist/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
