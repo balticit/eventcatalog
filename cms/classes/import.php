@@ -1355,6 +1355,7 @@ where a.active =1");
 								if((ifnull(r.visited,0) > ifnull(r.voted,0)),ifnull(r.visited,0),ifnull(r.voted,0)) AS visited,
 								r.recommended,
 								r.registration_date,
+								r.priority,
 								r.youtube_video,
 								pa.pro_type,
 								pa.date_end AS pro_date_end,
