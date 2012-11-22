@@ -174,7 +174,7 @@ class agency_details_php extends CPageCodeHandler
                 }
                 $agencies = SQLProvider::ExecuteQuery(
                 "select *,10 height from  `vw__agency_list_pro` $filter
-					order by priority desc, if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
+					order by priority desc, title ASC, if(tbl_obj_id=$first,0,1), pro_type desc, pro_cost desc, pro_date_pay desc, title limit $sp,$this->pagesize");
                 $agencyList = $this->GetControl("agencyList");
 
                 foreach ($agencies as &$agency)

@@ -25,7 +25,7 @@
 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr>
 		<td style="vertical-align:top; padding-left:5px; width:230px">
-			<table width="218" cellpadding="0" cellspacing="0" border="0" >
+			<table width="218" cellpadding="0" cellspacing="0" border="0" style="width: 218px; border: 1px solid #dadada;">
 			<!-- <tr><td class="ram1"></td><td class="ram2"></td><td class="ram3"></td></tr> -->
 			<tr>
 				<!-- <td class="ram4"></td> -->

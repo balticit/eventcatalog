@@ -74,12 +74,19 @@ class added_php extends CPageCodeHandler
 		$newAgencies->dataSource = $newAgency;
 		
 		
-		
-		$newAreasweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
+		/* WEEK */
+	/*	$newAreasweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`='area' and
 												vm.`registration_date`>=SUBDATE(NOW(),7)
 												order by vm.`registration_date` DESC
 												");
+		*/
+    $newAreasweek = SQLProvider::ExecuteQuery("select ar.tbl_obj_id, DATE_FORMAT(ar.registration_date,'%d.%m.%y') as strdate, ar.title, ar.description, ar.logo as logo_image, 'area' resident_type, ar.title_url
+        from `tbl__area_doc` ar
+        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),7)
+        order by ar.registration_date DESC
+    ");
+    										
 		$newAreasweek2 = $this->GetControl("newAreasweek");
 		$newAreasweek2->dataSource = $newAreasweek;	
 		
@@ -87,12 +94,19 @@ class added_php extends CPageCodeHandler
 		$areaCount["count"] = sizeOf($newAreasweek);
 		$areaCountObj = $this->GetControl("areacount");
 		$areaCountObj->dataSource = $areaCount;
-
-		$newContractorweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
+    
+		/*$newContractorweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`='contractor' and
 												vm.`registration_date`>=SUBDATE(NOW(),7)
 												order by vm.`registration_date` DESC
 												");
+		*/
+		$newContractorweek = SQLProvider::ExecuteQuery("select cont.tbl_obj_id, DATE_FORMAT(cont.registration_date,'%d.%m.%y') as strdate, cont.title, cont.description, cont.logo_image as logo_image, 'contractor' resident_type, cont.title_url
+        from `tbl__contractor_doc` cont
+        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),7)
+        order by cont.registration_date DESC
+    ");
+		
 		$newContractorsweek = $this->GetControl("newContractorsweek");
 		$newContractorsweek->dataSource = $newContractorweek;
 		
@@ -101,11 +115,18 @@ class added_php extends CPageCodeHandler
 		$contractorCountObj = $this->GetControl("contractorcount");
 		$contractorCountObj->dataSource = $contractorCount;
 
-		$newArtistweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
+		/*$newArtistweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`='artist' and
 												vm.`registration_date`>=SUBDATE(NOW(),7)
 												order by vm.`registration_date` DESC
 												");
+		*/										
+		$newArtistweek = SQLProvider::ExecuteQuery("select art.tbl_obj_id, DATE_FORMAT(art.registration_date,'%d.%m.%y') as strdate, art.title, art.description, art.logo as logo_image, 'artist' resident_type, art.title_url
+        from `tbl__artist_doc` art
+        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),7)
+        order by art.registration_date DESC
+    ");
+    
 		$newArtistsweek = $this->GetControl("newArtistsweek");
 		$newArtistsweek->dataSource = $newArtistweek;
 		
@@ -114,11 +135,18 @@ class added_php extends CPageCodeHandler
 		$artistCountObj = $this->GetControl("artistcount");
 		$artistCountObj->dataSource = $artistCount;
 		
-		$newAgencyweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
+		/*$newAgencyweek = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`='agency' and
 												vm.`registration_date`>=SUBDATE(NOW(),7)
 												order by vm.`registration_date` DESC
 												");
+		*/										
+		$newAgencyweek = SQLProvider::ExecuteQuery("select ag.tbl_obj_id, DATE_FORMAT(ag.registration_date,'%d.%m.%y') as strdate, ag.title, ag.description, ag.logo_image as logo_image, 'agency' resident_type, ag.title_url
+        from `tbl__agency_doc` ag
+        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),7)
+        order by ag.registration_date DESC
+    ");
+		
 		$newAgenciesweek = $this->GetControl("newAgenciesweek");
 		$newAgenciesweek->dataSource = $newAgencyweek;
 		
@@ -128,11 +156,11 @@ class added_php extends CPageCodeHandler
 		$agencyCountObj->dataSource = $agencyCount;
 	
 		
-		$newAreasmonth = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
-												where vm.`active`=1 and vm.`login_type`='area' and
-												vm.`registration_date`>=SUBDATE(NOW(),30)
-												order by vm.`registration_date` DESC
-												");
+		$newAreasmonth = SQLProvider::ExecuteQuery("select ar.tbl_obj_id, DATE_FORMAT(ar.registration_date,'%d.%m.%y') as strdate, ar.title, ar.description, ar.logo as logo_image, 'area' resident_type, ar.title_url
+        from `tbl__area_doc` ar
+        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),30)
+				order by ar.registration_date DESC
+		");
 		$newAreasmonth2 = $this->GetControl("newAreasmonth");
 		$newAreasmonth2->dataSource = $newAreasmonth;	
 		
@@ -141,11 +169,11 @@ class added_php extends CPageCodeHandler
 		$areaCountmonthObj = $this->GetControl("areacountmonth");
 		$areaCountmonthObj->dataSource = $areaCountmonth;
 
-		$newContractormonth = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
-												where vm.`active`=1 and vm.`login_type`='contractor' and
-												vm.`registration_date`>=SUBDATE(NOW(),30)
-												order by vm.`registration_date` DESC
-												");
+		$newContractormonth = SQLProvider::ExecuteQuery("select cont.tbl_obj_id, DATE_FORMAT(cont.registration_date,'%d.%m.%y') as strdate, cont.title, cont.description, cont.logo_image as logo_image, 'contractor' resident_type, cont.title_url
+        from `tbl__contractor_doc` cont
+        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),30)
+				order by cont.registration_date DESC
+		");
 		$newContractorsmonth = $this->GetControl("newContractorsmonth");
 		$newContractorsmonth->dataSource = $newContractormonth;
 		
@@ -155,11 +183,11 @@ class added_php extends CPageCodeHandler
 		$contractorCountmonthObj = $this->GetControl("contractorcountmonth");
 		$contractorCountmonthObj->dataSource = $contractorCountmonth;
 
-		$newArtistmonth = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
-												where vm.`active`=1 and vm.`login_type`='artist' and
-												vm.`registration_date`>=SUBDATE(NOW(),30)
-												order by vm.`registration_date` DESC
-												");
+		$newArtistmonth = SQLProvider::ExecuteQuery("select art.tbl_obj_id, DATE_FORMAT(art.registration_date,'%d.%m.%y') as strdate, art.title, art.description, art.logo as logo_image, 'artist' resident_type, art.title_url
+        from `tbl__artist_doc` art
+        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),30)
+				order by art.registration_date DESC
+		");
 		$newArtistsmonth = $this->GetControl("newArtistsmonth");
 		$newArtistsmonth->dataSource = $newArtistmonth;
 		
@@ -168,11 +196,11 @@ class added_php extends CPageCodeHandler
 		$artistCountmonthObj = $this->GetControl("artistcountmonth");
 		$artistCountmonthObj->dataSource = $artistCountmonth;
 		
-		$newAgencymonth = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
-												where vm.`active`=1 and vm.`login_type`='agency' and
-												vm.`registration_date`>=SUBDATE(NOW(),30)
-												order by vm.`registration_date` DESC
-												");
+		$newAgencymonth = SQLProvider::ExecuteQuery("select ag.tbl_obj_id, DATE_FORMAT(ag.registration_date,'%d.%m.%y') as strdate, ag.title, ag.description, ag.logo_image as logo_image, 'agency' resident_type, ag.title_url
+        from `tbl__agency_doc` ag
+        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),30)
+				order by ag.registration_date DESC
+		");
 		$newAgenciesmonth = $this->GetControl("newAgenciesmonth");
 		$newAgenciesmonth->dataSource = $newAgencymonth;
 		

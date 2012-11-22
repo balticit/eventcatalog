@@ -28,6 +28,7 @@
 				 <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">				  
 					<tr><td class="ram5"><?php CRenderer::RenderControl("typeList"); ?></td></tr>					
 				</table>
+				<img src="/images/front/0.gif" width="220" height="10">
 				<a id="witgetAddResident" href="/add_res_news">Добавить свою новость</a>
 			</td>
 			<td valign="top">

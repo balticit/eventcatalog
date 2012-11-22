@@ -99,7 +99,7 @@ class res_news_news_php extends CPageCodeHandler
 			case "artist" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__artist_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo'];
+				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
         
         $newsdetails[0]["type"] = "<span style=\"color: #ff0066;\">Новость артиста: <a style=\"color: #ff0066;\" href='/artist/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
@@ -112,7 +112,7 @@ class res_news_news_php extends CPageCodeHandler
 				
 				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
-        $newsdetails[0]["type"] = "<span style=\"color: #99cc00;\">Новость агентства: <a style=\"color: #99cc00;\ href='/agency/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
+        $newsdetails[0]["type"] = "<span style=\"color: #99cc00;\">Новость агентства: <a style=\"color: #99cc00;\" href='/agency/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
 				$newsdetails[0]["newsBoard"] = ($diffDate > 3600) ? ($diffDate < 72000) ? 'Новость добавлена<br />'.ceil($diffDate/3600).' часов назад' : 'Новость добавлена<br />'.substr($newsdetails[0]['date'], 0, 10).' г.' : 'Новость добавлена<br />'.ceil($diffDate/60).' минут назад';
 				//$newsdetails[0]['show_agency'] = '';

@@ -47,16 +47,16 @@
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/count.htm"/>
 	</control>
 	<control relativeId="newAreasweek" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newContractorsweek" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newArtistsweek" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newAgenciesweek" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="areacount" class="CTemplateObject">
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/count.htm"/>
@@ -71,16 +71,16 @@
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/count.htm"/>
 	</control>
 	<control relativeId="newAreasmonth" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newContractorsmonth" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newArtistsmonth" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="newAgenciesmonth" class="CRepeater">
-		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/newItem.htm"/>
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/item.htm"/>
 	</control>
 	<control relativeId="areacountmonth" class="CTemplateObject">
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/added_files/count.htm"/>

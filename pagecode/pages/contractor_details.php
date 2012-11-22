@@ -138,7 +138,7 @@ class contractor_details_php extends CPageCodeHandler
                 $rp = ($page - 1) * $this->pageSize;
                 $contractors = SQLProvider::ExecuteQuery(
                 "select * from `vw__contractor_list_pro` $filter
-				order by if(tbl_obj_id=$first,0,1),
+				order by priority desc, title ASC, if(tbl_obj_id=$first,0,1),
 				pro_type desc, pro_cost desc, pro_date_pay desc, title limit $rp,$this->pageSize");				                
                 foreach ($contractors as &$contractor)
                 {
