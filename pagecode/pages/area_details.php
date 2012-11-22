@@ -828,7 +828,7 @@ group by
         else { $val = ''; $cost = $unit["cost_rent"]; }
 				$unit["cost_rent"]=	
 				'<tr><td class="table_row">
-          <div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div>
+          <div class="blue_button">Дополнительная арендная плата за проведение мероприятия в случае закрытия площадки:</div><br />
         	<span>'.$cost.$val.'</span>
       	</td></tr>
         ';

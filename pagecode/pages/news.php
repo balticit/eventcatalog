@@ -76,7 +76,7 @@
 			// список новостей
 			$sql =  'SELECT * FROM `vw__news_soon` '.
 						(!empty($cat) ? 'WHERE tbl_cai_id = '.$cat.' ' : '').
-					'ORDER BY date DESC LIMIT '.(($page - 1) * $this->max_per_page).', '.$this->max_per_page;
+					'ORDER BY creation_date DESC LIMIT '.(($page - 1) * $this->max_per_page).', '.$this->max_per_page;
 			// var_dump($sql);		
 			// die('!');
 			$news = SQLProvider::ExecuteQuery($sql);
@@ -86,7 +86,7 @@
 				$news[$key]["parent"] = CURLHandler::$currentPath;
 				$cat = $news[$key]["tbl_cai_id"];
 				if(!empty($cat)){
-					$news[$key]["theme"] = "Тема: ".SQLProvider::ExecuteScalar("SELECT title from tbl__news_dir where tbl_obj_id=".$cat);
+					$news[$key]["theme"] = "Рубрика: ".SQLProvider::ExecuteScalar("SELECT title from tbl__news_dir where tbl_obj_id=".$cat);
 				}
 				else{
 					$news[$key]["theme"] = "";

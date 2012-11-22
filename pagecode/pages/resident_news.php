@@ -1,7 +1,7 @@
 <?php
 class resident_news_php extends CPageCodeHandler
 {
-    private $newsLimit = 10;
+    private $newsLimit = 25;
 
 	public function resident_news_php()
 	{
@@ -82,7 +82,7 @@ class resident_news_php extends CPageCodeHandler
         		
 		// во вложенном запросе счетчик, чтобы не делать еще один коннект к базе
 		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, res.title resident_name, '.
-					(in_array($resident, array('contractor','agency')) ? 'res.logo_image' : 'res.logo logo_image').', '.
+					(in_array($resident, array('contractor','agency')) ? 'rn.logo_image' : 'rn.logo_image logo_image').', '.
 					'(SELECT COUNT(tbl_obj_id) FROM tbl__resident_news WHERE resident_type="'.$resident.'" AND active=1 ) c '.
 				'FROM tbl__resident_news rn '.
 					'LEFT JOIN tbl__'.$resident.'_doc res ON res.tbl_obj_id = rn.resident_id '.
@@ -132,7 +132,7 @@ class resident_news_php extends CPageCodeHandler
 		
 		
 		$groupList = $this->GetControl("typeList");		
-        $groupList->dataSource = $menus;
+    $groupList->dataSource = $menus;
 		
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm

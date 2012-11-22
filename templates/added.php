@@ -25,36 +25,37 @@
 	<div class="h3">Последние добавления</div>
 	<p>&nbsp;</p>
 	<div><?php CRenderer::RenderControl("chart"); ?></div>
-	<br><br><br><br><br><br><br>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
 					
-					<table>
+					<table width="100%">
 						<tr>
-							<td valign="top">
-								<span class="newreg_contractor"><b>Новое в подрядчиках</b></span>
-								<div style="margin-top:15px; margin-bottom:3px;">Добавилось за последнюю неделю:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("contractorcount"); ?></span>
-								<br><br><?php CRenderer::RenderControl("newContractorsweek"); ?></div>	
+							<td width="25%" valign="top">
+								<span class="newreg_contractor"><b>Новое в подрядчиках</b></span><br /><br />
+								<div>Добавилось за последнюю неделю:&nbsp;<b><?php CRenderer::RenderControl("contractorcount"); ?></b><br /><br />
+								<table class="recomended"><?php CRenderer::RenderControl("newContractorsweek"); ?></table>	
 							</td>
-							<td style="padding-left: 40px;" valign="top">
-								<span class="newreg_area"><b>Новое в площадках</b></span>
-								<div style="margin-top:15px; margin-bottom:3px;">Добавилось за последнюю неделю:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("areacount"); ?></span>
-								<br><br><?php CRenderer::RenderControl("newAreasweek"); ?></div>	
+							<td width="25%" valign="top">
+								<span class="newreg_area"><b>Новое в площадках</b></span><br /><br />
+								<div>Добавилось за последнюю неделю:&nbsp;<b><?php CRenderer::RenderControl("areacount"); ?></b><br /><br />
+								<table class="recomended"><?php CRenderer::RenderControl("newAreasweek"); ?></table>	
 							</td>
-							<td style="padding-left: 40px;" valign="top">
-								<span class="newreg_artist"><b>Новое в артистах</b></span>
-								<div style="margin-top:15px; margin-bottom:3px;">Добавилось за последнюю неделю:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("artistcount"); ?></span>
-								<br><br><?php CRenderer::RenderControl("newArtistsweek"); ?></div>
+							<td width="25%" valign="top">
+								<span class="newreg_artist"><b>Новое в артистах</b></span><br /><br />
+								<div>Добавилось за последнюю неделю:&nbsp;<b><?php CRenderer::RenderControl("artistcount"); ?></b><br /><br />
+								<table class="recomended"><?php CRenderer::RenderControl("newArtistsweek"); ?></table>
 							</td>
-							<td style="padding-left: 40px;" valign="top">
-								<span class="newreg_agency"><b>Новое в Агентствах</b></span>
-								<div style="margin-top:15px; margin-bottom:3px;">Добавилось за последнюю неделю:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("agencycount"); ?></span>
-								<br><br><?php CRenderer::RenderControl("newAgenciesweek"); ?></div>	
+							<td width="25%" valign="top">
+								<span class="newreg_agency"><b>Новое в Агентствах</b></span><br /><br />
+								<div>Добавилось за последнюю неделю:&nbsp;<b><?php CRenderer::RenderControl("agencycount"); ?></b><br /><br />
+								<table class="recomended"><?php CRenderer::RenderControl("newAgenciesweek"); ?></table>	
 							</td>
 						</tr>
 						<tr>
-							<td valign="top"><Br>Добавилось за месяц всего:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("contractorcountmonth"); ?></span> </td>
-							<td style="padding-left: 40px;" valign="top"><Br>Добавилось за месяц всего:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("areacountmonth"); ?></span></td>
-							<td style="padding-left: 40px;" valign="top"><Br>Добавилось за месяц всего:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("artistcountmonth"); ?></span></td>
-							<td style="padding-left: 40px;" valign="top"><Br>Добавилось за месяц всего:&nbsp;<span style="font-weight:bold"><?php CRenderer::RenderControl("agencycountmonth"); ?></span></td>
+							<td valign="top"><br />Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("contractorcountmonth"); ?></b> </td>
+							<td valign="top"><br />Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("areacountmonth"); ?></b></td>
+							<td valign="top"><br />Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("artistcountmonth"); ?></b></td>
+							<td valign="top"><br />Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("agencycountmonth"); ?></b></td>
 						</tr>
 						<tr>
 							<td valign="top"><script type="text/javascript">
@@ -70,9 +71,9 @@
 								<div id="contractormonth_count"><a href="/added" class="newreg_contractor" onClick="show_contractors_month(); return false;">открыть список</a></div>
 								<div id="contractormonth" style="display:none;">
 								<a href="/added" class="newreg_contractor" onClick="off_contractors_month(); return false;">свернуть список</a><Br><br>
-								<?php CRenderer::RenderControl("newContractorsmonth"); ?></div>
+								<table class="recomended"><?php CRenderer::RenderControl("newContractorsmonth"); ?></table></div>
 								</td>
-							<td style="padding-left: 40px;" valign="top"><script type="text/javascript">
+							<td valign="top"><script type="text/javascript">
 									function show_areas_month() {
 										document.getElementById('areamonth').style.display = 'block';
 										document.getElementById('areamonth_count').style.display = 'none';									
@@ -85,8 +86,8 @@
 								<div id="areamonth_count"><a href="/added" class="newreg_area" onClick="show_areas_month(); return false;">открыть список</a></div>
 								<div id="areamonth" style="display:none;">
 									<a href="/added" class="newreg_area" onClick="off_areas_month(); return false;">свернуть список</a><Br><br>
-								<?php CRenderer::RenderControl("newAreasmonth"); ?></div></td>
-							<td style="padding-left: 40px;" valign="top"><script type="text/javascript">
+								  <table class="recomended"><?php CRenderer::RenderControl("newAreasmonth"); ?></table></div></td>
+							<td valign="top"><script type="text/javascript">
 									function show_artists_month() {
 										document.getElementById('artistmonth').style.display = 'block';
 										document.getElementById('artistmonth_count').style.display = 'none';									
@@ -99,8 +100,8 @@
 								<div id="artistmonth_count"><a href="/added" class="newreg_artist" onClick="show_artists_month(); return false;">открыть список</a></div>
 								<div id="artistmonth" style="display:none;">
 								<a href="/added" class="newreg_artist" onClick="off_artists_month(); return false;">свернуть список</a><Br><br>
-								<?php CRenderer::RenderControl("newArtistsmonth"); ?></div></td>
-							<td style="padding-left: 40px;" valign="top"><script type="text/javascript">
+								<table class="recomended"><?php CRenderer::RenderControl("newArtistsmonth"); ?></table></div></td>
+							<td valign="top"><script type="text/javascript">
 									function show_agencies_month() {
 										document.getElementById('agencymonth').style.display = 'block';
 										document.getElementById('agencymonth_count').style.display = 'none';									
@@ -113,7 +114,7 @@
 								<div id="agencymonth_count"><a href="/added" class="newreg_agency" onClick="show_agencies_month(); return false;">открыть список</a></div>
 								<div id="agencymonth" style="display:none;">
 								<a href="/added" class="newreg_agency" onClick="off_agencies_month(); return false;">свернуть список</a><Br><br>
-								<?php CRenderer::RenderControl("newAgenciesmonth"); ?></div></td>
+								<table class="recomended"><?php CRenderer::RenderControl("newAgenciesmonth"); ?></table></div></td>
 						</tr>
 					</table>
 </td></tr>

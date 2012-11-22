@@ -213,7 +213,7 @@
           });
           </script>
 				
-				<div style='height:580px;width: 240px;margin-bottom: 10px;'>
+				<div style='height:600px;width: 240px;margin-bottom: 10px;'>
 					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->
 					<script language="javascript" type="text/javascript"><!--
 					var RndNum4NoCash = Math.round(Math.random() * 1000000000);
@@ -278,6 +278,17 @@
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr valign="top">
             <td width="" rowspan="10" colspan="2">
+            
+            <div class='first-col'>
+					<div class='sub-title-block'><span class='sub-title widget'>Эвенторы в эфире</span></div>
+					<div style="vertical-align: top; border: 1px solid #e4e4e4; padding: 5px 11px 11px 26px; background-color:#f8f8f8;">
+						<div style="position: relative; padding-top:6px;">
+							<div class="item_header" style="position: absolute; top:0; padding-bottom: 10px;">Новые комментарии:</div>
+							<iframe name="scroll_msg" src="/scroll/msg/" width="100%" height="305" frameborder="0" scrolling="no">Ваш браузер не поддерживает фреймы</iframe>
+						</div>
+					</div>
+				</div>
+            
 				<div class='first-col'>
 					<div class='sub-title-block'><a href='/added/' class='sub-title widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
 					<table width="100%">
@@ -287,6 +298,7 @@
 					</tr>
 					</table>
 				</div>
+				<?php /*
 				<div class='first-col'>
 					<div class='sub-title-block'><span class='sub-title'>Рейтинг</span></div>
 					<table width='100%'>
@@ -320,6 +332,9 @@
 						</tr>
 					</table>
 				</div>
+				*/ ?>
+				
+				
 			</td>
             <td width='240' align="right" rowspan="3">
 				<div class='sub-title-block'><span class='sub-title widget'>Всего резидентов</span></div>
@@ -332,6 +347,7 @@
           </table>
         </td>
 </tr>
+<?php /*
 <tr>
 	<td height='10px' class='separate-line'></td>
 </tr>
@@ -342,6 +358,7 @@
       <tr>
         <td style="padding: 0 30px 10px 30px;">
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          
             <tr valign="top">
             <td width="" rowspan="10" colspan="2">
 				<div class='first-col'>
@@ -353,12 +370,16 @@
 						</div>
 					</div>
 				</div>
+
+		
 				<div class='first-col'>
 					<div class='sub-title-block'><span class='sub-title'>Работа в EVENT-Индустрии</span></div>
 					<div style='border: 1px dashed #999; height: 326px;'><p style="display: block; text-align: center; text-transform: uppercase; color: rgb(204, 204, 204); line-height: 320px; margin: 0pt; font-size: 32px;">Скоро</p></div>
 				</div>
+		
 			</td>
             <td width='240' align="right" rowspan="3">
+            <?php /*
 				<div class='sub-title-block'><span class='sub-title widget'>Наши друзья</span></div>
 				<noindex>
 				<div class='our-friends jcarousel-skin-tango'>
@@ -394,14 +415,17 @@
 					</ul>
 				</div>
 				</noindex>
+				
             </td>
             </tr>
+            
           </tbody></table>
         </td>
       </tr>
           </table>
         </td>
 </tr>
+*/ ?>
 <tr><td class="partner_ban"><div style="margin-top:10px;margin-bottom:-5px;" class="sub-title-block h3"><span class="sub-title widget">Партнеры Event каталога</span></div><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
 <tr><td class="foot unselectable"><?php CRenderer::RenderControl("footer"); ?></td></tr>
 </table>
