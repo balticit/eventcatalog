@@ -3121,6 +3121,9 @@ td.ram5 div.level2{margin:0px 0px 0px 7px;}
 	td.ram5 .leftml2:hover, td.ram5 #selectRed #selectRed .leftml2,td.ram5 #selectGreen #selectGreen .leftml2,td.ram5 #selectOrange #selectOrange .leftml2,td.ram5 #selectBlue #selectBlue.leftml2,td.ram5 #selectGray a.leftm{background:#e1e1e1;color:#000;}
 	td.ram5 #selectRed #selectRed .leftml2,td.ram5 #selectGreen #selectGreen .leftml2,td.ram5 #selectOrange #selectOrange .leftml2,td.ram5 #selectBlue #selectBlue .leftml2{font-weight:bold;color:#000;background:#e1e1e1}
 
+
+td.ram5 .selected a.leftml2 leftmgray {color:#000; background:#E1E1E1}
+
 #selectGreen {
 	background-color: #e1e1e1!important; 
 }
