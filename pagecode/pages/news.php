@@ -82,7 +82,7 @@
 			$news = SQLProvider::ExecuteQuery($sql);
 			foreach ($news as $key=>$value)
 			{
-				$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['date']));
+				$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
 				$news[$key]["parent"] = CURLHandler::$currentPath;
 				$cat = $news[$key]["tbl_cai_id"];
 				if(!empty($cat)){

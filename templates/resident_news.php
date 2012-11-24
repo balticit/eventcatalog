@@ -49,7 +49,7 @@
 											else{
 												echo 'резидентов';
 											}
-										?></div>
+										?></div><br />
                 <table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:auto;"><?php CRenderer::RenderControl("newAreas"); ?></table>
                 <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>
             </td>
