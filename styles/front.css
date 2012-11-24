@@ -2592,9 +2592,10 @@ div.recomended {
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 56px;
+    height: 60px; padding-bottom:2px;
     line-height: 14px;
 }
+div.recomended  p { padding:0; margin-top: 4px;}
 
 div.addedResident {
     position: relative;
@@ -3400,7 +3401,7 @@ border-radius: 3px; /* CSS3 */
 
 
 .area_detail_page .table_row { height:20px; }
-.area_detail_page .table_row span { position:relative;top:3px;padding-left:5px}
+.area_detail_page .table_row span { position:relative;padding:3px; display:inline-block}
 
 .u_info_block { line-height:18px}
 

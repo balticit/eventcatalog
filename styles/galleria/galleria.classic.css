@@ -58,8 +58,8 @@
 }
 .galleria-loader {
     background: #000;
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     position: absolute;
     top: 50%;
     right: 50%;

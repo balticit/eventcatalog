@@ -83,7 +83,7 @@ class added_php extends CPageCodeHandler
 		*/
     $newAreasweek = SQLProvider::ExecuteQuery("select ar.tbl_obj_id, DATE_FORMAT(ar.registration_date,'%d.%m.%y') as strdate, ar.title, ar.description, ar.logo as logo_image, 'area' resident_type, ar.title_url
         from `tbl__area_doc` ar
-        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),7)
+        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),117)
         order by ar.registration_date DESC
     ");
     										
@@ -103,7 +103,7 @@ class added_php extends CPageCodeHandler
 		*/
 		$newContractorweek = SQLProvider::ExecuteQuery("select cont.tbl_obj_id, DATE_FORMAT(cont.registration_date,'%d.%m.%y') as strdate, cont.title, cont.description, cont.logo_image as logo_image, 'contractor' resident_type, cont.title_url
         from `tbl__contractor_doc` cont
-        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),7)
+        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),117)
         order by cont.registration_date DESC
     ");
 		
@@ -123,7 +123,7 @@ class added_php extends CPageCodeHandler
 		*/										
 		$newArtistweek = SQLProvider::ExecuteQuery("select art.tbl_obj_id, DATE_FORMAT(art.registration_date,'%d.%m.%y') as strdate, art.title, art.description, art.logo as logo_image, 'artist' resident_type, art.title_url
         from `tbl__artist_doc` art
-        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),7)
+        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),117)
         order by art.registration_date DESC
     ");
     
@@ -143,7 +143,7 @@ class added_php extends CPageCodeHandler
 		*/										
 		$newAgencyweek = SQLProvider::ExecuteQuery("select ag.tbl_obj_id, DATE_FORMAT(ag.registration_date,'%d.%m.%y') as strdate, ag.title, ag.description, ag.logo_image as logo_image, 'agency' resident_type, ag.title_url
         from `tbl__agency_doc` ag
-        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),7)
+        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),117)
         order by ag.registration_date DESC
     ");
 		
@@ -158,7 +158,7 @@ class added_php extends CPageCodeHandler
 		
 		$newAreasmonth = SQLProvider::ExecuteQuery("select ar.tbl_obj_id, DATE_FORMAT(ar.registration_date,'%d.%m.%y') as strdate, ar.title, ar.description, ar.logo as logo_image, 'area' resident_type, ar.title_url
         from `tbl__area_doc` ar
-        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),30)
+        where ar.active = 1 and ar.registration_date>=SUBDATE(NOW(),130)
 				order by ar.registration_date DESC
 		");
 		$newAreasmonth2 = $this->GetControl("newAreasmonth");
@@ -171,7 +171,7 @@ class added_php extends CPageCodeHandler
 
 		$newContractormonth = SQLProvider::ExecuteQuery("select cont.tbl_obj_id, DATE_FORMAT(cont.registration_date,'%d.%m.%y') as strdate, cont.title, cont.description, cont.logo_image as logo_image, 'contractor' resident_type, cont.title_url
         from `tbl__contractor_doc` cont
-        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),30)
+        where cont.active = 1 and cont.registration_date>=SUBDATE(NOW(),130)
 				order by cont.registration_date DESC
 		");
 		$newContractorsmonth = $this->GetControl("newContractorsmonth");
@@ -185,7 +185,7 @@ class added_php extends CPageCodeHandler
 
 		$newArtistmonth = SQLProvider::ExecuteQuery("select art.tbl_obj_id, DATE_FORMAT(art.registration_date,'%d.%m.%y') as strdate, art.title, art.description, art.logo as logo_image, 'artist' resident_type, art.title_url
         from `tbl__artist_doc` art
-        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),30)
+        where art.active = 1 and art.registration_date>=SUBDATE(NOW(),130)
 				order by art.registration_date DESC
 		");
 		$newArtistsmonth = $this->GetControl("newArtistsmonth");
@@ -198,7 +198,7 @@ class added_php extends CPageCodeHandler
 		
 		$newAgencymonth = SQLProvider::ExecuteQuery("select ag.tbl_obj_id, DATE_FORMAT(ag.registration_date,'%d.%m.%y') as strdate, ag.title, ag.description, ag.logo_image as logo_image, 'agency' resident_type, ag.title_url
         from `tbl__agency_doc` ag
-        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),30)
+        where ag.active = 1 and ag.registration_date>=SUBDATE(NOW(),130)
 				order by ag.registration_date DESC
 		");
 		$newAgenciesmonth = $this->GetControl("newAgenciesmonth");
