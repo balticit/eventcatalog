@@ -411,14 +411,24 @@ class index_php extends CPageCodeHandler
 
 		$newRegs = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 							where vm.`active`=1 and vm.`login_type`<>'user'
-							order by vm.`registration_date` DESC limit 0,12");
+							order by vm.`registration_date` DESC limit 0,20");
+							
+	  foreach($newRegs as $key => $val) {
+	   $newRegs[$key]["registration_date"] = addDate($newRegs[$key]["registration_date"]);
+	  }
+
 		$newRegistered = $this->GetControl("newRegistered");
 		$newRegistered->dataSource = $newRegs;
 		
 		
 		$newRegs2 = SQLProvider::ExecuteQuery("select * from `vw__all_users` vm
 							where vm.`active`=1 and vm.`login_type`<>'user'
-							order by vm.`registration_date` DESC limit 12,12");
+							order by vm.`registration_date` DESC limit 20,20");
+		
+		foreach($newRegs as $key => $val) {
+	   $newRegs2[$key]["registration_date"] = addDate($newRegs2[$key]["registration_date"]);
+	  }
+	  
 		$newRegistered2 = $this->GetControl("newRegistered2");
 		$newRegistered2->dataSource = $newRegs2;
 		

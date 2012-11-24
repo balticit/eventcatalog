@@ -120,6 +120,31 @@ if($minut > 1) { return declension($minut,' минуту',' минуты',' минут')." назад"
    // return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день')).' '.($months>0||$years>0?'':($hour>0?declension($hour,' час',' часа',' часов'):'1 час')).' '.($months>0||$years>0?'':($minut>0?declension($minut,' минуту',' минуты',' минут'):'1 минуту')). ' назад';
 }
 
+function addDate($date){
+    $date = (is_int($date)?$date:strtotime($date));
+    if(empty($date)) return false;
+    $sitetime = time() - $date;
+    // годы 365*24*3600 = 31536000;
+    $years = (int)($sitetime/31536000);
+    // мес€цы 30*24*3600 = 2592000
+    $months = (int)(($sitetime - $years*31536000)/2592000);
+    // дни 24*3600 = 86400
+    $days = (int)(($sitetime - $years*31536000 - $months*2592000)/86400);
+    // часы 60*60 = 3600
+    $hour = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400)/3600);
+    // минуты 60 = 60
+    $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
+
+
+
+if($days > 2 and $days < 3) { return "<span class='addDate'>позавчера</span>";}
+if($days > 1 and $days < 2) { return "<span class='addDate'вчера</span>";}   
+if($days < 1) { return "<span class='addDate'>сегодн€</span>";}
+
+}
+
+
+
 function UserAge($birthday = ''){
 
 // ”казываем дату и врем€ ¬ашего рождени€(дл€ примера
