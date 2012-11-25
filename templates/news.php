@@ -42,8 +42,8 @@
 						<img src="/images/front/0.gif" width="220" height="10">
                 </td>
                 <td width="100%" valign="top">
-					<div style="margin-right:10px;margin-left:10px" class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("title"); ?></div>
-					<table cellpadding="0" cellspacing="10" border="0">
+					<div class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("title"); ?></div>
+					<table cellpadding="0" cellspacing="0" border="0">
 						<?php CRenderer::RenderControl("newsList"); ?>
 					</table>
 					<p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
