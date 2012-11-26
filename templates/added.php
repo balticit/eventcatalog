@@ -50,21 +50,22 @@
 								<table class="recomended"><?php CRenderer::RenderControl("newAgenciesweek"); ?></table>	
 							</td>
 						</tr>
+						
 						<tr>
-						  <td colspan="4">
+							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("contractorcountmonth"); ?></b> </td>
+							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("areacountmonth"); ?></b></td>
+							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("artistcountmonth"); ?></b></td>
+							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("agencycountmonth"); ?></b></td>
+						</tr>
+						<tr>
+						  <td colspan="4"><br />
               <div id="contractormonth_count" >
                 <a style="color:#000; font-size:14px;" href="/added" class="newreg_contractor" onClick="show_month(); return false;">открыть список</a>
               </div>
               <div id="contractormonth1" style="display:none;">
 								<a href="/added" class="newreg_contractor" style="color:#000; font-size:14px;" onClick="off_month(); return false;">свернуть список</a>
 							</div>
-              <br />
-						</tr>
-						<tr>
-							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("contractorcountmonth"); ?></b> </td>
-							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("areacountmonth"); ?></b></td>
-							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("artistcountmonth"); ?></b></td>
-							<td valign="top">Добавилось за месяц всего:&nbsp;<b><?php CRenderer::RenderControl("agencycountmonth"); ?></b></td>
+              
 						</tr>
 						<tr>
 							<td valign="top">

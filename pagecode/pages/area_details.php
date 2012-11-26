@@ -954,10 +954,11 @@ group by
 			
 			//panels
       if($unit["panels"]!='' && $unit["panels"]!='0'){
+        if(is_numeric($unit["panels"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["panels"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Плазменые панели:</div>
-        	<span>'.$unit["panels"].'</span>
+        	<span>'.$unit["panels"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -966,10 +967,11 @@ group by
 			
 			//projector
       if($unit["projector"]!='' && $unit["projector"]!='0'){
+        if(is_numeric($unit["projector"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["projector"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Проэкционный экран/Проектор:</div>
-        	<span>'.$unit["projector"].'</span>
+        	<span>'.$unit["projector"].$val.'</span>
       	</td></tr>
         ';
 			}else{
