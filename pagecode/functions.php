@@ -138,8 +138,6 @@ function addDate($date){
 
 if($days > 7) { return "больше недели назад";}
 if($days > 1) { return declension($days,' день',' дня',' дней')." назад";} 
-if($days > 2 and $days < 3) { return "позавчера";}
-if($days > 1 and $days < 2) { return "вчера";}   
 if($days < 1) { return "сегодня";}
 
 }
