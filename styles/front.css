@@ -3470,6 +3470,7 @@ border-radius: 3px; /* CSS3 */
 .submenu_controll.active { display:block}
 .lastVisitSite { background:url(../images/flag_in_site.png) no-repeat 0 2px; padding-left:16px}
 
+.submenu_controll .cururl { text-decoration:underline}
 
 #main_article { float:left; width:450px; height:300px; margin-left:30px; padding-top:16px; text-decoration: none; position:relative}
 #main_article a {  text-decoration: none !important; position:absolute }
