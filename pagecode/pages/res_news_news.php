@@ -80,7 +80,7 @@ class res_news_news_php extends CPageCodeHandler
 				
 				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];	
-				$newsdetails[0]["type"] = "<span style=\"color: #f05620;\">Новость подрядчика: <a style=\"color: #f05620;\" href='/contractor/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";
+				$newsdetails[0]["type"] = "<span style=\"color: #f05620;\">Новость подрядчика: <a style=\"color: #f05620; text-decoration:underline\" href='/contractor/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";
 				//var_dump($newsdetails[0]['date']);
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
 				$newsdetails[0]["newsBoard"] = ($diffDate > 3600) ? ($diffDate < 72000) ? ''.ceil($diffDate/3600).' часов назад' : ''.substr($newsdetails[0]['date'], 0, 10).' г.' : ''.ceil($diffDate/60).' минут назад';
@@ -91,7 +91,7 @@ class res_news_news_php extends CPageCodeHandler
 				
 				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];			
-        $newsdetails[0]["type"] = "<span style=\"color: #3399ff;\">Новость площадки: <a style=\"color: #3399ff;\" href='/area/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";	
+        $newsdetails[0]["type"] = "<span style=\"color: #3399ff;\">Новость площадки: <a style=\"color: #3399ff; text-decoration:underline\" href='/area/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";	
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
 				$newsdetails[0]["newsBoard"] = ($diffDate > 3600) ? ($diffDate < 72000) ? ''.ceil($diffDate/3600).' часов назад' : ''.substr($newsdetails[0]['date'], 0, 10).' г.' : ''.ceil($diffDate/60).' минут назад';
 				//$newsdetails[0]['show_area'] = '';
@@ -102,7 +102,7 @@ class res_news_news_php extends CPageCodeHandler
 				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
         
-        $newsdetails[0]["type"] = "<span style=\"color: #ff0066;\">Новость артиста: <a style=\"color: #ff0066;\" href='/artist/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
+        $newsdetails[0]["type"] = "<span style=\"color: #ff0066;\">Новость артиста: <a style=\"color: #ff0066; text-decoration:underline\" href='/artist/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
 				$newsdetails[0]["newsBoard"] = ($diffDate > 3600) ? ($diffDate < 72000) ? ''.ceil($diffDate/3600).' часов назад' : ''.substr($newsdetails[0]['date'], 0, 10).' г.' : ''.ceil($diffDate/60).' минут назад';
 				//$newsdetails[0]['show_artist'] = '';
@@ -112,7 +112,7 @@ class res_news_news_php extends CPageCodeHandler
 				
 				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
-        $newsdetails[0]["type"] = "<span style=\"color: #99cc00;\">Новость агентства: <a style=\"color: #99cc00;\" href='/agency/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
+        $newsdetails[0]["type"] = "<span style=\"color: #99cc00;\">Новость агентства: <a style=\"color: #99cc00; text-decoration:underline\" href='/agency/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
 				$newsdetails[0]["newsBoard"] = ($diffDate > 3600) ? ($diffDate < 72000) ? ''.ceil($diffDate/3600).' часов назад' : ''.substr($newsdetails[0]['date'], 0, 10).' г.' : ''.ceil($diffDate/60).' минут назад';
 				//$newsdetails[0]['show_agency'] = '';
