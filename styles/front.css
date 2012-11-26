@@ -3479,3 +3479,10 @@ border-radius: 3px; /* CSS3 */
 #post_list .carousel a:hover { font-size: 24px; text-decoration: none !important }
 #post_list gg { position:absolute; left: -18px; top:34px; width:11px; height:18px; display:none; background:url(../images/carusel_arrow.png) no-repeat}
 #post_list .first gg { top:20px;}
+
+
+
+.new_item_in_main { white-space:nowrap; position:relative; padding-bottom:1px}
+.new_item_in_main .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
+.new_item_in_main .add_date { position:absolute; color:#ccc;}
+

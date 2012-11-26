@@ -136,10 +136,11 @@ function addDate($date){
     $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
 
 
-
-if($days > 2 and $days < 3) { return "<span class='addDate'>позавчера</span>";}
-if($days > 1 and $days < 2) { return "<span class='addDate'вчера</span>";}   
-if($days < 1) { return "<span class='addDate'>сегодня</span>";}
+if($days > 7) { return "больше недели назад";}
+if($days > 1) { return declension($days,' день',' дня',' дней')." назад";} 
+if($days > 2 and $days < 3) { return "позавчера";}
+if($days > 1 and $days < 2) { return "вчера";}   
+if($days < 1) { return "сегодня";}
 
 }
 

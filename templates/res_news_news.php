@@ -26,7 +26,7 @@
 		<tr>
 			<td width="230" style="vertical-align:top;width:230px">
 				 <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">				  
-					<tr><td class="ram5"><?php CRenderer::RenderControl("typeList"); ?></td></tr>					
+					<tr><td class="ram5"><div class="eventotekaMenu_title" style="margin: 0 0 0 0;"><a class="black" href="/resident_news">Новости резидентов</a></div><?php CRenderer::RenderControl("typeList"); ?></td></tr>					
 				</table>
 				<img src="/images/front/0.gif" width="220" height="10">
 				<a id="witgetAddResident" href="/add_res_news">Добавить свою новость</a>

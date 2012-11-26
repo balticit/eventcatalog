@@ -291,7 +291,7 @@
             
 				<div class='first-col'>
 					<div class='sub-title-block'><a href='/added/' class='sub-title widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
-					<div style="vertical-align: top; height: 309px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 26px; ">
+					<div style="vertical-align: top; height: 309px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 11px; ">
           <table width="100%">
 					<tr>
 						<td width="50%"><div style="overflow:hidden; margin-right:2px"><?php CRenderer::RenderControl("newRegistered"); ?></div></td>
