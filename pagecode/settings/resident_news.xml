@@ -97,6 +97,7 @@
 		<param name="footerTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/submenuFooter.htm"/>
 		<param name="dataSource" type="datasource" sourceEncoding="utf-8" source="file" filename="pagecode/settings/menu_files/submenu_empty.xml" driver="CXMLTableDataSource"/>
 	</control>
+    
     <control relativeId="typeList" class="CRepeater">
 				<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/eventtv_files/topicItem.htm"/>
 	</control>
