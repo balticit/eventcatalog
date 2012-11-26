@@ -1557,7 +1557,7 @@ a.forumThemes, a.forumThemes:hover {
 }
 
 .newreg_contractor:hover {
-    text-decoration: underline;
+    
     color: #f05620;
 }
 
@@ -1566,7 +1566,7 @@ a.forumThemes, a.forumThemes:hover {
 }
 
 .newreg_area:hover {
-    text-decoration: underline;
+    
     color: #3399ff;
 }
 
@@ -1575,7 +1575,7 @@ a.forumThemes, a.forumThemes:hover {
 }
 
 .newreg_artist:hover {
-    text-decoration: underline;
+    
     color: #ff0066;
 }
 
@@ -1584,7 +1584,7 @@ a.forumThemes, a.forumThemes:hover {
 }
 
 .newreg_agency:hover {
-    text-decoration: underline;
+    
     color: #99cc00;
 }
 
@@ -2592,7 +2592,7 @@ div.recomended {
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 58px; padding-bottom:2px;
+    height: 56px; padding-bottom:2px;
     line-height: 14px;
 }
 div.recomended  p { padding:0; margin-top: 4px;}
