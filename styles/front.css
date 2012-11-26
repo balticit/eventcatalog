@@ -3484,5 +3484,5 @@ border-radius: 3px; /* CSS3 */
 
 .new_item_in_main { /*white-space:nowrap;*/ position:relative; padding-bottom:1px; height: 14px; overflow: hidden;}
 .new_item_in_main .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
-.new_item_in_main .add_date { position:absolute; color:#ccc;}
+.new_item_in_main .add_date { position:absolute; color:#ccc; font-size:11px; margin: 1px;}
 

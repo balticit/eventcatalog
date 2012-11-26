@@ -86,7 +86,7 @@ class resident_news_php extends CPageCodeHandler
     $start = ($page * $limit);
     
     $res_news = SQLProvider::ExecuteQuery(
-            "select rn.*, DATE_FORMAT(date,'%d.%m.%Y') as `strdate`, rn.title as resident_name
+            "select rn.*, DATE_FORMAT(date,'%d.%m.%Y') as `strdate`, rn.title as title
 						 from `tbl__resident_news` rn
 												where rn.`active`=1
 												order by rn.`date` DESC limit $start, $limit
@@ -94,7 +94,7 @@ class resident_news_php extends CPageCodeHandler
 		foreach($res_news as $key => $val) {
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
-			$res_news[$key]["res_title"] = $res[0]['title'];
+			$res_news[$key]["resident_name"] = $res[0]['title'];
 			
 
 			if(!empty($res_news[$key]["logo_image"])) {
