@@ -95,19 +95,14 @@ class resident_news_php extends CPageCodeHandler
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
 			$res_news[$key]["resident_name"] = $res[0]['title'];
+
+			
+			if (IsNullOrEmpty($res_news[$key]["logo_image"]))
+		  $res_news[$key]["logo_image"] = "/images/nologo.png";
+		  else
+		  $res_news[$key]["logo_image"] = "/upload/".GetFileName($res_news[$key]["logo_image"]);
 			
 
-			if(!empty($res_news[$key]["logo_image"])) {
-        $res_news[$key]["logo"] = $res_news[$key]["logo_image"];
-      }
-			else {
-  			if (isset($res[0]['logo'])) {
-  				$res_news[$key]["logo"] = $res[0]['logo'];
-  			}
-  			else {
-  				$res_news[$key]["logo"] = $res[0]['logo_image'];
-  			}
-			}
 			
 			
 			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
@@ -146,7 +141,14 @@ class resident_news_php extends CPageCodeHandler
             foreach($newsData as &$news){
                 $news['short_text'] = substr(strip_tags($news['text']),0,250);
                 $news['resident_type'] = $resident;
-				$news['color'] = getProBackgroud($resident);
+				        $news['color'] = getProBackgroud($resident);
+				        
+				        if (IsNullOrEmpty($news["logo_image"]))
+          		  $news["logo_image"] = "/images/nologo.png";
+          		  else
+          		  $news["logo_image"] = "/upload/".GetFileName($news["logo_image"]);
+				        
+				        
             }
             $newsCount = $newsData[0]['c'];
             

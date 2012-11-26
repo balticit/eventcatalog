@@ -1,7 +1,7 @@
 <?php
 	class news_php extends CPageCodeHandler 
 	{
-		public $max_per_page = 10;
+		public $max_per_page = 25;
 		
 		public function news_php()
 		{
