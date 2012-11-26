@@ -644,7 +644,16 @@ class contractor_details_php extends CPageCodeHandler
 		foreach($news as $item) {
 				$item["title"] = CutString($item["title"]);
 				$item["text"] = strip_tags(CutString($item["text"], 150));
+				
+				if (IsNullOrEmpty($item["logo_image"]))
+				$item["logo_image"] = "/images/nologo.png";
+  		  else
+  		  $item["logo_image"] = "/upload/".GetFileName($item["logo_image"]);
+				
+				
 				$unit["news_list"] .= getNewsItem($item);
+				
+				
 			}
     }
     else $unit["news_list"] .= '';

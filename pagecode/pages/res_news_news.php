@@ -147,6 +147,10 @@ class res_news_news_php extends CPageCodeHandler
 		if (!empty($otherNews)) {
 			foreach($otherNews as $i => &$item) { 
 				$item['short_text'] = htmlspecialchars_decode(substr(strip_tags($item['text']), 0, 200));
+				if (IsNullOrEmpty($item["logo_image"]))
+  		  $item["logo_image"] = "/images/nologo.png";
+  		  else
+  		  $item["logo_image"] = "/upload/".GetFileName($item["logo_image"]);
 			}
 		}
 		$otherNews2 = $this->GetControl("otherNews");

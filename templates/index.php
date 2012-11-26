@@ -134,7 +134,7 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr valign="top">
 				<td width="" rowspan="10" colspan="2">
-				<div class='sub-title-block'><a href='/eventoteka/' class='sub-title widget'>Эвентотека</span><a target='_blank' href='http://www.yandex.ru/?add=83172&from=promocode' class='gold-btn'><p>Виджет Эвентотеки на Яндексе</p></a></div>
+				<div class='sub-title-block'><a href='/eventoteka/' class='sub-title border widget'>Эвентотека</span><a target='_blank' href='http://www.yandex.ru/?add=83172&from=promocode' class='gold-btn'><p>Виджет Эвентотеки на Яндексе</p></a></div>
         <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
           <td width="50%"><?php CRenderer::RenderControl("event_news1"); ?></td>
           <td width="50%"><?php CRenderer::RenderControl("event_news2"); ?></td>
@@ -183,11 +183,11 @@
             <tr valign="top">
             <td width="" rowspan="10" colspan="2">
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/news/' class='sub-title widget'>События индустрии</a></div>
+					<div class='sub-title-block'><a href='/news/' class='sub-title border widget'>События индустрии</a></div>
 					<?php CRenderer::RenderControl("news"); ?>
 				</div>
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/resident_news/' class='sub-title widget'>Новости Резидентов</a><a href='/add_res_news' class='grey-btn'><p>Добавить новость</p></a></div>
+					<div class='sub-title-block'><a href='/resident_news/' class='sub-title border widget'>Новости Резидентов</a><a href='/add_res_news' class='grey-btn'><p>Добавить новость</p></a></div>
 					<?php CRenderer::RenderControl("newAreas"); ?>
 				</div>
 			</td>
@@ -290,7 +290,7 @@
 				</div>
             
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/added/' class='sub-title widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
+					<div class='sub-title-block'><a href='/added/' class='sub-title border widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
 					<div style="vertical-align: top; height: 311px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 11px; ">
           <table width="100%">
 					<tr>

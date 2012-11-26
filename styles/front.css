@@ -2940,6 +2940,9 @@ div#selected_groups {
     text-decoration: none;
 }
 
+.sub-title.border { text-decoration: underline;}
+.sub-title.border:hover { text-decoration: none;}
+
 .sub-title.widget {
     display: block;
     float: left;
