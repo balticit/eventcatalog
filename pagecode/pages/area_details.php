@@ -879,7 +879,7 @@ group by
 				$unit["wardrobe"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">√ардероб:</div>
-        	<span>'.$unit["wardrobe"].'</span>
+        	<span>'.$unit["wardrobe"].' мест</span> 
       	</td></tr>
         ';	
 			}else{
@@ -888,10 +888,11 @@ group by
 			
 			//stage
       if($unit["stage"]!='' && $unit["stage"]!='0'){
+        if(is_numeric($unit["stage"])) { $val = ' м2'; } else { $val = ''; }
 				$unit["stage"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">—цена:</div>
-        	<span>'.$unit["stage"].'</span>
+        	<span>'.$unit["stage"].$val.'</span> 
       	</td></tr>
         ';
 				

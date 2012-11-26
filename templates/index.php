@@ -280,7 +280,7 @@
             <td width="" rowspan="10" colspan="2">
             
             <div class='first-col'>
-					<div class='sub-title-block'><span class='sub-title widget'>Эвенторы в эфире</span></div>
+					<div class='sub-title-block' style="margin-bottom:12px"><span class='sub-title widget'>Эвенторы в эфире</span></div>
 					<div style="vertical-align: top; border: 1px solid #e4e4e4; padding: 5px 11px 11px 26px; background-color:#f8f8f8;">
 						<div style="position: relative; padding-top:6px;">
 							<div class="item_header" style="position: absolute; top:0; padding-bottom: 10px;">Новые комментарии:</div>
@@ -291,7 +291,7 @@
             
 				<div class='first-col'>
 					<div class='sub-title-block'><a href='/added/' class='sub-title widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
-					<div style="vertical-align: top; height: 309px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 11px; ">
+					<div style="vertical-align: top; height: 311px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 11px; ">
           <table width="100%">
 					<tr>
 						<td width="50%"><div style="overflow:hidden; margin-right:2px"><?php CRenderer::RenderControl("newRegistered"); ?></div></td>
