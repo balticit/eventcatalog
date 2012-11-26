@@ -23,10 +23,9 @@
 </tr>
 <tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; height: 100%" valign="top">
 	<div class="h3">Последние добавления</div>
-	<p>&nbsp;</p>
-	<div><?php CRenderer::RenderControl("chart"); ?></div>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+	
+	<div><?php // CRenderer::RenderControl("chart"); ?></div>
+
 					
 					<table width="100%">
 						<tr>
