@@ -373,7 +373,7 @@ class u_cabinet_php extends CPageCodeHandler
 
             $flogo = $_FILES["properties"];
 						if (is_array($flogo)){
-							$logo = $this->CreateLogo($userData->login,$flogo,"logo");
+							$logo = $this->CreateLogo($userData->login,$flogo,"logo").'erer';
 							if (!is_null($logo))
 								$userData->logo = $logo;
 						}
@@ -1543,7 +1543,7 @@ $(function() {
 						$cab["main_area"].='<table border="0" cellpadding="0" cellspacing="0">
 											<tr>
 												<td valign="middle" >'.($m_action=="reply"?"От":"Кому").':</td>
-												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/'.($reciever_data["logo"]==''?"images/nologo.png":$reciever_data["logo"]).'"/></div></td>
+												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="'.($reciever_data["logo"]==''?"/images/nologo.png":"/upload/".$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
 													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
 													' /* ($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/u_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>  
@@ -1643,7 +1643,7 @@ $(function() {
 						$rewriteParams["page"] = $page;
 						CURLHandler::Redirect(CURLHandler::$currentPath.CURLHandler::BuildRewriteParams($rewriteParams));
 					}
-					$messages = SQLProvider::ExecuteQuery("select m.*, u.*, bl.blocked_id from tbl__messages m
+					$messages = SQLProvider::ExecuteQuery("select m.*, u.*,  bl.blocked_id from tbl__messages m
 																join vw__all_users_full u on ".($m_action=="inbox"?"sender_id":"reciever_id")."=user_key
 																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id or sender_id=bl.user_id and reciever_id=blocked_id) and bl.user_id='$uid'
                                                             where blocked_id is null and  ".($m_action=="inbox"?"`status`!='deleted' and reciever_id='$uid'":"ifnull(sender_deleted,0)<>1 and sender_id='$uid'")."
@@ -1657,12 +1657,18 @@ $(function() {
               $messages[$i]["display_delete"] = (($messages[$i]["sender_id"]==$uid)&&($messages[$i]["status"]=="sent"))?"":"display:none;";
 
               $messages[$i]["date"] = date("d M Y H:i",strtotime($messages[$i]["time"]));
+              
+              if($messages[$i]["logo"] == '') { $messages[$i]["logo"] = 'nologo.png';}
+              
 							$messages[$i]["date"] = str_ireplace($en_month,$ru_month,$messages[$i]["date"]);
 							$messages[$i]["action"] = $m_action=="inbox"?"reply":"view";
                             if ($m_action=="outbox") {
                                 if ($messages[$i]["time_read"]) {
                                     $messages[$i]["date_read"] = date("d M Y H:i",strtotime($messages[$i]["time_read"]));
                                     $messages[$i]["date_read"] = str_ireplace($en_month,$ru_month,$messages[$i]["date_read"]);
+                                    
+                                   
+                                    
                                 }
                                 else
                                     $messages[$i]["date_read"] = "&nbsp";

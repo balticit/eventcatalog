@@ -1,7 +1,7 @@
 <?php
 	class news_php extends CPageCodeHandler 
 	{
-		public $max_per_page = 10;
+		public $max_per_page = 25;
 		
 		public function news_php()
 		{
@@ -74,7 +74,7 @@
 			$pager->rewriteParams	= $rewriteParams;
 			
 			// список новостей
-			$sql =  'SELECT * FROM `vw__news_soon` '.
+			$sql =  'SELECT *, DATE_FORMAT(creation_date,"%d.%m.%Y") as `creation_date` FROM `vw__news_soon` '.
 						(!empty($cat) ? 'WHERE tbl_cai_id = '.$cat.' ' : '').
 					'ORDER BY creation_date DESC LIMIT '.(($page - 1) * $this->max_per_page).', '.$this->max_per_page;
 			// var_dump($sql);		
@@ -82,7 +82,7 @@
 			$news = SQLProvider::ExecuteQuery($sql);
 			foreach ($news as $key=>$value)
 			{
-				$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['date']));
+				//$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
 				$news[$key]["parent"] = CURLHandler::$currentPath;
 				$cat = $news[$key]["tbl_cai_id"];
 				if(!empty($cat)){

@@ -9,7 +9,7 @@ class CPhotosObject extends CHTMLObject
   public $thumbSizeField = "s_size";
   public $thumbTemplate;
   public $mediumTemplate;
-	public $thumbsPerLine = 4;
+	public $thumbsPerLine = 1;
   public function CPhotosObject()
   {
     parent::CHTMLObject();

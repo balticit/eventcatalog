@@ -879,7 +879,7 @@ group by
 				$unit["wardrobe"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Гардероб:</div>
-        	<span>'.$unit["wardrobe"].'</span>
+        	<span>'.$unit["wardrobe"].' мест</span> 
       	</td></tr>
         ';	
 			}else{
@@ -888,10 +888,11 @@ group by
 			
 			//stage
       if($unit["stage"]!='' && $unit["stage"]!='0'){
+        if(is_numeric($unit["stage"])) { $val = ' м2'; } else { $val = ''; }
 				$unit["stage"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Сцена:</div>
-        	<span>'.$unit["stage"].'</span>
+        	<span>'.$unit["stage"].$val.'</span> 
       	</td></tr>
         ';
 				
@@ -953,10 +954,11 @@ group by
 			
 			//panels
       if($unit["panels"]!='' && $unit["panels"]!='0'){
+        if(is_numeric($unit["panels"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["panels"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Плазменые панели:</div>
-        	<span>'.$unit["panels"].'</span>
+        	<span>'.$unit["panels"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -965,10 +967,11 @@ group by
 			
 			//projector
       if($unit["projector"]!='' && $unit["projector"]!='0'){
+        if(is_numeric($unit["projector"])) { $val = ' шт.'; } else { $val = ''; }
 				$unit["projector"]=	
 				'<tr><td class="table_row">
           <div class="blue_button">Проэкционный экран/Проектор:</div>
-        	<span>'.$unit["projector"].'</span>
+        	<span>'.$unit["projector"].$val.'</span>
       	</td></tr>
         ';
 			}else{
@@ -1331,6 +1334,12 @@ group by
 				foreach($news as $item) {
 					$item["title"] = CutString($item["title"]);
 					$item["text"] = strip_tags(CutString($item["text"], 150));
+					
+					if (IsNullOrEmpty($item["logo_image"]))
+  				$item["logo_image"] = "/images/nologo.png";
+    		  else
+    		  $item["logo_image"] = "/upload/".GetFileName($item["logo_image"]);
+					
 					$unit["news_list"] .= getNewsItem($item);
 				}
 			}

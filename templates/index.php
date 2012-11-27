@@ -134,7 +134,7 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr valign="top">
 				<td width="" rowspan="10" colspan="2">
-				<div class='sub-title-block'><a href='/eventoteka/' class='sub-title widget'>Эвентотека</span><a target='_blank' href='http://www.yandex.ru/?add=83172&from=promocode' class='gold-btn'><p>Виджет Эвентотеки на Яндексе</p></a></div>
+				<div class='sub-title-block'><a href='/eventoteka/' class='sub-title border widget'>Эвентотека</span><a target='_blank' href='http://www.yandex.ru/?add=83172&from=promocode' class='gold-btn'><p>Виджет Эвентотеки на Яндексе</p></a></div>
         <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
           <td width="50%"><?php CRenderer::RenderControl("event_news1"); ?></td>
           <td width="50%"><?php CRenderer::RenderControl("event_news2"); ?></td>
@@ -183,11 +183,11 @@
             <tr valign="top">
             <td width="" rowspan="10" colspan="2">
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/news/' class='sub-title widget'>События индустрии</a></div>
+					<div class='sub-title-block'><a href='/news/' class='sub-title border widget'>События индустрии</a></div>
 					<?php CRenderer::RenderControl("news"); ?>
 				</div>
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/resident_news/' class='sub-title widget'>Новости Резидентов</a><a href='/add_res_news' class='grey-btn'><p>Добавить новость</p></a></div>
+					<div class='sub-title-block'><a href='/resident_news/' class='sub-title border widget'>Новости Резидентов</a><a href='/add_res_news' class='grey-btn'><p>Добавить новость</p></a></div>
 					<?php CRenderer::RenderControl("newAreas"); ?>
 				</div>
 			</td>
@@ -280,7 +280,7 @@
             <td width="" rowspan="10" colspan="2">
             
             <div class='first-col'>
-					<div class='sub-title-block'><span class='sub-title widget'>Эвенторы в эфире</span></div>
+					<div class='sub-title-block' style="margin-bottom:12px"><span class='sub-title widget'>Эвенторы в эфире</span></div>
 					<div style="vertical-align: top; border: 1px solid #e4e4e4; padding: 5px 11px 11px 26px; background-color:#f8f8f8;">
 						<div style="position: relative; padding-top:6px;">
 							<div class="item_header" style="position: absolute; top:0; padding-bottom: 10px;">Новые комментарии:</div>
@@ -290,13 +290,15 @@
 				</div>
             
 				<div class='first-col'>
-					<div class='sub-title-block'><a href='/added/' class='sub-title widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
-					<table width="100%">
+					<div class='sub-title-block'><a href='/added/' class='sub-title border widget'>Последние добавления</a><a target='_blank' href='http://www.yandex.ru/?add=83173&from=promocode' class='gold-btn'><p>Виджет Новинок на Яндексе</p></a></div>
+					<div style="vertical-align: top; height: 311px; border: 1px solid #e4e4e4; padding: 5px 11px 11px 11px; ">
+          <table width="100%">
 					<tr>
-						<td><?php CRenderer::RenderControl("newRegistered"); ?></td>
-						<td><?php CRenderer::RenderControl("newRegistered2"); ?></td>
+						<td width="50%"><div style="overflow:hidden; margin-right:2px"><?php CRenderer::RenderControl("newRegistered"); ?></div></td>
+						<td><div style="overflow:hidden;margin-right:2px"><?php CRenderer::RenderControl("newRegistered2"); ?></div></td>
 					</tr>
 					</table>
+					</div>
 				</div>
 				<?php /*
 				<div class='first-col'>

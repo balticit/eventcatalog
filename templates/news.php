@@ -22,9 +22,9 @@
 </tr>
 <tr>
     <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top"> 
-        <table width="100%">
+        <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
             <tr>
-                <td style="vertical-align:top; padding-left:5px;  width:230px">
+                <td style="vertical-align:top; padding-left:5px; width:230px">
                         <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">
                        <!-- <tr><td class="ram1"></td><td class="ram2"></td><td class="ram3"></td></tr>-->
                         <tr>
@@ -41,9 +41,9 @@
                         </table>
 						<img src="/images/front/0.gif" width="220" height="10">
                 </td>
-                <td width="100%" valign="top">
-					<div style="margin-right:10px;margin-left:10px" class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("title"); ?></div>
-					<table cellpadding="0" cellspacing="10" border="0">
+                <td valign="top">
+					<div class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("title"); ?></div>
+					<table cellpadding="0" cellspacing="0" border="0">
 						<?php CRenderer::RenderControl("newsList"); ?>
 					</table>
 					<p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />

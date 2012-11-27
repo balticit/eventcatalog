@@ -5,15 +5,29 @@
 </table>
 </div>
 <script type="text/javascript">
-	//var regrf = document.getElementById('regfr');
-	//regfr.location.href = '/authorize?type=area&width=733px&regtype='+regtype;
+
 	$('.menu_btn').hover(function(){
 	  $('.menu_btn').css('background-position','0 0');
     $(this).css('background-position','0 -34px');
-  //  $(this).parents("a:first").addClass('active');
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
+    
   });
 	
+  function relurl(url) {
+     return url.replace(/^(http:\/\/)?(www\.)?[^\/]+/, '');
+  }	
+	
 $(document).ready(function(){
+
+  
+
+  var curUrl = relurl(window.location.href);
+
+  $("#menu_controll_wrapper .submenu_controll").find("a").each(function(){
+    if($(this).attr("href") == curUrl) { $(this).addClass("cururl");}
+  });
+
 	$('.submenu_controll:first').addClass('active');
 	$("a.rule_button #area_btn, a.rule_button #artist_btn, a.rule_button #contractor_btn, a.rule_button #agency_btn, a.rule_button #black_btn").mouseenter(function(){
     var curMenu = $(this).attr("id");
@@ -26,6 +40,8 @@ $(document).ready(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active'); 
     $('.menu_btn').css('background-position','0 0');   
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
   });
   
 $("#menu_controll a.rule_button:last div").mouseenter(function(){
@@ -40,6 +56,8 @@ $("#menu_controll a.rule_button:last div").mouseenter(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active'); 
   });
+  
+  if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
   
 });	
 </script>

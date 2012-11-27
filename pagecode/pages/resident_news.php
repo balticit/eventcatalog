@@ -77,9 +77,55 @@ class resident_news_php extends CPageCodeHandler
         $newsCount = 0;
 		
         if(!in_array($resident, array('contractor','area','agency','artist'), true)) {
-			$resident = 'contractor';
+			$resident = 'all';
 		}
-        		
+     
+     
+    if( $resident == 'all')  {
+    
+    $start = ($page * $limit);
+    
+    $res_news = SQLProvider::ExecuteQuery(
+            "select rn.*, DATE_FORMAT(date,'%d.%m.%Y') as `strdate`, rn.title as title
+						 from `tbl__resident_news` rn
+												where rn.`active`=1
+												order by rn.`date` DESC limit $start, $limit
+												");
+		foreach($res_news as $key => $val) {
+			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
+			$res_news[$key]["title_url"] = $res[0]['title_url'];
+			$res_news[$key]["resident_name"] = $res[0]['title'];
+
+			
+			if (IsNullOrEmpty($res_news[$key]["logo_image"]))
+		  $res_news[$key]["logo_image"] = "/images/nologo.png";
+		  else
+		  $res_news[$key]["logo_image"] = "/upload/".GetFileName($res_news[$key]["logo_image"]);
+			
+
+			
+			
+			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
+			$res_news[$key]["short_text"] = strip_tags(CutString($res_news[$key]["text"], 250));
+			$res_news[$key]["color"] = getProBackgroud($val['resident_type']);
+			
+			switch($val['resident_type']) {
+			case 'area': $res_news[$key]['sub'] = 'Новость площадки';  break;
+			case 'artist': $res_news[$key]['sub'] = 'Новость артиста'; break;
+			case 'contractor': $res_news[$key]['sub'] = 'Новость подрядчика'; break;
+			case 'agency': $res_news[$key]['sub'] = 'Новость агентства'; break;
+			}
+		}
+		
+		$resCount = SQLProvider::ExecuteQuery( "select * from tbl__resident_news	where active=1");
+		$newsCount =count($resCount);
+
+		$this->GetControl("newAreas")->dataSource = $res_news;
+    
+
+
+    }
+    else {
 		// во вложенном запросе счетчик, чтобы не делать еще один коннект к базе
 		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, res.title resident_name, '.
 					(in_array($resident, array('contractor','agency')) ? 'rn.logo_image' : 'rn.logo_image logo_image').', '.
@@ -95,14 +141,22 @@ class resident_news_php extends CPageCodeHandler
             foreach($newsData as &$news){
                 $news['short_text'] = substr(strip_tags($news['text']),0,250);
                 $news['resident_type'] = $resident;
-				$news['color'] = getProBackgroud($resident);
+				        $news['color'] = getProBackgroud($resident);
+				        
+				        if (IsNullOrEmpty($news["logo_image"]))
+          		  $news["logo_image"] = "/images/nologo.png";
+          		  else
+          		  $news["logo_image"] = "/upload/".GetFileName($news["logo_image"]);
+				        
+				        
             }
             $newsCount = $newsData[0]['c'];
             
             $newAreas = $this->GetControl("newAreas");
             $newAreas->dataSource = $newsData;
         }
-        
+
+        }
         
         // страницы
         $pCount = floor($newsCount/$limit) + ($newsCount%$limit>0?0:1);
@@ -114,6 +168,7 @@ class resident_news_php extends CPageCodeHandler
         
         // менюшка
         $menus = array(
+            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'all')),'title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
             array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'contractor')),'title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
             array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'area')),'title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
             array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'artist')),'title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),

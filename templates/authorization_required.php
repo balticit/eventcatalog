@@ -68,7 +68,7 @@ $(function() {
 });
 </script>
 	
-	<div class="style_404" style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
+	<div class="style_404" style="margin: 20px 0 0 0; ">Вы также можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
     </div>
 				<?php //CRenderer::RenderControl("account"); ?>	
 </td></tr>

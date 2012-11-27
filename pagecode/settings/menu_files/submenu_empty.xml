@@ -5,5 +5,10 @@
 	<column name="title"/>
 	<column name="bgimg"/>
 	<index name="link"/>
-	<row link="/" bgcolor="5b5f62" title="" bgimg="black"/>	
+	<row link="/eventoteka/" bgcolor="5a5e61"  title="Эвентотека" bgimg="black"/>
+	<row link="/resident_news/" title="Новости резидентов"/>	
+	<row link="/news/" title="События индустрии"/>
+	<row link="/added/" title="Последние добавления"/>	
+	<row link="/event_calendar/" title="Event календарь"/>
+	<row link="/magazines/" bgcolor="5b5f62" bgclass="empty_btn_show" title="Печатный каталог" bgimg="black"/>
 </datasource>
