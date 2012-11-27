@@ -65,25 +65,25 @@
               <div id="contractormonth1" style="display:none;">
 								<a href="/added" class="newreg_contractor" style="color:#000; font-size:14px;" onClick="off_month(); return false;">Свернуть список добавленных за последний месяц</a>
 							</div>
-              
+              <br />
 						</tr>
 						<tr>
 							<td valign="top" style="padding-right:8px">
 
 								<div id="contractormonth" style="display:none;">
-								<br>
+							
 								<table class="recomended"><?php CRenderer::RenderControl("newContractorsmonth"); ?></table><br /></div></td>
 							<td valign="top" style="padding-right:8px">
 							
 								<div id="areamonth_count" style="display:none;"><a href="/added" style="display:none;" class="newreg_area" onClick="show_month(); return false;">открыть список</a></div>
 								<div id="areamonth" style="display:none;">
-									<a href="/added" style="display:none;" class="newreg_area" onClick="off_month(); return false;">свернуть список</a><br>
+									<a href="/added" style="display:none;" class="newreg_area" onClick="off_month(); return false;">свернуть список</a>
 								  <table class="recomended"><?php CRenderer::RenderControl("newAreasmonth"); ?></table><br /></div></td>
 							<td valign="top" style="padding-right:8px">
 							
 								<div id="artistmonth_count" style="display:none;"><a href="/added" style="display:none;" class="newreg_artist" onClick="show_month(); return false;">открыть список</a></div>
 								<div id="artistmonth" style="display:none;">
-								<a href="/added" style="display:none;" class="newreg_artist" onClick="off_month(); return false;">свернуть список</a><br>
+								<a href="/added" style="display:none;" class="newreg_artist" onClick="off_month(); return false;">свернуть список</a>
 								<table class="recomended"><?php CRenderer::RenderControl("newArtistsmonth"); ?></table><br /></div></td>
 							<td valign="top" style="padding-right:8px"><script type="text/javascript">
 									function show_month() {
@@ -117,7 +117,7 @@
 								</script>
 								<div id="agencymonth_count" style="display:none;"><a href="/added" style="display:none;" class="newreg_agency" onClick="show_month(); return false;">открыть список</a></div>
 								<div id="agencymonth" style="display:none;">
-								<a href="/added" style="display:none;" class="newreg_agency" onClick="off_month(); return false;">свернуть список</a><br>
+								<a href="/added" style="display:none;" class="newreg_agency" onClick="off_month(); return false;">свернуть список</a>
 								<table class="recomended"><?php CRenderer::RenderControl("newAgenciesmonth"); ?></table><br /></div></td>
 						</tr>
 					</table>
