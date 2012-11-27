@@ -9,6 +9,9 @@
 	$('.menu_btn').hover(function(){
 	  $('.menu_btn').css('background-position','0 0');
     $(this).css('background-position','0 -34px');
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
+    
   });
 	
   function relurl(url) {
@@ -16,6 +19,8 @@
   }	
 	
 $(document).ready(function(){
+
+  
 
   var curUrl = relurl(window.location.href);
 
@@ -35,6 +40,8 @@ $(document).ready(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active'); 
     $('.menu_btn').css('background-position','0 0');   
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
   });
   
 $("#menu_controll a.rule_button:last div").mouseenter(function(){
@@ -49,6 +56,8 @@ $("#menu_controll a.rule_button:last div").mouseenter(function(){
     $('.submenu_controll').removeClass('active');
     $('.submenu_controll:first').addClass('active'); 
   });
+  
+  if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
   
 });	
 </script>
