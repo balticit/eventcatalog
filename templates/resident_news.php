@@ -21,11 +21,11 @@
 <?php CRenderer::RenderControl("submenu5"); ?>
 </td>
 </tr>
-<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; height: 100%" valign="top">
+<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
 	<div>
         <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td width="230" style="vertical-align:top;width:230px">
+            <td width="230" style="vertical-align:top; padding-left:5px; width:230px">
                         <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">
                         <tr>
                             <td class="ram5"><div class="eventotekaMenu_title" style="margin: 0 0 0 0;"><a class="black" href="/resident_news">Новости резидентов</a></div><?php CRenderer::RenderControl("typeList"); ?></td>
