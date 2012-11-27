@@ -1658,6 +1658,8 @@ $(function() {
 
               $messages[$i]["date"] = date("d M Y H:i",strtotime($messages[$i]["time"]));
               
+              if($messages[$i]["logo"] == '') { $messages[$i]["logo"] = 'nologo.png';}
+              
 							$messages[$i]["date"] = str_ireplace($en_month,$ru_month,$messages[$i]["date"]);
 							$messages[$i]["action"] = $m_action=="inbox"?"reply":"view";
                             if ($m_action=="outbox") {
