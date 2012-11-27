@@ -52,10 +52,10 @@
 						</tr>
 						
 						<tr>
-							<td valign="top">Добавилось подрядчиков за месяц:&nbsp;<b><?php CRenderer::RenderControl("contractorcountmonth"); ?></b> </td>
-							<td valign="top">Добавилось площадок за месяц:&nbsp;<b><?php CRenderer::RenderControl("areacountmonth"); ?></b></td>
-							<td valign="top">Добавилось артистов за месяц:&nbsp;<b><?php CRenderer::RenderControl("artistcountmonth"); ?></b></td>
-							<td valign="top">Добавилось агентств за месяц:&nbsp;<b><?php CRenderer::RenderControl("agencycountmonth"); ?></b></td>
+							<td valign="top"><br />Добавилось подрядчиков за месяц:&nbsp;<b><?php CRenderer::RenderControl("contractorcountmonth"); ?></b> </td>
+							<td valign="top"><br />Добавилось площадок за месяц:&nbsp;<b><?php CRenderer::RenderControl("areacountmonth"); ?></b></td>
+							<td valign="top"><br />Добавилось артистов за месяц:&nbsp;<b><?php CRenderer::RenderControl("artistcountmonth"); ?></b></td>
+							<td valign="top"><br />Добавилось агентств за месяц:&nbsp;<b><?php CRenderer::RenderControl("agencycountmonth"); ?></b></td>
 						</tr>
 						<tr>
 						  <td colspan="4"><br />

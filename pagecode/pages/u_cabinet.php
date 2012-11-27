@@ -373,7 +373,7 @@ class u_cabinet_php extends CPageCodeHandler
 
             $flogo = $_FILES["properties"];
 						if (is_array($flogo)){
-							$logo = $this->CreateLogo($userData->login,$flogo,"logo");
+							$logo = $this->CreateLogo($userData->login,$flogo,"logo").'erer';
 							if (!is_null($logo))
 								$userData->logo = $logo;
 						}
@@ -1643,7 +1643,7 @@ $(function() {
 						$rewriteParams["page"] = $page;
 						CURLHandler::Redirect(CURLHandler::$currentPath.CURLHandler::BuildRewriteParams($rewriteParams));
 					}
-					$messages = SQLProvider::ExecuteQuery("select m.*, u.*, bl.blocked_id from tbl__messages m
+					$messages = SQLProvider::ExecuteQuery("select m.*, u.*,  bl.blocked_id from tbl__messages m
 																join vw__all_users_full u on ".($m_action=="inbox"?"sender_id":"reciever_id")."=user_key
 																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id or sender_id=bl.user_id and reciever_id=blocked_id) and bl.user_id='$uid'
                                                             where blocked_id is null and  ".($m_action=="inbox"?"`status`!='deleted' and reciever_id='$uid'":"ifnull(sender_deleted,0)<>1 and sender_id='$uid'")."
@@ -1657,12 +1657,16 @@ $(function() {
               $messages[$i]["display_delete"] = (($messages[$i]["sender_id"]==$uid)&&($messages[$i]["status"]=="sent"))?"":"display:none;";
 
               $messages[$i]["date"] = date("d M Y H:i",strtotime($messages[$i]["time"]));
+              
 							$messages[$i]["date"] = str_ireplace($en_month,$ru_month,$messages[$i]["date"]);
 							$messages[$i]["action"] = $m_action=="inbox"?"reply":"view";
                             if ($m_action=="outbox") {
                                 if ($messages[$i]["time_read"]) {
                                     $messages[$i]["date_read"] = date("d M Y H:i",strtotime($messages[$i]["time_read"]));
                                     $messages[$i]["date_read"] = str_ireplace($en_month,$ru_month,$messages[$i]["date_read"]);
+                                    
+                                   
+                                    
                                 }
                                 else
                                     $messages[$i]["date_read"] = "&nbsp";

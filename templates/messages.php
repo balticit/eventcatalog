@@ -46,8 +46,8 @@
 						</tr>
 						</table>
 						<form method="post">
-						<textarea name="message_text" style="width:600px; height:100px;"></textarea><br/><br/>
-						<input type="submit" value="Написать"/><br/><br/><br/>
+						<textarea name="message_text" style="width:600px; height:100px;"></textarea><br /><br />
+						<input type="submit" value="Написать"/><br /><br /><br />
 						</form>
 						</div>
 					<?php }?>

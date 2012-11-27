@@ -35,7 +35,7 @@
                        <a id="witgetAddResident" href="/add_res_news">Добавить свою новость</a>
             </td>
             <td valign="top">
-                <div class="h3">Новости <?php 
+                <div class="h3" style="padding-bottom:10px">Новости <?php 
 											// жестоко
 											if(isset($_GET['resident'])){
 											switch($_GET['resident']) {
@@ -49,7 +49,7 @@
 											else{
 												echo 'резидентов';
 											}
-										?></div><br />
+										?></div>
                 <table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:auto;"><?php CRenderer::RenderControl("newAreas"); ?></table>
                 <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>
             </td>

@@ -2508,6 +2508,8 @@ tr.agency_table_hover div.text_highlight {
     height: 81px;
 }
 
+.resident_row .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
+
 .resident_row .text_cell {
     padding-left: 10px;
     padding-top: 5px;

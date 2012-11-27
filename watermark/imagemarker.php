@@ -51,7 +51,7 @@ $wm_height = imagesy($img);
 
 if (($wm_width>260)||($wm_height>260))
 {
-	$wm = watermark::create_plain_watermark($img,"EVENT  ¿“¿ÀŒ√",ROOTDIR."watermark/font.ttf",255,255,255,100);
+	$wm = watermark::create_plain_watermark($img,"",ROOTDIR."watermark/font.ttf",255,255,255,100);
 }
 else
 {
