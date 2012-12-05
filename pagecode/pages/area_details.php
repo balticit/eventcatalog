@@ -1408,6 +1408,8 @@ group by
 				$unit["video_block"] = $video->Render();
 			}
 
+
+      $unit["description"] = nl2br(strip_tags($unit["description"]));
 			$details->dataSource = $unit;
 
 			$details->dataSource = $unit;

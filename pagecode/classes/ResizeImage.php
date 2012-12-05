@@ -85,7 +85,9 @@ Class ResizeImage
       $width=$this->imgWidth;
     if($height<=0)
       $height=$this->imgHeight;
-
+    
+    if($this->imgWidth < $this->imgHeight) { $rotateSizes = true; }
+    
     if ($rotateSizes){
 			$ki = $this->imgWidth/$this->imgHeight;
 			$kn = $width/$height;

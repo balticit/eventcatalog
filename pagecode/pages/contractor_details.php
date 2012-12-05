@@ -691,6 +691,9 @@ class contractor_details_php extends CPageCodeHandler
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
         $unit["photos"] = $photos->Render();
+        
+        $unit["description"] = nl2br(strip_tags($unit["description"])); 
+        
         $contDetails = $this->GetControl("contDetails");
         $contDetails->dataSource = $unit;
         /*setting activity types*/

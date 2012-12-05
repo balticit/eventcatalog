@@ -844,6 +844,8 @@ class artist_details_php extends CPageCodeHandler
             }
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
 			
+			
+			$unit["description"] = nl2br(strip_tags($unit["description"]));
 			$details = $this->GetControl("details");
 			$details->dataSource = $unit;
             //Remove direct

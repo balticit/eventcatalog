@@ -518,7 +518,8 @@ class agency_details_php extends CPageCodeHandler
             $unit["similar"].='</table>';
         }
 		$unit["similar"] = !empty($unit["similar"]) ? $unit["similar"] : '';
-        $agenDetails = $this->GetControl("agenDetails");
+    
+    $agenDetails = $this->GetControl("agenDetails");
     
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
@@ -528,6 +529,8 @@ class agency_details_php extends CPageCodeHandler
 			where parent_id=$this->id limit 8");
     $unit["photos"] = $photos->Render();
     
+    
+    $unit["description"] = nl2br(strip_tags($unit["description"]));
 		$agenDetails->dataSource = $unit;
 		
 		

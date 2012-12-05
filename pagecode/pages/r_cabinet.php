@@ -185,7 +185,7 @@ class r_cabinet_php extends CPageCodeHandler
               }
               $userData->city = $props['city'];
               $userData->other_city = $props['other_city'];
-              $userData->short_description = $userData->description;
+              $userData->short_description = strip_tags($userData->description); 
 
               if (isset($props["password"])) {
                 if (!IsNullOrEmpty($props["password"])) {
