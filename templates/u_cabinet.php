@@ -12,7 +12,16 @@
 	<td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;"><?php CRenderer::RenderControl("header"); ?></td>
 </tr>
 <tr><!--Μενώ-->
-<td><?php CRenderer::RenderControl("menu"); ?></td>
+<td><?php CRenderer::RenderControl("menu"); ?>
+
+<?php CRenderer::RenderControl("submenu"); ?>
+<?php CRenderer::RenderControl("submenu1"); ?>
+<?php CRenderer::RenderControl("submenu2"); ?>
+<?php CRenderer::RenderControl("submenu3"); ?>
+<?php CRenderer::RenderControl("submenu4"); ?>
+<?php CRenderer::RenderControl("submenu5"); ?>
+
+</td>
 </tr>
 <tr><td class="u_cab_menu">
 <?php CRenderer::RenderControl("u_cab_menu"); ?>

@@ -52,7 +52,15 @@
 	<td style="padding: 16px 30px 0px 30px;"><?php CRenderer::RenderControl("header"); ?></td>
 </tr>
 <tr><!--Μενώ-->
-<td style='padding-bottom:15px'><?php CRenderer::RenderControl("menu"); ?></td>
+<td ><?php CRenderer::RenderControl("menu"); ?>
+
+<?php CRenderer::RenderControl("submenu"); ?>
+<?php CRenderer::RenderControl("submenu1"); ?>
+<?php CRenderer::RenderControl("submenu2"); ?>
+<?php CRenderer::RenderControl("submenu3"); ?>
+<?php CRenderer::RenderControl("submenu4"); ?>
+<?php CRenderer::RenderControl("submenu5"); ?>
+</td>
 </tr>
 
 <tr>
