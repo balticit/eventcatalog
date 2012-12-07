@@ -25,6 +25,20 @@ function RegAddPhotos()
     $("#btnAddPhoto").toggle(n<8);
 }
 
+function RegAddVideo()
+{
+	var n = 0;
+    for (i = 1; i <= 8; i++) {
+        var ddd = $('div[id|=video['+i+']]');
+        if (ddd.css('display') == 'none') {
+            n = i;
+            ddd.slideToggle('fast');
+            break;
+        }
+	}
+    $("#btnAddVideo").toggle(n<3);
+}
+
 function RegAddMp3()
 {
 	var n = 0;
