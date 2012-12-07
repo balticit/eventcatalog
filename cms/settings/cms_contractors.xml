@@ -19,7 +19,13 @@
 			<item type="class" class="CGridDataField" dbField="site_address" label="Адрес сайта" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
 			<item type="class" class="CGridDataField" dbField="email" label="Электронная почта" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
 			<item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Фотографии:" alterItemClass="alterItem" tableLink="/cms/photos/?99_12$dataTable[$autoValues][tbl__contractor_photos][0]={tbl_obj_id}&amp;99_12$dataTable[$hiddenFields][0]=artist&amp;99_12$dataTable[$hiddenFields][1]=sale&amp;99_12$dataTable[$hiddenFields][2]=news&amp;99_12$dataTable[$hiddenFields][3]=recent&amp;99_12$dataTable[$hiddenFields][4]=partners&amp;99_12$dataTable[$hiddenFields][5]=star_shedule&amp;99_12$dataTable[$hiddenFields][6]=area&amp;99_12$dataTable[$hiddenFields][7]=events&amp;99_12$dataTable[$hiddenFields][8]=interactive&amp;99_12$dataTable[$hiddenFields][9]=show_technologies&amp;99_12$dataTable[$hiddenFields][10]=resident_news&amp;99_12$dataTable[$hiddenFields][11]=agency" refreshText="Обновить" listText="Список" labelClass="itemLabel" addClass="addCell" editClass="editJoinCell" bagTable="tbl_photo"/>
-			<item type="class" class="CGridDataField" dbField="login" label="Логин" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
+			
+      <item type="class" class="CGridDataField" dbField="youtube_video" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="youtube_video_2" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="youtube_video_3" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      
+      
+      <item type="class" class="CGridDataField" dbField="login" label="Логин" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
 			<item type="class" class="CPasswordGridDataField" dbField="password" label="Пароль" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
 			<item type="class" class="CGridDataField" dbField="forum_name" label="Имя на форуме" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
 			<item type="class" class="CDateTimeGridDataField" dbField="registration_date" label="Дата регистрации" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />

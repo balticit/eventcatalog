@@ -509,15 +509,28 @@
         <a id="btnAddPhoto" href="" onclick="javascript: RegAddPhotos(); return false;">Добавить ещё фотографию</a>
     <td class="reg_info">Всего Вы можете добавить до 8-ми фотографий.</td>
 </tr>
+
 <tr valign="top">
     <td class="reg_title">Видео:</td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[youtube_video]" size="60"
-                                     value="{youtube_video}"></td>
-    <td class="reg_info">Рекомендуем обязательно добавлять видео-презентацию Вашей площадки, т.к. это повышает
-        эффективность размещаемой информации на портале.
-        Необходимо разместить ссылку на видео с YouTube, например http://www.youtube.com/watch?v=GaNjCal26CM.
+    <td style="width: 300px;">
+      <div class="reg_photos" >
+        <input class="reg_input_text" type="text" name="properties[youtube_video]" size="60" value="{youtube_video}">
+      </div>
+      <div id="video[2]" class="reg_photos" style="display: none">
+        <input class="reg_input_text" type="text" name="properties[youtube_video_2]" size="60" value="{youtube_video}">
+      </div>   
+      <div id="video[3]" class="reg_photos" style="display: none">
+        <input class="reg_input_text" type="text" name="properties[youtube_video_3]" size="60" value="{youtube_video}">
+      </div>                           
+      <a id="btnAddVideo" href="" onclick="javascript: RegAddVideo(); return false;">Добавить ещё видео</a>  
+                        
+    </td>
+    <td class="reg_info">Рекомендуем обязательно добавлять видео, т.к. это повышает эффективность размещаемой
+        Вами информации.
+        Необходимо разместить ссылку на видео с YouTube, например http://www.youtube.com/watch?v=GaNjCal26CM
     </td>
 </tr>
+
 <tr valign="top">
     <td class="reg_title">Город:</td>
     <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"

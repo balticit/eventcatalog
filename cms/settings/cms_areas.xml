@@ -97,6 +97,10 @@
             <item type="class" class="CGridDataField" dbField="youtube_video" label="Видео на YouTube"
                   alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"
                   visibleOnList="0"/>
+            <item type="class" class="CGridDataField" dbField="youtube_video_2" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+            <item type="class" class="CGridDataField" dbField="youtube_video_3" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+            
+                  
             <item type="class" class="CDBLookupGridDataField" dbField="city" label="Город:" lookupTable="tbl__city"
                   lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell"
                   editClass="editCell" labelClass="itemLabel" fieldType="numeric" hasEmpty="1" emptyValue="-1"

@@ -373,7 +373,7 @@ class u_cabinet_php extends CPageCodeHandler
 
             $flogo = $_FILES["properties"];
 						if (is_array($flogo)){
-							$logo = $this->CreateLogo($userData->login,$flogo,"logo").'erer';
+							$logo = $this->CreateLogo($userData->login,$flogo,"logo");
 							if (!is_null($logo))
 								$userData->logo = $logo;
 						}

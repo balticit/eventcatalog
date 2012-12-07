@@ -168,9 +168,12 @@ case "1" :
   <li>   <a href=\"/cms/export?table=agencies\" target=\"_blank\"> Экспорт </a></li>
   </ul>
 </li>
+
 </ul>
 </div>
   ";
+  
+
 
           break;
 
@@ -284,16 +287,14 @@ case "1" :
         case "8" :
           $admtype['firsttable'] = "/cms/news";
           $admtype['admtype'] = "
-    <table class=\"menuTable\" border=\"1\">
-      <tr>
-        <td nowrap=\"nowrap\">
-          <a href=\"#\" onclick=\"javascript:return SetTable('/cms/news/');\">Новости (скоро)</a>
-        </td>
-        <td nowrap=\"nowrap\">
-          <a href=\"#\" onclick=\"javascript:return SetTable('/cms/recent/');\">Новости (недавно)</a>
-        </td>
-  </tr>
-  </table>";
+<div style=\"height:32px; padding:5px 5px 5px 5px; width:145px;\" >
+<ul id=\"navadm\">
+<li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/news/');\">Новости (скоро)</a></li>
+<li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/recent/');\">Новости (недавно)</a></li>
+
+</ul>
+</div>
+  ";
 
           break;
 
@@ -395,8 +396,17 @@ case "13":
 			<li><a href=\"\" onclick=\"return SetTable('/cms/resident_news/');\">Новости резидентов</a></li>
 		    <li><a href=\"\" onclick=\"return SetTable('/cms/event_calendar/');\">Event календарь</a></li>
             <li><a href=\"\" onclick=\"return SetTable('/cms/news/');\">Новости индустрии</a></li>
+            
+            
+<li><span>Карусель</span>
+  <ul>
+  <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/carousel/');\">Администрарование карусели</a></li>
+  </ul>
+</li>
+            
          </ul>
 	";
+	break;
     
 case "14":
     $admtype['firsttable'] = "/cms/carousel/";
@@ -405,6 +415,7 @@ case "14":
 			<li><a href=\"\" onclick=\"return SetTable('/cms/carousel/');\">Карусель</a></li>
          </ul>
 	";    
+	break;
       }
 
     }

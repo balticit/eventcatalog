@@ -69,10 +69,10 @@ Class ResizeImage
     $this->_img = null;
   }
 
-  public function resize($width, $height, $newfile, $crop = false, $rotateSizes = true)
+  public function resize($width, $height, $newfile, $crop = false, $rotateSizes = false)
   {
   
-    $crop = true;
+
   
     if(empty($this->imgFile))
     {
@@ -89,9 +89,9 @@ Class ResizeImage
     if($height<=0)
       $height=$this->imgHeight;
     
-    //if($this->imgWidth < $this->imgHeight) { $rotateSizes = true; }
+
     
-    //if ($rotateSizes){
+    if ($rotateSizes){
 			$ki = $this->imgWidth/$this->imgHeight;
 			$kn = $width/$height;
 			if ( ($ki >= 1 && $kn < 1) ||
@@ -100,7 +100,7 @@ Class ResizeImage
 				$width = $height;
 				$height = $tmp;
 		  }
-   // }
+    }
 		//Calc new image size
     $cWidth = $width;
     $cHeight = $height;
