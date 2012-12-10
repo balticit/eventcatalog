@@ -2054,7 +2054,7 @@ td.lname1 a.annot_grey {
 }
 
 .gray_row .text_cell .link {
-    color: #000000;
+    color: #000000; font-weight:bold
 }
 
 .gray_row .left_cell {
