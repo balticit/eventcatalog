@@ -832,6 +832,8 @@ class artist_details_php extends CPageCodeHandler
 
             $unit["mp3List"] = $mp3List->Render();
             $unit["hasMP3"] = sizeof($mp3s) > 0 ? "visible" : "hidden";
+            
+            
             //video load
             $matches = array();
             if (strlen($unit['youtube_video']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video'], $matches) > 0)) {
@@ -840,8 +842,26 @@ class artist_details_php extends CPageCodeHandler
             }
             else {
                 $unit["video_visible"] = 'style="display: none;"';
-                ;
             }
+            
+            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches) > 0)) {
+                $unit["video_visible_2"] = "";
+                $unit["youtubevideo_2"] = $matches[1];
+            }
+            else {
+                $unit["video_visible_2"] = 'style="display: none;"';
+            }
+            
+            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches) > 0)) {
+                $unit["video_visible_3"] = "";
+                $unit["youtubevideo_3"] = $matches[1];
+            }
+            else {
+                $unit["video_visible_3"] = 'style="display: none;"';
+            }
+            
+            
+            
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
 			
 			

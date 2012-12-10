@@ -36,6 +36,59 @@
 <div>{description}</div>
 {news_list}
 {photos}
+
+<table cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td valign="top"></td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <div id="playerIndex" {video_visible}><br />
+            <h4 class="detailsBlockTitle"><a name="video">Видео</a></h4>
+            <br />
+
+            <div {video_visible}>
+                <object width="640" height="360">
+                    <param name="movie" value="http://www.youtube.com/v/{youtubevideo}&hl=ru&fs=1&"></param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="http://www.youtube.com/v/{youtubevideo}&hl=ru&fs=1&"
+                           type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"
+                           width="640" height="360" wmode="opaque">
+                    </embed>
+                </object>
+            </div>
+            <br>
+            <div {video_visible_2} >
+                <object width="640" height="360">
+                    <param name="movie" value="http://www.youtube.com/v/{youtubevideo_2}&hl=ru&fs=1&"></param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="http://www.youtube.com/v/{youtubevideo_2}&hl=ru&fs=1&"
+                           type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"
+                           width="640" height="360" wmode="opaque">
+                    </embed>
+                </object>
+            </div>
+            
+            <div {video_visible_3}>
+                <object width="640" height="360">
+                    <param name="movie" value="http://www.youtube.com/v/{youtubevideo_3}&hl=ru&fs=1&"></param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="http://www.youtube.com/v/{youtubevideo_3}&hl=ru&fs=1&"
+                           type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"
+                           width="640" height="360" wmode="opaque">
+                    </embed>
+                </object>
+            </div>
+            
+            <br>
+            </div>
+        </td>
+    </tr>
+</table>
+
 <br />
 <h4 class="detailsBlockTitle"><a name="rate">Рейтинг</a></h4>
 <noindex>
