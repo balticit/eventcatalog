@@ -18,8 +18,9 @@ function getNewsItem($item){
     <td valign='top' class='left_cell' onClick='javascript:location.href=\"/resident_news/news".$item['tbl_obj_id']."\";'>";
 	$strItem.="<img src='".$item['logo_image']."' class='logo120border' /></td>";
 	$strItem.="<td class='text_cell' valign='top' style='padding-top:0;oveflow: hidden'>";
-	$strItem.="<span style='color:gray'>".$item['strdate']."</span><br/>";
+	
 	$strItem.="<a href='/resident_news/news".$item['tbl_obj_id']."/' style='color: black;font-size:16px'>".$item['title']."</a><br/>";
+	$strItem.="<span style='color:gray'>".$item['strdate']."</span><br/>";
 	$strItem.=$item['text']."</td></tr><tr><td colspan='2' style='padding-top:3px;'>";
 	$strItem.="<img src='/images/front/0.gif' alt='' height='6' width='1' /></td></tr></table>";
 	
