@@ -692,7 +692,20 @@ class contractor_details_php extends CPageCodeHandler
 			where parent_id=$this->id limit 8");
         $unit["photos"] = $photos->Render();
         
-        $unit["description"] = nl2br(strip_tags($unit["description"])); 
+        //Remove direct
+        if ($unit['direct'] == 1) {
+            $this->GetControl('yaPersonal')->template = "";
+            $this->GetControl('topLine')->template = "";
+            
+            //$header = $this->GetControl('header');
+            //$header->itemTemplates['login']->login = "sdsd";
+            //$header->itemTemplates['logout'] = "sdsd";
+        }		
+        else {
+          $unit["description"] = nl2br(strip_tags($unit["description"]));
+        }
+        
+        
         
         $contDetails = $this->GetControl("contDetails");
         $contDetails->dataSource = $unit;

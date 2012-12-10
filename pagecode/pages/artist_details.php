@@ -845,13 +845,22 @@ class artist_details_php extends CPageCodeHandler
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
 			
 			
-			$unit["description"] = nl2br(strip_tags($unit["description"]));
-			$details = $this->GetControl("details");
-			$details->dataSource = $unit;
-            //Remove direct
-            if ($unit['tbl_obj_id'] == 6288 || $unit['tbl_obj_id'] == 4865 || $unit['direct'] == 1) {
+			     
+			     //Remove direct
+            if ($unit['direct'] == 1) {
                 $this->GetControl('yaPersonal')->template = "";
-            }			
+                $this->GetControl('topLine')->template = "";
+            }		
+            else {
+              $unit["description"] = nl2br(strip_tags($unit["description"]));
+            }
+			
+			
+      			$details = $this->GetControl("details");
+      			$details->dataSource = $unit;
+			
+
+            	
             
 			
         		if( is_numeric($unit['priority'] )) {

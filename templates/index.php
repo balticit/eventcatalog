@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>EVENT КАТАЛОГ – Портал для организаторов мероприятий</title>
+	<title>EventCatalog.ru – все для организации мероприятий: поиск подрядчиков, подбор артистов, выбор площадки, каталоги агентств.</title>
 	<?php CRenderer::RenderControl("metadata"); ?>
   <link rel="stylesheet" type="text/css" href="/styles/index.css">
   <script type="text/javascript" language="JavaScript" src="/js/index.js"></script>

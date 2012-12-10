@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<title><?php CRenderer::RenderControl("titlefilter"); ?>Каталог артистов - EVENT КАТАЛОГ</title>
+		<title><?php CRenderer::RenderControl("titlefilter"); ?>Подбор артистов для мероприятия, праздника или свадьбы –EventCatalog.ru</title>
 		<?php CRenderer::RenderControl("metadata"); ?>
 		<script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
 </head>

@@ -530,7 +530,15 @@ class agency_details_php extends CPageCodeHandler
     $unit["photos"] = $photos->Render();
     
     
-    $unit["description"] = nl2br(strip_tags($unit["description"]));
+    //Remove direct
+    if ($unit['direct'] == 1) {
+        $this->GetControl('yaPersonal')->template = "";
+        $this->GetControl('topLine')->template = "";
+    }		
+    else {
+      $unit["description"] = nl2br(strip_tags($unit["description"]));
+    }
+            
 		$agenDetails->dataSource = $unit;
 		
 		
