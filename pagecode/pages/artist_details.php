@@ -479,6 +479,8 @@ class artist_details_php extends CPageCodeHandler
         `ar`.`email` AS `email`,
         `ar`.`video` AS `video`,
         `ar`.`youtube_video` AS `youtube_video`,
+        `ar`.`youtube_video_2` AS `youtube_video_2`,
+        `ar`.`youtube_video_3` AS `youtube_video_3`,
         `ar`.`farvideo` as `farvideo`,
         `ar`.`price_to`as `price_to`,
         `ar`.`price_from`as `price_from`,

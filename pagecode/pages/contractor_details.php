@@ -439,6 +439,8 @@ class contractor_details_php extends CPageCodeHandler
 				`ct`.`title` AS `city_name`,
                                 `c`.`registration_date`,
 				`c`.`youtube_video` as `youtube_video`,
+				`c`.`youtube_video_2` as `youtube_video_2`,
+				`c`.`youtube_video_3` as `youtube_video_3`,
 				group_concat(`a`.`title` separator '|') AS `activity_title`,
 				group_concat(`a`.`tbl_obj_id` separator '|') AS `activity_ids`,
 				group_concat(`a`.`title_url` separator '|') AS `activity_urls`
@@ -718,6 +720,7 @@ class contractor_details_php extends CPageCodeHandler
             else {
                 $unit["video_visible_3"] = 'style="display: none;"';
             }
+            
         
         //Remove direct
         if ($unit['direct'] == 1) {

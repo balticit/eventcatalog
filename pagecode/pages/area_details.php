@@ -765,6 +765,8 @@ class area_details_php extends CPageCodeHandler
 	`a`.`last_visit_date`,
 	`a`.`coords`,
 	`a`.`youtube_video`,
+	`a`.`youtube_video_2`,
+	`a`.`youtube_video_3`,
 	IF(`a`.`city`>0,`c`.`title`,`a`.other_city) AS `city_name`,
 	count(`ah`.`tbl_obj_id`) AS `halls_count`
 from
