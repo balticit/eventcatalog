@@ -1405,6 +1405,8 @@ group by
 			
 			//video load
             $matches = array();
+            $matches_2 = array();
+            $matches_3 = array();
             if (strlen($unit['youtube_video']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video'], $matches) > 0)) {
                 $unit["video_visible"] = "";
                 $unit["youtubevideo"] = $matches[1];
@@ -1413,17 +1415,17 @@ group by
                 $unit["video_visible"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches) > 0)) {
+            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches_2) > 0)) {
                 $unit["video_visible_2"] = "";
-                $unit["youtubevideo_2"] = $matches[1];
+                $unit["youtubevideo_2"] = $matches_2[1];
             }
             else {
                 $unit["video_visible_2"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches) > 0)) {
+            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches_3) > 0)) {
                 $unit["video_visible_3"] = "";
-                $unit["youtubevideo_3"] = $matches[1];
+                $unit["youtubevideo_3"] = $matches_3[1];
             }
             else {
                 $unit["video_visible_3"] = 'style="display: none;"';
