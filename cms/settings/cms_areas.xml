@@ -19,7 +19,7 @@
                   lookupParent="parent_id" treeLevels="2" orderBy="priority DESC" joinTable="tbl__area2subtype"
                   parentField="area_id" childField="subtype_id" alterItemClass="alterItem" addClass="addCell"
                   editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="0"/>
-            <item type="class" class="CTinyMCETextareaGridDataField" dbField="description" label="Описание:"
+            <item type="class" class="CTextareaGridDataField" dbField="description" label="Описание:"
                   alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
             <item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Залы"
                   alterItemClass="alterItem" bagTable="tbl__area_halls" bagField="area_id"
