@@ -729,6 +729,8 @@ class contractor_details_php extends CPageCodeHandler
             $this->GetControl('yaPersonal')->template = "";
             $this->GetControl('topLine')->template = "";
             
+            $unit["description"] = nl2br($unit["description"]);
+            
             //$header = $this->GetControl('header');
             //$header->itemTemplates['login']->login = "sdsd";
             //$header->itemTemplates['logout'] = "sdsd";

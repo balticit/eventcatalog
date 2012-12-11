@@ -561,6 +561,7 @@ class agency_details_php extends CPageCodeHandler
     if ($unit['direct'] == 1) {
         $this->GetControl('yaPersonal')->template = "";
         $this->GetControl('topLine')->template = "";
+        $unit["description"] = nl2br($unit["description"]);
     }		
     else {
       $unit["description"] = nl2br(strip_tags($unit["description"]));
