@@ -3496,3 +3496,5 @@ border-radius: 3px; /* CSS3 */
 .new_item_in_main .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
 .new_item_in_main .add_date { position:absolute; color:#ccc; font-size:11px; margin: 1px;}
 
+.rate_row .shad { z-index:5; position:absolute; display:block; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
+

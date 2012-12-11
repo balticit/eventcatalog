@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sitemap encoding="windows-1251">
 	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml">
+	
+	<sitenode id="57" node="rating/" configfile="pagecode/settings/rating.xml">
+	 <sitenode id="57_1" node="area/" configfile="pagecode/settings/rating_area.xml"/>
+	 <sitenode id="57_2" node="artist/" configfile="pagecode/settings/rating_artist.xml"/>
+	 <sitenode id="57_3" node="agency/" configfile="pagecode/settings/rating_agency.xml"/>
+	 <sitenode id="57_4" node="contractor/" configfile="pagecode/settings/rating_contractor.xml"/>
+	</sitenode>
+	
 		<sitenode id="2" node="about/"  configfile="pagecode/settings/about.xml"/>
 		<sitenode id="2_1" node="contact/"  configfile="pagecode/settings/contact.xml"/>
 		<sitenode id="3" node="agency/" configfile="pagecode/settings/agency.xml" id_translit="1">
@@ -99,6 +107,9 @@
 		</sitenode>
 		
 		<sitenode id="56" node="pro_account/"  configfile="pagecode/settings/pro.xml"/>
+		
+		
+
 
 		<!--cms node-->
 		<sitenode id="99" node="cms/" configfile="cms/settings/cms.xml" cmsfile="cms/index.php">
