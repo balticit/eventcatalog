@@ -73,7 +73,7 @@ class agency_php extends CPageCodeHandler
     
         $metadata = $this->GetControl("metadata");
         $metadata->keywords = "eventагентства, ивент агентства, агентства деловых меропри€тий, концертные агентства, букинговые агентства, выставочные агентства, свадебные агентства, событийный туризм, инсентив";
-        $metadata->description = "EventCatalog.ruЦ каталог eventагентств,организаторов меропри€тий, концертных и букинговых агентствЕ и многое другое!";
+        $metadata->description = "EventCatalog.ru Ц каталог eventагентств, организаторов меропри€тий, концертных и букинговых агентствЕ и многое другое!";
 
         /*ѕровека адреса*/
         $av_rwParams = array("activity", "page", "letter");

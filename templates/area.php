@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title><?php CRenderer::RenderControl("titlefilter"); ?>Подбор площадки для проведения мероприятия, праздника или свадьбы –EventCatalog.ru</title>
+    <title><?php CRenderer::RenderControl("titlefilter"); ?>Подбор площадки для проведения мероприятия, праздника или свадьбы – EventCatalog.ru</title>
 		<?php CRenderer::RenderControl("metadata"); ?>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
