@@ -35,10 +35,10 @@
         <a class="black" href="/rating">Рейтинги компаний</a>
       </div>
       <div class="selected"><a style="color:#000000; margin-left: 0;" class="leftml2 leftmgray" href="/rating">Все рейтинги</a></div>
-      <div><a style="color:#f05620; margin-left: 0;" class="leftml2 leftmgray" href="rating/contractor">Рейтинг подрядчиков</a></div>
-      <div><a style="color:#3399ff; margin-left: 0;" class="leftml2 leftmgray" href="rating/area">Рейтинг площадок</a></div>
-      <div><a style="color:#E3007B; margin-left: 0;" class="leftml2 leftmgray" href="rating/artist">Рейтинг артистов</a></div>
-      <div><a style="color:#99cc00; margin-left: 0;" class="leftml2 leftmgray" href="rating/agency">Рейтинг агентств</a></div>
+      <div><a style="color:#f05620; margin-left: 0;" class="leftml2 leftmgray" href="/rating/contractor">Рейтинг подрядчиков</a></div>
+      <div><a style="color:#3399ff; margin-left: 0;" class="leftml2 leftmgray" href="/rating/area">Рейтинг площадок</a></div>
+      <div><a style="color:#E3007B; margin-left: 0;" class="leftml2 leftmgray" href="/rating/artist">Рейтинг артистов</a></div>
+      <div><a style="color:#99cc00; margin-left: 0;" class="leftml2 leftmgray" href="/rating/agency">Рейтинг агентств</a></div>
     </td>
   </tr>
 </table>
