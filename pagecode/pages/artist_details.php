@@ -884,7 +884,7 @@ class artist_details_php extends CPageCodeHandler
             //$matches = array();
             //$matches_2 = array();
             //$matches_3 = array();
-            if (strlen($unit['youtube_video']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtubevideo"]) != '') {
+            if (strlen($unit['youtube_video']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtubevideo"]) != '')) {
                 $unit["video_visible"] = "";
                 $unit["youtubevideo"] = $youtube_video_id;
             }
@@ -892,7 +892,7 @@ class artist_details_php extends CPageCodeHandler
                 $unit["video_visible"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_2']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_2"]) != '') {
+            if (strlen($unit['youtube_video_2']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_2"]) != '')) {
                 $unit["video_visible_2"] = "";
                 $unit["youtubevideo_2"] = $youtube_video_id;
             }
@@ -900,7 +900,7 @@ class artist_details_php extends CPageCodeHandler
                 $unit["video_visible_2"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_3']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_3"]) != '';)) {
+            if (strlen($unit['youtube_video_3']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_3"]) != '')) {
                 $unit["video_visible_3"] = "";
                 $unit["youtubevideo_3"] = $youtube_video_id;
             }
