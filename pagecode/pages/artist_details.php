@@ -855,6 +855,18 @@ class artist_details_php extends CPageCodeHandler
                     $start = $pos + strlen($needle);
                     $unit["youtubevideo"] = substr($unit['youtube_video'], $start, 11);
                 }
+                
+            }
+            elseif {
+                
+                $needle = "embed/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo"] = substr($unit['youtube_video'], $start, 11);
+                }
+                
                 else {
                 $unit["video_visible"] = 'style="display: none;"';
                 }
@@ -872,6 +884,18 @@ class artist_details_php extends CPageCodeHandler
                     $start = $pos + strlen($needle);
                     $unit["youtubevideo_2"] = substr($unit['youtube_video_2'], $start, 11);
                 }
+                
+            }
+            elseif {
+                
+                $needle = "embed/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video_2'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo_2"] = substr($unit['youtube_video_2'], $start, 11);
+                }
+                
                 else {
                 $unit["video_visible_2"] = 'style="display: none;"';
                 }
@@ -889,6 +913,18 @@ class artist_details_php extends CPageCodeHandler
                     $start = $pos + strlen($needle);
                     $unit["youtubevideo_3"] = substr($unit['youtube_video_3'], $start, 11);
                 }
+                
+            }
+            elseif {
+                
+                $needle = "embed/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video_3'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo_3"] = substr($unit['youtube_video_3'], $start, 11);
+                }
+                
                 else {
                 $unit["video_visible_3"] = 'style="display: none;"';
                 }
