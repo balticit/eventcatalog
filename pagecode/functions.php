@@ -136,7 +136,7 @@ function addDate($date){
     // минуты 60 = 60
     $minut = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400 - $hour*3600)/60);
 
-var_dump($days.'/'.$hour);
+
 if($days > 7) { return "больше недели назад";}
 if($days > 2) { return declension($days,' день',' дня',' дней')." назад";} 
 if($days == 2) { return "позавчера";}
