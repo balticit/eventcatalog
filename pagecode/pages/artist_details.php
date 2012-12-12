@@ -837,28 +837,72 @@ class artist_details_php extends CPageCodeHandler
             
             
             //video load
-            $matches = array();
-            $matches_2 = array();
-            $matches_3 = array();
-            if (strlen($unit['youtube_video']) > 0 && (preg_match('/^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/', $unit['youtube_video'], $matches) > 0)) {
+            
+            function extractUTubeVidId($url){
+    /*
+    * type1: http://www.youtube.com/watch?v=9Jr6OtgiOIw
+    * type2: http://www.youtube.com/watch?v=9Jr6OtgiOIw&feature=related
+    * type3: http://youtu.be/9Jr6OtgiOIw
+    */
+    $vid_id = "";
+    $flag = false;
+    if(isset($url) && !empty($url)){
+        /*case1 and 2*/
+        $parts = explode("?", $url);
+        if(isset($parts) && !empty($parts) && is_array($parts) && count($parts)>1){
+            $params = explode("&", $parts[1]);
+            if(isset($params) && !empty($params) && is_array($params)){
+                foreach($params as $param){
+                    $kv = explode("=", $param);
+                    if(isset($kv) && !empty($kv) && is_array($kv) && count($kv)>1){
+                        if($kv[0]=='v'){
+                            $vid_id = $kv[1];
+                            $flag = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        /*case 3*/
+        if(!$flag){
+            $needle = "youtu.be/";
+            $pos = null;
+            $pos = strpos($url, $needle);
+            if ($pos !== false) {
+                $start = $pos + strlen($needle);
+                $vid_id = substr($url, $start, 11);
+                $flag = true;
+            }
+        }
+    }
+    return $vid_id;
+}
+            
+            
+            //$matches = array();
+            //$matches_2 = array();
+            //$matches_3 = array();
+            if (strlen($unit['youtube_video']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtubevideo"]) != '') {
                 $unit["video_visible"] = "";
-                $unit["youtubevideo"] = $matches[1];
+                $unit["youtubevideo"] = $youtube_video_id;
             }
             else {
                 $unit["video_visible"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/', $unit['youtube_video_2'], $matches_2) > 0)) {
+            if (strlen($unit['youtube_video_2']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_2"]) != '') {
                 $unit["video_visible_2"] = "";
-                $unit["youtubevideo_2"] = $matches_2[1];
+                $unit["youtubevideo_2"] = $youtube_video_id;
             }
             else {
                 $unit["video_visible_2"] = 'style="display: none;"';
             }
             
-            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/', $unit['youtube_video_3'], $matches_3) > 0)) {
+            if (strlen($unit['youtube_video_3']) > 0 && ($youtube_video_id = extractUTubeVidId($unit["youtube_video_3"]) != '';)) {
                 $unit["video_visible_3"] = "";
-                $unit["youtubevideo_3"] = $matches_3[1];
+                $unit["youtubevideo_3"] = $youtube_video_id;
             }
             else {
                 $unit["video_visible_3"] = 'style="display: none;"';
