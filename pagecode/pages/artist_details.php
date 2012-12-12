@@ -874,10 +874,11 @@ class artist_details_php extends CPageCodeHandler
             if ($unit['direct'] == 1) {
                 $this->GetControl('yaPersonal')->template = "";
                 $this->GetControl('topLine')->template = "";
-                $unit["description"] = nl2br($unit["description"]).'1';
+                $unit["description"] = nl2br($unit["description"]);
+                $unit["similar"] = "";
             }		
             else {
-              $unit["description"] = nl2br(strip_tags($unit["description"])).'2';
+              $unit["description"] = nl2br(strip_tags($unit["description"]));
             }
 			
 			
