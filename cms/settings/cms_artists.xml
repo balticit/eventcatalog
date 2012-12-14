@@ -56,7 +56,7 @@
                   filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
       <item type="class" class="CXMLLookupGridDataField" dbField="direct"
-                  label="Убрать директ со страницы:" alterItemClass="alterItem" sourceEncoding="utf-8"
+                  label="PRO:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/isRider.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
                   

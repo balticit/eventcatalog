@@ -704,23 +704,50 @@ class contractor_details_php extends CPageCodeHandler
                 $unit["youtubevideo"] = $matches[1];
             }
             else {
+                $needle = "youtu.be/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo"] = substr($unit['youtube_video'], $start, 11);
+                }
+                else {
                 $unit["video_visible"] = 'style="display: none;"';
+                }
             }
             
-            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches_2) > 0)) {
+            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches) > 0)) {
                 $unit["video_visible_2"] = "";
-                $unit["youtubevideo_2"] = $matches_2[1];
+                $unit["youtubevideo_2"] = $matches[1];
             }
             else {
+                $needle = "youtu.be/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video_2'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo_2"] = substr($unit['youtube_video_2'], $start, 11);
+                }
+                else {
                 $unit["video_visible_2"] = 'style="display: none;"';
+                }
             }
             
-            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches_3) > 0)) {
+            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches) > 0)) {
                 $unit["video_visible_3"] = "";
-                $unit["youtubevideo_3"] = $matches_3[1];
+                $unit["youtubevideo_3"] = $matches[1];
             }
             else {
+                $needle = "youtu.be/";
+                $pos = null;
+                $pos = strpos($unit['youtube_video_3'], $needle);
+                if ($pos !== false) {
+                    $start = $pos + strlen($needle);
+                    $unit["youtubevideo_3"] = substr($unit['youtube_video_3'], $start, 11);
+                }
+                else {
                 $unit["video_visible_3"] = 'style="display: none;"';
+                }
             }
             
         
