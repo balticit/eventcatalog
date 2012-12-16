@@ -857,9 +857,7 @@ class artist_details_php extends CPageCodeHandler
               $unit["video_visible_3"] = 'style="display: none;"';
             }
             
-            echo $unit["youtubevideo"].'|';
-            echo $unit["youtubevideo_2"].'|';
-            echo $unit["youtubevideo_3"];
+           
             
             
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
