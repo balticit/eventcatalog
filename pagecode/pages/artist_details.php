@@ -835,7 +835,7 @@ class artist_details_php extends CPageCodeHandler
             $unit["mp3List"] = $mp3List->Render();
             $unit["hasMP3"] = sizeof($mp3s) > 0 ? "visible" : "hidden";
             
-            
+            error_reporting(E_ALL);
             //video load
             $matches = array();
             $matches_2 = array();
