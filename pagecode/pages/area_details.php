@@ -1404,104 +1404,23 @@ group by
 			}
 			
 			//video load
-			
-			      $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+           $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
             $unit["video_visible"] = "";
-            if($unit["youtubevideo"] = false ) {
+            if($unit["youtubevideo"] == false ) {
               $unit["video_visible"] = 'style="display: none;"';
             }
             
             $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
             $unit["video_visible_2"] = "";
-            if($unit["youtubevideo_2"] = false ) {
+            if($unit["youtubevideo_2"] == false ) {
               $unit["video_visible_2"] = 'style="display: none;"';
             }
             
             $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
             $unit["video_visible_3"] = "";
-            if($unit["youtubevideo_3"] = false ) {
+            if($unit["youtubevideo_3"] == false ) {
               $unit["video_visible_3"] = 'style="display: none;"';
             }
-			       
-			       /*
-            $matches = array();
-            $matches_2 = array();
-            $matches_3 = array();
-            if (strlen($unit['youtube_video']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video'], $matches) > 0)) {
-                $unit["video_visible"] = "";
-                $unit["youtubevideo"] = $matches[1];
-            }
-            else {
-                $_URL = explode("/", $unit['youtube_video']);
-                if(in_array("embed",$_URL)) {
-                  $lvl = count($_URL)-1;
-	                $unit["youtubevideo"] = $_URL[$lvl];
-                }
-                else {
-                  $needle = "youtu.be/";
-                  $pos = null;
-                  $pos = strpos($unit['youtube_video'], $needle);
-                  if ($pos !== false) {
-                      $start = $pos + strlen($needle);
-                      $unit["youtubevideo"] = substr($unit['youtube_video'], $start, 11);
-                  }
-                  else {
-                  $unit["video_visible"] = 'style="display: none;"';
-                  }
-                }
-            }
-            
-            if (strlen($unit['youtube_video_2']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_2'], $matches_2) > 0)) {
-                $unit["video_visible_2"] = "";
-                $unit["youtubevideo_2"] = $matches_2[1];
-            }
-            else {
-                $_URL = explode("/", $unit['youtube_video_2']);
-                if(in_array("embed",$_URL)) {
-                  $lvl = count($_URL)-1;
-	                $unit["youtubevideo_2"] = $_URL[$lvl];
-                }
-                else {
-            
-                  $needle = "youtu.be/";
-                  $pos = null;
-                  $pos = strpos($unit['youtube_video_2'], $needle);
-                  if ($pos !== false) {
-                      $start = $pos + strlen($needle);
-                      $unit["youtubevideo_2"] = substr($unit['youtube_video_2'], $start, 11);
-                  }
-                  else {
-                  $unit["video_visible_2"] = 'style="display: none;"';
-                  }
-                }
-            }
-            
-            if (strlen($unit['youtube_video_3']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video_3'], $matches_3) > 0)) {
-                $unit["video_visible_3"] = "";
-                $unit["youtubevideo_3"] = $matches_3[1];
-            }
-            else {
-                else {
-                $_URL = explode("/", $unit['youtube_video_3']);
-                if(in_array("embed",$_URL)) {
-                  $lvl = count($_URL)-1;
-	                $unit["youtubevideo_3"] = $_URL[$lvl];
-                }
-                else {
-            
-                  $needle = "youtu.be/";
-                  $pos = null;
-                  $pos = strpos($unit['youtube_video_3'], $needle);
-                  if ($pos !== false) {
-                      $start = $pos + strlen($needle);
-                      $unit["youtubevideo_3"] = substr($unit['youtube_video_3'], $start, 11);
-                  }
-                  else {
-                  $unit["video_visible_3"] = 'style="display: none;"';
-                  }
-                }
-            }
-            */
 
 			 //Remove direct
       if ($unit['direct'] == 1) {
