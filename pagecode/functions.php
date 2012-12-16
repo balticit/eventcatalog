@@ -192,4 +192,37 @@ $age_in_seconds = $period_unix;
 return $age_in_years.($age_in_years>0?declension($age_in_years, ' год', ' года', ' лет', false).' ':'');
 
 }
+
+
+
+function get_video_id( $url ) {
+  if( preg_match( '/http:\/\/youtu.be/', $url, $matches) ) {
+   $url = parse_url($url, PHP_URL_PATH);
+   $url = str_replace( '/', '',  $url);
+   return $url;
+  
+  } elseif ( preg_match( '/watch/', $url, $matches) ) {
+   $arr = parse_url($url);
+   $url = str_replace( 'v=', '', $arr['query'] );
+   return $url;
+   
+  } elseif ( preg_match( '/http:\/\/www.youtube.com\/v/', $url, $matches) ) {
+   $arr = parse_url($url);
+   $url = str_replace( '/v/', '', $arr['path'] );
+   return $url;
+  
+  } elseif ( preg_match( '/http:\/\/www.youtube.com\/embed/', $url, $matches) ) {
+   $arr = parse_url($url);
+   $url = str_replace( '/embed/', '', $arr['path'] );
+   return $url;
+    
+  } elseif ( preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=[0-9]/)[^&\n]+|(?<=v=)[^&\n]+#", $url, $matches) ) {
+   return $matches[0];
+    
+  } else {
+   return false;
+  }
+ }
+
+
 ?>
