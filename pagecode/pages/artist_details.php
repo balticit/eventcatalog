@@ -840,18 +840,23 @@ class artist_details_php extends CPageCodeHandler
             
             
             $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+            echo $unit["youtubevideo"];
             $unit["video_visible"] = "";
             if($unit["youtubevideo"] = false ) {
               $unit["video_visible"] = 'style="display: none;"';
             }
             
+            
             $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+            echo $unit["youtubevideo_2"];
             $unit["video_visible_2"] = "";
             if($unit["youtubevideo_2"] = false ) {
               $unit["video_visible_2"] = 'style="display: none;"';
             }
             
+            
             $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+            echo $unit["youtubevideo_3"];
             $unit["video_visible_3"] = "";
             if($unit["youtubevideo_3"] = false ) {
               $unit["video_visible_3"] = 'style="display: none;"';
