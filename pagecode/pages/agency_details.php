@@ -539,7 +539,7 @@ class agency_details_php extends CPageCodeHandler
             }
             else {
                 $_URL = explode("/", $unit['youtube_video']);
-                if($_URL("embed",$_URL)) {
+                if(in_array("embed",$_URL)) {
                   $lvl = count($_URL)-1;
 	                $unit["youtubevideo"] = $_URL[$lvl];
                 }
@@ -563,7 +563,7 @@ class agency_details_php extends CPageCodeHandler
             }
             else {
                 $_URL = explode("/", $unit['youtube_video_2']);
-                if($_URL("embed",$_URL)) {
+                if(in_array("embed",$_URL)) {
                   $lvl = count($_URL)-1;
 	                $unit["youtubevideo_2"] = $_URL[$lvl];
                 }
@@ -589,7 +589,7 @@ class agency_details_php extends CPageCodeHandler
             else {
                 else {
                 $_URL = explode("/", $unit['youtube_video_3']);
-                if($_URL("embed",$_URL)) {
+                if(in_array("embed",$_URL)) {
                   $lvl = count($_URL)-1;
 	                $unit["youtubevideo_3"] = $_URL[$lvl];
                 }
