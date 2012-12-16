@@ -196,6 +196,12 @@ return $age_in_years.($age_in_years>0?declension($age_in_years, ' год', ' года',
 
 
 function get_video_id( $url ) {
+
+  $_URL = explode("/", $url);
+  if(!in_array("http:",$_URL)) {
+    $url = 'http://'.$url;
+  }
+
   if( preg_match( '/http:\/\/youtu.be/', $url, $matches) ) {
    $url = parse_url($url, PHP_URL_PATH);
    $url = str_replace( '/', '',  $url);
