@@ -843,6 +843,8 @@ class artist_details_php extends CPageCodeHandler
               $unit["video_visible"] = 'style="display: none;"';
             }
             
+            
+            
             $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
             $unit["video_visible_2"] = "";
             if($unit["youtubevideo_2"] == false ) {
@@ -855,6 +857,9 @@ class artist_details_php extends CPageCodeHandler
               $unit["video_visible_3"] = 'style="display: none;"';
             }
             
+            echo $unit["youtubevideo"].'|';
+            echo $unit["youtubevideo_2"].'|';
+            echo $unit["youtubevideo_3"];
             
             
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
