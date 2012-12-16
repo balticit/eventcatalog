@@ -530,6 +530,24 @@ class agency_details_php extends CPageCodeHandler
     $unit["photos"] = $photos->Render();
     
     //video load
+    $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+            $unit["video_visible"] = "";
+            if($unit["youtubevideo"] = false ) {
+              $unit["video_visible"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+            $unit["video_visible_2"] = "";
+            if($unit["youtubevideo_2"] = false ) {
+              $unit["video_visible_2"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+            $unit["video_visible_3"] = "";
+            if($unit["youtubevideo_3"] = false ) {
+              $unit["video_visible_3"] = 'style="display: none;"';
+            }
+    /*
             $matches = array();
             $matches_2 = array();
             $matches_3 = array();
@@ -607,6 +625,7 @@ class agency_details_php extends CPageCodeHandler
                   }
                 }
             }
+            */
     
     //Remove direct
     if ($unit['direct'] == 1) {
