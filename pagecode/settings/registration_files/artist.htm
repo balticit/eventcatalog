@@ -199,10 +199,10 @@
         <input class="reg_input_text" type="text" name="properties[youtube_video]" size="60" value="{youtube_video}">
       </div>
       <div id="video[2]" class="reg_photos" style="display: none">
-        <input class="reg_input_text" type="text" name="properties[youtube_video_2]" size="60" value="{youtube_video}">
+        <input class="reg_input_text" type="text" name="properties[youtube_video_2]" size="60" value="{youtube_video_2}">
       </div>   
       <div id="video[3]" class="reg_photos" style="display: none">
-        <input class="reg_input_text" type="text" name="properties[youtube_video_3]" size="60" value="{youtube_video}">
+        <input class="reg_input_text" type="text" name="properties[youtube_video_3]" size="60" value="{youtube_video_3}">
       </div>                           
       <a id="btnAddVideo" href="" onclick="javascript: RegAddVideo(); return false;">Добавить ещё видео</a>  
                         
@@ -213,83 +213,33 @@
     </td>
 </tr>
 
-<tr valign="top" id="artist_mp3_row" style="display: none;">
+
+
+<tr valign="top">
     <td class="reg_title">Аудио:</td>
     <td style="width: 300px;">
-        <div id="mp3s[1]" class="reg_photos">
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Название:</td>
-                    <td align="right"><input class="reg_photo_title" name="mp3_title[1]" type="text"></td>
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Файл:</td>
-                    <td align="right"><input class="reg_photo_file" name="mp3_file[1]" type="file"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="mp3s[2]" class="reg_photos" style="display: none">
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Название:</td>
-                    <td align="right"><input class="reg_photo_title" name="mp3_title[2]" type="text"></td>
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Файл:</td>
-                    <td align="right"><input class="reg_photo_file" name="mp3_file[2]" type="file"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="mp3s[3]" class="reg_photos" style="display: none">
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Название:</td>
-                    <td align="right"><input class="reg_photo_title" name="mp3_title[3]" type="text"></td>
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Файл:</td>
-                    <td align="right"><input class="reg_photo_file" name="mp3_file[3]" type="file"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="mp3s[4]" class="reg_photos" style="display: none">
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Название:</td>
-                    <td align="right"><input class="reg_photo_title" name="mp3_title[4]" type="text"></td>
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Файл:</td>
-                    <td align="right"><input class="reg_photo_file" name="mp3_file[4]" type="file"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="mp3s[5]" class="reg_photos" style="display: none">
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Название:</td>
-                    <td align="right"><input class="reg_photo_title" name="mp3_title[5]" type="text"></td>
-                </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" class="reg_width">
-                <tr>
-                    <td width="30">Файл:</td>
-                    <td align="right"><input class="reg_photo_file" name="mp3_file[5]" type="file"></td>
-                </tr>
-            </table>
-        </div>
-        <br><a id="btnAddMp3" href="" onclick="javascript: RegAddMp3(); return false;">Добавить ещё файл</a>
+      <div class="reg_photos" >
+        <input class="reg_input_text" type="text" name="properties[youtube_audio]" size="60" value="{youtube_audio}">
+      </div>
+      <div id="video[2]" class="reg_photos" style="display: none">
+        <input class="reg_input_text" type="text" name="properties[youtube_audio_2]" size="60" value="{youtube_audio_2}">
+      </div>   
+      <div id="video[3]" class="reg_photos" style="display: none">
+        <input class="reg_input_text" type="text" name="properties[youtube_audio_3]" size="60" value="{youtube_audio_3}">
+      </div>                           
+      <a id="btnAddVideo" href="" onclick="javascript: RegAddVideo(); return false;">Добавить ещё аудио</a>  
+                        
     </td>
-    <td class="reg_info">Всего Вы можете добавить до 5-ми файлов.</td>
+    <td class="reg_info">Рекомендуем обязательно добавлять аудио, т.к. это повышает эффективность размещаемой
+        Вами информации.
+        Необходимо разместить ссылку на аудио с YouTube, например http://www.youtube.com/watch?v=GaNjCal26CM
+    </td>
 </tr>
+
+
+
+
+
 <tr valign="top">
     <td class="reg_title">Страна:</td>
     <td style="width: 300px;"><input id="input_country" class="reg_input_text" type="text"

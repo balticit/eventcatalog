@@ -481,6 +481,9 @@ class artist_details_php extends CPageCodeHandler
         `ar`.`youtube_video` AS `youtube_video`,
         `ar`.`youtube_video_2` AS `youtube_video_2`,
         `ar`.`youtube_video_3` AS `youtube_video_3`,
+        `ar`.`youtube_audio` AS `youtube_audio`,
+        `ar`.`youtube_audio_2` AS `youtube_audio_2`,
+        `ar`.`youtube_audio_3` AS `youtube_audio_3`, 
         `ar`.`farvideo` as `farvideo`,
         `ar`.`price_to`as `price_to`,
         `ar`.`price_from`as `price_from`,
@@ -821,6 +824,7 @@ class artist_details_php extends CPageCodeHandler
             $unit["photos"] = $photos->Render();
 
             //mp3 load
+            /*
             $mp3s = SQLProvider::ExecuteQuery("select * from tbl__upload where tbl_obj_id in (select file_id from tbl__artist2mp3file where artist_id=$this->id) limit 5");
             $mkeys = array_keys($mp3s);
             foreach ($mkeys as $mkey) {
@@ -834,10 +838,30 @@ class artist_details_php extends CPageCodeHandler
 
             $unit["mp3List"] = $mp3List->Render();
             $unit["hasMP3"] = sizeof($mp3s) > 0 ? "visible" : "hidden";
+            */
             
+            
+            //audio load
+            $unit["youtubeaudio"] = get_video_id($unit['youtube_audio']);
+            $unit["audio_visible"] = "";
+            if($unit["youtubeaudio"] == false ) {
+              $unit["audio_visible"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubeaudio_2"] = get_video_id($unit['youtube_audio_2']);
+            $unit["audio_visible_2"] = "";
+            if($unit["youtubeaudio_2"] == false ) {
+              $unit["audio_visible_2"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubeaudio_3"] = get_video_id($unit['youtube_audio_3']);
+            $unit["audio_visible_3"] = "";
+            if($unit["youtubeaudio_3"] == false ) {
+              $unit["audio_visible_3"] = 'style="display: none;"';
+            }
             
             //video load
-           $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+            $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
             $unit["video_visible"] = "";
             if($unit["youtubevideo"] == false ) {
               $unit["video_visible"] = 'style="display: none;"';
