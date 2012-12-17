@@ -1587,7 +1587,7 @@ $(function() {
       					$h_sender = $r_mess[0]["sender_id"];
       					$h_reciever = $r_mess[0]["reciever_id"];
       
-      					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender'  ORDER BY time DESC LIMIT 10 ");
+      					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' ORDER BY time DESC LIMIT 10 ");
     					}
 						
 						
