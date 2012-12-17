@@ -1569,8 +1569,29 @@ $(function() {
 							}
 
 						}
+						
+						/*
+            
+          
+            
+            */
+						
 						if ($m_action=="reply"||$m_action=="compose")
 						{
+						
+						  if($m_action=="compose") {
+    						$reciever_id = $_GET["type"].GPT("id");
+  
+      					$r_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id='$reciever_id'  ");
+  
+      					$h_sender = $r_mess[0]["sender_id"];
+      					$h_reciever = $r_mess[0]["reciever_id"];
+      
+      					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender'  ORDER BY time DESC LIMIT 10 ");
+    					}
+						
+						
+						
 							$cab["main_area"].='<form method="post">
 										<textarea name="message_text" style="width:100%; height:100px; border:1px solid #999999; font-size:12px; -moz-border-radius: 6px 6px 6px 6px;"></textarea><br/><br/>
 										<input type="submit" value="Отправить"/><br/><br/><br/>
@@ -1579,7 +1600,9 @@ $(function() {
 							$cab["main_area"].='<div class="message_history">';
 							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
 							
+							if($m_action=="reply") {
 							$cab["main_area"].='<div class="grey_message message">'.ProcessMessage($reply_mess["text"])."</div>";
+							}
 							
   						foreach($h_mess as $mess) {
   						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
