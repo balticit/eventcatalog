@@ -13,13 +13,17 @@ function declension($c, $str1, $str2, $str5, $show_num = true)
 }
 
 function getNewsItem($item){
+
+  if( $item["title_url"] == '') {$item["title_url"] = 'news'.$item["tbl_obj_id"];}
+	$item["news_url"] = $item["title_url"];
+  
 	$strItem = "<table style='margin-right:10px'>
 				<tr class='gray_row'>
-    <td valign='top' class='left_cell' onClick='javascript:location.href=\"/resident_news/news".$item['tbl_obj_id']."\";'>";
+    <td valign='top' class='left_cell' onClick='javascript:location.href=\"/resident_news/".$item['news_url']."\";'>";
 	$strItem.="<img src='".$item['logo_image']."' class='logo120border' /></td>";
 	$strItem.="<td class='text_cell' valign='top' style='padding-top:0;oveflow: hidden'>";
 	
-	$strItem.="<a href='/resident_news/news".$item['tbl_obj_id']."/' style='color: black; font-family: Arial, Helvetica, sans-serif;font-size:16px;font-weight:bold'>".$item['title']."</a><br/>";
+	$strItem.="<a href='/resident_news/".$item['news_url']."/' style='color: black; font-family: Arial, Helvetica, sans-serif;font-size:16px;font-weight:bold'>".$item['title']."</a><br/>";
 	$strItem.="<span style='color:gray'>".$item['strdate']."</span><br/>";
 	$strItem.=$item['text']."</td></tr><tr><td colspan='2' style='padding-top:3px;'>";
 	$strItem.="<img src='/images/front/0.gif' alt='' height='6' width='1' /></td></tr></table>";

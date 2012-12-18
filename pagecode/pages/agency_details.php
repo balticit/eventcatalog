@@ -476,6 +476,11 @@ class agency_details_php extends CPageCodeHandler
     if(!empty($news)){
         $unit["news_list"] = '<h4 class="detailsBlockTitle"><a name="news">Новости</a></h4>';
 			foreach($news as $item) {
+			
+			  if( $item["title_url"] == '') { $item["title_url"] = 'news'.$item["tbl_obj_id"];}
+		    $item["news_url"] = $item["title_url"];
+		
+			
 				$item["title"] = CutString($item["title"]);
 				$item["text"] = strip_tags(CutString($item["text"], 150));
 				

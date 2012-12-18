@@ -59,9 +59,9 @@ class add_resident_news_php extends CPageCodeHandler
 					$addform['end_comm_if_posted'] = "";
 					
 					//Тут должно быть добавление в базу данных
-					mysql_query("insert into tbl__resident_news (date,resident_type,resident_id,title,text,name,email,active)
+					mysql_query("insert into tbl__resident_news (date,resident_type,resident_id,title,title_url,text,name,email,active)
 								values ('".date("Y-m-d")."','".$user->type."',".$user->id.",'".addslashes($_POST["title"]).
-								"','".addslashes($_POST["text"])."','".addslashes($_POST["name"]).
+								"', '".translitURL($_POST["title"])."' ,  '".addslashes($_POST["text"])."','".addslashes($_POST["name"]).
 								"','".addslashes($_POST["email"])."',0)");
 					$news_id = mysql_insert_id();
 					foreach ($_FILES as $image) {
@@ -116,6 +116,7 @@ class add_resident_news_php extends CPageCodeHandler
 										
 				}else{
 					$addform['title'] = $_POST["title"];
+					$addform['title_url'] = translitURL($_POST["title"]);
 					$addform['text'] = $_POST["text"];
 					$addform['name'] = $_POST["name"];
 					$addform['email'] = $_POST["email"];
@@ -123,6 +124,7 @@ class add_resident_news_php extends CPageCodeHandler
 			}
 			else {
 				$addform['title'] = "";
+				$addform['title_url'] = translitURL($_POST["title"]);
 				$addform['text'] = "";
 				$addform['name'] = "";
 				$addform['email'] = "";

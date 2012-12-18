@@ -83,7 +83,11 @@
 			foreach ($news as $key=>$value)
 			{
 				//$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
-				$news[$key]["parent"] = CURLHandler::$currentPath;
+				
+				
+				if( $news[$key]["title_url"] == '') { $news[$key]["title_url"] = 'details'.$news[$key]["tbl_obj_id"];}
+		    $news[$key]["news_url"] = $news[$key]["title_url"];
+				
 				$cat = $news[$key]["tbl_cai_id"];
 				if(!empty($cat)){
 					$news[$key]["theme"] = "Рубрика: ".SQLProvider::ExecuteScalar("SELECT title from tbl__news_dir where tbl_obj_id=".$cat);

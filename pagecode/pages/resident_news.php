@@ -92,9 +92,14 @@ class resident_news_php extends CPageCodeHandler
 												order by rn.`date` DESC limit $start, $limit
 												");
 		foreach($res_news as $key => $val) {
+		
+		  if( $res_news[$key]["title_url"] == '') { $res_news[$key]["title_url"] = 'news'.$res_news[$key]["tbl_obj_id"];}
+		  $res_news[$key]["news_url"] = $res_news[$key]["title_url"];
+		
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
 			$res_news[$key]["resident_name"] = $res[0]['title'];
+			
 
 			
 			if (IsNullOrEmpty($res_news[$key]["logo_image"]))
@@ -108,6 +113,7 @@ class resident_news_php extends CPageCodeHandler
 			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
 			$res_news[$key]["short_text"] = strip_tags(CutString($res_news[$key]["text"], 250));
 			$res_news[$key]["color"] = getProBackgroud($val['resident_type']);
+			
 			
 			switch($val['resident_type']) {
 			case 'area': $res_news[$key]['sub'] = 'Новость площадки';  break;

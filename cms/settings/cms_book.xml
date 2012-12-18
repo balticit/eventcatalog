@@ -5,7 +5,7 @@
 		<param name="fields" type="list">
       <item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnEdit="1" visibleOnAdd="1" visibleOnList="1"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
-            <item type="class" class="CGridDataField" dbField="title_url" label="Название - транслит" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+      <item type="class" class="CGridDataField" dbField="title_url" label="Название - транслит" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
 			<item type="class" class="CMultipleLookupDBGridDataField" dbField="tbl_obj_id" label="Категория"  lookupTable="tbl__public_topics" lookupId="tbl_obj_id" lookupTitle="title" joinTable="tbl__public2topic" parentField="child_id" childField="parent_id" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="1"/>
       <item type="class" class="CFileGridDataField" dbField="logo_image"  uploadLink="/upload/" label="Логотип 120х80:" alterItemClass="alterItem"  labelClass="itemLabel" clearText="Очистить" addClass="addCell" editClass="editCell" uploadPath="application/public/upload/"/>
       <item type="class" class="CTextareaGridDataField" dbField="annotation" label="Краткое описание" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" visibleOnList="0"/>

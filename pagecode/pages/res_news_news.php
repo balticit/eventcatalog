@@ -1,16 +1,30 @@
 <?php
 class res_news_news_php extends CPageCodeHandler
 {
-
+ 
 	public function res_news_news_php()
 	{
 		$this->CPageCodeHandler();
 	}
 
+
 	public function PreRender()
 	{		
-		$id = GP('id',0); 
+    
 		
+		/*Провека адреса*/
+    $id_str = GP("id");
+    if (!is_null($id_str)) {
+      $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__resident_news where title_url = '" . mysql_real_escape_string($id_str) . "'");
+      if(!IsNullOrEmpty($this->id)){
+        $id = $this->id;
+      }
+      else{
+        $id = GP("id");
+        $id = (int)str_replace('news', '', $id);
+      }
+    }
+
 		// $newAreas = SQLProvider::ExecuteQuery("select rn.*, res.title as resident_name, DATE_FORMAT(rn.date,'%d.%m.%y') as `strdate` from `tbl__resident_news` rn 
 												// LEFT JOIN tbl__contractor_doc res ON res.tbl_obj_id = rn.resident_id 
 												// where rn.active=1 and rn.resident_type='area'

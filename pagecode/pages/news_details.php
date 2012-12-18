@@ -12,11 +12,24 @@
       $av_rwParams = array("id");
 		  CURLHandler::CheckRewriteParams($av_rwParams);  
 			$rewriteParams = array();
-			$id = GP("id");
-			if (!is_numeric($id))
-			{
-				$id =0;
-			}
+			
+			
+			
+			/*Провека адреса*/
+      $id_str = GP("id");
+      if (!is_null($id_str)) {
+        $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__news where title_url = '" . mysql_real_escape_string($id_str) . "'");
+        if(!IsNullOrEmpty($this->id)){
+          $id = $this->id;
+        }
+        else{
+          $id = GP("id");
+          $id = (int)str_replace('details', '', $id);
+        }
+      }
+			
+			
+			
 			$unit = SQLProvider::ExecuteQuery("SELECT n.*, c.title as city_title, a.title as area_title from tbl__news n 
 												LEFT JOIN tbl__city c
 												ON n.city = c.tbl_obj_id 
@@ -148,7 +161,11 @@
 				$news_rotate_1 = SQLProvider::ExecuteQuery($sql);
 				if (!empty($news_rotate_1)) {				
 					foreach($news_rotate_1 as $i => &$item) {
-						$unit[0]['news_link_1'] = $item['tbl_obj_id'];
+					
+					  if( $item["title_url"] == '') { $item["title_url"] = 'details'.$item["tbl_obj_id"];}
+		        $item["news_url_1"] = $item["title_url"];
+					
+						$unit[0]['news_link_1'] = $item['news_url_1'];
 						$unit[0]['news_title_1'] = $item['title'];
 						$unit[0]['news_img_1'] = $item['s_image'];
 						$unit[0]['news_text_1'] = $item['annotation'];
@@ -167,7 +184,11 @@
 				$news_rotate_2 = SQLProvider::ExecuteQuery($sql);
 				if (!empty($news_rotate_2)) {				
 					foreach($news_rotate_2 as $i => &$item) {
-						$unit[0]['news_link_2'] = $item['tbl_obj_id'];
+					
+					  if( $item["title_url"] == '') { $item["title_url"] = 'details'.$item["tbl_obj_id"];}
+		        $item["news_url_2"] = $item["title_url"];
+					
+						$unit[0]['news_link_2'] = $item['news_url_2'];
 						$unit[0]['news_title_2'] = $item['title'];
 						$unit[0]['news_img_2'] = $item['s_image'];
 						$unit[0]['news_text_2'] = $item['annotation'];
