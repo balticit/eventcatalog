@@ -67,6 +67,10 @@ function onSiteTime($regdate = ''){
     // дни 24*3600 = 86400
     $days = (int)(($sitetime - $years*31536000 - $months*2592000)/86400);
     
+    $hour = (int)(($sitetime - $years*31536000 - $months*2592000 - $days*86400)/3600);
+    
+    if($days > 0 && $hour > 0) {$days = $days+1;}
+    
     return ($years>0?declension($years, ' год', ' года', ' лет').' ':'').($months>0?declension($months, ' мес€ц', ' мес€ца', ' мес€цев'):'').' '.($months>0||$years>0?'':($days>0?declension($days,' день',' дн€',' дней'):'1 день'));
 }
 
