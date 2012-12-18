@@ -133,7 +133,7 @@ class resident_news_php extends CPageCodeHandler
     }
     else {
 		// во вложенном запросе счетчик, чтобы не делать еще один коннект к базе
-		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, res.title resident_name, '.
+		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, rn.title_url as news_url, res.title resident_name, '.
 					(in_array($resident, array('contractor','agency')) ? 'rn.logo_image' : 'rn.logo_image logo_image').', '.
 					'(SELECT COUNT(tbl_obj_id) FROM tbl__resident_news WHERE resident_type="'.$resident.'" AND active=1 ) c '.
 				'FROM tbl__resident_news rn '.
@@ -145,6 +145,10 @@ class resident_news_php extends CPageCodeHandler
         $newsData = SQLProvider::ExecuteQuery($sql);
         if(!empty($newsData)){
             foreach($newsData as &$news){
+            
+                if( $news["news_url"] == '') { $news["news_url"] = 'news'.$news["tbl_obj_id"];}
+		            $news["news_url"] = $news["news_url"];
+            
                 $news['short_text'] = substr(strip_tags($news['text']),0,250);
                 $news['resident_type'] = $resident;
 				        $news['color'] = getProBackgroud($resident);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sitemap encoding="windows-1251">
-	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml">
+	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml" >
 	
 	<sitenode id="57" node="rating/" configfile="pagecode/settings/rating.xml">
 	 <sitenode id="57_1" node="area/" configfile="pagecode/settings/rating_area.xml"/>
@@ -38,7 +38,7 @@
 			<sitenode id="10_1" node="details/" configfile="pagecode/settings/contractor_details.xml" hidden="1"/>
 			<sitenode id="10_2" node="rating/" configfile="pagecode/settings/contractor_rating.xml"/>
 		</sitenode>
-		<sitenode id="13" node="news/"  configfile="pagecode/settings/news.xml" id_translit="1">
+		<sitenode id="13" node="news/" configfile="pagecode/settings/news.xml" id_translit="1">
 			<sitenode id="13_1" node="details/" configfile="pagecode/settings/news_details.xml" hidden="1"/>
 		</sitenode>
 		<sitenode id="15" node="registration/"  configfile="pagecode/settings/registration.xml">

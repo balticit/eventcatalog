@@ -15,10 +15,14 @@
 			if($page > 1) $rewriteParams["page"] = $page;
 			
 			// принимаем фильтр категории
-			$cat = (!empty($_GET['cat'])) ? (int)$_GET['cat'] : false;
+			if(isset($_GET['cat'])) {
+			$cat = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__news_dir where str_id = '" . mysql_real_escape_string($_GET['cat']) . "'");
+			}
+			else { $cat = false;}
+		  //$cat = (!empty($_GET['cat'])) ? (int)$_GET['cat'] : false;
 			
 			// список категорий новостей
-			$sql  = 'SELECT tbl_obj_id, title '.
+			$sql  = 'SELECT tbl_obj_id, title, str_id '.
 					'FROM tbl__news_dir '.
 					'ORDER BY sort DESC';
 			$list = SQLProvider::ExecuteQuery($sql);
@@ -27,7 +31,7 @@
 					// if ($item['tbl_obj_id'] == 0)
 					// $item['link'] = "/book";
 					// else
-					$item['link']		= "/news/?cat=".$item['tbl_obj_id'];
+					$item['link']		= "/news/?cat=".$item['str_id'];
 					$item['gray']		= "gray";
 					$item['selected']	= ($item['tbl_obj_id'] == $cat) ? 'class="selected"' : '';
 				}
