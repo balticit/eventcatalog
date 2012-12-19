@@ -30,10 +30,9 @@ class profile_php extends CPageCodeHandler
     $_URL = explode(".", $_URL);		// удаляем расширение
     $_URL = explode("/", $_URL[0]);
 	 
-	  $type = $_URL[count($_URL) - 3];
+	  $type = $_URL[count($_URL) - 2];
 	
-	  var_dump($id_str."|".$type);
-	  die();
+
 		//$av_rwParams = array("type","id");
 		//CURLHandler::CheckRewriteParams($av_rwParams);  
     
