@@ -95,7 +95,24 @@
 		<sitenode id="50" node="comments/"  configfile="pagecode/settings/comments.xml">
 			<sitenode id="50_1" node="jsc/" configfile="pagecode/settings/comments_jsc.xml"/>
 		</sitenode>
-		<sitenode id="52" node="u_profile/"  configfile="pagecode/settings/profile.xml"/>
+		
+		<sitenode id="52" node="u_profile/"  configfile="pagecode/settings/profile.xml" id_translit="1">
+		
+		  <sitenode id="52_1" node="area/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_11" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_2" node="artist/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_12" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_3" node="agency/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_13" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_4" node="contractor/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="54_14" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  
+		</sitenode>
+		
 		<sitenode id="53" node="scroll/"  configfile="pagecode/settings/index.xml">
 			<sitenode id="53_1" node="book/" configfile="pagecode/settings/scroll_book.xml" />
 			<sitenode id="53_2" node="msg/" configfile="pagecode/settings/scroll_msg.xml" />

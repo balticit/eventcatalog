@@ -96,7 +96,7 @@ class res_news_news_php extends CPageCodeHandler
 				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
   		  $newsdetails[0]["logo"] = "/images/nologo.png";
   		  else
-  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+  		  $newsdetails[0]["logo"] = '/upload/'.$newsdetails[0]["logo_image"];
 				
 
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];	
@@ -113,7 +113,7 @@ class res_news_news_php extends CPageCodeHandler
 				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
   		  $newsdetails[0]["logo"] = "/images/nologo.png";
   		  else
-  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+  		  $newsdetails[0]["logo"] = '/upload/'.$newsdetails[0]["logo_image"];
 				
 				
 				
@@ -130,7 +130,7 @@ class res_news_news_php extends CPageCodeHandler
 				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
   		  $newsdetails[0]["logo"] = "/images/nologo.png";
   		  else
-  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+  		  $newsdetails[0]["logo"] = '/upload/'.$newsdetails[0]["logo_image"];
 				
 				
 				
@@ -147,7 +147,7 @@ class res_news_news_php extends CPageCodeHandler
 				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
   		  $newsdetails[0]["logo"] = "/images/nologo.png";
   		  else
-  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+  		  $newsdetails[0]["logo"] = '/upload/'.$newsdetails[0]["logo_image"];
 				
 				
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
