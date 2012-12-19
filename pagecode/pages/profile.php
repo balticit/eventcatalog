@@ -20,11 +20,20 @@ class profile_php extends CPageCodeHandler
 	
 	  /*Провека адреса*/
 	  $id_str = GP("id");
-	  $_URL = explode("/", $_SERVER['REQUEST_URI']);
-	  $type = $_URL[count($_URL) - 2];
+	  
+    $_URL = preg_replace("/^(.*?)index\.php$/is", "$1", $_SERVER['SCRIPT_NAME']);  
+    $_URL = preg_replace("/^".preg_quote($_URL, "/")."/is", "", urldecode($_SERVER['REQUEST_URI']));  
+    $_URL = preg_replace("/(\/?)(\?.*)?$/is", "", $_URL);  
+    $_URL = preg_replace("/[^0-9A-Za-z._\\-\\/]/is", "", $_URL);	// вырезаем ненужные символы (не обязательно это делать)
+    $_URL = mysql_escape_string($_URL); // экранирует спец символы
+    $_URL = trim($_URL);				// удаление пробельных символов
+    $_URL = explode(".", $_URL);		// удаляем расширение
+    $_URL = explode("/", $_URL[0]);
+	 
+	  $type = $_URL[count($_URL) - 3];
 	
-	  var_dump($id_str."|".$type);
-	  die();
+	  //var_dump($id_str."|".$type);
+	  //die();
 		//$av_rwParams = array("type","id");
 		//CURLHandler::CheckRewriteParams($av_rwParams);  
     
