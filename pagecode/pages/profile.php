@@ -32,8 +32,8 @@ class profile_php extends CPageCodeHandler
 	 
 	  $type = $_URL[count($_URL) - 3];
 	
-	  //var_dump($id_str."|".$type);
-	  //die();
+	  var_dump($id_str."|".$type);
+	  die();
 		//$av_rwParams = array("type","id");
 		//CURLHandler::CheckRewriteParams($av_rwParams);  
     
