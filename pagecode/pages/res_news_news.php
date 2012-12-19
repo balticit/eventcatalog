@@ -1,7 +1,8 @@
 <?php
 class res_news_news_php extends CPageCodeHandler
 {
- 
+  private $newsLimit = 25;
+  
 	public function res_news_news_php()
 	{
 		$this->CPageCodeHandler();
@@ -12,7 +13,141 @@ class res_news_news_php extends CPageCodeHandler
 	{		
     
 		
-		/*Провека адреса*/
+		
+					
+$id_str = GP("id");
+	
+			
+			
+	if(in_array($id_str, array('contractor','area','agency','artist'), true)) {
+	    $this->is_list = true;
+	    $resident = $id_str;
+	}
+	else {
+    $this->is_list = false;
+  }
+			
+			
+			
+if($this->is_list){
+		
+	
+
+
+    
+        $page = (int)GP('page',0);
+        if($page>0) $page--;
+        $limit = $this->newsLimit;
+      //  $resident = GP('resident','');
+        $newsCount = 0;
+		
+        
+     
+
+    
+		// во вложенном запросе счетчик, чтобы не делать еще один коннект к базе
+		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, rn.title_url as news_url, res.title resident_name, '.
+					(in_array($resident, array('contractor','agency')) ? 'rn.logo_image' : 'rn.logo_image logo_image').', '.
+					'(SELECT COUNT(tbl_obj_id) FROM tbl__resident_news WHERE resident_type="'.$resident.'" AND active=1 ) c '.
+				'FROM tbl__resident_news rn '.
+					'LEFT JOIN tbl__'.$resident.'_doc res ON res.tbl_obj_id = rn.resident_id '.
+				'WHERE rn.active = 1 AND rn.resident_type = "'.$resident.'" '.
+				'ORDER BY rn.`date` DESC '.
+				'LIMIT '.($page * $limit).', '.$limit;
+				
+        $newsData = SQLProvider::ExecuteQuery($sql);
+        if(!empty($newsData)){
+            foreach($newsData as &$news){
+            
+                if( $news["news_url"] == '') { $news["news_url"] = 'news'.$news["tbl_obj_id"];}
+		            $news["news_url"] = $news["news_url"];
+            
+                $news['short_text'] = substr(strip_tags($news['text']),0,250);
+                $news['resident_type'] = $resident;
+				        $news['color'] = getProBackgroud($resident);
+				        
+				        if (IsNullOrEmpty($news["logo_image"]))
+          		  $news["logo_image"] = "/images/nologo.png";
+          		  else
+          		  $news["logo_image"] = "/upload/".GetFileName($news["logo_image"]);
+				        
+				        
+            }
+            $newsCount = $newsData[0]['c'];
+            
+            $newAreas = $this->GetControl("newAreas");
+            $newAreas->dataSource = $newsData;
+        }
+
+
+        
+        // страницы
+        $pCount = floor($newsCount/$limit) + ($newsCount%$limit>0?0:1);
+        $rewriteParams = $_GET;
+        $pager = $this->GetControl("pager");
+        $pager->currentPage = $page+1;
+        $pager->totalPages = $pCount;
+        $pager->rewriteParams = $rewriteParams;
+        
+        // менюшка
+        $menus = array(
+            array('link'=>'/','title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
+            array('link'=>'/resident_news/contractor','title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
+            array('link'=>'/resident_news/area','title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
+            array('link'=>'/resident_news/artist','title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
+            array('link'=>'/resident_news/agency','title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
+        );
+		
+		
+		//$news_title = '';   
+		switch($resident) {
+			case 'contractor' 	: $news_title = 'подрядчиков'; break;
+			case 'area' 		: $news_title = 'площадок'; break;
+			case 'artist' 		: $news_title = 'артистов'; break;
+			case 'agency'		: $news_title = 'агентств'; break;
+			default: $news_title = 'резидентов';
+		}
+		
+		
+		$groupList = $this->GetControl("typeList");		
+    $groupList->dataSource = $menus;
+		
+		// && всего резидентов
+		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
+												where vm.`active`=1 and vm.`login_type`<>'user'
+												group by vm.`login_type`
+												order by vm.`login_type` desc
+												");
+		
+		$chart = array();
+		
+		$chart["count"] = $counts[0]["count"]+$counts[1]["count"]+$counts[2]["count"]+$counts[3]["count"];
+		$chart["cont_count"] = $counts[0]["count"];
+		$chart["area_count"] = $counts[2]["count"];
+		$chart["arti_count"] = $counts[1]["count"];
+		$chart["agen_count"] = $counts[3]["count"];
+		$max = max($counts[0]["count"],$counts[1]["count"],$counts[2]["count"],$counts[3]["count"]);
+		$h = 70;
+		$k = $h/$max;;
+		$chart["cont_height"] = floor($counts[0]["count"]*$k);
+		$chart["area_height"] = floor($counts[2]["count"]*$k);
+		$chart["arti_height"] = floor($counts[1]["count"]*$k);
+		$chart["agen_height"] = floor($counts[3]["count"]*$k);
+		
+		$chart["cont_percent"] = floor($counts[0]["count"]/$chart["count"]*100);
+		$chart["area_percent"] = floor($counts[2]["count"]/$chart["count"]*100);
+		$chart["arti_percent"] = floor($counts[1]["count"]/$chart["count"]*100);
+		$chart["agen_percent"] = floor($counts[3]["count"]/$chart["count"]*100);		
+		
+		$chartObj = $this->GetControl("chart");
+		$chartObj->dataSource = $chart;
+		
+		}
+		
+		else {
+
+
+	/*Провека адреса*/
     $id_str = GP("id");
     if (!is_null($id_str)) {
       $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__resident_news where title_url = '" . mysql_real_escape_string($id_str) . "'");
@@ -159,11 +294,11 @@ class res_news_news_php extends CPageCodeHandler
 		}
 		$resident = $newsdetails[0]["resident_type"];
 		$menus = array(
-		        array('link'=>'/resident_news/?resident=all','title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
-            array('link'=>'/resident_news/?resident=contractor','title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
-            array('link'=>'/resident_news/?resident=area','title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
-            array('link'=>'/resident_news/?resident=artist','title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
-            array('link'=>'/resident_news/?resident=agency','title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
+		        array('link'=>'/resident_news','title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
+            array('link'=>'/resident_news/contractor','title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
+            array('link'=>'/resident_news/area','title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
+            array('link'=>'/resident_news/artist','title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
+            array('link'=>'/resident_news/agency','title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
         );
 		$groupList = $this->GetControl("typeList");		
         $groupList->dataSource = $menus;
@@ -243,6 +378,10 @@ class res_news_news_php extends CPageCodeHandler
 		
 		$chartObj = $this->GetControl("chart");
 		$chartObj->dataSource = $chart;
+		
+		}
+		
+		
 	}
 }
 ?>

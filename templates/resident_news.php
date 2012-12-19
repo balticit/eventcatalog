@@ -21,7 +21,9 @@
 <?php CRenderer::RenderControl("submenu5"); ?>
 </td>
 </tr>
-<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
+<tr>
+
+<td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
 <div>
 <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
@@ -72,6 +74,8 @@ else{
 
 </div>	
 </td>
+
+
 </tr>
 <tr><td class="partner_ban"><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
 <tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>

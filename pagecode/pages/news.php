@@ -9,6 +9,9 @@
 		}
 		
 		public function PreRender() {
+		
+		
+		
 			CURLHandler::CheckRewriteParams(array('cat', 'page'));
 			$page = (int)GP("page", 1);
 			$rewriteParams = array();
@@ -31,7 +34,7 @@
 					// if ($item['tbl_obj_id'] == 0)
 					// $item['link'] = "/book";
 					// else
-					$item['link']		= "/news/?cat=".$item['str_id'];
+					$item['link']		= "/news/".$item['str_id'];
 					$item['gray']		= "gray";
 					$item['selected']	= ($item['tbl_obj_id'] == $cat) ? 'class="selected"' : '';
 				}
@@ -133,6 +136,9 @@
 		
 		$chartObj = $this->GetControl("chart");
 		$chartObj->dataSource = $chart;
+		
+		
+		
 		}
 	}
 ?>

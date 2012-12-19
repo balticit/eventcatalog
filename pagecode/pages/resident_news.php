@@ -70,6 +70,8 @@ class resident_news_php extends CPageCodeHandler
  * 
  */
     public function PreRender(){
+    
+    
         $page = (int)GP('page',0);
         if($page>0) $page--;
         $limit = $this->newsLimit;
@@ -77,8 +79,8 @@ class resident_news_php extends CPageCodeHandler
         $newsCount = 0;
 		
         if(!in_array($resident, array('contractor','area','agency','artist'), true)) {
-			$resident = 'all';
-		}
+    			$resident = 'all';
+    		}
      
      
     if( $resident == 'all')  {
@@ -178,11 +180,11 @@ class resident_news_php extends CPageCodeHandler
         
         // менюшка
         $menus = array(
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'all')),'title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'contractor')),'title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'area')),'title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'artist')),'title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'agency')),'title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
+            array('link'=>'/','title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
+            array('link'=>'/resident_news/contractor','title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
+            array('link'=>'/resident_news/area','title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
+            array('link'=>'/resident_news/artist','title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
+            array('link'=>'/resident_news/agency','title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
         );
 		
 		
