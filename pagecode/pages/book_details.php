@@ -41,7 +41,7 @@ if($this->is_list){
             $rp = ($page - 1) * $this->pageSize;
 
             
-            var_dump($category.'|'.$id_str);
+    
             
 	        $bycategory = GP("bycategory");
 	         $topic = $this->id;
@@ -82,8 +82,6 @@ if($this->is_list){
             if (!is_null($bycategory) || (!IsNullOrEmpty($category) && is_numeric($category))) {
                 $filter = (!IsNullOrEmpty($category) && is_numeric($category))?" where pd.dir_id=$category":"";
 
-
-var_dump($filter);
                 // $publics = SQLProvider::ExecuteQuery(
                   // "select tbl_obj_id, title,title_url, logo_image, annotation, dir_id,
                   // registration_date,
