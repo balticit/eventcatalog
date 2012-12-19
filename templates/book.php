@@ -20,7 +20,9 @@
 <?php CRenderer::RenderControl("submenu4"); ?>
 </td>
 </tr>
-<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
+<tr>
+
+<td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top">
 <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
     <td style="vertical-align:top;width:230px"> 
@@ -68,7 +70,9 @@
                 <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>
 	</table>
-</td></tr>
+</td>
+
+</tr>
 <tr><td class="partner_ban"><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
 <tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>
 </table>

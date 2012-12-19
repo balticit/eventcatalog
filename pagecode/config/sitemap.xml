@@ -33,7 +33,9 @@
 		<sitenode id="8" node="resident_news/"  configfile="pagecode/settings/resident_news.xml" id_translit="1">
 			<sitenode id="8_1" node="news/" configfile="pagecode/settings/res_news_news.xml" hidden="1"/>
 		</sitenode>
-		<sitenode id="9" node="eventoteka/"  configfile="pagecode/settings/eventoteka.xml"/>
+		<sitenode id="9" node="eventoteka/"  configfile="pagecode/settings/eventoteka.xml" id_translit="1">
+		  <sitenode id="9_1" node="category/" configfile="pagecode/settings/eventoteka.xml" hidden="1"/>
+		</sitenode>
 		<sitenode id="10" node="contractor/" configfile="pagecode/settings/contractor.xml" id_translit="1">
 			<sitenode id="10_1" node="details/" configfile="pagecode/settings/contractor_details.xml" hidden="1"/>
 			<sitenode id="10_2" node="rating/" configfile="pagecode/settings/contractor_rating.xml"/>

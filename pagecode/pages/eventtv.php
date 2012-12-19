@@ -21,13 +21,13 @@ class eventtv_php extends CPageCodeHandler
     
     $bycategory = GP("bycategory");
     $topic = GP("topic",0);
-    $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, color from tbl__eventtv_topics order by group_num, order_num");
+    $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, title_url, color from tbl__eventtv_topics order by group_num, order_num");
     array_unshift($topics,array("tbl_obj_id"=>"0","title"=>"Все репортажи"));
     foreach ($topics as &$item) {
       if ($item['tbl_obj_id'] == 0)
         $item['link'] = "/eventtv";
       else
-        $item['link'] = "/eventtv/?topic=".$item['tbl_obj_id'];
+        $item['link'] = "/eventtv/".$item['title_url'];
       $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
       $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
     }
@@ -43,13 +43,13 @@ class eventtv_php extends CPageCodeHandler
     
     
     /* book menu */
-    $topics1 = SQLProvider::ExecuteQuery("select tbl_obj_id, title from tbl__public_topics order by order_num");
+    $topics1 = SQLProvider::ExecuteQuery("select tbl_obj_id, title_url, title from tbl__public_topics order by order_num");
             array_unshift($topics1,array("tbl_obj_id"=>"0","title"=>"Все статьи"));
             foreach ($topics1 as &$item) {
                 if ($item['tbl_obj_id'] == 0)
                     $item['link'] = "/book";
                 else
-                    $item['link'] = "/book/?topic=".$item['tbl_obj_id'];
+                    $item['link'] = "/book/".$item['title_url'];
                 $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
                 $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
             }

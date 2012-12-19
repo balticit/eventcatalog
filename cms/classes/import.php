@@ -149,12 +149,14 @@ AND kind_of_activity >0");
         SQLProvider::ExecuteNonReturnQuery("CREATE TABLE IF NOT EXISTS `tbl__eventtv_topics` (
 `tbl_obj_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `title` VARCHAR( 50 ) NOT NULL ,
+`title_url` VARCHAR( 250 ) NOT NULL ,
 `order_num` INT NOT NULL ,
 `color` VARCHAR( 6 ) NOT NULL
 ) ENGINE = MYISAM ;");
         SQLProvider::ExecuteNonReturnQuery("CREATE TABLE IF NOT EXISTS `tbl__eventtv_doc` (
 `tbl_obj_id` int( 5 ) NOT NULL ,
 `title` varchar( 100 ) DEFAULT NULL ,
+`title_url` VARCHAR( 250 ) NOT NULL ,
 `annotation` varchar( 100 ) DEFAULT NULL ,
 `text` text NOT NULL ,
 `active` int( 4 ) NOT NULL ,

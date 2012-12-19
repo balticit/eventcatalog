@@ -38,7 +38,7 @@
                 if ($item['tbl_obj_id'] == 0)
                     $item['link'] = "/book";
                 else
-                    $item['link'] = "/book/?topic=".$item['tbl_obj_id'];
+                    $item['link'] = "/book/".$item['title_url'];
                     //$item['link'] = "/book/".$item['title_url'];
                 $item['gray'] = "gray";
                 $item['selected'] =  "";
