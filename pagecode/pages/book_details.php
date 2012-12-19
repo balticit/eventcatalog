@@ -19,7 +19,7 @@ $id_str = GP("id");
 if (!is_null($id_str)) {
   $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__public_topics where title_url = '" . mysql_real_escape_string($id_str) . "'");
   if(!IsNullOrEmpty($this->id)){
-    $topic = (int)$this->id;
+    $topic = $this->id;
     $this->is_list = true;
   }
   else{
@@ -27,12 +27,12 @@ if (!is_null($id_str)) {
   }
 }
 
-	
+	var_dump($topic.'|'.$id_str);
 /////////////Список статей
 
         
 if($this->is_list){
-            $av_rwParams = array("bycategory","topic","page");
+            $av_rwParams = array("bycategory","page");
             CURLHandler::CheckRewriteParams($av_rwParams);
             
             $rewriteParams = $_GET;
@@ -42,6 +42,7 @@ if($this->is_list){
 
             
 	        $bycategory = GP("bycategory");
+	         $topic = $this->id;
            // $topic = GP("topic",0);
             $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title_url, title from tbl__public_topics order by order_num");
             array_unshift($topics,array("tbl_obj_id"=>"0","title"=>"Все статьи"));
