@@ -92,7 +92,13 @@ class res_news_news_php extends CPageCodeHandler
 			case "contractor" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__contractor_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
+				
+				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
+  		  $newsdetails[0]["logo"] = "/images/nologo.png";
+  		  else
+  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+				
+
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];	
 				$newsdetails[0]["type"] = "<span style=\"color: #f05620;\">Новость подрядчика: <a style=\"color: #f05620; text-decoration:underline\" href='/contractor/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";
 				//var_dump($newsdetails[0]['date']);
@@ -103,7 +109,14 @@ class res_news_news_php extends CPageCodeHandler
 			case "area" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__area_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
+				
+				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
+  		  $newsdetails[0]["logo"] = "/images/nologo.png";
+  		  else
+  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+				
+				
+				
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];			
         $newsdetails[0]["type"] = "<span style=\"color: #3399ff;\">Новость площадки: <a style=\"color: #3399ff; text-decoration:underline\" href='/area/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";	
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
@@ -113,7 +126,14 @@ class res_news_news_php extends CPageCodeHandler
 			case "artist" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__artist_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
+				
+				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
+  		  $newsdetails[0]["logo"] = "/images/nologo.png";
+  		  else
+  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+				
+				
+				
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
         
         $newsdetails[0]["type"] = "<span style=\"color: #ff0066;\">Новость артиста: <a style=\"color: #ff0066; text-decoration:underline\" href='/artist/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
@@ -124,7 +144,12 @@ class res_news_news_php extends CPageCodeHandler
 			case "agency" :
 				$user = SQLProvider::ExecuteQuery("select * from tbl__agency_doc where tbl_obj_id=".$newsdetails[0]["resident_id"]);
 				
-				$newsdetails[0]["logo"] = $newsdetails[0]['logo_image'];
+				if (IsNullOrEmpty($newsdetails[0]["logo_image"]))
+  		  $newsdetails[0]["logo"] = "/images/nologo.png";
+  		  else
+  		  $newsdetails[0]["logo"] = $newsdetails[0]["logo_image"];
+				
+				
 				$newsdetails[0]["title_url"] = $user[0]['title_url'];		
         $newsdetails[0]["type"] = "<span style=\"color: #99cc00;\">Новость агентства: <a style=\"color: #99cc00; text-decoration:underline\" href='/agency/".$newsdetails[0]["title_url"]."'>".$user[0]['title']."</a></span>";		
 				$diffDate = strtotime(date('Y-m-d H:i:s')) - strtotime($newsdetails[0]['date']);
@@ -160,6 +185,10 @@ class res_news_news_php extends CPageCodeHandler
 												// "; die('!');
 		if (!empty($otherNews)) {
 			foreach($otherNews as $i => &$item) { 
+			
+			  if( $item["title_url"] == '') { $item["title_url"] = 'news'.$item["tbl_obj_id"];}
+		    $item["news_url"] = $item["title_url"];
+			
 				$item['short_text'] = htmlspecialchars_decode(substr(strip_tags($item['text']), 0, 200));
 				if (IsNullOrEmpty($item["logo_image"]))
   		  $item["logo_image"] = "/images/nologo.png";
