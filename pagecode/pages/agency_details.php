@@ -432,7 +432,7 @@ class agency_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
               $mark_links .= ", ";
-              if($mark_links['title_url'] == '') { $mark_links['title_url']= $mark_links['user_id']; }
+              if($m_item['title_url'] == '') { $m_item['title_url']= $m_item['user_id']; }
             $mark_links .= '<a rel="nofollow" class="user_like_link" href="/profile/'.$m_item['type'].'/'.$m_item['title_url'].'">'.$m_item['title'].'</a>';
         }
         $unit["voted"] = "";
