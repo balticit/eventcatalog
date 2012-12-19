@@ -1258,7 +1258,7 @@ class r_cabinet_php extends CPageCodeHandler
 			$u_link = "<div style=\"padding-bottom: 5px;\">Привязанные пользователи:<br />";
 			foreach ($u_links as $num=>$link)
 			{
-				$u_link .= "<a style=\"padding: 0 0 0 10px;\" href=\"/u_profile/type/user/id/".$link['tbl_obj_id']."\">".$link["title"]."</a><br>";
+				$u_link .= "<a style=\"padding: 0 0 0 10px;\" href=\"/profile/user/".$link['tbl_obj_id']."\">".$link["title"]."</a><br>";
 			}
 			$u_link .= "</div>";
 		}

@@ -89,7 +89,7 @@ class CTextareaGridDataFieldCL extends CGridDataField
 			}
 			if ($target_type == "user")
 			{
-				$target_link = "/u_profile/type/user/id/$target_id";
+				$target_link = "/profile/user/$target_id";
 			}
 			$target_link .= "#comment$tbl_obj_id";
 		}		

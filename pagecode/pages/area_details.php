@@ -1038,7 +1038,7 @@ group by
 				$unit["u_link"] = '<h4 class="detailsBlockTitle"><a name="video">Представители площадки</a></h4>';
 				foreach ($u_links as $num=>$u_link)
 				{
-					$unit["u_link"] .= "<a href=\"/u_profile/?type=user&id=".$u_link["tbl_obj_id"]."\">".$u_link["title"]."</a><br />";
+					$unit["u_link"] .= "<a href=\"/profile/user/".$u_link["tbl_obj_id"]."\">".$u_link["title"]."</a><br />";
 				}
 				$unit["u_link"] .= "</div>";
 			}
@@ -1226,7 +1226,7 @@ group by
 
 
 
-			$mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
+			$mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title, au.title_url from tbl__userlike ul
 										join vw__all_users_full au
 											on au.type = ul.from_resident_type and
 												au.user_id = ul.from_resident_id
@@ -1237,7 +1237,8 @@ group by
 				$mark_cnt++;
 				if ($mark_links)
 				$mark_links .= ", ";
-				$mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';			
+				if($mark_links['title_url'] == '') { $mark_links['title_url']= $mark_links['user_id']; }
+				$mark_links .= '<a rel="nofollow" class="user_like_link" href="/profile/'.$m_item['type'].'/'.$m_item['title_url'].'">'.$m_item['title'].'</a>';			
 			}
 			$unit["voted"] = "";
 			if ($mark_cnt>0) {

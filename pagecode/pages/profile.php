@@ -46,7 +46,13 @@ class profile_php extends CPageCodeHandler
       			CURLHandler::Redirect("/");
 		}
 		
-		$user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where title_url='$id_str' and type='$type'");
+		if(is_numeric($id_str)) {
+      $user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$id_str' and type='$type'");
+    }
+		else {
+		  $user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where title_url='$id_str' and type='$type'");
+		}
+		
 		if (sizeof($user_data)==0)
 		{
 			CURLHandler::Redirect("/");

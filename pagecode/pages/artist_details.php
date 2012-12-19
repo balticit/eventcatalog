@@ -535,7 +535,7 @@ class artist_details_php extends CPageCodeHandler
                 $unit["u_link"] = "<div style=\"padding-bottom: 20px;\"><b>Представители артиста:</b><br />";
                 foreach ($u_links as $num => $u_link)
                 {
-                    $unit["u_link"] .= "<a href=\"/u_profile?type=user&id=" . $u_link["tbl_obj_id"] . "\">" . $u_link["title"] . "</a><br />";
+                    $unit["u_link"] .= "<a href=\"/profile/user/" . $u_link["tbl_obj_id"] . "\">" . $u_link["title"] . "</a><br />";
                 }
                 $unit["u_link"] .= "</div>";
             }
@@ -627,7 +627,7 @@ class artist_details_php extends CPageCodeHandler
             $unit["btn_i_like"] = '</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_artist.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
         }
 
-        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
+        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title,au.title_url from tbl__userlike ul
                                             join vw__all_users_full au
                                                on au.type = ul.from_resident_type and
                                                   au.user_id = ul.from_resident_id
@@ -638,7 +638,9 @@ class artist_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
                 $mark_links .= ", ";
-            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type=' . $m_item['type'] . '&id=' . $m_item['user_id'] . '">' . $m_item['title'] . '</a>';
+                
+                if($mark_links['title_url'] == '') { $mark_links['title_url']= $mark_links['user_id']; }
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/profile/' . $m_item['type'] . '/' . $m_item['title_url'] . '">' . $m_item['title'] . '</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt > 0) {

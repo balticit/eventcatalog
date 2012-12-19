@@ -351,7 +351,7 @@ else {
 			$btn_i_like='</td><td><form method="post" style="margin: 0; padding:0;"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_white.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
 		}
 
-		$mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
+		$mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title,au.title_url from tbl__userlike ul
 																			 join vw__all_users_full au
 																					 on au.type = ul.from_resident_type and
 																							au.user_id = ul.from_resident_id
@@ -362,7 +362,8 @@ else {
 			$mark_cnt++;
 			if ($mark_links)
 				$mark_links .= ", ";
-			$mark_links .= '<a class="user_like_link" href="/u_profile/type/'.$m_item['type'].'/id/'.$m_item['user_id'].'">'.$m_item['title'].'</a>';
+				if($m_item['title_url'] == '') { $m_item['title_url']= $m_item['user_id']; }
+ 			$mark_links .= '<a class="user_like_link" href="/profile/'.$m_item['type'].'/'.$m_item['title_url'].'">'.$m_item['title'].'</a>';
 		}
 		$voted = "";
 		if ($mark_cnt>0) {

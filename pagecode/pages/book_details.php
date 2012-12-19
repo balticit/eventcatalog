@@ -80,6 +80,8 @@ if($this->is_list){
             if (!is_null($bycategory) || (!IsNullOrEmpty($topic) && is_numeric($topic))) {
                 $filter = (!IsNullOrEmpty($topic) && is_numeric($topic))?" where pd.dir_id=$topic":"";
 
+
+var_dump($filter);
                 // $publics = SQLProvider::ExecuteQuery(
                   // "select tbl_obj_id, title,title_url, logo_image, annotation, dir_id,
                   // registration_date,

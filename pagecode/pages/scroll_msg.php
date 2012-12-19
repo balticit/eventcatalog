@@ -15,9 +15,9 @@ class scroll_msg_php extends CPageCodeHandler
 		$newCommentsItems = SQLProvider::ExecuteQuery(
 		"select if((c.sender_id is not null) and (c.sender_id <> ''),u.title,if(c.sender_name<>'',c.sender_name,'Аноним')) as sended_by,
 		        t.title as target_name, c.target_id as target_id,
-                CONCAT('/u_profile/?type=',u.type,'&id=',u.user_id) as sender_link,
+                CONCAT('/profile/',u.type,'/',u.user_id) as sender_link,
 				if (t.type = 'user',
-				  CONCAT('/u_profile/?type=user&id',t.user_id),
+				  CONCAT('/profile/user/',t.user_id),
 					CONCAT('/',t.type,'/',t.title_url)) as target_link,
 				if(CHAR_LENGTH(c.text)>$max_msg_length,CONCAT(LEFT(c.text,$max_msg_length),'...'),c.text) as message_text
 				from tbl__comments c

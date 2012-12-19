@@ -98,7 +98,7 @@
 			<sitenode id="50_1" node="jsc/" configfile="pagecode/settings/comments_jsc.xml"/>
 		</sitenode>
 		
-		<sitenode id="52" node="u_profile/"  configfile="pagecode/settings/profile.xml" id_translit="1">
+		<sitenode id="52" node="profile/"  configfile="pagecode/settings/profile.xml" id_translit="1">
 		
 		  <sitenode id="52_1" node="area/" configfile="pagecode/settings/profile.xml" id_translit="1">
 		    <sitenode id="52_11" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
@@ -111,6 +111,9 @@
 		  </sitenode>
 		  <sitenode id="52_4" node="contractor/" configfile="pagecode/settings/profile.xml" id_translit="1">
 		    <sitenode id="54_14" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_5" node="user/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="54_15" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
 		  </sitenode>
 		  
 		</sitenode>
