@@ -19,7 +19,7 @@ $id_str = GP("id");
 if (!is_null($id_str)) {
   $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__public_topics where title_url = '" . mysql_real_escape_string($id_str) . "'");
   if(!IsNullOrEmpty($this->id)){
-    $topic = $this->id;
+    $topic = (int)$this->id;
     $this->is_list = true;
   }
   else{

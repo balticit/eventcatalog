@@ -120,6 +120,7 @@
 			<sitenode id="53_2" node="msg/" configfile="pagecode/settings/scroll_msg.xml" />
 		</sitenode>
 		<sitenode id="54" node="random_resident/"  configfile="pagecode/settings/random_resident.xml"/>
+		
 		<sitenode id="55" node="eventtv/"  configfile="pagecode/settings/eventtv.xml" id_translit="1">
 			<sitenode id="55_1" node="details/" configfile="pagecode/settings/eventtv_details.xml" hidden="1"/>
 			<sitenode id="55_2" node="invite/" configfile="pagecode/settings/eventtv_invite.xml"/>
