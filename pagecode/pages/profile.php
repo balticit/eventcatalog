@@ -23,7 +23,7 @@ class profile_php extends CPageCodeHandler
 	  $_URL = explode("/", $_SERVER['REQUEST_URI']);
 	  $type = $_URL[count($_URL) - 2];
 	
-	  var_dump($id_str."|"$type);
+	  var_dump($id_str."|".$type);
 	  die();
 		//$av_rwParams = array("type","id");
 		//CURLHandler::CheckRewriteParams($av_rwParams);  
