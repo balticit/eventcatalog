@@ -85,5 +85,24 @@
 	<control relativeId="topicList" class="CRepeater">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/book_files/topicItem.htm"/>
 	</control>
+	
+	
+	<control relativeId="pager" class="CPager">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
+		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
+	</control>
+	<control relativeId="publicList" class="CLiteral" />
+        <control relativeId="tvTopicList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/eventtv_files/topicItem.htm"/>
+	</control>
+	<control relativeId="sortTypes" class="CLiteral" />
+	<control relativeId="bookItem" class="CTemplateObject">
+	    <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/_event_news.htm"/>
+	</control>
+	<control relativeId="topicList" class="CRepeater">
+		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/book_files/topicItem.htm"/>
+	</control>
+	
+	
 	<control relativeId="googleanalytics" class="CGoogleAnalytics"/>
 </page>

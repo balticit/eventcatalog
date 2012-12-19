@@ -19,7 +19,7 @@ $id_str = GP("id");
 if (!is_null($id_str)) {
   $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__public_topics where title_url = '" . mysql_real_escape_string($id_str) . "'");
   if(!IsNullOrEmpty($this->id)){
-    $topic = $this->id;
+    $category = $this->id;
     $this->is_list = true;
   }
   else{
@@ -27,12 +27,12 @@ if (!is_null($id_str)) {
   }
 }
 
-	var_dump($topic.'|'.$id_str);
+	
 /////////////Список статей
 
         
 if($this->is_list){
-            $av_rwParams = array("bycategory","page");
+            $av_rwParams = array("bycategory","topic","page");
             CURLHandler::CheckRewriteParams($av_rwParams);
             
             $rewriteParams = $_GET;
@@ -40,6 +40,8 @@ if($this->is_list){
             $pages = 0;
             $rp = ($page - 1) * $this->pageSize;
 
+            
+            var_dump($category.'|'.$id_str);
             
 	        $bycategory = GP("bycategory");
 	         $topic = $this->id;
@@ -77,8 +79,8 @@ if($this->is_list){
             $itemTemplate = $this->getControl("bookItem");
 
 
-            if (!is_null($bycategory) || (!IsNullOrEmpty($topic) && is_numeric($topic))) {
-                $filter = (!IsNullOrEmpty($topic) && is_numeric($topic))?" where pd.dir_id=$topic":"";
+            if (!is_null($bycategory) || (!IsNullOrEmpty($category) && is_numeric($category))) {
+                $filter = (!IsNullOrEmpty($category) && is_numeric($category))?" where pd.dir_id=$category":"";
 
 
 var_dump($filter);
@@ -246,7 +248,7 @@ var_dump($filter);
         $pager->rewriteParams = $rewriteParams;
 
 
-            $topic = GP("topic");
+            $topic = $category;
             $sortTypes = $this->GetControl("sortTypes");
             if (!IsNullOrEmpty($topic))
                 $sortTypes->html = "";

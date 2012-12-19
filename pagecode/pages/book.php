@@ -223,7 +223,11 @@
         $pager->rewriteParams = $rewriteParams;
 
 
+
             $topic = GP("topic");
+            
+            
+            
             $sortTypes = $this->GetControl("sortTypes");
             if (!IsNullOrEmpty($topic))
                 $sortTypes->html = "";

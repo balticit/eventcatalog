@@ -17,7 +17,7 @@ $id_str = GP("id");
 if (!is_null($id_str)) {
   $this->id = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__eventtv_topics where title_url = '" . mysql_real_escape_string($id_str) . "'");
   if(!IsNullOrEmpty($this->id)){
-    $topic = $this->id;
+    $category = $this->id;
     $this->is_list = true;
   }
   else{
@@ -28,7 +28,7 @@ if (!is_null($id_str)) {
 /////////////Список статей        
 if($this->is_list){
 
-    $av_rwParams = array("bycategory","page");
+    $av_rwParams = array("bycategory","topic","page");
     CURLHandler::CheckRewriteParams($av_rwParams);
     
     
@@ -76,8 +76,8 @@ if($this->is_list){
             $topicList->dataSource = $topics1;
 
 
-    if (!is_null($bycategory) || (!IsNullOrEmpty($topic) )) {
-      $filter = (!IsNullOrEmpty($topic) && is_numeric($topic))?" where dir_id=$topic":"";
+    if (!is_null($bycategory) || (!IsNullOrEmpty($category) )) {
+      $filter = (!IsNullOrEmpty($category) && is_numeric($category))?" where dir_id=$category":"";
 
       // $publics = SQLProvider::ExecuteQuery(
         // "select tbl_obj_id, title,title_url, logo_image, annotation, dir_id,
