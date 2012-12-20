@@ -33,7 +33,7 @@ function translitURL($str)
 
 
 
-/*
+
 define("MYSQL_HOST", "localhost");
 define("MYSQL_USER", "eventcatalog");
 define("MYSQL_DATABASE", "eventcatalog_staging");
@@ -41,8 +41,8 @@ define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
 define("MYSQL_CHARSET", "cp1251");
 define("MYSQL_PORT", "63627");
 define("BASEURL", "http://eventcatalog.ru");
-*/
 
+/*
 define("MYSQL_HOST","localhost");
 	define("MYSQL_USER","root");
 	define("MYSQL_DATABASE","new_event");
@@ -50,7 +50,7 @@ define("MYSQL_HOST","localhost");
 	define("MYSQL_CHARSET","UTF8");
 	define("MYSQL_PORT","3306");
 
-
+*/
 //	База данных
 //	подключаемся к MySQL
 if(!@mysql_connect(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD))
