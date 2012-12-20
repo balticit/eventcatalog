@@ -21,12 +21,12 @@
         $pages = 0;
         $rp = ($page - 1) * $this->pageSize;
             
-            $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, color from tbl__eventtv_topics order by group_num, order_num");
+            $topics = SQLProvider::ExecuteQuery("select tbl_obj_id, title, title_url, color from tbl__eventtv_topics order by group_num, order_num");
             foreach ($topics as &$item) {
                 if ($item['tbl_obj_id'] == 0)
                     $item['link'] = "/eventtv";
                 else
-                    $item['link'] = "/eventtv/?topic=".$item['tbl_obj_id'];
+                    $item['link'] = "/eventtv/".$item['title_url'];
                 $item['gray'] = "gray";
                 $item['selected'] =  "";
             }
