@@ -3,7 +3,7 @@
 	<column name="id"/>
 	<column name="title"/>
 	<index name="id"/>
-	<row id="0" title="Не назначен"/>	
+	<row id="NULL" title="Не назначен"/>	
 	<row id="1" title="5"/>	
 	<row id="2" title="4"/>		
 	<row id="3" title="3"/>		
