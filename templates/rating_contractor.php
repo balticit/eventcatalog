@@ -55,7 +55,7 @@
 			</div>
 			
       <br />
-      <p><?php CRenderer::RenderControl("pager"); ?></p>
+      <p><?php // CRenderer::RenderControl("pager"); ?></p>
 		</td>
     <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 	</tr>
