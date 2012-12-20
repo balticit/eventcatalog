@@ -70,6 +70,8 @@ class resident_news_php extends CPageCodeHandler
  * 
  */
     public function PreRender(){
+    
+    
         $page = (int)GP('page',0);
         if($page>0) $page--;
         $limit = $this->newsLimit;
@@ -77,8 +79,8 @@ class resident_news_php extends CPageCodeHandler
         $newsCount = 0;
 		
         if(!in_array($resident, array('contractor','area','agency','artist'), true)) {
-			$resident = 'all';
-		}
+    			$resident = 'all';
+    		}
      
      
     if( $resident == 'all')  {
@@ -92,9 +94,14 @@ class resident_news_php extends CPageCodeHandler
 												order by rn.`date` DESC limit $start, $limit
 												");
 		foreach($res_news as $key => $val) {
+		
+		  if( $res_news[$key]["title_url"] == '') { $res_news[$key]["title_url"] = 'news'.$res_news[$key]["tbl_obj_id"];}
+		  $res_news[$key]["news_url"] = $res_news[$key]["title_url"];
+		
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
 			$res_news[$key]["resident_name"] = $res[0]['title'];
+			
 
 			
 			if (IsNullOrEmpty($res_news[$key]["logo_image"]))
@@ -108,6 +115,7 @@ class resident_news_php extends CPageCodeHandler
 			$res_news[$key]["title"] = CutString($res_news[$key]["title"]);
 			$res_news[$key]["short_text"] = strip_tags(CutString($res_news[$key]["text"], 250));
 			$res_news[$key]["color"] = getProBackgroud($val['resident_type']);
+			
 			
 			switch($val['resident_type']) {
 			case 'area': $res_news[$key]['sub'] = 'Новость площадки';  break;
@@ -127,7 +135,7 @@ class resident_news_php extends CPageCodeHandler
     }
     else {
 		// во вложенном запросе счетчик, чтобы не делать еще один коннект к базе
-		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, res.title resident_name, '.
+		$sql  = 'SELECT rn.*, DATE_FORMAT(rn.`date`,"%d.%m.%Y") as strdate, res.title_url, rn.title_url as news_url, res.title resident_name, '.
 					(in_array($resident, array('contractor','agency')) ? 'rn.logo_image' : 'rn.logo_image logo_image').', '.
 					'(SELECT COUNT(tbl_obj_id) FROM tbl__resident_news WHERE resident_type="'.$resident.'" AND active=1 ) c '.
 				'FROM tbl__resident_news rn '.
@@ -139,6 +147,10 @@ class resident_news_php extends CPageCodeHandler
         $newsData = SQLProvider::ExecuteQuery($sql);
         if(!empty($newsData)){
             foreach($newsData as &$news){
+            
+                if( $news["news_url"] == '') { $news["news_url"] = 'news'.$news["tbl_obj_id"];}
+		            $news["news_url"] = $news["news_url"];
+            
                 $news['short_text'] = substr(strip_tags($news['text']),0,250);
                 $news['resident_type'] = $resident;
 				        $news['color'] = getProBackgroud($resident);
@@ -168,11 +180,11 @@ class resident_news_php extends CPageCodeHandler
         
         // менюшка
         $menus = array(
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'all')),'title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'contractor')),'title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'area')),'title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'artist')),'title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
-            array('link'=>CURLHandler::$currentPath.CURLHandler::BuildQueryParams(array('resident'=>'agency')),'title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
+            array('link'=>'/','title'=>'Все новости','selected'=>($resident=='all'?'class="selected"':''),'gray'=>'gray','color'=>'000000;'),
+            array('link'=>'/resident_news/contractor','title'=>'Новости подрядчиков','selected'=>($resident=='contractor'?'class="selected"':''),'gray'=>'gray','color'=>'F05620;'),
+            array('link'=>'/resident_news/area','title'=>'Новости площадок','parent_id'=>0,'priority'=>4,'child_id'=>4,'selected'=>($resident=='area'?'class="selected"':''),'gray'=>'gray','color'=>'3399ff;'),
+            array('link'=>'/resident_news/artist','title'=>'Новости артистов','parent_id'=>0,'priority'=>2,'child_id'=>2,'selected'=>($resident=='artist'?'class="selected"':''),'gray'=>'gray','color'=>'ff0066;'),
+            array('link'=>'/resident_news/agency','title'=>'Новости агентств','parent_id'=>0,'priority'=>1,'child_id'=>1,'selected'=>($resident=='agency'?'class="selected"':''),'gray'=>'gray','color'=>'99cc00;'),
         );
 		
 		

@@ -20,7 +20,10 @@
 <?php CRenderer::RenderControl("submenu4"); ?>
 </td>
 		</tr>
-		<tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 16px; height: 100%" valign="top">
+		<tr>
+    
+<?php if(!$this->is_list){ ?>    
+      <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 16px; height: 100%" valign="top">
 				<table width="100%">
 					<tr>
 						<td style="vertical-align:top; padding-left:5px;  width:230px">
@@ -42,7 +45,43 @@
 						 <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
 					</tr>
 				</table>
-			</td></tr>
+			</td>
+
+<?php } ?> 
+<?php if($this->is_list){ ?>
+      <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px; height: 100%" valign="top"> 
+        <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <td style="vertical-align:top; padding-left:5px; width:230px">
+                        <table cellpadding="0" cellspacing="0" border="0"  style="width: 218px; border: 1px solid #dadada;">
+                       <!-- <tr><td class="ram1"></td><td class="ram2"></td><td class="ram3"></td></tr>-->
+                        <tr>
+							<!--<td class="ram4"></td>-->
+							<td class="ram5">
+								<div style="margin: 0;" class="eventotekaMenu_title">
+									<a href="javascript:void(9);" class="black">Темы</a>
+								</div>
+								<?php CRenderer::RenderControl("newsCategoriesList"); ?>
+							</td>
+						<!--<td class="ram6"></td>-->
+						</tr>
+                        <!--<tr><td class="ram7"></td><td class="ram8"></td><td class="ram9"></td></tr>-->
+                        </table>
+						<img src="/images/front/0.gif" width="220" height="10">
+                </td>
+                <td valign="top">
+					<div class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("title"); ?></div>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<?php CRenderer::RenderControl("newsList"); ?>
+					</table>
+					<p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
+                </td>
+                <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
+            </tr>
+        </table>
+    </td>
+<?php } ?>      
+    </tr>
 		<tr><td class="partner_ban"><?php CRenderer::RenderControl("bottomBanners"); ?></td></tr>
 		<tr><td class="foot"><?php CRenderer::RenderControl("footer"); ?></td></tr>
 	</table>

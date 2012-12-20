@@ -28,6 +28,7 @@
 	<control relativeId="bottomBanners" class="CTemplateObject">
 		<param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/bottomBanners.htm"/>
 	</control>
+	
 	<control relativeId="menu" class="CMenu" activeItem="/eventoteka/">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuItem.htm"/>
 		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/menu_files/menuActiveItem.htm"/>

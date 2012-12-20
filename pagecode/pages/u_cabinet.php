@@ -373,7 +373,7 @@ class u_cabinet_php extends CPageCodeHandler
 
             $flogo = $_FILES["properties"];
 						if (is_array($flogo)){
-							$logo = $this->CreateLogo($userData->login,$flogo,"logo").'erer';
+							$logo = $this->CreateLogo($userData->login,$flogo,"logo");
 							if (!is_null($logo))
 								$userData->logo = $logo;
 						}
@@ -1329,6 +1329,8 @@ $(function() {
 			}
 
 			$left_menu["my_messages/action/$m_action"]["selected"] = true;
+			
+			
 			if (GP("delete_multiple")==1&&($m_action=="inbox"||$m_action=="outbox"))
 			{
 				$del_mess = GP("delete_mess",array());
@@ -1393,6 +1395,50 @@ $(function() {
 					{
 						SQLProvider::ExecuteNonReturnQuery("update tbl__messages set status='read', time_read = NOW() where tbl_obj_id=$reply_id");
 					}
+					
+					//////////////
+					$left_menu = array(
+				"my_messages/action/compose" => array(
+					"type" => "link",
+					"text" => "Написать<br /> сообщение",
+					"color" => "",
+					"selected" => false),
+				" " => array(
+					"type" => "link",
+					"text" => "",
+					"color" => "#000",
+					"selected" => false),
+				"my_messages/action/inbox" => array(
+					"type" => "link",
+					"text" => "Входящие",
+					"color" => "#000",
+					"selected" => false),
+				"my_messages/action/outbox" => array(
+					"type" => "link",
+					"text" => "Отправленные",
+					"color" => "#000",
+					"selected" => false)
+			/*	"my_messages/action/blacklist" => array(
+					"type" => "link",
+					"text" => "Черный список",
+					"color" => "#000",
+					"selected" => false) */
+				);
+					$new_count = SQLProvider::ExecuteScalar("select count(*) as quan from tbl__messages m
+																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id) and bl.user_id='$uid'
+															where blocked_id is null and `status`='sent' and reciever_id='$uid'");
+    			if ($new_count>0)
+    			{
+    			  $u_cab_menu->dataSource["/u_cabinet/data/my_messages"]["title"] = "Мои сообщения&nbsp;($new_count)";
+    				$left_menu["my_messages/action/inbox"]["text"] .= "&nbsp;($new_count)";
+    			}
+          else { 
+            $u_cab_menu->dataSource["/u_cabinet/data/my_messages"]["title"] = "Мои сообщения&nbsp;";
+            $left_menu["my_messages/action/inbox"]["text"] .= "&nbsp;";
+          }
+    			$left_menu["my_messages/action/$m_action"]["selected"] = true;
+					////////////
+					
 					$sid = $r_mess[0][$m_action=="view"?"reciever_id":"sender_id"];
 					$matches = array();
 					preg_match("/([a-z]+)(\d+)/i",$sid,&$matches);
@@ -1545,7 +1591,7 @@ $(function() {
 												<td valign="middle" >'.($m_action=="reply"?"От":"Кому").':</td>
 												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="'.($reciever_data["logo"]==''?"/images/nologo.png":"/upload/".$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
-													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
+													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/profile/'.$reciever_type.'/'.$reciever_id.'">'.$reciever_data["title"].'</a>
 													' /* ($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/u_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>  
 													<br/>
 													<span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
@@ -1569,8 +1615,34 @@ $(function() {
 							}
 
 						}
+						
+						/*
+            
+          
+            
+            */
+						
 						if ($m_action=="reply"||$m_action=="compose")
 						{
+						
+					
+						
+						
+						
+						
+						  if($m_action=="compose") {
+    						$reciever_id = $_GET["type"].GPT("id");
+  
+      					$r_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id='$reciever_id'  ");
+  
+      					$h_sender = $r_mess[0]["sender_id"];
+      					$h_reciever = $r_mess[0]["reciever_id"];
+      
+      					$h_mess = SQLProvider::ExecuteQuery("select * from tbl__messages where reciever_id = '$h_reciever' AND sender_id = '$h_sender' OR reciever_id = '$h_sender' AND sender_id = '$h_reciever' ORDER BY time DESC LIMIT 10 ");
+    					}
+						
+						
+						
 							$cab["main_area"].='<form method="post">
 										<textarea name="message_text" style="width:100%; height:100px; border:1px solid #999999; font-size:12px; -moz-border-radius: 6px 6px 6px 6px;"></textarea><br/><br/>
 										<input type="submit" value="Отправить"/><br/><br/><br/>
@@ -1579,7 +1651,9 @@ $(function() {
 							$cab["main_area"].='<div class="message_history">';
 							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
 							
+							if($m_action=="reply") {
 							$cab["main_area"].='<div class="grey_message message">'.ProcessMessage($reply_mess["text"])."</div>";
+							}
 							
   						foreach($h_mess as $mess) {
   						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}

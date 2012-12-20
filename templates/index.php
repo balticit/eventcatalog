@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>EVENT КАТАЛОГ – Портал для организаторов мероприятий</title>
+	<title>EventCatalog.ru – все для организации мероприятий: поиск подрядчиков, подбор артистов, выбор площадки, каталоги агентств.</title>
 	<?php CRenderer::RenderControl("metadata"); ?>
   <link rel="stylesheet" type="text/css" href="/styles/index.css">
   <script type="text/javascript" language="JavaScript" src="/js/index.js"></script>
@@ -52,7 +52,15 @@
 	<td style="padding: 16px 30px 0px 30px;"><?php CRenderer::RenderControl("header"); ?></td>
 </tr>
 <tr><!--Меню-->
-<td style='padding-bottom:15px'><?php CRenderer::RenderControl("menu"); ?></td>
+<td ><?php CRenderer::RenderControl("menu"); ?>
+
+<?php CRenderer::RenderControl("submenu"); ?>
+<?php CRenderer::RenderControl("submenu1"); ?>
+<?php CRenderer::RenderControl("submenu2"); ?>
+<?php CRenderer::RenderControl("submenu3"); ?>
+<?php CRenderer::RenderControl("submenu4"); ?>
+<?php CRenderer::RenderControl("submenu5"); ?>
+</td>
 </tr>
 
 <tr>

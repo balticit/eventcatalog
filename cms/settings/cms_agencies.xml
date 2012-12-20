@@ -10,10 +10,15 @@
 			<item type="class" class="CXMLLookupGridDataField" dbField="selection" label="Выделение" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/selectionLookUp.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>
 			<item type="class" class="CMultipleLookupCheckboxDBGridDataField" dbField="tbl_obj_id" label="Вид агентства:"  lookupTable="tbl__agency_type" lookupId="tbl_obj_id" lookupTitle="title" orderBy="title ASC" joinTable="tbl__agency2activity" parentField="tbl_obj_id" childField="kind_of_activity" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="0"/>
       <item type="class" class="CDBLookupGridDataField" dbField="kind2" label="Дополнительный вид агентства (для дополнительных ключевых слов):"  lookupTable="tbl__agency_type" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="0"/>
-			<item type="class" class="CTinyMCETextareaGridDataField" dbField="description" label="Описание:" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание:" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
 			<item type="class" class="CDBLookupGridDataField" dbField="city" label="Город"  lookupTable="tbl__city" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" hasEmpty="1" emptyValue="-1" emptyTitle="-- Другой город --" size="1" visibleOnList="0"/>
 			<item type="class" class="CGridDataField" dbField="other_city" label="Другой город" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
 			<item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Фото" alterItemClass="alterItem"  tableLink="/cms/photos/?99_12$dataTable[$autoValues][tbl__agency_photos][0]={tbl_obj_id}&amp;99_12$dataTable[$hiddenFields][0]=area&amp;99_12$dataTable[$hiddenFields][1]=sale&amp;99_12$dataTable[$hiddenFields][2]=news&amp;99_12$dataTable[$hiddenFields][3]=recent&amp;99_12$dataTable[$hiddenFields][4]=partners&amp;99_12$dataTable[$hiddenFields][5]=star_shedule&amp;99_12$dataTable[$hiddenFields][6]=contractor&amp;99_12$dataTable[$hiddenFields][7]=events&amp;99_12$dataTable[$hiddenFields][8]=interactive&amp;99_12$dataTable[$hiddenFields][9]=show_technologies&amp;99_12$dataTable[$hiddenFields][10]=resident_news&amp;99_12$dataTable[$hiddenFields][11]=artist" refreshText="Обновить" listText="Список" labelClass="itemLabel" addClass="addCell" editClass="editJoinCell" bagTable="tbl_photo"/>
+      
+      <item type="class" class="CGridDataField" dbField="youtube_video" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="youtube_video_2" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="youtube_video_3" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+      
       <item type="class" class="CGridDataField" dbField="address" label="Адрес" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
 			<item type="class" class="CGridDataField" dbField="phone" label="Телефон" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
 			<item type="class" class="CGridDataField" dbField="phone2" label="Телефон2" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
@@ -34,7 +39,7 @@
                   filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
       <item type="class" class="CXMLLookupGridDataField" dbField="direct"
-                  label="Убрать директ со страницы:" alterItemClass="alterItem" sourceEncoding="utf-8"
+                  label="PRO:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/isRider.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
 			<item type="class" class="CRecommendedGridDataField" dbField="recommended" label="EVENTКАТАЛОГ рекомендует" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />

@@ -421,7 +421,7 @@ class agency_details_php extends CPageCodeHandler
             $unit["btn_i_like"]='</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_agency.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
         }
 
-        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
+        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title,au.title_url from tbl__userlike ul
                                            join vw__all_users_full au
                                                on au.type = ul.from_resident_type and
                                                   au.user_id = ul.from_resident_id
@@ -432,7 +432,8 @@ class agency_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
               $mark_links .= ", ";
-            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type='.$m_item['type'].'&id='.$m_item['user_id'].'">'.$m_item['title'].'</a>';
+              if($m_item['title_url'] == '') { $m_item['title_url']= $m_item['user_id']; }
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/profile/'.$m_item['type'].'/'.$m_item['title_url'].'">'.$m_item['title'].'</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt>0) {
@@ -463,7 +464,7 @@ class agency_details_php extends CPageCodeHandler
 			$unit["u_link"] = "<div style=\"padding-bottom: 20px;\"><b>Представители агентства:</b><br />";
 			foreach ($u_links as $num=>$u_link)
 			{
-				$unit["u_link"] .= "<a href=\"/u_profile/?type=user&id=".$u_link["tbl_obj_id"]."\">".$u_link["title"]."</a><br />";
+				$unit["u_link"] .= "<a href=\"/profile/user/".$u_link["tbl_obj_id"]."\">".$u_link["title"]."</a><br />";
 			}
 			$unit["u_link"] .= "</div>";
 		}
@@ -476,6 +477,11 @@ class agency_details_php extends CPageCodeHandler
     if(!empty($news)){
         $unit["news_list"] = '<h4 class="detailsBlockTitle"><a name="news">Новости</a></h4>';
 			foreach($news as $item) {
+			
+			  if( $item["title_url"] == '') { $item["title_url"] = 'news'.$item["tbl_obj_id"];}
+		    $item["news_url"] = $item["title_url"];
+		
+			
 				$item["title"] = CutString($item["title"]);
 				$item["text"] = strip_tags(CutString($item["text"], 150));
 				
@@ -518,7 +524,8 @@ class agency_details_php extends CPageCodeHandler
             $unit["similar"].='</table>';
         }
 		$unit["similar"] = !empty($unit["similar"]) ? $unit["similar"] : '';
-        $agenDetails = $this->GetControl("agenDetails");
+    
+    $agenDetails = $this->GetControl("agenDetails");
     
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
@@ -528,6 +535,36 @@ class agency_details_php extends CPageCodeHandler
 			where parent_id=$this->id limit 8");
     $unit["photos"] = $photos->Render();
     
+    //video load
+    $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+            $unit["video_visible"] = "";
+            if($unit["youtubevideo"] == false ) {
+              $unit["video_visible"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+            $unit["video_visible_2"] = "";
+            if($unit["youtubevideo_2"] == false ) {
+              $unit["video_visible_2"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+            $unit["video_visible_3"] = "";
+            if($unit["youtubevideo_3"] == false ) {
+              $unit["video_visible_3"] = 'style="display: none;"';
+            }
+    
+    //Remove direct
+    if ($unit['direct'] == 1) {
+        $this->GetControl('yaPersonal')->template = "";
+        $this->GetControl('topLine')->template = "";
+        $unit["description"] = nl2br($unit["description"]);
+        $unit["similar"] ="";
+    }		
+    else {
+      $unit["description"] = nl2br(strip_tags($unit["description"]));
+    }
+            
 		$agenDetails->dataSource = $unit;
 		
 		

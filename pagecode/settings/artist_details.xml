@@ -7,15 +7,21 @@
   <control relativeId="topLine" class="CTemplateObject">
     <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topLine.htm"/>
   </control>
+  
+
+  
+  
   <control relativeId="topBanner" class="CTemplateObject">
     <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/topBanner.htm"/>
   </control>
+  
   <control relativeId="header" class="CHeaderObject">
-    <param name="itemTemplates" type="list" >
+    <param name="itemTemplates" type="list">
       <item type="class" key="login" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header.htm"/>
       <item type="class" key="logout" datavar="" class="CTemplateData" source="file" sourceEncoding="windows-1251" targetEncoding="windows-1251" filename="pagecode/settings/master_files/header_logout.htm"/>
     </param>
   </control>
+  
   <control relativeId="footer" class="CFooterObject">
     <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/footer.htm"/>
   </control>

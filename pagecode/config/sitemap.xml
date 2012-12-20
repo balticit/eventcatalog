@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sitemap encoding="windows-1251">
-	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml">
+	<sitenode id="1" node="/" configfile="pagecode/settings/index.xml" >
+	
+	<sitenode id="57" node="rating/" configfile="pagecode/settings/rating.xml">
+	 <sitenode id="57_1" node="area/" configfile="pagecode/settings/rating_area.xml"/>
+	 <sitenode id="57_2" node="artist/" configfile="pagecode/settings/rating_artist.xml"/>
+	 <sitenode id="57_3" node="agency/" configfile="pagecode/settings/rating_agency.xml"/>
+	 <sitenode id="57_4" node="contractor/" configfile="pagecode/settings/rating_contractor.xml"/>
+	</sitenode>
+	
 		<sitenode id="2" node="about/"  configfile="pagecode/settings/about.xml"/>
 		<sitenode id="2_1" node="contact/"  configfile="pagecode/settings/contact.xml"/>
 		<sitenode id="3" node="agency/" configfile="pagecode/settings/agency.xml" id_translit="1">
@@ -22,15 +30,17 @@
 		<sitenode id="6" node="book/"  configfile="pagecode/settings/book.xml" id_translit="1">
 			<sitenode id="6_1" node="details/" configfile="pagecode/settings/book_details.xml" hidden="1"/>
 		</sitenode>
-		<sitenode id="8" node="resident_news/"  configfile="pagecode/settings/resident_news.xml">
+		<sitenode id="8" node="resident_news/"  configfile="pagecode/settings/resident_news.xml" id_translit="1">
 			<sitenode id="8_1" node="news/" configfile="pagecode/settings/res_news_news.xml" hidden="1"/>
 		</sitenode>
-		<sitenode id="9" node="eventoteka/"  configfile="pagecode/settings/eventoteka.xml"/>
+		<sitenode id="9" node="eventoteka/"  configfile="pagecode/settings/eventoteka.xml" id_translit="1">
+		  <sitenode id="9_1" node="category/" configfile="pagecode/settings/eventoteka.xml" hidden="1"/>
+		</sitenode>
 		<sitenode id="10" node="contractor/" configfile="pagecode/settings/contractor.xml" id_translit="1">
 			<sitenode id="10_1" node="details/" configfile="pagecode/settings/contractor_details.xml" hidden="1"/>
 			<sitenode id="10_2" node="rating/" configfile="pagecode/settings/contractor_rating.xml"/>
 		</sitenode>
-		<sitenode id="13" node="news/"  configfile="pagecode/settings/news.xml">
+		<sitenode id="13" node="news/" configfile="pagecode/settings/news.xml" id_translit="1">
 			<sitenode id="13_1" node="details/" configfile="pagecode/settings/news_details.xml" hidden="1"/>
 		</sitenode>
 		<sitenode id="15" node="registration/"  configfile="pagecode/settings/registration.xml">
@@ -87,18 +97,42 @@
 		<sitenode id="50" node="comments/"  configfile="pagecode/settings/comments.xml">
 			<sitenode id="50_1" node="jsc/" configfile="pagecode/settings/comments_jsc.xml"/>
 		</sitenode>
-		<sitenode id="52" node="u_profile/"  configfile="pagecode/settings/profile.xml"/>
+		
+		<sitenode id="52" node="profile/"  configfile="pagecode/settings/profile.xml" id_translit="1">
+		
+		  <sitenode id="52_1" node="area/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_11" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_2" node="artist/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_12" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_3" node="agency/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="52_13" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_4" node="contractor/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="54_14" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  <sitenode id="52_5" node="user/" configfile="pagecode/settings/profile.xml" id_translit="1">
+		    <sitenode id="54_15" node="detail/" configfile="pagecode/settings/profile.xml" hidden="1"/>
+		  </sitenode>
+		  
+		</sitenode>
+		
 		<sitenode id="53" node="scroll/"  configfile="pagecode/settings/index.xml">
 			<sitenode id="53_1" node="book/" configfile="pagecode/settings/scroll_book.xml" />
 			<sitenode id="53_2" node="msg/" configfile="pagecode/settings/scroll_msg.xml" />
 		</sitenode>
 		<sitenode id="54" node="random_resident/"  configfile="pagecode/settings/random_resident.xml"/>
+		
 		<sitenode id="55" node="eventtv/"  configfile="pagecode/settings/eventtv.xml" id_translit="1">
 			<sitenode id="55_1" node="details/" configfile="pagecode/settings/eventtv_details.xml" hidden="1"/>
 			<sitenode id="55_2" node="invite/" configfile="pagecode/settings/eventtv_invite.xml"/>
 		</sitenode>
 		
 		<sitenode id="56" node="pro_account/"  configfile="pagecode/settings/pro.xml"/>
+		
+		
+
 
 		<!--cms node-->
 		<sitenode id="99" node="cms/" configfile="cms/settings/cms.xml" cmsfile="cms/index.php">

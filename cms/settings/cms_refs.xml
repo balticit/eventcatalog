@@ -160,6 +160,7 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" labelClass="itemLabel" editClass="editCell" addClass="addCell" visibleOnEdit="0" visibleOnAdd="0" visibleOnList="1"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
+			<item type="class" class="CGridDataField" dbField="title_url" label="Название - транслит" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
 			<item type="class" class="CGridDataField" dbField="order_num" label="Порядок сортировки" itemClass="numCell" alterItemClass="alterNumCell" labelClass="itemLabel" editClass="editCell" addClass="addCell" visibleOnEdit="1" visibleOnAdd="1" visibleOnList="1"/>
 			<item type="class" class="CGridDataField" dbField="color" label="Цвет" itemClass="numCell" alterItemClass="alterNumCell" labelClass="itemLabel" editClass="editCell" addClass="addCell" visibleOnEdit="1" visibleOnAdd="1" visibleOnList="1"/>
 			<item type="class" class="CXMLLookupGridDataField" dbField="group_num" label="Группа" alterItemClass="alterItem"  sourceEncoding="utf-8" filename="cms/settings/misc/eventtvTopicsGroups.xml" driver="CXMLTableDataSource" lookupId="id" lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell"/>

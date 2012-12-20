@@ -19,7 +19,7 @@
                   lookupParent="parent_id" treeLevels="2" orderBy="priority DESC" joinTable="tbl__area2subtype"
                   parentField="area_id" childField="subtype_id" alterItemClass="alterItem" addClass="addCell"
                   editClass="editCell" labelClass="itemLabel" fieldType="numeric" visibleOnList="0"/>
-            <item type="class" class="CTinyMCETextareaGridDataField" dbField="description" label="Описание:"
+            <item type="class" class="CTextareaGridDataField" dbField="description" label="Описание:"
                   alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
             <item type="class" class="CJionedTableGridDataField" dbField="tbl_obj_id" label="Залы"
                   alterItemClass="alterItem" bagTable="tbl__area_halls" bagField="area_id"
@@ -97,6 +97,10 @@
             <item type="class" class="CGridDataField" dbField="youtube_video" label="Видео на YouTube"
                   alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"
                   visibleOnList="0"/>
+            <item type="class" class="CGridDataField" dbField="youtube_video_2" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+            <item type="class" class="CGridDataField" dbField="youtube_video_3" label="Видео на YouTube" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell"  visibleOnList="0" />
+            
+                  
             <item type="class" class="CDBLookupGridDataField" dbField="city" label="Город:" lookupTable="tbl__city"
                   lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell"
                   editClass="editCell" labelClass="itemLabel" fieldType="numeric" hasEmpty="1" emptyValue="-1"
@@ -176,7 +180,7 @@
                   filename="cms/settings/misc/companyPriority.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
             <item type="class" class="CXMLLookupGridDataField" dbField="direct"
-                  label="Убрать директ со страницы:" alterItemClass="alterItem" sourceEncoding="utf-8"
+                  label="PRO:" alterItemClass="alterItem" sourceEncoding="utf-8"
                   filename="cms/settings/misc/isRider.xml" driver="CXMLTableDataSource" lookupId="id"
                   lookupTitle="title" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0"/>
                   

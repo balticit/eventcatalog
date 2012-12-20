@@ -17,24 +17,50 @@ class profile_php extends CPageCodeHandler
 
 	public function PreRender()
 	{
-		$av_rwParams = array("type","id");
-		CURLHandler::CheckRewriteParams($av_rwParams);  
+	
+	  /*Провека адреса*/
+	  $id_str = GP("id");
+	  
+    $_URL = preg_replace("/^(.*?)index\.php$/is", "$1", $_SERVER['SCRIPT_NAME']);  
+    $_URL = preg_replace("/^".preg_quote($_URL, "/")."/is", "", urldecode($_SERVER['REQUEST_URI']));  
+    $_URL = preg_replace("/(\/?)(\?.*)?$/is", "", $_URL);  
+    $_URL = preg_replace("/[^0-9A-Za-z._\\-\\/]/is", "", $_URL);	// вырезаем ненужные символы (не обязательно это делать)
+    $_URL = mysql_escape_string($_URL); // экранирует спец символы
+    $_URL = trim($_URL);				// удаление пробельных символов
+    $_URL = explode(".", $_URL);		// удаляем расширение
+    $_URL = explode("/", $_URL[0]);
+	 
+	  $type = $_URL[count($_URL) - 2];
+	
+
+		//$av_rwParams = array("type","id");
+		//CURLHandler::CheckRewriteParams($av_rwParams);  
     
     $user = new CSessionUser(null);
 		CAuthorizer::AuthentificateUserFromCookie(&$user);
 		CAuthorizer::RestoreUserFromSession(&$user);		
     
-    $user_id = GP("id");
-		$user_type = GP("type");
-		if (IsNullOrEmpty($user_id) or IsNullOrEmpty($user_type)) {
+    //$user_id = GP("id");
+		//$user_type = GP("type");
+		if (IsNullOrEmpty($id_str) or IsNullOrEmpty($type)) {
       			CURLHandler::Redirect("/");
 		}
 		
-		$user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id=$user_id and `type`='$user_type'");
+		if(is_numeric($id_str)) {
+      $user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$id_str' and type='$type'");
+    }
+		else {
+		  $user_data = SQLProvider::ExecuteQuery("select * from vw__all_users_full where title_url='$id_str' and type='$type'");
+		}
+		
 		if (sizeof($user_data)==0)
 		{
 			CURLHandler::Redirect("/");
 		}
+		
+		$user_id = $user_data[0]["user_id"];
+		$user_type = $user_data[0]["type"];
+		
 		$user_data = $user_data[0];
 		$this->user_name = $user_data["title"];
 		$user_data["logo"] = GetFilename($user_data["logo"]);

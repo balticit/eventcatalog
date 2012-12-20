@@ -57,7 +57,11 @@ $(function() {
 			<div style="float:left; width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="/<?php echo $comment["logo"]==''?"images/nologo.png":"upload/".$comment["logo"]; ?>"></div>
 			</td><td>
 			<div style="padding:6px;">
-			<div style="float:left; position:relative; margin-right:8px;"><b><?php echo $comment["sender_id"]!=''?'<a target="_blank" style="text-decoration:underline;" href="/u_profile/?type='.$comment["type"].'&id='.$comment["user_id"].'">'.$comment["title"].'</a>':'<span style="color:#BEBEBE;">'.$comment["sender_name"].'</span>'; ?></b></div>
+			<?php
+      if($comment['title_url'] == '') { $comment['title_url']= $comment['user_id']; }
+      ?>
+			
+			<div style="float:left; position:relative; margin-right:8px;"><b><?php echo $comment["sender_id"]!=''?'<a target="_blank" style="text-decoration:underline;" href="/profile/'.$comment["type"].'/'.$comment["title_url"].'">'.$comment["title"].'</a>':'<span style="color:#BEBEBE;">'.$comment["sender_name"].'</span>'; ?></b></div>
 			<?php if (isset($comment["r500"]) && $comment["r500"]>0){ ?><div style="float:left; position:relative; background-image:url('/images/award-500.gif'); margin-right:20px; height:27px; width:<?php echo $comment["r500"]*23; ?>px;"></div><?php }?>
 			<?php if (isset($comment["r100"]) && $comment["r100"]>0){ ?><div style="float:left; position:relative; background-image:url('/images/award-100.gif'); margin-right:20px; height:27px; width:<?php echo $comment["r100"]*26; ?>px;"></div><?php }?>
 			<div style="float:left; position:relative; color:#999999;"><?php echo $comment["time_mess"]?></div>

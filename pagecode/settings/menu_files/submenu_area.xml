@@ -7,5 +7,5 @@
 	<index name="link"/>
 	<row link="/added/" title="Последние добавления"/>	
 	<row link="/resident_news/?resident=area" title="Новости площадок"/>	 
-	<row link="/area/rating" bgcolor="1097db" bgclass="area_btn_show" title="Рейтинг" bgimg="area"/>	
+	<row link="/rating/area" bgcolor="1097db" bgclass="area_btn_show" title="Рейтинг" bgimg="area"/>	
 </datasource>

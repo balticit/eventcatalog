@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datasource type="xmltable" >
+	<column name="link"/>
+	<column name="bgcolor"/>
+	<column name="title"/>
+	<column name="bgimg"/>
+	<index name="link"/>
+	<row link="/eventoteka/" bgcolor="ffffff"  title="Эвентотека" bgimg="black"/>
+	<row link="/resident_news/" title="Новости резидентов"/>	
+	<row link="/news/" title="События индустрии"/>
+	<row link="/added/" title="Последние добавления"/>
+	<row link="/event_calendar/" title="Event календарь"/>
+	<row link="/rating/" title="Рейтинги компаний"/>
+	<row link="/magazines/" bgcolor="ffffff" bgclass="white_btn_show" title="Печатный каталог" bgimg="black"/>
+</datasource>

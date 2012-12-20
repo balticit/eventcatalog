@@ -9,16 +9,23 @@
 		}
 		
 		public function PreRender() {
+		
+		
+		
 			CURLHandler::CheckRewriteParams(array('cat', 'page'));
 			$page = (int)GP("page", 1);
 			$rewriteParams = array();
 			if($page > 1) $rewriteParams["page"] = $page;
 			
 			// принимаем фильтр категории
-			$cat = (!empty($_GET['cat'])) ? (int)$_GET['cat'] : false;
+			if(isset($_GET['cat'])) {
+			$cat = SQLProvider::ExecuteScalar("select tbl_obj_id from tbl__news_dir where str_id = '" . mysql_real_escape_string($_GET['cat']) . "'");
+			}
+			else { $cat = false;}
+		  //$cat = (!empty($_GET['cat'])) ? (int)$_GET['cat'] : false;
 			
 			// список категорий новостей
-			$sql  = 'SELECT tbl_obj_id, title '.
+			$sql  = 'SELECT tbl_obj_id, title, str_id '.
 					'FROM tbl__news_dir '.
 					'ORDER BY sort DESC';
 			$list = SQLProvider::ExecuteQuery($sql);
@@ -27,7 +34,7 @@
 					// if ($item['tbl_obj_id'] == 0)
 					// $item['link'] = "/book";
 					// else
-					$item['link']		= "/news/?cat=".$item['tbl_obj_id'];
+					$item['link']		= "/news/".$item['str_id'];
 					$item['gray']		= "gray";
 					$item['selected']	= ($item['tbl_obj_id'] == $cat) ? 'class="selected"' : '';
 				}
@@ -83,7 +90,11 @@
 			foreach ($news as $key=>$value)
 			{
 				//$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
-				$news[$key]["parent"] = CURLHandler::$currentPath;
+				
+				
+				if( $news[$key]["title_url"] == '') { $news[$key]["title_url"] = 'details'.$news[$key]["tbl_obj_id"];}
+		    $news[$key]["news_url"] = $news[$key]["title_url"];
+				
 				$cat = $news[$key]["tbl_cai_id"];
 				if(!empty($cat)){
 					$news[$key]["theme"] = "Рубрика: ".SQLProvider::ExecuteScalar("SELECT title from tbl__news_dir where tbl_obj_id=".$cat);
@@ -125,6 +136,9 @@
 		
 		$chartObj = $this->GetControl("chart");
 		$chartObj->dataSource = $chart;
+		
+		
+		
 		}
 	}
 ?>

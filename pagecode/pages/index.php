@@ -201,6 +201,10 @@ class index_php extends CPageCodeHandler
 												order by rn.`date` DESC limit 0,8
 												");
 		foreach($res_news as $key => $val) {
+		
+		  if( $res_news[$key]["title_url"] == '') { $res_news[$key]["title_url"] = 'news'.$res_news[$key]["tbl_obj_id"];}
+		  $res_news[$key]["news_url"] = $res_news[$key]["title_url"];
+		
 			$res = SQLProvider::ExecuteQuery("SELECT * FROM tbl__".$res_news[$key]["resident_type"]."_doc WHERE tbl_obj_id=".$res_news[$key]["resident_id"]);
 			$res_news[$key]["title_url"] = $res[0]['title_url'];
 			$res_news[$key]["res_title"] = $res[0]['title'];
@@ -294,12 +298,15 @@ class index_php extends CPageCodeHandler
     $this->GetControl("event_news2")->dataSource = $ev_teka2;
 		
 		$ev_news = SQLProvider::ExecuteQuery(
-            "select `date`, DATE_FORMAT(date,'%d.%m.%y') as `strdate` ,`title`,`creation_date`, 'news' as t, `active_day`,`display_order`,`tbl_obj_id`, s_image, annotation  from `tbl__news` where `active`=1 and `fp`=1
+            "select `date`, DATE_FORMAT(date,'%d.%m.%y') as `strdate` ,`title`, `title_url`,`creation_date`, 'news' as t, `active_day`,`display_order`,`tbl_obj_id`, s_image, annotation  from `tbl__news` where `active`=1 and `fp`=1
 												union all
-												select `date`, DATE_FORMAT(date,'%d.%m.%y') as `strdate`,`creation_date` ,`title`, 'events', `active_day`,`display_order`,`tbl_obj_id`, s_image, annotation from `tbl__events` where `active`=1 and `fp`=1
+												select `date`, DATE_FORMAT(date,'%d.%m.%y') as `strdate`,`creation_date` , `title_url`,`title`, 'events', `active_day`,`display_order`,`tbl_obj_id`, s_image, annotation from `tbl__events` where `active`=1 and `fp`=1
 												order by `creation_date` DESC,`active_day` DESC,`date` DESC limit 8");
 		for ($i=0;$i<sizeof($ev_news);$i++)
 		{
+		  if( $ev_news[$i]["title_url"] == '') { $ev_news[$i]["title_url"] = 'details'.$ev_news[$i]["tbl_obj_id"];}
+		  $ev_news[$i]["news_url"] = $ev_news[$i]["title_url"];
+		
 			$ev_news[$i]["annotation"] = CutString($ev_news[$i]["annotation"], 200);
 		}
 		$this->GetControl("news")->dataSource = $ev_news;

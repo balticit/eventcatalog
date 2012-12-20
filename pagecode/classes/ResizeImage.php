@@ -71,6 +71,9 @@ Class ResizeImage
 
   public function resize($width, $height, $newfile, $crop = false, $rotateSizes = false)
   {
+  
+
+  
     if(empty($this->imgFile))
     {
       throw new Exception("File name is not initialised.");
@@ -85,7 +88,9 @@ Class ResizeImage
       $width=$this->imgWidth;
     if($height<=0)
       $height=$this->imgHeight;
+    
 
+    
     if ($rotateSizes){
 			$ki = $this->imgWidth/$this->imgHeight;
 			$kn = $width/$height;

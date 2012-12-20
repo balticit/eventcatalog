@@ -479,6 +479,11 @@ class artist_details_php extends CPageCodeHandler
         `ar`.`email` AS `email`,
         `ar`.`video` AS `video`,
         `ar`.`youtube_video` AS `youtube_video`,
+        `ar`.`youtube_video_2` AS `youtube_video_2`,
+        `ar`.`youtube_video_3` AS `youtube_video_3`,
+        `ar`.`youtube_audio` AS `youtube_audio`,
+        `ar`.`youtube_audio_2` AS `youtube_audio_2`,
+        `ar`.`youtube_audio_3` AS `youtube_audio_3`, 
         `ar`.`farvideo` as `farvideo`,
         `ar`.`price_to`as `price_to`,
         `ar`.`price_from`as `price_from`,
@@ -530,7 +535,7 @@ class artist_details_php extends CPageCodeHandler
                 $unit["u_link"] = "<div style=\"padding-bottom: 20px;\"><b>Представители артиста:</b><br />";
                 foreach ($u_links as $num => $u_link)
                 {
-                    $unit["u_link"] .= "<a href=\"/u_profile?type=user&id=" . $u_link["tbl_obj_id"] . "\">" . $u_link["title"] . "</a><br />";
+                    $unit["u_link"] .= "<a href=\"/profile/user/" . $u_link["tbl_obj_id"] . "\">" . $u_link["title"] . "</a><br />";
                 }
                 $unit["u_link"] .= "</div>";
             }
@@ -622,7 +627,7 @@ class artist_details_php extends CPageCodeHandler
             $unit["btn_i_like"] = '</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_artist.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
         }
 
-        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title from tbl__userlike ul
+        $mark = SQLProvider::ExecuteQuery("select au.user_id,au.type,au.title,au.title_url from tbl__userlike ul
                                             join vw__all_users_full au
                                                on au.type = ul.from_resident_type and
                                                   au.user_id = ul.from_resident_id
@@ -633,7 +638,9 @@ class artist_details_php extends CPageCodeHandler
             $mark_cnt++;
             if ($mark_links)
                 $mark_links .= ", ";
-            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/u_profile/?type=' . $m_item['type'] . '&id=' . $m_item['user_id'] . '">' . $m_item['title'] . '</a>';
+                
+                if($m_item['title_url'] == '') { $m_item['title_url']= $m_item['user_id']; }
+            $mark_links .= '<a rel="nofollow" class="user_like_link" href="/profile/' . $m_item['type'] . '/' . $m_item['title_url'] . '">' . $m_item['title'] . '</a>';
         }
         $unit["voted"] = "";
         if ($mark_cnt > 0) {
@@ -769,6 +776,11 @@ class artist_details_php extends CPageCodeHandler
 				if(!empty($news)){
 				$unit["news_list"] = '<h4 class="detailsBlockTitle"><a name="news">Новости</a></h4>';
 				foreach($news as $item) {
+				
+				  if( $item["title_url"] == '') { $item["title_url"] = 'news'.$item["tbl_obj_id"];}
+		      $item["news_url"] = $item["title_url"];
+		
+				
 					$item["title"] = CutString($item["title"]);
 					$item["text"] = strip_tags(CutString($item["text"], 150));
 					
@@ -819,6 +831,7 @@ class artist_details_php extends CPageCodeHandler
             $unit["photos"] = $photos->Render();
 
             //mp3 load
+            /*
             $mp3s = SQLProvider::ExecuteQuery("select * from tbl__upload where tbl_obj_id in (select file_id from tbl__artist2mp3file where artist_id=$this->id) limit 5");
             $mkeys = array_keys($mp3s);
             foreach ($mkeys as $mkey) {
@@ -832,24 +845,73 @@ class artist_details_php extends CPageCodeHandler
 
             $unit["mp3List"] = $mp3List->Render();
             $unit["hasMP3"] = sizeof($mp3s) > 0 ? "visible" : "hidden";
+            */
+            
+            
+            //audio load
+            $unit["youtubeaudio"] = get_video_id($unit['youtube_audio']);
+            $unit["audio_visible"] = "";
+            if($unit["youtubeaudio"] == false ) {
+              $unit["audio_visible"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubeaudio_2"] = get_video_id($unit['youtube_audio_2']);
+            $unit["audio_visible_2"] = "";
+            if($unit["youtubeaudio_2"] == false ) {
+              $unit["audio_visible_2"] = 'style="display: none;"';
+            }
+            
+            $unit["youtubeaudio_3"] = get_video_id($unit['youtube_audio_3']);
+            $unit["audio_visible_3"] = "";
+            if($unit["youtubeaudio_3"] == false ) {
+              $unit["audio_visible_3"] = 'style="display: none;"';
+            }
+            
             //video load
-            $matches = array();
-            if (strlen($unit['youtube_video']) > 0 && (preg_match('/^http:\/\/[w\.]*youtube\.com\/watch\?v=([A-z0-9-_]+).*$/i', $unit['youtube_video'], $matches) > 0)) {
-                $unit["video_visible"] = "";
-                $unit["youtubevideo"] = $matches[1];
+            $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+            $unit["video_visible"] = "";
+            if($unit["youtubevideo"] == false ) {
+              $unit["video_visible"] = 'style="display: none;"';
             }
-            else {
-                $unit["video_visible"] = 'style="display: none;"';
-                ;
+            
+            
+            
+            $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+            $unit["video_visible_2"] = "";
+            if($unit["youtubevideo_2"] == false ) {
+              $unit["video_visible_2"] = 'style="display: none;"';
             }
+            
+            $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+            $unit["video_visible_3"] = "";
+            if($unit["youtubevideo_3"] == false ) {
+              $unit["video_visible_3"] = 'style="display: none;"';
+            }
+            
+           
+            
+            
             $unit["logo_visible"] = IsNullOrEmpty($unit["logo"]) ? "hidden" : "visible";
 			
-			$details = $this->GetControl("details");
-			$details->dataSource = $unit;
-            //Remove direct
-            if ($unit['tbl_obj_id'] == 6288 || $unit['tbl_obj_id'] == 4865 || $unit['direct'] == 1) {
+			
+			     
+			     //Remove direct
+            if ($unit['direct'] == 1) {
                 $this->GetControl('yaPersonal')->template = "";
-            }			
+                $this->GetControl('topLine')->template = "";
+                $unit["description"] = nl2br($unit["description"]);
+                $unit["similar"] = "";
+            }		
+            else {
+              $unit["description"] = nl2br(strip_tags($unit["description"]));
+            }
+			
+			
+      			$details = $this->GetControl("details");
+      			$details->dataSource = $unit;
+			
+
+            	
             
 			
         		if( is_numeric($unit['priority'] )) {
