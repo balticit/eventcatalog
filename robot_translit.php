@@ -38,7 +38,7 @@ define("MYSQL_HOST", "localhost");
 define("MYSQL_USER", "eventcatalog");
 define("MYSQL_DATABASE", "eventcatalog_staging");
 define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
-define("MYSQL_CHARSET", "cp1251");
+define("MYSQL_CHARSET", "UTF8");
 define("MYSQL_PORT", "63627");
 define("BASEURL", "http://eventcatalog.ru");
 
