@@ -1329,6 +1329,8 @@ $(function() {
 			}
 
 			$left_menu["my_messages/action/$m_action"]["selected"] = true;
+			
+			
 			if (GP("delete_multiple")==1&&($m_action=="inbox"||$m_action=="outbox"))
 			{
 				$del_mess = GP("delete_mess",array());
@@ -1393,6 +1395,50 @@ $(function() {
 					{
 						SQLProvider::ExecuteNonReturnQuery("update tbl__messages set status='read', time_read = NOW() where tbl_obj_id=$reply_id");
 					}
+					
+					//////////////
+					$left_menu = array(
+				"my_messages/action/compose" => array(
+					"type" => "link",
+					"text" => "Написать<br /> сообщение",
+					"color" => "",
+					"selected" => false),
+				" " => array(
+					"type" => "link",
+					"text" => "",
+					"color" => "#000",
+					"selected" => false),
+				"my_messages/action/inbox" => array(
+					"type" => "link",
+					"text" => "Входящие",
+					"color" => "#000",
+					"selected" => false),
+				"my_messages/action/outbox" => array(
+					"type" => "link",
+					"text" => "Отправленные",
+					"color" => "#000",
+					"selected" => false)
+			/*	"my_messages/action/blacklist" => array(
+					"type" => "link",
+					"text" => "Черный список",
+					"color" => "#000",
+					"selected" => false) */
+				);
+					$new_count = SQLProvider::ExecuteScalar("select count(*) as quan from tbl__messages m
+																left join tbl__black_list bl on (reciever_id=bl.user_id and sender_id=blocked_id) and bl.user_id='$uid'
+															where blocked_id is null and `status`='sent' and reciever_id='$uid'");
+    			if ($new_count>0)
+    			{
+    			  $u_cab_menu->dataSource["/u_cabinet/data/my_messages"]["title"] = "Мои сообщения&nbsp;($new_count)";
+    				$left_menu["my_messages/action/inbox"]["text"] .= "&nbsp;($new_count)";
+    			}
+          else { 
+            $u_cab_menu->dataSource["/u_cabinet/data/my_messages"]["title"] = "Мои сообщения&nbsp;";
+            $left_menu["my_messages/action/inbox"]["text"] .= "&nbsp;";
+          }
+    			$left_menu["my_messages/action/$m_action"]["selected"] = true;
+					////////////
+					
 					$sid = $r_mess[0][$m_action=="view"?"reciever_id":"sender_id"];
 					$matches = array();
 					preg_match("/([a-z]+)(\d+)/i",$sid,&$matches);
@@ -1578,6 +1624,11 @@ $(function() {
 						
 						if ($m_action=="reply"||$m_action=="compose")
 						{
+						
+					
+						
+						
+						
 						
 						  if($m_action=="compose") {
     						$reciever_id = $_GET["type"].GPT("id");
