@@ -200,13 +200,13 @@ else {
 			 
 			
 			// список категорий новостей
-			$sql  = 'SELECT tbl_obj_id, title '.
+			$sql  = 'SELECT tbl_obj_id, title, str_id '.
 					'FROM tbl__news_dir '.
 					'ORDER BY sort DESC';
 			$list = SQLProvider::ExecuteQuery($sql);
 			if(!empty($list)) {
 				foreach($list as $i => &$item) {
-					$item['link']		= "/news/?cat=".$item['tbl_obj_id'];
+					$item['link']		= "/news/".$item['str_id'];
 					$item['gray']		= "gray";
 					$item['selected']	= ($item['tbl_obj_id'] == $unit[0]['tbl_cai_id']) ? 'class="selected"' : '';
 				}
