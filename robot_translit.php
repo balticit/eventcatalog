@@ -36,7 +36,7 @@ function translitURL($str)
 
 define("MYSQL_HOST", "localhost");
 define("MYSQL_USER", "eventcatalog");
-define("MYSQL_DATABASE", "eventcatalog_staging");
+define("MYSQL_DATABASE", "eventcatalog");
 define("MYSQL_PASSWORD", "_g8KaCwFh_Fs9i_n23Q-nxaW");
 define("MYSQL_CHARSET", "UTF8");
 define("MYSQL_PORT", "63627");
