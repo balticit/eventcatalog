@@ -527,6 +527,13 @@ class artist_details_php extends CPageCodeHandler
         $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'], $unit['reg_date']);
         $unit['reg_date'] = onSiteTime($unit['reg_date']);
         
+        if ($unit['direct'] == 1) {
+            $unit["description"] = nl2br($unit["description"]);
+        }		
+        else {
+          $unit["description"] = nl2br(strip_tags($unit["description"]));
+        }
+        
         $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
         $unit["u_link"] = "";
         $u_links = SQLProvider::ExecuteQuery("select ru.tbl_obj_id, IF(ru.nikname is NULL or ru.nikname = '',ru.title,ru.nikname) title from tbl__registered_user_link_resident rl left join tbl__registered_user ru on ru.tbl_obj_id = rl.user_id
@@ -899,12 +906,10 @@ class artist_details_php extends CPageCodeHandler
             if ($unit['direct'] == 1) {
                 $this->GetControl('yaPersonal')->template = "";
                 $this->GetControl('topLine')->template = "";
-                $unit["description"] = nl2br($unit["description"]);
+               
                 $unit["similar"] = "";
             }		
-            else {
-              $unit["description"] = nl2br(strip_tags($unit["description"]));
-            }
+            
 			
 			
       			$details = $this->GetControl("details");
