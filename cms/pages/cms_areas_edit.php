@@ -102,6 +102,9 @@ class cms_areas_edit_php extends CCMSPageCodeHandler
 		}
 		else
 		{
+		
+		  
+		
 			$dance = $userData->dancing>0;
 			$rent = $userData->rent>0;
 			$locationsList->selectedValue = $userData->city_location;
@@ -151,6 +154,13 @@ class cms_areas_edit_php extends CCMSPageCodeHandler
 
 					$errorsData = $userValidator->Validate(&$props);
 					$userData->FromHashMap($props);
+					
+					if($props["priority"] == '0') {
+            $userData->priority = null;
+          }
+					
+					
+					
 					if (sizeof($errorsData)>0)
 					{
 						$errors->dataSource = array("message"=>$errorsData[0]);
