@@ -3496,6 +3496,43 @@ border-radius: 3px; /* CSS3 */
 .new_item_in_main .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
 .new_item_in_main .add_date { position:absolute; color:#ccc; font-size:11px; margin: 1px;}
 
-.rate_row .name_cell { color:#000000; margin:5px 10px 5px 5px; white-space: nowrap; float:left; height:14px; position:relative; max-width:120px; overflow:hidden;}
+.rate_row .name_cell { color:#000000; margin:5px 5px 5px 5px; padding-right:10px; white-space: nowrap; float:left; height:14px; position:relative; max-width:120px; overflow:hidden;}
 .rate_row .shad { z-index:5; position:absolute; display:block; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
+
+
+
+
+/* REDESIGN STYLE */
+a, img, input, button, textarea, select { outline: none; resize:none }
+
+
+.contractor { color:#EB880E}
+.area { color:#0091D5}
+.artist { color:#E3007B}
+.agency { color:#9ACF16}
+
+.resident-category-title { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
+.resident-category-title h1 { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
+
+.subcategory-resident-list {}
+.subcategory-resident-list .resident-item { margin:10px 0}
+.subcategory-resident-list .resident-item .thumb { 
+  border: 1px solid #CCCCCC;
+  height: 80px;
+  padding: 2px;
+  width: 120px;
+  float:left;
+}
+.subcategory-resident-list .resident-item .info { margin-left:126px; padding:0px 5px}
+.subcategory-resident-list .resident-item .name { font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; padding-bottom:4px}
+.subcategory-resident-list .resident-item .name a { font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold}
+.subcategory-resident-list .resident-item .activities { color:#aaa; padding-bottom:4px}
+.subcategory-resident-list .resident-item .activities a { color:#aaa;}
+.subcategory-resident-list .resident-item .date { color:#ccc; padding-bottom:4px}
+.subcategory-resident-list .resident-item .desc { padding:5px 0}
+.subcategory-resident-list .resident-item .thumb-list {}
+
+
+
+
 

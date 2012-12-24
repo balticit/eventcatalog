@@ -43,8 +43,13 @@
                 <td style="vertical-align:top">
                     <?php CRenderer::RenderControl("titlefilterLinks"); ?>
 					<div style="padding-left:0px;"> 
-						<?php CRenderer::RenderControl("yaListTop"); ?>                      
-                        <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("contList"); ?></table>
+						<?php CRenderer::RenderControl("yaListTop"); ?>                   
+                        <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("contList"); ?>
+                        
+                        
+                        
+                        
+                        </table>
                         <div><?php CRenderer::RenderControl("footerText"); ?></div>
                     </div>
                     <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>

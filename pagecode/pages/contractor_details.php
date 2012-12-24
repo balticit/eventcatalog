@@ -169,8 +169,8 @@ class contractor_details_php extends CPageCodeHandler
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $contractor["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
                     $contractor['category'] = "";
                     foreach ($gr as $gkey => $value) {
-                        if ($contractor['category'] != "")
-                            $contractor['category'] .= " / ";
+                      if ($contractor['category'] != "")
+                        $contractor['category'] .= " / ";
                         $contractor['category'] .= '<a class="common" href="/contractor/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
 
@@ -179,14 +179,14 @@ class contractor_details_php extends CPageCodeHandler
                     $contractor['links'] = "";
                     $contractor['resident_type'] = 'contractor';
                     $contractor['background'] 		= '0';
-					$contractor['pro_logo']			= '';
-					$contractor['pro_logo_prew']	= '';
-					if($contractor['pro_type'] == 1 || $contractor['pro_type'] == 2){
-						$contractor['activeEl'] = 'activeEl';
-						$contractor['border']			= 'border:2px solid '.getProBackgroud('contractor').';';
-						$contractor['pro_logo_prew']	= getProLogoForPreview('contractor');
-						$contractor['pro_logo']			= getProLogo();
-					}
+          					$contractor['pro_logo']			= '';
+          					$contractor['pro_logo_prew']	= '';
+          					if($contractor['pro_type'] == 1 || $contractor['pro_type'] == 2){
+          						$contractor['activeEl'] = 'activeEl';
+          						$contractor['border']			= 'border:2px solid '.getProBackgroud('contractor').';';
+          						$contractor['pro_logo_prew']	= getProLogoForPreview('contractor');
+          						$contractor['pro_logo']			= getProLogo();
+          					}
                 }
                 $catList = $this->GetControl("contList");
                 
@@ -472,6 +472,14 @@ class contractor_details_php extends CPageCodeHandler
 		  CURLHandler::ErrorPage();
                 $unit['reg_date'] = onSiteTime($unit['registration_date']);
                 $unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['registration_date']);
+                
+                if ($unit['direct'] == 1) {
+                    $unit["description"] = nl2br($unit["description"]);
+                }		
+                else {
+                  $unit["description"] = nl2br(strip_tags($unit["description"]));
+                }
+                
                 $unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
 		$pro_type = getProType('contractor',$this->id);
 		$unit['pro_logo_prew'] = '';
@@ -726,17 +734,14 @@ class contractor_details_php extends CPageCodeHandler
             $this->GetControl('yaPersonal')->template = "";
             $this->GetControl('topLine')->template = "";
             
-            $unit["description"] = nl2br($unit["description"]);
+           
             $unit["similar"] ="";
             
             //$header = $this->GetControl('header');
             //$header->itemTemplates['login']->login = "sdsd";
             //$header->itemTemplates['logout'] = "sdsd";
         }		
-        else {
-          $unit["description"] = nl2br(strip_tags($unit["description"]));
-        }
-        
+       
         
         
         $contDetails = $this->GetControl("contDetails");

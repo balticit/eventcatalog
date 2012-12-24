@@ -782,6 +782,14 @@ group by
 			CURLHandler::ErrorPage();
 			$unit['reg_date'] = onSiteTime($unit['registration_date']);
 			$unit['last_visit_date'] = lastVisitSite($unit['last_visit_date'],$unit['registration_date']);
+			
+			if ($unit['direct'] == 1) {
+          $unit["description"] = nl2br($unit["description"]);
+      }		
+      else {
+        $unit["description"] = nl2br(strip_tags($unit["description"]));
+      }
+			
 			$unit['description'] = (!empty($unit['description'])?'<h4 class="detailsBlockTitle"><a name="description">Описание</a></h4>'.$unit['description']:'');
 			
 			$pro_type = getProType('area',$this->id);
@@ -1433,12 +1441,9 @@ group by
       if ($unit['direct'] == 1) {
           $this->GetControl('yaPersonal')->template = "";
           $this->GetControl('topLine')->template = "";
-          $unit["description"] = nl2br($unit["description"]);
+          
           $unit["similar"] ="";
-      }		
-      else {
-        $unit["description"] = nl2br(strip_tags($unit["description"]));
-      }
+      }	
             
 			$details->dataSource = $unit;
 
