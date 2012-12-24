@@ -115,7 +115,7 @@ class cms_agencies_edit_php extends CCMSPageCodeHandler
 					$errorsData = $userValidator->Validate(&$props);
 					$userData->FromHashMap($props);
 					
-					if($props["priority"] == '0') {
+					if(IsNullOrEmpty($props["priority"])) {
             $userData->priority = null;
           }
 					
