@@ -142,8 +142,27 @@ class contractor_details_php extends CPageCodeHandler
 				pro_type desc, pro_cost desc, pro_date_pay desc, title limit $rp,$this->pageSize");				                
                 foreach ($contractors as &$contractor)
                 {
-                    $contractor["logo"] = $contractor["logo_image"];
-	                $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span style="color: #000;">('.$contractor["city_name"].')</span>' : '';
+                
+                  /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                  $tbl_obj_id = $contractor["tbl_obj_id"];
+                  
+                  $thumbs = $this->GetControl("photos");
+                  $thumbs->dataSource = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                  join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                  where parent_id=$tbl_obj_id limit 3");
+                  
+                  $contractor["thumbs"] = '';
+                  foreach ($thumbs as $thumb) {
+                    $contractor["thumbs"] .= '<li><img src="/upload/'.$thumb["m_image"].'" alt="" /><li>';
+                  }
+                  /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                  
+                
+                
+                
+                
+                  $contractor["logo"] = $contractor["logo_image"];
+                  $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span style="color: #000;">('.$contractor["city_name"].')</span>' : '';
                     $contractor["class"] = "contractor_table_hover";
                     if ($contractor["title"][0] != $letter) {
                         $contractor["space_height"] = 15;
@@ -351,7 +370,7 @@ class contractor_details_php extends CPageCodeHandler
             if (sizeof($titlefilter))
                 $titlefil->text = implode(" / ", $titlefilter) . " - ";
             if (sizeof($titlefilterLinks))
-                $this->GetControl("titlefilterLinks")->html = '<div class="titlefilter contractor">' . implode(" / ", $titlefilterLinks) . '</div>';
+                $this->GetControl("titlefilterLinks")->html = implode(" / ", $titlefilterLinks);
             else
                 $this->GetControl("titlefilterLinks")->html = '';
             //setting pager

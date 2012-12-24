@@ -3524,7 +3524,7 @@ a, img, input, button, textarea, select { outline: none; resize:none }
   float:left;
 }
 .subcategory-resident-list .resident-item .info { margin-left:126px; padding:0px 5px; color:#000}
-.subcategory-resident-list .resident-item .name { font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; padding-bottom:4px}
+.subcategory-resident-list .resident-item .name { font-family:Arial, Helvetica, sans-serif; font-size:14px; padding-bottom:4px}
 .subcategory-resident-list .resident-item .name a { font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#000}
 .subcategory-resident-list .resident-item .activities { color:#aaa; padding-bottom:4px}
 .subcategory-resident-list .resident-item .activities a { color:#aaa;}
