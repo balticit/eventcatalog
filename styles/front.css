@@ -3496,6 +3496,6 @@ border-radius: 3px; /* CSS3 */
 .new_item_in_main .shad { z-index:5; position:absolute; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
 .new_item_in_main .add_date { position:absolute; color:#ccc; font-size:11px; margin: 1px;}
 
-.rate_row .name_cell { color:#000000; margin:5px 5px 5px 5px; padding-right:5px; white-space: nowrap; float:left; height:14px; position:relative; max-width:120px; overflow:hidden;}
+.rate_row .name_cell { color:#000000; margin:5px 5px 5px 5px; padding-right:10px; white-space: nowrap; float:left; height:14px; position:relative; max-width:120px; overflow:hidden;}
 .rate_row .shad { z-index:5; position:absolute; display:block; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
 
