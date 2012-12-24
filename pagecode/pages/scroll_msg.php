@@ -52,28 +52,31 @@ class scroll_msg_php extends CPageCodeHandler
 
 				if ($target_type == "book")
 				{
-					$newCommentsItem["target_link"]="/book/details$target_id";
+					
 					$title = SQLProvider::ExecuteQuery("select * from tbl__public_doc where tbl_obj_id=$target_id");
 					if (sizeof($title)>0)
 					{
 						$newCommentsItem["target_name"] =$title[0]["title"];
+						$newCommentsItem["target_link"]="/book/".$title[0]["title_url"];
 					}
 				}
 				if ($target_type == "eventtv")
 				{
-					$newCommentsItem["target_link"]="/eventtv/details$target_id";
+					
 					$title = SQLProvider::ExecuteQuery("select * from tbl__eventtv_doc where tbl_obj_id=$target_id");
 					if (sizeof($title)>0)
 					{
 						$newCommentsItem["target_name"] =$title[0]["title"];
+						$newCommentsItem["target_link"]="/eventtv/".$title[0]["title_url"];
 					}
 				}if ($target_type == "resident_news")
 				{
-					$newCommentsItem["target_link"]="/resident_news/news/id/$target_id";
+					
 					$title = SQLProvider::ExecuteQuery("select * from tbl__resident_news where tbl_obj_id=$target_id");
 					if (sizeof($title)>0)
 					{
 						$newCommentsItem["target_name"] =$title[0]["title"];
+						$newCommentsItem["target_link"]="/resident_news/".$title[0]["title_url"];
 					}
 				}
 				if ($target_type == "magazine")
