@@ -142,25 +142,20 @@ class contractor_details_php extends CPageCodeHandler
 				pro_type desc, pro_cost desc, pro_date_pay desc, title limit $rp,$this->pageSize");				                
                 foreach ($contractors as &$contractor)
                 {
-                
                   /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   $tbl_obj_id = $contractor["tbl_obj_id"];
-                  
-                  
                   $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
                   join `tbl__photo` p on ap.child_id = p.tbl_obj_id
                   where parent_id=$tbl_obj_id limit 3");
                   
                   $contractor["thumbs"] = '';
                   foreach ($thumbs as $thumb) {
-                    $contractor["thumbs"] .= '<li><img src="/upload/'.$thumb["m_image"].'" alt="" /><li>';
+                    $contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span><li>';
                   }
                   /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
-                
-                
-                
-                
+                  $contractor['registration_date'] = onSiteTime($contractor['registration_date']);
+
                   $contractor["logo"] = $contractor["logo_image"];
                   $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span>('.$contractor["city_name"].')</span>' : '';
                     $contractor["class"] = "contractor_table_hover";
@@ -190,7 +185,7 @@ class contractor_details_php extends CPageCodeHandler
                     foreach ($gr as $gkey => $value) {
                       if ($contractor['category'] != "")
                         $contractor['category'] .= " / ";
-                        $contractor['category'] .= '<a class="common" href="/contractor/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                        $contractor['category'] .= '<a href="/contractor/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
 
                     $contractor["info"] = CutString(strip_tags($contractor["short_description"]), $this->descriptionSize);
@@ -224,16 +219,16 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($mf["selection"]) {
                         case 1:
-                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#EE0000;";
                             break;
                         case 2:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000;";
                             break;
                         case 3:
-                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $mf["selection_type"] = "color:#EE0000;";
                             break;
                         default:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000;";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
@@ -241,7 +236,7 @@ class contractor_details_php extends CPageCodeHandler
                     foreach ($gr as $gkey => $value) {
                         if ($mf['category'] != "")
                             $mf['category'] .= " / ";
-                        $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                        $mf['category'] .= '<a href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
 
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
