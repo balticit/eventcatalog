@@ -146,8 +146,8 @@ class contractor_details_php extends CPageCodeHandler
                   /* ÔÎÒÊÈ ÃÀËÅÐÅÈ Â ÑÏÈÑÊÅ */
                   $tbl_obj_id = $contractor["tbl_obj_id"];
                   
-                  $thumbs = $this->GetControl("photos");
-                  $thumbs->dataSource = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                  
+                  $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
                   join `tbl__photo` p on ap.child_id = p.tbl_obj_id
                   where parent_id=$tbl_obj_id limit 3");
                   
@@ -162,7 +162,7 @@ class contractor_details_php extends CPageCodeHandler
                 
                 
                   $contractor["logo"] = $contractor["logo_image"];
-                  $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span style="color: #000;">('.$contractor["city_name"].')</span>' : '';
+                  $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span>('.$contractor["city_name"].')</span>' : '';
                     $contractor["class"] = "contractor_table_hover";
                     if ($contractor["title"][0] != $letter) {
                         $contractor["space_height"] = 15;
@@ -173,16 +173,16 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($contractor["selection"]) {
                         case 1:
-                            $contractor["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#EE0000; ";
                             break;
                         case 2:
-                            $contractor["selection_type"] = "color:#000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#000; ";
                             break;
                         case 3:
-                            $contractor["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $contractor["selection_type"] = "font-weight:bold; ";
                             break;
                         default:
-                            $contractor["selection_type"] = "color:#000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#000; ";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $contractor["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
