@@ -3505,12 +3505,6 @@ border-radius: 3px; /* CSS3 */
 /* REDESIGN STYLE */
 a, img, input, button, textarea, select { outline: none; resize:none }
 
-
-.contractor { color:#EB880E}
-.area { color:#0091D5}
-.artist { color:#E3007B}
-.agency { color:#9ACF16}
-
 .resident-category-title { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
 .resident-category-title h1 { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
 
@@ -3530,12 +3524,12 @@ a, img, input, button, textarea, select { outline: none; resize:none }
 .subcategory-resident-list .resident-item .activities a { color:#aaa;}
 .subcategory-resident-list .resident-item .date { color:#ccc; padding-bottom:5px}
 .subcategory-resident-list .resident-item .desc { padding:5px 0; color:#000}
+.subcategory-resident-list .resident-item .thumb-list {padding:10px 0}
 .subcategory-resident-list .resident-item .thumb-list ul { padding:0; margin:0; }
 .subcategory-resident-list .resident-item .thumb-list li { display:inline-block; width:33%; list-style-type:none}
-.subcategory-resident-list .resident-item .thumb-list li span { display:block; width:200px; height:200px; position:relative; overflow:hidden}
-.subcategory-resident-list .resident-item .thumb-list li span img { position:absolute; left:-50%}
+
 
 /* PAGER */
 .pager { padding:10px 0}
-.pager {}
+
 
