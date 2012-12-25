@@ -239,6 +239,24 @@ class contractor_details_php extends CPageCodeHandler
                             $mf['category'] .= " / ";
                         $mf['category'] .= '<a href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
+                    
+                    
+                    /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    $tbl_obj_id = $mf["tbl_obj_id"];
+                    $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                    join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                    where parent_id=$tbl_obj_id limit 3");
+                    
+                    $mf["thumbs"] = '';
+                    foreach ($thumbs as $thumb) {
+                      $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src="/upload/'.$thumb["l_image"].'"&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                      //$contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span></li>';
+                    }
+                    /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                  
+                    $mf['registration_date'] = onSiteTime($mf['registration_date']);
+
+                    
 
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
                     //Pro
@@ -278,16 +296,16 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($mf["selection"]) {
                         case 1:
-                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#EE0000; ";
                             break;
                         case 2:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000; ";
                             break;
                         case 3:
-                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $mf["selection_type"] = " color:#EE0000;";
                             break;
                         default:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000; ";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
@@ -297,7 +315,24 @@ class contractor_details_php extends CPageCodeHandler
                             $mf['category'] .= " / ";
                         $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
+                    
+                    
+                    /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    $tbl_obj_id = $mf["tbl_obj_id"];
+                    $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                    join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                    where parent_id=$tbl_obj_id limit 3");
+                    
+                    $mf["thumbs"] = '';
+                    foreach ($thumbs as $thumb) {
+                      $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src="/upload/'.$thumb["l_image"].'"&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                      //$contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span></li>';
+                    }
+                    /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                  
+                    $mf['registration_date'] = onSiteTime($mf['registration_date']);
 
+                    
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
                     //Pro
                     $mf['links'] = "";
