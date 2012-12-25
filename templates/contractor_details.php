@@ -44,9 +44,9 @@
                     
 	<!--LIST RESIDENT-->
   <div class="resident-category-title"><?php CRenderer::RenderControl("titlefilterLinks"); ?></div>
+  <div><?php CRenderer::RenderControl("footerText"); ?></div>
   <?php CRenderer::RenderControl("yaListTop"); ?>
   <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("contList"); ?></div>
-  <div><?php CRenderer::RenderControl("footerText"); ?></div>
   <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
   <!--END LIST RESIDENT-->
                         

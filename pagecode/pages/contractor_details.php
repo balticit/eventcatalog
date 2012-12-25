@@ -394,6 +394,7 @@ class contractor_details_php extends CPageCodeHandler
             }
             $actList = $this->GetControl("actList");
             $actList->dataSource = $activities;
+            
             $titlefil = $this->GetControl("titlefilter");
             if (sizeof($titlefilter))
                 $titlefil->text = implode(" / ", $titlefilter) . " - ";
@@ -401,6 +402,8 @@ class contractor_details_php extends CPageCodeHandler
                 $this->GetControl("titlefilterLinks")->html = implode(" / ", $titlefilterLinks);
             else
                 $this->GetControl("titlefilterLinks")->html = '';
+                
+                
             //setting pager
             $pager = $this->GetControl("pager");
             $pager->currentPage = $page;
