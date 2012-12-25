@@ -32,6 +32,7 @@ RewriteRule ^/?application/public/upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imag
 RewriteRule ^/?upload/(.+)(jpg|png|gif|jpeg)$ /watermark/imagemarker.php?request=$1$2 [L,NC]
 RewriteRule ^/?(upload|files)/(.+)$ /application/public/$1/$2 [L]
 RewriteRule ^.*captcha.*$ - [L]
+RewriteRule ^.*thumb.*$ - [L]
 RewriteRule ^.*fckeditor/.*$ - [L]
 RewriteRule ^.*userfiles/.*$ - [L]
 RewriteRule ^.*pricelistfile/.*$ - [L]

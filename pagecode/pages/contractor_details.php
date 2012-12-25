@@ -150,7 +150,7 @@ class contractor_details_php extends CPageCodeHandler
                   
                   $contractor["thumbs"] = '';
                   foreach ($thumbs as $thumb) {
-                    $contractor["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                    $contractor["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
                   }
                   /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
@@ -248,7 +248,7 @@ class contractor_details_php extends CPageCodeHandler
                     
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
-                      $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                      $mf["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
@@ -323,7 +323,7 @@ class contractor_details_php extends CPageCodeHandler
                     
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
-                      $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                      $mf["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
