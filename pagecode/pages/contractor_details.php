@@ -151,11 +151,10 @@ class contractor_details_php extends CPageCodeHandler
                   $contractor["thumbs"] = '';
                   foreach ($thumbs as $thumb) {
                     $contractor["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src="/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
-                    //$contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span></li>';
                   }
                   /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
-                  $contractor['registration_date'] = onSiteTime($contractor['registration_date']);
+                  $contractor['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($contractor['registration_date']);
 
                   $contractor["logo"] = $contractor["logo_image"];
                   $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span>('.$contractor["city_name"].')</span>' : '';
@@ -250,11 +249,10 @@ class contractor_details_php extends CPageCodeHandler
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
                       $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src="/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
-                      //$contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
-                    $mf['registration_date'] = onSiteTime($mf['registration_date']);
+                    $mf['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($mf['registration_date']);
 
                     
 
@@ -326,11 +324,10 @@ class contractor_details_php extends CPageCodeHandler
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
                       $mf["thumbs"] .= '<li><img src="/pagecode/classes/CreateThumb.php?src="/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
-                      //$contractor["thumbs"] .= '<li><span><img src="/upload/'.$thumb["m_image"].'" alt="" /></span></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
-                    $mf['registration_date'] = onSiteTime($mf['registration_date']);
+                    $mf['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($mf['registration_date']);
 
                     
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
