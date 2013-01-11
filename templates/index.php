@@ -65,6 +65,7 @@
 
 <tr>
 <td>
+
 <div class="menu-all-category">
   <div class="category-contractor category-item"><?php CRenderer::RenderControl("typeList1"); ?></div>
   <div class="category-area category-item"><?php CRenderer::RenderControl("typeList2"); ?></div>

@@ -52,17 +52,16 @@
           <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
         </td>
         <td style="vertical-align:top">
-          <div style="padding-left: 0px;"> 
-            <?php CRenderer::RenderControl("yaListTop"); ?>
-            <?php CRenderer::RenderControl("titlefilterLinks"); ?>
-            <div style="overflow-x:hidden">
-              <table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:100%;">
-              <?php CRenderer::RenderControl("artistList"); ?>
-              </table>
-            </div>
-            <div><?php CRenderer::RenderControl("footerText"); ?></div>
-          </div>
-        <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
+        
+	<!--LIST RESIDENT-->
+  <div class="resident-category-title"><?php CRenderer::RenderControl("titlefilterLinks"); ?></div>
+  <div><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("artistList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+        
+
         </td>
         <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
       </tr>

@@ -54,13 +54,22 @@
 						<tr><?php CRenderer::RenderControl("capacityFilter"); ?></tr>
 					</table>
 					</div>
-                    <div style="padding-top:15px; padding-left: 0px;">
-                        <?php CRenderer::RenderControl("yaListTop"); ?>
-						<?php CRenderer::RenderControl("titlefilterLinks"); ?>
-                        <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("areaList"); ?></table><br>
-                        <div><?php CRenderer::RenderControl("footerText"); ?></div>
-                    </div>
-                    <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
+					
+					
+					
+  <!--LIST RESIDENT-->
+  <div class="resident-category-title"><?php CRenderer::RenderControl("titlefilterLinks"); ?></div>
+  <div><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("areaList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+					
+
+                    
+                    
+                    
+                    
                 </td>
 				<?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
             </tr>

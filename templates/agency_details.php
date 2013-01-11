@@ -37,13 +37,17 @@
 			    <a class="addAgency" href="/registration/?type=agency">Добавить Агентство</a>
                 </td>
                 <td style="vertical-align:top">
-					<div style="padding-left: 5px;">
-					<?php CRenderer::RenderControl("yaListTop"); ?>
-					<?php CRenderer::RenderControl("titlefilterLinks"); ?>
-					<table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:auto;"><?php CRenderer::RenderControl("agencyList"); ?></table>
-                    <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>
-                    <?php CRenderer::RenderControl("footerText"); ?>
-					</div>
+                
+                
+	<!--LIST RESIDENT-->
+  <div class="resident-category-title"><?php CRenderer::RenderControl("titlefilterLinks"); ?></div>
+  <div><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("agencyList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+                
+
                 </td>
 				<?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
             </tr>

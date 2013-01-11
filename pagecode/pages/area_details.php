@@ -443,7 +443,21 @@ class area_details_php extends CPageCodeHandler
 						$area['category'] .= " / ";
 						$area['category'] .= '<a class="common" href="/area/' . $value['title_url'] . '">' . $value['title'] . '</a>';
 					}
-
+          
+          /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+          $tbl_obj_id = $area["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__area_photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $area["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $area["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+          }
+          /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+        
+          $area['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($area['registration_date']);
+          
 
 					$area['links'] = "";
 					$area["info"] = CutString(strip_tags($area["description"]), $this->descriptionSize);

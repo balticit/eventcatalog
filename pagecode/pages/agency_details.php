@@ -196,6 +196,8 @@ class agency_details_php extends CPageCodeHandler
                             $agency["selection_type"] = "color:#000; font-weight:bold;";
                             break;
                     }
+                    
+                    
                     $agency["annotation"] = BreakString(CutString(strip_tags($agency["description"]), $this->descriptionSize), 50);
                     $agencyTypes = SQLProvider::ExecuteQuery("SELECT t.* FROM tbl__agency_type t, tbl__agency2activity a WHERE a.kind_of_activity = t.tbl_obj_id and a.tbl_obj_id=" . $agency["tbl_obj_id"]);
                     $agencyTypeLinks = array();
@@ -204,6 +206,24 @@ class agency_details_php extends CPageCodeHandler
                         array_push($agencyTypeLinks, CStringFormatter::buildCategoryLinks($aType['title'], $link, "common"));
                     }
                     $agency['category'] = implode(" / ", $agencyTypeLinks);
+                    
+                    
+                    
+                    /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+          $tbl_obj_id = $agency["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__agency_photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $agency["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $artist["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+          }
+          /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+        
+          $agency['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($agency['registration_date']);
+                    
+                    
                     $agency['links'] = "";
                     $agency['resident_type'] = 'agency';
                     $agency['class'] = 'agency_table_hover';

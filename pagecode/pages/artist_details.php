@@ -239,6 +239,21 @@ class artist_details_php extends CPageCodeHandler
                         $artist['category'] .= '<a class="common" href="/artist/'.$value['title_url']. '">' . $value['title'] . '</a>';
                     }
 
+          /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+          $tbl_obj_id = $artist["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__artist_photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $artist["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $artist["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+          }
+          /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+        
+          $artist['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($artist['registration_date']);
+
+
                     $artist["info"] = CutString(strip_tags($artist["description"]), $this->descriptionSize);
 
                     $artist['links'] = "";
