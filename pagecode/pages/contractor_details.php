@@ -150,7 +150,7 @@ class contractor_details_php extends CPageCodeHandler
                   
                   $contractor["thumbs"] = '';
                   foreach ($thumbs as $thumb) {
-                    $contractor["thumbs"] .= '<li><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+                    $contractor["thumbs"] .= '<li><a href="/contractor/'. $value['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
                   }
                   /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
