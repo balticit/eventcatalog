@@ -452,7 +452,7 @@ class area_details_php extends CPageCodeHandler
           
           $area["thumbs"] = '';
           foreach ($thumbs as $thumb) {
-            $area["thumbs"] .= '<li><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
+            $area["thumbs"] .= '<li><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></li>';
           }
           /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
         
