@@ -92,7 +92,7 @@
                window.location.href = url;
            }
         </script>
-            <div class="recomendTitle eventoteka h3">Эвентотека / Event энциклопедия</div>
+            <div class="recomendTitle eventoteka h3"><?php CRenderer::RenderControl("publicTitleList"); ?></div>
             <?php CRenderer::RenderControl("sortTypes"); ?>
             <?php CRenderer::RenderControl("publicList"); ?>
             

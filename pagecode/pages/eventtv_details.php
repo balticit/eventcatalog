@@ -134,7 +134,7 @@ if($this->is_list){
         }
 
         if (count($docs)>0) {
-          $html .= "<div><b>".$topic['title']."</b></div>\n";
+        //  $html .= "<div><b>".$topic['title']."</b></div>\n";
 
           $html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">'; 
 
@@ -216,9 +216,10 @@ if($this->is_list){
       $sortLinks = '<a class="currentSort" href="/eventtv">по дате</a>&nbsp;&nbsp;&nbsp;<a href="/eventtv?bycategory">по категории</a>';
     }
 
+   
 
-    $publicList = $this->GetControl("publicList");
-    $publicList->html = $html;
+    $publicTitleList = $this->GetControl("publicTitleList");
+    $publicTitleList->html = $topic['title'];
     
     
     //setting pager

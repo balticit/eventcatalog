@@ -153,7 +153,7 @@ if($this->is_list){
                     }
 
                     if (count($docs)>0) {
-                        $html .= "<div><b>".$topic['title']."</b></div>\n"; 
+                      //  $html .= "<div><b>".$topic['title']."</b></div>\n"; 
 
                         $html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">';
 
@@ -245,6 +245,9 @@ if($this->is_list){
         $pager->totalPages = $pages;
         $pager->rewriteParams = $rewriteParams;
 
+
+        $publicTitleList = $this->GetControl("publicTitleList");
+        $publicTitleList->html = $topic['title'];
 
             $topic = $category;
             $sortTypes = $this->GetControl("sortTypes");

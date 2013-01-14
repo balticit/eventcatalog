@@ -91,6 +91,10 @@
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerItem.htm"/>
 		<param name="activeItemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/contractor_files/pagerActiveItem.htm"/>
 	</control>
+	
+	
+	<control relativeId="publicTitleList" class="CLiteral" />
+	
 	<control relativeId="publicList" class="CLiteral" />
         <control relativeId="tvTopicList" class="CRepeater">
 		<param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/eventtv_files/topicItem.htm"/>

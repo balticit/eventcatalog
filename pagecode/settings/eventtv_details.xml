@@ -103,6 +103,9 @@
 	</control>
 	
 	<control relativeId="sortTypes" class="CLiteral" />
+	
+	<control relativeId="publicTitleList" class="CLiteral" />
+	
 	<control relativeId="bookItem" class="CTemplateObject">
 	    <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/index_files/_event_news.htm"/>
 	</control>
