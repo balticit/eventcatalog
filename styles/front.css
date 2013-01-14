@@ -3529,6 +3529,7 @@ a, img, input, button, textarea, select { outline: none; resize:none }
 .subcategory-resident-list .resident-item .thumb-list {}
 .subcategory-resident-list .resident-item .thumb-list ul { padding:0; margin:0; }
 .subcategory-resident-list .resident-item .thumb-list li { display:inline-block; width:33%; list-style-type:none; padding-top:10px}
+.subcategory-resident-list .resident-item .thumb-list li a {display:block; padding: 2px; border: 1px solid #CCCCCC; width:200px; height:200px;}
 
 .category-desc { font-size:11px;}
 
