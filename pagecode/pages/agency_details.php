@@ -267,7 +267,7 @@ class agency_details_php extends CPageCodeHandler
             }
             $titlefil = $this->GetControl("titlefilter");
             if (!IsNullOrEmpty($titlefilter))
-                $titlefil->text = $titlefilter . " - ";
+                $titlefil->text = $titlefilter ;
             if (!IsNullOrEmpty($titlefilterLinks))
                 $this->GetControl("titlefilterLinks")->html = '<div class="titlefilter agency">' . $titlefilterLinks . '</div>';
             else

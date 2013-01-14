@@ -550,7 +550,7 @@ class area_details_php extends CPageCodeHandler
 
 				$titlefil = $this->GetControl("titlefilter");
 				if (sizeof($titlefilter))
-				$titlefil->text = implode(" / ", $titlefilter) . " - ";
+				$titlefil->text = implode(" / ", $titlefilter) ;
 				if (sizeof($titlefilterLinks))
 				$this->GetControl("titlefilterLinks")->html = '<div class="titlefilter area">' . implode(" / ", $titlefilterLinks) . '</div>';
 				else

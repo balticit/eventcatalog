@@ -397,7 +397,7 @@ class contractor_details_php extends CPageCodeHandler
             
             $titlefil = $this->GetControl("titlefilter");
             if (sizeof($titlefilter))
-                $titlefil->text = implode(" / ", $titlefilter) . " - ";
+                $titlefil->text = implode(" / ", $titlefilter) ;
             if (sizeof($titlefilterLinks))
                 $this->GetControl("titlefilterLinks")->html = implode(" / ", $titlefilterLinks);
             else
