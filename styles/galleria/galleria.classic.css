@@ -1,14 +1,11 @@
-/*
- * Galleria Classic Theme
- * Copyright (c) 2010, Aino
- * Licensed under the MIT license.
- */
- #galleria { margin-top:20px}
- 
+/* Galleria Classic Theme 2012-08-07 | https://raw.github.com/aino/galleria/master/LICENSE | (c) Aino */
+
+#galleria-loader{height:1px!important}
+
 .galleria-container {
     position: relative;
     overflow: hidden;
-   /* background: #000; */
+    background: #000;
 }
 .galleria-container img {
     -moz-user-select: none;
@@ -18,13 +15,13 @@
 .galleria-stage {
     position: absolute;
     top: 10px;
-    bottom: 80px;
+    bottom: 60px;
     left: 10px;
     right: 10px;
     overflow:hidden;
 }
 .galleria-thumbnails-container {
-    height: 70px;
+    height: 50px;
     bottom: 0;
     position: absolute;
     left: 10px;
@@ -36,39 +33,33 @@
     margin-right: 30px;
 }
 .galleria-thumbnails .galleria-image {
-    height: 60px !important;
-    width: 82px;
-    /*background: #000;*/
-    margin: 0 5px 0 5px;
-    border: 1px solid #fff;
+    height: 40px;
+    width: 60px;
+    background: #000;
+    margin: 0 5px 0 0;
+    border: 1px solid #000;
     float: left;
     cursor: pointer;
 }
-.galleria-thumbnails .galleria-image img {height: 60px !important}
 .galleria-counter {
     position: absolute;
     bottom: 10px;
     left: 10px;
     text-align: right;
-    color: #000;
+    color: #fff;
     font: normal 11px/1 arial,sans-serif;
     z-index: 1;
-    padding:2px;
-    background-color: #ccc; 
 }
 .galleria-loader {
     background: #000;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 50%;
-    right: 50%;
-    margin-left:-16px;
-    margin-top:-16px;
+    top: 10px;
+    right: 10px;
     z-index: 2;
     display: none;
     background: url(classic-loader.gif) no-repeat 2px 2px;
-    
 }
 .galleria-info {
     width: 50%;
@@ -81,14 +72,13 @@
     background-color: #000;
     padding: 12px;
     display: none;
-    
     /* IE7 */ zoom:1;
 }
 .galleria-info-title {
     font: bold 12px/1.1 arial,sans-serif;
     margin: 0;
     color: #fff;
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 .galleria-info-description {
     font: italic 12px/1.4 georgia,serif;
@@ -124,7 +114,6 @@
     height: 20px;
     cursor: pointer;
     background-color: #000;
-
 }
 .notouch .galleria-info-link:hover {
     opacity: 1;
@@ -137,7 +126,7 @@
 .galleria-image-nav {
     position: absolute;
     top: 50%;
-    margin-top: -36px;
+    margin-top: -62px;
     width: 100%;
     height: 62px;
     left: 0;
@@ -174,18 +163,18 @@
 .galleria-thumb-nav-right {
     cursor: pointer;
     display: none;
-    background-position: -495px 15px;
+    background-position: -495px 5px;
     position: absolute;
     left: 0;
-    top: 1px;
-    height: 60px;
+    top: 0;
+    height: 40px;
     width: 23px;
     z-index: 3;
     opacity: .8;
     filter: alpha(opacity=80);
 }
 .galleria-thumb-nav-right {
-    background-position: -578px 15px;
+    background-position: -578px 5px;
     border-right: none;
     right: 0;
     left: auto;
@@ -226,17 +215,3 @@
     background-image: url(classic-map.png);
     background-repeat: no-repeat;
 }
-
-
-
-.galleria-image-nav-right {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -84px -0px; width:56px; height:56px; }
-.galleria-image-nav-left {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -7px -0px; width:56px; height:56px;}
-
-.galleria-thumb-nav-right { background-image: url(gRightScrollBot.png); background-repeat: no-repeat; background-position: center center; }
-.galleria-thumb-nav-left { background-image: url(gLeftScrollBot.png); background-repeat: no-repeat; background-position: center center; }
-
-.galleria-thumb-nav-right:hover { background-color: #fff !important; background-image: url(gRightScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
-.galleria-thumb-nav-left:hover { background-color: #fff !important; background-image: url(gLeftScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
-
-
-.galleria-errors { display:none !important; }
