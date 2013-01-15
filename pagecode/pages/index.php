@@ -454,20 +454,20 @@ class index_php extends CPageCodeHandler
 		if (sizeof($magazine)>0) $this->mag = $magazine[0];
 
 	$mainMenu = $this->GetControl("menu");
-	switch(rand(1,8)) {
+	switch(rand(2,7)) {
 	case 1:
     /*$mainMenu->dataSource["museum"] =
       array("link"=>"http://15kop.ru/",
             "imgname"=>"museum",
             "title"=>"",
             "target"=>'target="_blank"');
-            */
+            
     $mainMenu->dataSource["museum"] =
       array("link"=>"http://www.valet-parking.ru/",
             "imgname"=>"valet",
             "title"=>"",
             "target"=>'target="_blank"');
-            
+            */
 	break;
 	case 2:
 	$mainMenu->dataSource["polymedia"] =

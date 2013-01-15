@@ -383,12 +383,11 @@ class contractor_php extends CPageCodeHandler
                 "target" => 'target="_blank"');
       	break;
       	case 2:
-          $mainMenu->dataSource["museum"] =
-            array("link"=>"http://www.valet-parking.ru/",
-                  "imgname"=>"valet",
-                  "title"=>"",
-                  "target"=>'target="_blank"');
-                  
+         $mainMenu->dataSource["kinodoktor"] =
+            array("link" => "http://www.kinodoctor.ru/",
+                "imgname" => "kinodoktor",
+                "title"=>"",
+                "target" => 'target="_blank"');  
       	break;
       	}
         				
