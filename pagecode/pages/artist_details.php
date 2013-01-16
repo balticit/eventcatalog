@@ -428,9 +428,7 @@ class artist_details_php extends CPageCodeHandler
 					<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
                 $artistsearch->footerTemplate =
                     '<td><div style="text-align:justify !important;"><p>
-					<span class="artist">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;&nbsp;
-					<span class="artist">Поиск по стране '.$selcountry->Render().'</span>&nbsp;&nbsp;
-					<span id="find_style" class="artist" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span></p></div></td>
+					<span class="artist">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="artist">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="artist" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span></p></div></td>
 					</tr></table></form>';
 
                 if (!IsNullOrEmpty($artist_doc_style_title)) {
@@ -997,14 +995,14 @@ class artist_details_php extends CPageCodeHandler
         $search = $this->GetControl("search");
         $search->dataSource = $searchDS;
 		
-		$artistsearch = $this->GetControl("submenu");
+		$artistsearch = $this->GetControl("artistsearch");
 		$artistsearch->headerTemplate =
 			'
 			<form method="get" id="form_find_artist" action="/artist/">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
 				$artistsearch->footerTemplate =
 				 '<td class="artist"><div style="text-align:justify !important;"><p>
-					<span class="submenu">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="submenu">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="submenu" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span> </p></div></td>
+					<span class="artist">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="artist">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="artist" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span> </p></div></td>
 					</tr></table></form>';
 		
 				if (!IsNullOrEmpty($artist_doc_style_title)) {
