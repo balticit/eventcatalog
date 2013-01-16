@@ -12,10 +12,8 @@
 	<td style="padding-left: 30px; padding-right: 30px; padding-top: 16px;"><?php CRenderer::RenderControl("header"); ?></td>
 </tr>
 <tr><!--Меню-->
-<td><?php CRenderer::RenderControl("menu"); ?></td>
-</tr>
-<tr>
-	<td><?php CRenderer::RenderControl("submenu"); ?></td>
+<td><?php CRenderer::RenderControl("menu"); ?>
+<?php CRenderer::RenderControl("submenu"); ?></td>
 </tr>
 <tr><td style="padding-left: 30px; padding-right: 30px; padding-top: 16px; height: 100%" valign="top">
 	<table width="100%">

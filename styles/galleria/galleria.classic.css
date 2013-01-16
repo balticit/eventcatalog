@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 .galleria-counter {
-    position: absolute; display:none;
+    position: absolute; display:none !important;
     bottom: 10px;
     left: 10px;
     text-align: right;

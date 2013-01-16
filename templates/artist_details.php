@@ -31,10 +31,7 @@
     <td>
       <?php CRenderer::RenderControl("menu"); ?>
       <?php CRenderer::RenderControl("submenu"); ?>
-      <?php CRenderer::RenderControl("submenu1"); ?>
-      <?php CRenderer::RenderControl("submenu2"); ?>
-      <?php CRenderer::RenderControl("submenu3"); ?>
-      <?php CRenderer::RenderControl("submenu4"); ?>
+
     </td>
   </tr>
   <tr>
@@ -52,6 +49,8 @@
           <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
         </td>
         <td style="vertical-align:top">
+        
+        <?php CRenderer::RenderControl("artistsearch"); ?>
         
 	<!--LIST RESIDENT-->
   <div class="resident-category-title artist"><?php CRenderer::RenderControl("titlefilter"); ?></div>
@@ -94,6 +93,9 @@
 <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
 </td>
 <td style="vertical-align:top; padding-left: 5px;">
+
+<?php CRenderer::RenderControl("artistsearch"); ?>
+
 <?php CRenderer::RenderControl("yaPersonal"); ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td valign="top"><?php CRenderer::RenderControl("details"); ?></td></tr></table>
 </td>

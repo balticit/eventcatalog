@@ -17,10 +17,7 @@
 <td>
 <?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
 </tr>
 <tr><!--содержание-->
 <td style="padding-left: 30px; padding-right: 30px; padding-top: 10px;" valign="top">
@@ -38,6 +35,8 @@
             <a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
 		</td>
 		<td style="vertical-align:top">
+		    <?php CRenderer::RenderControl("areasearch"); ?>
+		
 				<?php if(!$this->is_main) //CRenderer::RenderControl("titlefilterLinks"); ?>
 				<div>
                                 <form method="get" style="display: none" id="find_params"></form>

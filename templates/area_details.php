@@ -23,10 +23,7 @@
 <tr><!--Меню-->
 <td><?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
 </td>
 </tr>
 <tr>
@@ -44,6 +41,7 @@
 					<a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
                 </td>
                 <td style="vertical-align:top">
+                <?php CRenderer::RenderControl("areasearch"); ?>
 					<div>
 						<form method="get" style="display: none" id="find_params"></form>
                         <?php CRenderer::RenderControl("currentFind"); ?>
@@ -94,6 +92,8 @@
             <a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
 		</td>
 		<td style="vertical-align:top; padding-left: 5px;">
+		  <?php CRenderer::RenderControl("areasearch"); ?>
+		
 			<?php CRenderer::RenderControl("yaPersonal"); ?>
 			
 			<?php CRenderer::RenderControl("details"); ?>

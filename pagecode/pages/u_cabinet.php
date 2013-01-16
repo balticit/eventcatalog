@@ -1652,19 +1652,19 @@ $(function() {
 							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
 							
 							if($m_action=="reply") {
-							$cab["main_area"].='<div class="grey_message message">'.ProcessMessage($reply_mess["text"])."</div>";
+							$cab["main_area"].='<div class="grey_message message"><span style="float:right">'.$reply_mess["time"].'</span> <span style="margin-right:140px">'.ProcessMessage($reply_mess["text"])." </span></div>";
 							}
 							
   						foreach($h_mess as $mess) {
   						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
-                  $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
+                  $cab["main_area"].='<div class="'.$class.' message"><span style="float:right">'.$reply_mess["time"].'</span>  <span style="margin-right:140px">'.$mess["text"].' </span></div>';
               }
               $cab["main_area"].='</div>';
 										
 						}
 						elseif ($m_action=="view")
 						{
-						  $cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
+						  $cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;"><span style="float:right">'.$reply_mess["time"].'</span><span style="margin-right:140px">'.ProcessMessage($reply_mess["text"])."<span> </div>";
 						
 							$cab["main_area"].='<form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
 										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
