@@ -55,6 +55,9 @@ if($this->is_list){
                     $item['link'] = "/book/".$item['title_url'];
                 $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
                 $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
+                
+                
+                if($item['tbl_obj_id'] == $topic) { $topictitle=$item['title'];}
             }
             $topicList = $this->GetControl("topicList");
             $topicList->dataSource = $topics;
@@ -126,6 +129,10 @@ if($this->is_list){
 			
 			$count = count($count);
       $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
+      
+      
+      $publicTitleList = $this->GetControl("publicTitleList");
+        $publicTitleList->html = $topictitle;
 			
 				// echo " select 
 					// tbl_obj_id, title,title_url, annotation, is_new, logo_image, 					
@@ -246,8 +253,7 @@ if($this->is_list){
         $pager->rewriteParams = $rewriteParams;
 
 
-        $publicTitleList = $this->GetControl("publicTitleList");
-        $publicTitleList->html = $topic['title'];
+        
 
             $topic = $category;
             $sortTypes = $this->GetControl("sortTypes");

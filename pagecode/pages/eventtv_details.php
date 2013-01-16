@@ -49,6 +49,8 @@ if($this->is_list){
         $item['link'] = "/eventtv/".$item['title_url'];
       $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
       $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
+      
+      if($item['tbl_obj_id'] == $topic) { $topictitle=$item['title'];}
     }
     $topicList = $this->GetControl("topicList");
     $topicList->dataSource = $topics;
@@ -219,7 +221,7 @@ if($this->is_list){
    
 
     $publicTitleList = $this->GetControl("publicTitleList");
-    $publicTitleList->html = $topic['title'];
+    $publicTitleList->html = $topictitle;
     
     
     //setting pager
