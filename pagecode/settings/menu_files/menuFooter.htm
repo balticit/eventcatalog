@@ -5,7 +5,7 @@
 </table>
 </div>
 <script type="text/javascript">
-/*
+
 	$('.menu_btn').hover(function(){
 	  $('.menu_btn').css('background-position','0 0');
     $(this).css('background-position','0 -34px');
@@ -13,7 +13,7 @@
     if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
     
   });
-*/
+
   function relurl(url) {
      return url.replace(/^(http:\/\/)?(www\.)?[^\/]+/, '');
   }	
@@ -27,6 +27,15 @@ $(document).ready(function(){
   $("#menu_controll_wrapper .submenu_controll").find("a").each(function(){
     if($(this).attr("href") == curUrl) { $(this).addClass("cururl");}
   });
+  
+  
+  $("#menu_controll_wrapper").mouseleave(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active'); 
+    $('.menu_btn').css('background-position','0 0');   
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
+  });
 
 /*
 
@@ -38,13 +47,7 @@ $(document).ready(function(){
  
   });
   
-  $("#menu_controll_wrapper").mouseleave(function(){
-    $('.submenu_controll').removeClass('active');
-    $('.submenu_controll:first').addClass('active'); 
-    $('.menu_btn').css('background-position','0 0');   
-    
-    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
-  });
+
   
 $("#menu_controll a.rule_button:last div").mouseenter(function(){
   var curMenu = $(this).attr("id");

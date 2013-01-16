@@ -452,7 +452,7 @@ class area_details_php extends CPageCodeHandler
           
           $area["thumbs"] = '';
           foreach ($thumbs as $thumb) {
-            $area["thumbs"] .= '<li><a href="/area/'. $value['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+            $area["thumbs"] .= '<li><a href="/area/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
           }
           /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
         
@@ -643,11 +643,8 @@ class area_details_php extends CPageCodeHandler
 				'
 		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle">';
 				$areasearch->footerTemplate =
-				'<td ><div style="text-align:justify !important;"><p>
-		<a href="" class="area" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a> 
-		<a href="" class="area" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a> 
-		<a href="" class="area" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a> 
-		<a href="" class="area" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></p></div></td></tr></table>';		
+				'<td class="area"><div style="text-align:justify !important;"><p>
+		<a href="" class="area" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></p></div></td></tr></table>';		
 				
 				$capacityRanges = array(
 				array("from"=>0,"to"=>10,"title"=>"до 10", "checked"=>""),

@@ -46,7 +46,7 @@
 						<form method="get" style="display: none" id="find_params"></form>
                         <?php CRenderer::RenderControl("currentFind"); ?>
 					</div>
-					<div>
+					<div style="padding-bottom:15px;">
                     <?php CRenderer::RenderControl("currentCapacity"); ?>
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr><?php CRenderer::RenderControl("capacityFilter"); ?></tr>

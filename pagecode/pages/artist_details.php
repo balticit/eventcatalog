@@ -247,7 +247,7 @@ class artist_details_php extends CPageCodeHandler
           
           $artist["thumbs"] = '';
           foreach ($thumbs as $thumb) {
-            $artist["thumbs"] .= '<li><a href="/artist/'. $value['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+            $artist["thumbs"] .= '<li><a href="/artist/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
           }
           /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
         
@@ -997,17 +997,15 @@ class artist_details_php extends CPageCodeHandler
         $search = $this->GetControl("search");
         $search->dataSource = $searchDS;
 		
-		$submenu = $this->GetControl("submenu");
-		$submenu->headerTemplate =
-			'<div class="artist_btn_show submenu_controll" style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
+		$artistsearch = $this->GetControl("submenu");
+		$artistsearch->headerTemplate =
+			'
 			<form method="get" id="form_find_artist" action="/artist/">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
-				$submenu->footerTemplate =
-				 '</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td align="right" style="padding-right: 60px;">
-					<span class="submenu">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>
-					<span class="submenu">Поиск по стране '.$selcountry->Render().'</span>
-					<span id="find_style" class="submenu" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span>       
-					</tr></table></form></div>';
+				$artistsearch->footerTemplate =
+				 '<td class="artist"><div style="text-align:justify !important;"><p>
+					<span class="submenu">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="submenu">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="submenu" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span> </p></div></td>
+					</tr></table></form>';
 		
 				if (!IsNullOrEmpty($artist_doc_style_title)) {
 					$this->search_styles = "<div class=\"artist\">Стили: $artist_doc_style_title</div>";

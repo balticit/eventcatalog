@@ -248,7 +248,7 @@ class contractor_details_php extends CPageCodeHandler
                     
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
-                      $mf["thumbs"] .= '<li><href="/contractor/'. $value['title_url'] .'"><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+                      $mf["thumbs"] .= '<li><href="/contractor/'. $agency['title_url'] .'"><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
@@ -323,7 +323,7 @@ class contractor_details_php extends CPageCodeHandler
                     
                     $mf["thumbs"] = '';
                     foreach ($thumbs as $thumb) {
-                      $mf["thumbs"] .= '<li><a href="/contractor/'. $value['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+                      $mf["thumbs"] .= '<li><a href="/contractor/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
                     }
                     /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
                   
