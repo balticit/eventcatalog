@@ -71,6 +71,16 @@ if($this->is_list){
 			$newsCategoriesList = $this->GetControl("newsCategoriesList");
 			$newsCategoriesList->dataSource = $list;
 			
+			
+			$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
+			
+			
 			// заголовок категории новостей
 			// if(!empty($cat)) {
 				// $header = SQLProvider::ExecuteQuery('SELECT title FROM `tbl__news_dir` WHERE tbl_obj_id = '.$cat);

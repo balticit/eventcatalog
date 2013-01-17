@@ -68,7 +68,13 @@ class rating_artist_php extends CPageCodeHandler
 		$catList->dataSource = $artists;
 		
 		
-		
+		$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 		
 		//setting pager
 		$pager = $this->GetControl("pager");
