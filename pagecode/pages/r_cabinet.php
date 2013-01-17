@@ -2173,7 +2173,7 @@ $(function() {
   						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
   						    <td class=" message">'.ProcessMessage($reply_mess["text"]).'</td>
   						    <td width="130" class=" message">'.$date.'</td>
-  						    <td width="70" class=" message">
+  						    <td style="text-align: center;" width="70" class=" message">
                     <form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
 										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
 										</form>
@@ -2203,7 +2203,7 @@ $(function() {
   						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
   						    <td class=" message">'.$mess["text"].'</td>
   						    <td width="130" class="message">'.$date.'</td>
-  						    <td width="70" class="message">
+  						    <td style="text-align: center;" width="70" class="message">
   						      <form method="get" action="/r_cabinet/data/my_messages/action/delete/rid/'.$mess["tbl_obj_id"].'/">
 										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
 										</form>
