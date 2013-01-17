@@ -3402,8 +3402,21 @@ border-radius: 3px; /* CSS3 */
 .u_cab_menu a { text-decoration:none;}
 
 .message_history .header_message_history { font-size:18px; padding-bottom:4px}
-.message_history .message { padding:8px}
-.message_history .grey_message { background:#eee}
+.message { padding:4px}
+.grey_message { background:#eee}
+
+.message_history th {color: #777777;
+    text-align: left;
+    white-space: nowrap;}
+    
+.message_history .message input {
+    background: url("/images/red-cross.png") no-repeat scroll 0 0 transparent; border:none; overflow:hidden; text-indent:300px; padding:0;
+    cursor: pointer;
+    height: 12px;
+    margin: 1px auto;
+    width: 12px;
+}    
+    
 
 
 .area_detail_page .table_row { height:20px; }
