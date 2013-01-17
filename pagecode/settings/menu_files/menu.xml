@@ -4,10 +4,10 @@
 	<column name="title"/>
 	<column name="imgname"/>
 	<column name="target"/>
+	<column name="ads_class"/>
 	<index name="link"/>
-	<row link="/contractor/" title="подрядчики" imgname="contractor" target=""/>
-	<row link="/area/" title="площадки" imgname="area" target=""/>
-	<row link="/artist/" title="артисты" imgname="artist" target=""/>
-	<row link="/agency/" title="агентства" imgname="agency" target=""/>
-	<row link="/eventoteka/" title="эвентотека" imgname="black" target=""/>
+	<row link="/contractor/" title="подрядчики" imgname="contractor" ads_class="" target=""/>
+	<row link="/area/" title="площадки" imgname="area" ads_class="" target=""/>
+	<row link="/artist/" title="артисты" imgname="artist" ads_class="" target=""/>
+	<row link="/agency/" title="агентства" imgname="agency" ads_class="" target=""/>
 </datasource>

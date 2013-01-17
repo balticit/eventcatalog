@@ -247,7 +247,7 @@ class artist_details_php extends CPageCodeHandler
           
           $artist["thumbs"] = '';
           foreach ($thumbs as $thumb) {
-            $artist["thumbs"] .= '<li><a href="/artist/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+            $artist["thumbs"] .= '<li><a href="/artist/'. $artist['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
           }
           /* END ÔÎÒÊÈ ÃÀËÅÐÅÈ Â ÑÏÈÑÊÅ */
         
@@ -417,6 +417,7 @@ class artist_details_php extends CPageCodeHandler
           					array("link" => "http://forevent.pro/",
           					"imgname" => "forevent",
           					"title"=>"",
+          					"ads_class"=>"reklama",
           					"target" => "target='_blank'");
         
                 

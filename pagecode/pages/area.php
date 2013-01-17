@@ -717,6 +717,7 @@ class area_php extends CPageCodeHandler
     					array("link" => "http://shelkevent.ru/",
     					"imgname" => "shelk",
     					"title"=>"",
+    					"ads_class"=>"reklama",
     					"target" => "target='_blank'");
     				break;
     		  /* case 2:$mainMenu->dataSource["midas"] =

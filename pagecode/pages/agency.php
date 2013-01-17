@@ -377,6 +377,7 @@ class agency_php extends CPageCodeHandler
             array("link" => "http://www.polymedia.ru/",
                 "imgname" => "polymedia",
                 "title"=>"",
+                "ads_class"=>"reklama",
                 "target" => 'target="_blank"');
 				
 		// && всего резидентов

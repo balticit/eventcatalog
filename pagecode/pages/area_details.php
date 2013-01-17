@@ -452,7 +452,7 @@ class area_details_php extends CPageCodeHandler
           
           $area["thumbs"] = '';
           foreach ($thumbs as $thumb) {
-            $area["thumbs"] .= '<li><a href="/area/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+            $area["thumbs"] .= '<li><a href="/area/'. $area['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
           }
           /* END ÔÎÒÊÈ ÃÀËÅÐÅÈ Â ÑÏÈÑÊÅ */
         
@@ -626,6 +626,7 @@ class area_details_php extends CPageCodeHandler
   					array("link" => "http://shelkevent.ru/",
   					"imgname" => "shelk",
   					"title"=>"",
+  					"ads_class"=>"reklama",
   					"target" => "target='_blank'");
 					break;
 					

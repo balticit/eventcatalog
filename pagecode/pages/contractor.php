@@ -380,6 +380,7 @@ class contractor_php extends CPageCodeHandler
             array("link" => "http://www.kinodoctor.ru/",
                 "imgname" => "kinodoktor",
                 "title"=>"",
+                "ads_class"=>"reklama",
                 "target" => 'target="_blank"');
       	break;
       	case 2:
@@ -387,6 +388,7 @@ class contractor_php extends CPageCodeHandler
             array("link" => "http://www.kinodoctor.ru/",
                 "imgname" => "kinodoktor",
                 "title"=>"",
+                "ads_class"=>"reklama",
                 "target" => 'target="_blank"');  
       	break;
       	}

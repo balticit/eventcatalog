@@ -520,6 +520,7 @@ class artist_php extends CPageCodeHandler
   					array("link" => "http://forevent.pro/",
   					"imgname" => "forevent",
   					"title"=>"",
+  					"ads_class"=>"reklama",
   					"target" => "target='_blank'");
 
 				
