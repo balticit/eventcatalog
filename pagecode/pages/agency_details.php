@@ -144,9 +144,8 @@ class agency_details_php extends CPageCodeHandler
                         $metadata->keywords = $info["keywords"];
                     if (!empty($info["description"]))
                         $metadata->description = $info["description"];
-                    if (!empty($info["seo_text_caption"]) && !empty($info["seo_text"]) && $page == 1) {
-                        $footerTextHTML = '<div><div class="recomendTitle agency">' . $info["seo_text_caption"] .
-                            '</div>' . $info["seo_text"] . '</div>';
+                    if (!empty($info["seo_text"]) && $page == 1) {
+                        $footerTextHTML = '<div>' . $info["seo_text"] . '</div>';
                     }
                 }
             }

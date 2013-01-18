@@ -297,7 +297,7 @@ class artist_details_php extends CPageCodeHandler
                     
                 }
                 else {
-                    $ft = "";
+                    $ft["seo_text"] = "";
                 }
                 $footerText = $this->GetControl("footerText");
                 $footerText->dataSource = $ft;

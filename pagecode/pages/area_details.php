@@ -479,7 +479,7 @@ class area_details_php extends CPageCodeHandler
 				//SEO text
 				if (isset($subtype)) {
 				
-				  $info = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+				  $info = SQLProvider::ExecuteQuery("select * from tbl__area_subtypes where tbl_obj_id=" . $subtype);
                     if (sizeof($info) > 0) {
                         $info = $info[0];
                         if (!empty($info["title"]))
@@ -489,7 +489,7 @@ class area_details_php extends CPageCodeHandler
                         if (!empty($info["description"]))
                             $metadata->description = $info["description"];
                         if (!empty($info["seo_text"]) && $page == 1) {
-                            $ft =  $info["seo_text"] ;
+                            $ft["seo_text"] =  $info["seo_text"] ;
                         }
                     }
 				
@@ -498,7 +498,7 @@ class area_details_php extends CPageCodeHandler
 				//	$ft["seo_text"] = $ft[0]["seo_text"];
 				}
 				else {
-					$ft = "";
+					$ft["seo_text"] = "";
 				}
 				$footerText = $this->GetControl("footerText");
 				$footerText->dataSource = $ft;
