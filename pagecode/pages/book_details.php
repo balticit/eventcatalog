@@ -377,6 +377,14 @@ else {
 	$last_book->dataSource = $lastBookItems;
         
         
+        $mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
+        
         /* eventtv menu */
             $topics1 = SQLProvider::ExecuteQuery("select tbl_obj_id, title, title_url, color from tbl__eventtv_topics order by group_num, order_num");
             foreach ($topics1 as &$item) {

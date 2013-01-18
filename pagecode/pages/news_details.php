@@ -72,13 +72,7 @@ if($this->is_list){
 			$newsCategoriesList->dataSource = $list;
 			
 			
-			$mainMenu = $this->GetControl("menu");
-            $mainMenu->dataSource["redevent"] =
-              array("link"=>"http://redevent.ru/",
-                    "imgname"=>"redevent",
-                    "title"=>"",
-                    "ads_class"=>"reklama",
-                    "target"=>'target="_blank"');
+		
 			
 			
 			// заголовок категории новостей

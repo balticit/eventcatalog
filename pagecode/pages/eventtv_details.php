@@ -394,6 +394,15 @@ else {
 
 		$publics[0]['rating'] = $rating->Render();
 
+
+    $mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
+
 		$topics = SQLProvider::ExecuteQuery("select * from tbl__eventtv_topics order by group_num, order_num");
         array_unshift($topics,array("tbl_obj_id"=>"0","title"=>"Все репортажи"));
         foreach ($topics as &$item) {

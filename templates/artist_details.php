@@ -55,7 +55,7 @@
 	<!--LIST RESIDENT-->
   <div class="resident-category-title artist"><?php CRenderer::RenderControl("titlefilter"); ?></div>
   <div class="category-desc"><?php CRenderer::RenderControl("footerText"); ?></div>
-  <?php CRenderer::RenderControl("yaListTop"); ?>
+  <?php // CRenderer::RenderControl("yaListTop"); ?>
   <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("artistList"); ?></div>
   <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
   <!--END LIST RESIDENT-->

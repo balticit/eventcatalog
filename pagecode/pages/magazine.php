@@ -74,13 +74,7 @@ class magazine_php extends CPageCodeHandler
         $magazinesCtrl->dataSource = array('magazines'=>$innerHtml);    
         
         
-        $mainMenu = $this->GetControl("menu");
-            $mainMenu->dataSource["redevent"] =
-              array("link"=>"http://redevent.ru/",
-                    "imgname"=>"redevent",
-                    "title"=>"",
-                    "ads_class"=>"reklama",
-                    "target"=>'target="_blank"');
+        
         
         
     }
