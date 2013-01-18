@@ -32,14 +32,12 @@
 	<control relativeId="activity_type" class="CDataGridView" tableName="tbl__activity_type" pageSize="40" cssClass="dataTable" orderField="title" pagerId="pager" submitText="Сохранить" resetText="Сбросить" keyId="tbl_obj_id" keyType="numeric" addText="Добавить" addClass="addItem">
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
-			<item type="class" class="CGridDataField" dbField="title" label="Категория" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Родительская категория"  lookupTable="vw__activities_parent" lookupId="child_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Корень --" size="1"/>
-			<item type="class" class="CGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="keywords2" label="Ключевые слова второстепенные" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+      <item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Родительская категория"  lookupTable="vw__activities_parent" lookupId="child_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Корень --" size="1"/>
 			<item type="class" class="CTinyMCETextareaGridDataField" dbField="seo_text" label="Текст" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__contractor2activity" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="kind_of_activity"/>
-      <item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
 		</param>
 	</control>
@@ -47,11 +45,10 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="keywords2" label="Ключевые слова второстепенные" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-      <item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__area2type" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="type_id"/>
-			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
 		</param>
 	</control>
@@ -59,12 +56,11 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="keywords2" label="Ключевые слова второстепенные" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Вид площадки:"  lookupTable="tbl__area_types" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" hasEmpty="1" emptyValue="0" emptyTitle="--Корень--" size="1" visibleOnList="1"/>
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Вид площадки:"  lookupTable="tbl__area_types" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" hasEmpty="1" emptyValue="0" emptyTitle="--Корень--" size="1" visibleOnList="1"/>
 			<item type="class" class="CTinyMCETextareaGridDataField" dbField="seo_text" label="Текст" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
-			<item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__area2subtype" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="subtype_id"/>
 			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
 		</param>
@@ -82,11 +78,11 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-      <item type="class" class="CDBLookupGridDataField" dbField="style_group" label="Группа стилей"  lookupTable="tbl__styles_groups" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- не выбрана --" size="1"/>
-			<item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__artist2group" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="group_id"/>
-      <item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
+			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+      <item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+			<item type="class" class="CDBLookupGridDataField" dbField="style_group" label="Группа стилей"  lookupTable="tbl__styles_groups" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- не выбрана --" size="1"/>
+			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
 		</param>
 	</control>
@@ -94,13 +90,11 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Раздел"  lookupTable="tbl__artist_group" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Корень --" size="1"/>
+			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+      <item type="class" class="CDBLookupGridDataField" dbField="parent_id" label="Раздел"  lookupTable="tbl__artist_group" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Корень --" size="1"/>
 			<item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="keywords2" label="Ключевые слова второстепенные" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
 			<item type="class" class="CTinyMCETextareaGridDataField" dbField="seo_text" label="Текст" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
-			<item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__artist2subgroup" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="subgroup_id"/>
 			<item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
 			<item type="class" class="CDeleteGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="delete" deleteText="Удалить" deleteConfirmFunction="ConfirmDelete()" fieldType="numeric" labelClass="itemLabel"/>
 		</param>
@@ -126,12 +120,10 @@
 		<param name="fields" type="list">
 			<item type="class" class="CGridDataField" dbField="tbl_obj_id" label="ID" itemClass="numCell" alterItemClass="alterNumCell" visibleOnEdit="0" visibleOnAdd="0"/>
 			<item type="class" class="CGridDataField" dbField="title" label="Название" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-      <item type="class" class="CGridDataField" dbField="page_title" label="Заголовок страницы" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
 			<item type="class" class="CTextareaGridDataField" dbField="keywords" label="Ключевые слова" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CTextareaGridDataField" dbField="description" label="Meta description" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="keywords2" label="Ключевые слова второстепенные" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
-			<item type="class" class="CGridDataField" dbField="priority" label="Приоритет" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
-			<item type="class" class="CGridDataField" dbField="seo_text_caption" label="Заголовок текста" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CTextareaGridDataField" dbField="description" label="Описание" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
+			<item type="class" class="CGridDataField" dbField="order_id" label="Порядок" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" />
+      <item type="class" class="CGridDataField" dbField="seo_text_caption" label="Заголовок текста" alterItemClass="alterItem" labelClass="itemLabel" addClass="addCell" editClass="editCell" visibleOnList="0" />
 			<item type="class" class="CTinyMCETextareaGridDataField" dbField="seo_text" label="Текст" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel"/>
 			<item type="class" class="CDBFilteredLookupGridDataField" dbField="first_id" label="Первый в списке"  lookupTable="vw__agency2activity" lookupId="tbl_obj_id" lookupTitle="title" alterItemClass="alterItem" addClass="addCell" editClass="editCell" labelClass="itemLabel" fieldType="numeric" multiple="0" visibleOnList="1" hasEmpty="1" emptyValue="0" emptyTitle="-- Нет --" size="30" filterField="tbl_obj_id" filterLookupField="kind_of_activity"/>
       <item type="class" class="CEditGridDataField" dbField="tbl_obj_id" label="" alterItemClass="alterItem" cellType="edit" editText="Редактировать" fieldType="numeric" labelClass="itemLabel"/>
