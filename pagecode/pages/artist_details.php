@@ -274,11 +274,30 @@ class artist_details_php extends CPageCodeHandler
 
                 //SEO text
                 if (isset($subgroup)) {
-                    $ft = SQLProvider::ExecuteQuery("select seo_text from tbl__artist_subgroup where tbl_obj_id=" . $subgroup);
-                    $ft["seo_text"] = $ft[0]["seo_text"];
+                    
+                    
+                    
+                    
+                    $info = SQLProvider::ExecuteQuery("select * from tbl__artist_subgroup where tbl_obj_id=" . $subgroup);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] . " - Каталог артистов - ";
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $ft =  $info["seo_text"] ;
+                        }
+                    }
+                    
+                    
+                    
+                    
                 }
                 else {
-                    $ft["seo_text"] = "";
+                    $ft = "";
                 }
                 $footerText = $this->GetControl("footerText");
                 $footerText->dataSource = $ft;

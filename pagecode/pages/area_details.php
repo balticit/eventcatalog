@@ -478,11 +478,27 @@ class area_details_php extends CPageCodeHandler
 				$areaList->dataSource = $areas;
 				//SEO text
 				if (isset($subtype)) {
-					$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
-					$ft["seo_text"] = $ft[0]["seo_text"];
+				
+				  $info = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] . " - Каталог площадок - ";
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $ft =  $info["seo_text"] ;
+                        }
+                    }
+				
+				
+				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+				//	$ft["seo_text"] = $ft[0]["seo_text"];
 				}
 				else {
-					$ft["seo_text"] = "";
+					$ft = "";
 				}
 				$footerText = $this->GetControl("footerText");
 				$footerText->dataSource = $ft;
