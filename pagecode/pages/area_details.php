@@ -489,7 +489,7 @@ class area_details_php extends CPageCodeHandler
                         if (!empty($info["description"]))
                             $metadata->description = $info["description"];
                         if (!empty($info["seo_text"]) && $page == 1) {
-                            $ft["seo_text"] =  $info["seo_text"] ;
+                            $info["seo_text"] =  $info["seo_text"] ;
                         }
                     }
 				
@@ -498,10 +498,10 @@ class area_details_php extends CPageCodeHandler
 				//	$ft["seo_text"] = $ft[0]["seo_text"];
 				}
 				else {
-					$ft["seo_text"] = "";
+					$info["seo_text"] = "";
 				}
 				$footerText = $this->GetControl("footerText");
-				$footerText->dataSource = $ft;
+				$footerText->dataSource = $info;
 				//setting pager
 				$pager = $this->GetControl("pager");
 				$pager->currentPage = $page;

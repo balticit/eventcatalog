@@ -288,7 +288,7 @@ class artist_details_php extends CPageCodeHandler
                         if (!empty($info["description"]))
                             $metadata->description = $info["description"];
                         if (!empty($info["seo_text"]) && $page == 1) {
-                            $ft =  $info["seo_text"] ;
+                            $info =  $info["seo_text"] ;
                         }
                     }
                     
@@ -297,10 +297,10 @@ class artist_details_php extends CPageCodeHandler
                     
                 }
                 else {
-                    $ft["seo_text"] = "";
+                    $info["seo_text"] = "";
                 }
                 $footerText = $this->GetControl("footerText");
-                $footerText->dataSource = $ft;
+                $footerText->dataSource = $info;
                 //setting pager
                 $pager = $this->GetControl("pager");
                 $pager->currentPage = $page;

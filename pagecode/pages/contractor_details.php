@@ -368,7 +368,7 @@ class contractor_details_php extends CPageCodeHandler
                         if (!empty($info["description"]))
                             $metadata->description = $info["description"];
                         if (!empty($info["seo_text"]) && $page == 1) {
-                            $ft["seo_text"] =  $info["seo_text"] ;
+                            $info["seo_text"] =  $info["seo_text"] ;
                         }
                     }
             
@@ -376,10 +376,10 @@ class contractor_details_php extends CPageCodeHandler
                
             }
             else {
-                $ft["seo_text"] = "";
+                $info["seo_text"] = "";
             }
             $footerText = $this->GetControl("footerText");
-            $footerText->dataSource = $ft;
+            $footerText->dataSource = $info;
 
             /*setting activity types*/
             $activities = SQLProvider::ExecuteQueryIndexed("select *, tbl_obj_id as child_id from `tbl__activity_type` order by priority desc", "child_id");
