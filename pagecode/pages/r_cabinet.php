@@ -2175,7 +2175,7 @@ $(function() {
   						    <td width="130" class=" message">'.$date.'</td>
   						    <td style="text-align: center;" width="70" class=" message">
                     <form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
-										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
 										</form>
                   </td>
                 </tr>';
@@ -2191,7 +2191,7 @@ $(function() {
                   $user_id = preg_replace('/[^0-9]/', '', $h_reciever);
                 }
   						  
-  						  $date = date("d M Y H:i",strtotime($reply_mess["time"]));
+  						  $date = date("d M Y H:i",strtotime($mess["time"]));
                 $date = str_ireplace($en_month,$ru_month,$date);
                 
                 $user_logo = SQLProvider::ExecuteQuery("select * from tbl__registered_user where tbl_obj_id='$user_id'  ");
@@ -2205,7 +2205,7 @@ $(function() {
   						    <td width="130" class="message">'.$date.'</td>
   						    <td style="text-align: center;" width="70" class="message">
   						      <form method="get" action="/r_cabinet/data/my_messages/action/delete/rid/'.$mess["tbl_obj_id"].'/">
-										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
 										</form>
                   </td>
                 </tr>';
@@ -2243,7 +2243,7 @@ $(function() {
               </table><br /></div>';
 						  
 							$cab["main_area"].='<form method="get" action="/r_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
-										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/>
 										</form>';
 						}
 						$cab["main_area"].='</div>';

@@ -3403,7 +3403,7 @@ border-radius: 3px; /* CSS3 */
 
 .message_history .header_message_history { font-size:18px; padding-bottom:4px}
 .message { padding:4px}
-.grey_message { background:#eee}
+.grey_message { background:#fff}
 
 .message_history th {color: #777777;
     text-align: left;
@@ -3416,6 +3416,8 @@ border-radius: 3px; /* CSS3 */
     margin: 1px auto;
     width: 12px;
 }    
+
+.message_history th, .message_history td { border-bottom: 1px solid #DCDCDC;}
     
 
 
