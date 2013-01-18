@@ -145,6 +145,25 @@ class artist_details_php extends CPageCodeHandler
             }
 
             if (is_numeric($group)) {
+            
+                    $info = SQLProvider::ExecuteQuery("select * from tbl__artist_group where tbl_obj_id=" . $group);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] . " - Каталог артистов - ";
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $info["seo_text"] =  $info["seo_text"] ;
+                        }
+                    }
+                    else {
+                      $info["seo_text"] = '';
+                    }
+            
+            
                 $first = SQLProvider::ExecuteQuery(
                     "select r.tbl_obj_id
         from tbl__artist_group t
@@ -288,7 +307,7 @@ class artist_details_php extends CPageCodeHandler
                         if (!empty($info["description"]))
                             $metadata->description = $info["description"];
                         if (!empty($info["seo_text"]) && $page == 1) {
-                            $info =  $info["seo_text"] ;
+                            $info["seo_text"] =  $info["seo_text"] ;
                         }
                     }
                     
