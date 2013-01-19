@@ -1657,7 +1657,7 @@ $(function() {
               $date = str_ireplace($en_month,$ru_month,$date);
               
               $user_id = preg_replace('/[^0-9]/', '', $h_sender);
-              $user_logo = SQLProvider::ExecuteQuery("select * from tbl__registered_user where tbl_obj_id='$user_id'  ");
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
 					    $user_logo = $user_logo[0]['logo'];
 					    if(empty($user_logo)) { $user_logo = 'nologo.png';}
 							
@@ -1685,7 +1685,7 @@ $(function() {
   						  $date = date("d M Y H:i",strtotime($mess["time"]));
                 $date = str_ireplace($en_month,$ru_month,$date);
   						  
-						    $user_logo = SQLProvider::ExecuteQuery("select * from tbl__registered_user where tbl_obj_id='$user_id'  ");
+						    $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
 						    $user_logo = $user_logo[0]['logo'];
 						    if(empty($user_logo)) { $user_logo = 'nologo.png';}
                 
@@ -1718,7 +1718,7 @@ $(function() {
               $date = str_ireplace($en_month,$ru_month,$date);
               
               $user_id = preg_replace('/[^0-9]/', '', $h_sender);
-              $user_logo = SQLProvider::ExecuteQuery("select * from tbl__registered_user where tbl_obj_id='$user_id'  ");
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
   				    $user_logo = $user_logo[0]['logo'];
   				    if(empty($user_logo)) { $user_logo = 'nologo.png';}
 						
