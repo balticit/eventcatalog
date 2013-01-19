@@ -1677,9 +1677,9 @@ $(function() {
 							
   						foreach($h_mess as $mess) {
   						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; 
-                  $user_id = preg_replace('/[^0-9]/', '', $h_sender);
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']);
                 } else { $class="white_message";
-                  $user_id = preg_replace('/[^0-9]/', '', $h_reciever);
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']);
                 }
   						  
   						  $date = date("d M Y H:i",strtotime($mess["time"]));
