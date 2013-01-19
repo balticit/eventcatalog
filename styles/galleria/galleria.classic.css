@@ -135,17 +135,17 @@
     opacity: .3;
     filter: alpha(opacity=30);
     cursor: pointer;
-    width: 62px;
-    height: 124px;
+    width: 53px;
+    height: 53px;
     position: absolute;
     left: 10px;
     z-index: 2;
-    background-position: 0 46px;
+    background-position: 0 0;
 }
 .galleria-image-nav-right {
     left: auto;
     right: 10px;
-    background-position: -254px 46px;
+    background-position: right 0;
     z-index: 2;
 }
 .notouch .galleria-image-nav-left:hover,
@@ -206,6 +206,6 @@
 .galleria-info-close,
 .galleria-image-nav-left,
 .galleria-image-nav-right {
-    background-image: url(classic-map.png);
+    background-image: url(gScrollTop.png);
     background-repeat: no-repeat;
 }

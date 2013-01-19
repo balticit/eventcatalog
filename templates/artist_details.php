@@ -4,12 +4,12 @@
 <head>
 
 <?php if(!$this->is_group){?>
-<title><?php CRenderer::RenderControl("title"); ?></title>
+<title><?php CRenderer::RenderControl("title"); ?> | Каталог артистов - EventCatalog.ru</title>
 <script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
 <?php }?>
 
 <?php if($this->is_group){ ?>
-<title><?php CRenderer::RenderControl("titlefilter"); ?>Каталог артистов - EVENT КАТАЛОГ</title>
+<title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог артистов - EventCatalog.ru</title>
 <script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
 <?php }?>
 

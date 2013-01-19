@@ -369,7 +369,7 @@ class area_details_php extends CPageCodeHandler
         if (sizeof($info) > 0) {
             $info = $info[0];
             if (!empty($info["title"]))
-                $this->GetControl('title')->text = $info["title"] . " - Каталог площадок - ";
+                $this->GetControl('title')->text = $info["title"] ;
             if (!empty($info["keywords"]))
                 $metadata->keywords = $info["keywords"];
             if (!empty($info["description"]))
@@ -503,7 +503,7 @@ class area_details_php extends CPageCodeHandler
                     if (sizeof($info) > 0) {
                         $info = $info[0];
                         if (!empty($info["title"]))
-                            $this->GetControl('title')->text = $info["title"] . " - Каталог площадок - ";
+                            $this->GetControl('title')->text = $info["title"] ;
                         if (!empty($info["keywords"]))
                             $metadata->keywords = $info["keywords"];
                         if (!empty($info["description"]))
@@ -652,29 +652,14 @@ class area_details_php extends CPageCodeHandler
 				$this->GetControl("capacityFilter")->html = $capacityFilter;
 
 				$mainMenu = $this->GetControl("menu");
-				//switch(rand(1,2)){
-				//case 1:
-				//	$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
-				//	break;
+    	
+        $mainMenu->dataSource["shelk"] =
+				array("link" => "http://shelkevent.ru/",
+				"imgname" => "shelk",
+				"title"=>"",
+				"ads_class"=>"reklama",
+				"target" => "target='_blank'");
 				
-        	
-				//	case 2:
-            $mainMenu->dataSource["shelk"] =
-  					array("link" => "http://shelkevent.ru/",
-  					"imgname" => "shelk",
-  					"title"=>"",
-  					"ads_class"=>"reklama",
-  					"target" => "target='_blank'");
-				//	break;
-					
-				/*case 2:$mainMenu->dataSource["midas"] =
-					array("link" => "http://midas.ru/?id=144",
-					"imgname" => "midas",
-					"title"=>"",
-					"target" => "target='_blank'");
-					break;
-					*/
-				//}
 				
 				$areasearch = $this->GetControl("areasearch");
 				$areasearch->headerTemplate =

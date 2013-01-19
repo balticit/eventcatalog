@@ -136,10 +136,8 @@ class agency_details_php extends CPageCodeHandler
                     from tbl__agency_type where tbl_obj_id = $activity");
                 if (sizeof($info) > 0) {
                     $info = $info[0];
-                    if (!empty($info["page_title"]))
-                        $this->GetControl('title')->text = $info["page_title"] . " - ";
-                    else
-                        $this->GetControl('title')->text = $info["title"] . " - Каталог агентств - ";
+                    if (!empty($info["title"]))
+                        $this->GetControl('title')->text = $info["title"] ;
                     if (!empty($info["keywords"]))
                         $metadata->keywords = $info["keywords"];
                     if (!empty($info["description"]))

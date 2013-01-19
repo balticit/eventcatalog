@@ -3,11 +3,11 @@
 <html>
 <head>
     <?php if($this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("titlefilter"); ?></title>
+        <title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог подрядчиков - EventCatalog.ru</title>
 		<link href="/styles/dont_remove.css" rel="stylesheet" type="text/css"></link>
     <?php }?>
     <?php if(!$this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("title"); ?> - Каталог подрядчиков - EVENT КАТАЛОГ</title>
+        <title><?php CRenderer::RenderControl("title"); ?> | Каталог подрядчиков - EventCatalog.ru</title>
     <?php }?>
 	<?php CRenderer::RenderControl("metadata"); ?>
 </head>

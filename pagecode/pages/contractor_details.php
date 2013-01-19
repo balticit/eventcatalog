@@ -362,7 +362,7 @@ class contractor_details_php extends CPageCodeHandler
                     if (sizeof($info) > 0) {
                         $info = $info[0];
                         if (!empty($info["title"]))
-                            $this->GetControl('title')->text = $info["title"] . " - Каталог подрядчиков - ";
+                            $this->GetControl('title')->text = $info["title"] ;
                         if (!empty($info["keywords"]))
                             $metadata->keywords = $info["keywords"];
                         if (!empty($info["description"]))
