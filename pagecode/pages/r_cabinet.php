@@ -2544,6 +2544,15 @@ $(function() {
 			break;
 
         case "my_news" :
+        
+        
+        $left_menu = array(
+				"/add_res_news" => array(
+					"type" => "link",
+					"text" => "Добавить новость",
+					"color" => "black",
+					"selected" => false));
+        
         $delete_news = GP("delete_news",array());
 				foreach ($delete_news as $value)
 				{
@@ -2573,14 +2582,9 @@ $(function() {
         }
 
         $newsblock = $this->GetControl("news");
-		$newsblock->dataSource = $news;
-
-$left_menu = array(
-				"/add_res_news" => array(
-					"type" => "link",
-					"text" => "Добавить новость",
-					"color" => "black",
-					"selected" => false));
+		    $newsblock->dataSource = $news;
+  
+        
 
 		$cab["main_area"] = "
 
@@ -2702,7 +2706,7 @@ $left_menu = array(
 				if ($menu["type"] == "label")
 				$menu_render .= $menu["text"]."<br>";
 				else {
-				  if($key = '/add_res_news') { $menu_render .= "<a href=".$key." style=\"color: ".$menu["color"].";\">";}
+				  if($key == '/add_res_news') { $menu_render .= "<a href=".$key." style=\"color: ".$menu["color"].";\">";}
 				  else {
 					$menu_render .= "<a href=/r_cabinet/data/".$key." style=\"color: ".$menu["color"].";\">";
 					}
