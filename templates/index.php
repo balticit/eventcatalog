@@ -121,7 +121,7 @@
             <td width="" rowspan="10" style="vertical-align: top;"><?php CRenderer::RenderControl("carousel")?></td>
             <td width='240' align="right" rowspan="3" style="padding-right:30px; vertical-align:middle; height:385px">
             <div style='height:324px; display:inline-block'>
-              <iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px; overflow:hidden; width:240px; height:324px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=324"></iframe>
+              <iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px; overflow:hidden; width:290px; height:340px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=290&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=340"></iframe>
             </div>
             </td>  
         </tr>

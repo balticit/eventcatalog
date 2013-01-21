@@ -27,7 +27,7 @@ print $header->RenderHTML();
 <tr valign="middle"><td style="height: 100%" align="center">
   <div class="style_404">
 	  <img src="/images/error404.jpg" width="527" height="492" style="display: block" alt="Ошибка 404" title="Ошибка 404. Извините, страница не доступна">
-	  <div style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="agency" class="agency">Агентства</a>, <a href="/book" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
+	  <div style="margin: 20px 0 0 0; ">Но вы можете перейти в разделы:<div style="font-size:18px"><a href="/contractor" class="contractor">Подрядчики</a>, <a href="/area" class="area">Площадки</a>, <a href="/artist" class="artist">Артисты</a>, <a href="/agency" class="agency">Агентства</a>, <a href="/eventoteka" class="common">Эвентотека</a></div>или вернуться на <a href="/" style="font-size:14px" class="black">главную</a></div>
 	</div>
 </td></tr>
 <?php /*
