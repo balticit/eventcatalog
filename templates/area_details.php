@@ -3,12 +3,12 @@
 <html>
 <head>
     <?php if(!$this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("title"); ?> | Каталог плащадок - EventCatalog.ru</title>
+        <title><?php CRenderer::RenderControl("title"); ?> | Каталог площадок - EventCatalog.ru</title>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
     <?php } ?>
     <?php if($this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог плащадок - EventCatalog.ru</title>
+        <title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог площадок - EventCatalog.ru</title>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
     <?php } ?>
