@@ -7,6 +7,9 @@ class CRepeaterAD extends CHTMLObject
 
 	public $adTemplate;
   public $adAfterLine = 5;	
+  
+  public $adTemplate2;
+  public $adAfterLine2 = 10;	
 	
 	public function CRepeater()
 	{
@@ -26,6 +29,11 @@ class CRepeaterAD extends CHTMLObject
 			if ($this->adTemplate && $lineNum == $this->adAfterLine) {
 				$html .= $this->adTemplate;
 			}
+			
+			if ($this->adTemplate2 && $lineNum == $this->adAfterLine2) {
+				$html .= $this->adTemplate2;
+			}
+			
 		}
 		
 		$html .=$this->footerTemplate;
