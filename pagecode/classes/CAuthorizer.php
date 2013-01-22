@@ -13,6 +13,7 @@ class CAuthorizer extends CObject
 		$user = SQLProvider::ExecuteQuery("SELECT 
 						  `tbl_obj_id`,
 						  `title`,
+						  `title_url`,
 						  `login`,
 						  `login_type`
 						FROM 
@@ -46,6 +47,7 @@ class CAuthorizer extends CObject
 		$user = SQLProvider::ExecuteQuery("SELECT 
 						  `tbl_obj_id`,
 						  `title`,
+						  `title_url`,
 						  `login`,
 						  `login_type`
 						FROM 

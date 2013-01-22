@@ -2113,13 +2113,13 @@ $(function() {
 					}
 					else
 					{
-
+            if(empty($reciever_data["title_url"])) { $reciever_data["title_url"] = $reciever_id; }
 						$cab["main_area"].='<table border="0" cellpadding="0" cellspacing="0">
 											<tr>
 												<td valign="middle" >'.($m_action=="reply"?"От":"Кому").':</td>
 												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="'.($reciever_data["logo"]==''?"/images/nologo.png":"/upload/".$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
-													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
+													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/profile/'.$reciever_type.'/'.$reciever_data["title_url"].'">'.$reciever_data["title"].'</a>
 													'/*($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/r_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>
 													<br/>
 													<span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
