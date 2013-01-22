@@ -657,7 +657,7 @@ class artist_details_php extends CPageCodeHandler
                         $link = $_SERVER['HTTP_HOST'] . '/' . $residend_info[0]['login_type'] . '/' . $id_str;
                         $mtitle = iconv($app->appEncoding, "utf-8", "Вы понравились пользователю на портале eventcatalog.ru");
                         $mbody = iconv($app->appEncoding, "utf-8", '<div id="content"><p>Уважаемый резидент!</p>' .
-                            '<p>Вы понтравились пользователю.</p>' .
+                            '<p>Вы понравились пользователю.</p>' .
                             '<p>Вы можете посмотреть кому, перейдя по ссылке: <a target="_blank" href="http://' . $link . '">http://' . $link . '</a></p>' .
                             '<p>С уважением,<br />' .
                             'EVENTКАТАЛОГ<br />' .
