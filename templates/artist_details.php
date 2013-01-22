@@ -94,7 +94,6 @@
 </td>
 <td style="vertical-align:top; padding-left: 5px;">
 
-<?php CRenderer::RenderControl("artistsearch"); ?>
 
 <?php CRenderer::RenderControl("yaPersonal"); ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td valign="top"><?php CRenderer::RenderControl("details"); ?></td></tr></table>

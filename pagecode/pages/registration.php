@@ -377,6 +377,7 @@ class registration_php extends CPageCodeHandler
                                 $userData->skype = $props["skype"];
                                 $userData->icq = $props["icq"];
                                 
+                                $userData->title = trim($props['title']);
                                 
                                 if($props["birthday"] == '') { $userData->birthday = strftime('%Y-%m-%d %H:%M:%S', time());}
                                 

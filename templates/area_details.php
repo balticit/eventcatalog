@@ -92,7 +92,7 @@
             <a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
 		</td>
 		<td style="vertical-align:top; padding-left: 5px;">
-		  <?php CRenderer::RenderControl("areasearch"); ?>
+
 		
 			<?php CRenderer::RenderControl("yaPersonal"); ?>
 			
