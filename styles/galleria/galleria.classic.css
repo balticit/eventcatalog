@@ -1,14 +1,10 @@
-/*
- * Galleria Classic Theme
- * Copyright (c) 2010, Aino
- * Licensed under the MIT license.
- */
- #galleria { margin-top:20px}
- 
+/* Galleria Classic Theme 2012-08-07 | https://raw.github.com/aino/galleria/master/LICENSE | (c) Aino */
+#galleria-loader{height:1px!important}
+
 .galleria-container {
     position: relative;
     overflow: hidden;
-   /* background: #000; */
+    background: #fff;
 }
 .galleria-container img {
     -moz-user-select: none;
@@ -17,11 +13,12 @@
 }
 .galleria-stage {
     position: absolute;
-    top: 10px;
-    bottom: 80px;
-    left: 10px;
-    right: 10px;
+    top: -2px;
+    bottom: 70px;
+    left: 0px;
+    right: 0px;
     overflow:hidden;
+    height: 445px;
 }
 .galleria-thumbnails-container {
     height: 70px;
@@ -32,43 +29,36 @@
     z-index: 2;
 }
 .galleria-carousel .galleria-thumbnails-list {
-    margin-left: 30px;
-    margin-right: 30px;
+
 }
 .galleria-thumbnails .galleria-image {
-    height: 60px !important;
-    width: 82px;
-    /*background: #000;*/
-    margin: 0 5px 0 5px;
-    border: 1px solid #fff;
+    height: 60px;
+    width: 90px;
+    background: #fff;
+    margin: 0 5px 0 0;
+    border: none;
     float: left;
     cursor: pointer;
 }
-.galleria-thumbnails .galleria-image img {height: 60px !important}
 .galleria-counter {
-    position: absolute;
+    position: absolute; display:none !important;
     bottom: 10px;
     left: 10px;
     text-align: right;
-    color: #000;
+    color: #fff;
     font: normal 11px/1 arial,sans-serif;
     z-index: 1;
-    padding:2px;
-    background-color: #ccc; 
 }
 .galleria-loader {
-    background: #000;
-    width: 32px;
-    height: 32px;
+    background: #fff;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 50%;
-    right: 50%;
-    margin-left:-16px;
-    margin-top:-16px;
+    top: 10px;
+    right: 10px;
     z-index: 2;
     display: none;
     background: url(classic-loader.gif) no-repeat 2px 2px;
-    
 }
 .galleria-info {
     width: 50%;
@@ -81,14 +71,13 @@
     background-color: #000;
     padding: 12px;
     display: none;
-    
-    /* IE7 */ zoom:1;
+
 }
 .galleria-info-title {
     font: bold 12px/1.1 arial,sans-serif;
     margin: 0;
     color: #fff;
-	margin-bottom: 7px;
+    margin-bottom: 7px;
 }
 .galleria-info-description {
     font: italic 12px/1.4 georgia,serif;
@@ -124,7 +113,6 @@
     height: 20px;
     cursor: pointer;
     background-color: #000;
-
 }
 .notouch .galleria-info-link:hover {
     opacity: 1;
@@ -137,7 +125,7 @@
 .galleria-image-nav {
     position: absolute;
     top: 50%;
-    margin-top: -36px;
+    margin-top: -25px;
     width: 100%;
     height: 62px;
     left: 0;
@@ -147,17 +135,17 @@
     opacity: .3;
     filter: alpha(opacity=30);
     cursor: pointer;
-    width: 62px;
-    height: 124px;
+    width: 53px;
+    height: 53px;
     position: absolute;
     left: 10px;
     z-index: 2;
-    background-position: 0 46px;
+    background-position: 0 0;
 }
 .galleria-image-nav-right {
     left: auto;
     right: 10px;
-    background-position: -254px 46px;
+    background-position: right 0;
     z-index: 2;
 }
 .notouch .galleria-image-nav-left:hover,
@@ -174,18 +162,17 @@
 .galleria-thumb-nav-right {
     cursor: pointer;
     display: none;
-    background-position: -495px 15px;
+    background-image:url(prev-next.sprite.png);
+    background-position: 0px -8px;
     position: absolute;
     left: 0;
-    top: 1px;
-    height: 60px;
-    width: 23px;
+    top: 0;
+    height: 62px;
+    width: 36px;
     z-index: 3;
-    opacity: .8;
-    filter: alpha(opacity=80);
 }
 .galleria-thumb-nav-right {
-    background-position: -578px 15px;
+    background-position: -36px -8px;
     border-right: none;
     right: 0;
     left: auto;
@@ -195,18 +182,15 @@
     filter: alpha(opacity=20);
     cursor: default;
 }
-.notouch .galleria-thumb-nav-left:hover,
+.notouch .galleria-thumb-nav-left:hover {
+    background-position: 0px -93px;
+}
+
 .notouch .galleria-thumb-nav-right:hover {
-    opacity: 1;
-    filter: alpha(opacity=100);
-    background-color: #111;
+    background-position: -36px -93px;
 }
-.touch .galleria-thumb-nav-left:active,
-.touch .galleria-thumb-nav-right:active {
-    opacity: 1;
-    filter: alpha(opacity=100);
-    background-color: #111;
-}
+
+
 .notouch .galleria-thumbnails-container .disabled:hover {
     opacity: .2;
     filter: alpha(opacity=20);
@@ -217,26 +201,11 @@
 .galleria-carousel .galleria-thumb-nav-right {
     display: block;
 }
-.galleria-thumb-nav-left,
-.galleria-thumb-nav-right,
+
 .galleria-info-link,
 .galleria-info-close,
 .galleria-image-nav-left,
 .galleria-image-nav-right {
-    background-image: url(classic-map.png);
+    background-image: url(gScrollTop.png);
     background-repeat: no-repeat;
 }
-
-
-
-.galleria-image-nav-right {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -84px -0px; width:56px; height:56px; }
-.galleria-image-nav-left {background-image: url(gScrollTop.png); background-repeat: no-repeat; background-position: -7px -0px; width:56px; height:56px;}
-
-.galleria-thumb-nav-right { background-image: url(gRightScrollBot.png); background-repeat: no-repeat; background-position: center center; }
-.galleria-thumb-nav-left { background-image: url(gLeftScrollBot.png); background-repeat: no-repeat; background-position: center center; }
-
-.galleria-thumb-nav-right:hover { background-color: #fff !important; background-image: url(gRightScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
-.galleria-thumb-nav-left:hover { background-color: #fff !important; background-image: url(gLeftScrollBot.png) !important; background-repeat: no-repeat; background-position: center center; }
-
-
-.galleria-errors { display:none !important; }

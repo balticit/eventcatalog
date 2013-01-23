@@ -71,6 +71,10 @@ if($this->is_list){
 			$newsCategoriesList = $this->GetControl("newsCategoriesList");
 			$newsCategoriesList->dataSource = $list;
 			
+			
+		
+			
+			
 			// заголовок категории новостей
 			// if(!empty($cat)) {
 				// $header = SQLProvider::ExecuteQuery('SELECT title FROM `tbl__news_dir` WHERE tbl_obj_id = '.$cat);

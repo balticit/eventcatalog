@@ -3,11 +3,11 @@
 <html>
 <head>
     <?php if($this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("titlefilter"); ?></title>
+        <title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог подрядчиков - EventCatalog.ru</title>
 		<link href="/styles/dont_remove.css" rel="stylesheet" type="text/css"></link>
     <?php }?>
     <?php if(!$this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("title"); ?> - Каталог подрядчиков - EVENT КАТАЛОГ</title>
+        <title><?php CRenderer::RenderControl("title"); ?> | Каталог подрядчиков - EventCatalog.ru</title>
     <?php }?>
 	<?php CRenderer::RenderControl("metadata"); ?>
 </head>
@@ -20,10 +20,7 @@
 <tr><!--Меню-->
 <td><?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
   </td>
 </tr>
 <tr><!--содержание-->
@@ -41,13 +38,16 @@
 					<a class="addConstractor" href="/registration/?type=contractor">Добавить Подрядчика</a>
                 </td>
                 <td style="vertical-align:top">
-                    <?php CRenderer::RenderControl("titlefilterLinks"); ?>
-					<div style="padding-left:0px;"> 
-						<?php CRenderer::RenderControl("yaListTop"); ?>                      
-                        <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("contList"); ?></table>
-                        <div><?php CRenderer::RenderControl("footerText"); ?></div>
-                    </div>
-                    <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>
+                    
+	<!--LIST RESIDENT-->
+  <div class="resident-category-title contractor"><?php CRenderer::RenderControl("titlefilter"); ?></div>
+  <div class="category-desc"><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php // CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("contList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+                        
+  
                 </td>
 				<?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
             </tr>

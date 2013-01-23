@@ -454,26 +454,27 @@ class index_php extends CPageCodeHandler
 		if (sizeof($magazine)>0) $this->mag = $magazine[0];
 
 	$mainMenu = $this->GetControl("menu");
-	switch(rand(1,8)) {
+	switch(rand(2,7)) {
 	case 1:
     /*$mainMenu->dataSource["museum"] =
       array("link"=>"http://15kop.ru/",
             "imgname"=>"museum",
             "title"=>"",
             "target"=>'target="_blank"');
-            */
+            
     $mainMenu->dataSource["museum"] =
       array("link"=>"http://www.valet-parking.ru/",
             "imgname"=>"valet",
             "title"=>"",
             "target"=>'target="_blank"');
-            
+            */
 	break;
 	case 2:
 	$mainMenu->dataSource["polymedia"] =
       array("link"=>"http://www.polymedia.ru/",
             "imgname"=>"polymedia",
             "title"=>"",
+            "ads_class"=>"reklama",
             "target"=>'target="_blank"');
 	break;
 	case 3:
@@ -481,6 +482,7 @@ class index_php extends CPageCodeHandler
       array("link"=>"http://www.kinodoctor.ru/",
             "imgname"=>"kinodoktor",
             "title"=>"",
+            "ads_class"=>"reklama",
             "target"=>'target="_blank"');
 	break;
 	case 4:
@@ -488,6 +490,7 @@ class index_php extends CPageCodeHandler
 	   array("link"=>"http://www.aksioma.me/",
 	   "imgname"=>"axiom",
 	   "title"=>"",
+	   "ads_class"=>"reklama",
 	   "target"=>"target='_blank'");
 	break;
 	case 5:
@@ -495,6 +498,7 @@ class index_php extends CPageCodeHandler
 	   array("link"=>"http://energy-pro.org/",
 	   "imgname"=>"energy",
 	   "title"=>"",
+	   "ads_class"=>"reklama",
 	   "target"=>"target='_blank'");
 	break;
 	case 6:
@@ -502,11 +506,12 @@ class index_php extends CPageCodeHandler
 	   array("link"=>"http://www.spinmusic.ru/",
 	   "imgname"=>"spin",
 	   "title"=>"",
+	   "ads_class"=>"reklama",
 	   "target"=>"target='_blank'");
 	break;
 	case 7:
 	$mainMenu->dataSource["great"] = 
-	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","target"=>"target='_blank'");
+	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","ads_class"=>"reklama","target"=>"target='_blank'");
 	break;
 /*	case 8:
 	$mainMenu->dataSource["midas"] = 

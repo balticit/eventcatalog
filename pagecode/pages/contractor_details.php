@@ -142,8 +142,22 @@ class contractor_details_php extends CPageCodeHandler
 				pro_type desc, pro_cost desc, pro_date_pay desc, title limit $rp,$this->pageSize");				                
                 foreach ($contractors as &$contractor)
                 {
-                    $contractor["logo"] = $contractor["logo_image"];
-	                $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span style="color: #000;">('.$contractor["city_name"].')</span>' : '';
+                  /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                  $tbl_obj_id = $contractor["tbl_obj_id"];
+                  $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                  join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                  where parent_id=$tbl_obj_id limit 3");
+                  
+                  $contractor["thumbs"] = '';
+                  foreach ($thumbs as $thumb) {
+                    $contractor["thumbs"] .= '<li><a href="/contractor/'. $contractor['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+                  }
+                  /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                  
+                  $contractor['registration_date'] = 'В каталоге: '.onSiteTime($contractor['registration_date']);
+
+                  $contractor["logo"] = $contractor["logo_image"];
+                  $contractor["city_item"] = (!empty($contractor["city_name"])) ? '<span>('.$contractor["city_name"].')</span>' : '';
                     $contractor["class"] = "contractor_table_hover";
                     if ($contractor["title"][0] != $letter) {
                         $contractor["space_height"] = 15;
@@ -154,24 +168,24 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($contractor["selection"]) {
                         case 1:
-                            $contractor["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#EE0000; ";
                             break;
                         case 2:
-                            $contractor["selection_type"] = "color:#000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#000; ";
                             break;
                         case 3:
-                            $contractor["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $contractor["selection_type"] = "font-weight:bold; ";
                             break;
                         default:
-                            $contractor["selection_type"] = "color:#000; font-weight:bold;";
+                            $contractor["selection_type"] = "color:#000; ";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $contractor["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
                     $contractor['category'] = "";
                     foreach ($gr as $gkey => $value) {
-                        if ($contractor['category'] != "")
-                            $contractor['category'] .= " / ";
-                        $contractor['category'] .= '<a class="common" href="/contractor/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                      if ($contractor['category'] != "")
+                        $contractor['category'] .= " / ";
+                        $contractor['category'] .= '<a href="/contractor/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
 
                     $contractor["info"] = CutString(strip_tags($contractor["short_description"]), $this->descriptionSize);
@@ -179,14 +193,14 @@ class contractor_details_php extends CPageCodeHandler
                     $contractor['links'] = "";
                     $contractor['resident_type'] = 'contractor';
                     $contractor['background'] 		= '0';
-					$contractor['pro_logo']			= '';
-					$contractor['pro_logo_prew']	= '';
-					if($contractor['pro_type'] == 1 || $contractor['pro_type'] == 2){
-						$contractor['activeEl'] = 'activeEl';
-						$contractor['border']			= 'border:2px solid '.getProBackgroud('contractor').';';
-						$contractor['pro_logo_prew']	= getProLogoForPreview('contractor');
-						$contractor['pro_logo']			= getProLogo();
-					}
+          					$contractor['pro_logo']			= '';
+          					$contractor['pro_logo_prew']	= '';
+          					if($contractor['pro_type'] == 1 || $contractor['pro_type'] == 2){
+          						$contractor['activeEl'] = 'activeEl';
+          						$contractor['border']			= 'border:2px solid '.getProBackgroud('contractor').';';
+          						$contractor['pro_logo_prew']	= getProLogoForPreview('contractor');
+          						$contractor['pro_logo']			= getProLogo();
+          					}
                 }
                 $catList = $this->GetControl("contList");
                 
@@ -205,16 +219,16 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($mf["selection"]) {
                         case 1:
-                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#EE0000;";
                             break;
                         case 2:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000;";
                             break;
                         case 3:
-                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $mf["selection_type"] = "color:#EE0000;";
                             break;
                         default:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000;";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
@@ -222,8 +236,25 @@ class contractor_details_php extends CPageCodeHandler
                     foreach ($gr as $gkey => $value) {
                         if ($mf['category'] != "")
                             $mf['category'] .= " / ";
-                        $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
+                        $mf['category'] .= '<a href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
+                    
+                    
+                    /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                    $tbl_obj_id = $mf["tbl_obj_id"];
+                    $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                    join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                    where parent_id=$tbl_obj_id limit 3");
+                    
+                    $mf["thumbs"] = '';
+                    foreach ($thumbs as $thumb) {
+                      $mf["thumbs"] .= '<li><href="/contractor/'. $agency['title_url'] .'"><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+                    }
+                    /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                  
+                    $mf['registration_date'] = 'В каталоге: '.onSiteTime($mf['registration_date']);
+
+                    
 
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
                     //Pro
@@ -263,16 +294,16 @@ class contractor_details_php extends CPageCodeHandler
 
                     switch ($mf["selection"]) {
                         case 1:
-                            $mf["selection_type"] = "color:#EE0000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#EE0000; ";
                             break;
                         case 2:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000; ";
                             break;
                         case 3:
-                            $mf["selection_type"] = "font-weight:bold; color:#EE0000;";
+                            $mf["selection_type"] = " color:#EE0000;";
                             break;
                         default:
-                            $mf["selection_type"] = "color:#000; font-weight:bold;";
+                            $mf["selection_type"] = "color:#000; ";
                             break;
                     }
                     $gr = SQLProvider::ExecuteQuery("select act.* from tbl__activity_type act, tbl__contractor2activity ca where ca.tbl_obj_id=" . $mf["tbl_obj_id"] . " and ca.kind_of_activity=act.tbl_obj_id");
@@ -282,7 +313,23 @@ class contractor_details_php extends CPageCodeHandler
                             $mf['category'] .= " / ";
                         $mf['category'] .= '<a class="common" href="/mf/' . $value['title_url'] . '">' . $value['title'] . '</a>';
                     }
+                    
+                    
+                    /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                    $tbl_obj_id = $mf["tbl_obj_id"];
+                    $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
+                    join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+                    where parent_id=$tbl_obj_id limit 3");
+                    
+                    $mf["thumbs"] = '';
+                    foreach ($thumbs as $thumb) {
+                      $mf["thumbs"] .= '<li><a href="/contractor/'. $contractor['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+                    }
+                    /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+                  
+                    $mf['registration_date'] = 'В каталоге: '.onSiteTime($mf['registration_date']);
 
+                    
                     $mf["info"] = CutString(strip_tags($mf["short_description"]), $this->descriptionSize);
                     //Pro
                     $mf['links'] = "";
@@ -310,14 +357,29 @@ class contractor_details_php extends CPageCodeHandler
 
             //SEO text
             if (isset($activity)) {
-                $ft = SQLProvider::ExecuteQuery("select seo_text from tbl__activity_type where tbl_obj_id=" . $activity);
-                $ft["seo_text"] = $ft[0]["seo_text"];
+            
+            $info = SQLProvider::ExecuteQuery("select * from tbl__activity_type where tbl_obj_id=" . $activity);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] ;
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $info["seo_text"] =  $info["seo_text"] ;
+                        }
+                    }
+            
+            
+               
             }
             else {
-                $ft["seo_text"] = "";
+                $info["seo_text"] = "";
             }
             $footerText = $this->GetControl("footerText");
-            $footerText->dataSource = $ft;
+            $footerText->dataSource = $info;
 
             /*setting activity types*/
             $activities = SQLProvider::ExecuteQueryIndexed("select *, tbl_obj_id as child_id from `tbl__activity_type` order by priority desc", "child_id");
@@ -347,13 +409,16 @@ class contractor_details_php extends CPageCodeHandler
             }
             $actList = $this->GetControl("actList");
             $actList->dataSource = $activities;
+            
             $titlefil = $this->GetControl("titlefilter");
             if (sizeof($titlefilter))
-                $titlefil->text = implode(" / ", $titlefilter) . " - ";
+                $titlefil->text = implode(" / ", $titlefilter) ;
             if (sizeof($titlefilterLinks))
-                $this->GetControl("titlefilterLinks")->html = '<div class="titlefilter contractor">' . implode(" / ", $titlefilterLinks) . '</div>';
+                $this->GetControl("titlefilterLinks")->html = implode(" / ", $titlefilterLinks);
             else
                 $this->GetControl("titlefilterLinks")->html = '';
+                
+                
             //setting pager
             $pager = $this->GetControl("pager");
             $pager->currentPage = $page;
@@ -380,6 +445,7 @@ class contractor_details_php extends CPageCodeHandler
                 array("link" => "http://www.kinodoctor.ru/",
                     "imgname" => "kinodoktor",
                     "title"=>"",
+                    "ads_class"=>"reklama",
                     "target" => 'target="_blank"');
 			// && всего резидентов
 			$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
@@ -570,7 +636,7 @@ class contractor_details_php extends CPageCodeHandler
                       $link = $_SERVER['HTTP_HOST'].'/'.$residend_info[0]['login_type'].'/'.$id_str;
                       $mtitle = iconv($app->appEncoding,"utf-8","Вы понравились пользователю на портале eventcatalog.ru");
                       $mbody = iconv($app->appEncoding,"utf-8",'<div id="content"><p>Уважаемый резидент!</p>'.
-                      '<p>Вы понтравились пользователю.</p>'.
+                      '<p>Вы понравились пользователю.</p>'.
                       '<p>Вы можете посмотреть кому, перейдя по ссылке: <a target="_blank" href="http://'.$link.'">http://'.$link .'</a></p>'.
                       '<p>С уважением,<br />'.
                       'EVENTКАТАЛОГ<br />'.
@@ -789,6 +855,7 @@ class contractor_details_php extends CPageCodeHandler
             array("link" => "http://www.kinodoctor.ru/",
                 "imgname" => "kinodoktor",
                 "title"=>"",
+                "ads_class"=>"reklama",
                 "target" => 'target="_blank"');    			
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm

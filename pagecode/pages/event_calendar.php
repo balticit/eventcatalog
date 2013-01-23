@@ -123,6 +123,13 @@
 			$newsList = $this->GetControl("text");
 			$newsList->dataSource = $arch;
 			
+			$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 			
 			// сам календарь
 			$sql  = '(SELECT t.title, t.date, t.date_end, t.link '.

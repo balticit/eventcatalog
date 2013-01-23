@@ -377,6 +377,7 @@ class registration_php extends CPageCodeHandler
                                 $userData->skype = $props["skype"];
                                 $userData->icq = $props["icq"];
                                 
+                                $userData->title = trim($props['title']);
                                 
                                 if($props["birthday"] == '') { $userData->birthday = strftime('%Y-%m-%d %H:%M:%S', time());}
                                 
@@ -493,6 +494,7 @@ class registration_php extends CPageCodeHandler
                         $props['city'] = trim($props['city']);
                         $props['other_city'] = $props['city'];
                         $errorsData = $userValidator->Validate(&$props);
+                        $props['title'] = trim($props['title']);
                         $props['title_url'] = translitURL($props['title']);
                         if ($this->CheckURL("contractor", $props['title_url']))
                             array_push($errorsData, "Подрядчик с таким названием уже существует");
@@ -703,6 +705,7 @@ class registration_php extends CPageCodeHandler
                         $props['city'] = trim($props['city']);
                         $props['other_city'] = $props['city'];
                         $errorsData = $userValidator->Validate(&$props);
+                        $props['title'] = trim($props['title']);
                         $props['title_url'] = translitURL($props['title']);
                         if ($this->CheckURL("area", $props['title_url']))
                             array_push($errorsData, "Площадка с таким названием уже существует");
@@ -1125,6 +1128,7 @@ class registration_php extends CPageCodeHandler
                         $props['city'] = trim($props['city']);
                         $props['country'] = trim($props['country']);
                         $errorsData = $userValidator->Validate(&$props);
+                        $props['title'] = trim($props['title']);
                         $props['title_url'] = translitURL($props['title']);
                         if ($this->CheckURL("artist", $props['title_url']))
                             array_push($errorsData, "Артист с таким названием уже существует");
@@ -1408,6 +1412,7 @@ class registration_php extends CPageCodeHandler
                         $props["login"] = $props["email"];
                         $props['city'] = trim($props['city']);
                         $errorsData = $userValidator->Validate(&$props);
+                        $props['title'] = trim($props['title']);
                         $props['title_url'] = translitURL($props['title']);
                         if ($this->CheckURL("agency", $props['title_url']))
                             array_push($errorsData, "Агентство с таким названием уже существует");

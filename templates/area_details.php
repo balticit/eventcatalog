@@ -3,12 +3,12 @@
 <html>
 <head>
     <?php if(!$this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("title"); ?></title>
+        <title><?php CRenderer::RenderControl("title"); ?> | Каталог площадок - EventCatalog.ru</title>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
     <?php } ?>
     <?php if($this->is_type){ ?>
-        <title><?php CRenderer::RenderControl("titlefilter"); ?>Каталог площадок - EVENT КАТАЛОГ</title>
+        <title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог площадок - EventCatalog.ru</title>
 		<script language="javascript"><?php CRenderer::RenderControl("jsArea"); ?></script>
 		<link rel="stylesheet" type="text/css" href="/styles/fm.css">
     <?php } ?>
@@ -23,10 +23,7 @@
 <tr><!--Меню-->
 <td><?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
 </td>
 </tr>
 <tr>
@@ -44,23 +41,33 @@
 					<a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
                 </td>
                 <td style="vertical-align:top">
+                <?php CRenderer::RenderControl("areasearch"); ?>
 					<div>
 						<form method="get" style="display: none" id="find_params"></form>
                         <?php CRenderer::RenderControl("currentFind"); ?>
 					</div>
-					<div>
+					<div style="padding-bottom:15px;">
                     <?php CRenderer::RenderControl("currentCapacity"); ?>
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr><?php CRenderer::RenderControl("capacityFilter"); ?></tr>
 					</table>
 					</div>
-                    <div style="padding-top:15px; padding-left: 0px;">
-                        <?php CRenderer::RenderControl("yaListTop"); ?>
-						<?php CRenderer::RenderControl("titlefilterLinks"); ?>
-                        <table border="0" cellpadding="0" cellspacing="0" class="tableInline" width="100%"><?php CRenderer::RenderControl("areaList"); ?></table><br>
-                        <div><?php CRenderer::RenderControl("footerText"); ?></div>
-                    </div>
-                    <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
+					
+					
+					
+  <!--LIST RESIDENT-->
+  <div class="resident-category-title area"><?php CRenderer::RenderControl("titlefilter"); ?></div>
+  <div class="category-desc"><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php // CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("areaList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+					
+
+                    
+                    
+                    
+                    
                 </td>
 				<?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
             </tr>
@@ -85,6 +92,8 @@
             <a class="addArea" href="/registration/?type=area">Добавить Площадку</a>
 		</td>
 		<td style="vertical-align:top; padding-left: 5px;">
+
+		
 			<?php CRenderer::RenderControl("yaPersonal"); ?>
 			
 			<?php CRenderer::RenderControl("details"); ?>

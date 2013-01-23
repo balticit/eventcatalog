@@ -707,38 +707,23 @@ class area_php extends CPageCodeHandler
 		
 
         $mainMenu = $this->GetControl("menu");
-    		switch(rand(1,2)){
-    		   case 1:
-    		   /*$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');*/
-    		   break;
-    		   
-    		   case 2:
-              $mainMenu->dataSource["shelk"] =
-    					array("link" => "http://shelkevent.ru/",
-    					"imgname" => "shelk",
-    					"title"=>"",
-    					"target" => "target='_blank'");
-    				break;
-    		  /* case 2:$mainMenu->dataSource["midas"] =
-                array("link" => "http://midas.ru/?id=144",
-                    "imgname" => "midas",
-                    "title"=>"",
-                    "target" => "target='_blank'");
-    		   break;
-    		   */
-    		}
-
-        $submenu = $this->GetControl("submenu");
-        $submenu->headerTemplate =
-          '<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
-          <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
-        $submenu->footerTemplate =
-         '</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">
-          <a href="" class="submenu" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>
-          <a href="" class="submenu" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>
-          <a href="" class="submenu" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>
-          <a href="" class="submenu" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></td></tr></table></div>';
-
+    	
+        $mainMenu->dataSource["shelk"] =
+				array("link" => "http://shelkevent.ru/",
+				"imgname" => "shelk",
+				"title"=>"",
+				"ads_class"=>"reklama",
+				"target" => "target='_blank'");
+    		
+        
+        
+        $areasearch = $this->GetControl("areasearch");
+        $areasearch->headerTemplate =
+          '<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>';
+        $areasearch->footerTemplate =
+         '<td class="area"><div style="text-align:justify !important;"><p>
+          <a href="" class="area" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></p></div></td></tr></table>';
+        
          $capacityRanges = array(
             array("from"=>0,"to"=>10,"title"=>"до 10", "checked"=>""),
             array("from"=>10,"to"=>50,"title"=>"10-50", "checked"=>""),

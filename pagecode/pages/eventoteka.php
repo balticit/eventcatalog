@@ -228,6 +228,7 @@
               array("link"=>"http://redevent.ru/",
                     "imgname"=>"redevent",
                     "title"=>"",
+                    "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
 					
 					

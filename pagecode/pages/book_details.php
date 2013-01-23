@@ -55,6 +55,9 @@ if($this->is_list){
                     $item['link'] = "/book/".$item['title_url'];
                 $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
                 $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
+                
+                
+                if($item['tbl_obj_id'] == $topic) { $topictitle=$item['title'];}
             }
             $topicList = $this->GetControl("topicList");
             $topicList->dataSource = $topics;
@@ -74,6 +77,14 @@ if($this->is_list){
             $tvTopicList->dataSource = $topics1;
             /**/
             
+
+$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 
             $html = "";
             $itemTemplate = $this->getControl("bookItem");
@@ -126,6 +137,10 @@ if($this->is_list){
 			
 			$count = count($count);
       $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
+      
+      
+      $publicTitleList = $this->GetControl("publicTitleList");
+        $publicTitleList->html = $topictitle;
 			
 				// echo " select 
 					// tbl_obj_id, title,title_url, annotation, is_new, logo_image, 					
@@ -153,7 +168,7 @@ if($this->is_list){
                     }
 
                     if (count($docs)>0) {
-                        $html .= "<div><b>".$topic['title']."</b></div>\n"; 
+                      //  $html .= "<div><b>".$topic['title']."</b></div>\n"; 
 
                         $html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">';
 
@@ -245,6 +260,8 @@ if($this->is_list){
         $pager->totalPages = $pages;
         $pager->rewriteParams = $rewriteParams;
 
+
+        
 
             $topic = $category;
             $sortTypes = $this->GetControl("sortTypes");
@@ -359,6 +376,14 @@ else {
 	}
 	$last_book->dataSource = $lastBookItems;
         
+        
+        $mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
         
         /* eventtv menu */
             $topics1 = SQLProvider::ExecuteQuery("select tbl_obj_id, title, title_url, color from tbl__eventtv_topics order by group_num, order_num");

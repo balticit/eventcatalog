@@ -15,10 +15,7 @@
 <tr><!--Меню-->
 <td><?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
 </td>
 </tr>
 <tr><!--содержание-->
@@ -40,6 +37,8 @@
             <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
 		</td>
 		<td style="vertical-align:top">	
+		
+		    <?php CRenderer::RenderControl("artistsearch"); ?>
 				<div style="padding-left: 0px;"> 
 						<?php if ($this->is_main) { ?>
 						<?php CRenderer::RenderControl("pro2List"); ?>

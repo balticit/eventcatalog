@@ -2113,13 +2113,13 @@ $(function() {
 					}
 					else
 					{
-
+            if(empty($reciever_data["title_url"])) { $reciever_data["title_url"] = $reciever_id; }
 						$cab["main_area"].='<table border="0" cellpadding="0" cellspacing="0">
 											<tr>
 												<td valign="middle" >'.($m_action=="reply"?"От":"Кому").':</td>
 												<td style="width:80px;height:40px;" align="center"><div style="width:60px; height:40px; border: 1px solid #D5D5D5;"><img border="0" height="40" width="60" src="'.($reciever_data["logo"]==''?"/images/nologo.png":"/upload/".$reciever_data["logo"]).'"/></div></td>
 												<td valign="middle">
-													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/u_profile/type/'.$reciever_type.'/id/'.$reciever_id.'">'.$reciever_data["title"].'</a>
+													<a style="font-size:16px; color:#0063AF; font-weight:bold;" href="/profile/'.$reciever_type.'/'.$reciever_data["title_url"].'">'.$reciever_data["title"].'</a>
 													'/*($m_action=="compose"?"":'&nbsp;&nbsp;<a onClick="return confirm(\'Вы действительно хотите добавить данного адресата в черный список?\');" href="/r_cabinet/data/my_messages/action/block/type/'.$reciever_type.'/id/'.$reciever_id.'" style="color:#888888; font-size:10px; text-decoration:underline;">в черный список</a>
 													<br/>
 													<span style="color:#999999; font-size:11px;">'.str_ireplace($en_month,$ru_month,date("d M Y H:i",strtotime($reply_mess["time"]))).'</span>').'
@@ -2148,26 +2148,102 @@ $(function() {
 										</form>';
 										
 										
-							$cab["main_area"].='<div class="message_history">';
-							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
+							$cab["main_area"].='<div class="message_history"><form id="fav_del_form" method="post">';
+							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>
+							<table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+              <tr>
+              <th class=" message">От</th>
+              <th class=" message">Сообщение</th>
+              <th class=" message" width="130">Дата</th>
+              <th class=" message" width="70" align="center" style="text-align:center">Удалить</th>
+              </tr>
+              ';
 							
+							$date = date("d M Y H:i",strtotime($reply_mess["time"]));
+              $date = str_ireplace($en_month,$ru_month,$date);
+              
+              
+              $user_id = preg_replace('/[^0-9]/', '', $h_sender);
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+					    $user_logo = $user_logo[0]['logo'];
+					    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+					    
+					    $cab["main_area"].='
+                <tr class="grey_message">
+  						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+  						    <td class=" message">'.ProcessMessage($reply_mess["text"]).'</td>
+  						    <td width="130" class=" message">'.$date.'</td>
+  						    <td style="text-align: center;" width="70" class=" message">
+                    <form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
+										</form>
+                  </td>
+                </tr>';
+              
 							
-							$cab["main_area"].='<div class="message grey_message">'.ProcessMessage($reply_mess["text"])."</div>";
 							
   						foreach($h_mess as $mess) {
-  						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
-                  $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
+  						  if( $h_sender == $mess['sender_id']) { 
+                  $class="grey_message";
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']); 
+                } else { 
+                  $class="white_message";
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']);
+                }
+  						  
+  						  $date = date("d M Y H:i",strtotime($mess["time"]));
+                $date = str_ireplace($en_month,$ru_month,$date);
+                
+                $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+						    $user_logo = $user_logo[0]['logo'];
+						    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+						    
+						    $cab["main_area"].='
+                <tr class="'.$class.'">
+  						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+  						    <td class=" message">'.$mess["text"].'</td>
+  						    <td width="130" class="message">'.$date.'</td>
+  						    <td style="text-align: center;" width="70" class="message">
+  						      <form method="get" action="/r_cabinet/data/my_messages/action/delete/rid/'.$mess["tbl_obj_id"].'/">
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
+										</form>
+                  </td>
+                </tr>';
+						    
               }
-              $cab["main_area"].='</div>';
+              $cab["main_area"].='</table></div>';
 										
 										
 						}
 						elseif ($m_action=="view")
 						{
-						  $cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
 						
+						  $date = date("d M Y H:i",strtotime($reply_mess["time"]));
+              $date = str_ireplace($en_month,$ru_month,$date);
+              
+              $user_id = preg_replace('/[^0-9]/', '', $h_sender);
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+  				    $user_logo = $user_logo[0]['logo'];
+  				    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+              
+						  $cab["main_area"].='
+						  <div class="message_history">
+						  <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+						  <tr>
+                <th class=" message">От</th>
+                <th class=" message">Сообщение</th>
+                <th class=" message" width="130">Дата</th>
+              </tr>
+						  
+              <tr class=" grey_message">
+						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+						    <td class=" message">'. ProcessMessage($reply_mess['text']) .'</td>
+						    <td width="130" class=" message">'.$date.'</td>
+              </tr>
+              </table><br /></div>';
+						  
 							$cab["main_area"].='<form method="get" action="/r_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
-										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/>
 										</form>';
 						}
 						$cab["main_area"].='</div>';
@@ -2256,7 +2332,7 @@ $(function() {
 						$cab["main_area"] .='<form id="fav_del_form" method="post"><table cellspacing=0 cellpadding=0 class="message_list">
 										<tr>
 									    <th>&nbsp;</th>
-									    <th>&nbsp;</th>
+		                  <th>&nbsp;</th>
 											<th>'.($m_action=="inbox"?"От":"Кому").'</th>
 											<th>Сообщение</th>
 											<th width="130">Дата</th>'.($m_action=="outbox"?"<th width='130'>Прочитано</th>":"").'
@@ -2468,6 +2544,15 @@ $(function() {
 			break;
 
         case "my_news" :
+        
+        
+        $left_menu = array(
+				"/add_res_news" => array(
+					"type" => "link",
+					"text" => "Добавить новость",
+					"color" => "black",
+					"selected" => false));
+        
         $delete_news = GP("delete_news",array());
 				foreach ($delete_news as $value)
 				{
@@ -2497,14 +2582,9 @@ $(function() {
         }
 
         $newsblock = $this->GetControl("news");
-		$newsblock->dataSource = $news;
-
-$left_menu = array(
-				"/add_res_news" => array(
-					"type" => "link",
-					"text" => "Добавить новость",
-					"color" => "black",
-					"selected" => false));
+		    $newsblock->dataSource = $news;
+  
+        
 
 		$cab["main_area"] = "
 
@@ -2626,7 +2706,7 @@ $left_menu = array(
 				if ($menu["type"] == "label")
 				$menu_render .= $menu["text"]."<br>";
 				else {
-				  if($key = '/add_res_news') { $menu_render .= "<a href=".$key." style=\"color: ".$menu["color"].";\">";}
+				  if($key == '/add_res_news') { $menu_render .= "<a href=".$key." style=\"color: ".$menu["color"].";\">";}
 				  else {
 					$menu_render .= "<a href=/r_cabinet/data/".$key." style=\"color: ".$menu["color"].";\">";
 					}

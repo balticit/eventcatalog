@@ -136,17 +136,14 @@ class agency_details_php extends CPageCodeHandler
                     from tbl__agency_type where tbl_obj_id = $activity");
                 if (sizeof($info) > 0) {
                     $info = $info[0];
-                    if (!empty($info["page_title"]))
-                        $this->GetControl('title')->text = $info["page_title"] . " - ";
-                    else
-                        $this->GetControl('title')->text = $info["title"] . " - Каталог агентств - ";
+                    if (!empty($info["title"]))
+                        $this->GetControl('title')->text = $info["title"] ;
                     if (!empty($info["keywords"]))
                         $metadata->keywords = $info["keywords"];
                     if (!empty($info["description"]))
                         $metadata->description = $info["description"];
-                    if (!empty($info["seo_text_caption"]) && !empty($info["seo_text"]) && $page == 1) {
-                        $footerTextHTML = '<div><div class="recomendTitle agency">' . $info["seo_text_caption"] .
-                            '</div>' . $info["seo_text"] . '</div>';
+                    if (!empty($info["seo_text"]) && $page == 1) {
+                        $footerTextHTML = '<div>' . $info["seo_text"] . '</div>';
                     }
                 }
             }
@@ -196,6 +193,8 @@ class agency_details_php extends CPageCodeHandler
                             $agency["selection_type"] = "color:#000; font-weight:bold;";
                             break;
                     }
+                    
+                    
                     $agency["annotation"] = BreakString(CutString(strip_tags($agency["description"]), $this->descriptionSize), 50);
                     $agencyTypes = SQLProvider::ExecuteQuery("SELECT t.* FROM tbl__agency_type t, tbl__agency2activity a WHERE a.kind_of_activity = t.tbl_obj_id and a.tbl_obj_id=" . $agency["tbl_obj_id"]);
                     $agencyTypeLinks = array();
@@ -204,6 +203,24 @@ class agency_details_php extends CPageCodeHandler
                         array_push($agencyTypeLinks, CStringFormatter::buildCategoryLinks($aType['title'], $link, "common"));
                     }
                     $agency['category'] = implode(" / ", $agencyTypeLinks);
+                    
+                    
+                    
+                    /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+          $tbl_obj_id = $agency["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__agency_photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $agency["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $artist["thumbs"] .= '<li><a href="/agency/'. $agency['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+          }
+          /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+        
+          $agency['registration_date'] = 'В каталоге: '.onSiteTime($agency['registration_date']);
+                    
+                    
                     $agency['links'] = "";
                     $agency['resident_type'] = 'agency';
                     $agency['class'] = 'agency_table_hover';
@@ -247,7 +264,7 @@ class agency_details_php extends CPageCodeHandler
             }
             $titlefil = $this->GetControl("titlefilter");
             if (!IsNullOrEmpty($titlefilter))
-                $titlefil->text = $titlefilter . " - ";
+                $titlefil->text = $titlefilter ;
             if (!IsNullOrEmpty($titlefilterLinks))
                 $this->GetControl("titlefilterLinks")->html = '<div class="titlefilter agency">' . $titlefilterLinks . '</div>';
             else
@@ -273,6 +290,7 @@ class agency_details_php extends CPageCodeHandler
                 array("link" => "http://www.polymedia.ru/",
                     "imgname" => "polymedia",
                     "title"=>"",
+                    "ads_class"=>"reklama",
                     "target" => 'target="_blank"');
 			$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'
@@ -399,7 +417,7 @@ class agency_details_php extends CPageCodeHandler
                       $link = $_SERVER['HTTP_HOST'].'/'.$residend_info[0]['login_type'].'/'.$id_str;
                       $mtitle = iconv($app->appEncoding,"utf-8","Вы понравились пользователю на портале eventcatalog.ru");
                       $mbody = iconv($app->appEncoding,"utf-8",'<div id="content"><p>Уважаемый резидент!</p>'.
-                      '<p>Вы понтравились пользователю.</p>'.
+                      '<p>Вы понравились пользователю.</p>'.
                       '<p>Вы можете посмотреть кому, перейдя по ссылке: <a target="_blank" href="http://'.$link.'">http://'.$link .'</a></p>'.
                       '<p>С уважением,<br />'.
                       'EVENTКАТАЛОГ<br />'.
@@ -619,6 +637,7 @@ class agency_details_php extends CPageCodeHandler
       array("link"=>"http://www.polymedia.ru/",
             "imgname"=>"polymedia",
             "title"=>"",
+            "ads_class"=>"reklama",
             "target"=>'target="_blank"');
 			
 	// && всего резидентов

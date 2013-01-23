@@ -145,6 +145,25 @@ class artist_details_php extends CPageCodeHandler
             }
 
             if (is_numeric($group)) {
+            
+                    $info = SQLProvider::ExecuteQuery("select * from tbl__artist_group where tbl_obj_id=" . $group);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] ;
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $info["seo_text"] =  $info["seo_text"] ;
+                        }
+                    }
+                    else {
+                      $info["seo_text"] = '';
+                    }
+            
+            
                 $first = SQLProvider::ExecuteQuery(
                     "select r.tbl_obj_id
         from tbl__artist_group t
@@ -239,6 +258,21 @@ class artist_details_php extends CPageCodeHandler
                         $artist['category'] .= '<a class="common" href="/artist/'.$value['title_url']. '">' . $value['title'] . '</a>';
                     }
 
+          /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+          $tbl_obj_id = $artist["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__artist2photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $artist["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $artist["thumbs"] .= '<li><a href="/artist/'. $artist['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+          }
+          /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+        
+          $artist['registration_date'] = 'В каталоге: '.onSiteTime($artist['registration_date']);
+
+
                     $artist["info"] = CutString(strip_tags($artist["description"]), $this->descriptionSize);
 
                     $artist['links'] = "";
@@ -259,14 +293,33 @@ class artist_details_php extends CPageCodeHandler
 
                 //SEO text
                 if (isset($subgroup)) {
-                    $ft = SQLProvider::ExecuteQuery("select seo_text from tbl__artist_subgroup where tbl_obj_id=" . $subgroup);
-                    $ft["seo_text"] = $ft[0]["seo_text"];
+                    
+                    
+                    
+                    
+                    $info = SQLProvider::ExecuteQuery("select * from tbl__artist_subgroup where tbl_obj_id=" . $subgroup);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] ;
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $info["seo_text"] =  $info["seo_text"] ;
+                        }
+                    }
+                    
+                    
+                    
+                    
                 }
                 else {
-                    $ft["seo_text"] = "";
+                    $info["seo_text"] = "";
                 }
                 $footerText = $this->GetControl("footerText");
-                $footerText->dataSource = $ft;
+                $footerText->dataSource = $info;
                 //setting pager
                 $pager = $this->GetControl("pager");
                 $pager->currentPage = $page;
@@ -343,7 +396,7 @@ class artist_details_php extends CPageCodeHandler
 
                 $titlefil = $this->GetControl("titlefilter");
                 if (sizeof($titlefilter))
-                    $titlefil->text = implode(" / ", $titlefilter) . " - ";
+                    $titlefil->text = implode(" / ", $titlefilter);
                 if (sizeof($titlefilterLinks))
                     $this->GetControl("titlefilterLinks")->html = '<div class="titlefilter artist">' . implode(" / ", $titlefilterLinks) . '</div>';
                 else
@@ -402,21 +455,20 @@ class artist_details_php extends CPageCodeHandler
           					array("link" => "http://forevent.pro/",
           					"imgname" => "forevent",
           					"title"=>"",
+          					"ads_class"=>"reklama",
           					"target" => "target='_blank'");
         
                 
 
-                $submenu = $this->GetControl("submenu");
-                $submenu->headerTemplate =
-                    '<div class="artist_btn_show submenu_controll" style="background: #{bgcolor} url(/images/menu1/bg_artist.png) repeat-x; height:30px; padding: 0 15px 0 37px; position: relative;">
+                $artistsearch = $this->GetControl("artistsearch");
+                $artistsearch->headerTemplate =
+                    '
 					<form method="get" id="form_find_artist" action="/artist/">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
-                $submenu->footerTemplate =
-                    '</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td align="right" style="padding-right: 60px;">
-					<span class="submenu">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>
-					<span class="submenu">Поиск по стране '.$selcountry->Render().'</span>
-					<span id="find_style" class="submenu" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span>
-					</tr></table></form></div>';
+                $artistsearch->footerTemplate =
+                    '<td><div style="text-align:justify !important;"><p>
+					<span class="artist">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="artist">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="artist" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span></p></div></td>
+					</tr></table></form>';
 
                 if (!IsNullOrEmpty($artist_doc_style_title)) {
                     $this->search_styles = "<div class=\"artist\">Стили: $artist_doc_style_title</div>";
@@ -605,7 +657,7 @@ class artist_details_php extends CPageCodeHandler
                         $link = $_SERVER['HTTP_HOST'] . '/' . $residend_info[0]['login_type'] . '/' . $id_str;
                         $mtitle = iconv($app->appEncoding, "utf-8", "Вы понравились пользователю на портале eventcatalog.ru");
                         $mbody = iconv($app->appEncoding, "utf-8", '<div id="content"><p>Уважаемый резидент!</p>' .
-                            '<p>Вы понтравились пользователю.</p>' .
+                            '<p>Вы понравились пользователю.</p>' .
                             '<p>Вы можете посмотреть кому, перейдя по ссылке: <a target="_blank" href="http://' . $link . '">http://' . $link . '</a></p>' .
                             '<p>С уважением,<br />' .
                             'EVENTКАТАЛОГ<br />' .
@@ -982,17 +1034,15 @@ class artist_details_php extends CPageCodeHandler
         $search = $this->GetControl("search");
         $search->dataSource = $searchDS;
 		
-		$submenu = $this->GetControl("submenu");
-		$submenu->headerTemplate =
-			'<div class="artist_btn_show submenu_controll" style="background-color: #{bgcolor}; height:30px; padding: 0 15px 0 37px; position: relative;">
+		$artistsearch = $this->GetControl("artistsearch");
+		$artistsearch->headerTemplate =
+			'
 			<form method="get" id="form_find_artist" action="/artist/">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td>';
-				$submenu->footerTemplate =
-				 '</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td align="right" style="padding-right: 60px;">
-					<span class="submenu">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>
-					<span class="submenu">Поиск по стране '.$selcountry->Render().'</span>
-					<span id="find_style" class="submenu" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span>       
-					</tr></table></form></div>';
+				$artistsearch->footerTemplate =
+				 '<td class="artist"><div style="text-align:justify !important;"><p>
+					<span class="artist">Поиск по названию <input name="artist_doc_name" type="text" size="20" value="'.$artist_doc_name.'"></span>&nbsp;/&nbsp;<span class="artist">Поиск по стране '.$selcountry->Render().'</span>&nbsp;/&nbsp;<span id="find_style" class="artist" style="cursor: pointer;" onclick="FindStylesDlg()">Поиск по стилю</span> </p></div></td>
+					</tr></table></form>';
 		
 				if (!IsNullOrEmpty($artist_doc_style_title)) {
 					$this->search_styles = "<div class=\"artist\">Стили: $artist_doc_style_title</div>";

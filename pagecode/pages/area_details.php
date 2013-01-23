@@ -363,6 +363,26 @@ class area_details_php extends CPageCodeHandler
 				$filter .= " title like '%$area_doc_place%' ";
 			}
 			if (is_numeric($type)) {
+			
+			
+			$info = SQLProvider::ExecuteQuery("select * from tbl__area_types where tbl_obj_id=" . $type);
+        if (sizeof($info) > 0) {
+            $info = $info[0];
+            if (!empty($info["title"]))
+                $this->GetControl('title')->text = $info["title"] ;
+            if (!empty($info["keywords"]))
+                $metadata->keywords = $info["keywords"];
+            if (!empty($info["description"]))
+                $metadata->description = $info["description"];
+            if (!empty($info["seo_text"]) && $page == 1) {
+                $info["seo_text"] =  $info["seo_text"] ;
+            }
+        }
+        else {
+          $info["seo_text"] =  '';
+        }
+			
+			
 				$first = SQLProvider::ExecuteQuery(
 				"select r.tbl_obj_id
 		from tbl__area_types t
@@ -443,7 +463,21 @@ class area_details_php extends CPageCodeHandler
 						$area['category'] .= " / ";
 						$area['category'] .= '<a class="common" href="/area/' . $value['title_url'] . '">' . $value['title'] . '</a>';
 					}
-
+          
+          /* ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+          $tbl_obj_id = $area["tbl_obj_id"];
+          $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__area_photos` ap
+          join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+          where parent_id=$tbl_obj_id limit 3");
+          
+          $area["thumbs"] = '';
+          foreach ($thumbs as $thumb) {
+            $area["thumbs"] .= '<li><a href="/area/'. $area['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
+          }
+          /* END ФОТКИ ГАЛЕРЕИ В СПИСКЕ */
+        
+          $area['registration_date'] = 'В каталоге: '.onSiteTime($area['registration_date']);
+          
 
 					$area['links'] = "";
 					$area["info"] = CutString(strip_tags($area["description"]), $this->descriptionSize);
@@ -464,14 +498,30 @@ class area_details_php extends CPageCodeHandler
 				$areaList->dataSource = $areas;
 				//SEO text
 				if (isset($subtype)) {
-					$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
-					$ft["seo_text"] = $ft[0]["seo_text"];
+				
+				  $info = SQLProvider::ExecuteQuery("select * from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+                    if (sizeof($info) > 0) {
+                        $info = $info[0];
+                        if (!empty($info["title"]))
+                            $this->GetControl('title')->text = $info["title"] ;
+                        if (!empty($info["keywords"]))
+                            $metadata->keywords = $info["keywords"];
+                        if (!empty($info["description"]))
+                            $metadata->description = $info["description"];
+                        if (!empty($info["seo_text"]) && $page == 1) {
+                            $info["seo_text"] =  $info["seo_text"] ;
+                        }
+                    }
+				
+				
+				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+				//	$ft["seo_text"] = $ft[0]["seo_text"];
 				}
 				else {
-					$ft["seo_text"] = "";
+					$info["seo_text"] = "";
 				}
 				$footerText = $this->GetControl("footerText");
-				$footerText->dataSource = $ft;
+				$footerText->dataSource = $info;
 				//setting pager
 				$pager = $this->GetControl("pager");
 				$pager->currentPage = $page;
@@ -536,7 +586,7 @@ class area_details_php extends CPageCodeHandler
 
 				$titlefil = $this->GetControl("titlefilter");
 				if (sizeof($titlefilter))
-				$titlefil->text = implode(" / ", $titlefilter) . " - ";
+				$titlefil->text = implode(" / ", $titlefilter) ;
 				if (sizeof($titlefilterLinks))
 				$this->GetControl("titlefilterLinks")->html = '<div class="titlefilter area">' . implode(" / ", $titlefilterLinks) . '</div>';
 				else
@@ -602,37 +652,22 @@ class area_details_php extends CPageCodeHandler
 				$this->GetControl("capacityFilter")->html = $capacityFilter;
 
 				$mainMenu = $this->GetControl("menu");
-				switch(rand(1,2)){
-				case 1:
-					$mainMenu->dataSource["museum"] =array("link" => "http://15kop.ru/","imgname" => "museum","title"=>"","target" => 'target="_blank"');
-					break;
-					
-					case 2:
-            $mainMenu->dataSource["shelk"] =
-  					array("link" => "http://shelkevent.ru/",
-  					"imgname" => "shelk",
-  					"title"=>"",
-  					"target" => "target='_blank'");
-					break;
-					
-				/*case 2:$mainMenu->dataSource["midas"] =
-					array("link" => "http://midas.ru/?id=144",
-					"imgname" => "midas",
-					"title"=>"",
-					"target" => "target='_blank'");
-					break;
-					*/
-				}
-				$submenu = $this->GetControl("submenu");
-				$submenu->headerTemplate =
-				'<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
-		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
-				$submenu->footerTemplate =
-				'</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">
-		<a href="" class="submenu" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>
-		<a href="" class="submenu" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>
-		<a href="" class="submenu" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>
-		<a href="" class="submenu" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></td></tr></table></div>';		
+    	
+        $mainMenu->dataSource["shelk"] =
+				array("link" => "http://shelkevent.ru/",
+				"imgname" => "shelk",
+				"title"=>"",
+				"ads_class"=>"reklama",
+				"target" => "target='_blank'");
+				
+				
+				$areasearch = $this->GetControl("areasearch");
+				$areasearch->headerTemplate =
+				'
+		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle">';
+				$areasearch->footerTemplate =
+				'<td class="area"><div style="text-align:justify !important;"><p>
+		<a href="" class="area" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></p></div></td></tr></table>';		
 				
 				$capacityRanges = array(
 				array("from"=>0,"to"=>10,"title"=>"до 10", "checked"=>""),
@@ -1191,7 +1226,7 @@ group by
 						$link = $_SERVER['HTTP_HOST'].'/'.$residend_info[0]['login_type'].'/'.$id_str;
 						$mtitle = iconv($app->appEncoding,"utf-8","Вы понравились пользователю на портале eventcatalog.ru");
 						$mbody = iconv($app->appEncoding,"utf-8",'<div id="content"><p>Уважаемый резидент!</p>'.
-						'<p>Вы понтравились пользователю.</p>'.
+						'<p>Вы понравились пользователю.</p>'.
 						'<p>Вы можете посмотреть кому, перейдя по ссылке: <a target="_blank" href="http://'.$link.'">http://'.$link .'</a></p>'.
 						'<p>С уважением,<br />'.
 						'EVENTКАТАЛОГ<br />'.
@@ -1504,16 +1539,26 @@ group by
 			$search->dataSource = $searchDS;
 			
 			//Extended search
-			$submenu = $this->GetControl("submenu");
-			$submenu->headerTemplate =
-			'<div class="area_btn_show submenu_controll" style="background: #{bgcolor}; height:30px; padding: 0px 15px 0 37px;">
-		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle"><td nowrap>';
-			$submenu->footerTemplate =
-			'</td><td><img src="/images/front/0.gif" width="1" height="30"></td><td nowrap align="right" style="padding-right:60px">
-		<a href="" class="submenu" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>
-		<a href="" class="submenu" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>
-		<a href="" class="submenu" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>
-		<a href="" class="submenu" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></td></tr></table></div>';		
+			
+			$mainMenu = $this->GetControl("menu");
+    	
+        $mainMenu->dataSource["shelk"] =
+				array("link" => "http://shelkevent.ru/",
+				"imgname" => "shelk",
+				"title"=>"",
+				"ads_class"=>"reklama",
+				"target" => "target='_blank'");
+			
+			
+			$areasearch = $this->GetControl("areasearch");
+				$areasearch->headerTemplate =
+				'
+		<table cellpadding="0" cellspacing="0" border="0" width="100%"><tr valign="middle">';
+				$areasearch->footerTemplate =
+				'<td class="area"><div style="text-align:justify !important;"><p>
+		<a href="" class="area" onclick="javascript: DlgByPlace(); return false;">Поиск по местоположению</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCapacity(); return false;">Поиск по вместимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgByCost(); return false;">Поиск по стоимости</a>&nbsp;/&nbsp;<a href="" class="area" onclick="javascript: DlgAdditional(); return false;">Расширенный поиск</a></p></div></td></tr></table>';		
+				
+			
 			
 			$capacityRanges = array(
 			array("from"=>0,"to"=>10,"title"=>"до 10", "checked"=>""),

@@ -92,7 +92,10 @@
 				
 				$headerdata["user_id"] = $user->id;
 				
-
+				
+				
+				$headerdata["user_title_url"] = $user->title_url;
+        if(empty($user->title_url)) { $headerdata["user_title_url"] = $user->id;}
   				
 				
 				switch ($user->type) {

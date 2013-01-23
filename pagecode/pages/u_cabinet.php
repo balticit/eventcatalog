@@ -1616,19 +1616,11 @@ $(function() {
 
 						}
 						
-						/*
-            
-          
-            
-            */
+
 						
 						if ($m_action=="reply"||$m_action=="compose")
 						{
-						
-					
-						
-						
-						
+				
 						
 						  if($m_action=="compose") {
     						$reciever_id = $_GET["type"].GPT("id");
@@ -1649,25 +1641,105 @@ $(function() {
 										</form>';
 										
 							$cab["main_area"].='<div class="message_history">';
-							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>';
+							$cab["main_area"].='<div class="header_message_history"><b>История сообщений</b></div>
+              <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+              <tr>
+              <th class=" message">От</th>
+              <th class=" message">Сообщение</th>
+              <th class=" message" width="130">Дата</th>
+              <th class=" message" width="70" align="center" style="text-align:center">Удалить</th>
+              </tr>
+              ';
 							
 							if($m_action=="reply") {
-							$cab["main_area"].='<div class="grey_message message">'.ProcessMessage($reply_mess["text"])."</div>";
+							
+							$date = date("d M Y H:i",strtotime($reply_mess["time"]));
+              $date = str_ireplace($en_month,$ru_month,$date);
+              
+              $user_id = preg_replace('/[^0-9]/', '', $h_sender);
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+					    $user_logo = $user_logo[0]['logo'];
+					    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+							
+						    $cab["main_area"].='
+                <tr class="grey_message">
+  						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+  						    <td class=" message">'.ProcessMessage($reply_mess["text"]).'</td>
+  						    <td width="130" class=" message">'.$date.'</td>
+  						    <td style="text-align: center;" width="70" class=" message">
+  						      <form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
+										</form>
+                  </td>
+                </tr>';
+              
 							}
 							
   						foreach($h_mess as $mess) {
-  						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; } else { $class="white_message";}
-                  $cab["main_area"].='<div class="'.$class.' message">'.$mess["text"].'</div>';
+  						  if( $h_sender == $mess['sender_id']) { $class="grey_message"; 
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']);
+                } else { $class="white_message";
+                  $user_id = preg_replace('/[^0-9]/', '', $mess['sender_id']);
+                }
+  						  
+  						  $date = date("d M Y H:i",strtotime($mess["time"]));
+                $date = str_ireplace($en_month,$ru_month,$date);
+  						  
+						    $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+						    $user_logo = $user_logo[0]['logo'];
+						    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+                
+                
+                $cab["main_area"].='
+                <tr class="'.$class.'">
+  						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+  						    <td class=" message">'.$mess["text"].'</td>
+  						    <td width="130" class=" message">'.$date.'</td>
+  						    <td style="text-align: center;" width="70" class=" message">
+  						      <form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$mess["tbl_obj_id"].'/">
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/>
+										</form>
+                  </td>
+                </tr>';
+                
               }
-              $cab["main_area"].='</div>';
+              $cab["main_area"].='</table>
+              
+              
+              
+              
+              </div>';
+
 										
 						}
 						elseif ($m_action=="view")
 						{
-						  $cab["main_area"].='<div style="color:#333333; background-color:#EEEEEE; padding:8px; margin:0 0 12px; -moz-border-radius: 6px 6px 6px 6px;">'.ProcessMessage($reply_mess["text"])."</div>";
+						  $date = date("d M Y H:i",strtotime($reply_mess["time"]));
+              $date = str_ireplace($en_month,$ru_month,$date);
+              
+              $user_id = preg_replace('/[^0-9]/', '', $h_sender);
+              $user_logo = SQLProvider::ExecuteQuery("select * from vw__all_users_full where user_id='$user_id'  ");
+  				    $user_logo = $user_logo[0]['logo'];
+  				    if(empty($user_logo)) { $user_logo = 'nologo.png';}
+						
+						  $cab["main_area"].='
+						  <div class="message_history">
+						  <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+						  <tr>
+              <th class=" message">От</th>
+              <th class=" message">Сообщение</th>
+              <th class=" message" width="130">Дата</th>
+              </tr>
+              <tr class=" grey_message">
+						    <td width="60" class=" message"><img src="/upload/'.$user_logo.'" width="60" height="40" style="border: 1px solid #CCCCCC;" alt="" /></td>
+						    <td class=" message">'. ProcessMessage($reply_mess['text']) .'</td>
+						    <td width="130" class=" message">'.$date.'</td>
+						    
+              </tr>
+              </table><br /></div>';
 						
 							$cab["main_area"].='<form method="get" action="/u_cabinet/data/my_messages/action/delete/rid/'.$reply_mess["tbl_obj_id"].'/">
-										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/><br/>
+										<input type="submit" value="Удалить" onClick="javascript:return confirm(\'Удалить данное сообщение\');"/><br/><br/>
 										</form>';
 						}
 						$cab["main_area"].='</div>';

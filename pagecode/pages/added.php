@@ -210,7 +210,13 @@ class added_php extends CPageCodeHandler
 		$agencyCountmonthObj->dataSource = $agencyCountmonth;
 		
 		
-		
+		$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 		
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'

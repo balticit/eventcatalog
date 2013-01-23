@@ -3402,8 +3402,23 @@ border-radius: 3px; /* CSS3 */
 .u_cab_menu a { text-decoration:none;}
 
 .message_history .header_message_history { font-size:18px; padding-bottom:4px}
-.message_history .message { padding:8px}
-.message_history .grey_message { background:#eee}
+.message { padding:4px}
+.grey_message { background:#fff}
+
+.message_history th {color: #777777;
+    text-align: left;
+    white-space: nowrap;}
+    
+.message_history .message input {
+    background: url("/images/red-cross.png") no-repeat scroll 0 0 transparent; border:none; overflow:hidden; text-indent:300px; padding:0;
+    cursor: pointer;
+    height: 12px;
+    margin: 1px auto;
+    width: 12px;
+}    
+
+.message_history th, .message_history td { border-bottom: 1px solid #DCDCDC;}
+    
 
 
 .area_detail_page .table_row { height:20px; }
@@ -3469,8 +3484,11 @@ border-radius: 3px; /* CSS3 */
 
 
 /* MENU AND SUBMENU */
-.submenu_controll {display:none; height:25px; padding-left: 37px; padding-top:5px;}
+.submenu_controll { height:25px; padding-left: 37px; padding-top:5px;}
 .submenu_controll.active { display:block}
+#menu_controll_wrapper .reklama { padding-left:14px}
+
+
 .lastVisitSite { background:url(../images/flag_in_site.png) no-repeat 0 2px; padding-left:16px}
 
 .white_btn_show { border-bottom:1px solid #ccc; height:24px}
@@ -3498,4 +3516,42 @@ border-radius: 3px; /* CSS3 */
 
 .rate_row .name_cell { color:#000000; margin:5px 5px 5px 5px; padding-right:10px; white-space: nowrap; float:left; height:14px; position:relative; max-width:120px; overflow:hidden;}
 .rate_row .shad { z-index:5; position:absolute; display:block; right:0; top:0; width:16px; height:16px;  background:url(../images/shad_white.png) repeat-y ;}
+
+
+
+
+/* REDESIGN STYLE */
+a, img, input, button, textarea, select { outline: none; resize:none }
+
+.resident-category-title { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
+.resident-category-title h1 { font-family:Arial, Helvetica, sans-serif; font-size:18px;}
+
+.subcategory-resident-list {}
+.subcategory-resident-list .resident-item { margin:10px 0; border-top:1px solid #CCCCCC;}
+.subcategory-resident-list .resident-item .thumb { 
+  border: 1px solid #CCCCCC;
+  height: 80px;
+  padding: 2px;
+  width: 120px;
+  float:left;
+}
+.subcategory-resident-list .resident-item .thumb img { height: 80px; width: 120px;}
+
+.subcategory-resident-list .resident-item .info { margin-left:126px; padding:0px 5px; color:#000; }
+.subcategory-resident-list .resident-item .name { font-family:Arial, Helvetica, sans-serif; font-size:14px; padding:5px 0 5px 0}
+.subcategory-resident-list .resident-item .name a { font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#000}
+.subcategory-resident-list .resident-item .activities { color:#aaa; padding-bottom:5px}
+.subcategory-resident-list .resident-item .activities a { color:#aaa;}
+.subcategory-resident-list .resident-item .date { color:#aaa; padding-bottom:5px}
+.subcategory-resident-list .resident-item .desc { padding:5px 0; color:#000}
+.subcategory-resident-list .resident-item .thumb-list {}
+.subcategory-resident-list .resident-item .thumb-list ul { padding:0; margin:0; }
+.subcategory-resident-list .resident-item .thumb-list li { display:inline-block; width:33%; list-style-type:none; padding-top:10px}
+.subcategory-resident-list .resident-item .thumb-list li a {display:block; padding: 2px; border: 1px solid #CCCCCC; width:200px; height:200px;}
+
+.category-desc { font-size:11px;}
+
+/* PAGER */
+.pager { padding:10px 0}
+
 

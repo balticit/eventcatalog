@@ -13,7 +13,7 @@
     if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
     
   });
-	
+
   function relurl(url) {
      return url.replace(/^(http:\/\/)?(www\.)?[^\/]+/, '');
   }	
@@ -27,6 +27,17 @@ $(document).ready(function(){
   $("#menu_controll_wrapper .submenu_controll").find("a").each(function(){
     if($(this).attr("href") == curUrl) { $(this).addClass("cururl");}
   });
+  
+  
+  $("#menu_controll_wrapper").mouseleave(function(){
+    $('.submenu_controll').removeClass('active');
+    $('.submenu_controll:first').addClass('active'); 
+    $('.menu_btn').css('background-position','0 0');   
+    
+    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
+  });
+
+/*
 
 	$('.submenu_controll:first').addClass('active');
 	$("a.rule_button #area_btn, a.rule_button #artist_btn, a.rule_button #contractor_btn, a.rule_button #agency_btn, a.rule_button #black_btn").mouseenter(function(){
@@ -36,13 +47,7 @@ $(document).ready(function(){
  
   });
   
-  $("#menu_controll_wrapper").mouseleave(function(){
-    $('.submenu_controll').removeClass('active');
-    $('.submenu_controll:first').addClass('active'); 
-    $('.menu_btn').css('background-position','0 0');   
-    
-    if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
-  });
+
   
 $("#menu_controll a.rule_button:last div").mouseenter(function(){
   var curMenu = $(this).attr("id");
@@ -58,6 +63,6 @@ $("#menu_controll a.rule_button:last div").mouseenter(function(){
   });
   
   if($(".empty_btn_show").hasClass("active")) { $("#black_btn").css('background-position','0 -34px'); }
-  
+  */
 });	
 </script>

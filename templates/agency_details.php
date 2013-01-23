@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title><?php CRenderer::RenderControl("title"); ?></title>
+    <title><?php CRenderer::RenderControl("title"); ?> | Каталог агенств - EventCatalog.ru</title>
     <?php CRenderer::RenderControl("metadata"); ?>
 </head>
 <body>
@@ -14,10 +14,7 @@
 <tr><!--Меню-->
 <td><?php CRenderer::RenderControl("menu"); ?>
 <?php CRenderer::RenderControl("submenu"); ?>
-<?php CRenderer::RenderControl("submenu1"); ?>
-<?php CRenderer::RenderControl("submenu2"); ?>
-<?php CRenderer::RenderControl("submenu3"); ?>
-<?php CRenderer::RenderControl("submenu4"); ?>
+
 </td>
 </tr>
 <tr>
@@ -37,13 +34,17 @@
 			    <a class="addAgency" href="/registration/?type=agency">Добавить Агентство</a>
                 </td>
                 <td style="vertical-align:top">
-					<div style="padding-left: 5px;">
-					<?php CRenderer::RenderControl("yaListTop"); ?>
-					<?php CRenderer::RenderControl("titlefilterLinks"); ?>
-					<table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:auto;"><?php CRenderer::RenderControl("agencyList"); ?></table>
-                    <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br>
-                    <?php CRenderer::RenderControl("footerText"); ?>
-					</div>
+                
+                
+	<!--LIST RESIDENT-->
+  <div class="resident-category-title agency"><?php CRenderer::RenderControl("titlefilter"); ?></div>
+  <div class="category-desc"><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php // CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("agencyList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+                
+
                 </td>
 				<?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
             </tr>

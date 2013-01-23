@@ -73,6 +73,10 @@ class magazine_php extends CPageCodeHandler
         $magazinesCtrl = $this->GetControl("magazines");
         $magazinesCtrl->dataSource = array('magazines'=>$innerHtml);    
         
+        
+        
+        
+        
     }
 }
 ?>

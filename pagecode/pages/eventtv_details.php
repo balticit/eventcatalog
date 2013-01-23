@@ -49,6 +49,8 @@ if($this->is_list){
         $item['link'] = "/eventtv/".$item['title_url'];
       $item['gray'] = ($item['tbl_obj_id'] == $topic)?"":"gray";
       $item['selected'] =  ($item['tbl_obj_id'] == $topic)?'id="selectGray"':"";
+      
+      if($item['tbl_obj_id'] == $topic) { $topictitle=$item['title'];}
     }
     $topicList = $this->GetControl("topicList");
     $topicList->dataSource = $topics;
@@ -122,6 +124,15 @@ if($this->is_list){
 			from vw__eventtv_doc $filter order by is_new desc, registration_date desc 
 	 ");
 	 
+	 
+	 $mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
+	 
 	 $count = count($count);
 	 $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
 
@@ -134,7 +145,7 @@ if($this->is_list){
         }
 
         if (count($docs)>0) {
-          $html .= "<div><b>".$topic['title']."</b></div>\n";
+        //  $html .= "<div><b>".$topic['title']."</b></div>\n";
 
           $html .= '<table cellspacing="0" cellpadding="0" border="0" style="margin-top:10px">'; 
 
@@ -216,9 +227,10 @@ if($this->is_list){
       $sortLinks = '<a class="currentSort" href="/eventtv">по дате</a>&nbsp;&nbsp;&nbsp;<a href="/eventtv?bycategory">по категории</a>';
     }
 
+   
 
-    $publicList = $this->GetControl("publicList");
-    $publicList->html = $html;
+    $publicTitleList = $this->GetControl("publicTitleList");
+    $publicTitleList->html = $topictitle;
     
     
     //setting pager
@@ -381,6 +393,15 @@ else {
 		);
 
 		$publics[0]['rating'] = $rating->Render();
+
+
+    $mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 
 		$topics = SQLProvider::ExecuteQuery("select * from tbl__eventtv_topics order by group_num, order_num");
         array_unshift($topics,array("tbl_obj_id"=>"0","title"=>"Все репортажи"));

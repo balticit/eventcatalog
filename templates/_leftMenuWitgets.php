@@ -46,7 +46,7 @@
 ?>
 <td width="240" style="padding-left:12px;padding-right:3px" valign="top"> 						
                         <div class="leftPanelWitgets">
-                            <div class="leftPanelWitget_container"><iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:240px; height:360px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"></iframe></div>
+                            <div class="leftPanelWitget_container"><iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:234px; height:327px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=234&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=327"></iframe></div>
                             <div class="leftPanelWitget_container">
                                 
                                 <!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 1 -->

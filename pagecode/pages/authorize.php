@@ -59,6 +59,9 @@ class authorize_php extends CPageCodeHandler
 			$account->dataSource["user_id"] = $user->id;
 			$account->dataSource["type"] = $user->type;
 			
+			$account["user_title_url"] = $user->title_url;
+      if(empty($user->title_url)) { $account["user_title_url"] = $user->id;}
+
 
 			
 			switch ($user->type) {

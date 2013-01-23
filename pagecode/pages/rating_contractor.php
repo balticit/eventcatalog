@@ -66,7 +66,13 @@ class rating_contractor_php extends CPageCodeHandler
 		$catList = $this->GetControl("rateList");
 		$catList->dataSource = $contractors;
 		
-		
+		$mainMenu = $this->GetControl("menu");
+            $mainMenu->dataSource["redevent"] =
+              array("link"=>"http://redevent.ru/",
+                    "imgname"=>"redevent",
+                    "title"=>"",
+                    "ads_class"=>"reklama",
+                    "target"=>'target="_blank"');
 		
 		//setting pager
 		$pager = $this->GetControl("pager");

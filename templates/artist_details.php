@@ -4,12 +4,12 @@
 <head>
 
 <?php if(!$this->is_group){?>
-<title><?php CRenderer::RenderControl("title"); ?></title>
+<title><?php CRenderer::RenderControl("title"); ?> | Каталог артистов - EventCatalog.ru</title>
 <script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
 <?php }?>
 
 <?php if($this->is_group){ ?>
-<title><?php CRenderer::RenderControl("titlefilter"); ?>Каталог артистов - EVENT КАТАЛОГ</title>
+<title><?php CRenderer::RenderControl("titlefilter"); ?> | Каталог артистов - EventCatalog.ru</title>
 <script type="text/javascript" language="JavaScript" src="/js/artist_find.js"></script>
 <?php }?>
 
@@ -31,10 +31,7 @@
     <td>
       <?php CRenderer::RenderControl("menu"); ?>
       <?php CRenderer::RenderControl("submenu"); ?>
-      <?php CRenderer::RenderControl("submenu1"); ?>
-      <?php CRenderer::RenderControl("submenu2"); ?>
-      <?php CRenderer::RenderControl("submenu3"); ?>
-      <?php CRenderer::RenderControl("submenu4"); ?>
+
     </td>
   </tr>
   <tr>
@@ -52,17 +49,18 @@
           <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
         </td>
         <td style="vertical-align:top">
-          <div style="padding-left: 0px;"> 
-            <?php CRenderer::RenderControl("yaListTop"); ?>
-            <?php CRenderer::RenderControl("titlefilterLinks"); ?>
-            <div style="overflow-x:hidden">
-              <table border="0" cellpadding="0" cellspacing="0" class="tableInline" style="margin: 0 0px 0 0; width:100%;">
-              <?php CRenderer::RenderControl("artistList"); ?>
-              </table>
-            </div>
-            <div><?php CRenderer::RenderControl("footerText"); ?></div>
-          </div>
-        <p class="text"><?php CRenderer::RenderControl("pager"); ?></p><br />
+        
+        <?php CRenderer::RenderControl("artistsearch"); ?>
+        
+	<!--LIST RESIDENT-->
+  <div class="resident-category-title artist"><?php CRenderer::RenderControl("titlefilter"); ?></div>
+  <div class="category-desc"><?php CRenderer::RenderControl("footerText"); ?></div>
+  <?php // CRenderer::RenderControl("yaListTop"); ?>
+  <div class="subcategory-resident-list contractor"><?php CRenderer::RenderControl("artistList"); ?></div>
+  <div class="pager"><?php CRenderer::RenderControl("pager"); ?></div>
+  <!--END LIST RESIDENT-->
+        
+
         </td>
         <?php require ROOTDIR.'templates/_leftMenuWitgets.php'; ?>
       </tr>
@@ -95,6 +93,8 @@
 <a class="addArtist" href="/registration/?type=artist">Добавить Артиста</a>
 </td>
 <td style="vertical-align:top; padding-left: 5px;">
+
+
 <?php CRenderer::RenderControl("yaPersonal"); ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td valign="top"><?php CRenderer::RenderControl("details"); ?></td></tr></table>
 </td>
