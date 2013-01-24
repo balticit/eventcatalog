@@ -49,7 +49,7 @@ class CPhotosObject extends CHTMLObject
 		$thumbsLinesCount = ceil($photos_count/$this->thumbsPerLine);
 		$thumbsLines = "";
 		$thumbs = new CRepeater();
-    if($photos_count > 0) {
+    if($photos_count > 1) {
 		$thumbs->separatorTemplate = '';
 		for ($i = 0; $i < $thumbsLinesCount; $i++){
 			$lineData = array_slice($data, $this->thumbsPerLine*$i, $this->thumbsPerLine);
