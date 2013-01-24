@@ -776,15 +776,11 @@ class contractor_details_php extends CPageCodeHandler
 			where parent_id=$this->id limit 8");
 			
 			
-			$photos_count = SQLProvider::ExecuteQuery('SELECT * FROM `tbl__contractor_doc` 
-											WHERE (tbl_obj_id IN (
-												SELECT distinct tbl_obj_id 
-												FROM tbl__contractor2activity 
-												WHERE kind_of_activity='.$is_kind_of_activity.')) 
-											AND tbl_obj_id != '.$unit['tbl_obj_id'].' 
-											AND active=1 
-											ORDER BY rand() 
-											LIMIT 4');
+			$photos_count = SQLProvider::ExecuteQuery(
+      "select p.* 
+		  from `tbl__contractor_photos`  ap
+			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
+			where parent_id=$this->id limit 8");
 			   
         $unit["photos"] = $photos->Render();
         if(count($photos_count) = 0) { $unit["photos"] = '';}
