@@ -770,7 +770,7 @@ class contractor_details_php extends CPageCodeHandler
     //contractor images
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
-      "select p.* as `count`
+      "select p.* 
 		  from `tbl__contractor_photos`  ap
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
