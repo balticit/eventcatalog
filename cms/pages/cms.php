@@ -407,7 +407,65 @@ case "13":
          </ul>
 	";
 	break;
-    
+	
+	
+  case "15":
+  $admtype['firsttable'] = "/cms/comments/";
+  $admtype['admtype'] = "	
+
+
+<ul id=\"navadm\">
+<li><span>Основное</span>
+  <ul>
+    <li><a href=\"\" onclick=\"return SetTable('/cms/comments/');\">Комментарии</a></li>
+  </ul>
+</li>
+<li><span>Пользователи</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/users/');\">Каталог пользователей </a></li>
+  </ul>
+</li>
+<li><span>Подрядчики</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/contractors/');\">Каталог подрядчиков </a></li>
+  </ul>
+ </li>
+<li><span>Площадки</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/areas/');\">Каталог площадок </a></li>
+  </ul>
+</li>
+<li><span>Артисты</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/artists/');\">Каталог артистов </a></li>
+  </ul>
+</li>
+<li><span>Агентства</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/agencies/');\">Каталог агентств </a></li>
+  </ul>
+</li>
+<li><span>Учебник организатора</span>
+  <ul>
+    <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/book/');\">Каталог статей</a></li>
+  </ul>
+</li>
+<li><span>Новостной блок</span>
+  <ul>
+  <li><a href=\"\" onclick=\"return SetTable('/cms/resident_news/');\">Новости резидентов</a></li>
+  <li><a href=\"\" onclick=\"return SetTable('/cms/event_calendar/');\">Event календарь</a></li>
+  <li><a href=\"\" onclick=\"return SetTable('/cms/news/');\">Новости индустрии</a></li>
+  </ul>
+</li>
+<li><span>Карусель</span>
+  <ul>
+  <li><a href=\"#\" onclick=\"javascript:return SetTable('/cms/carousel/');\">Администрарование карусели</a></li>
+  </ul>
+</li>
+</ul>
+  ";
+  break;
+   
 case "14":
     $admtype['firsttable'] = "/cms/carousel/";
 	$admtype['admtype'] = "	
