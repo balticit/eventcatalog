@@ -883,11 +883,24 @@ class artist_details_php extends CPageCodeHandler
             $unit["similar"].='</table>';
         }
 			$unit["similar"] = !empty($unit["similar"]) ? $unit["similar"] : '';
+			
+			
+			$photos_count = SQLProvider::ExecuteQuery(
+      "select *
+		  from `vw__artist_photos`  
+			where artist_id=$this->id limit 8");
+    
+    if(count($photos_count) == 0) { $unit["photos"] = '';}
+    else {
+    
             $photos = $this->GetControl("photos");
             $photos->dataSource = SQLProvider::ExecuteQuery(
                 "select * from `vw__artist_photos`
                   where artist_id=$this->id and hasImage>0 limit 8");
             $unit["photos"] = $photos->Render();
+      }      
+            
+            
 
             //mp3 load
             /*

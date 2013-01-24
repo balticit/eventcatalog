@@ -554,6 +554,14 @@ class agency_details_php extends CPageCodeHandler
     
     $agenDetails = $this->GetControl("agenDetails");
     
+    $photos_count = SQLProvider::ExecuteQuery(
+      "select *
+		  from `tbl__agency_photos`  
+			where parent_id=$this->id limit 8");
+    
+    if(count($photos_count) == 0) { $unit["photos"] = '';}
+    else {
+    
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
       "select p.*
@@ -561,6 +569,9 @@ class agency_details_php extends CPageCodeHandler
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
     $unit["photos"] = $photos->Render();
+    
+    }
+    
     
     //video load
     $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
