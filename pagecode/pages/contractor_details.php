@@ -768,22 +768,25 @@ class contractor_details_php extends CPageCodeHandler
 	$unit["similar"] = !empty($unit["similar"]) ? $unit["similar"] : '';
 	//var_dump($this->id);
     //contractor images
+    
+    $photos_count = SQLProvider::ExecuteQuery(
+      "select *
+		  from `tbl__contractor_photos`  
+			where parent_id=$this->id limit 8");
+    
+    if(count($photos_count) > 0) { $unit["photos"] = '';}
+    else {
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
-      "select p.* 
+      "select p.*
 		  from `tbl__contractor_photos`  ap
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
 			
+			$unit["photos"] = $photos->Render();
+		}
 			
-			$photos_count = SQLProvider::ExecuteQuery(
-      "select p.* 
-		  from `tbl__contractor_photos`  ap
-			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
-			where parent_id=$this->id limit 8");
-			   
-        $unit["photos"] = $photos->Render();
-        if(count($photos_count) = 0) { $unit["photos"] = '';}
+        
         
         
         //video load
