@@ -49,7 +49,7 @@ class CPhotosObject extends CHTMLObject
 		$thumbsLinesCount = ceil($photos_count/$this->thumbsPerLine);
 		$thumbsLines = "";
 		$thumbs = new CRepeater();
-		//$thumbs->separatorTemplate = '<td><!-- --></td>';
+    if($photos_count > 0) {
 		$thumbs->separatorTemplate = '';
 		for ($i = 0; $i < $thumbsLinesCount; $i++){
 			$lineData = array_slice($data, $this->thumbsPerLine*$i, $this->thumbsPerLine);
@@ -61,6 +61,7 @@ class CPhotosObject extends CHTMLObject
 			$thumbs->dataSource = $lineData;
       //$thumbsLines .= "<tr>".$thumbs->RenderHTML()."</tr>";
       $thumbsLines .= "".$thumbs->RenderHTML()."";
+		}
 		}
     $m_image=RealFile(IMAGES_UPLOAD_DIR.$data[0]["m_image"]);
 		$data[0]["m_size"]="";

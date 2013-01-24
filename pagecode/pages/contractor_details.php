@@ -776,7 +776,7 @@ class contractor_details_php extends CPageCodeHandler
 			where parent_id=$this->id limit 8");
 			
         $unit["photos"] = $photos->Render();
-        if(empty($photos->id)) { $unit["photos"] = ''; }
+
         
         
         //video load
