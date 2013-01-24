@@ -774,7 +774,9 @@ class contractor_details_php extends CPageCodeHandler
 		  from `tbl__contractor_photos`  ap
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
+			
         $unit["photos"] = $photos->Render();
+        if(empty($photos->id)) { $unit["photos"] = ''; }
         
         
         //video load
