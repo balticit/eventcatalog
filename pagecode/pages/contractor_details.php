@@ -770,13 +770,14 @@ class contractor_details_php extends CPageCodeHandler
     //contractor images
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
-      "select p.*
+      "select p.*, COUNT(p.*) as `count`
 		  from `tbl__contractor_photos`  ap
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
 			
+			   
         $unit["photos"] = $photos->Render();
-
+        if($photos->dataSource[0]['count'] = 0) { $unit["photos"] = '';}
         
         
         //video load
