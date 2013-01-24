@@ -774,7 +774,7 @@ class contractor_details_php extends CPageCodeHandler
 		  from `tbl__contractor_photos`  
 			where parent_id=$this->id limit 8");
     
-    if(count($photos_count) > 0) { $unit["photos"] = '';}
+    if(count($photos_count) = 0) { $unit["photos"] = '';}
     else {
     $photos = $this->GetControl("photos");
     $photos->dataSource = SQLProvider::ExecuteQuery(
