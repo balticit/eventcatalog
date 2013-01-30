@@ -204,8 +204,15 @@ class contractor_details_php extends CPageCodeHandler
                 }
                 $catList = $this->GetControl("contList");
                 
-                if((!isset($page)||$page==1)&&$activity==1141){                    
-                    $mf = SQLProvider::ExecuteQuery("select * from `vw__contractor_list_pro` where tbl_obj_id=7826");                    
+                if((!isset($page)||$page==1)&&$activity==1141){   
+                
+                                 
+                    //$mf = SQLProvider::ExecuteQuery("select * from `vw__contractor_list_pro` where tbl_obj_id=7826"); 
+                    $mf = SQLProvider::ExecuteQuery(
+                "select * from `vw__contractor_list_pro` $filter
+				order by priority desc, title ASC, if(tbl_obj_id=$first,0,1),
+				pro_type desc, pro_cost desc, pro_date_pay desc, title limit $rp,$this->pageSize");		
+                                       
                     $mf=$mf[0];
                     $mf["logo"] = $mf["logo_image"];
                     $mf["city_item"] = (!empty($mf["city_name"])) ? '<span style="color: #000;">('.$mf["city_name"].')</span>' : '';
