@@ -204,6 +204,7 @@ class contractor_details_php extends CPageCodeHandler
                 }
                 $catList = $this->GetControl("contList");
                 
+                /*
                 if((!isset($page)||$page==1)&&$activity==1141){   
                 
                                  
@@ -247,7 +248,7 @@ class contractor_details_php extends CPageCodeHandler
                     }
                     
                     
-                    /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    // ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ 
                     $tbl_obj_id = $mf["tbl_obj_id"];
                     $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
                     join `tbl__photo` p on ap.child_id = p.tbl_obj_id
@@ -257,7 +258,7 @@ class contractor_details_php extends CPageCodeHandler
                     foreach ($thumbs as $thumb) {
                       $mf["thumbs"] .= '<li><href="/contractor/'. $agency['title_url'] .'"><img src="/thumb.php?src=/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
                     }
-                    /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    // END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈
                   
                     $mf['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($mf['registration_date']);
 
@@ -285,7 +286,9 @@ class contractor_details_php extends CPageCodeHandler
                     $contractors[2] = $mf;
 
                 }
-
+                */
+                
+                /*
                 if((!isset($page)||$page==1)&&($activity==139||$activity==140)){
                     $mf = SQLProvider::ExecuteQuery("select * from `vw__contractor_list_pro` where tbl_obj_id=7825");                    
                     $mf=$mf[0];
@@ -322,7 +325,7 @@ class contractor_details_php extends CPageCodeHandler
                     }
                     
                     
-                    /* ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    // ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ 
                     $tbl_obj_id = $mf["tbl_obj_id"];
                     $thumbs = SQLProvider::ExecuteQuery("select p.* from `tbl__contractor_photos` ap
                     join `tbl__photo` p on ap.child_id = p.tbl_obj_id
@@ -332,7 +335,7 @@ class contractor_details_php extends CPageCodeHandler
                     foreach ($thumbs as $thumb) {
                       $mf["thumbs"] .= '<li><a href="/contractor/'. $contractor['title_url'] .'"><img src="/thumb.php?src=/application/public/upload/'.$thumb["l_image"].'&amp;h=200&amp;w=200&amp;zc=1" alt="" /></a></li>';
                     }
-                    /* END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ */
+                    // END ‘Œ“ » √¿À≈–≈» ¬ —œ»— ≈ 
                   
                     $mf['registration_date'] = '¬ Í‡Ú‡ÎÓ„Â: '.onSiteTime($mf['registration_date']);
 
@@ -358,7 +361,7 @@ class contractor_details_php extends CPageCodeHandler
                                     }                
                     $contractors[2] = $mf;
                 }
-
+                */
                 $catList->dataSource = $contractors;
             }
 
