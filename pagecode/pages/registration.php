@@ -1193,6 +1193,7 @@ class registration_php extends CPageCodeHandler
                                     if (!is_null($logo))
                                         $userData->logo = $logo;
                                 }
+                                
                                 $userData->edit_date = time();
                                 foreach ($sel_groups as $sg) {
                                     $userData->group = SQLProvider::ExecuteScalar("select parent_id from tbl__artist_subgroup where tbl_obj_id = $sg");
@@ -1225,7 +1226,8 @@ class registration_php extends CPageCodeHandler
                                     }
                                 }
 
-                                $photos = $_FILES["mp3_file"];
+                                //$photos = $_FILES["mp3_file"];
+                                /*
                                 $ptitles = GP("mp3_title", array());
                                 if (is_array($ptitles)) {
                                     $uploader = new registration_upload_php();
@@ -1245,6 +1247,7 @@ class registration_php extends CPageCodeHandler
                                         }
                                     }
                                 }
+                                */
 
                                 $title = iconv($this->encoding, "utf-8", 'Регистрация на EventCatalog.ru');
                                 $completeData["link"] = "http://" . $_SERVER['HTTP_HOST'] . "/registration/confirm/code/" . $userData->registration_confirm_code;

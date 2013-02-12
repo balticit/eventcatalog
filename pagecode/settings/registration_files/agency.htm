@@ -4,7 +4,7 @@
 <form method="post" enctype="multipart/form-data">
 <table border="0" cellpadding="0" cellspacing="15">
 <tr valign="top">
-    <td class="reg_title">Название компании:</td>
+    <td class="reg_title">Название компании:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
                                      value='{title}'></td>
     <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила
@@ -35,12 +35,12 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Вид агентства:</td>
+    <td class="reg_title">Вид агентства:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;">{activityList}</td>
     <td class="reg_info">Пожалуйста, выберите не более 3-х видов деятельности.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Описание:</td>
+    <td class="reg_title">Описание:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
     </td>
     <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах
@@ -190,7 +190,7 @@
 </tr>
 
 <tr valign="top">
-    <td class="reg_title">Город:</td>
+    <td class="reg_title">Город:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
                                      size="60" value="{other_city}"/>
         <script type="text/javascript">
@@ -210,13 +210,13 @@
         выберите из <a href="" onclick="ShowCityList(); return false;">списка</a></td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес:</td>
+    <td class="reg_title">Адрес:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[address]" size="60"
                                      value="{address}"/></td>
     <td class="reg_info">Пример формата написания: Ивановская ул., д.1.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Контактные телефоны:</td>
+    <td class="reg_title">Контактные телефоны:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text" name="properties[phone]"
                                      size="60" value="{phone}" style="margin-bottom: 5px;"><input id="phone2"
                                                                                                   class="reg_input_text"
@@ -232,7 +232,7 @@
     <td class="reg_info">Вы можете добавить один или два телефона.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес сайта:</td>
+    <td class="reg_title">Адрес сайта:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]"
                                      size="60" value="{site_address}" onfocus="SiteAdrFocus(this)"
                                      onblur="SiteAdrBlur(this)"></td>
@@ -252,7 +252,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Электронная почта:</td>
+    <td class="reg_title">Электронная почта:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
                                      value="{email}" {login_readonly}>
     </td>
@@ -261,7 +261,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Пароль:</td>
+    <td class="reg_title">Пароль:<span style="color:#CC3333">*</span></td>
     <td>
         <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
             <tr>
