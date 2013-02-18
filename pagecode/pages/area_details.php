@@ -1254,6 +1254,15 @@ group by
 				$unit["btn_i_like"]='</td><td><form method="post"><input type="hidden" name="action" value="unlike"><a href="" class="black" onclick="javascript: $(this).parent().submit(); return false;"><img onmouseover="javascript: this.src=\'/images/rating/unlike_area.png\';" onmouseout="javascript: this.src=\'/images/rating/btn_unlike.png\';" src="/images/rating/btn_unlike.png" alt="Больше не рекомендую" /></a></form>';
 			}
 			$details=$this->GetControl("details");
+			
+			
+			$photos_count = SQLProvider::ExecuteQuery(
+      "select *
+		  from `tbl__area_photos`  
+			where parent_id=$this->id limit 8");
+    
+      if(count($photos_count) == 0) { $unit["photos"] = '';}
+			else {
 			$photos = $this->GetControl("photos");
 			$photos->dataSource = SQLProvider::ExecuteQuery(
 			"select p.*
@@ -1261,6 +1270,9 @@ group by
 			join `tbl__photo` p on ap.child_id = p.tbl_obj_id
 			where parent_id=$this->id limit 8");
 			$unit["photos"] = $photos->Render();
+			}
+			
+			
 			if ($unit["date_open"]!="")
 			$unit["date_open"] =  '<div class="nnm_doc"><b>Дата открытия/последней реконструкции: </b>'.date("d.m.Y", strtotime($unit["date_open"])).'</div>';
 

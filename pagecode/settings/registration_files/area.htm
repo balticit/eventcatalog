@@ -101,7 +101,7 @@
 <form method="post" enctype="multipart/form-data">
 <table border="0" cellpadding="0" cellspacing="15">
 <tr valign="top">
-    <td class="reg_title">Название компании:</td>
+    <td class="reg_title">Название компании:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
                                      value='{title}'></td>
     <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила написания
@@ -130,7 +130,7 @@
     <td class="reg_info">Параметры макета: 120х80 pxl<br>Название файла должно состоять из латинских букв или цифр.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Выбор раздела и категории:</td>
+    <td class="reg_title">Выбор раздела и категории:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;">
         <select id="sel_group" class="reg_input_text" onchange="SelectGroup()" onkeyup="SelectGroup()">
             <option value="-1">Выберите раздел</option>
@@ -145,7 +145,7 @@
     <td class="reg_info">Пожалуйста, выберите не более 3-х категорий.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Описание:</td>
+    <td class="reg_title">Описание:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
     </td>
     <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах компании.<br>
@@ -153,7 +153,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Вместимость площадки:</td>
+    <td class="reg_title">Вместимость площадки:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;">
 
         <script type="text/javascript" language="javascript">
@@ -223,19 +223,19 @@
 </tr>
 
 <tr valign="top">
-    <td class="reg_title">Стоимость проведения банкета на 1 персону:</td>
+    <td class="reg_title">Стоимость проведения банкета на 1 персону:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_banquet]" size="60"
                                      value='{cost_banquet}'></td>
     <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1500</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Стоимость проведения фуршета на 1 персону:</td>
+    <td class="reg_title">Стоимость проведения фуршета на 1 персону:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_official_buffet]"
                                      size="60" value='{cost_official_buffet}'></td>
     <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1000</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Арендная плата:</td>
+    <td class="reg_title">Арендная плата:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_rent]" size="60"
                                      value='{cost_rent}'></td>
     <td class="reg_info">Пожалуйста, напишите, включена или нет арендная плата в указанную стоимость проведения банкета
@@ -245,7 +245,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Обслуживание:</td>
+    <td class="reg_title">Обслуживание:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_service]" size="60"
                                      value='{cost_service}'></td>
     <td class="reg_info">Пожалуйста, напишите, включено или нет обслуживание в указанную стоимость проведения банкета
@@ -255,7 +255,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Кухня:</td>
+    <td class="reg_title">Кухня:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[kitchen]" size="60"
                                      value='{kitchen}'></td>
     <td class="reg_info">Пример: русская, европейская и т.п.</td>
@@ -532,7 +532,7 @@
 </tr>
 
 <tr valign="top">
-    <td class="reg_title">Город:</td>
+    <td class="reg_title">Город:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
                                      size="60" value="{other_city}" onchange="AreaCityChange(this.value)"
                                      onkeyup="AreaCityChange(this.value)">
@@ -580,13 +580,13 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес:</td>
+    <td class="reg_title">Адрес:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[address]" size="60"
                                      value="{address}"/></td>
     <td class="reg_info">Пример формата написания: Ивановская ул., д.1.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Контактные телефоны:</td>
+    <td class="reg_title">Контактные телефоны:<span style="color:#CC3333">*</span><span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text" name="properties[phone]" size="60"
                                      value="{phone}" style="margin-bottom: 5px;"><input id="phone2"
                                                                                         class="reg_input_text"
@@ -601,13 +601,13 @@
     <td class="reg_info">Вы можете добавить один или два телефона.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Имя администратора площадки:</td>
+    <td class="reg_title">Имя администратора площадки:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input type="text" name="properties[manager_name]" size="60" class="reg_input_text"
                                      value="{manager_name}"></td>
     <td class="reg_info"></td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес сайта:</td>
+    <td class="reg_title">Адрес сайта:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]" size="60"
                                      value="{site_address}" onfocus="SiteAdrFocus(this)" onblur="SiteAdrBlur(this)">
     </td>
@@ -627,7 +627,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Электронная почта:</td>
+    <td class="reg_title">Электронная почта:<span style="color:#CC3333">*</span></td>
     <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
                                      value="{email}" {login_readonly}>
     </td>
@@ -636,7 +636,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Пароль:</td>
+    <td class="reg_title">Пароль:<span style="color:#CC3333">*</span></td>
     <td>
         <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
             <tr>
@@ -651,10 +651,10 @@
             </tr>
         </table>
     </td>
-    <td style="color: #999999;">Внимание!<br/>Пароль должен включать в себя цифры и/или латинские буквы.</td>
+    <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Введите цифры<br/>
+    <td class="reg_title">Введите цифры<br />
 
         <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50"
                                                                                src="{captcha_link}"></div>

@@ -448,7 +448,7 @@ else {
 								'<img width="120" height="80" class="newsimg" alt="" src="/upload/'.$item['logo_image'].'" />'.
 							'</a>'.
 							'<div class="rnb_item_text">'.
-								'<b><a class="news" href="/book/'.$item['title_url'].'">'.$item['title'].'</a></b> '.
+								'<a class="news" href="/book/'.$item['title_url'].'"><b>'.$item['title'].'</b></a> '.
 								'<p>'.$item['annotation'].'</p>'.
 								(!empty($item['cat_title']) ? '<small>Рубрика: '.$item['cat_title'].'</small>' : '').
 							'</div>'.

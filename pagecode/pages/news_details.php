@@ -106,15 +106,15 @@ if($this->is_list){
 			$pager->rewriteParams	= $rewriteParams;
 			
 			// список новостей
-			$sql =  'SELECT *, DATE_FORMAT(creation_date,"%d.%m.%Y") as `creation_date` FROM `vw__news_soon` '.
+			$sql =  'SELECT * FROM `vw__news_soon` '.
 						(!empty($cat) ? 'WHERE tbl_cai_id = '.$cat.' ' : '').
 					'ORDER BY creation_date DESC LIMIT '.(($page - 1) * $this->max_per_page).', '.$this->max_per_page;
-			// var_dump($sql);		
+			// var_dump($sql);
 			// die('!');
 			$news = SQLProvider::ExecuteQuery($sql);
 			foreach ($news as $key=>$value)
 			{
-				//$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
+				$news[$key]['creation_date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
 				
 				
 				if( $news[$key]["title_url"] == '') { $news[$key]["title_url"] = 'details'.$news[$key]["tbl_obj_id"];}
@@ -361,7 +361,7 @@ else {
 			
 			// случайные статьи
 			$unit[0]['random_news'] = '';
-			$sql  = 'SELECT ns.tbl_obj_id, nd.title cat_title, ns.title, ns.annotation, ns.s_image, ns.date '.
+			$sql  = 'SELECT ns.tbl_obj_id, ns.title_url, nd.title cat_title, ns.title, ns.annotation, ns.s_image, ns.date '.
 					'FROM `vw__news_soon` ns '.
 						'LEFT JOIN `tbl__news_dir` nd ON ns.tbl_cai_id = nd.tbl_obj_id '.
 					'WHERE ns.active = 1 '.
@@ -372,11 +372,11 @@ else {
 				foreach($random_news_list as $i => &$item) {
 					$unit[0]['random_news'] .=
 						'<div class="rnb_item">'.
-							'<a class="news" href="/news/details'.$item['tbl_obj_id'].'">'.
+							'<a class="news" href="/news/details'.$item['title_url'].'">'.
 								'<img width="120" height="80" class="newsimg" alt="" src="/upload/'.$item['s_image'].'" />'.
 							'</a>'.
 							'<div class="rnb_item_text">'.
-								'<b>'.$item['title'].'</b> <small>'.date('d.m.Y', strtotime($item['date'])).'</small>'.
+								'<a class="news" href="/news/details'.$item['title_url'].'"><b>'.$item['title'].'</b></a> <small>'.date('d.m.Y', strtotime($item['date'])).'</small>'.
 								'<p>'.$item['annotation'].'</p>'.
 								(!empty($item['cat_title']) ? '<small>Рубрика: '.$item['cat_title'].'</small>' : '').
 							'</div>'.
