@@ -199,42 +199,48 @@
                         <div class="leftPanelWitgets">
                             <div class="leftPanelWitget_container"><iframe frameborder="0" scrolling="no" allowtransparency="true" style="margin-bottom:10px;border:none; overflow:hidden; width:240px; height:360px;" src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"></iframe></div>
                             <div class="leftPanelWitget_container">
-
+                                
+                                
+                                <div class="show_bnr">
                                 <!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 1 -->
-						<script language="javascript" type="text/javascript"><!--
-						var RndNum4NoCash = Math.round(Math.random() * 1000000000);
-						var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
-						document.write(
-						'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
-						+ 'sid=112204&bn=1&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
-						+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
-						+ ' marginheight=0 scrolling=no></iframe>');
-						//--></script>
-						<noscript>
-						<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" target=_blank>
-						<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" alt="-AdRiver-" border=0 width=240></a>
-						</noscript>
-						<!--  AdRiver code END  -->
+                    						<script language="javascript" type="text/javascript"><!--
+                    						var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+                    						var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+                    						document.write(
+                    						'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
+                    						+ 'sid=112204&bn=1&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
+                    						+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
+                    						+ ' marginheight=0 scrolling=no></iframe>');
+                    						//--></script>
+                    						<noscript>
+                    						<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" target=_blank>
+                    						<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=1&bt=22&pz=2&rnd=294406122" alt="-AdRiver-" border=0 width=240></a>
+                    						</noscript>
+                    						<!--  AdRiver code END  -->
+						                    </div>
+						                    
                             </div>
 
                             <div class="leftPanelWitget_container">
                                 <div style='width: 240px;margin-bottom: 10px;'>
-					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->
-					<script language="javascript" type="text/javascript"><!--
-					var RndNum4NoCash = Math.round(Math.random() * 1000000000);
-					var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
-					document.write(
-					'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
-					+ 'sid=112204&bn=2&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
-					+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
-					+ ' marginheight=0 scrolling=no></iframe>');
-					//--></script>
-					<noscript>
-					<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" target=_blank>
-					<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" alt="-AdRiver-" border=0 width=240></a>
-					</noscript>
-
-					<!--  AdRiver code END  -->
+                                  <div class="show_bnr">
+                        					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->
+                        					<script language="javascript" type="text/javascript"><!--
+                        					var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+                        					var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+                        					document.write(
+                        					'<iframe src="http://ad.adriver.ru/cgi-bin/erle.cgi?'
+                        					+ 'sid=112204&bn=2&target=blank&bt=22&pz=2&rnd=' + RndNum4NoCash + '&tail256=' + ar_Tail
+                        					+ '" frameborder=0 vspace=0 hspace=0 width=240 height=400 marginwidth=0'
+                        					+ ' marginheight=0 scrolling=no></iframe>');
+                        					//--></script>
+                        					<noscript>
+                        					<a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" target=_blank>
+                        					<img src="http://ad.adriver.ru/cgi-bin/rle.cgi?sid=112204&bn=2&bt=22&pz=2&rnd=1701254485" alt="-AdRiver-" border=0 width=240></a>
+                        					</noscript>
+                        
+                        					<!--  AdRiver code END  -->
+                        					</div>
 				</div>
       </div>
       

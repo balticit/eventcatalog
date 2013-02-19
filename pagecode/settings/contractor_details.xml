@@ -76,8 +76,8 @@
 	
     <control relativeId="contList" class="CRepeaterAD">
         <param name="itemTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/resident_common_files/list_item.htm"/>
-        <param name="adTemplate" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaList.htm"/>
-        <param name="adTemplate2" type="file" encoding="windows-1251" filename="pagecode/settings/banner_files/yaListTop.htm"/>
+        
+        
     </control>
     <control relativeId="cityAll" class="CClearParamTemplateObject" paramName="city">
         <param name="template" type="file" encoding="windows-1251" filename="pagecode/settings/master_files/cityAllList.htm"/>

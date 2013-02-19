@@ -3554,4 +3554,4 @@ a, img, input, button, textarea, select { outline: none; resize:none }
 /* PAGER */
 .pager { padding:10px 0}
 
-
+.show_bnr { display:none}
