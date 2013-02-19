@@ -77,7 +77,7 @@ if($this->is_list){
             $tvTopicList->dataSource = $topics1;
             /**/
             
-
+/*
 $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -85,6 +85,7 @@ $mainMenu = $this->GetControl("menu");
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+*/
 
             $html = "";
             $itemTemplate = $this->getControl("bookItem");

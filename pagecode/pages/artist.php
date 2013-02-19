@@ -514,6 +514,8 @@ class artist_php extends CPageCodeHandler
         $letterFilter = $this->GetControl("letterFilter");
         $letterFilter->dataSource = $letters;
 				
+				
+				/*
 				$mainMenu = $this->GetControl("menu");
 	
             $mainMenu->dataSource["shelk"] =
@@ -522,7 +524,7 @@ class artist_php extends CPageCodeHandler
   					"title"=>"",
   					"ads_class"=>"reklama",
   					"target" => "target='_blank'");
-
+        */
 				
 				$artistsearch = $this->GetControl("artistsearch");
 				$artistsearch->headerTemplate =

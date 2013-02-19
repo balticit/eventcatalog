@@ -371,7 +371,8 @@ class agency_php extends CPageCodeHandler
         }
         $letterFilter = $this->GetControl("letterFilter");
         $letterFilter->dataSource = $letters;
-
+        
+        /*
         $mainMenu = $this->GetControl("menu");
         $mainMenu->dataSource["polymedia"] =
             array("link" => "http://www.polymedia.ru/",
@@ -379,7 +380,7 @@ class agency_php extends CPageCodeHandler
                 "title"=>"",
                 "ads_class"=>"reklama",
                 "target" => 'target="_blank"');
-				
+				*/
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'

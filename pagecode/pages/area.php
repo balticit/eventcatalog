@@ -705,16 +705,16 @@ class area_php extends CPageCodeHandler
 
         $this->GetControl("capacityFilter")->html = $capacityFilter;
 		
-
+        
+        /*
         $mainMenu = $this->GetControl("menu");
-    	
         $mainMenu->dataSource["shelk"] =
 				array("link" => "http://shelkevent.ru/",
 				"imgname" => "shelk",
 				"title"=>"",
 				"ads_class"=>"reklama",
 				"target" => "target='_blank'");
-    		
+    		*/
         
         
         $areasearch = $this->GetControl("areasearch");

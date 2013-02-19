@@ -650,7 +650,8 @@ class area_details_php extends CPageCodeHandler
 				}
 
 				$this->GetControl("capacityFilter")->html = $capacityFilter;
-
+        
+        /*
 				$mainMenu = $this->GetControl("menu");
     	
         $mainMenu->dataSource["shelk"] =
@@ -659,7 +660,7 @@ class area_details_php extends CPageCodeHandler
 				"title"=>"",
 				"ads_class"=>"reklama",
 				"target" => "target='_blank'");
-				
+				*/
 				
 				$areasearch = $this->GetControl("areasearch");
 				$areasearch->headerTemplate =
@@ -1552,6 +1553,7 @@ group by
 			
 			//Extended search
 			
+			/*
 			$mainMenu = $this->GetControl("menu");
     	
         $mainMenu->dataSource["shelk"] =
@@ -1560,7 +1562,7 @@ group by
 				"title"=>"",
 				"ads_class"=>"reklama",
 				"target" => "target='_blank'");
-			
+			*/
 			
 			$areasearch = $this->GetControl("areasearch");
 				$areasearch->headerTemplate =

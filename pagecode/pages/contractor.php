@@ -373,6 +373,8 @@ class contractor_php extends CPageCodeHandler
         $letterFilter = $this->GetControl("letterFilter");
         $letterFilter->dataSource = $letters;
 
+
+        /*
         $mainMenu = $this->GetControl("menu");
 				switch(rand(1,2)) {
       	case 1:
@@ -392,6 +394,7 @@ class contractor_php extends CPageCodeHandler
                 "target" => 'target="_blank"');  
       	break;
       	}
+      	*/
         				
 		
 		// && всего резидентов

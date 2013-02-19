@@ -125,7 +125,7 @@ if($this->is_list){
 			from vw__eventtv_doc $filter order by is_new desc, registration_date desc 
 	 ");
 	 
-	 
+	 /*
 	 $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -133,6 +133,7 @@ if($this->is_list){
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+	 */
 	 
 	 $count = count($count);
 	 $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
