@@ -948,7 +948,7 @@ class artist_details_php extends CPageCodeHandler
     
     if($unit["youtubevideo"] != false ) {
       $unit["video_visible"] = "";
-      if(is_number($unit["youtubevideo"])) {
+      if(is_numeric($unit["youtubevideo"])) {
       $unit["youtubevideo"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
       } else {
       $unit["youtubevideo"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo"].'" frameborder="0" allowfullscreen></iframe>';
@@ -958,7 +958,7 @@ class artist_details_php extends CPageCodeHandler
     
     $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
     if($unit["youtubevideo_2"] != false ) {
-      if(is_number($unit["youtubevideo_2"])) {
+      if(is_numeric($unit["youtubevideo_2"])) {
       $unit["youtubevideo_2"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_2"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
       } else {
       $unit["youtubevideo_2"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_2"].'" frameborder="0" allowfullscreen></iframe>';
@@ -968,7 +968,7 @@ class artist_details_php extends CPageCodeHandler
     
     $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
     if($unit["youtubevideo_3"] != false ) {
-      if(is_number($unit["youtubevideo_3"])) {
+      if(is_numeric($unit["youtubevideo_3"])) {
       $unit["youtubevideo_3"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_3"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
       } else {
       $unit["youtubevideo_3"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_3"].'" frameborder="0" allowfullscreen></iframe>';
