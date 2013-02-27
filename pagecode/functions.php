@@ -260,12 +260,13 @@ function get_video_id($url)
     preg_match($pattern, $url, $matches);
     //return (isset($matches[1])) ? $matches[1] : false;
     
-    $urls = $matches[1];
+    $urls = parse_url($url);
 
     if($urls['host'] == 'vimeo.com'){
         $vid = ltrim($urls['path'],'/');
         return $vid;
     } elseif($urls['host'] != 'vimeo.com')  {
+        $urls = $matches[1];
         return $urls;
     } else {
         return false;
