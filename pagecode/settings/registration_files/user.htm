@@ -41,7 +41,7 @@
     }
 </script>
 <img src="/images/front/r1.gif"><br><br>
-<form method="post" enctype="multipart/form-data">
+<form method="post" id="regform" enctype="multipart/form-data">
 <table border="0" cellpadding="10" cellspacing="0">
 
 
@@ -126,7 +126,7 @@
 <tr valign="top">
     <td></td>
     <td><b>Город:</b></td>
-    <td>{city_list}<br /> или другой город <br /> <input type="text" name="properties[sity]" size="60"
+    <td>{city_list}<br /> или другой город <br /> <input type="text" name="properties[sity]" id="sity" size="60"
                                                        style="width: 300px" value="{sity}"/></td>
     <td style="color: #999999;">Выберите из списка город, в котором Вы живете.</td>
 </tr>
@@ -139,7 +139,7 @@
     </select>
     </td>
     <td><b>Имя:</b></td>
-    <td><input type="text" name="properties[title]" size="60" style="width: 300px" value="{title}"/></td>
+    <td><input type="text" name="properties[title]" id="title" size="60" style="width: 300px" value="{title}"/></td>
     <td style="color: #999999;">Пожалуйста, укажите Ваше имя полностью. К примеру, <i>Иванов Иван Иванович</i>.
     </td>
 </tr>
@@ -152,7 +152,7 @@
     </select>
     </td>
     <td><b>Никнэйм:</b></td>
-    <td><input type="text" name="properties[nikname]" size="60" style="width: 300px" value="{nikname}"/></td>
+    <td><input type="text" name="properties[nikname]" id="nikname" size="60" style="width: 300px" value="{nikname}"/></td>
     <td style="color: #999999;">Отображается в комментариях, если не заполнено – отображается имя.</td>
 </tr>
 
@@ -189,7 +189,7 @@
     </select>
     </td>
     <td><b>Дата рождения:</b></td>
-    <td><input type="text" id="birthday" name="properties[birthday]" size="60" style="width: 300px" value="{birthday}"/></td>
+    <td><input type="text" id="birthday" name="properties[birthday]" id="birthday" size="60" style="width: 300px" value="{birthday}"/></td>
     <td style="color: #999999;"></td>
 </tr>
 
@@ -234,7 +234,7 @@
     </select>
     </td>
     <td><b>Компания:</b></td>
-    <td><input type="text" name="properties[company]" size="60" style="width: 300px" value="{company}"/></td>
+    <td><input type="text" name="properties[company]" id="company" size="60" style="width: 300px" value="{company}"/></td>
     <td style="color: #999999;">Пожалуйста, указывайте название Вашей компании без кавычек и ООО. К примеру,
         <i>Праздник</i>.
     </td>
@@ -248,7 +248,7 @@
     </select>
     </td>
     <td><b>Должность:</b></td>
-    <td><input type="text" name="properties[position]" size="60" style="width: 300px" value="{position}"/></td>
+    <td><input type="text" name="properties[position]" id="position" size="60" style="width: 300px" value="{position}"/></td>
     <td style="color: #999999;"></td>
 </tr>
 <tr valign="top">
@@ -260,7 +260,7 @@
     </select>
     </td>
     <td><b>Сайт компании:</b></td>
-    <td><input type="text" name="properties[site]" size="60" style="width: 300px" value="{site}"/></td>
+    <td><input type="text" name="properties[site]" id="site" size="60" style="width: 300px" value="{site}"/></td>
     <td style="color: #999999;">Например, <i>eventcatalog.ru</i>.</td>
 </tr>
 <tr valign="top">
@@ -272,7 +272,7 @@
     </select>
     </td>
     <td><b>Адрес:</b></td>
-    <td><input type="text" name="properties[address]" size="60" style="width: 300px" value="{address}"/></td>
+    <td><input type="text" name="properties[address]" id="address" size="60" style="width: 300px" value="{address}"/></td>
     <td style="color: #999999;">Здесь Вы можете указать Ваш рабочий или домашний адрес.<br />Максимальное
         количество символов – 100.
     </td>
@@ -286,7 +286,7 @@
     </select>
     </td>
     <td><b>Мобильный телефон:</b></td>
-    <td><input type="text" name="properties[contact_phone]" size="60" style="width: 300px"
+    <td><input type="text" name="properties[contact_phone]" id="contact_phone" size="60" style="width: 300px"
                value="{contact_phone}"/></td>
     <td style="color: #999999;">Формат: <i>+7 926 111 22 33</i>.</td>
 </tr>
@@ -299,14 +299,14 @@
     </select>
     </td>
     <td><b>Рабочий телефон:</b></td>
-    <td><input type="text" name="properties[company_phone]" size="60" style="width: 300px"
+    <td><input type="text" name="properties[company_phone]" id="company_phone" size="60" style="width: 300px"
                value="{company_phone}"/></td>
     <td style="color: #999999;">Формат: <i>+7 495 111 22 33</i>.</td>
 </tr>
 <tr valign="top">
     <td></td>
     <td><b>Электронная почта:</b></td>
-    <td><input type="text" name="properties[login]" size="60" style="width: 300px" value="{login}"
+    <td><input type="text" name="properties[login]" id="login" size="60" style="width: 300px" value="{login}"
         {login_readonly} />
     </td>
     <td style="color: #999999;">Указанная Вами электронная почта является Вашим Логином.<br />Пример: <i>name@mail.ru</i>.
@@ -316,16 +316,15 @@
     <td></td>
     <td><b>Пароль:</b></td>
     <td>
-        <table border="0" cellpadding="5" cellspacing="0">
+        <table border="0" cellpadding="5" cellspacing="0" class="reg_width">
             <tr>
-                <td>пароль:</td>
-                <td><input type="password" name="properties[password]" size="30" style="width: 192px" value=""/><br/>
+                <td valign="top">пароль:</td>
+                <td><input type="password" name="properties[password]" id="password" size="30" style="width: 192px" style="margin-bottom: 5px;" value=""/>
                 </td>
             </tr>
             <tr>
-                <td>подтверждение:</td>
-                <td><input type="password" name="properties[password_confirm]" size="30" style="width: 192px"
-                           value=""/></td>
+                <td valign="top" width="110">подтверждение:</td>
+                <td><input type="password" name="properties[password_confirm]" id="password_confirm" size="30" style="width: 192px" value=""/></td>
             </tr>
         </table>
     </td>
@@ -390,19 +389,16 @@
     <td></td>
     <td><b>Введите цифры:</b><br />
 
-        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120"
-                                                                               height="50"
-                                                                               src="{captcha_link}"/></div>
+        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50"  src="{captcha_link}"/></div>
         <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
     </td>
-    <td><br /><input type="text" name="comment_captcha_input" id="comment_captcha_input"
-                    style="width:120px; height:50px; font-size:32px; font-family:sans-serif; margin-left:10px; padding:4px;"/>
+    <td><br /><input type="text" class="reg_captcha" name="comment_captcha_input" id="comment_captcha_input" />
     </td>
     <td style="color: #999999;"></td>
 </tr>
 <tr>
     <td></td>
-    <td colspan="3"><input type="submit" value="Зарегистрироваться!" /></td>
+    <td colspan="3"><input type="submit" class="submit-button" value="Зарегистрироваться!" /></td>
 </tr>
 </table>
 </form>
@@ -443,4 +439,70 @@
             ttt.hide();
     }
     if ({subscribe}) $('input[name|=properties[subscribe]]').attr('checked', true);
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+    $('#regform input.submit-button').click(function(){
+        $(".error-field").remove();
+        var comment_captcha_input = $('#comment_captcha_input').val().length;
+        var password = $('#password').val().length;
+        var password_confirm = $('#password_confirm').val().length;
+        var login = $('#login').val().length;
+        var title = $('#title').val().length;
+        var company_phone = $('#company_phone').val().length;
+        var contact_phone = $('#contact_phone').val().length;
+        
+        var address = $('#address').val().length;
+        
+        var site = $('#site').val().length;
+
+        var position  = $('#position').val().length;
+        var company  = $('#company').val().length;
+
+        if(comment_captcha_input == 0){
+            $('#comment_captcha_input').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password == 0){
+            $('#password').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password_confirm == 0){
+            $('#password_confirm').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(login == 0){
+            $('#login').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(title == 0){
+            $('#title').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(company_phone == 0){
+            $('#company_phone').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(contact_phone == 0){
+            $('#contact_phone').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(position == 0){
+            $('#position').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(company == 0){
+            $('#company').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(address == 0){
+            $('#address').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(site == 0){
+            $('#site').after('<span class="error-field">Заполните поле</span>');
+        }
+        
+        
+        else{ $('#regform').submit();}
+
+        return false;
+    });
+
+}); //end of ready
 </script>
