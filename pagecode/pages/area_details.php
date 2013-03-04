@@ -520,8 +520,14 @@ class area_details_php extends CPageCodeHandler
 				else {
 					$info["seo_text"] = "";
 				}
-				$footerText = $this->GetControl("footerText");
-				$footerText->dataSource = $info;
+				
+        if(!isset($_GET['page'] || $_GET['page'] == 1 )) {
+          $footerText = $this->GetControl("footerText");
+          $footerText->dataSource = $info;
+        }
+				
+				
+				
 				//setting pager
 				$pager = $this->GetControl("pager");
 				$pager->currentPage = $page;

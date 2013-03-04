@@ -388,8 +388,12 @@ class contractor_details_php extends CPageCodeHandler
             else {
                 $info["seo_text"] = "";
             }
-            $footerText = $this->GetControl("footerText");
-            $footerText->dataSource = $info;
+
+            if(!isset($_GET['page'] || $_GET['page'] == 1 )) {
+              $footerText = $this->GetControl("footerText");
+              $footerText->dataSource = $info;
+            }
+
 
             /*setting activity types*/
             $activities = SQLProvider::ExecuteQueryIndexed("select *, tbl_obj_id as child_id from `tbl__activity_type` order by priority desc", "child_id");
