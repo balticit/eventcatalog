@@ -514,12 +514,13 @@ class area_details_php extends CPageCodeHandler
                     }
 				
 				
-				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
-				//	$ft["seo_text"] = $ft[0]["seo_text"];
-				}
 				else {
 					$info["seo_text"] = "";
 				}
+				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+				//	$ft["seo_text"] = $ft[0]["seo_text"];
+				}
+				
 				
 
           $footerText = $this->GetControl("footerText");

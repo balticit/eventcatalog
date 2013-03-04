@@ -382,12 +382,12 @@ class contractor_details_php extends CPageCodeHandler
                         }
                     }
             
-            
+              else {
+                  $info["seo_text"] = "";
+              }
                
             }
-            else {
-                $info["seo_text"] = "";
-            }
+            
 
 
               $footerText = $this->GetControl("footerText");
