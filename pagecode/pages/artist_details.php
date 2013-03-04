@@ -319,14 +319,10 @@ class artist_details_php extends CPageCodeHandler
                     $info["seo_text"] = "";
                 }
                 
-                if(!isset($_GET['page'] || $_GET['page'] == 1 )) {
+  
                   $footerText = $this->GetControl("footerText");
-                  $footerText->dataSource = $info;
-                }
-                else {
-                  $footerText = $this->GetControl("footerText");
-                  $footerText->dataSource = '';
-                }
+                  $footerText->dataSource = $info["seo_text"];
+
                 
                 //setting pager
                 $pager = $this->GetControl("pager");
