@@ -391,7 +391,7 @@ class contractor_details_php extends CPageCodeHandler
 
 
               $footerText = $this->GetControl("footerText");
-              $footerText->dataSource = $info["seo_text"];
+              $footerText->dataSource = $info;
 
 
 
