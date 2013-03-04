@@ -520,8 +520,14 @@ class area_details_php extends CPageCodeHandler
 				else {
 					$info["seo_text"] = "";
 				}
-				$footerText = $this->GetControl("footerText");
-				$footerText->dataSource = $info;
+				
+        if(!isset($_GET['page'] || $_GET['page'] == 1 )) {
+          $footerText = $this->GetControl("footerText");
+          $footerText->dataSource = $info;
+        }
+				
+				
+				
 				//setting pager
 				$pager = $this->GetControl("pager");
 				$pager->currentPage = $page;
@@ -650,7 +656,8 @@ class area_details_php extends CPageCodeHandler
 				}
 
 				$this->GetControl("capacityFilter")->html = $capacityFilter;
-
+        
+        /*
 				$mainMenu = $this->GetControl("menu");
     	
         $mainMenu->dataSource["shelk"] =
@@ -659,7 +666,7 @@ class area_details_php extends CPageCodeHandler
 				"title"=>"",
 				"ads_class"=>"reklama",
 				"target" => "target='_blank'");
-				
+				*/
 				
 				$areasearch = $this->GetControl("areasearch");
 				$areasearch->headerTemplate =
@@ -1168,7 +1175,7 @@ group by
         $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["max_places_conference"].'</td>';
         }
         if($col_4) {
-        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.$halls[$i]["cost_conference"].'</td>';
+        $unit["halls"] .='<td style="text-align:center;border-bottom:1px #ccc solid;" height="25">'.number_format($halls[$i]["cost_conference"], 0, ' ', ' ').' ð.</td>';
         }
        $unit["halls"] .='</tr>';
 			}
@@ -1465,24 +1472,39 @@ group by
 				$unit["map"] = $map->RenderHTML();
 			}
 			
-			//video load
-           $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
-            $unit["video_visible"] = "";
-            if($unit["youtubevideo"] == false ) {
-              $unit["video_visible"] = 'style="display: none;"';
-            }
-            
-            $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
-            $unit["video_visible_2"] = "";
-            if($unit["youtubevideo_2"] == false ) {
-              $unit["video_visible_2"] = 'style="display: none;"';
-            }
-            
-            $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
-            $unit["video_visible_3"] = "";
-            if($unit["youtubevideo_3"] == false ) {
-              $unit["video_visible_3"] = 'style="display: none;"';
-            }
+    //video load
+    $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
+    $unit["video_visible"] = 'style="display: none;"';
+    
+    if($unit["youtubevideo"] != false ) {
+      $unit["video_visible"] = "";
+      if(is_numeric($unit["youtubevideo"])) {
+      $unit["youtubevideo"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo"] = ''; }
+    
+    $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+    if($unit["youtubevideo_2"] != false ) {
+      if(is_numeric($unit["youtubevideo_2"])) {
+      $unit["youtubevideo_2"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_2"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo_2"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_2"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo_2"] = ''; }
+    
+    $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+    if($unit["youtubevideo_3"] != false ) {
+      if(is_numeric($unit["youtubevideo_3"])) {
+      $unit["youtubevideo_3"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_3"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo_3"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_3"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo_3"] = ''; }
 
 			 //Remove direct
       if ($unit['direct'] == 1) {
@@ -1552,6 +1574,7 @@ group by
 			
 			//Extended search
 			
+			/*
 			$mainMenu = $this->GetControl("menu");
     	
         $mainMenu->dataSource["shelk"] =
@@ -1560,7 +1583,7 @@ group by
 				"title"=>"",
 				"ads_class"=>"reklama",
 				"target" => "target='_blank'");
-			
+			*/
 			
 			$areasearch = $this->GetControl("areasearch");
 				$areasearch->headerTemplate =

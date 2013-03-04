@@ -81,7 +81,7 @@
 			$pager->rewriteParams	= $rewriteParams;
 			
 			// список новостей
-			$sql =  'SELECT *, DATE_FORMAT(creation_date,"%d.%m.%Y") as `creation_date` FROM `vw__news_soon` '.
+			$sql =  'SELECT * FROM `vw__news_soon` '.
 						(!empty($cat) ? 'WHERE tbl_cai_id = '.$cat.' ' : '').
 					'ORDER BY creation_date DESC LIMIT '.(($page - 1) * $this->max_per_page).', '.$this->max_per_page;
 			// var_dump($sql);		
@@ -91,6 +91,7 @@
 			{
 				//$news[$key]['date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
 				
+				$news[$key]['creation_date'] = date("d.m.Y",strtotime($news[$key]['creation_date']));
 				
 				if( $news[$key]["title_url"] == '') { $news[$key]["title_url"] = 'details'.$news[$key]["tbl_obj_id"];}
 		    $news[$key]["news_url"] = $news[$key]["title_url"];

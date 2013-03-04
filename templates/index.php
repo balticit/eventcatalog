@@ -219,6 +219,7 @@
           </script>
 				
 				<div style='height:600px;width: 240px;margin-bottom: 10px;'>
+				  <div class="show_bnr">
 					<!--  AdRiver code START. Type:240x400 Site: EventCat PZ: 2 BN: 2 -->
 					<script language="javascript" type="text/javascript"><!--
 					var RndNum4NoCash = Math.round(Math.random() * 1000000000);
@@ -235,6 +236,8 @@
 					</noscript>
 
 					<!--  AdRiver code END  -->
+					</div>
+					
 				</div>
 				<div class="sub-title-block"><span class="sub-title widget">Ѕыть в курсе</span></div>
 				

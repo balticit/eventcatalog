@@ -9,12 +9,11 @@
 </script>
 <script src="/js/jquery.maskedinput-1.3.min.js" type="text/javascript"></script>
 <img src="/images/front/r4.gif"><br><br>
-<form method="post" enctype="multipart/form-data">
+<form method="post" id="regform" enctype="multipart/form-data">
 <table border="0" cellpadding="0" cellspacing="15">
 <tr valign="top">
     <td class="reg_title">Название / Имя:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
-                                     value='{title}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="title" name="properties[title]" size="60" value='{title}'></td>
     <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила
         написания названия</a>
 
@@ -65,7 +64,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Описание:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
+    <td style="width: 300px;"><textarea class="reg_textarea" id="description" name="properties[description]" rows="10" cols="50">{description}</textarea>
     </td>
     <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах
         компании.<br>
@@ -245,8 +244,7 @@
 
 <tr valign="top">
     <td class="reg_title">Страна:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input id="input_country" class="reg_input_text" type="text"
-                                     name="properties[country]" size="60" value="{other_country}"/>
+    <td style="width: 300px;"><input id="input_country" class="reg_input_text" type="text" name="properties[country]" size="60" value="{other_country}"/>
         <script type="text/javascript">
             $(document).ready(function () {
                 var searchinput = $('#input_country');
@@ -265,8 +263,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Город:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
-                                     size="60" value="{other_city}"/>
+    <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]" size="60" value="{other_city}"/>
         <script type="text/javascript">
             $(document).ready(function () {
                 var searchinput = $('#input_city');
@@ -285,11 +282,9 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Контактные телефоны:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text"
-                                     name="properties[manager_phone]" size="60" value="{manager_phone}"
-                                     style="margin-bottom: 5px;"><input id="phone2" class="reg_input_text"
-                                                                        type="text" name="properties[phone2]"
-                                                                        size="60" value="{phone2}"/>
+    <td style="width: 300px;">
+    <input id="phone1" class="reg_input_text" type="text" name="properties[manager_phone]" size="60" value="{manager_phone}" style="margin-bottom: 5px;">
+    <input id="phone2" class="reg_input_text" type="text" name="properties[phone2]" size="60" value="{phone2}"/>
         <script type="text/javascript">
             $("#phone1").mask('(999) 999-99-99');
             $("#phone2").mask('(999) 999-99-99');
@@ -299,8 +294,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Имя администратора / директора:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[manager_name]"
-                                     size="60" value="{manager_name}"/></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="manager_name" name="properties[manager_name]" size="60" value="{manager_name}"/></td>
     <td class="reg_info"></td>
 </tr>
 <tr valign="top">
@@ -346,17 +340,15 @@
 
 <tr valign="top">
     <td class="reg_title">Адрес сайта:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]"
-                                     size="60" value="{site_address}" onfocus="SiteAdrFocus(this)"
-                                     onblur="SiteAdrBlur(this)"></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]" id="site_address" size="60" value="{site_address}" onfocus="SiteAdrFocus(this)" onblur="SiteAdrBlur(this)"></td>
     <td class="reg_info"></td>
 </tr>
 <tr valign="top">
     <td></td>
     <td>
         <div style="width: 240px;">
-            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"
-                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:360px;"
+            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=236&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=378"
+                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:236px; height:378px;"
                     allowTransparency="true"></iframe>
         </div>
     </td>
@@ -366,8 +358,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Электронная почта:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
-                                     value="{email}" {login_readonly}>
+    <td style="width: 300px;"><input type="text" name="properties[email]" size="60" id="email" class="reg_input_text" value="{email}" {login_readonly}>
     </td>
     <td class="reg_info">Электронная почта является Вашим Логином при входе в Личный кабинет для редактирования
         данных о компании.
@@ -378,14 +369,12 @@
     <td>
         <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
             <tr>
-                <td>Пароль:</td>
-                <td align="right"><input class="reg_pass" type="password" name="properties[password]" size="30"
-                                         value="" style="margin-bottom: 5px;"><br/></td>
+                <td valign="top">Пароль:</td>
+                <td><input class="reg_pass" type="password" id="password" name="properties[password]" size="30" value="" ></td>
             </tr>
             <tr>
-                <td>Подтверждение:</td>
-                <td align="right"><input class="reg_pass" type="password" name="properties[password_confirm]"
-                                         size="30" value=""></td>
+                <td valign="top" width="110">Подтверждение:</td>
+                <td><input class="reg_pass" type="password" id="password_confirm" name="properties[password_confirm]" size="30" value=""></td>
             </tr>
         </table>
     </td>
@@ -394,17 +383,80 @@
 <tr valign="top">
     <td class="reg_title">Введите цифры<br />
 
-        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120"
-                                                                               height="50" src="{captcha_link}">
+        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50" src="{captcha_link}">
         </div>
         <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
     </td>
-    <td><br/><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input">
-    </td>
+    <td><br /><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input"></td>
     <td style="color: #999999;"></td>
 </tr>
 <tr>
-    <td colspan="3"><input type="submit" value="{submit_text}"></td>
+    <td colspan="3"><input type="submit" class="submit-button" value="{submit_text}"></td>
 </tr>
 </table>
 </form>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+    $('#regform input.submit-button').click(function(){
+        $(".error-field").remove();
+        var comment_captcha_input = $('#comment_captcha_input').val().length;
+        var password = $('#password').val().length;
+        var password_confirm = $('#password_confirm').val().length;
+        var email = $('#email').val().length;
+        var title = $('#title').val().length;
+        var description = $('#description').val().length;
+        
+        var input_country = $('#input_country').val().length;
+        var input_city = $('#input_city').val().length;
+        var phone1 = $('#phone1').val().length;
+        var manager_name = $('#manager_name').val().length;
+        var site_address = $('#site_address').val().length;
+
+
+        if(comment_captcha_input == 0){
+            $('#comment_captcha_input').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password == 0){
+            $('#password').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password_confirm == 0){
+            $('#password_confirm').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(email == 0){
+            $('#email').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(title == 0){
+            $('#title').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(description == 0){
+            $('#description').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(input_country == 0){
+            $('#input_country').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(input_city == 0){
+            $('#input_city').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(phone1 == 0){
+            $('#phone1').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(manager_name == 0){
+            $('#manager_name').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(site_address == 0){
+            $('#site_address').after('<span class="error-field">Заполните поле</span>');
+        }
+        
+        
+        else{ $('#regform').submit();}
+
+        return false;
+    });
+
+}); //end of ready
+</script>

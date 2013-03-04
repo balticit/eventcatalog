@@ -453,22 +453,10 @@ class index_php extends CPageCodeHandler
 				                               from tbl__magazines where active=1 order by order_num,tbl_obj_id desc limit 1");
 		if (sizeof($magazine)>0) $this->mag = $magazine[0];
 
+/*
 	$mainMenu = $this->GetControl("menu");
 	switch(rand(2,7)) {
-	case 1:
-    /*$mainMenu->dataSource["museum"] =
-      array("link"=>"http://15kop.ru/",
-            "imgname"=>"museum",
-            "title"=>"",
-            "target"=>'target="_blank"');
-            
-    $mainMenu->dataSource["museum"] =
-      array("link"=>"http://www.valet-parking.ru/",
-            "imgname"=>"valet",
-            "title"=>"",
-            "target"=>'target="_blank"');
-            */
-	break;
+
 	case 2:
 	$mainMenu->dataSource["polymedia"] =
       array("link"=>"http://www.polymedia.ru/",
@@ -513,12 +501,10 @@ class index_php extends CPageCodeHandler
 	$mainMenu->dataSource["great"] = 
 	   array("link"=>"http://greatgroup.ru/","imgname"=>"creative","title"=>"","ads_class"=>"reklama","target"=>"target='_blank'");
 	break;
-/*	case 8:
-	$mainMenu->dataSource["midas"] = 
-	   array("link"=>"http://midas.ru/?id=144","imgname"=>"midas","title"=>"","target"=>"target='_blank'");
-	break;
-*/
+
 	}
+	
+	*/
     //EVENT TV
     $etv_res = SQLProvider::ExecuteQuery("select video_id,doc_id from tbl__eventtv_main");
     $vimeo_video_id = '';

@@ -79,6 +79,7 @@ if($this->is_list){
 
 
     if (!is_null($bycategory) || (!IsNullOrEmpty($category) )) {
+
       $filter = (!IsNullOrEmpty($category) && is_numeric($category))?" where dir_id=$category":"";
 
       // $publics = SQLProvider::ExecuteQuery(
@@ -124,7 +125,7 @@ if($this->is_list){
 			from vw__eventtv_doc $filter order by is_new desc, registration_date desc 
 	 ");
 	 
-	 
+	 /*
 	 $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -132,6 +133,7 @@ if($this->is_list){
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+	 */
 	 
 	 $count = count($count);
 	 $pages = floor($count / $this->pageSize) + (($count % $this->pageSize == 0) ? 0 : 1);
@@ -232,6 +234,8 @@ if($this->is_list){
     $publicTitleList = $this->GetControl("publicTitleList");
     $publicTitleList->html = $topictitle;
     
+    $publicList = $this->GetControl("publicList");
+    $publicList->html = $html;
     
     //setting pager
     $pager = $this->GetControl("pager");
@@ -486,7 +490,7 @@ else {
 								'<img width="120" height="80" class="newsimg" alt="" src="/upload/'.$item['logo_image'].'" />'.
 							'</a>'.
 							'<div class="rnb_item_text">'.
-								'<b>'.$item['title'].'</b> <small>'.date('d.m.Y', strtotime($item['registration_date'])).'</small>'.
+								'<a class="news" href="/eventtv/'.$item['title_url'].'"><b>'.$item['title'].'</b></a> <small>'.date('d.m.Y', strtotime($item['registration_date'])).'</small>'.
 								'<p>'.$item['annotation'].'</p>'.
 								(!empty($item['cat_title']) ? '<small>Рубрика: '.$item['cat_title'].'</small>' : '').
 							'</div>'.

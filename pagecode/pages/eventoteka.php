@@ -222,7 +222,8 @@
             $publicList->html = $html;
 
             $topic = GP("topic");
-
+            
+            /*
             $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -230,7 +231,7 @@
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
-					
+					*/
 					
 			// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm

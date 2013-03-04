@@ -132,7 +132,7 @@ class rating_php extends CPageCodeHandler
 		$catList = $this->GetControl("rateListAgency");
 		$catList->dataSource = $agencys;
 		
-		
+		/*
 		$mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -140,6 +140,7 @@ class rating_php extends CPageCodeHandler
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+		*/
 		
 		//setting pager
 		$pager = $this->GetControl("pager");

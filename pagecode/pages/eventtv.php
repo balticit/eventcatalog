@@ -215,6 +215,7 @@ class eventtv_php extends CPageCodeHandler
         $sortTypes->html = "<div class=\"sortTypes\" style=\"color:#6096CA;margin-bottom:10px\">&nbsp;$sortLinks</div>";
   
   
+  /*
   $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -222,6 +223,7 @@ class eventtv_php extends CPageCodeHandler
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+  */
   
 	// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm

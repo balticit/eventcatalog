@@ -202,7 +202,7 @@ return $age_in_years.($age_in_years>0?declension($age_in_years, ' год', ' года',
 }
 
 
-
+/*
 function get_video_id( $url ) {
 
   $_URL = explode("/", $url);
@@ -240,8 +240,8 @@ function get_video_id( $url ) {
    return false;
   }
  }
-
-function parse_yturl($url) 
+*/
+function get_video_id($url) 
 {
     $pattern = '#^(?:https?://)?';    # Optional URL scheme. Either http or https.
     $pattern .= '(?:www\.)?';         #  Optional www subdomain.
@@ -258,7 +258,21 @@ function parse_yturl($url)
     $pattern .= '([\w-]{11})';        # 11 characters (Length of Youtube video ids).
     $pattern .= '(?:.+)?$#x';         # Optional other ending URL parameters.
     preg_match($pattern, $url, $matches);
-    return (isset($matches[1])) ? $matches[1] : false;
+    //return (isset($matches[1])) ? $matches[1] : false;
+    
+    $urls = parse_url($url);
+
+    if($urls['host'] == 'vimeo.com'){
+        $vid = ltrim($urls['path'],'/');
+        return $vid;
+    } elseif($urls['host'] != 'vimeo.com')  {
+        $urls = $matches[1];
+        return $urls;
+    } else {
+        return false;
+    }
+    
+    
 }
 
 ?>

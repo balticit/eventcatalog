@@ -97,13 +97,16 @@
 </script>
 
 <script src="/js/jquery.maskedinput-1.3.min.js" type="text/javascript"></script>
+
+
+
+
 <img src="/images/front/r3.gif"><br><br>
-<form method="post" enctype="multipart/form-data">
+<form method="post" id="regform" enctype="multipart/form-data">
 <table border="0" cellpadding="0" cellspacing="15">
 <tr valign="top">
     <td class="reg_title">Название компании:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[title]" size="60"
-                                     value='{title}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="title" name="properties[title]" size="60" value='{title}'></td>
     <td class="reg_info"><a href="" onclick="javascript: ToggleNameInfo('NameInfo'); return false;">Правила написания
         названия</a>
 
@@ -146,7 +149,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Описание:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><textarea class="reg_textarea" name="properties[description]" rows="10" cols="50">{description}</textarea>
+    <td style="width: 300px;"><textarea class="reg_textarea" id="description" name="properties[description]" rows="10" cols="50">{description}</textarea>
     </td>
     <td class="reg_info">В описании компании, пожалуйста, разместите основную информацию об услугах компании.<br>
         Пожалуйста, не вставляйте контактную информацию в описание.
@@ -168,10 +171,10 @@
                         tbl += "<tr><td>";
                         tbl += "№: " + (i + 1) + " &nbsp;&nbsp; Название: <input type='text' name='properties[hall][" + i + "][title]' style='width:80px;' value='" + halls[i].title + "' onkeyup='javascript:halls[" + i + "].title=this.value;'> &nbsp;&nbsp; <a href='#' onclick='javascript:DeleteHall(" + i + ");return false;'>Удалить</a>";
                         tbl += "<table cellspacing=\"0\" cellpadding=\"0\"><tr align=\"center\"><td>банкет</td><td>фуршет</td><td colspan=\"2\">конференция</td></tr><tr align=\"center\"><td>кол-во</td><td>кол-во</td><td>кол-во</td><td>стоимость</td></tr><tr>"
-                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_banquet]' style='width:40px;' value='" + halls[i].max_places_banquet + "' onkeyup='javascript:halls[" + i + "].max_places_banquet=this.value;'/></td>";
-                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_official_buffet]' style='width:40px;' value='" + halls[i].max_places_official_buffet + "' onkeyup='javascript:halls[" + i + "].max_places_official_buffet=this.value;'/></td>";
-                        tbl += "<td style=\"padding: 5px 1px 5px 5px;\"><input type='text' name='properties[hall][" + i + "][max_places_conference]' style='width:40px;' value='" + halls[i].max_places_conference + "' onkeyup='javascript:halls[" + i + "].max_places_conference=this.value;'/></td>";
-                        tbl += "<td style=\"padding: 5px 5px 5px 1px;\"><input type='text' name='properties[hall][" + i + "][cost_conference]' style='width:40px;' value='" + halls[i].cost_conference + "' onkeyup='javascript:halls[" + i + "].cost_conference=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_banquet]' style='width:44px;' value='" + halls[i].max_places_banquet + "' onkeyup='javascript:halls[" + i + "].max_places_banquet=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_official_buffet]' style='width:44px;' value='" + halls[i].max_places_official_buffet + "' onkeyup='javascript:halls[" + i + "].max_places_official_buffet=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px\"><input type='text' name='properties[hall][" + i + "][max_places_conference]' style='width:44px;' value='" + halls[i].max_places_conference + "' onkeyup='javascript:halls[" + i + "].max_places_conference=this.value;'/></td>";
+                        tbl += "<td style=\"padding: 5px 0px 5px 10px\"><input type='text' name='properties[hall][" + i + "][cost_conference]' style='width:54px;' value='" + halls[i].cost_conference + "' onkeyup='javascript:halls[" + i + "].cost_conference=this.value;'/> р.</td>";
                         tbl += "</tr></table>"
                         tbl += "</td></tr>";
                     }
@@ -206,8 +209,7 @@
             }
 
         </script>
-        <a style="cursor: pointer; text-decoration: underline;" href="#" onclick="javascript:AddHall(); return false;">Добавить
-            зал</a>
+        <a style="cursor: pointer; text-decoration: underline;" href="#" onclick="javascript:AddHall(); return false;">Добавить зал</a>
 
         <div id="hallsContainer" style="width: auto; height: auto;">
             <table>
@@ -224,20 +226,17 @@
 
 <tr valign="top">
     <td class="reg_title">Стоимость проведения банкета на 1 персону:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_banquet]" size="60"
-                                     value='{cost_banquet}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="cost_banquet" name="properties[cost_banquet]" size="60" value='{cost_banquet}'></td>
     <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1500</td>
 </tr>
 <tr valign="top">
     <td class="reg_title">Стоимость проведения фуршета на 1 персону:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_official_buffet]"
-                                     size="60" value='{cost_official_buffet}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="cost_official_buffet" name="properties[cost_official_buffet]" size="60" value='{cost_official_buffet}'></td>
     <td class="reg_info">Пожалуйста, укажите сумму в рублях.<br>Пример: 1000</td>
 </tr>
 <tr valign="top">
     <td class="reg_title">Арендная плата:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_rent]" size="60"
-                                     value='{cost_rent}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="cost_rent" name="properties[cost_rent]" size="60" value='{cost_rent}'></td>
     <td class="reg_info">Пожалуйста, напишите, включена или нет арендная плата в указанную стоимость проведения банкета
         или фуршета.
         Если не включена, то напишите сколько она составляет.
@@ -246,8 +245,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Обслуживание:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[cost_service]" size="60"
-                                     value='{cost_service}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" id="cost_service" name="properties[cost_service]" size="60" value='{cost_service}'></td>
     <td class="reg_info">Пожалуйста, напишите, включено или нет обслуживание в указанную стоимость проведения банкета
         или фуршета.
         Если не включено, то напишите сколько процентов оно составляет (к примеру, 10%).
@@ -255,7 +253,7 @@
     </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Кухня:<span style="color:#CC3333">*</span></td>
+    <td class="reg_title">Кухня:</td>
     <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[kitchen]" size="60"
                                      value='{kitchen}'></td>
     <td class="reg_info">Пример: русская, европейская и т.п.</td>
@@ -385,8 +383,7 @@
 </tr>
 <tr valign="top">
     <td class="reg_title">Другое:</td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[other]" size="60"
-                                     value='{other}'></td>
+    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[other]" size="60" value='{other}'></td>
     <td class="reg_info">Здесь Вы можете кратко написать что ещё из технического оборудования имеется на Вашей
         площадке.
     </td>
@@ -532,139 +529,207 @@
 </tr>
 
 <tr valign="top">
-    <td class="reg_title">Город:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]"
-                                     size="60" value="{other_city}" onchange="AreaCityChange(this.value)"
-                                     onkeyup="AreaCityChange(this.value)">
-        <script type="text/javascript">
-            $(document).ready(function () {
-                var searchinput = $('#input_city');
-                searchinput.autocomplete({
-                    serviceUrl:'/ajax/findcity',
-                    highlight:true,
-                    minChars:1,
-                    maxHeight:400
-                });
-            });
-        </script>
-    </td>
-    <td class="reg_info">Введите город, например <a href="" onclick="SetCity('Москва'); return false;">Москва</a>, <a
-            href="" onclick="SetCity('Московская область'); return false;">Московская область</a> или выберите из <a
-            href="" onclick="ShowCityList(); return false;">списка</a></td>
+  <td class="reg_title">Город:<span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;"><input id="input_city" class="reg_input_text" type="text" name="properties[city]" size="60" value="{other_city}" onchange="AreaCityChange(this.value)" onkeyup="AreaCityChange(this.value)">
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var searchinput = $('#input_city');
+      searchinput.autocomplete({
+        serviceUrl:'/ajax/findcity',
+        highlight:true,
+        minChars:1,
+        maxHeight:400
+      });
+    });
+  </script>
+  </td>
+  <td class="reg_info">
+    Введите город, например <a href="" onclick="SetCity('Москва'); return false;">Москва</a>, 
+    <a href="" onclick="SetCity('Московская область'); return false;">Московская область</a> или выберите из 
+    <a href="" onclick="ShowCityList(); return false;">списка</a>
+  </td>
 </tr>
 <tr valign="top" id="row_moscow_district" style="{mdistricts_visible}">
-    <td class="reg_title">Округ:</td>
-    <td style="width: 300px;">{mdistricts}</td>
-    <td class="reg_info">Пожалуйста, выберите округ Москвы, в котором находится Ваша площадка.</td>
+  <td class="reg_title">Округ:</td>
+  <td style="width: 300px;">{mdistricts}</td>
+  <td class="reg_info">Пожалуйста, выберите округ Москвы, в котором находится Ваша площадка.</td>
 </tr>
 <tr valign="top" id="row_moscow_way" style="{mways_visible}">
-    <td class="reg_title">Направление:</td>
-    <td style="width: 300px;">
-        <a href="" onclick="javascript: ShowMoscowWayDlg(); return false;">Выбрать</a>
-
-        <div id="sel_mway_title" style="{mw_visible}" class="reg_title2">Выбранные направления:</div>
-        <div id="sel_mway">{sel_mway}</div>
-    </td>
-    <td class="reg_info">Пожалуйста, выберите направления, которые наиболее близко находятся к Вашей площадке.</td>
+  <td class="reg_title">Направление:</td>
+  <td style="width: 300px;">
+  <a href="" onclick="javascript: ShowMoscowWayDlg(); return false;">Выбрать</a>
+  <div id="sel_mway_title" style="{mw_visible}" class="reg_title2">Выбранные направления:</div>
+  <div id="sel_mway">{sel_mway}</div>
+  </td>
+  <td class="reg_info">Пожалуйста, выберите направления, которые наиболее близко находятся к Вашей площадке.</td>
 </tr>
 <tr valign="top" id="row_moscow_metro" style="{mmetro_visible}">
-    <td class="reg_title">Станция метро:</td>
-    <td style="width: 300px;">
-        <a href="" onclick="javascript: ShowMetroDlg(); return false;">Выбрать</a>
-
-        <div id="sel_metro_title" style="{mt_visible}" class="reg_title2">Выбранные станции:</div>
-        <div id="sel_metro">{sel_metro}</div>
-    </td>
-    <td class="reg_info">Пожалуйста, выберите одну или несколько станций метро, которые наиболее близко находятся к
-        Вашей площадке. Можно выбрать не более трёх станций.
-    </td>
+  <td class="reg_title">Станция метро:</td>
+  <td style="width: 300px;">
+    <a href="" onclick="javascript: ShowMetroDlg(); return false;">Выбрать</a>
+    <div id="sel_metro_title" style="{mt_visible}" class="reg_title2">Выбранные станции:</div>
+    <div id="sel_metro">{sel_metro}</div>
+  </td>
+  <td class="reg_info">Пожалуйста, выберите одну или несколько станций метро, которые наиболее близко находятся к Вашей площадке. Можно выбрать не более трёх станций.
+  </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[address]" size="60"
-                                     value="{address}"/></td>
-    <td class="reg_info">Пример формата написания: Ивановская ул., д.1.</td>
+  <td class="reg_title">Адрес:<span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[address]" id="address" size="60" value="{address}"/></td>
+  <td class="reg_info">Пример формата написания: Ивановская ул., д.1.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Контактные телефоны:<span style="color:#CC3333">*</span><span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input id="phone1" class="reg_input_text" type="text" name="properties[phone]" size="60"
-                                     value="{phone}" style="margin-bottom: 5px;"><input id="phone2"
-                                                                                        class="reg_input_text"
-                                                                                        type="text"
-                                                                                        name="properties[phone2]"
-                                                                                        size="60" value="{phone2}"/>
-        <script type="text/javascript">
-            $("#phone1").mask('(999) 999-99-99');
-            $("#phone2").mask('(999) 999-99-99');
-        </script>
-    </td>
-    <td class="reg_info">Вы можете добавить один или два телефона.</td>
+  <td class="reg_title">Контактные телефоны:<span style="color:#CC3333">*</span><span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;">
+    <input id="phone1" class="reg_input_text" type="text" name="properties[phone]" size="60" value="{phone}" style="margin-bottom: 5px;">
+    <input id="phone2" class="reg_input_text" type="text" name="properties[phone2]" size="60" value="{phone2}"/>
+    <script type="text/javascript">
+    $("#phone1").mask('(999) 999-99-99');
+    $("#phone2").mask('(999) 999-99-99');
+    </script>
+  </td>
+  <td class="reg_info">Вы можете добавить один или два телефона.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Имя администратора площадки:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input type="text" name="properties[manager_name]" size="60" class="reg_input_text"
-                                     value="{manager_name}"></td>
-    <td class="reg_info"></td>
+  <td class="reg_title">Имя администратора площадки:<span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;"><input type="text" name="properties[manager_name]" id="manager_name" size="60" class="reg_input_text" value="{manager_name}"></td>
+  <td class="reg_info"></td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Адрес сайта:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input class="reg_input_text" type="text" name="properties[site_address]" size="60"
-                                     value="{site_address}" onfocus="SiteAdrFocus(this)" onblur="SiteAdrBlur(this)">
-    </td>
-    <td class="reg_info"></td>
+  <td class="reg_title">Адрес сайта:<span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;">
+    <input class="reg_input_text" type="text" name="properties[site_address]" id="site_address" size="60" value="{site_address}" onfocus="SiteAdrFocus(this)" onblur="SiteAdrBlur(this)">
+  </td>
+  <td class="reg_info"></td>
 </tr>
 <tr valign="top">
-    <td></td>
-    <td>
-        <div style="width: 240px;">
-            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=240&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=360"
-                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:360px;"
-                    allowTransparency="true"></iframe>
-        </div>
-    </td>
-    <td style="color: #999999;">
-        Нажмите лайк и будьте всегда в курсе последних событий!
-    </td>
+  <td></td>
+  <td>
+    <div style="width: 240px;">
+      <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEventCatalog&amp;width=236&amp;colorscheme=light&amp;show_faces=true&amp;border_color=grey&amp;stream=false&amp;header=false&amp;height=378" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:236px; height:378px;" allowTransparency="true"></iframe>
+    </div>
+  </td>
+  <td style="color: #999999;">
+    Нажмите лайк и будьте всегда в курсе последних событий!
+  </td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Электронная почта:<span style="color:#CC3333">*</span></td>
-    <td style="width: 300px;"><input type="text" name="properties[email]" size="60" class="reg_input_text"
-                                     value="{email}" {login_readonly}>
-    </td>
-    <td class="reg_info">Электронная почта является Вашим Логином при входе в Личный кабинет для редактирования данных о
-        компании.
-    </td>
+  <td class="reg_title">Электронная почта:<span style="color:#CC3333">*</span></td>
+  <td style="width: 300px;">
+    <input type="text" name="properties[email]" id="email" size="60" class="reg_input_text" value="{email}" {login_readonly}>
+  </td>
+  <td class="reg_info">Электронная почта является Вашим Логином при входе в Личный кабинет для редактирования данных о компании.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Пароль:<span style="color:#CC3333">*</span></td>
-    <td>
-        <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
-            <tr>
-                <td>Пароль:</td>
-                <td align="right"><input class="reg_pass" type="password" name="properties[password]" size="30" value=""
-                                         style="margin-bottom: 5px;"><br/></td>
-            </tr>
-            <tr>
-                <td>Подтверждение:</td>
-                <td align="right"><input class="reg_pass" type="password" name="properties[password_confirm]" size="30"
-                                         value=""></td>
-            </tr>
-        </table>
-    </td>
-    <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
+<td class="reg_title">Пароль:<span style="color:#CC3333">*</span></td>
+  <td>
+    <table border="0" cellpadding="0" cellspacing="0" class="reg_width">
+    <tr>
+      <td valign="top">Пароль:</td>
+      <td><input class="reg_pass" type="password" name="properties[password]" id="password" size="30" value="" style="margin-bottom: 5px;"></td>
+    </tr>
+    <tr>
+      <td valign="top" width="110">Подтверждение:</td>
+      <td><input class="reg_pass" type="password" name="properties[password_confirm]" id="password_confirm" size="30" value=""></td>
+    </tr>
+    </table>
+  </td>
+  <td style="color: #999999;">Внимание!<br />Пароль должен включать в себя цифры и/или латинские буквы.</td>
 </tr>
 <tr valign="top">
-    <td class="reg_title">Введите цифры<br />
-
-        <div style="width:120px; height:50px; border: 1px solid #000000;"><img border="0" width="120" height="50"
-                                                                               src="{captcha_link}"></div>
-        <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
-    </td>
-    <td><br/><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input"></td>
-    <td style="color: #999999;"></td>
+  <td class="reg_title">Введите цифры
+    <div style="width:120px; height:50px; border: 1px solid #000000;">
+      <img border="0" width="120" height="50" src="{captcha_link}">
+    </div>
+    <input type="hidden" name="comment_captcha" id="comment_captcha" value="{captcha_sid}"/>
+  </td>
+  <td><br /><input class="reg_captcha" type="text" name="comment_captcha_input" id="comment_captcha_input"></td>
+  <td style="color: #999999;"></td>
 </tr>
 <tr>
-    <td colspan="3"><input type="submit" value="{submit_text}"></td>
+  <td colspan="3">
+    <input type="submit" class="submit-button" value="{submit_text}">
+  </td>
 </tr>
 </table>
 </form>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+    $('#regform input.submit-button').click(function(){
+        $(".error-field").remove();
+        var comment_captcha_input = $('#comment_captcha_input').val().length;
+        var password = $('#password').val().length;
+        var password_confirm = $('#password_confirm').val().length;
+        var email = $('#email').val().length;
+        
+        
+        var title = $('#title').val().length;
+        var description = $('#description').val().length;
+        var cost_banquet = $('#cost_banquet').val().length;
+        var cost_official_buffet = $('#cost_official_buffet').val().length;
+        var cost_rent = $('#cost_rent').val().length;
+        var cost_service = $('#cost_service').val().length;
+        var input_city = $('#input_city').val().length;
+        var address = $('#address').val().length;
+        var phone1 = $('#phone1').val().length;
+        var manager_name = $('#manager_name').val().length;
+        var site_address = $('#site_address').val().length;
+
+
+        if(comment_captcha_input == 0){
+            $('#comment_captcha_input').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password == 0){
+            $('#password').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(password_confirm == 0){
+            $('#password_confirm').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(email == 0){
+            $('#email').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(title == 0){
+            $('#title').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(description == 0){
+            $('#description').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(cost_banquet == 0){
+            $('#cost_banquet').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(cost_official_buffet == 0){
+            $('#cost_official_buffet').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(cost_rent == 0){
+            $('#cost_rent').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(cost_service == 0){
+            $('#cost_service').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(input_city == 0){
+            $('#input_city').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(address == 0){
+            $('#address').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(phone1 == 0){
+            $('#phone1').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(manager_name == 0){
+            $('#manager_name').after('<span class="error-field">Заполните поле</span>');
+        }
+        if(site_address == 0){
+            $('#site_address').after('<span class="error-field">Заполните поле</span>');
+        }
+        
+        
+        else{ $('#regform').submit();}
+
+        return false;
+    });
+
+}); //end of ready
+</script>

@@ -700,12 +700,15 @@ class registration_php extends CPageCodeHandler
                         if (isset($props["projector"]) && $props["projector"])
                             $props["projector"] = $props["projector_count"];
                         unset($props["projector_count"]);
+                        
+                        if($props['kitchen'] == '') { $props['kitchen'] = 0;}
 
                         $props["login"] = $props["email"];
                         $props['city'] = trim($props['city']);
                         $props['other_city'] = $props['city'];
                         $errorsData = $userValidator->Validate(&$props);
                         $props['title'] = trim($props['title']);
+                        
                         $props['title_url'] = translitURL($props['title']);
                         if ($this->CheckURL("area", $props['title_url']))
                             array_push($errorsData, "Площадка с таким названием уже существует");

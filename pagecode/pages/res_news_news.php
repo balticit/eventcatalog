@@ -79,7 +79,7 @@ if($this->is_list){
             $newAreas->dataSource = $newsData;
         }
 
-
+/*
       $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["redevent"] =
               array("link"=>"http://redevent.ru/",
@@ -87,6 +87,7 @@ if($this->is_list){
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target"=>'target="_blank"');
+        */
         
         // страницы
         $pCount = floor($newsCount/$limit) + ($newsCount%$limit>0?0:1);

@@ -284,7 +284,8 @@ class agency_details_php extends CPageCodeHandler
             }
             $letterFilter = $this->GetControl("letterFilter");
             $letterFilter->dataSource = $letters;
-
+            
+            /*
             $mainMenu = $this->GetControl("menu");
             $mainMenu->dataSource["polymedia"] =
                 array("link" => "http://www.polymedia.ru/",
@@ -292,6 +293,7 @@ class agency_details_php extends CPageCodeHandler
                     "title"=>"",
                     "ads_class"=>"reklama",
                     "target" => 'target="_blank"');
+            */
 			$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'
 												group by vm.`login_type`
@@ -575,22 +577,39 @@ class agency_details_php extends CPageCodeHandler
     
     //video load
     $unit["youtubevideo"] = get_video_id($unit['youtube_video']);
-            $unit["video_visible"] = "";
-            if($unit["youtubevideo"] == false ) {
-              $unit["video_visible"] = 'style="display: none;"';
-            }
-            
-            $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
-            $unit["video_visible_2"] = "";
-            if($unit["youtubevideo_2"] == false ) {
-              $unit["video_visible_2"] = 'style="display: none;"';
-            }
-            
-            $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
-            $unit["video_visible_3"] = "";
-            if($unit["youtubevideo_3"] == false ) {
-              $unit["video_visible_3"] = 'style="display: none;"';
-            }
+    $unit["video_visible"] = 'style="display: none;"';
+    
+    if($unit["youtubevideo"] != false ) {
+      $unit["video_visible"] = "";
+      if(is_numeric($unit["youtubevideo"])) {
+      $unit["youtubevideo"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo"] = ''; }
+    
+    $unit["youtubevideo_2"] = get_video_id($unit['youtube_video_2']);
+    if($unit["youtubevideo_2"] != false ) {
+      if(is_numeric($unit["youtubevideo_2"])) {
+      $unit["youtubevideo_2"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_2"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo_2"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_2"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo_2"] = ''; }
+    
+    $unit["youtubevideo_3"] = get_video_id($unit['youtube_video_3']);
+    if($unit["youtubevideo_3"] != false ) {
+      if(is_numeric($unit["youtubevideo_3"])) {
+      $unit["youtubevideo_3"] = '<iframe src="http://player.vimeo.com/video/'.$unit["youtubevideo_3"].'?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+      } else {
+      $unit["youtubevideo_3"] = '<iframe width="640" height="360" src="http://www.youtube.com/embed/'.$unit["youtubevideo_3"].'" frameborder="0" allowfullscreen></iframe>';
+      }
+    }
+    else { $unit["youtubevideo_3"] = ''; }
+    
+    
     
     //Remove direct
     if ($unit['direct'] == 1) {
@@ -642,7 +661,8 @@ class agency_details_php extends CPageCodeHandler
 		}
 		$activityList = $this->GetControl("activityList");
 		$activityList->dataSource = $activities;
-
+    
+    /*
     $mainMenu = $this->GetControl("menu");
     $mainMenu->dataSource["polymedia"] =
       array("link"=>"http://www.polymedia.ru/",
@@ -650,7 +670,7 @@ class agency_details_php extends CPageCodeHandler
             "title"=>"",
             "ads_class"=>"reklama",
             "target"=>'target="_blank"');
-			
+			*/
 	// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'

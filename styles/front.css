@@ -2716,7 +2716,7 @@ div.photos {
 
 /* new registration */
 .reg_width {
-    width: 302px;
+    width: 305px;
 }
 
 .reg_info {
@@ -2802,7 +2802,6 @@ div#selected_groups {
     height: 48px;
     font-size: 32px;
     font-family: Arial, sans-serif;
-    margin-left: 10px;
 }
 
 .etv_links {
@@ -3554,4 +3553,7 @@ a, img, input, button, textarea, select { outline: none; resize:none }
 /* PAGER */
 .pager { padding:10px 0}
 
+.show_bnr { display:none}
 
+
+#regform .error-field { color:red; display:block; padding:2px 0 4px 0 }
