@@ -897,14 +897,16 @@ class contractor_details_php extends CPageCodeHandler
           }
         }
         
-        
+        /*
         $mainMenu = $this->GetControl("menu");
         $mainMenu->dataSource["kinodoktor"] =
             array("link" => "http://www.kinodoctor.ru/",
                 "imgname" => "kinodoktor",
                 "title"=>"",
                 "ads_class"=>"reklama",
-                "target" => 'target="_blank"');    			
+                "target" => 'target="_blank"');    
+                
+         */			
 		// && всего резидентов
 		$counts = SQLProvider::ExecuteQuery("select vm.`login_type`, COUNT(*) as `count` from `vw__all_users` vm
 												where vm.`active`=1 and vm.`login_type`<>'user'
