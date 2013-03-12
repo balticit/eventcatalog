@@ -158,7 +158,7 @@ class artist_details_php extends CPageCodeHandler
                         if (!empty($info["seo_text"]) && $page == 1) {
                             $info["seo_text"] =  $info["seo_text"] ;
                         }
-                        else { $info = ''; }
+                        else { $info["seo_text"] = ''; }
                     }
                     else {
                       $info["seo_text"] = '';
@@ -310,7 +310,7 @@ class artist_details_php extends CPageCodeHandler
                         if (!empty($info["seo_text"]) && $page == 1) {
                             $info["seo_text"] =  $info["seo_text"] ;
                         }
-                        else { $info = ''; }
+                        else { $info["seo_text"] = ''; }
                     }
                     
                     
