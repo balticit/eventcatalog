@@ -377,6 +377,7 @@ class area_details_php extends CPageCodeHandler
             if (!empty($info["seo_text"]) && $page == 1) {
                 $info["seo_text"] =  $info["seo_text"] ;
             }
+            else { $info["seo_text"] = ''; }
         }
         else {
           $info["seo_text"] =  '';
@@ -511,21 +512,22 @@ class area_details_php extends CPageCodeHandler
                         if (!empty($info["seo_text"]) && $page == 1) {
                             $info["seo_text"] =  $info["seo_text"] ;
                         }
+                        else { $info["seo_text"] = ''; }
                     }
 				
 				
-				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
-				//	$ft["seo_text"] = $ft[0]["seo_text"];
-				}
 				else {
 					$info["seo_text"] = "";
 				}
+				//	$ft = SQLProvider::ExecuteQuery("select seo_text from tbl__area_subtypes where tbl_obj_id=" . $subtype);
+				//	$ft["seo_text"] = $ft[0]["seo_text"];
+				}
 				
-        if(!isset($_GET['page'] || $_GET['page'] == 1 )) {
+				
+
           $footerText = $this->GetControl("footerText");
           $footerText->dataSource = $info;
-        }
-				
+
 				
 				
 				//setting pager
