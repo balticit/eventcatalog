@@ -3486,7 +3486,7 @@ border-radius: 3px; /* CSS3 */
 .submenu_controll { height:25px; padding-left: 37px; padding-top:5px;}
 .submenu_controll.active { display:block}
 #menu_controll_wrapper .reklama { padding-left:14px}
-
+#menu_controll_wrapper .reklama .show_bnr { background: url("../images/menu1/bg_gradient.png") repeat-x left bottom;}
 
 .lastVisitSite { background:url(../images/flag_in_site.png) no-repeat 0 2px; padding-left:16px}
 
